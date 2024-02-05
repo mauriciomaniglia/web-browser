@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EFA842B71004D00500535 /* VisionOSWindow.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C02B70F5B300173702 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BF2B70F5B300173702 /* ContentView.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
 		F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C52B70F5B500173702 /* Preview Assets.xcassets */; };
 		F92921D02B70F5B500173702 /* web_browserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921CF2B70F5B500173702 /* web_browserTests.swift */; };
+		F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* MacOSWindow.swift */; };
+		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
+		F92921F02B70F9F900173702 /* BrowserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* BrowserTextField.swift */; };
+		F92921F22B70FA0C00173702 /* BrowserNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */; };
+		F92921F92B70FABF00173702 /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F92921F82B70FABF00173702 /* core-web-browser */; };
+		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F91EFA842B71004D00500535 /* VisionOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSWindow.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
 		F92921BF2B70F5B300173702 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +41,11 @@
 		F92921C52B70F5B500173702 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F92921CB2B70F5B500173702 /* web-browserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "web-browserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921CF2B70F5B500173702 /* web_browserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = web_browserTests.swift; sourceTree = "<group>"; };
+		F92921EA2B70F99400173702 /* MacOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSWindow.swift; sourceTree = "<group>"; };
+		F92921EC2B70F9A100173702 /* IOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindow.swift; sourceTree = "<group>"; };
+		F92921EF2B70F9F900173702 /* BrowserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTextField.swift; sourceTree = "<group>"; };
+		F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserNavigationButtons.swift; sourceTree = "<group>"; };
+		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92921F92B70FABF00173702 /* core-web-browser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F91EFA832B71002A00500535 /* visionOS */ = {
+			isa = PBXGroup;
+			children = (
+				F91EFA842B71004D00500535 /* VisionOSWindow.swift */,
+			);
+			path = visionOS;
+			sourceTree = "<group>";
+		};
 		F92921B12B70F5B300173702 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +96,10 @@
 		F92921BC2B70F5B300173702 /* web-browser */ = {
 			isa = PBXGroup;
 			children = (
+				F92921EE2B70F9DD00173702 /* Shared */,
+				F91EFA832B71002A00500535 /* visionOS */,
+				F92921E92B70F94C00173702 /* macOS */,
+				F92921E82B70F94600173702 /* iOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
 				F92921BF2B70F5B300173702 /* ContentView.swift */,
 				F92921C12B70F5B500173702 /* Assets.xcassets */,
@@ -99,6 +125,32 @@
 			path = "web-browserTests";
 			sourceTree = "<group>";
 		};
+		F92921E82B70F94600173702 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F92921EC2B70F9A100173702 /* IOSWindow.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		F92921E92B70F94C00173702 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				F92921EA2B70F99400173702 /* MacOSWindow.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		F92921EE2B70F9DD00173702 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F92921EF2B70F9F900173702 /* BrowserTextField.swift */,
+				F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */,
+				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,6 +167,9 @@
 			dependencies = (
 			);
 			name = "web-browser";
+			packageProductDependencies = (
+				F92921F82B70FABF00173702 /* core-web-browser */,
+			);
 			productName = "web-browser";
 			productReference = F92921BA2B70F5B300173702 /* web-browser.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +220,9 @@
 				Base,
 			);
 			mainGroup = F92921B12B70F5B300173702;
+			packageReferences = (
+				F92921F72B70FABF00173702 /* XCRemoteSwiftPackageReference "core-web-browser" */,
+			);
 			productRefGroup = F92921BB2B70F5B300173702 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -199,7 +257,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92921F22B70FA0C00173702 /* BrowserNavigationButtons.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
+				F92921F02B70F9F900173702 /* BrowserTextField.swift in Sources */,
+				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
+				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
+				F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */,
+				F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,10 +432,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.web-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -406,10 +471,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.web-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
 		};
@@ -490,6 +556,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F92921F72B70FABF00173702 /* XCRemoteSwiftPackageReference "core-web-browser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mauriciomaniglia/core-web-browser.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F92921F82B70FABF00173702 /* core-web-browser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F92921F72B70FABF00173702 /* XCRemoteSwiftPackageReference "core-web-browser" */;
+			productName = "core-web-browser";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F92921B22B70F5B300173702 /* Project object */;
 }
