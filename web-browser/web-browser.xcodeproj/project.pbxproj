@@ -17,9 +17,9 @@
 		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
 		F92921F02B70F9F900173702 /* BrowserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* BrowserTextField.swift */; };
 		F92921F22B70FA0C00173702 /* BrowserNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */; };
-		F92921F92B70FABF00173702 /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F92921F82B70FABF00173702 /* core-web-browser */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
+		F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F9CDFD912B7130610024E0AD /* core-web-browser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +48,7 @@
 		F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserNavigationButtons.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
+		F9CDFD8F2B7130360024E0AD /* core-web-browser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "core-web-browser"; path = "../../core-web-browser"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92921F92B70FABF00173702 /* core-web-browser in Frameworks */,
+				F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,9 +81,11 @@
 		F92921B12B70F5B300173702 = {
 			isa = PBXGroup;
 			children = (
+				F9CDFD8F2B7130360024E0AD /* core-web-browser */,
 				F92921BC2B70F5B300173702 /* web-browser */,
 				F92921CE2B70F5B500173702 /* web-browserTests */,
 				F92921BB2B70F5B300173702 /* Products */,
+				F9CDFD902B7130610024E0AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +157,13 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		F9CDFD902B7130610024E0AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,7 +181,7 @@
 			);
 			name = "web-browser";
 			packageProductDependencies = (
-				F92921F82B70FABF00173702 /* core-web-browser */,
+				F9CDFD912B7130610024E0AD /* core-web-browser */,
 			);
 			productName = "web-browser";
 			productReference = F92921BA2B70F5B300173702 /* web-browser.app */;
@@ -224,7 +234,6 @@
 			);
 			mainGroup = F92921B12B70F5B300173702;
 			packageReferences = (
-				F92921F72B70FABF00173702 /* XCRemoteSwiftPackageReference "core-web-browser" */,
 			);
 			productRefGroup = F92921BB2B70F5B300173702 /* Products */;
 			projectDirPath = "";
@@ -561,21 +570,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		F92921F72B70FABF00173702 /* XCRemoteSwiftPackageReference "core-web-browser" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:mauriciomaniglia/core-web-browser.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		F92921F82B70FABF00173702 /* core-web-browser */ = {
+		F9CDFD912B7130610024E0AD /* core-web-browser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F92921F72B70FABF00173702 /* XCRemoteSwiftPackageReference "core-web-browser" */;
 			productName = "core-web-browser";
 		};
 /* End XCSwiftPackageProductDependency section */
