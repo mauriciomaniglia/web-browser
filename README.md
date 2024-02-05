@@ -4,6 +4,6 @@ Web browser for iOS/macOS/visionOS
 
 ## Building the code
 
-Install the latest Xcode developer tools from Apple.
-Clone the repository.
-Build the web-browser scheme in Xcode.
+1. Install the latest Xcode developer tools from Apple.
+2. Clone the repository.
+3. Build the web-browser scheme in Xcode.
