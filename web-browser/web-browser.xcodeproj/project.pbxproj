@@ -19,6 +19,7 @@
 		F92921F22B70FA0C00173702 /* BrowserNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */; };
 		F92921F92B70FABF00173702 /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F92921F82B70FABF00173702 /* core-web-browser */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
+		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		F92921EF2B70F9F900173702 /* BrowserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTextField.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserNavigationButtons.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
+		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				F92921E92B70F94C00173702 /* macOS */,
 				F92921E82B70F94600173702 /* iOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
+				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F92921BF2B70F5B300173702 /* ContentView.swift */,
 				F92921C12B70F5B500173702 /* Assets.xcassets */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
@@ -263,6 +266,7 @@
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
 				F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */,
+				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
 			);
