@@ -4,7 +4,7 @@ import SwiftUI
 struct WebBrowserApp: App {
     var body: some Scene {
         WindowGroup {
-            AnyView(composeView())
+            ContentView()
         }
     }
 }
