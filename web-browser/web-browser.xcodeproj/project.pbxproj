@@ -106,7 +106,6 @@
 				F92921E92B70F94C00173702 /* macOS */,
 				F92921E82B70F94600173702 /* iOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
-				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F92921BF2B70F5B300173702 /* ContentView.swift */,
 				F92921C12B70F5B500173702 /* Assets.xcassets */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
@@ -150,11 +149,44 @@
 		F92921EE2B70F9DD00173702 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F92921EF2B70F9F900173702 /* BrowserTextField.swift */,
-				F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */,
-				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
+				F98BF0C92B750A7F00C29BDA /* Helpers */,
+				F98BF0C62B750A2900C29BDA /* Window */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		F98BF0C62B750A2900C29BDA /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				F98BF0C82B750A5900C29BDA /* Composition */,
+				F98BF0C72B750A3300C29BDA /* Views */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		F98BF0C72B750A3300C29BDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F92921EF2B70F9F900173702 /* BrowserTextField.swift */,
+				F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F98BF0C82B750A5900C29BDA /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		F98BF0C92B750A7F00C29BDA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F9CDFD902B7130610024E0AD /* Frameworks */ = {

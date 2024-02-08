@@ -31,9 +31,8 @@ final class WindowComposer {
         #elseif os(macOS)
         return MacOSWindow(viewModel: viewModel, webView: AnyView(WebViewAppKitWrapper(webView: webViewProxy.webView)))
         #elseif os(visionOS)
-        var visionLayout = VisionOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webViewProxy.webView)))
+        return VisionOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webViewProxy.webView)))
         #endif
-
     }
 
     func didUpdatePresentableModel(_ model: WindowPresentableModel) {
