@@ -1,6 +1,6 @@
 # web-browser
 
-Web browser for iOS/macOS/visionOS
+Web browser for iOS | macOS | visionOS
 
 ## Building the code
 
