@@ -1,23 +1,19 @@
 import SwiftUI
 
 struct BrowserNavigationButtons: View {
-    @Binding var isBackButtonDisabled: Bool
-    @Binding var isBackForwarDisabled: Bool
-
-    var onBackButtonPressed: (() -> Void)?
-    var onForwardButtonPressed: (() -> Void)?
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
         HStack(spacing: 20) {
-            Button(action: { onBackButtonPressed?() }) {
+            Button(action: { viewModel.didTapBackButton?() }) {
                 Image(systemName: "arrow.left")
             }
-            .disabled(isBackButtonDisabled)
+            .disabled(viewModel.isBackButtonDisabled)
 
-            Button(action: { onForwardButtonPressed?() }) {
+            Button(action: { viewModel.didTapForwardButton?() }) {
                 Image(systemName: "arrow.right")
             }
-            .disabled(isBackForwarDisabled)
+            .disabled(viewModel.isForwardButtonDisabled)
         }
     }
 }

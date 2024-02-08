@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    let composer = WindowComposer()
+
     var body: some View {
-        AnyView(composeView())        
+        AnyView(composer.composeView())        
     }
 }
 
