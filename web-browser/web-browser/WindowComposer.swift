@@ -45,7 +45,7 @@ func composeView() -> any View {
 func didUpdatePresentableModel(_ model: WindowPresentableModel) {
     viewModel.isBackButtonDisabled = !model.canGoBack
     viewModel.isForwardButtonDisabled = !model.canGoForward
-    viewModel.progressBarValue = model.progressBar
+    viewModel.progressBarValue = model.progressBarValue
 }
 
 class ViewModel: ObservableObject {
