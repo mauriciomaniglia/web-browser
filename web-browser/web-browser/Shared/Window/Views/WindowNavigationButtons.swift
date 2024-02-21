@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BrowserNavigationButtons: View {
+struct WindowNavigationButtons: View {
     @ObservedObject var viewModel: WindowViewModel
 
     var body: some View {

@@ -15,8 +15,8 @@
 		F92921D02B70F5B500173702 /* web_browserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921CF2B70F5B500173702 /* web_browserTests.swift */; };
 		F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* MacOSWindow.swift */; };
 		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
-		F92921F02B70F9F900173702 /* BrowserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* BrowserTextField.swift */; };
-		F92921F22B70FA0C00173702 /* BrowserNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */; };
+		F92921F02B70F9F900173702 /* WindowTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* WindowTextField.swift */; };
+		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
@@ -45,8 +45,8 @@
 		F92921CF2B70F5B500173702 /* web_browserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = web_browserTests.swift; sourceTree = "<group>"; };
 		F92921EA2B70F99400173702 /* MacOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSWindow.swift; sourceTree = "<group>"; };
 		F92921EC2B70F9A100173702 /* IOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindow.swift; sourceTree = "<group>"; };
-		F92921EF2B70F9F900173702 /* BrowserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTextField.swift; sourceTree = "<group>"; };
-		F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserNavigationButtons.swift; sourceTree = "<group>"; };
+		F92921EF2B70F9F900173702 /* WindowTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTextField.swift; sourceTree = "<group>"; };
+		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 		F98BF0C72B750A3300C29BDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F92921EF2B70F9F900173702 /* BrowserTextField.swift */,
-				F92921F12B70FA0C00173702 /* BrowserNavigationButtons.swift */,
+				F92921EF2B70F9F900173702 /* WindowTextField.swift */,
+				F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,9 +312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92921F22B70FA0C00173702 /* BrowserNavigationButtons.swift in Sources */,
+				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
-				F92921F02B70F9F900173702 /* BrowserTextField.swift in Sources */,
+				F92921F02B70F9F900173702 /* WindowTextField.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
 				F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */,

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BrowserTextField: View {
+struct WindowTextField: View {
     @ObservedObject var viewModel: WindowViewModel
     @State var text = ""
 

@@ -6,11 +6,11 @@ struct IOSWindow: View {
 
     var body: some View {
         VStack {
-            BrowserTextField(viewModel: viewModel)
+            WindowTextField(viewModel: viewModel)
             webView
                 .frame(maxWidth:.infinity, maxHeight: .infinity)
             HStack {
-                BrowserNavigationButtons(viewModel: viewModel)
+                WindowNavigationButtons(viewModel: viewModel)
                 Spacer()
             }
             .padding()

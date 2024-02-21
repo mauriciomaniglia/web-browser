@@ -7,8 +7,8 @@ struct MacOSWindow: View {
     var body: some View {
         VStack {
             HStack {
-                BrowserNavigationButtons(viewModel: viewModel)
-                BrowserTextField(viewModel: viewModel)
+                WindowNavigationButtons(viewModel: viewModel)
+                WindowTextField(viewModel: viewModel)
                 Spacer()
             }
             webView
