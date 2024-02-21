@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MacOSWindow: View {
-    @ObservedObject var viewModel: ViewModel    
+    @ObservedObject var viewModel: WindowViewModel
     let webView: AnyView
 
     var body: some View {

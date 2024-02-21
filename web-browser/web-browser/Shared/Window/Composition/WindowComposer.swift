@@ -1,18 +1,8 @@
 import SwiftUI
 import core_web_browser
 
-class ViewModel: ObservableObject {
-    @Published var isBackButtonDisabled: Bool = true
-    @Published var isForwardButtonDisabled: Bool = true
-    @Published var progressBarValue: Double? = nil
-
-    var didTapBackButton: (() -> Void)?
-    var didTapForwardButton: (() -> Void)?
-    var didStartSearch: ((String) -> Void)?
-}
-
 final class WindowComposer {
-    var viewModel = ViewModel()
+    var viewModel = WindowViewModel()
 
     func composeView() -> any View {
         let webViewProxy = WebViewProxy()

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BrowserNavigationButtons: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: WindowViewModel
 
     var body: some View {
         HStack(spacing: 20) {
