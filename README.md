@@ -9,4 +9,4 @@ Web browser for iOS | macOS | visionOS
 3. Build the web-browser scheme in Xcode.
 
 ## core-web-browser
-![Current Architecture](core-module-current-architecture)
+![Current Architecture](core-module-current-architecture.jpg)
