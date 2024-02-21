@@ -7,3 +7,6 @@ Web browser for iOS | macOS | visionOS
 1. Install the latest Xcode developer tools from Apple.
 2. Clone the repository.
 3. Build the web-browser scheme in Xcode.
+
+## core-web-browser
+![Current Architecture](core-module-current-architecture)
