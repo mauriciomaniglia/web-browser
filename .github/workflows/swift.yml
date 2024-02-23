@@ -14,9 +14,16 @@ jobs:
 
     runs-on: macos-latest
 
-    steps:
+    steps:  
     - uses: actions/checkout@v3
+
+    - name: Set up build directory
+      run: echo "PACKAGE_DIR=core-web-browser" >> $GITHUB_ENV
+      
     - name: Build
       run: swift build -v
+      working-directory: ${{ env.PACKAGE_DIR }}
+      
     - name: Run tests
       run: swift test -v
+      working-directory: ${{ env.PACKAGE_DIR }}
