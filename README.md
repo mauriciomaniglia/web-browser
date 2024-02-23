@@ -8,5 +8,8 @@ Web browser for iOS | macOS | visionOS
 2. Clone the repository.
 3. Build the web-browser scheme in Xcode.
 
-## core-web-browser
-![Current Architecture](core-module-current-architecture.jpg)
+## Client App Architecture
+![Current Client App Architecture](client-architectur.jpg)
+
+## Core Library Architecture
+![Current Core Library Architecture](core-module-current-architecture.jpg)
