@@ -8,6 +8,9 @@ final class WindowComposer {
         let webViewProxy = WebViewProxy()
         let windowPresenter = WindowPresenter()
         let windowViewAdapter = WindowViewAdapter(webView: webViewProxy, presenter: windowPresenter)
+        let contentBlocker = ContentBlocking(webView: webViewProxy)
+
+        contentBlocker.setupStrictProtection()
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton

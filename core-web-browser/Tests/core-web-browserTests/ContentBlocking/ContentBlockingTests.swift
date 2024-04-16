@@ -17,15 +17,10 @@ class ContentBlockingTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [
             .registerRule("CookiesAdvertisingRules", "json content"),
-            .applyRule("CookiesAdvertisingRules"),
             .registerRule("CookiesAnalyticsRules", "json content"),
-            .applyRule("CookiesAnalyticsRules"),
             .registerRule("CookiesSocialRules", "json content"),
-            .applyRule("CookiesSocialRules"),
             .registerRule("CryptominingRules", "json content"),
-            .applyRule("CryptominingRules"),
             .registerRule("FingerprintingRules", "json content"),
-            .applyRule("FingerprintingRules")
         ])
     }
 
@@ -38,15 +33,10 @@ class ContentBlockingTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [
             .registerRule("CookiesAdvertisingRules", "json content", whitelist),
-            .applyRule("CookiesAdvertisingRules"),
             .registerRule("CookiesAnalyticsRules", "json content", whitelist),
-            .applyRule("CookiesAnalyticsRules"),
             .registerRule("CookiesSocialRules", "json content", whitelist),
-            .applyRule("CookiesSocialRules"),
             .registerRule("CryptominingRules", "json content", whitelist),
-            .applyRule("CryptominingRules"),
             .registerRule("FingerprintingRules", "json content", whitelist),
-            .applyRule("FingerprintingRules")
         ])
     }
 
@@ -58,15 +48,10 @@ class ContentBlockingTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [
             .registerRule("AdvertisingRules", "json content"),
-            .applyRule("AdvertisingRules"),
             .registerRule("AnalyticsRules", "json content"),
-            .applyRule("AnalyticsRules"),
             .registerRule("SocialRules", "json content"),
-            .applyRule("SocialRules"),
             .registerRule("CryptominingRules", "json content"),
-            .applyRule("CryptominingRules"),
             .registerRule("FingerprintingRules", "json content"),
-            .applyRule("FingerprintingRules")
         ])
     }
 
@@ -79,15 +64,10 @@ class ContentBlockingTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [
             .registerRule("AdvertisingRules", "json content", whitelist),
-            .applyRule("AdvertisingRules"),
             .registerRule("AnalyticsRules", "json content", whitelist),
-            .applyRule("AnalyticsRules"),
             .registerRule("SocialRules", "json content", whitelist),
-            .applyRule("SocialRules"),
             .registerRule("CryptominingRules", "json content", whitelist),
-            .applyRule("CryptominingRules"),
-            .registerRule("FingerprintingRules", "json content", whitelist),
-            .applyRule("FingerprintingRules")
+            .registerRule("FingerprintingRules", "json content", whitelist),            
         ])
     }
 
