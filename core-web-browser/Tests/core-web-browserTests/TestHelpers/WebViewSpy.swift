@@ -9,8 +9,6 @@ class WebViewSpy: WebViewContract {
         case load(url: URL)
         case didTapBackButton
         case didTapForwardButton
-        case canGoBack
-        case canGoForward
     }
 
     var receivedMessages = [Message]()
@@ -37,15 +35,5 @@ class WebViewSpy: WebViewContract {
 
     func didTapForwardButton() {
         receivedMessages.append(.didTapForwardButton)
-    }
-
-    func canGoBack() -> Bool {
-        receivedMessages.append(.canGoBack)
-        return true
-    }
-
-    func canGoForward() -> Bool {
-        receivedMessages.append(.canGoForward)
-        return true
     }
 }

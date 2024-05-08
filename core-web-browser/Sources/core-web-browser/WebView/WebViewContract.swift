@@ -7,6 +7,4 @@ public protocol WebViewContract {
     func load(_ url: URL)
     func didTapBackButton()
     func didTapForwardButton()
-    func canGoBack() -> Bool
-    func canGoForward() -> Bool
 }
