@@ -1,3 +1,5 @@
+import Foundation
+
 public final class WindowViewAdapter: WindowViewContract {
     private let webView: WebViewContract
     private let presenter: WindowPresenter
@@ -29,8 +31,8 @@ public final class WindowViewAdapter: WindowViewContract {
 }
 
 extension WindowViewAdapter: WebViewProxyDelegate {
-    public func didLoadPage() {
-        presenter.didLoadPage(canGoBack: webView.canGoBack(), canGoForward: webView.canGoForward())
+    public func didLoadPage(url: URL?, canGoBack: Bool, canGoForward: Bool) {
+        presenter.didLoadPage(canGoBack: canGoBack, canGoForward: canGoForward)
     }
 
     public func didUpdateLoadingProgress(_ progress: Double) {

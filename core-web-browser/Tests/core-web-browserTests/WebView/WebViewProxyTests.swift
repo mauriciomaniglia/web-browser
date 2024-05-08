@@ -302,7 +302,7 @@ class WebViewProxyTests: XCTestCase {
 
         var receivedMessages = [Message]()
 
-        func didLoadPage() {
+        func didLoadPage(url: URL?, canGoBack: Bool, canGoForward: Bool) {
             receivedMessages.append(.didLoadPage)
         }
 

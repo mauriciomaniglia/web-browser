@@ -51,10 +51,10 @@ class WindowViewAdapterTests: XCTestCase {
     func test_didLoadPage_sendsCorrectMessages() {
         let (sut, webView, presenter) = makeSUT()
 
-        sut.didLoadPage()
+        sut.didLoadPage(url: URL(string: "http://www.apple.com")!, canGoBack: true, canGoForward: false)
 
-        XCTAssertEqual(webView.receivedMessages, [.canGoBack, .canGoForward])
-        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(canGoBack: true, canGoForward: true)])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(canGoBack: true, canGoForward: false)])
+        XCTAssertEqual(webView.receivedMessages, [])
     }
 
     func test_didUpdateLoadingProgress_sendsCorrectMessages() {
