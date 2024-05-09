@@ -1,7 +1,7 @@
 import WebKit
 
 public protocol WebViewProxyDelegate {
-    func didLoadPage(url: URL?, canGoBack: Bool, canGoForward: Bool)
+    func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool)
     func didUpdateLoadingProgress(_ progress: Double)
 }
 
@@ -68,7 +68,9 @@ public final class WebViewProxy: NSObject, WebViewContract {
 
         switch keyPath {
         case #keyPath(WKWebView.url), #keyPath(WKWebView.canGoBack), #keyPath(WKWebView.canGoForward):
-            delegate?.didLoadPage(url: webView.url, canGoBack: webView.canGoBack, canGoForward: webView.canGoForward)
+            if let url = webView.url {
+                delegate?.didLoadPage(url: url, canGoBack: webView.canGoBack, canGoForward: webView.canGoForward)
+            }
         case #keyPath(WKWebView.estimatedProgress):
             delegate?.didUpdateLoadingProgress(webView.estimatedProgress)
         default:

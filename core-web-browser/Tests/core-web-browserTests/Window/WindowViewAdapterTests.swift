@@ -53,7 +53,7 @@ class WindowViewAdapterTests: XCTestCase {
 
         sut.didLoadPage(url: URL(string: "http://www.apple.com")!, canGoBack: true, canGoForward: false)
 
-        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(canGoBack: true, canGoForward: false)])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: false)])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
@@ -81,7 +81,7 @@ private class WindowPresenterSpy: WindowPresenter {
     enum Message: Equatable {
         case didStartEditing
         case didEndEditing
-        case didLoadPage(canGoBack: Bool, canGoForward: Bool)
+        case didLoadPage(isOnWhitelist: Bool?, canGoBack: Bool, canGoForward: Bool)
         case didUpdateProgressBar(value: Double)
     }
 
@@ -95,8 +95,8 @@ private class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didEndEditing)
     }
 
-    override func didLoadPage(canGoBack: Bool, canGoForward: Bool) {
-        receivedMessages.append(.didLoadPage(canGoBack: canGoBack, canGoForward: canGoForward))
+    override func didLoadPage(isOnWhitelist: Bool?, canGoBack: Bool, canGoForward: Bool) {
+        receivedMessages.append(.didLoadPage(isOnWhitelist: isOnWhitelist, canGoBack: canGoBack, canGoForward: canGoForward))
     }
 
     override func didUpdateProgressBar(_ value: Double) {

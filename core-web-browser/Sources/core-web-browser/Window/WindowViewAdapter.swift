@@ -31,8 +31,9 @@ public final class WindowViewAdapter: WindowViewContract {
 }
 
 extension WindowViewAdapter: WebViewProxyDelegate {
-    public func didLoadPage(url: URL?, canGoBack: Bool, canGoForward: Bool) {
-        presenter.didLoadPage(canGoBack: canGoBack, canGoForward: canGoForward)
+    public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+        let isOnWhitelist = WhitelistStore.isRegisteredDomain(url.absoluteString)
+        presenter.didLoadPage(isOnWhitelist: isOnWhitelist, canGoBack: canGoBack, canGoForward: canGoForward)
     }
 
     public func didUpdateLoadingProgress(_ progress: Double) {

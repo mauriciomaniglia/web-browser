@@ -7,7 +7,7 @@ public class WindowPresenter {
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false,
-            showPrivacyReportButton: false,
+            isPageOnWhitelist: false,
             showWebView: false,
             canGoBack: false,
             canGoForward: false)
@@ -18,7 +18,7 @@ public class WindowPresenter {
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false,
-            showPrivacyReportButton: false,
+            isPageOnWhitelist: false,
             showWebView: false,
             canGoBack: false,
             canGoForward: false))
@@ -29,7 +29,7 @@ public class WindowPresenter {
             showCancelButton: true,
             showStopButton: false,
             showReloadButton: false,
-            showPrivacyReportButton: false,
+            isPageOnWhitelist: model.isPageOnWhitelist,
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward)
@@ -43,7 +43,7 @@ public class WindowPresenter {
             showCancelButton: false,
             showStopButton: model.showStopButton,
             showReloadButton: model.showReloadButton,
-            showPrivacyReportButton: model.showPrivacyReportButton,
+            isPageOnWhitelist: model.isPageOnWhitelist,
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward)
@@ -52,12 +52,12 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadPage(canGoBack: Bool, canGoForward: Bool) {
+    public func didLoadPage(isOnWhitelist: Bool, canGoBack: Bool, canGoForward: Bool) {
         let newModel = WindowPresentableModel(
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,
-            showPrivacyReportButton: true,
+            isPageOnWhitelist: isOnWhitelist,
             showWebView: true,
             canGoBack: canGoBack,
             canGoForward: canGoForward)
@@ -73,7 +73,7 @@ public class WindowPresenter {
             showCancelButton: false,
             showStopButton: true,
             showReloadButton: false,
-            showPrivacyReportButton: true,
+            isPageOnWhitelist: model.isPageOnWhitelist,
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,

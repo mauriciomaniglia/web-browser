@@ -13,7 +13,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertFalse(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertFalse(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -25,13 +25,13 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(canGoBack: true, canGoForward: true)
+        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
         sut.didStartNewWindow()
 
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertFalse(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertFalse(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -48,7 +48,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertFalse(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertFalse(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -60,14 +60,14 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(canGoBack: true, canGoForward: true)
+        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
         sut.didStartEditing()
 
         XCTAssertTrue(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertFalse(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
@@ -83,7 +83,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertFalse(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertFalse(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -95,13 +95,13 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(canGoBack: true, canGoForward: true)
+        sut.didLoadPage(isOnWhitelist: true, canGoBack: true, canGoForward: true)
         sut.didEndEditing()
 
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
-        XCTAssertTrue(receivedResult!.showPrivacyReportButton)
+        XCTAssertTrue(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
@@ -113,12 +113,12 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(canGoBack: true, canGoForward: true)
+        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
 
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
-        XCTAssertTrue(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
@@ -135,7 +135,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertTrue(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -152,7 +152,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertTrue(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -169,7 +169,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertTrue(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
@@ -181,13 +181,13 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(canGoBack: true, canGoForward: true)
+        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
         sut.didUpdateProgressBar(0.45)
 
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
-        XCTAssertTrue(receivedResult!.showPrivacyReportButton)
+        XCTAssertFalse(receivedResult!.isPageOnWhitelist)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
