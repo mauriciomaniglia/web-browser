@@ -95,7 +95,7 @@ private class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didEndEditing)
     }
 
-    override func didLoadPage(isOnWhitelist: Bool?, canGoBack: Bool, canGoForward: Bool) {
+    override func didLoadPage(url: String, isOnWhitelist: Bool?, canGoBack: Bool, canGoForward: Bool) {
         receivedMessages.append(.didLoadPage(isOnWhitelist: isOnWhitelist, canGoBack: canGoBack, canGoForward: canGoForward))
     }
 

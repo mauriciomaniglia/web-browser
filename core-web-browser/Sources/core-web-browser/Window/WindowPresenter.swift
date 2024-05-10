@@ -4,6 +4,7 @@ public class WindowPresenter {
 
     public init() {
         model = WindowPresentableModel(
+            pageURL: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false,
@@ -15,6 +16,7 @@ public class WindowPresenter {
 
     public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
+            pageURL: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false,
@@ -26,6 +28,7 @@ public class WindowPresenter {
 
     public func didStartEditing() {
         let newModel = WindowPresentableModel(
+            pageURL: model.pageURL,
             showCancelButton: true,
             showStopButton: false,
             showReloadButton: false,
@@ -40,6 +43,7 @@ public class WindowPresenter {
 
     public func didEndEditing() {
         let newModel = WindowPresentableModel(
+            pageURL: model.pageURL,
             showCancelButton: false,
             showStopButton: model.showStopButton,
             showReloadButton: model.showReloadButton,
@@ -52,8 +56,9 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadPage(isOnWhitelist: Bool, canGoBack: Bool, canGoForward: Bool) {
+    public func didLoadPage(url: String, isOnWhitelist: Bool, canGoBack: Bool, canGoForward: Bool) {
         let newModel = WindowPresentableModel(
+            pageURL: url,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,
@@ -70,6 +75,7 @@ public class WindowPresenter {
         let progressValue = value >= 1 ? nil : value
 
         didUpdatePresentableModel?(.init(
+            pageURL: model.pageURL,
             showCancelButton: false,
             showStopButton: true,
             showReloadButton: false,

@@ -10,6 +10,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didStartNewWindow()
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -25,9 +26,10 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: "http://some-url.com", isOnWhitelist: false, canGoBack: true, canGoForward: true)
         sut.didStartNewWindow()
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -45,6 +47,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didStartEditing()
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertTrue(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -60,9 +63,10 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: "http://some-url.com",isOnWhitelist: false, canGoBack: true, canGoForward: true)
         sut.didStartEditing()
 
+        XCTAssertEqual(receivedResult!.pageURL, "http://some-url.com")
         XCTAssertTrue(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -80,6 +84,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didEndEditing()
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -95,9 +100,10 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(isOnWhitelist: true, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: "http://some-url.com", isOnWhitelist: true, canGoBack: true, canGoForward: true)
         sut.didEndEditing()
 
+        XCTAssertEqual(receivedResult!.pageURL, "http://some-url.com")
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
@@ -113,8 +119,9 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: "http://some-url.com", isOnWhitelist: false, canGoBack: true, canGoForward: true)
 
+        XCTAssertEqual(receivedResult!.pageURL, "http://some-url.com")
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
@@ -132,6 +139,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateProgressBar(0.45)
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -149,6 +157,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateProgressBar(1)
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -166,6 +175,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateProgressBar(1.5)
 
+        XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -181,9 +191,10 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: "http://some-url.com", isOnWhitelist: false, canGoBack: true, canGoForward: true)
         sut.didUpdateProgressBar(0.45)
 
+        XCTAssertEqual(receivedResult!.pageURL, "http://some-url.com")
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)

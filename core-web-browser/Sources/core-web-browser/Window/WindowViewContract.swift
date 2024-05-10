@@ -3,5 +3,5 @@ public protocol WindowViewContract {
     func didStartTyping()
     func didEndTyping()
     func didTapBackButton()
-    func didTapForwardButton()
+    func didTapForwardButton()    
 }
