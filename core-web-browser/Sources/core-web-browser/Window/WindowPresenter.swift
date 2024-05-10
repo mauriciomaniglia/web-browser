@@ -7,7 +7,7 @@ public class WindowPresenter {
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false,
-            isPageOnWhitelist: false,
+            isPageOnWhitelist: nil,
             showWebView: false,
             canGoBack: false,
             canGoForward: false)
@@ -18,7 +18,7 @@ public class WindowPresenter {
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false,
-            isPageOnWhitelist: false,
+            isPageOnWhitelist: nil,
             showWebView: false,
             canGoBack: false,
             canGoForward: false))
