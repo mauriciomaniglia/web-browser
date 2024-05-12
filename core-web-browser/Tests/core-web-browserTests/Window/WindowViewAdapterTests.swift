@@ -75,6 +75,15 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(whitelist.receivedMessages, [.saveDomain(url)])
     }
 
+    func test_updateWhitelist_withURLDisabled_removesURLFromWhitelist() {
+        let (sut, _, _, whitelist) = makeSUT()
+        let url = "http://some-url.com"
+
+        sut.updateWhitelist(url: url, isEnabled: false)
+
+        XCTAssertEqual(whitelist.receivedMessages, [.removeDomain(url)])
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, whitelist: WhitelistStoreSpy) {

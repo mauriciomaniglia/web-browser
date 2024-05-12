@@ -32,7 +32,11 @@ public final class WindowViewAdapter: WindowViewContract {
     }
 
     public func updateWhitelist(url: String, isEnabled: Bool) {
-        whitelist.saveDomain(url)
+        if isEnabled {
+            whitelist.saveDomain(url)
+        } else {
+            whitelist.removeDomain(url)
+        }
     }
 }
 
