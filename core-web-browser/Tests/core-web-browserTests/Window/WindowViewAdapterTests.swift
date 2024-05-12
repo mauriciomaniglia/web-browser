@@ -66,6 +66,15 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(presenter.receivedMessages, [.didUpdateProgressBar(value: 0.5)])
     }
 
+    func test_updateWhitelist_withURLEnabled_addURLToWhitelist() {
+        let (sut, _, _, whitelist) = makeSUT()
+        let url = "http://some-url.com"
+
+        sut.updateWhitelist(url: url, isEnabled: true)
+
+        XCTAssertEqual(whitelist.receivedMessages, [.saveDomain(url)])
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, whitelist: WhitelistStoreSpy) {
@@ -106,19 +115,30 @@ private class WindowPresenterSpy: WindowPresenter {
 }
 
 private class WhitelistStoreSpy: WhitelistAPI {
+    enum Message: Equatable {
+        case isRegisteredDomain(_ domain: String)
+        case fetchRegisteredDomains
+        case saveDomain(_ domain: String)
+        case removeDomain(_ domain: String)
+    }
+
+    var receivedMessages = [Message]()
+
     func isRegisteredDomain(_ domain: String) -> Bool {
+        receivedMessages.append(.isRegisteredDomain(domain))
         return false
     }
     
     func fetchRegisteredDomains() -> [String] {
+        receivedMessages.append(.fetchRegisteredDomains)
         return []
     }
     
     func saveDomain(_ domain: String) {
-        
+        receivedMessages.append(.saveDomain(domain))
     }
     
     func removeDomain(_ domain: String) {
-
+        receivedMessages.append(.removeDomain(domain))
     }
 }
