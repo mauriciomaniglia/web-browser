@@ -4,7 +4,7 @@ import XCTest
 class WindowViewAdapterTests: XCTestCase {
 
     func test_didRequestSearch_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didRequestSearch("www.apple.com")
 
@@ -13,7 +13,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didStartTyping_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didStartTyping()
 
@@ -22,7 +22,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didEndTyping_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didEndTyping()
 
@@ -31,7 +31,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didTapBackButton_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didTapBackButton()
 
@@ -40,7 +40,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didTapForwardButton_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didTapForwardButton()
 
@@ -49,7 +49,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didLoadPage_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didLoadPage(url: URL(string: "http://www.apple.com")!, canGoBack: true, canGoForward: false)
 
@@ -58,7 +58,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didUpdateLoadingProgress_sendsCorrectMessages() {
-        let (sut, webView, presenter) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didUpdateLoadingProgress(0.5)
 
@@ -68,12 +68,13 @@ class WindowViewAdapterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy) {
+    private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, whitelist: WhitelistStoreSpy) {
         let webView = WebViewSpy()
         let presenter = WindowPresenterSpy()
-        let sut = WindowViewAdapter(webView: webView, presenter: presenter)
+        let whitelist = WhitelistStoreSpy()
+        let sut = WindowViewAdapter(webView: webView, presenter: presenter, whitelist: whitelist)
 
-        return (sut, webView, presenter)
+        return (sut, webView, presenter, whitelist)
     }
 }
 
@@ -101,5 +102,23 @@ private class WindowPresenterSpy: WindowPresenter {
 
     override func didUpdateProgressBar(_ value: Double) {
         receivedMessages.append(.didUpdateProgressBar(value: value))
+    }
+}
+
+private class WhitelistStoreSpy: WhitelistAPI {
+    func isRegisteredDomain(_ domain: String) -> Bool {
+        return false
+    }
+    
+    func fetchRegisteredDomains() -> [String] {
+        return []
+    }
+    
+    func saveDomain(_ domain: String) {
+        
+    }
+    
+    func removeDomain(_ domain: String) {
+
     }
 }

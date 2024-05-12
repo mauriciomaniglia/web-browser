@@ -3,5 +3,6 @@ public protocol WindowViewContract {
     func didStartTyping()
     func didEndTyping()
     func didTapBackButton()
-    func didTapForwardButton()    
+    func didTapForwardButton()
+    func updateWhitelist(url: String, isEnabled: Bool)
 }
