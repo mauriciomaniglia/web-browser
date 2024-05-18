@@ -1,17 +1,26 @@
 import Foundation
 
-public class WhitelistStore {
-    public static func isRegisteredDomain(_ domain: String) -> Bool {
+public protocol WhitelistAPI {
+    func isRegisteredDomain(_ domain: String) -> Bool
+    func fetchRegisteredDomains() -> [String]
+    func saveDomain(_ domain: String)    
+    func removeDomain(_ domain: String)
+}
+
+public class WhitelistStore: WhitelistAPI {
+    public init() {}
+
+    public func isRegisteredDomain(_ domain: String) -> Bool {
         let whitelist = fetchRegisteredDomains()
 
         return whitelist.contains(domain)
     }
 
-    public static func fetchRegisteredDomains() -> [String] {
+    public func fetchRegisteredDomains() -> [String] {
         UserDefaults.standard.stringArray(forKey: "Whitelist") ?? []
     }
 
-    public static func saveDomain(_ domain: String) {
+    public func saveDomain(_ domain: String) {
         var whitelist = fetchRegisteredDomains()
 
         if !whitelist.contains(domain) {
@@ -20,7 +29,7 @@ public class WhitelistStore {
         }
     }
 
-    public static func removeDomain(_ domain: String) {
+    public func removeDomain(_ domain: String) {
         var whitelist = fetchRegisteredDomains()
 
         if let index = whitelist.firstIndex(of: domain) {
@@ -29,7 +38,7 @@ public class WhitelistStore {
         }
     }
 
-    private static func registerDomains(_ domains: [String]) {
+    private func registerDomains(_ domains: [String]) {
         UserDefaults.standard.set(domains, forKey: "Whitelist")
     }
 }

@@ -76,15 +76,26 @@ class WebViewProxyTests: XCTestCase {
     }
 
     func test_observeValueForKeyPath_sendsCorrectMessageWhenWebViewURLChange() {
-        let (sut, _, _, delegate) = makeSUT()
+        let (sut, webView, _, delegate) = makeSUT()
+        webView.mockURL = URL(string: "http://some-url.com")!
 
         sut.observeValue(forKeyPath: #keyPath(WKWebView.url), of: nil, change: nil, context: nil)
 
         XCTAssertEqual(delegate.receivedMessages, [.didLoadPage])
     }
 
+    func test_observeValueForKeyPath_doNotSendMessageWhenMissingURL() {
+        let (sut, webView, _, delegate) = makeSUT()
+        webView.mockURL = nil
+
+        sut.observeValue(forKeyPath: #keyPath(WKWebView.url), of: nil, change: nil, context: nil)
+
+        XCTAssertEqual(delegate.receivedMessages, [])
+    }
+
     func test_observeValueForKeyPath_sendsCorrectMessageWhenWebViewCanGoBackChange() {
-        let (sut, _, _, delegate) = makeSUT()
+        let (sut, webView, _, delegate) = makeSUT()
+        webView.mockURL = URL(string: "http://some-url.com")!
 
         sut.observeValue(forKeyPath: #keyPath(WKWebView.canGoBack), of: nil, change: nil, context: nil)
 
@@ -92,7 +103,8 @@ class WebViewProxyTests: XCTestCase {
     }
 
     func test_observeValueForKeyPath_sendsCorrectMessageWhenWebViewCanGoForwardChange() {
-        let (sut, _, _, delegate) = makeSUT()
+        let (sut, webView, _, delegate) = makeSUT()
+        webView.mockURL = URL(string: "http://some-url.com")!
 
         sut.observeValue(forKeyPath: #keyPath(WKWebView.canGoForward), of: nil, change: nil, context: nil)
 
@@ -167,6 +179,11 @@ class WebViewProxyTests: XCTestCase {
         var registeredObservers = [String]()
         var canGoBackMock = false
         var canGoForwardMock = false
+        var mockURL: URL?
+
+        override var url: URL? {
+            mockURL
+        }
 
         override func load(_ request: URLRequest) -> WKNavigation? {
             receivedMessages.append(.load(request.description))
@@ -232,7 +249,7 @@ class WebViewProxyTests: XCTestCase {
 
         var receivedMessages = [Message]()
 
-        func didLoadPage() {
+        func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
             receivedMessages.append(.didLoadPage)
         }
 

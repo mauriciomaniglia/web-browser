@@ -4,10 +4,12 @@ public class WindowPresenter {
 
     public init() {
         model = WindowPresentableModel(
+            pageURL: nil,
             showCancelButton: false,
             showStopButton: false,
-            showReloadButton: false,
-            showPrivacyReportButton: false,
+            showReloadButton: false, 
+            showSiteProtection: false,
+            isWebsiteProtected: true,
             showWebView: false,
             canGoBack: false,
             canGoForward: false)
@@ -15,10 +17,12 @@ public class WindowPresenter {
 
     public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
+            pageURL: nil,
             showCancelButton: false,
             showStopButton: false,
-            showReloadButton: false,
-            showPrivacyReportButton: false,
+            showReloadButton: false, 
+            showSiteProtection: false,
+            isWebsiteProtected: true,
             showWebView: false,
             canGoBack: false,
             canGoForward: false))
@@ -26,10 +30,12 @@ public class WindowPresenter {
 
     public func didStartEditing() {
         let newModel = WindowPresentableModel(
+            pageURL: model.pageURL,
             showCancelButton: true,
             showStopButton: false,
             showReloadButton: false,
-            showPrivacyReportButton: false,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward)
@@ -40,10 +46,12 @@ public class WindowPresenter {
 
     public func didEndEditing() {
         let newModel = WindowPresentableModel(
+            pageURL: model.pageURL,
             showCancelButton: false,
             showStopButton: model.showStopButton,
-            showReloadButton: model.showReloadButton,
-            showPrivacyReportButton: model.showPrivacyReportButton,
+            showReloadButton: model.showReloadButton, 
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward)
@@ -52,12 +60,14 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadPage(canGoBack: Bool, canGoForward: Bool) {
+    public func didLoadPage(url: String, isOnWhitelist: Bool, canGoBack: Bool, canGoForward: Bool) {
         let newModel = WindowPresentableModel(
+            pageURL: url,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,
-            showPrivacyReportButton: true,
+            showSiteProtection: true,
+            isWebsiteProtected: !isOnWhitelist,
             showWebView: true,
             canGoBack: canGoBack,
             canGoForward: canGoForward)
@@ -70,10 +80,12 @@ public class WindowPresenter {
         let progressValue = value >= 1 ? nil : value
 
         didUpdatePresentableModel?(.init(
+            pageURL: model.pageURL,
             showCancelButton: false,
             showStopButton: true,
             showReloadButton: false,
-            showPrivacyReportButton: true,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,

@@ -8,7 +8,7 @@ struct MacOSWindow: View {
         VStack {
             HStack {
                 WindowNavigationButtons(viewModel: viewModel)
-                WindowTextField(viewModel: viewModel)
+                AddressBarView(viewModel: viewModel)
                 Spacer()
             }
             webView
