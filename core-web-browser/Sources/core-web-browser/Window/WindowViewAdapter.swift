@@ -1,11 +1,11 @@
 import Foundation
 
 public final class WindowViewAdapter: WindowViewContract {
-    private let webView: WebViewContract
+    private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let whitelist: WhitelistAPI
 
-    public init(webView: WebViewContract, presenter: WindowPresenter, whitelist: WhitelistAPI) {
+    public init(webView: WebEngineContract, presenter: WindowPresenter, whitelist: WhitelistAPI) {
         self.webView = webView
         self.presenter = presenter
         self.whitelist = whitelist

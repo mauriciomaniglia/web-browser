@@ -1,8 +1,8 @@
 final public class ContentBlocking {
-    private let webView: WebViewContract
+    private let webView: WebEngineContract
     private let jsonLoader: (String) -> String?
 
-    public init(webView: WebViewContract, jsonLoader: @escaping (String) -> String? = Helpers.loadJsonContent(filename:)) {
+    public init(webView: WebEngineContract, jsonLoader: @escaping (String) -> String? = Helpers.loadJsonContent(filename:)) {
         self.webView = webView
         self.jsonLoader = jsonLoader
     }

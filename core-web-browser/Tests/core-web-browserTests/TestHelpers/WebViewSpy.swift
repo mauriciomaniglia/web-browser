@@ -1,7 +1,7 @@
 import Foundation
 import core_web_browser
 
-class WebViewSpy: WebViewContract {
+class WebViewSpy: WebEngineContract {
     enum Message: Equatable {
         case registerRule(_ name: String, _ content: String, _ whitelist: [String] = [])
         case removeAllRules

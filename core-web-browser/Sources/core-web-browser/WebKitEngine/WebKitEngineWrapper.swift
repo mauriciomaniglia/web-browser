@@ -1,6 +1,6 @@
 import WebKit
 
-public final class WebKitEngineWrapper: NSObject, WebViewContract {
+public final class WebKitEngineWrapper: NSObject, WebEngineContract {
     public var delegate: WebViewProxyDelegate?
     public let webView: WKWebView
     let ruleStore: WKContentRuleListStore
