@@ -7,11 +7,13 @@ final class WindowComposer {
     func composeView() -> any View {
         let webViewProxy = WebViewProxy()
         let windowPresenter = WindowPresenter()
-        let windowViewAdapter = WindowViewAdapter(webView: webViewProxy, presenter: windowPresenter)
+        let whitelistStore = WhitelistStore()
+        let windowViewAdapter = WindowViewAdapter(webView: webViewProxy, presenter: windowPresenter, whitelist: whitelistStore)
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
         viewModel.didStartSearch = windowViewAdapter.didRequestSearch
+        viewModel.didUpdateWhitelist = windowViewAdapter.updateWhitelist(url:isEnabled:)
 
         webViewProxy.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = didUpdatePresentableModel(_:)
@@ -29,5 +31,8 @@ final class WindowComposer {
         viewModel.isBackButtonDisabled = !model.canGoBack
         viewModel.isForwardButtonDisabled = !model.canGoForward
         viewModel.progressBarValue = model.progressBarValue
+        viewModel.url = model.pageURL
+        viewModel.isWebsiteProtected = model.isWebsiteProtected
+        viewModel.showSiteProtection = model.showSiteProtection
     }
 }

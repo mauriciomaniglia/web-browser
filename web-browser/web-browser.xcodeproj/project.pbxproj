@@ -17,6 +17,7 @@
 		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
 		F92921F02B70F9F900173702 /* WindowTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* WindowTextField.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
@@ -47,6 +48,7 @@
 		F92921EC2B70F9A100173702 /* IOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindow.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* WindowTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTextField.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
+		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				F92921EF2B70F9F900173702 /* WindowTextField.swift */,
 				F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */,
+				F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				F92921F02B70F9F900173702 /* WindowTextField.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
+				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */,
