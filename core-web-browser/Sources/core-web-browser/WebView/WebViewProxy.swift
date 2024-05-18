@@ -27,15 +27,9 @@ public final class WebViewProxy: NSObject, WebViewContract {
                 modifiedContent = modifiedContent.replacingCharacters(in: range, with: WebViewProxy.whitelistAsJSON(whitelist)  + "]")
             }
 
-            ruleStore.compileContentRuleList(forIdentifier: name, encodedContentRuleList: modifiedContent, completionHandler: {_, _ in })
-        })
-    }
-
-    public func applyRule(name: String) {
-        ruleStore.lookUpContentRuleList(forIdentifier: name, completionHandler: { [webView] ruleList, _ in
-            guard let ruleList = ruleList else { return }
-
-            webView.configuration.userContentController.add(ruleList)
+            ruleStore.compileContentRuleList(forIdentifier: name, encodedContentRuleList: modifiedContent, completionHandler: {_, _ in
+                self.applyRule(name: name)
+            })
         })
     }
 
@@ -79,6 +73,14 @@ public final class WebViewProxy: NSObject, WebViewContract {
     }
 
     // MARK: Private methods
+
+    private func applyRule(name: String) {
+        ruleStore.lookUpContentRuleList(forIdentifier: name, completionHandler: { [webView] ruleList, _ in
+            guard let ruleList = ruleList else { return }
+
+            webView.configuration.userContentController.add(ruleList)
+        })
+    }
 
     private func registerObserversForWebView() {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.url), context: nil)
