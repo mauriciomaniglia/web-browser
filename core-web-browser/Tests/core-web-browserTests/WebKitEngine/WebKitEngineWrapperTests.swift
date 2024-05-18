@@ -2,7 +2,7 @@ import XCTest
 import WebKit
 import core_web_browser
 
-class WebViewProxyTests: XCTestCase {
+class WebKitEngineWrapperTests: XCTestCase {
     let navigation = WKNavigation()
 
     func test_init_doesNotSendAnyMessage() {
@@ -125,7 +125,7 @@ class WebViewProxyTests: XCTestCase {
         configuration.userContentController = contentController
         let webView = WebViewSpy(frame: .zero, configuration: configuration)
         let ruleStore = WKContentRuleListStoreSpy()
-        let sut = WebViewProxy(webView: webView, ruleStore: ruleStore)
+        let sut = WebKitEngineWrapper(webView: webView, ruleStore: ruleStore)
 
         sut.removeAllRules()
 
@@ -135,7 +135,7 @@ class WebViewProxyTests: XCTestCase {
     // MARK: - Helpers
 
     private func makeSUT() -> (
-        sut: WebViewProxy,
+        sut: WebKitEngineWrapper,
         webView: WebViewSpy,
         ruleStore: WKContentRuleListStoreSpy,
         delegate: WebViewProxyDelegateSpy)
@@ -143,7 +143,7 @@ class WebViewProxyTests: XCTestCase {
         let delegate = WebViewProxyDelegateSpy()
         let webView = WebViewSpy()
         let ruleStore = WKContentRuleListStoreSpy()
-        let sut = WebViewProxy(webView: webView, ruleStore: ruleStore)
+        let sut = WebKitEngineWrapper(webView: webView, ruleStore: ruleStore)
         sut.delegate = delegate
 
         return (sut, webView, ruleStore, delegate)

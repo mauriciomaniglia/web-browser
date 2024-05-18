@@ -5,25 +5,25 @@ final class WindowComposer {
     var viewModel = WindowViewModel()
 
     func composeView() -> any View {
-        let webViewProxy = WebViewProxy()
+        let webKitEngineWrapper = WebKitEngineWrapper()
         let windowPresenter = WindowPresenter()
         let whitelistStore = WhitelistStore()
-        let windowViewAdapter = WindowViewAdapter(webView: webViewProxy, presenter: windowPresenter, whitelist: whitelistStore)
+        let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, whitelist: whitelistStore)
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
         viewModel.didStartSearch = windowViewAdapter.didRequestSearch
         viewModel.didUpdateWhitelist = windowViewAdapter.updateWhitelist(url:isEnabled:)
 
-        webViewProxy.delegate = windowViewAdapter
+        webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = didUpdatePresentableModel(_:)
 
         #if os(iOS)
-        return IOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webViewProxy.webView)))
+        return IOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(macOS)
-        return MacOSWindow(viewModel: viewModel, webView: AnyView(WebViewAppKitWrapper(webView: webViewProxy.webView)))
+        return MacOSWindow(viewModel: viewModel, webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
-        return VisionOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webViewProxy.webView)))
+        return VisionOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }
 

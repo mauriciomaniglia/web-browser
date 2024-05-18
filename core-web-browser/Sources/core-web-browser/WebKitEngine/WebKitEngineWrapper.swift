@@ -1,6 +1,6 @@
 import WebKit
 
-public final class WebViewProxy: NSObject, WebViewContract {
+public final class WebKitEngineWrapper: NSObject, WebViewContract {
     public var delegate: WebViewProxyDelegate?
     public let webView: WKWebView
     let ruleStore: WKContentRuleListStore
@@ -19,7 +19,7 @@ public final class WebViewProxy: NSObject, WebViewContract {
             var modifiedContent = content
 
             if whitelist.count > 0, let range = content.range(of: "]", options: String.CompareOptions.backwards) {
-                modifiedContent = modifiedContent.replacingCharacters(in: range, with: WebViewProxy.whitelistAsJSON(whitelist)  + "]")
+                modifiedContent = modifiedContent.replacingCharacters(in: range, with: WebKitEngineWrapper.whitelistAsJSON(whitelist)  + "]")
             }
 
             ruleStore.compileContentRuleList(forIdentifier: name, encodedContentRuleList: modifiedContent, completionHandler: {_, _ in
