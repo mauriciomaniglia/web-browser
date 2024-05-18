@@ -241,7 +241,7 @@ class WebKitEngineWrapperTests: XCTestCase {
         }
     }
 
-    private class WebViewProxyDelegateSpy: WebViewProxyDelegate {
+    private class WebViewProxyDelegateSpy: WebEngineDelegate {
         enum Message: Equatable {
             case didLoadPage
             case didUpdateLoadingProgress(_: Double)

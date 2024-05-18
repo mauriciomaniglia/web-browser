@@ -40,7 +40,7 @@ public final class WindowViewAdapter: WindowViewContract {
     }
 }
 
-extension WindowViewAdapter: WebViewProxyDelegate {
+extension WindowViewAdapter: WebEngineDelegate {
     public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
         let isOnWhitelist = WhitelistStore().isRegisteredDomain(url.absoluteString)
         presenter.didLoadPage(
