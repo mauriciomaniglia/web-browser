@@ -1,10 +1,5 @@
 import WebKit
 
-public protocol WebViewProxyDelegate {
-    func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool)
-    func didUpdateLoadingProgress(_ progress: Double)
-}
-
 public final class WebViewProxy: NSObject, WebViewContract {
     public var delegate: WebViewProxyDelegate?
     public let webView: WKWebView
