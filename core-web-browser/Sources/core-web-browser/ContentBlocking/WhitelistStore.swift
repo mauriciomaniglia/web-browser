@@ -8,6 +8,8 @@ public protocol WhitelistAPI {
 }
 
 public class WhitelistStore: WhitelistAPI {
+    public init() {}
+
     public func isRegisteredDomain(_ domain: String) -> Bool {
         let whitelist = fetchRegisteredDomains()
 
