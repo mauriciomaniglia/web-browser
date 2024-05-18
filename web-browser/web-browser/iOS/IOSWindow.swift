@@ -6,7 +6,7 @@ struct IOSWindow: View {
 
     var body: some View {
         VStack {
-            WindowTextField(viewModel: viewModel)
+            AddressBarView(viewModel: viewModel)
             webView
                 .frame(maxWidth:.infinity, maxHeight: .infinity)
             HStack {

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct WindowTextField: View {
+struct AddressBarView: View {
     @ObservedObject var viewModel: WindowViewModel
 
     @State private var text = ""
