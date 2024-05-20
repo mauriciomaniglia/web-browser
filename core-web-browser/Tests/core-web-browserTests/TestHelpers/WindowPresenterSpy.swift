@@ -1,10 +1,11 @@
+import Foundation
 @testable import core_web_browser
 
 class WindowPresenterSpy: WindowPresenter {
     enum Message: Equatable {
         case didStartEditing
         case didEndEditing
-        case didLoadPage(isOnWhitelist: Bool?, canGoBack: Bool, canGoForward: Bool)
+        case didLoadPage(canGoBack: Bool, canGoForward: Bool)
         case didUpdateProgressBar(value: Double)
     }
 
@@ -18,8 +19,8 @@ class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didEndEditing)
     }
 
-    override func didLoadPage(url: String, isOnWhitelist: Bool?, canGoBack: Bool, canGoForward: Bool) {
-        receivedMessages.append(.didLoadPage(isOnWhitelist: isOnWhitelist, canGoBack: canGoBack, canGoForward: canGoForward))
+    override func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+        receivedMessages.append(.didLoadPage(canGoBack: canGoBack, canGoForward: canGoForward))
     }
 
     override func didUpdateProgressBar(_ value: Double) {

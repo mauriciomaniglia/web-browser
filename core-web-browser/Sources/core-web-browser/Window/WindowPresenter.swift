@@ -1,3 +1,5 @@
+import Foundation
+
 public class WindowPresenter {
     public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
     private var model: WindowPresentableModel
@@ -60,9 +62,12 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadPage(url: String, isOnWhitelist: Bool, canGoBack: Bool, canGoForward: Bool) {
+    public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+        let pageURL = url.host ?? url.absoluteString
+        let isOnWhitelist = WhitelistStore().isRegisteredDomain(pageURL)
+
         let newModel = WindowPresentableModel(
-            pageURL: url,
+            pageURL: pageURL,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,

@@ -53,7 +53,7 @@ class WindowViewAdapterTests: XCTestCase {
 
         sut.didLoadPage(url: URL(string: "http://www.apple.com")!, canGoBack: true, canGoForward: false)
 
-        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(isOnWhitelist: false, canGoBack: true, canGoForward: false)])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(canGoBack: true, canGoForward: false)])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
