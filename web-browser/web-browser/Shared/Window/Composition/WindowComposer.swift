@@ -30,6 +30,7 @@ final class WindowComposer {
     func didUpdatePresentableModel(_ model: WindowPresentableModel) {
         viewModel.isBackButtonDisabled = !model.canGoBack
         viewModel.isForwardButtonDisabled = !model.canGoForward
+        viewModel.showStopButton = model.showStopButton
         viewModel.progressBarValue = model.progressBarValue
         viewModel.url = model.pageURL
         viewModel.isWebsiteProtected = model.isWebsiteProtected

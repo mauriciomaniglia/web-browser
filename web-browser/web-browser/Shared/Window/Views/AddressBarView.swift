@@ -13,11 +13,17 @@ struct AddressBarView: View {
                     if viewModel.showSiteProtection {
                         WebsiteProtectionButton(viewModel: viewModel, isShowingSheet: isShowingSheet)
                     }
+
                     TextField("Search or enter address", text: $text)
                         .textFieldStyle(.plain)
-                        .onSubmit {
-                            viewModel.didStartSearch?(text)
+                        .onSubmit { viewModel.didStartSearch?(text) }
+
+                    if viewModel.showStopButton {
+                        Button(action: { print("Cancel") }) {
+                            Image(systemName: "xmark")
                         }
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
                 .padding(.horizontal)
             }
