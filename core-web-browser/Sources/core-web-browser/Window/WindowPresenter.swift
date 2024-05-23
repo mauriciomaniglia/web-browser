@@ -87,7 +87,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(.init(
             pageURL: model.pageURL,
             showCancelButton: false,
-            showStopButton: true,
+            showStopButton: value < 1 ? true : false,
             showReloadButton: false,
             showSiteProtection: model.showSiteProtection,
             isWebsiteProtected: model.isWebsiteProtected,

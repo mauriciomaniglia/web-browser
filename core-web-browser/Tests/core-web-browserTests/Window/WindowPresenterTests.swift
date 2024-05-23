@@ -158,7 +158,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
     }
 
-    func test_didUpdateProgressBar_whenValueIsOne_progressBarShouldBeNil() {
+    func test_didUpdateProgressBar_whenValueIsOne_stopButtonAndProgressBarShouldNotBeVisible() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
@@ -167,17 +167,17 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
-        XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
         XCTAssertFalse(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertEqual(receivedResult!.progressBarValue, nil)
     }
 
-    func test_didUpdateProgressBar_whenValueGreaterThanOne_progressBarShouldBeNil() {
+    func test_didUpdateProgressBar_whenValueGreaterThanOne_stopButtonAndProgressBarShouldNotBeVisible() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
@@ -185,14 +185,14 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(1.5)
 
         XCTAssertNil(receivedResult!.pageURL)
-        XCTAssertFalse(receivedResult!.showCancelButton)
-        XCTAssertTrue(receivedResult!.showStopButton)
+        XCTAssertFalse(receivedResult!.showCancelButton)        
         XCTAssertFalse(receivedResult!.showReloadButton)
         XCTAssertFalse(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertEqual(receivedResult!.progressBarValue, nil)
     }
 
