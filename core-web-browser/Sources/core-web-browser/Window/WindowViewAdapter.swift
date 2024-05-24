@@ -23,7 +23,7 @@ public final class WindowViewAdapter: WindowViewContract {
         presenter.didEndEditing()
     }
 
-    public func stopLoading() {
+    public func didStopLoading() {
         webView.stopLoading()
     }
 

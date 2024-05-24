@@ -12,7 +12,7 @@ final class WindowComposer {
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
-        viewModel.didStopLoading = windowViewAdapter.stopLoading
+        viewModel.didStopLoading = windowViewAdapter.didStopLoading
         viewModel.didStartSearch = windowViewAdapter.didRequestSearch
         viewModel.didUpdateWhitelist = windowViewAdapter.updateWhitelist(url:isEnabled:)
 

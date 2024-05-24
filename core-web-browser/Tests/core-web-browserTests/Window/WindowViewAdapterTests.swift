@@ -30,10 +30,10 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
-    func test_stopLoading_sendsCorrectMessage() {
+    func test_didStopLoading_sendsCorrectMessage() {
         let (sut, webView, presenter, _) = makeSUT()
 
-        sut.stopLoading()
+        sut.didStopLoading()
 
         XCTAssertEqual(presenter.receivedMessages, [])
         XCTAssertEqual(webView.receivedMessages, [.stopLoading])
