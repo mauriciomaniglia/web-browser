@@ -6,6 +6,7 @@ class WebViewSpy: WebEngineContract {
         case registerRule(_ name: String, _ content: String, _ whitelist: [String] = [])
         case removeAllRules
         case load(url: URL)
+        case stopLoading
         case didTapBackButton
         case didTapForwardButton
     }
@@ -22,6 +23,10 @@ class WebViewSpy: WebEngineContract {
 
     func load(_ url: URL) {
         receivedMessages.append(.load(url: url))
+    }
+
+    func stopLoading() {
+        receivedMessages.append(.stopLoading)
     }
 
     func didTapBackButton() {

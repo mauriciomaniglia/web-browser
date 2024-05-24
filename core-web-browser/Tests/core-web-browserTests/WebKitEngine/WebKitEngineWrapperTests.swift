@@ -25,6 +25,14 @@ class WebKitEngineWrapperTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [.load("https://openai.com")])
     }
 
+    func test_stopLoading_sendsCorrectMessage() {
+        let (sut, webView, _, _) = makeSUT()
+
+        sut.stopLoading()
+
+        XCTAssertEqual(webView.receivedMessages, [.stopLoading])
+    }
+
     func test_didTapBackButton_requestToGoBackToPreviousPage() {
         let (sut, webView, _, _) = makeSUT()
 
@@ -171,6 +179,7 @@ class WebKitEngineWrapperTests: XCTestCase {
     private class WebViewSpy: WKWebView {
         enum Message: Equatable {
             case load(_ requestDescription: String)
+            case stopLoading
             case goBack
             case goForward
         }
@@ -188,6 +197,11 @@ class WebKitEngineWrapperTests: XCTestCase {
         override func load(_ request: URLRequest) -> WKNavigation? {
             receivedMessages.append(.load(request.description))
             return super.load(request)
+        }
+
+        override func stopLoading() {
+            receivedMessages.append(.stopLoading)
+            return super.stopLoading()
         }
 
         override func goBack() -> WKNavigation? {

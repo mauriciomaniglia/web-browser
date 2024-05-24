@@ -36,6 +36,10 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         webView.load(URLRequest(url: url))
     }
 
+    public func stopLoading() {
+        webView.stopLoading()
+    }
+
     public func didTapBackButton() {
         webView.goBack()
     }
