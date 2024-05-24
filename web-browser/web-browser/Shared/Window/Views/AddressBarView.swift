@@ -19,7 +19,7 @@ struct AddressBarView: View {
                         .onSubmit { viewModel.didStartSearch?(text) }
 
                     if viewModel.showStopButton {
-                        Button(action: { print("Cancel") }) {
+                        Button(action: { viewModel.didStopLoading?() }) {
                             Image(systemName: "xmark")
                         }
                         .buttonStyle(PlainButtonStyle())
