@@ -1,6 +1,6 @@
 @testable import core_web_browser
 
-class WhitelistStoreSpy: WhitelistAPI {
+class SafelistStoreSpy: SafelistAPI {
     enum Message: Equatable {
         case isRegisteredDomain(_ domain: String)
         case fetchRegisteredDomains

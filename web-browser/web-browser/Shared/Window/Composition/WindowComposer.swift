@@ -7,14 +7,14 @@ final class WindowComposer {
     func composeView() -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let windowPresenter = WindowPresenter()
-        let whitelistStore = WhitelistStore()
-        let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, whitelist: whitelistStore)
+        let safelistStore = SafelistStore()
+        let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, safelist: safelistStore)
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
         viewModel.didStopLoading = windowViewAdapter.didStopLoading
         viewModel.didStartSearch = windowViewAdapter.didRequestSearch
-        viewModel.didUpdateWhitelist = windowViewAdapter.updateWhitelist(url:isEnabled:)
+        viewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
 
         webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = didUpdatePresentableModel(_:)

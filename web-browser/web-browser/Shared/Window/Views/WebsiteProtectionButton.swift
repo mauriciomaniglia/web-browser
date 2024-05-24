@@ -17,7 +17,7 @@ struct WebsiteProtectionButton: View {
                 Toggle("Protection for this website", isOn: $viewModel.isWebsiteProtected)
                     .toggleStyle(SwitchToggleStyle())
                     .onChange(of: viewModel.isWebsiteProtected) { oldValue, newValue in
-                        viewModel.didUpdateWhitelist?(viewModel.url ?? "", oldValue)
+                        viewModel.didUpdateSafelist?(viewModel.url ?? "", oldValue)
                     }
 
                 .presentationDetents([.large, .medium])

@@ -4,5 +4,5 @@ public protocol WindowViewContract {
     func didEndTyping()
     func didTapBackButton()
     func didTapForwardButton()
-    func updateWhitelist(url: String, isEnabled: Bool)
+    func updateSafelist(url: String, isEnabled: Bool)
 }

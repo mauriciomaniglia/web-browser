@@ -75,32 +75,32 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(presenter.receivedMessages, [.didUpdateProgressBar(value: 0.5)])
     }
 
-    func test_updateWhitelist_withURLEnabled_addURLToWhitelist() {
-        let (sut, _, _, whitelist) = makeSUT()
+    func test_updateSafelist_withURLEnabled_addURLToSafelist() {
+        let (sut, _, _, safelist) = makeSUT()
         let url = "http://some-url.com"
 
-        sut.updateWhitelist(url: url, isEnabled: true)
+        sut.updateSafelist(url: url, isEnabled: true)
 
-        XCTAssertEqual(whitelist.receivedMessages, [.saveDomain(url)])
+        XCTAssertEqual(safelist.receivedMessages, [.saveDomain(url)])
     }
 
-    func test_updateWhitelist_withURLDisabled_removesURLFromWhitelist() {
-        let (sut, _, _, whitelist) = makeSUT()
+    func test_updateSafelist_withURLDisabled_removesURLFromSafelist() {
+        let (sut, _, _, safelist) = makeSUT()
         let url = "http://some-url.com"
 
-        sut.updateWhitelist(url: url, isEnabled: false)
+        sut.updateSafelist(url: url, isEnabled: false)
 
-        XCTAssertEqual(whitelist.receivedMessages, [.removeDomain(url)])
+        XCTAssertEqual(safelist.receivedMessages, [.removeDomain(url)])
     }
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, whitelist: WhitelistStoreSpy) {
+    private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy) {
         let webView = WebViewSpy()
         let presenter = WindowPresenterSpy()
-        let whitelist = WhitelistStoreSpy()
-        let sut = WindowViewAdapter(webView: webView, presenter: presenter, whitelist: whitelist)
+        let safelist = SafelistStoreSpy()
+        let sut = WindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist)
 
-        return (sut, webView, presenter, whitelist)
+        return (sut, webView, presenter, safelist)
     }
 }

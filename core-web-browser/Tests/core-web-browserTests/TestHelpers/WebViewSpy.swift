@@ -3,7 +3,7 @@ import core_web_browser
 
 class WebViewSpy: WebEngineContract {
     enum Message: Equatable {
-        case registerRule(_ name: String, _ content: String, _ whitelist: [String] = [])
+        case registerRule(_ name: String, _ content: String, _ safelist: [String] = [])
         case removeAllRules
         case load(url: URL)
         case stopLoading
@@ -13,8 +13,8 @@ class WebViewSpy: WebEngineContract {
 
     var receivedMessages = [Message]()
 
-    func registerRule(name: String, content: String, whitelist: [String] = []) {
-        receivedMessages.append(.registerRule(name, content, whitelist))
+    func registerRule(name: String, content: String, safelist: [String] = []) {
+        receivedMessages.append(.registerRule(name, content, safelist))
     }
 
     func removeAllRules() {

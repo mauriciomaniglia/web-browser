@@ -12,14 +12,14 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         registerObserversForWebView()
     }
 
-    public func registerRule(name: String, content: String, whitelist: [String] = []) {
+    public func registerRule(name: String, content: String, safelist: [String] = []) {
         ruleStore.lookUpContentRuleList(forIdentifier: name, completionHandler: { [ruleStore] ruleList, _ in
             if ruleList != nil { return }
 
             var modifiedContent = content
 
-            if whitelist.count > 0, let range = content.range(of: "]", options: String.CompareOptions.backwards) {
-                modifiedContent = modifiedContent.replacingCharacters(in: range, with: WebKitEngineWrapper.whitelistAsJSON(whitelist)  + "]")
+            if safelist.count > 0, let range = content.range(of: "]", options: String.CompareOptions.backwards) {
+                modifiedContent = modifiedContent.replacingCharacters(in: range, with: WebKitEngineWrapper.safelistAsJSON(safelist)  + "]")
             }
 
             ruleStore.compileContentRuleList(forIdentifier: name, encodedContentRuleList: modifiedContent, completionHandler: {_, _ in
@@ -88,8 +88,8 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), context: nil)
     }
 
-    private static func whitelistAsJSON(_ whitelist: [String]) -> String {
-        let list = "'*" + whitelist.joined(separator: "','*") + "'"
+    private static func safelistAsJSON(_ safelist: [String]) -> String {
+        let list = "'*" + safelist.joined(separator: "','*") + "'"
         return ", {'action': { 'type': 'ignore-previous-rules' }, 'trigger': { 'url-filter': '.*', 'if-domain': [\(list)] }}".replacingOccurrences(of: "'", with: "\"")
     }
 }

@@ -24,19 +24,19 @@ class ContentBlockingTests: XCTestCase {
         ])
     }
 
-    func test_setupBasicProtection_whenWhitelistAreAvailableApplyCorrectRules() {
+    func test_setupBasicProtection_whenSafelistAreAvailableApplyCorrectRules() {
         let webView = WebViewSpy()
         let sut = ContentBlocking(webView: webView, jsonLoader: { _ in "json content"})
-        let whitelist = ["www.apple.com", "www.google.com"]
+        let safelist = ["www.apple.com", "www.google.com"]
 
-        sut.setupBasicProtection(whitelist: whitelist)
+        sut.setupBasicProtection(safelist: safelist)
 
         XCTAssertEqual(webView.receivedMessages, [
-            .registerRule("CookiesAdvertisingRules", "json content", whitelist),
-            .registerRule("CookiesAnalyticsRules", "json content", whitelist),
-            .registerRule("CookiesSocialRules", "json content", whitelist),
-            .registerRule("CryptominingRules", "json content", whitelist),
-            .registerRule("FingerprintingRules", "json content", whitelist),
+            .registerRule("CookiesAdvertisingRules", "json content", safelist),
+            .registerRule("CookiesAnalyticsRules", "json content", safelist),
+            .registerRule("CookiesSocialRules", "json content", safelist),
+            .registerRule("CryptominingRules", "json content", safelist),
+            .registerRule("FingerprintingRules", "json content", safelist),
         ])
     }
 
@@ -55,19 +55,19 @@ class ContentBlockingTests: XCTestCase {
         ])
     }
 
-    func test_setupStrictProtection_whenWhitelistAreAvailableApplyCorrectRules() {
+    func test_setupStrictProtection_whenSafelistAreAvailableApplyCorrectRules() {
         let webView = WebViewSpy()
         let sut = ContentBlocking(webView: webView, jsonLoader: { _ in "json content"})
-        let whitelist = ["www.apple.com", "www.google.com"]
+        let safelist = ["www.apple.com", "www.google.com"]
 
-        sut.setupStrictProtection(whitelist: whitelist)
+        sut.setupStrictProtection(safelist: safelist)
 
         XCTAssertEqual(webView.receivedMessages, [
-            .registerRule("AdvertisingRules", "json content", whitelist),
-            .registerRule("AnalyticsRules", "json content", whitelist),
-            .registerRule("SocialRules", "json content", whitelist),
-            .registerRule("CryptominingRules", "json content", whitelist),
-            .registerRule("FingerprintingRules", "json content", whitelist),            
+            .registerRule("AdvertisingRules", "json content", safelist),
+            .registerRule("AnalyticsRules", "json content", safelist),
+            .registerRule("SocialRules", "json content", safelist),
+            .registerRule("CryptominingRules", "json content", safelist),
+            .registerRule("FingerprintingRules", "json content", safelist),            
         ])
     }
 

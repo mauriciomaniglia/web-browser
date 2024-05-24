@@ -3,12 +3,12 @@ import Foundation
 public final class WindowViewAdapter: WindowViewContract {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
-    private let whitelist: WhitelistAPI
+    private let safelist: SafelistAPI
 
-    public init(webView: WebEngineContract, presenter: WindowPresenter, whitelist: WhitelistAPI) {
+    public init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI) {
         self.webView = webView
         self.presenter = presenter
-        self.whitelist = whitelist
+        self.safelist = safelist
     }
 
     public func didRequestSearch(_ text: String) {
@@ -35,11 +35,11 @@ public final class WindowViewAdapter: WindowViewContract {
         webView.didTapForwardButton()
     }
 
-    public func updateWhitelist(url: String, isEnabled: Bool) {
+    public func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
-            whitelist.saveDomain(url)
+            safelist.saveDomain(url)
         } else {
-            whitelist.removeDomain(url)
+            safelist.removeDomain(url)
         }
     }
 }

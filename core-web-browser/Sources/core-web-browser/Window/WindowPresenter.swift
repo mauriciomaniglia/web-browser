@@ -64,7 +64,7 @@ public class WindowPresenter {
 
     public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
         let pageURL = url.host ?? url.absoluteString
-        let isOnWhitelist = WhitelistStore().isRegisteredDomain(pageURL)
+        let isOnSafelist = SafelistStore().isRegisteredDomain(pageURL)
 
         let newModel = WindowPresentableModel(
             pageURL: pageURL,
@@ -72,7 +72,7 @@ public class WindowPresenter {
             showStopButton: false,
             showReloadButton: true,
             showSiteProtection: true,
-            isWebsiteProtected: !isOnWhitelist,
+            isWebsiteProtected: !isOnSafelist,
             showWebView: true,
             canGoBack: canGoBack,
             canGoForward: canGoForward)
