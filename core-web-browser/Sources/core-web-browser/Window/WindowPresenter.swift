@@ -6,7 +6,8 @@ public class WindowPresenter {
 
     public init() {
         model = WindowPresentableModel(
-            urlHost: nil,
+            urlHost: nil, 
+            fullURL: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false, 
@@ -20,6 +21,7 @@ public class WindowPresenter {
     public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
             urlHost: nil,
+            fullURL: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false, 
@@ -33,6 +35,7 @@ public class WindowPresenter {
     public func didStartEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
+            fullURL: nil,
             showCancelButton: true,
             showStopButton: false,
             showReloadButton: false,
@@ -49,6 +52,7 @@ public class WindowPresenter {
     public func didEndEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
+            fullURL: nil,
             showCancelButton: false,
             showStopButton: model.showStopButton,
             showReloadButton: model.showReloadButton, 
@@ -68,6 +72,7 @@ public class WindowPresenter {
 
         let newModel = WindowPresentableModel(
             urlHost: urlHost,
+            fullURL: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,
@@ -86,6 +91,7 @@ public class WindowPresenter {
 
         didUpdatePresentableModel?(.init(
             urlHost: model.urlHost,
+            fullURL: nil,
             showCancelButton: false,
             showStopButton: value < 1 ? true : false,
             showReloadButton: value >= 1 ? true : false,
