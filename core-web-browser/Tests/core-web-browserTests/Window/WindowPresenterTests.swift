@@ -11,6 +11,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didStartNewWindow()
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -31,6 +32,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didStartNewWindow()
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -50,6 +52,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didStartEditing()
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertTrue(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -70,6 +73,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didStartEditing()
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertTrue(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -89,6 +93,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didEndEditing()
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -109,6 +114,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didEndEditing()
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
@@ -128,6 +134,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
@@ -147,6 +154,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(0.45)
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -166,6 +174,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(1)
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
         XCTAssertFalse(receivedResult!.showSiteProtection)
@@ -185,6 +194,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(1.5)
 
         XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
         XCTAssertFalse(receivedResult!.showSiteProtection)
@@ -205,6 +215,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(0.45)
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertTrue(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)

@@ -35,7 +35,7 @@ public class WindowPresenter {
     public func didStartEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
-            fullURL: nil,
+            fullURL: model.fullURL,
             showCancelButton: true,
             showStopButton: false,
             showReloadButton: false,
@@ -52,7 +52,7 @@ public class WindowPresenter {
     public func didEndEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
-            fullURL: nil,
+            fullURL: model.fullURL,
             showCancelButton: false,
             showStopButton: model.showStopButton,
             showReloadButton: model.showReloadButton, 
@@ -67,12 +67,13 @@ public class WindowPresenter {
     }
 
     public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
-        let urlHost = url.host ?? url.absoluteString
+        let fullURL = url.absoluteString
+        let urlHost = url.host ?? fullURL
         let isOnSafelist = SafelistStore().isRegisteredDomain(urlHost)
 
         let newModel = WindowPresentableModel(
             urlHost: urlHost,
-            fullURL: nil,
+            fullURL: fullURL,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,
@@ -91,7 +92,7 @@ public class WindowPresenter {
 
         didUpdatePresentableModel?(.init(
             urlHost: model.urlHost,
-            fullURL: nil,
+            fullURL: model.fullURL,
             showCancelButton: false,
             showStopButton: value < 1 ? true : false,
             showReloadButton: value >= 1 ? true : false,
