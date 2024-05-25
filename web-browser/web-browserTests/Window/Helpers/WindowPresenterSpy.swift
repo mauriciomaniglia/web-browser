@@ -1,4 +1,5 @@
 import Foundation
+@testable import web_browser
 @testable import core_web_browser
 
 class WindowPresenterSpy: WindowPresenter {

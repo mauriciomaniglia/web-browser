@@ -1,4 +1,5 @@
 import Foundation
+import core_web_browser
 
 public final class WindowViewAdapter {
     private let webView: WebEngineContract

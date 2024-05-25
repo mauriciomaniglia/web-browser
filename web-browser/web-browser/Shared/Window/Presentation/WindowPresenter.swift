@@ -1,4 +1,5 @@
 import Foundation
+import core_web_browser
 
 public class WindowPresenter {
     public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?

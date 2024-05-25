@@ -1,4 +1,5 @@
 import XCTest
+import web_browser
 import core_web_browser
 
 class WindowPresenterTests: XCTestCase {
