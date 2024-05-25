@@ -8,7 +8,7 @@ public class WindowPresenter {
         model = WindowPresentableModel(
             urlHost: nil, 
             fullURL: nil,
-            showCancelButton: false,
+            showClearButton: false,
             showStopButton: false,
             showReloadButton: false, 
             showSiteProtection: false,
@@ -22,7 +22,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(.init(
             urlHost: nil,
             fullURL: nil,
-            showCancelButton: false,
+            showClearButton: false,
             showStopButton: false,
             showReloadButton: false, 
             showSiteProtection: false,
@@ -36,7 +36,7 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: true,
+            showClearButton: true,
             showStopButton: false,
             showReloadButton: false,
             showSiteProtection: model.showSiteProtection,
@@ -53,7 +53,7 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: false,
+            showClearButton: false,
             showStopButton: model.showStopButton,
             showReloadButton: model.showReloadButton, 
             showSiteProtection: model.showSiteProtection,
@@ -74,7 +74,7 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: urlHost,
             fullURL: fullURL,
-            showCancelButton: false,
+            showClearButton: false,
             showStopButton: false,
             showReloadButton: true,
             showSiteProtection: true,
@@ -93,7 +93,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(.init(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: false,
+            showClearButton: false,
             showStopButton: value < 1 ? true : false,
             showReloadButton: value >= 1 ? true : false,
             showSiteProtection: model.showSiteProtection,
