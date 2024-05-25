@@ -1,6 +1,6 @@
 import Foundation
 
-public final class WindowViewAdapter: WindowViewContract {
+public final class WindowViewAdapter {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
