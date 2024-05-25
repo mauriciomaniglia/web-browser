@@ -2,8 +2,6 @@ import SwiftUI
 
 struct AddressBarView: View {
     @ObservedObject var viewModel: WindowViewModel
-
-    @State private var text = ""
     @State private var isShowingSheet = false
 
     var body: some View {
@@ -14,9 +12,9 @@ struct AddressBarView: View {
                         WebsiteProtectionButton(viewModel: viewModel, isShowingSheet: isShowingSheet)
                     }
 
-                    TextField("Search or enter address", text: $text)
+                    TextField("Search or enter address", text: $viewModel.fullURL)
                         .textFieldStyle(.plain)
-                        .onSubmit { viewModel.didStartSearch?(text) }
+                        .onSubmit { viewModel.didStartSearch?(viewModel.fullURL) }
 
                     if viewModel.showStopButton {
                         Button(action: { viewModel.didStopLoading?() }) {

@@ -7,6 +7,7 @@ class WindowViewModel: ObservableObject {
     @Published var showReloadButton: Bool = false
     @Published var progressBarValue: Double? = nil
     @Published var urlHost: String? = nil
+    @Published var fullURL: String = ""
     @Published var isWebsiteProtected: Bool = true
     @Published var showSiteProtection: Bool = false
 
