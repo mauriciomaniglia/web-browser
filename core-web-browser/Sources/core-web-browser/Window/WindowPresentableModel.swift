@@ -1,5 +1,5 @@
 public struct WindowPresentableModel {
-    public let pageURL: String?
+    public let urlHost: String?
     public let showCancelButton: Bool
     public let showStopButton: Bool
     public let showReloadButton: Bool

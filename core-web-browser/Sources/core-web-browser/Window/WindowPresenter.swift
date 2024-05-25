@@ -6,7 +6,7 @@ public class WindowPresenter {
 
     public init() {
         model = WindowPresentableModel(
-            pageURL: nil,
+            urlHost: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false, 
@@ -19,7 +19,7 @@ public class WindowPresenter {
 
     public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
-            pageURL: nil,
+            urlHost: nil,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: false, 
@@ -32,7 +32,7 @@ public class WindowPresenter {
 
     public func didStartEditing() {
         let newModel = WindowPresentableModel(
-            pageURL: model.pageURL,
+            urlHost: model.urlHost,
             showCancelButton: true,
             showStopButton: false,
             showReloadButton: false,
@@ -48,7 +48,7 @@ public class WindowPresenter {
 
     public func didEndEditing() {
         let newModel = WindowPresentableModel(
-            pageURL: model.pageURL,
+            urlHost: model.urlHost,
             showCancelButton: false,
             showStopButton: model.showStopButton,
             showReloadButton: model.showReloadButton, 
@@ -63,11 +63,11 @@ public class WindowPresenter {
     }
 
     public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
-        let pageURL = url.host ?? url.absoluteString
-        let isOnSafelist = SafelistStore().isRegisteredDomain(pageURL)
+        let urlHost = url.host ?? url.absoluteString
+        let isOnSafelist = SafelistStore().isRegisteredDomain(urlHost)
 
         let newModel = WindowPresentableModel(
-            pageURL: pageURL,
+            urlHost: urlHost,
             showCancelButton: false,
             showStopButton: false,
             showReloadButton: true,
@@ -85,7 +85,7 @@ public class WindowPresenter {
         let progressValue = value >= 1 ? nil : value
 
         didUpdatePresentableModel?(.init(
-            pageURL: model.pageURL,
+            urlHost: model.urlHost,
             showCancelButton: false,
             showStopButton: value < 1 ? true : false,
             showReloadButton: value >= 1 ? true : false,

@@ -35,7 +35,7 @@ final class WindowComposer {
         viewModel.showStopButton = model.showStopButton
         viewModel.showReloadButton = model.showReloadButton
         viewModel.progressBarValue = model.progressBarValue
-        viewModel.url = model.pageURL
+        viewModel.urlHost = model.urlHost
         viewModel.isWebsiteProtected = model.isWebsiteProtected
         viewModel.showSiteProtection = model.showSiteProtection
     }
