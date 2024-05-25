@@ -26,7 +26,7 @@ struct AddressBarView: View {
                     }
 
                     if viewModel.showReloadButton {
-                        Button(action: { print("reload") }) {
+                        Button(action: { viewModel.didReload?() }) {
                             Image(systemName: "goforward")
                         }
                         .buttonStyle(PlainButtonStyle())

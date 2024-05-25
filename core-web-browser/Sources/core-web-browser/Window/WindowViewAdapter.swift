@@ -15,6 +15,10 @@ public final class WindowViewAdapter: WindowViewContract {
         webView.load(SearchURLBuilder.makeURL(from: text))
     }
 
+    public func didReload() {
+        webView.reload()
+    }
+
     public func didStartTyping() {
         presenter.didStartEditing()
     }
