@@ -88,7 +88,7 @@ public class WindowPresenter {
             pageURL: model.pageURL,
             showCancelButton: false,
             showStopButton: value < 1 ? true : false,
-            showReloadButton: false,
+            showReloadButton: value >= 1 ? true : false,
             showSiteProtection: model.showSiteProtection,
             isWebsiteProtected: model.isWebsiteProtected,
             showWebView: true,

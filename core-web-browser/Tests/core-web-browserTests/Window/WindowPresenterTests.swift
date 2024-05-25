@@ -167,7 +167,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)
-        XCTAssertFalse(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
         XCTAssertFalse(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
@@ -186,7 +186,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.pageURL)
         XCTAssertFalse(receivedResult!.showCancelButton)        
-        XCTAssertFalse(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
         XCTAssertFalse(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)

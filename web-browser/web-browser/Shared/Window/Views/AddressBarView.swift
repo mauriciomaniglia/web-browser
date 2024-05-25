@@ -24,6 +24,13 @@ struct AddressBarView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
+
+                    if viewModel.showReloadButton {
+                        Button(action: { print("reload") }) {
+                            Image(systemName: "goforward")
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
                 .padding(.horizontal)
             }

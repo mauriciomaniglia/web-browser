@@ -32,6 +32,7 @@ final class WindowComposer {
         viewModel.isBackButtonDisabled = !model.canGoBack
         viewModel.isForwardButtonDisabled = !model.canGoForward
         viewModel.showStopButton = model.showStopButton
+        viewModel.showReloadButton = model.showReloadButton
         viewModel.progressBarValue = model.progressBarValue
         viewModel.url = model.pageURL
         viewModel.isWebsiteProtected = model.isWebsiteProtected
