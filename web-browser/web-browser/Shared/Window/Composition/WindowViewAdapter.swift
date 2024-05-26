@@ -5,11 +5,13 @@ final class WindowViewAdapter {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
+    let viewModel: WindowViewModel
 
-    init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI) {
+    init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI, viewModel: WindowViewModel) {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
+        self.viewModel = viewModel
     }
 
     func didRequestSearch(_ text: String) {
@@ -46,6 +48,18 @@ final class WindowViewAdapter {
         } else {
             safelist.removeDomain(url)
         }
+    }
+
+    func updateViewModel(_ model: WindowPresentableModel) {
+        viewModel.isBackButtonDisabled = !model.canGoBack
+        viewModel.isForwardButtonDisabled = !model.canGoForward
+        viewModel.showStopButton = model.showStopButton
+        viewModel.showReloadButton = model.showReloadButton
+        viewModel.progressBarValue = model.progressBarValue
+        viewModel.urlHost = model.urlHost
+        viewModel.fullURL = model.fullURL ?? ""
+        viewModel.isWebsiteProtected = model.isWebsiteProtected
+        viewModel.showSiteProtection = model.showSiteProtection
     }
 }
 

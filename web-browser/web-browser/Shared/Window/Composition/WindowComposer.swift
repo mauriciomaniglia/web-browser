@@ -2,13 +2,13 @@ import SwiftUI
 import core_web_browser
 
 final class WindowComposer {
-    var viewModel = WindowViewModel()
 
     func composeView() -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let windowPresenter = WindowPresenter()
         let safelistStore = SafelistStore()
-        let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, safelist: safelistStore)
+        var viewModel = WindowViewModel()
+        let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, safelist: safelistStore, viewModel: viewModel)
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
@@ -18,7 +18,7 @@ final class WindowComposer {
         viewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
 
         webKitEngineWrapper.delegate = windowViewAdapter
-        windowPresenter.didUpdatePresentableModel = didUpdatePresentableModel(_:)
+        windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
 
         #if os(iOS)
         return IOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
@@ -27,17 +27,5 @@ final class WindowComposer {
         #elseif os(visionOS)
         return VisionOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
-    }
-
-    func didUpdatePresentableModel(_ model: WindowPresentableModel) {
-        viewModel.isBackButtonDisabled = !model.canGoBack
-        viewModel.isForwardButtonDisabled = !model.canGoForward
-        viewModel.showStopButton = model.showStopButton
-        viewModel.showReloadButton = model.showReloadButton
-        viewModel.progressBarValue = model.progressBarValue
-        viewModel.urlHost = model.urlHost
-        viewModel.fullURL = model.fullURL ?? ""
-        viewModel.isWebsiteProtected = model.isWebsiteProtected
-        viewModel.showSiteProtection = model.showSiteProtection
     }
 }

@@ -103,13 +103,42 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(safelist.receivedMessages, [.removeDomain(url)])
     }
 
+    func test_updateViewModel_updatesAllValuesCorrectly() {
+        let (sut, _, _, _) = makeSUT()
+        let model = WindowPresentableModel(
+            urlHost: "www.apple.com",
+            fullURL: "http://apple.com/airpods",
+            showClearButton: false,
+            showStopButton: true,
+            showReloadButton: true,
+            showSiteProtection: true,
+            isWebsiteProtected: true,
+            showWebView: true,
+            canGoBack: true,
+            canGoForward: true,
+            progressBarValue: 0.5)
+
+        sut.updateViewModel(model)
+
+        XCTAssertEqual(sut.viewModel.urlHost, model.urlHost)
+        XCTAssertEqual(sut.viewModel.fullURL, model.fullURL)
+        XCTAssertEqual(sut.viewModel.showStopButton, model.showStopButton)
+        XCTAssertEqual(sut.viewModel.showReloadButton, model.showReloadButton)
+        XCTAssertEqual(sut.viewModel.showSiteProtection, model.showSiteProtection)
+        XCTAssertEqual(sut.viewModel.isWebsiteProtected, model.isWebsiteProtected)
+        XCTAssertEqual(sut.viewModel.isBackButtonDisabled, !model.canGoBack)
+        XCTAssertEqual(sut.viewModel.isForwardButtonDisabled, !model.canGoForward)
+        XCTAssertEqual(sut.viewModel.progressBarValue, model.progressBarValue)
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy) {
         let webView = WebViewSpy()
         let presenter = WindowPresenterSpy()
         let safelist = SafelistStoreSpy()
-        let sut = WindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist)
+        let viewModel = WindowViewModel()
+        let sut = WindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist, viewModel: viewModel)
 
         return (sut, webView, presenter, safelist)
     }
