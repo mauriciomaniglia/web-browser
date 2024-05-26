@@ -1,46 +1,46 @@
 import Foundation
 import core_web_browser
 
-public final class WindowViewAdapter {
+final class WindowViewAdapter {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
 
-    public init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI) {
+    init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI) {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
     }
 
-    public func didRequestSearch(_ text: String) {
+    func didRequestSearch(_ text: String) {
         webView.load(SearchURLBuilder.makeURL(from: text))
     }
 
-    public func didReload() {
+    func didReload() {
         webView.reload()
     }
 
-    public func didStartTyping() {
+    func didStartTyping() {
         presenter.didStartEditing()
     }
 
-    public func didEndTyping() {
+    func didEndTyping() {
         presenter.didEndEditing()
     }
 
-    public func didStopLoading() {
+    func didStopLoading() {
         webView.stopLoading()
     }
 
-    public func didTapBackButton() {
+    func didTapBackButton() {
         webView.didTapBackButton()
     }
 
-    public func didTapForwardButton() {
+    func didTapForwardButton() {
         webView.didTapForwardButton()
     }
 
-    public func updateSafelist(url: String, isEnabled: Bool) {
+    func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
             safelist.saveDomain(url)
         } else {
@@ -50,14 +50,14 @@ public final class WindowViewAdapter {
 }
 
 extension WindowViewAdapter: WebEngineDelegate {
-    public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+    func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
         presenter.didLoadPage(
             url: url,            
             canGoBack: canGoBack,
             canGoForward: canGoForward)
     }
 
-    public func didUpdateLoadingProgress(_ progress: Double) {
+    func didUpdateLoadingProgress(_ progress: Double) {
         presenter.didUpdateProgressBar(progress)
     }
 }

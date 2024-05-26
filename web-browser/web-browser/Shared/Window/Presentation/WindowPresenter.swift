@@ -1,11 +1,11 @@
 import Foundation
 import core_web_browser
 
-public class WindowPresenter {
-    public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
+class WindowPresenter {
+    var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
     private var model: WindowPresentableModel
 
-    public init() {
+    init() {
         model = WindowPresentableModel(
             urlHost: nil, 
             fullURL: nil,
@@ -19,7 +19,7 @@ public class WindowPresenter {
             canGoForward: false)
     }
 
-    public func didStartNewWindow() {
+    func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
             urlHost: nil,
             fullURL: nil,
@@ -33,7 +33,7 @@ public class WindowPresenter {
             canGoForward: false))
     }
 
-    public func didStartEditing() {
+    func didStartEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -50,7 +50,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didEndEditing() {
+    func didEndEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -67,7 +67,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+    func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let isOnSafelist = SafelistStore().isRegisteredDomain(urlHost)
@@ -88,7 +88,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didUpdateProgressBar(_ value: Double) {
+    func didUpdateProgressBar(_ value: Double) {
         let progressValue = value >= 1 ? nil : value
 
         didUpdatePresentableModel?(.init(

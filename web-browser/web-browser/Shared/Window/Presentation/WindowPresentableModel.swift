@@ -1,13 +1,13 @@
-public struct WindowPresentableModel {
-    public let urlHost: String?
-    public let fullURL: String?
-    public let showClearButton: Bool
-    public let showStopButton: Bool
-    public let showReloadButton: Bool
-    public let showSiteProtection: Bool
-    public let isWebsiteProtected: Bool
-    public let showWebView: Bool
-    public let canGoBack: Bool
-    public let canGoForward: Bool
-    public var progressBarValue: Double?
+struct WindowPresentableModel {
+    let urlHost: String?
+    let fullURL: String?
+    let showClearButton: Bool
+    let showStopButton: Bool
+    let showReloadButton: Bool
+    let showSiteProtection: Bool
+    let isWebsiteProtected: Bool
+    let showWebView: Bool
+    let canGoBack: Bool
+    let canGoForward: Bool
+    var progressBarValue: Double?
 }
