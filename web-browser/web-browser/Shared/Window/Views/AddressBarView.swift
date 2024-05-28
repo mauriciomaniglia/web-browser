@@ -3,6 +3,7 @@ import SwiftUI
 struct AddressBarView: View {
     @ObservedObject var viewModel: WindowViewModel
     @State private var isShowingSheet = false
+    @FocusState private var isTextFieldFocused: Bool
 
     var body: some View {
         VStack(spacing: 0) {
@@ -15,6 +16,14 @@ struct AddressBarView: View {
                     TextField("Search or enter address", text: $viewModel.fullURL)
                         .textFieldStyle(.plain)
                         .onSubmit { viewModel.didStartSearch?(viewModel.fullURL) }
+                        .focused($isTextFieldFocused)
+                        .onChange(of: isTextFieldFocused) { _, isFocused in
+                            if isFocused {
+                                print("isFocused")
+                            } else {
+                                print("isNotFocused")
+                            }
+                        }
 
                     if viewModel.showStopButton {
                         Button(action: { viewModel.didStopLoading?() }) {
