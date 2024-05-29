@@ -5,6 +5,7 @@ class WindowViewModel: ObservableObject {
     @Published var isForwardButtonDisabled: Bool = true
     @Published var showStopButton: Bool = false
     @Published var showReloadButton: Bool = false
+    @Published var showClearButton: Bool = false
     @Published var progressBarValue: Double? = nil
     @Published var urlHost: String? = nil
     @Published var fullURL: String = ""
@@ -17,4 +18,6 @@ class WindowViewModel: ObservableObject {
     var didStopLoading: (() -> Void)?
     var didStartSearch: ((String) -> Void)?
     var didUpdateSafelist: ((String, Bool) -> Void)?
+    var didBeginEditing: (() -> Void)?
+    var didEndEditing: (() -> Void)?
 }

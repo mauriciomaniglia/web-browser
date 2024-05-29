@@ -55,6 +55,7 @@ final class WindowViewAdapter {
         viewModel.isForwardButtonDisabled = !model.canGoForward
         viewModel.showStopButton = model.showStopButton
         viewModel.showReloadButton = model.showReloadButton
+        viewModel.showClearButton = model.showClearButton
         viewModel.progressBarValue = model.progressBarValue
         viewModel.urlHost = model.urlHost
         viewModel.fullURL = model.fullURL ?? ""

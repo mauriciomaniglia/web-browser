@@ -16,6 +16,8 @@ final class WindowComposer {
         viewModel.didStopLoading = windowViewAdapter.didStopLoading
         viewModel.didStartSearch = windowViewAdapter.didRequestSearch
         viewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
+        viewModel.didBeginEditing = windowViewAdapter.didStartTyping
+        viewModel.didEndEditing = windowViewAdapter.didEndTyping
 
         webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel

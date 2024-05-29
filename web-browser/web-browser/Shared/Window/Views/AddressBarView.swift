@@ -19,9 +19,9 @@ struct AddressBarView: View {
                         .focused($isTextFieldFocused)
                         .onChange(of: isTextFieldFocused) { _, isFocused in
                             if isFocused {
-                                print("isFocused")
+                                viewModel.didBeginEditing?()
                             } else {
-                                print("isNotFocused")
+                                viewModel.didEndEditing?()
                             }
                         }
 
@@ -38,6 +38,15 @@ struct AddressBarView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
+
+                    if viewModel.showClearButton {
+                        Button(action: { viewModel.fullURL = "" }) {
+                            Image(systemName: "xmark.circle")
+                        }
+                        .buttonStyle(PlainButtonStyle())
+
+                    }
+
                 }
                 .padding(.horizontal)
             }
@@ -48,6 +57,11 @@ struct AddressBarView: View {
             if (viewModel.progressBarValue != nil) {
                 ProgressView(value: viewModel.progressBarValue, total: 1.0)
                     .padding(EdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18))
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                isTextFieldFocused = false
             }
         }
     }
