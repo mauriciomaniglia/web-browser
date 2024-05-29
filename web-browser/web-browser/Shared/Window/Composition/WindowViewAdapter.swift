@@ -22,11 +22,11 @@ final class WindowViewAdapter {
         webView.reload()
     }
 
-    func didStartTyping() {
+    func didStartEditing() {
         presenter.didStartEditing()
     }
 
-    func didEndTyping() {
+    func didEndEditing() {
         presenter.didEndEditing()
     }
 

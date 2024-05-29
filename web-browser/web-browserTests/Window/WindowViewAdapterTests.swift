@@ -22,19 +22,19 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(presenter.receivedMessages, [])
     }
 
-    func test_didStartTyping_sendsCorrectMessages() {
+    func test_didStartEditing_sendsCorrectMessages() {
         let (sut, webView, presenter, _) = makeSUT()
 
-        sut.didStartTyping()
+        sut.didStartEditing()
 
         XCTAssertEqual(presenter.receivedMessages, [.didStartEditing])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
-    func test_didEndTyping_sendsCorrectMessages() {
+    func test_didEndEditing_sendsCorrectMessages() {
         let (sut, webView, presenter, _) = makeSUT()
 
-        sut.didEndTyping()
+        sut.didEndEditing()
 
         XCTAssertEqual(presenter.receivedMessages, [.didEndEditing])
         XCTAssertEqual(webView.receivedMessages, [])
