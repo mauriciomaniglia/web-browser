@@ -101,7 +101,7 @@
 		F91EFA832B71002A00500535 /* visionOS */ = {
 			isa = PBXGroup;
 			children = (
-				F91EFA842B71004D00500535 /* VisionOSWindow.swift */,
+				F9E1477F2C0962360099CD98 /* Window */,
 			);
 			path = visionOS;
 			sourceTree = "<group>";
@@ -302,6 +302,22 @@
 			isa = PBXGroup;
 			children = (
 				F92921EA2B70F99400173702 /* MacOSWindow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9E1477F2C0962360099CD98 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				F9E147802C0962420099CD98 /* Views */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		F9E147802C0962420099CD98 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F91EFA842B71004D00500535 /* VisionOSWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
