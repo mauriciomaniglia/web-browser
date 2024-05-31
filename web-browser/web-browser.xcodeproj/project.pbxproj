@@ -164,9 +164,9 @@
 		F92921E82B70F94600173702 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9E1477B2C0960B30099CD98 /* Views */,
 				F9E147752C095FE20099CD98 /* Composition */,
 				F9E1476E2C095EDA0099CD98 /* Presentation */,
-				F92921EC2B70F9A100173702 /* IOSWindow.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -272,6 +272,14 @@
 				F9E147762C095FFB0099CD98 /* IOSWindowViewAdapter.swift */,
 			);
 			path = Composition;
+			sourceTree = "<group>";
+		};
+		F9E1477B2C0960B30099CD98 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F92921EC2B70F9A100173702 /* IOSWindow.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F9E55FC32C02AB720098995F /* Presentation */ = {
