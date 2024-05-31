@@ -164,9 +164,7 @@
 		F92921E82B70F94600173702 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F9E1477B2C0960B30099CD98 /* Views */,
-				F9E147752C095FE20099CD98 /* Composition */,
-				F9E1476E2C095EDA0099CD98 /* Presentation */,
+				F9E1477C2C0960E90099CD98 /* Window */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -280,6 +278,16 @@
 				F92921EC2B70F9A100173702 /* IOSWindow.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F9E1477C2C0960E90099CD98 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				F9E1477B2C0960B30099CD98 /* Views */,
+				F9E147752C095FE20099CD98 /* Composition */,
+				F9E1476E2C095EDA0099CD98 /* Presentation */,
+			);
+			path = Window;
 			sourceTree = "<group>";
 		};
 		F9E55FC32C02AB720098995F /* Presentation */ = {
