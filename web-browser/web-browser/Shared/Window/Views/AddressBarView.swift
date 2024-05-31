@@ -54,7 +54,7 @@ struct AddressBarView: View {
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
 
                 if viewModel.showCanceButton {
-                    Button(action: {}) {
+                    Button(action: { viewModel.didTapCancelButton?() }) {
                         Text("Cancel")
                     }
                     .buttonStyle(PlainButtonStyle())

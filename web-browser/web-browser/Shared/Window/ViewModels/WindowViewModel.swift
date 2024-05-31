@@ -15,6 +15,7 @@ class WindowViewModel: ObservableObject {
 
     var didTapBackButton: (() -> Void)?
     var didTapForwardButton: (() -> Void)?
+    var didTapCancelButton: (() -> Void)?
     var didReload: (() -> Void)?
     var didStopLoading: (() -> Void)?
     var didStartSearch: ((String) -> Void)?
