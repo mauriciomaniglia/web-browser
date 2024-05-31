@@ -108,7 +108,7 @@ class WindowViewAdapterTests: XCTestCase {
         let model = WindowPresentableModel(
             urlHost: "www.apple.com",
             fullURL: "http://apple.com/airpods",
-            showCancelButton: false,
+            showCancelButton: true,
             showClearButton: true,
             showStopButton: true,
             showReloadButton: true,
@@ -123,6 +123,7 @@ class WindowViewAdapterTests: XCTestCase {
 
         XCTAssertEqual(sut.viewModel.urlHost, model.urlHost)
         XCTAssertEqual(sut.viewModel.fullURL, model.fullURL)
+        XCTAssertEqual(sut.viewModel.showCanceButton, model.showCancelButton)
         XCTAssertEqual(sut.viewModel.showStopButton, model.showStopButton)
         XCTAssertEqual(sut.viewModel.showReloadButton, model.showReloadButton)
         XCTAssertEqual(sut.viewModel.showClearButton, model.showReloadButton)
