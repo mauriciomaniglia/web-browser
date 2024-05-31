@@ -54,7 +54,7 @@ struct AddressBarView: View {
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
 
                 if viewModel.showCanceButton {
-                    Button(action: { viewModel.didTapCancelButton?() }) {
+                    Button(action: { didTapCancelButton() }) {
                         Text("Cancel")
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -72,5 +72,10 @@ struct AddressBarView: View {
                 isTextFieldFocused = false
             }
         }
+    }
+
+    private func didTapCancelButton() {
+        isTextFieldFocused = false
+        viewModel.didTapCancelButton?()
     }
 }
