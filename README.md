@@ -24,11 +24,11 @@ It contains logic that verifies whether the text typed by the user is a real URI
 ### Content Blocking
 It contains logic to apply restrictions on a website. It has rules to block cookies, crypto mining, fingerprints, and other activities. Those rules are applied by level(basic and strict). It also contains a safelist for adding exceptions to certain websites. 
 
-### Window
+### Window (out of date)
 It contains all the logic and state of the current window. Things like whether a page is loading or whether a website protection button should appear or not, for example, reside here. All user interactions go through here as well. If the users start typing, tap on the back/forward button, and add a website to the safelist, for example. 
 
 
 ![Current Core Library Architecture](core-module-current-architecture.png)
 
-## Client App Architecture
+## Client App Architecture (out of date)
 ![Current Client App Architecture](client-architecture.png)
