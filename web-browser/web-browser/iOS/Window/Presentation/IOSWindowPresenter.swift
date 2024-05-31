@@ -39,7 +39,7 @@ class IOSWindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: false,
+            showCancelButton: true,
             showClearButton: true,
             showStopButton: false,
             showReloadButton: false,
