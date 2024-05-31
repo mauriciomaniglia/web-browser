@@ -1,6 +1,7 @@
 struct WindowPresentableModel {
     let urlHost: String?
     let fullURL: String?
+    let showCancelButton: Bool
     let showClearButton: Bool
     let showStopButton: Bool
     let showReloadButton: Bool

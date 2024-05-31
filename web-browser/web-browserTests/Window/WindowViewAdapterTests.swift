@@ -108,6 +108,7 @@ class WindowViewAdapterTests: XCTestCase {
         let model = WindowPresentableModel(
             urlHost: "www.apple.com",
             fullURL: "http://apple.com/airpods",
+            showCancelButton: false,
             showClearButton: true,
             showStopButton: true,
             showReloadButton: true,
