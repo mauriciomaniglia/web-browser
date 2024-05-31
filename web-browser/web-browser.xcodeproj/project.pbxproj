@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F9056C402C09F383004E0D0D /* IOSWindowPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9056C3F2C09F383004E0D0D /* IOSWindowPresenterSpy.swift */; };
 		F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EFA842B71004D00500535 /* VisionOSWindow.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C02B70F5B300173702 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BF2B70F5B300173702 /* ContentView.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F9056C3F2C09F383004E0D0D /* IOSWindowPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindowPresenterSpy.swift; sourceTree = "<group>"; };
 		F91EFA842B71004D00500535 /* VisionOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSWindow.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F9056C3E2C09F374004E0D0D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F9056C3F2C09F383004E0D0D /* IOSWindowPresenterSpy.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F91EFA832B71002A00500535 /* visionOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +260,7 @@
 		F9E147712C095F3A0099CD98 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9056C3E2C09F374004E0D0D /* Helpers */,
 				F9E147722C095F430099CD98 /* Window */,
 			);
 			path = iOS;
@@ -494,6 +505,7 @@
 				F9E55FD22C02ABFE0098995F /* WindowPresenterTests.swift in Sources */,
 				F92921D02B70F5B500173702 /* web_browserTests.swift in Sources */,
 				F9E55FD52C02ACDC0098995F /* WindowPresenterSpy.swift in Sources */,
+				F9056C402C09F383004E0D0D /* IOSWindowPresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

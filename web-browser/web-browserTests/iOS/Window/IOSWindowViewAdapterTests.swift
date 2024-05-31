@@ -135,9 +135,9 @@ class IOSWindowViewAdapterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: IOSWindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy) {
+    private func makeSUT() -> (sut: IOSWindowViewAdapter, webView: WebViewSpy, presenter: IOSWindowPresenterSpy, safelist: SafelistStoreSpy) {
         let webView = WebViewSpy()
-        let presenter = WindowPresenterSpy()
+        let presenter = IOSWindowPresenterSpy()
         let safelist = SafelistStoreSpy()
         let viewModel = WindowViewModel()
         let sut = IOSWindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist, viewModel: viewModel)

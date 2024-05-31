@@ -3,11 +3,11 @@ import core_web_browser
 
 final class IOSWindowViewAdapter {
     private let webView: WebEngineContract
-    private let presenter: WindowPresenter
+    private let presenter: IOSWindowPresenter
     private let safelist: SafelistAPI
     let viewModel: WindowViewModel
 
-    init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI, viewModel: WindowViewModel) {
+    init(webView: WebEngineContract, presenter: IOSWindowPresenter, safelist: SafelistAPI, viewModel: WindowViewModel) {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
@@ -53,6 +53,7 @@ final class IOSWindowViewAdapter {
     func updateViewModel(_ model: WindowPresentableModel) {
         viewModel.isBackButtonDisabled = !model.canGoBack
         viewModel.isForwardButtonDisabled = !model.canGoForward
+        viewModel.showCanceButton = model.showCancelButton
         viewModel.showStopButton = model.showStopButton
         viewModel.showReloadButton = model.showReloadButton
         viewModel.showClearButton = model.showClearButton
