@@ -9,49 +9,57 @@ struct AddressBarView: View {
         VStack(spacing: 0) {
             HStack {
                 HStack {
-                    if viewModel.showSiteProtection {
-                        WebsiteProtectionButton(viewModel: viewModel, isShowingSheet: isShowingSheet)
-                    }
+                    HStack {
+                        if viewModel.showSiteProtection {
+                            WebsiteProtectionButton(viewModel: viewModel, isShowingSheet: isShowingSheet)
+                        }
 
-                    TextField("Search or enter address", text: $viewModel.fullURL)
-                        .textFieldStyle(.plain)
-                        .onSubmit { viewModel.didStartSearch?(viewModel.fullURL) }
-                        .focused($isTextFieldFocused)
-                        .onChange(of: isTextFieldFocused) { _, isFocused in
-                            if isFocused {
-                                viewModel.didBeginEditing?()
-                            } else {
-                                viewModel.didEndEditing?()
+                        TextField("Search or enter address", text: $viewModel.fullURL)
+                            .textFieldStyle(.plain)
+                            .onSubmit { viewModel.didStartSearch?(viewModel.fullURL) }
+                            .focused($isTextFieldFocused)
+                            .onChange(of: isTextFieldFocused) { _, isFocused in
+                                if isFocused {
+                                    viewModel.didBeginEditing?()
+                                } else {
+                                    viewModel.didEndEditing?()
+                                }
                             }
+
+                        if viewModel.showStopButton {
+                            Button(action: { viewModel.didStopLoading?() }) {
+                                Image(systemName: "xmark")
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
 
-                    if viewModel.showStopButton {
-                        Button(action: { viewModel.didStopLoading?() }) {
-                            Image(systemName: "xmark")
+                        if viewModel.showReloadButton {
+                            Button(action: { viewModel.didReload?() }) {
+                                Image(systemName: "goforward")
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
+
+                        if viewModel.showClearButton {
+                            Button(action: { viewModel.fullURL = "" }) {
+                                Image(systemName: "xmark.circle")
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+
                     }
-
-                    if viewModel.showReloadButton {
-                        Button(action: { viewModel.didReload?() }) {
-                            Image(systemName: "goforward")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-
-                    if viewModel.showClearButton {
-                        Button(action: { viewModel.fullURL = "" }) {
-                            Image(systemName: "xmark.circle")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-
-                    }
-
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                .frame(height: 40)
+                .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+
+                if viewModel.showCanceButton {
+                    Button(action: {}) {
+                        Text("Cancel")
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
             }
-            .frame(height: 40)
-            .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
             .padding(.horizontal)
 
             if (viewModel.progressBarValue != nil) {
