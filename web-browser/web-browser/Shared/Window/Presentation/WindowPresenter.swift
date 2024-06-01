@@ -39,7 +39,7 @@ class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: false,
+            showCancelButton: showCancelButton(),
             showClearButton: true,
             showStopButton: false,
             showReloadButton: false,
@@ -109,5 +109,15 @@ class WindowPresenter {
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
             progressBarValue: progressValue))
+    }
+
+    private func showCancelButton() -> Bool {
+        #if os(iOS)
+        true
+        #elseif os(macOS)
+        false
+        #elseif os(visionOS)
+        false
+        #endif
     }
 }

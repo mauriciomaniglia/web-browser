@@ -56,7 +56,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
-        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertEqual(receivedResult!.showCancelButton, showCancelButton())
         XCTAssertTrue(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -78,7 +78,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
-        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertEqual(receivedResult!.showCancelButton, showCancelButton())
         XCTAssertTrue(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertFalse(receivedResult!.showReloadButton)
@@ -237,5 +237,17 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
+    }
+
+    // MARK: -- Helpers
+
+    private func showCancelButton() -> Bool {
+        #if os(iOS)
+        true
+        #elseif os(macOS)
+        false
+        #elseif os(visionOS)
+        false
+        #endif
     }
 }
