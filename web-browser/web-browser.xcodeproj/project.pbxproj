@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9056C402C09F383004E0D0D /* IOSWindowPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9056C3F2C09F383004E0D0D /* IOSWindowPresenterSpy.swift */; };
 		F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EFA842B71004D00500535 /* VisionOSWindow.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C02B70F5B300173702 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BF2B70F5B300173702 /* ContentView.swift */; };
@@ -23,10 +22,6 @@
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F9CDFD912B7130610024E0AD /* core-web-browser */; };
-		F9E147702C095F000099CD98 /* IOSWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1476F2C095F000099CD98 /* IOSWindowPresenter.swift */; };
-		F9E147742C095F6E0099CD98 /* IOSWindowPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E147732C095F6E0099CD98 /* IOSWindowPresenterTests.swift */; };
-		F9E147772C095FFB0099CD98 /* IOSWindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E147762C095FFB0099CD98 /* IOSWindowViewAdapter.swift */; };
-		F9E147792C09604F0099CD98 /* IOSWindowViewAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E147782C09604F0099CD98 /* IOSWindowViewAdapterTests.swift */; };
 		F9E55FCA2C02ABC90098995F /* WindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FC82C02ABC90098995F /* WindowPresenter.swift */; };
 		F9E55FCB2C02ABC90098995F /* WindowPresentableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FC92C02ABC90098995F /* WindowPresentableModel.swift */; };
 		F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */; };
@@ -48,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F9056C3F2C09F383004E0D0D /* IOSWindowPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindowPresenterSpy.swift; sourceTree = "<group>"; };
 		F91EFA842B71004D00500535 /* VisionOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSWindow.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
@@ -67,10 +61,6 @@
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9CDFD8F2B7130360024E0AD /* core-web-browser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "core-web-browser"; path = "../core-web-browser"; sourceTree = "<group>"; };
-		F9E1476F2C095F000099CD98 /* IOSWindowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindowPresenter.swift; sourceTree = "<group>"; };
-		F9E147732C095F6E0099CD98 /* IOSWindowPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindowPresenterTests.swift; sourceTree = "<group>"; };
-		F9E147762C095FFB0099CD98 /* IOSWindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindowViewAdapter.swift; sourceTree = "<group>"; };
-		F9E147782C09604F0099CD98 /* IOSWindowViewAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindowViewAdapterTests.swift; sourceTree = "<group>"; };
 		F9E55FC82C02ABC90098995F /* WindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresenter.swift; sourceTree = "<group>"; };
 		F9E55FC92C02ABC90098995F /* WindowPresentableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresentableModel.swift; sourceTree = "<group>"; };
 		F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewAdapter.swift; sourceTree = "<group>"; };
@@ -100,14 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F9056C3E2C09F374004E0D0D /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F9056C3F2C09F383004E0D0D /* IOSWindowPresenterSpy.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		F91EFA832B71002A00500535 /* visionOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +145,6 @@
 		F92921CE2B70F5B500173702 /* web-browserTests */ = {
 			isa = PBXGroup;
 			children = (
-				F9E147712C095F3A0099CD98 /* iOS */,
 				F9E55FD62C02AE900098995F /* Helpers */,
 				F9E55FCE2C02ABEE0098995F /* Window */,
 				F92921CF2B70F5B500173702 /* web_browserTests.swift */,
@@ -249,40 +230,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F9E1476E2C095EDA0099CD98 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F9E1476F2C095F000099CD98 /* IOSWindowPresenter.swift */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		F9E147712C095F3A0099CD98 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				F9056C3E2C09F374004E0D0D /* Helpers */,
-				F9E147722C095F430099CD98 /* Window */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		F9E147722C095F430099CD98 /* Window */ = {
-			isa = PBXGroup;
-			children = (
-				F9E147732C095F6E0099CD98 /* IOSWindowPresenterTests.swift */,
-				F9E147782C09604F0099CD98 /* IOSWindowViewAdapterTests.swift */,
-			);
-			path = Window;
-			sourceTree = "<group>";
-		};
-		F9E147752C095FE20099CD98 /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				F9E147762C095FFB0099CD98 /* IOSWindowViewAdapter.swift */,
-			);
-			path = Composition;
-			sourceTree = "<group>";
-		};
 		F9E1477B2C0960B30099CD98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,8 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				F9E1477B2C0960B30099CD98 /* Views */,
-				F9E147752C095FE20099CD98 /* Composition */,
-				F9E1476E2C095EDA0099CD98 /* Presentation */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -475,10 +420,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
-				F9E147702C095F000099CD98 /* IOSWindowPresenter.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
-				F9E147772C095FFB0099CD98 /* IOSWindowViewAdapter.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F9E55FCA2C02ABC90098995F /* WindowPresenter.swift in Sources */,
 				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
@@ -500,12 +443,9 @@
 				F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */,
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F9E55FDA2C02AEF40098995F /* WhitelistStoreSpy.swift in Sources */,
-				F9E147742C095F6E0099CD98 /* IOSWindowPresenterTests.swift in Sources */,
-				F9E147792C09604F0099CD98 /* IOSWindowViewAdapterTests.swift in Sources */,
 				F9E55FD22C02ABFE0098995F /* WindowPresenterTests.swift in Sources */,
 				F92921D02B70F5B500173702 /* web_browserTests.swift in Sources */,
 				F9E55FD52C02ACDC0098995F /* WindowPresenterSpy.swift in Sources */,
-				F9056C402C09F383004E0D0D /* IOSWindowPresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
