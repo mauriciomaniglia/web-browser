@@ -13,22 +13,23 @@ Contains all the code shared between iOS, macOS, and VisionOS. This library is c
 This library is separated by folders representing "sub-modules" in the system. The idea is to treat them as actual modules, although they reside in the same place. 
 
 ### WebEngineAPI
-It contains a set of interfaces that all the components of the system should use to communicate with the web engine. Those interfaces represent the web engine, but we don't talk directly with those engines. For example, WebKit is the web engine in this project, but all the components from this library don't talk directly to it; they only talk through the interfaces. 
+Contains a set of interfaces that all the components of the system should use to communicate with the web engine. Those interfaces represent the web engine, but we don't talk directly with those engines. For example, WebKit is the web engine in this project, but all the components from this library don't talk directly to it; they only talk through the interfaces. 
 
 ### WebKitEngine
 Contains all the code related to Webkit. It is basically a wrapper for Webkit that decouples this project from this library and facilitates future migrations to other engines. This is the only place in this library that contains code related to Webkit. 
 
 ### Search
-It contains logic that verifies whether the text typed by the user is a real URI or just plain text. If it's a valid URI, it redirects the user to the desired address; if not, it uses Google Search (at the moment)to search for the text.
+Contains logic that verifies whether the text typed by the user is a real URI or just plain text. If it's a valid URI, it redirects the user to the desired address; if not, it uses Google Search (at the moment)to search for the text.
 
 ### Content Blocking
-It contains logic to apply restrictions on a website. It has rules to block cookies, crypto mining, fingerprints, and other activities. Those rules are applied by level(basic and strict). It also contains a safelist for adding exceptions to certain websites. 
-
-### Window (out of date)
-It contains all the logic and state of the current window. Things like whether a page is loading or whether a website protection button should appear or not, for example, reside here. All user interactions go through here as well. If the users start typing, tap on the back/forward button, and add a website to the safelist, for example. 
+Contains logic to apply restrictions on a website. It has rules to block cookies, crypto mining, fingerprints, and other activities. Those rules are applied by level(basic and strict). It also contains a safelist for adding exceptions to certain websites. 
 
 
 ![Current Core Library Architecture](core-module-current-architecture.png)
 
-## Client App Architecture (out of date)
+## Client App Architecture
+
+### Window
+Contains all the logic and state of the current window. Things like whether a page is loading or whether a website protection button should appear or not, for example, reside here. All user interactions go through here as well. If the users start typing, tap on the back/forward button, and add a website to the safelist, for example. 
+
 ![Current Client App Architecture](client-architecture.png)
