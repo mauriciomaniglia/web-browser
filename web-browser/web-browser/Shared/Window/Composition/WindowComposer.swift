@@ -8,7 +8,10 @@ final class WindowComposer {
         let windowPresenter = WindowPresenter()
         let safelistStore = SafelistStore()
         var viewModel = WindowViewModel()
+        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, safelist: safelistStore, viewModel: viewModel)
+
+        contentBlocking.setupStrictProtection()
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
         viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
