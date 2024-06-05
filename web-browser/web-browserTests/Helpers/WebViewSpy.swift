@@ -10,6 +10,8 @@ class WebViewSpy: WebEngineContract {
         case stopLoading
         case didTapBackButton
         case didTapForwardButton
+        case retrieveBackList
+        case retrieveForwardList
     }
 
     var receivedMessages = [Message]()
@@ -40,5 +42,15 @@ class WebViewSpy: WebEngineContract {
 
     func didTapForwardButton() {
         receivedMessages.append(.didTapForwardButton)
+    }
+
+    func retrieveBackList() -> [WebPage] {
+        receivedMessages.append(.retrieveBackList)
+        return []
+    }
+
+    func retrieveForwardList() -> [WebPage] {
+        receivedMessages.append(.retrieveForwardList)
+        return []
     }
 }
