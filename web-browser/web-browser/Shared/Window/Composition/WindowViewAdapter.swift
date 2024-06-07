@@ -42,6 +42,10 @@ final class WindowViewAdapter {
         webView.didTapForwardButton()
     }
 
+    func didLongPressBackButton() {
+        _ = webView.retrieveBackList()
+    }
+
     func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
             safelist.saveDomain(url)
@@ -62,6 +66,7 @@ final class WindowViewAdapter {
         viewModel.fullURL = model.fullURL ?? ""
         viewModel.isWebsiteProtected = model.isWebsiteProtected
         viewModel.showSiteProtection = model.showSiteProtection
+        viewModel.backForwardList = model.backForwardList?.compactMap { .init(title: $0.title, url: $0.url) }
     }
 }
 

@@ -1,8 +1,8 @@
 import Foundation
 
 public struct WebPage {
-    let title: String
-    let url: String
+    public let title: String
+    public let url: String
 }
 
 public protocol WebEngineContract {

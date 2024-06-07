@@ -1,6 +1,6 @@
 import XCTest
 @testable import web_browser
-import core_web_browser
+@testable import core_web_browser
 
 class WindowPresenterTests: XCTestCase {
 
@@ -152,6 +152,34 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+    }
+
+    func test_didLoadBackForwardList_deliversCorrectValues() {
+        let sut = WindowPresenter()
+        var receivedResult: WindowPresentableModel?
+        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
+        let page2 = WebPage(title: "page2 title", url: "www.page2.com")
+        sut.didUpdatePresentableModel = { receivedResult = $0 }
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+
+        sut.didLoadBackForwardList([page1, page2])
+
+        XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertFalse(receivedResult!.showClearButton)
+        XCTAssertFalse(receivedResult!.showStopButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showSiteProtection)
+        XCTAssertTrue(receivedResult!.isWebsiteProtected)
+        XCTAssertTrue(receivedResult!.showWebView)
+        XCTAssertTrue(receivedResult!.canGoBack)
+        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertEqual(receivedResult!.backForwardList?.first?.title, page1.title)
+        XCTAssertEqual(receivedResult!.backForwardList?.first?.url, page1.url)
+        XCTAssertEqual(receivedResult!.backForwardList?.last?.title, page2.title)
+        XCTAssertEqual(receivedResult!.backForwardList?.last?.url, page2.url)
     }
 
     func test_didUpdateProgressBar_deliversCorrectValues() {

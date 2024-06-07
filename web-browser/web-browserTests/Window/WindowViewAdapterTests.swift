@@ -67,6 +67,15 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [.didTapForwardButton])
     }
 
+    func test_didLongPressBackButton_sendsCorrectMessage() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didLongPressBackButton()
+
+        XCTAssertEqual(presenter.receivedMessages, [])
+        XCTAssertEqual(webView.receivedMessages, [.retrieveBackList])
+    }
+
     func test_didLoadPage_sendsCorrectMessages() {
         let (sut, webView, presenter, _) = makeSUT()
 
@@ -117,7 +126,8 @@ class WindowViewAdapterTests: XCTestCase {
             showWebView: true,
             canGoBack: true,
             canGoForward: true,
-            progressBarValue: 0.5)
+            progressBarValue: 0.5, 
+            backForwardList: [WindowPresentableModel.WebPage(title: "page title", url: "http://some-page.com")])
 
         sut.updateViewModel(model)
 
@@ -132,6 +142,8 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.isBackButtonDisabled, !model.canGoBack)
         XCTAssertEqual(sut.viewModel.isForwardButtonDisabled, !model.canGoForward)
         XCTAssertEqual(sut.viewModel.progressBarValue, model.progressBarValue)
+        XCTAssertEqual(sut.viewModel.backForwardList?.first?.title, model.backForwardList?.first?.title)
+        XCTAssertEqual(sut.viewModel.backForwardList?.first?.url, model.backForwardList?.first?.url)
     }
 
     // MARK: - Helpers
