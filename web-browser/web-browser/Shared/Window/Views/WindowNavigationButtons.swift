@@ -5,21 +5,15 @@ struct WindowNavigationButtons: View {
 
     var body: some View {
         HStack(spacing: 20) {
-            Button(action: { viewModel.didTapBackButton?() }) {
-                Image(systemName: "arrow.left")
-            }
-            .disabled(viewModel.isBackButtonDisabled)
-            .onLongPressGesture {
-                viewModel.didLongPressBackButton?()
-            }
+            CustomGestureButton(imageName: "arrow.left",
+                                action: { viewModel.didTapBackButton?() },
+                                longPressAction: { viewModel.didLongPressBackButton?() }, 
+                                isDisabled: viewModel.isBackButtonDisabled)
 
-            Button(action: { viewModel.didTapForwardButton?() }) {
-                Image(systemName: "arrow.right")
-            }
-            .disabled(viewModel.isForwardButtonDisabled)
-            .onLongPressGesture {
-                viewModel.didLongPressForwardButton?()
-            }
+            CustomGestureButton(imageName: "arrow.right",
+                                action: { viewModel.didTapForwardButton?() },
+                                longPressAction: { viewModel.didLongPressForwardButton?() }, 
+                                isDisabled: viewModel.isForwardButtonDisabled)
         }
     }
 }
