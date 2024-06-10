@@ -123,6 +123,26 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
+    func didLoadForwardList(_ webPages: [WebPage]) {
+        let newModel = WindowPresentableModel(
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: model.showCancelButton,
+            showClearButton: model.showClearButton,
+            showStopButton: model.showStopButton,
+            showReloadButton: model.showReloadButton,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: webPages.map { .init(title: $0.title, url: $0.url) })
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
     func didUpdateProgressBar(_ value: Double) {
         let progressValue = value >= 1 ? nil : value
 
