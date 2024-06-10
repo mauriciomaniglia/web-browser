@@ -43,7 +43,13 @@ final class WindowViewAdapter {
     }
 
     func didLongPressBackButton() {
-        _ = webView.retrieveBackList()
+        let webPages = webView.retrieveBackList()
+        presenter.didLoadBackList(webPages)
+    }
+
+    func didLongPressForwardButton() {
+        let webPages = webView.retrieveForwardList()
+        presenter.didLoadForwardList(webPages)
     }
 
     func updateSafelist(url: String, isEnabled: Bool) {

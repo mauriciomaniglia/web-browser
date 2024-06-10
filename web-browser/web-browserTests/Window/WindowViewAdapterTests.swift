@@ -72,8 +72,17 @@ class WindowViewAdapterTests: XCTestCase {
 
         sut.didLongPressBackButton()
 
-        XCTAssertEqual(presenter.receivedMessages, [])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadBackList])
         XCTAssertEqual(webView.receivedMessages, [.retrieveBackList])
+    }
+
+    func test_didLongPressForwardButton_sendsCorrectMessage() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didLongPressForwardButton()
+
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadForwardList])
+        XCTAssertEqual(webView.receivedMessages, [.retrieveForwardList])
     }
 
     func test_didLoadPage_sendsCorrectMessages() {
