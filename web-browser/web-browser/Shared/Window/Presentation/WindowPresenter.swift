@@ -98,7 +98,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didLoadBackForwardList(_ webPages: [WebPage]) {
+    func didLoadBackList(_ webPages: [WebPage]) {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,

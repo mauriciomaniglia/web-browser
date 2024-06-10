@@ -154,7 +154,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(receivedResult!.progressBarValue)
     }
 
-    func test_didLoadBackForwardList_deliversCorrectValues() {
+    func test_didLoadBackList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
         let page1 = WebPage(title: "page1 title", url: "www.page1.com")
@@ -162,7 +162,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
-        sut.didLoadBackForwardList([page1, page2])
+        sut.didLoadBackList([page1, page2])
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
