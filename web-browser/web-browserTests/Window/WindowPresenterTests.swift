@@ -23,6 +23,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didStartNewWindow_deliversCorrectValuesWhenCallFromAnyPreviousState() {
@@ -45,6 +47,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didStartEditing_deliversCorrectValues() {
@@ -66,6 +70,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didStartEditing_deliversCorrectValuesWithPageAlreadyLoaded() {
@@ -88,6 +94,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didEndEditing_deliversCorrectValues() {
@@ -109,6 +117,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didEndEditing_deliversCorrectValuesWithPageAlreadyLoaded() {
@@ -131,6 +141,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didLoadPage_deliversCorrectValues() {
@@ -152,6 +164,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didLoadBackList_deliversCorrectValues() {
@@ -176,10 +190,11 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
-        XCTAssertEqual(receivedResult!.backForwardList?.first?.title, page1.title)
-        XCTAssertEqual(receivedResult!.backForwardList?.first?.url, page1.url)
-        XCTAssertEqual(receivedResult!.backForwardList?.last?.title, page2.title)
-        XCTAssertEqual(receivedResult!.backForwardList?.last?.url, page2.url)
+        XCTAssertEqual(receivedResult!.backList?.first?.title, page1.title)
+        XCTAssertEqual(receivedResult!.backList?.first?.url, page1.url)
+        XCTAssertEqual(receivedResult!.backList?.last?.title, page2.title)
+        XCTAssertEqual(receivedResult!.backList?.last?.url, page2.url)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_deliversCorrectValues() {
@@ -201,6 +216,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_whenValueIsOne_stopButtonAndProgressBarShouldNotBeVisible() {
@@ -222,6 +239,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertEqual(receivedResult!.progressBarValue, nil)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_whenValueGreaterThanOne_stopButtonAndProgressBarShouldNotBeVisible() {
@@ -243,6 +262,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertEqual(receivedResult!.progressBarValue, nil)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_whenNavigationUpdates_deliversCorrectValues() {
@@ -265,6 +286,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     // MARK: -- Helpers

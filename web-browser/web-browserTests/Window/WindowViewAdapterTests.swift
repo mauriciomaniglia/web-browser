@@ -127,7 +127,8 @@ class WindowViewAdapterTests: XCTestCase {
             canGoBack: true,
             canGoForward: true,
             progressBarValue: 0.5, 
-            backForwardList: [WindowPresentableModel.WebPage(title: "page title", url: "http://some-page.com")])
+            backList: [WindowPresentableModel.WebPage(title: "page title", url: "http://some-page.com")], 
+            forwardList: nil)
 
         sut.updateViewModel(model)
 
@@ -142,8 +143,8 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.isBackButtonDisabled, !model.canGoBack)
         XCTAssertEqual(sut.viewModel.isForwardButtonDisabled, !model.canGoForward)
         XCTAssertEqual(sut.viewModel.progressBarValue, model.progressBarValue)
-        XCTAssertEqual(sut.viewModel.backForwardList?.first?.title, model.backForwardList?.first?.title)
-        XCTAssertEqual(sut.viewModel.backForwardList?.first?.url, model.backForwardList?.first?.url)
+        XCTAssertEqual(sut.viewModel.backForwardList?.first?.title, model.backList?.first?.title)
+        XCTAssertEqual(sut.viewModel.backForwardList?.first?.url, model.backList?.first?.url)
     }
 
     // MARK: - Helpers

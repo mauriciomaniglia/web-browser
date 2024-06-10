@@ -17,5 +17,6 @@ struct WindowPresentableModel {
     let canGoBack: Bool
     let canGoForward: Bool
     var progressBarValue: Double?
-    let backForwardList: [WebPage]?
+    let backList: [WebPage]?
+    let forwardList: [WebPage]?
 }

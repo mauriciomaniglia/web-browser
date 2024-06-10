@@ -19,6 +19,7 @@ class WindowViewModel: ObservableObject {
     @Published var isWebsiteProtected: Bool = true
     @Published var showSiteProtection: Bool = false
     @Published var backForwardList: [WebPage]? = nil
+    @Published var showBackForwardList: Bool = false
 
     var didTapBackButton: (() -> Void)?
     var didTapForwardButton: (() -> Void)?

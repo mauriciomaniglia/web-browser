@@ -18,7 +18,8 @@ class WindowPresenter {
             showWebView: false,
             canGoBack: false,
             canGoForward: false, 
-            backForwardList: nil)
+            backList: nil,
+            forwardList: nil)
     }
 
     func didStartNewWindow() {
@@ -34,7 +35,8 @@ class WindowPresenter {
             showWebView: false,
             canGoBack: false,
             canGoForward: false,
-            backForwardList: nil))
+            backList: nil,
+            forwardList: nil))
     }
 
     func didStartEditing() {
@@ -50,7 +52,8 @@ class WindowPresenter {
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
-            backForwardList: nil)
+            backList: nil,
+            forwardList: nil)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -69,7 +72,8 @@ class WindowPresenter {
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
-            backForwardList: nil)
+            backList: nil,
+            forwardList: nil)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -92,7 +96,8 @@ class WindowPresenter {
             showWebView: true,
             canGoBack: canGoBack,
             canGoForward: canGoForward,
-            backForwardList: model.backForwardList)
+            backList: model.backList,
+            forwardList: model.forwardList)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -111,7 +116,8 @@ class WindowPresenter {
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
-            backForwardList: webPages.map { .init(title: $0.title, url: $0.url) })
+            backList: webPages.map { .init(title: $0.title, url: $0.url) },
+            forwardList: nil)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -133,7 +139,8 @@ class WindowPresenter {
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
             progressBarValue: progressValue,
-            backForwardList: model.backForwardList))
+            backList: model.backList,
+            forwardList: model.forwardList))
     }
 
     private func showCancelButton() -> Bool {
