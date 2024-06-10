@@ -152,11 +152,11 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.isBackButtonDisabled, !model.canGoBack)
         XCTAssertEqual(sut.viewModel.isForwardButtonDisabled, !model.canGoForward)
         XCTAssertEqual(sut.viewModel.progressBarValue, model.progressBarValue)
-        XCTAssertEqual(sut.viewModel.backList?.first?.title, model.backList?.first?.title)
-        XCTAssertEqual(sut.viewModel.backList?.first?.url, model.backList?.first?.url)
+        XCTAssertEqual(sut.viewModel.backList.first?.title, model.backList?.first?.title)
+        XCTAssertEqual(sut.viewModel.backList.first?.url, model.backList?.first?.url)
         XCTAssertTrue(sut.viewModel.showBackList)
-        XCTAssertEqual(sut.viewModel.forwardList?.first?.title, model.forwardList?.first?.title)
-        XCTAssertEqual(sut.viewModel.forwardList?.first?.url, model.forwardList?.first?.url)
+        XCTAssertEqual(sut.viewModel.forwardList.first?.title, model.forwardList?.first?.title)
+        XCTAssertEqual(sut.viewModel.forwardList.first?.url, model.forwardList?.first?.url)
         XCTAssertTrue(sut.viewModel.showBackList)
     }
 

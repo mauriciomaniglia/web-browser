@@ -18,9 +18,9 @@ class WindowViewModel: ObservableObject {
     @Published var fullURL: String = ""
     @Published var isWebsiteProtected: Bool = true
     @Published var showSiteProtection: Bool = false
-    @Published var backList: [WebPage]? = nil
+    @Published var backList: [WebPage] = []
     @Published var showBackList: Bool = false
-    @Published var forwardList: [WebPage]? = nil
+    @Published var forwardList: [WebPage] = []
     @Published var showForwardList: Bool = false
 
     var didTapBackButton: (() -> Void)?

@@ -72,9 +72,9 @@ final class WindowViewAdapter {
         viewModel.fullURL = model.fullURL ?? ""
         viewModel.isWebsiteProtected = model.isWebsiteProtected
         viewModel.showSiteProtection = model.showSiteProtection
-        viewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) }
+        viewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
         viewModel.showBackList = model.backList != nil
-        viewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) }
+        viewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
         viewModel.showForwardList = model.forwardList != nil
     }
 }
