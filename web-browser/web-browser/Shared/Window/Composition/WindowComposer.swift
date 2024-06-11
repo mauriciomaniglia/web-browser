@@ -22,7 +22,8 @@ final class WindowComposer {
         viewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
         viewModel.didBeginEditing = windowViewAdapter.didStartEditing
         viewModel.didEndEditing = windowViewAdapter.didEndEditing
-        viewModel.didLongPressBackButton = windowViewAdapter.didLongPressBackButton        
+        viewModel.didLongPressBackButton = windowViewAdapter.didLongPressBackButton
+        viewModel.didLongPressForwardButton = windowViewAdapter.didLongPressForwardButton
 
         webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
