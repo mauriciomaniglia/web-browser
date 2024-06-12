@@ -8,7 +8,7 @@ struct NavigationHistoryView: View {
             ForEach(pageList.indices, id: \.self) { index in
                 let page = pageList[index]
 
-                Text("\(page.url)")
+                Text("\(page.title)")
                     .onTapGesture {
                         print("Did select at: \(index)")
                     }
