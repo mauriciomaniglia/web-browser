@@ -190,10 +190,10 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
-        XCTAssertEqual(receivedResult!.backList?.first?.title, page1.title)
-        XCTAssertEqual(receivedResult!.backList?.first?.url, page1.url)
-        XCTAssertEqual(receivedResult!.backList?.last?.title, page2.url)
-        XCTAssertEqual(receivedResult!.backList?.last?.url, page2.url)
+        XCTAssertEqual(receivedResult!.backList?.first?.title, page2.url)
+        XCTAssertEqual(receivedResult!.backList?.first?.url, page2.url)
+        XCTAssertEqual(receivedResult!.backList?.last?.title, page1.title)
+        XCTAssertEqual(receivedResult!.backList?.last?.url, page1.url)
         XCTAssertNil(receivedResult!.forwardList)
     }
 
