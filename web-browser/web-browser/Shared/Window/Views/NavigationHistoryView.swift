@@ -9,10 +9,14 @@ struct NavigationHistoryView: View {
             ForEach(pageList.indices, id: \.self) { index in
                 let page = pageList[index]
 
-                Text("\(page.title)")
-                    .onTapGesture {
-                        didSelectPage?(index)
-                    }
+                HStack {
+                    Text("\(page.title)")
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    didSelectPage?(index)
+                }
 
                 Divider()
             }
