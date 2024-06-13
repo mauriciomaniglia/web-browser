@@ -15,4 +15,6 @@ public protocol WebEngineContract {
     func didTapForwardButton()
     func retrieveBackList() -> [WebPage]
     func retrieveForwardList() -> [WebPage]
+    func navigateToBackListPage(at index: Int)
+    func navigateToForwardListPage(at index: Int)
 }
