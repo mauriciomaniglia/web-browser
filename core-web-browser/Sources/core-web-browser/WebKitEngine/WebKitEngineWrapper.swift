@@ -62,13 +62,13 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
 
     public func retrieveBackList() -> [WebPage] {
         webView.backForwardList.backList.map {
-            WebPage(title: $0.title ?? "", url: $0.url.absoluteString)
+            WebPage(title: $0.title, url: $0.url.absoluteString)
         }
     }
 
     public func retrieveForwardList() -> [WebPage] {
         webView.backForwardList.forwardList.map {
-            WebPage(title: $0.title ?? "", url: $0.url.absoluteString)
+            WebPage(title: $0.title, url: $0.url.absoluteString)
         }
     }
 

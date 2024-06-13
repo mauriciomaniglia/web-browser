@@ -116,7 +116,7 @@ class WindowPresenter {
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
-            backList: webPages.map { .init(title: $0.title.isEmpty ? $0.url : $0.title, url: $0.url) }.reversed(),
+            backList: webPages.map { .init(title: $0.title ?? $0.url, url: $0.url) }.reversed(),
             forwardList: nil)
 
         model = newModel
@@ -137,7 +137,7 @@ class WindowPresenter {
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
             backList: nil,
-            forwardList: webPages.map { .init(title: $0.title.isEmpty ? $0.url : $0.title, url: $0.url) })
+            forwardList: webPages.map { .init(title: $0.title ?? $0.url, url: $0.url) })
 
         model = newModel
         didUpdatePresentableModel?(newModel)

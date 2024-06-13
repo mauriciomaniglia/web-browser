@@ -1,7 +1,7 @@
 import Foundation
 
 public struct WebPage {
-    public let title: String
+    public let title: String?
     public let url: String
 }
 
