@@ -10,7 +10,7 @@ struct WindowNavigationButtons: View {
                                 longPressAction: { viewModel.didLongPressBackButton?() }, 
                                 isDisabled: viewModel.isBackButtonDisabled)
             .popover(isPresented: $viewModel.showBackList, arrowEdge: .bottom, content: {
-                NavigationHistoryView(pageList: viewModel.backList)
+                NavigationHistoryView(didSelectPage: viewModel.didSelectBackListPage, pageList: viewModel.backList)
             })
 
             CustomGestureButton(imageName: "arrow.right",
@@ -18,7 +18,7 @@ struct WindowNavigationButtons: View {
                                 longPressAction: { viewModel.didLongPressForwardButton?() }, 
                                 isDisabled: viewModel.isForwardButtonDisabled)
             .popover(isPresented: $viewModel.showForwardList, arrowEdge: .bottom, content: {
-                NavigationHistoryView(pageList: viewModel.forwardList)
+                NavigationHistoryView(didSelectPage: viewModel.didSelectForwardListPage, pageList: viewModel.forwardList)
             })
         }
     }

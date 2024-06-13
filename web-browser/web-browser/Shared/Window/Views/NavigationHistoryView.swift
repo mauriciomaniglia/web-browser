@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct NavigationHistoryView: View {
+    var didSelectPage: ((Int) -> Void)?
     let pageList: [WindowViewModel.WebPage]
 
     var body: some View {
@@ -10,7 +11,7 @@ struct NavigationHistoryView: View {
 
                 Text("\(page.title)")
                     .onTapGesture {
-                        print("Did select at: \(index)")
+                        didSelectPage?(index)
                     }
 
                 Divider()
