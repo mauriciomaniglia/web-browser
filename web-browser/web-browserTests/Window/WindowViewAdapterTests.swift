@@ -103,6 +103,22 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(presenter.receivedMessages, [.didUpdateProgressBar(value: 0.5)])
     }
 
+    func test_didSelectBackListPage_sendsCorrectMessages() {
+        let (sut, webView, _, _) = makeSUT()
+
+        sut.didSelectBackListPage(at: 1)
+
+        XCTAssertEqual(webView.receivedMessages, [.navigateToBackListPage])
+    }
+
+    func test_didSelectForwardListPage_sendsCorrectMessages() {
+        let (sut, webView, _, _) = makeSUT()
+
+        sut.didSelectForwardListPage(at: 1)
+
+        XCTAssertEqual(webView.receivedMessages, [.navigateToForwardListPage])
+    }
+
     func test_updateSafelist_withURLEnabled_addURLToSafelist() {
         let (sut, _, _, safelist) = makeSUT()
         let url = "http://some-url.com"
