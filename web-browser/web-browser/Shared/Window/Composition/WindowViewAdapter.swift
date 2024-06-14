@@ -53,10 +53,12 @@ final class WindowViewAdapter {
     }
 
     func didSelectBackListPage(at index: Int) {
+        presenter.didDismissBackForwardList()
         webView.navigateToBackListPage(at: index)
     }
 
     func didSelectForwardListPage(at index: Int) {
+        presenter.didDismissBackForwardList()
         webView.navigateToForwardListPage(at: index)
     }
 

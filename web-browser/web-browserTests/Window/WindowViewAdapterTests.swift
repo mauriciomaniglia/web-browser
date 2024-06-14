@@ -104,18 +104,20 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didSelectBackListPage_sendsCorrectMessages() {
-        let (sut, webView, _, _) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didSelectBackListPage(at: 1)
 
+        XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
         XCTAssertEqual(webView.receivedMessages, [.navigateToBackListPage])
     }
 
     func test_didSelectForwardListPage_sendsCorrectMessages() {
-        let (sut, webView, _, _) = makeSUT()
+        let (sut, webView, presenter, _) = makeSUT()
 
         sut.didSelectForwardListPage(at: 1)
 
+        XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
         XCTAssertEqual(webView.receivedMessages, [.navigateToForwardListPage])
     }
 
