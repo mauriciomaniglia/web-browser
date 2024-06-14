@@ -12,6 +12,11 @@ struct WindowNavigationButtons: View {
             .popover(isPresented: $viewModel.showBackList, arrowEdge: .bottom, content: {
                 NavigationHistoryView(didSelectPage: viewModel.didSelectBackListPage, pageList: viewModel.backList)
             })
+            .onChange(of: viewModel.showBackList) { _, isPresented in
+                if !isPresented {
+                    viewModel.didDismissBackForwardPageList?()
+                }
+            }
 
             CustomGestureButton(imageName: "arrow.right",
                                 action: { viewModel.didTapForwardButton?() },
@@ -20,6 +25,11 @@ struct WindowNavigationButtons: View {
             .popover(isPresented: $viewModel.showForwardList, arrowEdge: .bottom, content: {
                 NavigationHistoryView(didSelectPage: viewModel.didSelectForwardListPage, pageList: viewModel.forwardList)
             })
+            .onChange(of: viewModel.showForwardList) { _, isPresented in
+                if !isPresented {
+                    viewModel.didDismissBackForwardPageList?()
+                }
+            }
         }
     }
 }

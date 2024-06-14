@@ -29,6 +29,7 @@ class WindowViewModel: ObservableObject {
     var didLongPressForwardButton: (() -> Void)?
     var didSelectBackListPage: ((Int) -> Void)?
     var didSelectForwardListPage: ((Int) -> Void)?
+    var didDismissBackForwardPageList: (() -> Void)?
     var didTapCancelButton: (() -> Void)?
     var didReload: (() -> Void)?
     var didStopLoading: (() -> Void)?
