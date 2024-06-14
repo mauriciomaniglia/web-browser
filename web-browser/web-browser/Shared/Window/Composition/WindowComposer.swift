@@ -26,6 +26,7 @@ final class WindowComposer {
         viewModel.didLongPressForwardButton = windowViewAdapter.didLongPressForwardButton
         viewModel.didSelectBackListPage = windowViewAdapter.didSelectBackListPage(at:)
         viewModel.didSelectForwardListPage = windowViewAdapter.didSelectForwardListPage(at:)
+        viewModel.didDismissBackForwardPageList = windowViewAdapter.didDismissBackForwardList
 
         webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
