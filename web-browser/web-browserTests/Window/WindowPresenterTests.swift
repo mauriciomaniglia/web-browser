@@ -173,10 +173,11 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         let page1 = WebPage(title: "page1 title", url: "www.page1.com")
         let page2 = WebPage(title: nil, url: "www.page2.com")
+        let page3 = WebPage(title: "", url: "www.page3.com")
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
-        sut.didLoadBackList([page1, page2])
+        sut.didLoadBackList([page1, page2, page3])
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
@@ -190,10 +191,12 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
-        XCTAssertEqual(receivedResult!.backList?.first?.title, page2.url)
-        XCTAssertEqual(receivedResult!.backList?.first?.url, page2.url)
-        XCTAssertEqual(receivedResult!.backList?.last?.title, page1.title)
-        XCTAssertEqual(receivedResult!.backList?.last?.url, page1.url)
+        XCTAssertEqual(receivedResult!.backList?[0].title, page3.url)
+        XCTAssertEqual(receivedResult!.backList?[0].url, page3.url)
+        XCTAssertEqual(receivedResult!.backList?[1].title, page2.url)
+        XCTAssertEqual(receivedResult!.backList?[1].url, page2.url)
+        XCTAssertEqual(receivedResult!.backList?[2].title, page1.title)
+        XCTAssertEqual(receivedResult!.backList?[2].url, page1.url)
         XCTAssertNil(receivedResult!.forwardList)
     }
 
@@ -202,10 +205,11 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         let page1 = WebPage(title: "page1 title", url: "www.page1.com")
         let page2 = WebPage(title: nil, url: "www.page2.com")
+        let page3 = WebPage(title: "", url: "www.page3.com")
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
-        sut.didLoadForwardList([page1, page2])
+        sut.didLoadForwardList([page1, page2, page3])
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
@@ -219,10 +223,12 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
-        XCTAssertEqual(receivedResult!.forwardList?.first?.title, page1.title)
-        XCTAssertEqual(receivedResult!.forwardList?.first?.url, page1.url)
-        XCTAssertEqual(receivedResult!.forwardList?.last?.title, page2.url)
-        XCTAssertEqual(receivedResult!.forwardList?.last?.url, page2.url)
+        XCTAssertEqual(receivedResult!.forwardList?[0].title, page1.title)
+        XCTAssertEqual(receivedResult!.forwardList?[0].url, page1.url)
+        XCTAssertEqual(receivedResult!.forwardList?[1].title, page2.url)
+        XCTAssertEqual(receivedResult!.forwardList?[1].url, page2.url)
+        XCTAssertEqual(receivedResult!.forwardList?[2].title, page3.url)
+        XCTAssertEqual(receivedResult!.forwardList?[2].url, page3.url)
         XCTAssertNil(receivedResult!.backList)
     }
 

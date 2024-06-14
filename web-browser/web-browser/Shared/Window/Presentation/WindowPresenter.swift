@@ -116,7 +116,7 @@ class WindowPresenter {
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
-            backList: webPages.map { .init(title: $0.title ?? $0.url, url: $0.url) }.reversed(),
+            backList: webPages.map(mapWebPage).reversed(),
             forwardList: nil)
 
         model = newModel
@@ -137,7 +137,7 @@ class WindowPresenter {
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
             backList: nil,
-            forwardList: webPages.map { .init(title: $0.title ?? $0.url, url: $0.url) })
+            forwardList: webPages.map(mapWebPage))
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -181,6 +181,11 @@ class WindowPresenter {
             progressBarValue: progressValue,
             backList: model.backList,
             forwardList: model.forwardList))
+    }
+
+    private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.WebPage {
+        let title = webPage.title ?? ""
+        return .init(title: title.isEmpty ? webPage.url : title, url: webPage.url)
     }
 
     private func showCancelButton() -> Bool {
