@@ -60,6 +60,10 @@ final class WindowViewAdapter {
         webView.navigateToForwardListPage(at: index)
     }
 
+    func didDismissBackForwardList() {
+        presenter.didDismissBackForwardList()
+    }
+
     func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
             safelist.saveDomain(url)

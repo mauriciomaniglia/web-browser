@@ -143,6 +143,26 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
+    func didDismissBackForwardList() {
+        let newModel = WindowPresentableModel(
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: model.showCancelButton,
+            showClearButton: model.showClearButton,
+            showStopButton: model.showStopButton,
+            showReloadButton: model.showReloadButton,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: nil)
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
     func didUpdateProgressBar(_ value: Double) {
         let progressValue = value >= 1 ? nil : value
 

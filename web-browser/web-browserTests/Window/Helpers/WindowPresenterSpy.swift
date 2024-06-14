@@ -10,6 +10,7 @@ class WindowPresenterSpy: WindowPresenter {
         case didUpdateProgressBar(value: Double)
         case didLoadBackList
         case didLoadForwardList
+        case didDismissBackForwardList
     }
 
     var receivedMessages = [Message]()
@@ -36,5 +37,9 @@ class WindowPresenterSpy: WindowPresenter {
 
     override func didLoadForwardList(_ webPages: [WebPage]) {
         receivedMessages.append(.didLoadForwardList)
+    }
+
+    override func didDismissBackForwardList() {
+        receivedMessages.append(.didDismissBackForwardList)
     }
 }
