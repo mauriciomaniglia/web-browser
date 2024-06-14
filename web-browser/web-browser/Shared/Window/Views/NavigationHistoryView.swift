@@ -18,7 +18,9 @@ struct NavigationHistoryView: View {
                     didSelectPage?(index)
                 }
 
-                Divider()
+                if index < pageList.count-1 {
+                    Divider()
+                }
             }
             .presentationCompactAdaptation((.popover))
         }
