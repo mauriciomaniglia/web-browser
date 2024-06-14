@@ -60,6 +60,32 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         webView.canGoForward
     }
 
+    public func retrieveBackList() -> [WebPage] {
+        webView.backForwardList.backList.map {
+            WebPage(title: $0.title, url: $0.url.absoluteString)
+        }
+    }
+
+    public func retrieveForwardList() -> [WebPage] {
+        webView.backForwardList.forwardList.map {
+            WebPage(title: $0.title, url: $0.url.absoluteString)
+        }
+    }
+
+    public func navigateToBackListPage(at index: Int) {
+        let backList: [WKBackForwardListItem] = webView.backForwardList.backList.reversed()
+        let forwardList: [WKBackForwardListItem] = webView.backForwardList.forwardList.reversed()
+        let items =  backList + forwardList
+
+        webView.go(to: items[index])
+    }
+
+    public func navigateToForwardListPage(at index: Int) {
+        let items = webView.backForwardList.forwardList + webView.backForwardList.backList
+
+        webView.go(to: items[index])
+    }
+
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath else { return }
 

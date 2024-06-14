@@ -1,6 +1,6 @@
 import XCTest
 @testable import web_browser
-import core_web_browser
+@testable import core_web_browser
 
 class WindowPresenterTests: XCTestCase {
 
@@ -23,6 +23,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didStartNewWindow_deliversCorrectValuesWhenCallFromAnyPreviousState() {
@@ -45,6 +47,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didStartEditing_deliversCorrectValues() {
@@ -66,6 +70,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didStartEditing_deliversCorrectValuesWithPageAlreadyLoaded() {
@@ -88,6 +94,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didEndEditing_deliversCorrectValues() {
@@ -109,6 +117,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didEndEditing_deliversCorrectValuesWithPageAlreadyLoaded() {
@@ -131,6 +141,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didLoadPage_deliversCorrectValues() {
@@ -152,6 +164,99 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
+    }
+
+    func test_didLoadBackList_deliversCorrectValues() {
+        let sut = WindowPresenter()
+        var receivedResult: WindowPresentableModel?
+        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
+        let page2 = WebPage(title: nil, url: "www.page2.com")
+        let page3 = WebPage(title: "", url: "www.page3.com")
+        sut.didUpdatePresentableModel = { receivedResult = $0 }
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+
+        sut.didLoadBackList([page1, page2, page3])
+
+        XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertFalse(receivedResult!.showClearButton)
+        XCTAssertFalse(receivedResult!.showStopButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showSiteProtection)
+        XCTAssertTrue(receivedResult!.isWebsiteProtected)
+        XCTAssertTrue(receivedResult!.showWebView)
+        XCTAssertTrue(receivedResult!.canGoBack)
+        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertEqual(receivedResult!.backList?[0].title, page3.url)
+        XCTAssertEqual(receivedResult!.backList?[0].url, page3.url)
+        XCTAssertEqual(receivedResult!.backList?[1].title, page2.url)
+        XCTAssertEqual(receivedResult!.backList?[1].url, page2.url)
+        XCTAssertEqual(receivedResult!.backList?[2].title, page1.title)
+        XCTAssertEqual(receivedResult!.backList?[2].url, page1.url)
+        XCTAssertNil(receivedResult!.forwardList)
+    }
+
+    func test_didLoadForwardList_deliversCorrectValues() {
+        let sut = WindowPresenter()
+        var receivedResult: WindowPresentableModel?
+        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
+        let page2 = WebPage(title: nil, url: "www.page2.com")
+        let page3 = WebPage(title: "", url: "www.page3.com")
+        sut.didUpdatePresentableModel = { receivedResult = $0 }
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+
+        sut.didLoadForwardList([page1, page2, page3])
+
+        XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertFalse(receivedResult!.showClearButton)
+        XCTAssertFalse(receivedResult!.showStopButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showSiteProtection)
+        XCTAssertTrue(receivedResult!.isWebsiteProtected)
+        XCTAssertTrue(receivedResult!.showWebView)
+        XCTAssertTrue(receivedResult!.canGoBack)
+        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertEqual(receivedResult!.forwardList?[0].title, page1.title)
+        XCTAssertEqual(receivedResult!.forwardList?[0].url, page1.url)
+        XCTAssertEqual(receivedResult!.forwardList?[1].title, page2.url)
+        XCTAssertEqual(receivedResult!.forwardList?[1].url, page2.url)
+        XCTAssertEqual(receivedResult!.forwardList?[2].title, page3.url)
+        XCTAssertEqual(receivedResult!.forwardList?[2].url, page3.url)
+        XCTAssertNil(receivedResult!.backList)
+    }
+
+    func test_didDismissBackForwardList_deliversCorrectValues() {
+        let sut = WindowPresenter()
+        var receivedResult: WindowPresentableModel?
+        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
+        let page2 = WebPage(title: nil, url: "www.page2.com")
+        sut.didUpdatePresentableModel = { receivedResult = $0 }
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadForwardList([page1, page2])
+
+        sut.didDismissBackForwardList()
+
+        XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
+        XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertFalse(receivedResult!.showClearButton)
+        XCTAssertFalse(receivedResult!.showStopButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showSiteProtection)
+        XCTAssertTrue(receivedResult!.isWebsiteProtected)
+        XCTAssertTrue(receivedResult!.showWebView)
+        XCTAssertTrue(receivedResult!.canGoBack)
+        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.forwardList)
+        XCTAssertNil(receivedResult!.backList)
     }
 
     func test_didUpdateProgressBar_deliversCorrectValues() {
@@ -173,6 +278,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoBack)
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_whenValueIsOne_stopButtonAndProgressBarShouldNotBeVisible() {
@@ -194,6 +301,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertEqual(receivedResult!.progressBarValue, nil)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_whenValueGreaterThanOne_stopButtonAndProgressBarShouldNotBeVisible() {
@@ -215,6 +324,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertFalse(receivedResult!.showStopButton)
         XCTAssertEqual(receivedResult!.progressBarValue, nil)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didUpdateProgressBar_whenNavigationUpdates_deliversCorrectValues() {
@@ -237,6 +348,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
     }
 
     // MARK: -- Helpers

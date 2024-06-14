@@ -22,6 +22,11 @@ final class WindowComposer {
         viewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
         viewModel.didBeginEditing = windowViewAdapter.didStartEditing
         viewModel.didEndEditing = windowViewAdapter.didEndEditing
+        viewModel.didLongPressBackButton = windowViewAdapter.didLongPressBackButton
+        viewModel.didLongPressForwardButton = windowViewAdapter.didLongPressForwardButton
+        viewModel.didSelectBackListPage = windowViewAdapter.didSelectBackListPage(at:)
+        viewModel.didSelectForwardListPage = windowViewAdapter.didSelectForwardListPage(at:)
+        viewModel.didDismissBackForwardPageList = windowViewAdapter.didDismissBackForwardList
 
         webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel

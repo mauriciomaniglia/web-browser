@@ -17,7 +17,9 @@ class WindowPresenter {
             isWebsiteProtected: true,
             showWebView: false,
             canGoBack: false,
-            canGoForward: false)
+            canGoForward: false, 
+            backList: nil,
+            forwardList: nil)
     }
 
     func didStartNewWindow() {
@@ -32,7 +34,9 @@ class WindowPresenter {
             isWebsiteProtected: true,
             showWebView: false,
             canGoBack: false,
-            canGoForward: false))
+            canGoForward: false,
+            backList: nil,
+            forwardList: nil))
     }
 
     func didStartEditing() {
@@ -47,7 +51,9 @@ class WindowPresenter {
             isWebsiteProtected: model.isWebsiteProtected,
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
-            canGoForward: model.canGoForward)
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: nil)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -65,7 +71,9 @@ class WindowPresenter {
             isWebsiteProtected: model.isWebsiteProtected,
             showWebView: model.showWebView,
             canGoBack: model.canGoBack,
-            canGoForward: model.canGoForward)
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: nil)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -87,7 +95,69 @@ class WindowPresenter {
             isWebsiteProtected: !isOnSafelist,
             showWebView: true,
             canGoBack: canGoBack,
-            canGoForward: canGoForward)
+            canGoForward: canGoForward,
+            backList: model.backList,
+            forwardList: model.forwardList)
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
+    func didLoadBackList(_ webPages: [WebPage]) {
+        let newModel = WindowPresentableModel(
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: model.showCancelButton,
+            showClearButton: model.showClearButton,
+            showStopButton: model.showStopButton,
+            showReloadButton: model.showReloadButton,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: webPages.map(mapWebPage).reversed(),
+            forwardList: nil)
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
+    func didLoadForwardList(_ webPages: [WebPage]) {
+        let newModel = WindowPresentableModel(
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: model.showCancelButton,
+            showClearButton: model.showClearButton,
+            showStopButton: model.showStopButton,
+            showReloadButton: model.showReloadButton,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: webPages.map(mapWebPage))
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
+    func didDismissBackForwardList() {
+        let newModel = WindowPresentableModel(
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: model.showCancelButton,
+            showClearButton: model.showClearButton,
+            showStopButton: model.showStopButton,
+            showReloadButton: model.showReloadButton,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: nil)
 
         model = newModel
         didUpdatePresentableModel?(newModel)
@@ -108,7 +178,14 @@ class WindowPresenter {
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
-            progressBarValue: progressValue))
+            progressBarValue: progressValue,
+            backList: model.backList,
+            forwardList: model.forwardList))
+    }
+
+    private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.WebPage {
+        let title = webPage.title ?? ""
+        return .init(title: title.isEmpty ? webPage.url : title, url: webPage.url)
     }
 
     private func showCancelButton() -> Bool {

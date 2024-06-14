@@ -1,6 +1,12 @@
 import Foundation
 
 class WindowViewModel: ObservableObject {
+
+    struct WebPage {
+        let title: String
+        let url: String
+    }
+
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true
     @Published var showCanceButton: Bool = false
@@ -12,9 +18,18 @@ class WindowViewModel: ObservableObject {
     @Published var fullURL: String = ""
     @Published var isWebsiteProtected: Bool = true
     @Published var showSiteProtection: Bool = false
+    @Published var backList: [WebPage] = []
+    @Published var showBackList: Bool = false
+    @Published var forwardList: [WebPage] = []
+    @Published var showForwardList: Bool = false
 
     var didTapBackButton: (() -> Void)?
     var didTapForwardButton: (() -> Void)?
+    var didLongPressBackButton: (() -> Void)?
+    var didLongPressForwardButton: (() -> Void)?
+    var didSelectBackListPage: ((Int) -> Void)?
+    var didSelectForwardListPage: ((Int) -> Void)?
+    var didDismissBackForwardPageList: (() -> Void)?
     var didTapCancelButton: (() -> Void)?
     var didReload: (() -> Void)?
     var didStopLoading: (() -> Void)?

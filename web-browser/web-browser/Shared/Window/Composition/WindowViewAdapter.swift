@@ -42,6 +42,30 @@ final class WindowViewAdapter {
         webView.didTapForwardButton()
     }
 
+    func didLongPressBackButton() {
+        let webPages = webView.retrieveBackList()
+        presenter.didLoadBackList(webPages)
+    }
+
+    func didLongPressForwardButton() {
+        let webPages = webView.retrieveForwardList()
+        presenter.didLoadForwardList(webPages)
+    }
+
+    func didSelectBackListPage(at index: Int) {
+        presenter.didDismissBackForwardList()
+        webView.navigateToBackListPage(at: index)
+    }
+
+    func didSelectForwardListPage(at index: Int) {
+        presenter.didDismissBackForwardList()
+        webView.navigateToForwardListPage(at: index)
+    }
+
+    func didDismissBackForwardList() {
+        presenter.didDismissBackForwardList()
+    }
+
     func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
             safelist.saveDomain(url)
@@ -62,6 +86,10 @@ final class WindowViewAdapter {
         viewModel.fullURL = model.fullURL ?? ""
         viewModel.isWebsiteProtected = model.isWebsiteProtected
         viewModel.showSiteProtection = model.showSiteProtection
+        viewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        viewModel.showBackList = model.backList != nil
+        viewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        viewModel.showForwardList = model.forwardList != nil
     }
 }
 

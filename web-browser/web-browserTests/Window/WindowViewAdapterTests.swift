@@ -67,6 +67,24 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [.didTapForwardButton])
     }
 
+    func test_didLongPressBackButton_sendsCorrectMessage() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didLongPressBackButton()
+
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadBackList])
+        XCTAssertEqual(webView.receivedMessages, [.retrieveBackList])
+    }
+
+    func test_didLongPressForwardButton_sendsCorrectMessage() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didLongPressForwardButton()
+
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadForwardList])
+        XCTAssertEqual(webView.receivedMessages, [.retrieveForwardList])
+    }
+
     func test_didLoadPage_sendsCorrectMessages() {
         let (sut, webView, presenter, _) = makeSUT()
 
@@ -83,6 +101,33 @@ class WindowViewAdapterTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(presenter.receivedMessages, [.didUpdateProgressBar(value: 0.5)])
+    }
+
+    func test_didSelectBackListPage_sendsCorrectMessages() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didSelectBackListPage(at: 1)
+
+        XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
+        XCTAssertEqual(webView.receivedMessages, [.navigateToBackListPage])
+    }
+
+    func test_didSelectForwardListPage_sendsCorrectMessages() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didSelectForwardListPage(at: 1)
+
+        XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
+        XCTAssertEqual(webView.receivedMessages, [.navigateToForwardListPage])
+    }
+
+    func test_didDismissBackForwardList_sendsCorrectMessages() {
+        let (sut, webView, presenter, _) = makeSUT()
+
+        sut.didDismissBackForwardList()
+
+        XCTAssertEqual(webView.receivedMessages, [])
+        XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
     }
 
     func test_updateSafelist_withURLEnabled_addURLToSafelist() {
@@ -117,7 +162,9 @@ class WindowViewAdapterTests: XCTestCase {
             showWebView: true,
             canGoBack: true,
             canGoForward: true,
-            progressBarValue: 0.5)
+            progressBarValue: 0.5, 
+            backList: [WindowPresentableModel.WebPage(title: "back page title", url: "http://back-page.com")],
+            forwardList: [WindowPresentableModel.WebPage(title: "forward page title", url: "http://forward-page.com")])
 
         sut.updateViewModel(model)
 
@@ -132,6 +179,12 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.isBackButtonDisabled, !model.canGoBack)
         XCTAssertEqual(sut.viewModel.isForwardButtonDisabled, !model.canGoForward)
         XCTAssertEqual(sut.viewModel.progressBarValue, model.progressBarValue)
+        XCTAssertEqual(sut.viewModel.backList.first?.title, model.backList?.first?.title)
+        XCTAssertEqual(sut.viewModel.backList.first?.url, model.backList?.first?.url)
+        XCTAssertTrue(sut.viewModel.showBackList)
+        XCTAssertEqual(sut.viewModel.forwardList.first?.title, model.forwardList?.first?.title)
+        XCTAssertEqual(sut.viewModel.forwardList.first?.url, model.forwardList?.first?.url)
+        XCTAssertTrue(sut.viewModel.showBackList)
     }
 
     // MARK: - Helpers
