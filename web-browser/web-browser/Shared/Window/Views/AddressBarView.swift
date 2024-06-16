@@ -53,7 +53,7 @@ struct AddressBarView: View {
                 .frame(height: 40)
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
 
-                if viewModel.showCanceButton {
+                if viewModel.showCancelButton {
                     Button(action: { didTapCancelButton() }) {
                         Text("Cancel")
                     }

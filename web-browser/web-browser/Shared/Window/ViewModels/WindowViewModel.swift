@@ -9,7 +9,7 @@ class WindowViewModel: ObservableObject {
 
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true
-    @Published var showCanceButton: Bool = false
+    @Published var showCancelButton: Bool = false
     @Published var showStopButton: Bool = false
     @Published var showReloadButton: Bool = false
     @Published var showClearButton: Bool = false

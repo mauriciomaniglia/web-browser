@@ -170,7 +170,7 @@ class WindowViewAdapterTests: XCTestCase {
 
         XCTAssertEqual(sut.viewModel.urlHost, model.urlHost)
         XCTAssertEqual(sut.viewModel.fullURL, model.fullURL)
-        XCTAssertEqual(sut.viewModel.showCanceButton, model.showCancelButton)
+        XCTAssertEqual(sut.viewModel.showCancelButton, model.showCancelButton)
         XCTAssertEqual(sut.viewModel.showStopButton, model.showStopButton)
         XCTAssertEqual(sut.viewModel.showReloadButton, model.showReloadButton)
         XCTAssertEqual(sut.viewModel.showClearButton, model.showReloadButton)
