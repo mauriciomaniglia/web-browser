@@ -185,7 +185,7 @@ class WindowPresenter {
 
     private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.WebPage {
         let title = webPage.title ?? ""
-        return .init(title: title.isEmpty ? webPage.url : title, url: webPage.url)
+        return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }
 
     private func showCancelButton() -> Bool {

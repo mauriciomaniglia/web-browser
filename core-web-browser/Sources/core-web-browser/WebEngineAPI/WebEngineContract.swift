@@ -2,7 +2,7 @@ import Foundation
 
 public struct WebPage {
     public let title: String?
-    public let url: String
+    public let url: URL
 }
 
 public protocol WebEngineContract {

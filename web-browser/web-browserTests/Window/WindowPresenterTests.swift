@@ -171,9 +171,9 @@ class WindowPresenterTests: XCTestCase {
     func test_didLoadBackList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
-        let page2 = WebPage(title: nil, url: "www.page2.com")
-        let page3 = WebPage(title: "", url: "www.page3.com")
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!)
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!)
+        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!)
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
@@ -191,21 +191,21 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoBack)
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
-        XCTAssertEqual(receivedResult!.backList?[0].title, page3.url)
-        XCTAssertEqual(receivedResult!.backList?[0].url, page3.url)
-        XCTAssertEqual(receivedResult!.backList?[1].title, page2.url)
-        XCTAssertEqual(receivedResult!.backList?[1].url, page2.url)
+        XCTAssertEqual(receivedResult!.backList?[0].title, page3.url.absoluteString)
+        XCTAssertEqual(receivedResult!.backList?[0].url, page3.url.absoluteString)
+        XCTAssertEqual(receivedResult!.backList?[1].title, page2.url.absoluteString)
+        XCTAssertEqual(receivedResult!.backList?[1].url, page2.url.absoluteString)
         XCTAssertEqual(receivedResult!.backList?[2].title, page1.title)
-        XCTAssertEqual(receivedResult!.backList?[2].url, page1.url)
+        XCTAssertEqual(receivedResult!.backList?[2].url, page1.url.absoluteString)
         XCTAssertNil(receivedResult!.forwardList)
     }
 
     func test_didLoadForwardList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
-        let page2 = WebPage(title: nil, url: "www.page2.com")
-        let page3 = WebPage(title: "", url: "www.page3.com")
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!)
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!)
+        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!)
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
@@ -224,19 +224,19 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertEqual(receivedResult!.forwardList?[0].title, page1.title)
-        XCTAssertEqual(receivedResult!.forwardList?[0].url, page1.url)
-        XCTAssertEqual(receivedResult!.forwardList?[1].title, page2.url)
-        XCTAssertEqual(receivedResult!.forwardList?[1].url, page2.url)
-        XCTAssertEqual(receivedResult!.forwardList?[2].title, page3.url)
-        XCTAssertEqual(receivedResult!.forwardList?[2].url, page3.url)
+        XCTAssertEqual(receivedResult!.forwardList?[0].url, page1.url.absoluteString)
+        XCTAssertEqual(receivedResult!.forwardList?[1].title, page2.url.absoluteString)
+        XCTAssertEqual(receivedResult!.forwardList?[1].url, page2.url.absoluteString)
+        XCTAssertEqual(receivedResult!.forwardList?[2].title, page3.url.absoluteString)
+        XCTAssertEqual(receivedResult!.forwardList?[2].url, page3.url.absoluteString)
         XCTAssertNil(receivedResult!.backList)
     }
 
     func test_didDismissBackForwardList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: "www.page1.com")
-        let page2 = WebPage(title: nil, url: "www.page2.com")
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!)
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!)
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
         sut.didLoadForwardList([page1, page2])
