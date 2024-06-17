@@ -94,9 +94,9 @@ final class WindowViewAdapter {
 }
 
 extension WindowViewAdapter: WebEngineDelegate {
-    func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+    func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
         presenter.didLoadPage(
-            url: url,            
+            url: page.url,
             canGoBack: canGoBack,
             canGoForward: canGoForward)
     }
