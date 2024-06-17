@@ -5,6 +5,19 @@ import SwiftData
 @available(macOS 14, *)
 
 public class HistoryStore: HistoryAPI {
+    @Model
+    class HistoryPage {
+        let title: String
+        let url: URL
+        let date: Date
+
+        init(title: String, url: URL, date: Date) {
+            self.title = title
+            self.url = url
+            self.date = date
+        }
+    }
+
     private let container = try? ModelContainer(for: HistoryPage.self)
 
     public init() {}
@@ -31,7 +44,7 @@ public class HistoryStore: HistoryAPI {
         )
 
         do {
-            let results = try context.fetch(allPages)            
+            let results = try context.fetch(allPages)
             return results.map { WebPage(title: $0.title, url: $0.url) }
         } catch {
             return []
