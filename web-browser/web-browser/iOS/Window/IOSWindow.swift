@@ -12,6 +12,13 @@ struct IOSWindow: View {
             HStack {
                 WindowNavigationButtons(viewModel: viewModel)
                 Spacer()
+                if viewModel.showMenuButton {
+                    Button(action: {}) {
+                        Image(systemName: "line.3.horizontal")
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundColor(.primary)
+                }
             }
             .padding()
         }

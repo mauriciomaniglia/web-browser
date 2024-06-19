@@ -7,6 +7,14 @@ struct MacOSWindow: View {
     var body: some View {
         VStack {
             HStack {
+                if viewModel.showMenuButton {
+                    Button(action: {}) {
+                        Image(systemName: "sidebar.left")
+                            .font(.title)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundColor(.gray)
+                }
                 WindowNavigationButtons(viewModel: viewModel)
                 AddressBarView(viewModel: viewModel)
                 Spacer()
