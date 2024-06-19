@@ -13,6 +13,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -37,6 +38,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -60,6 +62,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertEqual(receivedResult!.showCancelButton, showCancelButton())
         XCTAssertTrue(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -84,6 +87,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertEqual(receivedResult!.showCancelButton, showCancelButton())
         XCTAssertTrue(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -107,6 +111,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -131,6 +136,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -154,6 +160,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -181,6 +188,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -213,6 +221,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -245,6 +254,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertFalse(receivedResult!.showStopButton)
@@ -268,6 +278,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertTrue(receivedResult!.showStopButton)
@@ -291,6 +302,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
@@ -314,6 +326,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(receivedResult!.urlHost)
         XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertTrue(receivedResult!.showReloadButton)
@@ -338,6 +351,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertTrue(receivedResult!.showMenuButton)
         XCTAssertFalse(receivedResult!.showCancelButton)
         XCTAssertFalse(receivedResult!.showClearButton)
         XCTAssertTrue(receivedResult!.showStopButton)
