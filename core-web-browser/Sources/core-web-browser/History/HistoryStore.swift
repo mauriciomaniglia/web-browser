@@ -37,11 +37,7 @@ public class HistoryStore: HistoryAPI {
     public func getPages() -> [WebPage] {
         guard let context = container?.mainContext else { return [] }
 
-        let allPages = FetchDescriptor<HistoryPage>(
-            sortBy: [
-                .init(\.date)
-            ]
-        )
+        let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
 
         do {
             let results = try context.fetch(allPages)
