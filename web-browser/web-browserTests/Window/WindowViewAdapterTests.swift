@@ -5,7 +5,7 @@ import XCTest
 class WindowViewAdapterTests: XCTestCase {
 
     func test_didRequestSearch_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didRequestSearch("www.apple.com")
 
@@ -14,7 +14,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didReload_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didReload()
 
@@ -23,7 +23,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didStartEditing_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didStartEditing()
 
@@ -32,7 +32,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didEndEditing_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didEndEditing()
 
@@ -41,7 +41,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didStopLoading_sendsCorrectMessage() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didStopLoading()
 
@@ -50,7 +50,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didTapBackButton_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didTapBackButton()
 
@@ -59,7 +59,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didTapForwardButton_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didTapForwardButton()
 
@@ -68,7 +68,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didLongPressBackButton_sendsCorrectMessage() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didLongPressBackButton()
 
@@ -77,7 +77,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didLongPressForwardButton_sendsCorrectMessage() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didLongPressForwardButton()
 
@@ -86,17 +86,18 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didLoadPage_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, history) = makeSUT()
         let page = WebPage(title: "any", url: URL(string: "http://www.apple.com")!)
 
         sut.didLoad(page: page, canGoBack: true, canGoForward: false)
 
         XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(canGoBack: true, canGoForward: false)])
+        XCTAssertEqual(history.receivedMessages, [.save])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
     func test_didUpdateLoadingProgress_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didUpdateLoadingProgress(0.5)
 
@@ -105,7 +106,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didSelectBackListPage_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didSelectBackListPage(at: 1)
 
@@ -114,7 +115,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didSelectForwardListPage_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didSelectForwardListPage(at: 1)
 
@@ -123,7 +124,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_didDismissBackForwardList_sendsCorrectMessages() {
-        let (sut, webView, presenter, _) = makeSUT()
+        let (sut, webView, presenter, _, _) = makeSUT()
 
         sut.didDismissBackForwardList()
 
@@ -132,7 +133,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_updateSafelist_withURLEnabled_addURLToSafelist() {
-        let (sut, _, _, safelist) = makeSUT()
+        let (sut, _, _, safelist, _) = makeSUT()
         let url = "http://some-url.com"
 
         sut.updateSafelist(url: url, isEnabled: true)
@@ -141,7 +142,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_updateSafelist_withURLDisabled_removesURLFromSafelist() {
-        let (sut, _, _, safelist) = makeSUT()
+        let (sut, _, _, safelist, _) = makeSUT()
         let url = "http://some-url.com"
 
         sut.updateSafelist(url: url, isEnabled: false)
@@ -150,7 +151,7 @@ class WindowViewAdapterTests: XCTestCase {
     }
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
-        let (sut, _, _, _) = makeSUT()
+        let (sut, _, _, _, _) = makeSUT()
         let model = WindowPresentableModel(
             urlHost: "www.apple.com",
             fullURL: "http://apple.com/airpods",
@@ -192,13 +193,32 @@ class WindowViewAdapterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy) {
+    private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy, history: HistoryStoreSpy) {
         let webView = WebViewSpy()
         let presenter = WindowPresenterSpy()
         let safelist = SafelistStoreSpy()
+        let history = HistoryStoreSpy()
         let viewModel = WindowViewModel()
-        let sut = WindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist, viewModel: viewModel)
+        let sut = WindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist, history: history, viewModel: viewModel)
 
-        return (sut, webView, presenter, safelist)
+        return (sut, webView, presenter, safelist, history)
+    }
+}
+
+private class HistoryStoreSpy: HistoryAPI {
+    enum Message {
+        case save
+        case getPages
+    }
+
+    var receivedMessages = [Message]()
+
+    func save(page: WebPage) {
+        receivedMessages.append(.save)
+    }
+    
+    func getPages() -> [WebPage] {
+        receivedMessages.append(.getPages)
+        return []
     }
 }

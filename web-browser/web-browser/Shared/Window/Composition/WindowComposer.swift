@@ -9,7 +9,13 @@ final class WindowComposer {
         let safelistStore = SafelistStore()
         var viewModel = WindowViewModel()
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
-        let windowViewAdapter = WindowViewAdapter(webView: webKitEngineWrapper, presenter: windowPresenter, safelist: safelistStore, viewModel: viewModel)
+        let historyStore = HistoryStore()
+        let windowViewAdapter = WindowViewAdapter(
+            webView: webKitEngineWrapper,
+            presenter: windowPresenter,
+            safelist: safelistStore,
+            history: historyStore,
+            viewModel: viewModel)
 
         contentBlocking.setupStrictProtection()
 

@@ -5,12 +5,14 @@ final class WindowViewAdapter {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
+    private let history: HistoryAPI
     let viewModel: WindowViewModel
 
-    init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI, viewModel: WindowViewModel) {
+    init(webView: WebEngineContract, presenter: WindowPresenter, safelist: SafelistAPI, history: HistoryAPI, viewModel: WindowViewModel) {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
+        self.history = history
         self.viewModel = viewModel
     }
 
@@ -96,6 +98,7 @@ final class WindowViewAdapter {
 
 extension WindowViewAdapter: WebEngineDelegate {
     func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
+        history.save(page: page)
         presenter.didLoadPage(
             url: page.url,
             canGoBack: canGoBack,
