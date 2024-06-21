@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MenuView: View {
+    @ObservedObject var viewModel: MenuViewModel
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -9,14 +11,10 @@ struct MenuView: View {
             }
             .contentShape(Rectangle())
             .onTapGesture {
-
+                viewModel.didTapHistoryOption?()
             }
 
         }
         .presentationCompactAdaptation((.popover))
     }
-}
-
-#Preview {
-    MenuView()
 }
