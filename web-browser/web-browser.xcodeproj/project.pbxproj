@@ -33,6 +33,7 @@
 		F9E55FD52C02ACDC0098995F /* WindowPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD42C02ACDC0098995F /* WindowPresenterSpy.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9E55FDA2C02AEF40098995F /* WhitelistStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD92C02AEF40098995F /* WhitelistStoreSpy.swift */; };
+		F9EB8F1C2C2AD79900DA699D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		F9E55FD42C02ACDC0098995F /* WindowPresenterSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresenterSpy.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9E55FD92C02AEF40098995F /* WhitelistStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistStoreSpy.swift; sourceTree = "<group>"; };
+		F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				F97BF7772C259A60005FB9BD /* MenuView.swift */,
 				F97BF7792C259F88005FB9BD /* MenuViewModel.swift */,
+				F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */,
+				F9EB8F1C2C2AD79900DA699D /* HistoryView.swift in Sources */,
 				F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */,
