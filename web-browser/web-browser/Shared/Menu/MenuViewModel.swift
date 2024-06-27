@@ -8,6 +8,7 @@ class MenuViewModel: ObservableObject {
     }
 
     @Published var showMenu: Bool = false
+    @Published var showHistory: Bool = false
     @Published var historyList: [HistoryPage] = []
 
     var didTapMenuButton: (() -> Void)?
