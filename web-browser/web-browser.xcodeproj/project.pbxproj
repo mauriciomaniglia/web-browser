@@ -22,6 +22,8 @@
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F97BF7782C259A60005FB9BD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuView.swift */; };
 		F97BF77A2C259F88005FB9BD /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7792C259F88005FB9BD /* MenuViewModel.swift */; };
+		F9BDCDFD2C2ED56300A6251E /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BDCDFC2C2ED56300A6251E /* MenuPresenter.swift */; };
+		F9BDCE002C2ED6CA00A6251E /* MenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BDCDFF2C2ED6CA00A6251E /* MenuPresenterTests.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F9CDFD912B7130610024E0AD /* core-web-browser */; };
@@ -65,6 +67,8 @@
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
 		F97BF7772C259A60005FB9BD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F97BF7792C259F88005FB9BD /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		F9BDCDFC2C2ED56300A6251E /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
+		F9BDCDFF2C2ED6CA00A6251E /* MenuPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenterTests.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9CDFD8F2B7130360024E0AD /* core-web-browser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "core-web-browser"; path = "../core-web-browser"; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				F9E55FD62C02AE900098995F /* Helpers */,
+				F9BDCDFE2C2ED6B500A6251E /* Menu */,
 				F9E55FCE2C02ABEE0098995F /* Window */,
 			);
 			path = "web-browserTests";
@@ -199,6 +204,7 @@
 				F97BF7772C259A60005FB9BD /* MenuView.swift */,
 				F97BF7792C259F88005FB9BD /* MenuViewModel.swift */,
 				F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */,
+				F9BDCDFC2C2ED56300A6251E /* MenuPresenter.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -241,6 +247,14 @@
 				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F9BDCDFE2C2ED6B500A6251E /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F9BDCDFF2C2ED6CA00A6251E /* MenuPresenterTests.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		F9CDFD902B7130610024E0AD /* Frameworks */ = {
@@ -418,6 +432,7 @@
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
+				F9BDCDFD2C2ED56300A6251E /* MenuPresenter.swift in Sources */,
 				F97BF77A2C259F88005FB9BD /* MenuViewModel.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
@@ -442,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */,
+				F9BDCE002C2ED6CA00A6251E /* MenuPresenterTests.swift in Sources */,
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F9E55FDA2C02AEF40098995F /* WhitelistStoreSpy.swift in Sources */,
 				F9E55FD22C02ABFE0098995F /* WindowPresenterTests.swift in Sources */,
