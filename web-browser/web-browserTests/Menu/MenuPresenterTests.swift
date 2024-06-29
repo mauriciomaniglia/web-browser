@@ -4,6 +4,16 @@ import core_web_browser
 
 class MenuPresenterTests: XCTestCase {
 
+    func test_didOpenMenuView_deliversCorrectModel() {
+        let history = HistoryStoreMock()
+        let sut = MenuPresenter(history: history)
+
+        let model = sut.didOpenMenuView()
+
+        XCTAssertTrue(model.showMenu)
+        XCTAssertNil(model.historyList)
+    }
+
     func test_didOpenHistoryView_deliversCorrectModel() {
         let history = HistoryStoreMock()
         let page1 = WebPage(title: "title 1", url: URL(string: "http://page1.com")!)

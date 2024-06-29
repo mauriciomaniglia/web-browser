@@ -19,6 +19,10 @@ class MenuPresenter {
         self.history = history
     }
 
+    func didOpenMenuView() -> MenuModel {
+        MenuModel(showMenu: true, historyList: nil)
+    }
+
     func didOpenHistoryView() -> MenuModel {
         let pages = history.getPages()
         return MenuModel(showMenu: false, historyList: mapHistoryPages(pages))
