@@ -1,16 +1,4 @@
-import Foundation
 import core_web_browser
-
-struct MenuModel {
-
-    struct HistoryPage: Equatable {
-        let title: String
-        let url: URL
-    }
-
-    let showMenu: Bool
-    let historyList: [HistoryPage]?
-}
 
 class MenuPresenter {
     private let history: HistoryAPI
