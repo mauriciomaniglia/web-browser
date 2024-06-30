@@ -3,17 +3,21 @@ import core_web_browser
 class MenuPresenter {
     private let history: HistoryAPI
 
+    var didUpdatePresentableModel: ((MenuModel) -> Void)?
+
     init(history: HistoryAPI) {
         self.history = history
     }
 
-    func didOpenMenuView() -> MenuModel {
-        MenuModel(showMenu: true, historyList: nil)
+    func didOpenMenuView() {
+        let model = MenuModel(showMenu: true, historyList: nil)
+        didUpdatePresentableModel?(model)
     }
 
-    func didOpenHistoryView() -> MenuModel {
+    func didOpenHistoryView() {
         let pages = history.getPages()
-        return MenuModel(showMenu: false, historyList: mapHistoryPages(pages))
+        let model = MenuModel(showMenu: false, historyList: mapHistoryPages(pages))
+        didUpdatePresentableModel?(model)
     }
 
     private func mapHistoryPages(_ pages: [WebPage]) -> [MenuModel.HistoryPage] {

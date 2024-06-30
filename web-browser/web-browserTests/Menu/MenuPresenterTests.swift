@@ -6,8 +6,10 @@ class MenuPresenterTests: XCTestCase {
 
     func test_didOpenMenuView_deliversCorrectModel() {
         let (sut, _) = makeSUT()
+        var model: MenuModel!
+        sut.didUpdatePresentableModel = { model = $0 }
 
-        let model = sut.didOpenMenuView()
+        sut.didOpenMenuView()
 
         XCTAssertTrue(model.showMenu)
         XCTAssertNil(model.historyList)
@@ -19,8 +21,10 @@ class MenuPresenterTests: XCTestCase {
         let page2 = WebPage(title: "", url: URL(string: "http://page2.com")!)
         let page3 = WebPage(title: nil, url: URL(string: "http://page3.com")!)
         history.mockWebPages = [page1, page2, page3]
+        var model: MenuModel!
+        sut.didUpdatePresentableModel = { model = $0 }
 
-        let model = sut.didOpenHistoryView()
+        sut.didOpenHistoryView()
 
         XCTAssertFalse(model.showMenu)
         XCTAssertEqual(model.historyList?[0].title, "title 1")
