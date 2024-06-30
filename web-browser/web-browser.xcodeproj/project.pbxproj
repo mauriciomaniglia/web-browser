@@ -19,6 +19,7 @@
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F95BA9472C316D0D0002FDB1 /* MenuAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA9462C316D0D0002FDB1 /* MenuAdapter.swift */; };
 		F95BA9492C316EA20002FDB1 /* MenuAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA9482C316EA20002FDB1 /* MenuAdapterTests.swift */; };
+		F95BA94B2C3183EF0002FDB1 /* HistoryStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA94A2C3183EF0002FDB1 /* HistoryStoreMock.swift */; };
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
@@ -67,6 +68,7 @@
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F95BA9462C316D0D0002FDB1 /* MenuAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAdapter.swift; sourceTree = "<group>"; };
 		F95BA9482C316EA20002FDB1 /* MenuAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAdapterTests.swift; sourceTree = "<group>"; };
+		F95BA94A2C3183EF0002FDB1 /* HistoryStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreMock.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			children = (
 				F9BDCDFF2C2ED6CA00A6251E /* MenuPresenterTests.swift */,
 				F95BA9482C316EA20002FDB1 /* MenuAdapterTests.swift */,
+				F95BA94A2C3183EF0002FDB1 /* HistoryStoreMock.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			files = (
 				F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */,
 				F9BDCE002C2ED6CA00A6251E /* MenuPresenterTests.swift in Sources */,
+				F95BA94B2C3183EF0002FDB1 /* HistoryStoreMock.swift in Sources */,
 				F95BA9492C316EA20002FDB1 /* MenuAdapterTests.swift in Sources */,
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F9E55FDA2C02AEF40098995F /* WhitelistStoreSpy.swift in Sources */,

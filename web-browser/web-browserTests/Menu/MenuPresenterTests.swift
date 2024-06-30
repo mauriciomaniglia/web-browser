@@ -44,15 +44,3 @@ class MenuPresenterTests: XCTestCase {
         return (sut, history)
     }
 }
-
-private class HistoryStoreMock: HistoryAPI {
-    var mockWebPages = [WebPage]()
-
-    func save(page: WebPage) {
-
-    }
-
-    func getPages() -> [WebPage] {
-        return mockWebPages
-    }
-}

@@ -1,5 +1,4 @@
 import XCTest
-import core_web_browser
 @testable import web_browser
 
 class MenuAdapterTests: XCTestCase {
@@ -33,17 +32,5 @@ private class MenuPresenterSpy: MenuPresenter {
 
     override func didOpenMenuView() {
         receivedMessages.append(.didOpenMenuView)
-    }
-}
-
-private class HistoryStoreMock: HistoryAPI {
-    var mockWebPages = [WebPage]()
-
-    func save(page: WebPage) {
-
-    }
-
-    func getPages() -> [WebPage] {
-        return mockWebPages
     }
 }
