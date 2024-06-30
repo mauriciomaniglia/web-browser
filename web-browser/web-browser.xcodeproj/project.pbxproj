@@ -20,6 +20,7 @@
 		F95BA9472C316D0D0002FDB1 /* MenuAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA9462C316D0D0002FDB1 /* MenuAdapter.swift */; };
 		F95BA9492C316EA20002FDB1 /* MenuAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA9482C316EA20002FDB1 /* MenuAdapterTests.swift */; };
 		F95BA94B2C3183EF0002FDB1 /* HistoryStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA94A2C3183EF0002FDB1 /* HistoryStoreMock.swift */; };
+		F95BA94D2C3184930002FDB1 /* MenuPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BA94C2C3184930002FDB1 /* MenuPresenterSpy.swift */; };
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
@@ -69,6 +70,7 @@
 		F95BA9462C316D0D0002FDB1 /* MenuAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAdapter.swift; sourceTree = "<group>"; };
 		F95BA9482C316EA20002FDB1 /* MenuAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAdapterTests.swift; sourceTree = "<group>"; };
 		F95BA94A2C3183EF0002FDB1 /* HistoryStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreMock.swift; sourceTree = "<group>"; };
+		F95BA94C2C3184930002FDB1 /* MenuPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenterSpy.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				F9BDCDFF2C2ED6CA00A6251E /* MenuPresenterTests.swift */,
 				F95BA9482C316EA20002FDB1 /* MenuAdapterTests.swift */,
 				F95BA94A2C3183EF0002FDB1 /* HistoryStoreMock.swift */,
+				F95BA94C2C3184930002FDB1 /* MenuPresenterSpy.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */,
+				F95BA94D2C3184930002FDB1 /* MenuPresenterSpy.swift in Sources */,
 				F9BDCE002C2ED6CA00A6251E /* MenuPresenterTests.swift in Sources */,
 				F95BA94B2C3183EF0002FDB1 /* HistoryStoreMock.swift in Sources */,
 				F95BA9492C316EA20002FDB1 /* MenuAdapterTests.swift in Sources */,
