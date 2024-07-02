@@ -11,6 +11,10 @@ class MenuAdapter {
         presenter.didOpenMenuView()
     }
 
+    func didTapHistory() {
+        presenter.didOpenHistoryView()
+    }
+
     func updateViewModel(_ model: MenuModel) {
         viewModel.showMenu = model.showMenu
         viewModel.showHistory = model.historyList != nil

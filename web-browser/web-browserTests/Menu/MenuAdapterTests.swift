@@ -11,6 +11,14 @@ class MenuAdapterTests: XCTestCase {
         XCTAssertEqual(presenter.receivedMessages, [.didOpenMenuView])
     }
 
+    func test_didTapHistory_sendsCorrectMessage() {
+        let (sut, presenter, _) = makeSU()
+
+        sut.didTapHistory()
+
+        XCTAssertEqual(presenter.receivedMessages, [.didOpenHistoryView])
+    }
+
     func test_updateViewModel_updatesAllValuesCorrectly() {
         let (sut, _, viewModel) = makeSU()
         let historyPage = MenuModel.HistoryPage(title: "title", url: URL(string: "https://some-url.com")!)
