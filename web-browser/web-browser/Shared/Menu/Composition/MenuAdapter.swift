@@ -10,4 +10,10 @@ class MenuAdapter {
     func didTapMenu() {
         presenter.didOpenMenuView()
     }
+
+    func updateViewModel(_ model: MenuModel) {
+        viewModel.showMenu = model.showMenu
+        viewModel.showHistory = model.historyList != nil
+        viewModel.historyList = model.historyList?.compactMap { .init(title: $0.title, url: $0.url)} ?? []
+    }
 }
