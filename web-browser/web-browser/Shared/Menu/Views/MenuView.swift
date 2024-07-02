@@ -15,6 +15,7 @@ struct MenuView: View {
             }
 
         }
+        .padding()
         .presentationCompactAdaptation((.popover))
         .popover(isPresented: $viewModel.showHistory, content: {
             HistoryView(historyList: viewModel.historyList)

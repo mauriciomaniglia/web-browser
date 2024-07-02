@@ -17,6 +17,12 @@ final class WindowComposer {
             history: historyStore,
             viewModel: viewModel)
 
+        let menuViewModel = MenuViewModel()
+        let menuPresenter = MenuPresenter(history: historyStore)
+        let menuAdapter = MenuAdapter(viewModel: menuViewModel, presenter: menuPresenter)
+        menuViewModel.didTapMenuButton = menuAdapter.didTapMenu
+        menuPresenter.didUpdatePresentableModel = menuAdapter.updateViewModel
+
         contentBlocking.setupStrictProtection()
 
         viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
@@ -38,7 +44,7 @@ final class WindowComposer {
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
 
         #if os(iOS)
-        return IOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        return IOSWindow(viewModel: viewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(macOS)
         return MacOSWindow(viewModel: viewModel, webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
