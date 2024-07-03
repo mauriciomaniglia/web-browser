@@ -21,6 +21,7 @@ final class WindowComposer {
         let menuPresenter = MenuPresenter(history: historyStore)
         let menuAdapter = MenuAdapter(viewModel: menuViewModel, presenter: menuPresenter)
         menuViewModel.didTapMenuButton = menuAdapter.didTapMenu
+        menuViewModel.didTapHistoryOption = menuAdapter.didTapHistory
         menuPresenter.didUpdatePresentableModel = menuAdapter.updateViewModel
 
         contentBlocking.setupStrictProtection()

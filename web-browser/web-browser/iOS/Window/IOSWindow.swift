@@ -23,6 +23,9 @@ struct IOSWindow: View {
                     .popover(isPresented: $menuViewModel.showMenu, arrowEdge: .trailing, content: {
                         MenuView(viewModel: menuViewModel)
                     })
+                    .popover(isPresented: $menuViewModel.showHistory, content: {
+                        HistoryView(historyList: menuViewModel.historyList)
+                    })
                 }
             }
             .padding()

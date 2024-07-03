@@ -13,12 +13,8 @@ struct MenuView: View {
             .onTapGesture {
                 viewModel.didTapHistoryOption?()
             }
-
         }
         .padding()
         .presentationCompactAdaptation((.popover))
-        .popover(isPresented: $viewModel.showHistory, content: {
-            HistoryView(historyList: viewModel.historyList)
-        })
     }
 }
