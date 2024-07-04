@@ -19,7 +19,10 @@ final class WindowComposer {
 
         let menuViewModel = MenuViewModel()
         let menuPresenter = MenuPresenter(history: historyStore)
-        let menuAdapter = MenuAdapter(viewModel: menuViewModel, presenter: menuPresenter)
+        let menuAdapter = MenuAdapter(
+            viewModel: menuViewModel,
+            presenter: menuPresenter,
+            webView: webKitEngineWrapper)
         menuViewModel.didTapMenuButton = menuAdapter.didTapMenu
         menuViewModel.didTapHistoryOption = menuAdapter.didTapHistory
         menuPresenter.didUpdatePresentableModel = menuAdapter.updateViewModel

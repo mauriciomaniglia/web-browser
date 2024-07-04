@@ -4,7 +4,7 @@ import XCTest
 class MenuAdapterTests: XCTestCase {
 
     func test_didTapMenu_sendsCorrectMessage() {
-        let (sut, presenter, _) = makeSU()
+        let (sut, presenter, _, _) = makeSU()
 
         sut.didTapMenu()
 
@@ -12,15 +12,25 @@ class MenuAdapterTests: XCTestCase {
     }
 
     func test_didTapHistory_sendsCorrectMessage() {
-        let (sut, presenter, _) = makeSU()
+        let (sut, presenter, _, _) = makeSU()
 
         sut.didTapHistory()
 
         XCTAssertEqual(presenter.receivedMessages, [.didOpenHistoryView])
     }
 
+    func test_didSelectPageHistory_sendsCorrectMessage() {
+        let (sut, presenter, _, webView) = makeSU()
+        let pageHistory = MenuViewModel.HistoryPage(title: "some title", url: URL(string: "http://some-url.com")!)
+
+        sut.didSelectPageHistory(pageHistory)
+
+        XCTAssertEqual(presenter.receivedMessages, [.didSelectPageHistory])
+        XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://some-url.com")!)])
+    }
+
     func test_updateViewModel_updatesAllValuesCorrectly() {
-        let (sut, _, viewModel) = makeSU()
+        let (sut, _, viewModel, _) = makeSU()
         let historyPage = MenuModel.HistoryPage(title: "title", url: URL(string: "https://some-url.com")!)
         let model = MenuModel(showMenu: true, historyList: [historyPage])
 
@@ -34,12 +44,13 @@ class MenuAdapterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSU() -> (sut: MenuAdapter, presenter: MenuPresenterSpy, viewModel: MenuViewModel) {
+    private func makeSU() -> (sut: MenuAdapter, presenter: MenuPresenterSpy, viewModel: MenuViewModel, webView: WebViewSpy) {
         let viewModel = MenuViewModel()
         let history = HistoryStoreMock()
         let presenter = MenuPresenterSpy(history: history)
-        let sut = MenuAdapter(viewModel: viewModel, presenter: presenter)
+        let webView = WebViewSpy()
+        let sut = MenuAdapter(viewModel: viewModel, presenter: presenter, webView: webView)
 
-        return (sut, presenter, viewModel)
+        return (sut, presenter, viewModel, webView)
     }
 }

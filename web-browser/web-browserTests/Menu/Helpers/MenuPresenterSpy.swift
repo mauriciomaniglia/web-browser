@@ -4,6 +4,7 @@ class MenuPresenterSpy: MenuPresenter {
     enum Message {
         case didOpenMenuView
         case didOpenHistoryView
+        case didSelectPageHistory
     }
 
     var receivedMessages = [Message]()
@@ -14,5 +15,9 @@ class MenuPresenterSpy: MenuPresenter {
 
     override func didOpenHistoryView() {
         receivedMessages.append(.didOpenHistoryView)
+    }
+
+    override func didSelectPageHistory() {
+        receivedMessages.append(.didSelectPageHistory)
     }
 }

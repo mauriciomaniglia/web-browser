@@ -1,10 +1,14 @@
+import core_web_browser
+
 class MenuAdapter {
     private var viewModel: MenuViewModel
     private let presenter: MenuPresenter
+    private let webView: WebEngineContract
 
-    init(viewModel: MenuViewModel, presenter: MenuPresenter) {
+    init(viewModel: MenuViewModel, presenter: MenuPresenter, webView: WebEngineContract) {
         self.viewModel = viewModel
         self.presenter = presenter
+        self.webView = webView
     }
 
     func didTapMenu() {
@@ -13,6 +17,11 @@ class MenuAdapter {
 
     func didTapHistory() {
         presenter.didOpenHistoryView()
+    }
+
+    func didSelectPageHistory(_ pageHistory: MenuViewModel.HistoryPage) {
+        presenter.didSelectPageHistory()
+        webView.load(SearchURLBuilder.makeURL(from: pageHistory.url.absoluteString))
     }
 
     func updateViewModel(_ model: MenuModel) {
