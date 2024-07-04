@@ -41,7 +41,7 @@ public class HistoryStore: HistoryAPI {
 
         do {
             let results = try context.fetch(allPages)
-            return results.map { WebPage(title: $0.title, url: $0.url) }
+            return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }

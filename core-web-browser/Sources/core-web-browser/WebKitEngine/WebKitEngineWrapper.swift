@@ -62,13 +62,13 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
 
     public func retrieveBackList() -> [WebPage] {
         webView.backForwardList.backList.map {
-            WebPage(title: $0.title, url: $0.url)
+            WebPage(title: $0.title, url: $0.url, date: Date())
         }
     }
 
     public func retrieveForwardList() -> [WebPage] {
         webView.backForwardList.forwardList.map {
-            WebPage(title: $0.title, url: $0.url)
+            WebPage(title: $0.title, url: $0.url, date: Date())
         }
     }
 
@@ -92,7 +92,7 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         switch keyPath {
         case #keyPath(WKWebView.url), #keyPath(WKWebView.canGoBack), #keyPath(WKWebView.canGoForward):
             if let url = webView.url {
-                let webPage = WebPage(title: webView.title, url: url)
+                let webPage = WebPage(title: webView.title, url: url, date: Date())
                 delegate?.didLoad(page: webPage, canGoBack: webView.canGoBack, canGoForward: webView.canGoForward)
             }
         case #keyPath(WKWebView.estimatedProgress):

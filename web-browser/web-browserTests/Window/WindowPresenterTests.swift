@@ -178,9 +178,9 @@ class WindowPresenterTests: XCTestCase {
     func test_didLoadBackList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!)
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!)
-        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!)
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
@@ -211,9 +211,9 @@ class WindowPresenterTests: XCTestCase {
     func test_didLoadForwardList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!)
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!)
-        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!)
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
 
@@ -244,8 +244,8 @@ class WindowPresenterTests: XCTestCase {
     func test_didDismissBackForwardList_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!)
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!)
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didUpdatePresentableModel = { receivedResult = $0 }
         sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
         sut.didLoadForwardList([page1, page2])

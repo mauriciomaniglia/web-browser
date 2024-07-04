@@ -87,7 +87,7 @@ class WindowViewAdapterTests: XCTestCase {
 
     func test_didLoadPage_sendsCorrectMessages() {
         let (sut, webView, presenter, _, history) = makeSUT()
-        let page = WebPage(title: "any", url: URL(string: "http://www.apple.com")!)
+        let page = WebPage(title: "any", url: URL(string: "http://www.apple.com")!, date: Date())
 
         sut.didLoad(page: page, canGoBack: true, canGoForward: false)
 
