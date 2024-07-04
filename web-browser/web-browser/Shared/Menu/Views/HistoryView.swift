@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct HistoryView: View {
-    var didSelectHistory: ((Int) -> Void)?
-    let historyList: [MenuViewModel.HistoryPage]
+    var didSelectPage: ((MenuViewModel.HistoryPage) -> Void)?
+    let pages: [MenuViewModel.HistoryPage]
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ForEach(historyList.indices, id: \.self) { index in
-                    let item = historyList[index]
+                ForEach(pages.indices, id: \.self) { index in
+                    let item = pages[index]
 
                     HStack {
                         Text("\(item.title)")
@@ -16,10 +16,10 @@ struct HistoryView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        didSelectHistory?(index)
+                        didSelectPage?(item)
                     }
 
-                    if index < historyList.count-1 {
+                    if index < pages.count-1 {
                         Divider()
                     }
                 }
