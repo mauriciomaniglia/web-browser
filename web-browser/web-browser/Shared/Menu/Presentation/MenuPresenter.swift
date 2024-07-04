@@ -15,7 +15,7 @@ class MenuPresenter {
     }
 
     func didOpenHistoryView() {
-        let pages = history.getPages()
+        let pages = history.getPages().sorted { $0.date > $1.date }
         let model = MenuModel(showMenu: false, historyList: mapHistoryPages(pages))
         didUpdatePresentableModel?(model)
     }
