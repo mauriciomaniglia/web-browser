@@ -4,7 +4,7 @@ import XCTest
 class MenuAdapterTests: XCTestCase {
 
     func test_didTapMenu_sendsCorrectMessage() {
-        let (sut, presenter, _, _) = makeSU()
+        let (sut, presenter, _, _) = makeSUT()
 
         sut.didTapMenu()
 
@@ -12,7 +12,7 @@ class MenuAdapterTests: XCTestCase {
     }
 
     func test_didTapHistory_sendsCorrectMessage() {
-        let (sut, presenter, _, _) = makeSU()
+        let (sut, presenter, _, _) = makeSUT()
 
         sut.didTapHistory()
 
@@ -20,7 +20,7 @@ class MenuAdapterTests: XCTestCase {
     }
 
     func test_didSelectPageHistory_sendsCorrectMessage() {
-        let (sut, presenter, _, webView) = makeSU()
+        let (sut, presenter, _, webView) = makeSUT()
         let pageHistory = MenuViewModel.HistoryPage(title: "some title", url: URL(string: "http://some-url.com")!)
 
         sut.didSelectPageHistory(pageHistory)
@@ -30,7 +30,7 @@ class MenuAdapterTests: XCTestCase {
     }
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
-        let (sut, _, viewModel, _) = makeSU()
+        let (sut, _, viewModel, _) = makeSUT()
         let historyPage = MenuModel.HistoryPage(title: "title", url: URL(string: "https://some-url.com")!)
         let model = MenuModel(showMenu: true, historyList: [historyPage])
 
@@ -44,7 +44,7 @@ class MenuAdapterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSU() -> (sut: MenuAdapter, presenter: MenuPresenterSpy, viewModel: MenuViewModel, webView: WebViewSpy) {
+    private func makeSUT() -> (sut: MenuAdapter, presenter: MenuPresenterSpy, viewModel: MenuViewModel, webView: WebViewSpy) {
         let viewModel = MenuViewModel()
         let history = HistoryStoreMock()
         let presenter = MenuPresenterSpy(history: history)
