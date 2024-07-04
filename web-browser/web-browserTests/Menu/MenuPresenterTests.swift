@@ -40,6 +40,17 @@ class MenuPresenterTests: XCTestCase {
         XCTAssertEqual(model.historyList?[2].url, URL(string:"http://page1.com")!)
     }
 
+    func test_didSelectPageHistory_deliversCorrectModel() {
+        let (sut, _) = makeSUT()
+        var model: MenuModel!
+        sut.didUpdatePresentableModel = { model = $0 }
+
+        sut.didSelectPageHistory()
+
+        XCTAssertFalse(model.showMenu)
+        XCTAssertNil(model.historyList)
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: MenuPresenter, historyMock: HistoryStoreMock) {

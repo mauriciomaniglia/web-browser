@@ -20,6 +20,11 @@ class MenuPresenter {
         didUpdatePresentableModel?(model)
     }
 
+    func didSelectPageHistory() {
+        let model = MenuModel(showMenu: false, historyList: nil)
+        didUpdatePresentableModel?(model)
+    }
+
     private func mapHistoryPages(_ pages: [WebPage]) -> [MenuModel.HistoryPage] {
         pages.map {
             let title = $0.title ?? ""
