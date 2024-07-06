@@ -24,7 +24,7 @@ struct IOSWindow: View {
                         MenuView(viewModel: menuViewModel)
                     })
                     .popover(isPresented: $menuViewModel.showHistory, content: {
-                        HistoryView(pages: menuViewModel.historyList)
+                        HistoryView(didSelectPage: menuViewModel.didSelectPageHistory, pages: menuViewModel.historyList)
                     })
                 }
             }

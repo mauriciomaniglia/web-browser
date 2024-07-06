@@ -13,4 +13,5 @@ class MenuViewModel: ObservableObject {
 
     var didTapMenuButton: (() -> Void)?
     var didTapHistoryOption: (() -> Void)?
+    var didSelectPageHistory: ((HistoryPage) -> Void)?
 }

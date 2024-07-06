@@ -25,6 +25,7 @@ final class WindowComposer {
             webView: webKitEngineWrapper)
         menuViewModel.didTapMenuButton = menuAdapter.didTapMenu
         menuViewModel.didTapHistoryOption = menuAdapter.didTapHistory
+        menuViewModel.didSelectPageHistory = menuAdapter.didSelectPageHistory(_:)
         menuPresenter.didUpdatePresentableModel = menuAdapter.updateViewModel
 
         contentBlocking.setupStrictProtection()
