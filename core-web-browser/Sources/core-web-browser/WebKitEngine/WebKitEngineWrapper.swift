@@ -97,6 +97,8 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
             }
         case #keyPath(WKWebView.estimatedProgress):
             delegate?.didUpdateLoadingProgress(webView.estimatedProgress)
+        case #keyPath(WKWebView.title):
+            break
         default:
             break
         }
@@ -113,6 +115,7 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
     }
 
     private func registerObserversForWebView() {
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), context: nil)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.url), context: nil)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoBack), context: nil)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoForward), context: nil)

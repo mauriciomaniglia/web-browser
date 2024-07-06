@@ -14,7 +14,7 @@ class WebKitEngineWrapperTests: XCTestCase {
     func test_init_registerCorrectObserversForWebViewEvents() {
         let (_, webView, _, _) = makeSUT()
 
-        XCTAssertEqual(webView.registeredObservers, ["URL", "canGoBack", "canGoForward", "estimatedProgress"])
+        XCTAssertEqual(webView.registeredObservers, ["title", "URL", "canGoBack", "canGoForward", "estimatedProgress"])
     }
 
     func test_sendText_sendsCorrectRequest() {
