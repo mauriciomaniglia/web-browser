@@ -98,7 +98,10 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         case #keyPath(WKWebView.estimatedProgress):
             delegate?.didUpdateLoadingProgress(webView.estimatedProgress)
         case #keyPath(WKWebView.title):
-            break
+            if let url = webView.url, let title = webView.title, !title.isEmpty {
+                let webPage = WebPage(title: webView.title, url: url, date: Date())
+                delegate?.didLoad(page: webPage)
+            }
         default:
             break
         }
