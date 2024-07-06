@@ -97,6 +97,10 @@ final class WindowViewAdapter {
 }
 
 extension WindowViewAdapter: WebEngineDelegate {
+    func didLoad(page: WebPage) {
+
+    }
+
     func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
         history.save(page: page)
         presenter.didLoadPage(

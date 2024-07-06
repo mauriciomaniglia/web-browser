@@ -263,6 +263,10 @@ class WebKitEngineWrapperTests: XCTestCase {
 
         var receivedMessages = [Message]()
 
+        func didLoad(page: core_web_browser.WebPage) {
+
+        }
+
         func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
             receivedMessages.append(.didLoadPage)
         }
