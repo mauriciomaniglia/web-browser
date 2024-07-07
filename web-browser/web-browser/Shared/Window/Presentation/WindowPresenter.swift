@@ -83,6 +83,27 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
+    func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
+        let newModel = WindowPresentableModel(
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showMenuButton: true,
+            showCancelButton: false,
+            showClearButton: false,
+            showStopButton: false,
+            showReloadButton: true,
+            showSiteProtection: true,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            canGoBack: canGoBack,
+            canGoForward: canGoForward,
+            backList: model.backList,
+            forwardList: model.forwardList)
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
     func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL

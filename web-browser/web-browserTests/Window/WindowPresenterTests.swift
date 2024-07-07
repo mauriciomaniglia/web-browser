@@ -151,6 +151,30 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(receivedResult!.forwardList)
     }
 
+    func test_didUpdateNavigationButtons_deliversCorrectValues() {
+        let sut = WindowPresenter()
+        var receivedResult: WindowPresentableModel?
+        sut.didUpdatePresentableModel = { receivedResult = $0 }
+
+        sut.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)
+
+        XCTAssertNil(receivedResult!.urlHost)
+        XCTAssertNil(receivedResult!.fullURL)
+        XCTAssertTrue(receivedResult!.showMenuButton)
+        XCTAssertFalse(receivedResult!.showCancelButton)
+        XCTAssertFalse(receivedResult!.showClearButton)
+        XCTAssertFalse(receivedResult!.showStopButton)
+        XCTAssertTrue(receivedResult!.showReloadButton)
+        XCTAssertTrue(receivedResult!.showSiteProtection)
+        XCTAssertTrue(receivedResult!.isWebsiteProtected)
+        XCTAssertTrue(receivedResult!.showWebView)
+        XCTAssertTrue(receivedResult!.canGoBack)
+        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertNil(receivedResult!.progressBarValue)
+        XCTAssertNil(receivedResult!.backList)
+        XCTAssertNil(receivedResult!.forwardList)
+    }
+
     func test_didLoadPage_deliversCorrectValues() {
         let sut = WindowPresenter()
         var receivedResult: WindowPresentableModel?
