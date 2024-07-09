@@ -91,7 +91,7 @@ class WindowViewAdapterTests: XCTestCase {
 
         sut.didLoad(page: page, canGoBack: true, canGoForward: false)
 
-        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage(canGoBack: true, canGoForward: false)])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadPage])
         XCTAssertEqual(history.receivedMessages, [.save])
         XCTAssertEqual(webView.receivedMessages, [])
     }

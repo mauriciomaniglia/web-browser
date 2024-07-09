@@ -33,7 +33,7 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didStartNewWindow()
 
         XCTAssertNil(receivedResult!.urlHost)
@@ -82,7 +82,7 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didStartEditing()
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
@@ -95,8 +95,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showWebView)
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertNil(receivedResult!.backList)
         XCTAssertNil(receivedResult!.forwardList)
@@ -131,7 +131,7 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didEndEditing()
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
@@ -144,8 +144,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertNil(receivedResult!.backList)
         XCTAssertNil(receivedResult!.forwardList)
@@ -180,7 +180,7 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
         XCTAssertEqual(receivedResult!.fullURL, "http://some-url.com/some-random-path/123")
@@ -192,8 +192,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertNil(receivedResult!.backList)
         XCTAssertNil(receivedResult!.forwardList)
@@ -206,7 +206,7 @@ class WindowPresenterTests: XCTestCase {
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { receivedResult = $0 }
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadBackList([page1, page2, page3])
 
@@ -220,8 +220,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertEqual(receivedResult!.backList?[0].title, page3.url.absoluteString)
         XCTAssertEqual(receivedResult!.backList?[0].url, page3.url.absoluteString)
@@ -239,7 +239,7 @@ class WindowPresenterTests: XCTestCase {
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { receivedResult = $0 }
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadForwardList([page1, page2, page3])
 
@@ -253,8 +253,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertEqual(receivedResult!.forwardList?[0].title, page1.title)
         XCTAssertEqual(receivedResult!.forwardList?[0].url, page1.url.absoluteString)
@@ -271,7 +271,7 @@ class WindowPresenterTests: XCTestCase {
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didUpdatePresentableModel = { receivedResult = $0 }
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didLoadForwardList([page1, page2])
 
         sut.didDismissBackForwardList()
@@ -286,8 +286,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertNil(receivedResult!.progressBarValue)
         XCTAssertNil(receivedResult!.forwardList)
         XCTAssertNil(receivedResult!.backList)
@@ -370,7 +370,7 @@ class WindowPresenterTests: XCTestCase {
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!, canGoBack: true, canGoForward: true)
+        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didUpdateProgressBar(0.45)
 
         XCTAssertEqual(receivedResult!.urlHost, "some-url.com")
@@ -383,8 +383,8 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertTrue(receivedResult!.showSiteProtection)
         XCTAssertTrue(receivedResult!.isWebsiteProtected)
         XCTAssertTrue(receivedResult!.showWebView)
-        XCTAssertTrue(receivedResult!.canGoBack)
-        XCTAssertTrue(receivedResult!.canGoForward)
+        XCTAssertFalse(receivedResult!.canGoBack)
+        XCTAssertFalse(receivedResult!.canGoForward)
         XCTAssertEqual(receivedResult!.progressBarValue, 0.45)
         XCTAssertNil(receivedResult!.backList)
         XCTAssertNil(receivedResult!.forwardList)

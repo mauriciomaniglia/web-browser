@@ -107,10 +107,7 @@ extension WindowViewAdapter: WebEngineDelegate {
 
     func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
         history.save(page: page)
-        presenter.didLoadPage(
-            url: page.url,
-            canGoBack: canGoBack,
-            canGoForward: canGoForward)
+        presenter.didLoadPage(url: page.url)
     }
 
     func didUpdateLoadingProgress(_ progress: Double) {

@@ -6,7 +6,7 @@ class WindowPresenterSpy: WindowPresenter {
     enum Message: Equatable {
         case didStartEditing
         case didEndEditing
-        case didLoadPage(canGoBack: Bool, canGoForward: Bool)
+        case didLoadPage
         case didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool)
         case didUpdateProgressBar(value: Double)
         case didLoadBackList
@@ -24,8 +24,8 @@ class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didEndEditing)
     }
 
-    override func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
-        receivedMessages.append(.didLoadPage(canGoBack: canGoBack, canGoForward: canGoForward))
+    override func didLoadPage(url: URL) {
+        receivedMessages.append(.didLoadPage)
     }
 
     override func didUpdateProgressBar(_ value: Double) {

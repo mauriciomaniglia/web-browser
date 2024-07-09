@@ -104,7 +104,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didLoadPage(url: URL, canGoBack: Bool, canGoForward: Bool) {
+    func didLoadPage(url: URL) {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let isOnSafelist = SafelistStore().isRegisteredDomain(urlHost)
@@ -120,8 +120,8 @@ class WindowPresenter {
             showSiteProtection: true,
             isWebsiteProtected: !isOnSafelist,
             showWebView: true,
-            canGoBack: canGoBack,
-            canGoForward: canGoForward,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
             backList: model.backList,
             forwardList: model.forwardList)
 
