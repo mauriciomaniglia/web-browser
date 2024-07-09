@@ -96,6 +96,17 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
+    func test_didUpdateNavigationButtons_sendsCorrectMessage() {
+        let (sut, webView, presenter, safelist, history) = makeSUT()
+
+        sut.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)
+
+        XCTAssertEqual(presenter.receivedMessages, [.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)])
+        XCTAssertEqual(webView.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
+        XCTAssertEqual(safelist.receivedMessages, [])
+    }
+
     func test_didUpdateLoadingProgress_sendsCorrectMessages() {
         let (sut, webView, presenter, _, _) = makeSUT()
 

@@ -7,6 +7,7 @@ class WindowPresenterSpy: WindowPresenter {
         case didStartEditing
         case didEndEditing
         case didLoadPage(canGoBack: Bool, canGoForward: Bool)
+        case didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool)
         case didUpdateProgressBar(value: Double)
         case didLoadBackList
         case didLoadForwardList
@@ -41,5 +42,9 @@ class WindowPresenterSpy: WindowPresenter {
 
     override func didDismissBackForwardList() {
         receivedMessages.append(.didDismissBackForwardList)
+    }
+
+    override func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
+        receivedMessages.append(.didUpdateNavigationButtons(canGoBack: canGoBack, canGoForward: canGoForward))
     }
 }
