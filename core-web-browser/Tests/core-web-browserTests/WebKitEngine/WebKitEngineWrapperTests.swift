@@ -267,6 +267,10 @@ class WebKitEngineWrapperTests: XCTestCase {
 
         }
 
+        func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
+            
+        }
+
         func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
             receivedMessages.append(.didLoadPage)
         }
