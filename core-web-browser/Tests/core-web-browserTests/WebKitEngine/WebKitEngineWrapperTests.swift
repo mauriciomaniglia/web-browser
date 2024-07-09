@@ -83,11 +83,12 @@ class WebKitEngineWrapperTests: XCTestCase {
         XCTAssertEqual(delegate.receivedMessages, [])
     }
 
-    func test_observeValueForKeyPath_sendsCorrectMessageWhenWebViewURLChange() {
+    func test_observeValueForKeyPath_sendsCorrectMessageWhenWebViewTitleChange() {
         let (sut, webView, _, delegate) = makeSUT()
         webView.mockURL = URL(string: "http://some-url.com")!
+        webView.mockTitle = "Some Title"
 
-        sut.observeValue(forKeyPath: #keyPath(WKWebView.url), of: nil, change: nil, context: nil)
+        sut.observeValue(forKeyPath: #keyPath(WKWebView.title), of: nil, change: nil, context: nil)
 
         XCTAssertEqual(delegate.receivedMessages, [.didLoadPage])
     }
@@ -96,7 +97,7 @@ class WebKitEngineWrapperTests: XCTestCase {
         let (sut, webView, _, delegate) = makeSUT()
         webView.mockURL = nil
 
-        sut.observeValue(forKeyPath: #keyPath(WKWebView.url), of: nil, change: nil, context: nil)
+        sut.observeValue(forKeyPath: #keyPath(WKWebView.title), of: nil, change: nil, context: nil)
 
         XCTAssertEqual(delegate.receivedMessages, [])
     }
@@ -107,7 +108,7 @@ class WebKitEngineWrapperTests: XCTestCase {
 
         sut.observeValue(forKeyPath: #keyPath(WKWebView.canGoBack), of: nil, change: nil, context: nil)
 
-        XCTAssertEqual(delegate.receivedMessages, [.didLoadPage])
+        XCTAssertEqual(delegate.receivedMessages, [.didUpdateNavigationButtons])
     }
 
     func test_observeValueForKeyPath_sendsCorrectMessageWhenWebViewCanGoForwardChange() {
@@ -116,7 +117,7 @@ class WebKitEngineWrapperTests: XCTestCase {
 
         sut.observeValue(forKeyPath: #keyPath(WKWebView.canGoForward), of: nil, change: nil, context: nil)
 
-        XCTAssertEqual(delegate.receivedMessages, [.didLoadPage])
+        XCTAssertEqual(delegate.receivedMessages, [.didUpdateNavigationButtons])
     }
 
     func test_observeValueForKeyPath_sendsCorrectMessageWhenLoadingProgressUpdates() {
@@ -189,9 +190,14 @@ class WebKitEngineWrapperTests: XCTestCase {
         var canGoBackMock = false
         var canGoForwardMock = false
         var mockURL: URL?
+        var mockTitle: String?
 
         override var url: URL? {
             mockURL
+        }
+
+        override var title: String? {
+            mockTitle
         }
 
         override func load(_ request: URLRequest) -> WKNavigation? {
@@ -259,20 +265,17 @@ class WebKitEngineWrapperTests: XCTestCase {
         enum Message: Equatable {
             case didLoadPage
             case didUpdateLoadingProgress(_: Double)
+            case didUpdateNavigationButtons
         }
 
         var receivedMessages = [Message]()
 
-        func didLoad(page: core_web_browser.WebPage) {
-
+        func didLoad(page: WebPage) {
+            receivedMessages.append(.didLoadPage)
         }
 
         func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
-            
-        }
-
-        func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
-            receivedMessages.append(.didLoadPage)
+            receivedMessages.append(.didUpdateNavigationButtons)
         }
 
         func didUpdateLoadingProgress(_ progress: Double) {

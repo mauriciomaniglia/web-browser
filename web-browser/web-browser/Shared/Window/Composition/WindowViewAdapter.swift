@@ -106,11 +106,6 @@ extension WindowViewAdapter: WebEngineDelegate {
         presenter.didUpdateNavigationButtons(canGoBack: canGoBack, canGoForward: canGoForward)
     }
 
-    func didLoad(page: WebPage, canGoBack: Bool, canGoForward: Bool) {
-        history.save(page: page)
-        presenter.didLoadPage(url: page.url)
-    }
-
     func didUpdateLoadingProgress(_ progress: Double) {
         presenter.didUpdateProgressBar(progress)
     }
