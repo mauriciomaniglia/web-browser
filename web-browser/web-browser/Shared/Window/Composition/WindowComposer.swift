@@ -53,7 +53,7 @@ final class WindowComposer {
         #elseif os(macOS)
         return MacOSWindow(viewModel: viewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
-        return VisionOSWindow(viewModel: viewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        return VisionOSWindow(viewModel: viewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }
 }
