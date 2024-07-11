@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MacOSWindow: View {
-    @ObservedObject var viewModel: WindowViewModel
+    @ObservedObject var windowViewModel: WindowViewModel
     @ObservedObject var menuViewModel: MenuViewModel
 
     let webView: AnyView
@@ -9,10 +9,10 @@ struct MacOSWindow: View {
     var body: some View {
         VStack {
             HStack {
-                WindowNavigationButtons(viewModel: viewModel)
-                AddressBarView(viewModel: viewModel)
+                WindowNavigationButtons(viewModel: windowViewModel)
+                AddressBarView(viewModel: windowViewModel)
                 Spacer()
-                if viewModel.showMenuButton {
+                if windowViewModel.showMenuButton {
                     Button(action: { menuViewModel.didTapMenuButton?() }) {
                         Image(systemName: "line.3.horizontal")
                     }

@@ -7,7 +7,7 @@ final class WindowComposer {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let windowPresenter = WindowPresenter()
         let safelistStore = SafelistStore()
-        var viewModel = WindowViewModel()
+        var windowViewModel = WindowViewModel()
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistoryStore()
         let windowViewAdapter = WindowViewAdapter(
@@ -15,7 +15,7 @@ final class WindowComposer {
             presenter: windowPresenter,
             safelist: safelistStore,
             history: historyStore,
-            viewModel: viewModel)
+            viewModel: windowViewModel)
 
         let menuViewModel = MenuViewModel()
         let menuPresenter = MenuPresenter(history: historyStore)
@@ -30,30 +30,30 @@ final class WindowComposer {
 
         contentBlocking.setupStrictProtection()
 
-        viewModel.didTapBackButton = windowViewAdapter.didTapBackButton
-        viewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
-        viewModel.didTapCancelButton = windowViewAdapter.didEndEditing
-        viewModel.didReload = windowViewAdapter.didReload
-        viewModel.didStopLoading = windowViewAdapter.didStopLoading
-        viewModel.didStartSearch = windowViewAdapter.didRequestSearch
-        viewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
-        viewModel.didBeginEditing = windowViewAdapter.didStartEditing
-        viewModel.didEndEditing = windowViewAdapter.didEndEditing
-        viewModel.didLongPressBackButton = windowViewAdapter.didLongPressBackButton
-        viewModel.didLongPressForwardButton = windowViewAdapter.didLongPressForwardButton
-        viewModel.didSelectBackListPage = windowViewAdapter.didSelectBackListPage(at:)
-        viewModel.didSelectForwardListPage = windowViewAdapter.didSelectForwardListPage(at:)
-        viewModel.didDismissBackForwardPageList = windowViewAdapter.didDismissBackForwardList
+        windowViewModel.didTapBackButton = windowViewAdapter.didTapBackButton
+        windowViewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
+        windowViewModel.didTapCancelButton = windowViewAdapter.didEndEditing
+        windowViewModel.didReload = windowViewAdapter.didReload
+        windowViewModel.didStopLoading = windowViewAdapter.didStopLoading
+        windowViewModel.didStartSearch = windowViewAdapter.didRequestSearch
+        windowViewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
+        windowViewModel.didBeginEditing = windowViewAdapter.didStartEditing
+        windowViewModel.didEndEditing = windowViewAdapter.didEndEditing
+        windowViewModel.didLongPressBackButton = windowViewAdapter.didLongPressBackButton
+        windowViewModel.didLongPressForwardButton = windowViewAdapter.didLongPressForwardButton
+        windowViewModel.didSelectBackListPage = windowViewAdapter.didSelectBackListPage(at:)
+        windowViewModel.didSelectForwardListPage = windowViewAdapter.didSelectForwardListPage(at:)
+        windowViewModel.didDismissBackForwardPageList = windowViewAdapter.didDismissBackForwardList
 
         webKitEngineWrapper.delegate = windowViewAdapter
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
 
         #if os(iOS)
-        return IOSWindow(viewModel: viewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        return IOSWindow(windowViewModel: windowViewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(macOS)
-        return MacOSWindow(viewModel: viewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
+        return MacOSWindow(windowViewModel: windowViewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
-        return VisionOSWindow(viewModel: viewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        return VisionOSWindow(windowViewModel: windowViewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }
 }
