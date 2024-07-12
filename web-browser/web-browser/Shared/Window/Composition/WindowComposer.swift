@@ -49,11 +49,20 @@ final class WindowComposer {
         windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
 
         #if os(iOS)
-        return IOSWindow(windowViewModel: windowViewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        return IOSWindow(
+            windowViewModel: windowViewModel,
+            menuViewModel: menuViewModel,
+            webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(macOS)
-        return MacOSWindow(windowViewModel: windowViewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
+        return MacOSWindow(
+            windowViewModel: windowViewModel,
+            menuViewModel: menuViewModel,
+            webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
-        return VisionOSWindow(windowViewModel: windowViewModel, menuViewModel: menuViewModel, webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        return VisionOSWindow(
+            windowViewModel: windowViewModel,
+            menuViewModel: menuViewModel,
+            webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }
 }
