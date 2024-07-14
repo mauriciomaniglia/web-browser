@@ -3,9 +3,11 @@ import core_web_browser
 
 class WindowPresenter {
     var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
-    private var model: WindowPresentableModel
 
-    init() {
+    private var model: WindowPresentableModel
+    private let safelist: SafelistAPI
+
+    init(safelist: SafelistAPI) {
         model = WindowPresentableModel(
             urlHost: nil, 
             fullURL: nil, 
@@ -21,6 +23,8 @@ class WindowPresenter {
             canGoForward: false, 
             backList: nil,
             forwardList: nil)
+
+        self.safelist = safelist
     }
 
     func didStartNewWindow() {
@@ -107,7 +111,7 @@ class WindowPresenter {
     func didLoadPage(url: URL) {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
-        let isOnSafelist = SafelistStore().isRegisteredDomain(urlHost)
+        let isOnSafelist = safelist.isRegisteredDomain(urlHost)
 
         let newModel = WindowPresentableModel(
             urlHost: urlHost,

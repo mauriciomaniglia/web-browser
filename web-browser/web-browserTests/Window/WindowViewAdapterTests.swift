@@ -207,8 +207,8 @@ class WindowViewAdapterTests: XCTestCase {
 
     private func makeSUT() -> (sut: WindowViewAdapter, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy, history: HistoryStoreSpy) {
         let webView = WebViewSpy()
-        let presenter = WindowPresenterSpy()
         let safelist = SafelistStoreSpy()
+        let presenter = WindowPresenterSpy(safelist: safelist)
         let history = HistoryStoreSpy()
         let viewModel = WindowViewModel()
         let sut = WindowViewAdapter(webView: webView, presenter: presenter, safelist: safelist, history: history, viewModel: viewModel)

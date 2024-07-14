@@ -5,8 +5,8 @@ final class WindowComposer {
 
     func composeView() -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
-        let windowPresenter = WindowPresenter()
         let safelistStore = SafelistStore()
+        let windowPresenter = WindowPresenter(safelist: safelistStore)
         var windowViewModel = WindowViewModel()
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistoryStore()

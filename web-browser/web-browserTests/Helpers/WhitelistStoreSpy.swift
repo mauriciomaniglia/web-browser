@@ -9,10 +9,11 @@ class SafelistStoreSpy: SafelistAPI {
     }
 
     var receivedMessages = [Message]()
+    var isOnSafelist = false
 
     func isRegisteredDomain(_ domain: String) -> Bool {
         receivedMessages.append(.isRegisteredDomain(domain))
-        return false
+        return isOnSafelist
     }
 
     func fetchRegisteredDomains() -> [String] {
