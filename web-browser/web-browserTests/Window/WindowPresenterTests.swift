@@ -5,7 +5,7 @@ import XCTest
 class WindowPresenterTests: XCTestCase {
 
     func test_didStartNewWindow_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -29,7 +29,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didStartNewWindow_deliversCorrectValuesWhenCallFromAnyPreviousState() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -54,7 +54,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didStartEditing_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -78,7 +78,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didStartEditing_deliversCorrectValuesWithPageAlreadyLoaded() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -103,7 +103,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didEndEditing_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -127,7 +127,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didEndEditing_deliversCorrectValuesWithPageAlreadyLoaded() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -152,7 +152,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didUpdateNavigationButtons_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -176,7 +176,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didLoadPage_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -200,7 +200,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didLoadBackList_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
@@ -233,7 +233,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didLoadForwardList_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
@@ -266,7 +266,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didDismissBackForwardList_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
@@ -294,7 +294,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -318,7 +318,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_whenValueIsOne_stopButtonAndProgressBarShouldNotBeVisible() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -342,7 +342,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_whenValueGreaterThanOne_stopButtonAndProgressBarShouldNotBeVisible() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -366,7 +366,7 @@ class WindowPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_whenNavigationUpdates_deliversCorrectValues() {
-        let sut = WindowPresenter()
+        let sut = makeSUT()
         var receivedResult: WindowPresentableModel?
         sut.didUpdatePresentableModel = { receivedResult = $0 }
 
@@ -391,6 +391,11 @@ class WindowPresenterTests: XCTestCase {
     }
 
     // MARK: -- Helpers
+
+    private func makeSUT() -> WindowPresenter {
+        let sut = WindowPresenter()
+        return sut
+    }
 
     private func showCancelButton() -> Bool {
         #if os(iOS)
