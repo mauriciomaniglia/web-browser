@@ -196,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				F98BF0C92B750A7F00C29BDA /* Helpers */,
+				F9E55D2E2C45E9FA008B7C64 /* History */,
 				F97BF7762C259A48005FB9BD /* Menu */,
 				F98BF0C62B750A2900C29BDA /* Window */,
 			);
@@ -233,7 +234,6 @@
 			children = (
 				F97BF7772C259A60005FB9BD /* MenuView.swift */,
 				F9FF5CFE2C41ECF700757BD5 /* MenuButton.swift */,
-				F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +344,22 @@
 				F91EFA842B71004D00500535 /* VisionOSWindow.swift */,
 			);
 			path = Window;
+			sourceTree = "<group>";
+		};
+		F9E55D2E2C45E9FA008B7C64 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				F9E55D2F2C45EA18008B7C64 /* Views */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		F9E55D2F2C45EA18008B7C64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F9E55FC32C02AB720098995F /* Presentation */ = {
