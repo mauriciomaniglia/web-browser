@@ -33,6 +33,9 @@
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F9CDFD912B7130610024E0AD /* core-web-browser */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
+		F9E55D352C45F377008B7C64 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D342C45F377008B7C64 /* HistoryPresenter.swift */; };
+		F9E55D372C45F3E9008B7C64 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D362C45F3E9008B7C64 /* HistoryModel.swift */; };
+		F9E55D3A2C45F471008B7C64 /* HistoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D392C45F471008B7C64 /* HistoryPresenterTests.swift */; };
 		F9E55FCA2C02ABC90098995F /* WindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FC82C02ABC90098995F /* WindowPresenter.swift */; };
 		F9E55FCB2C02ABC90098995F /* WindowPresentableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FC92C02ABC90098995F /* WindowPresentableModel.swift */; };
 		F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */; };
@@ -85,6 +88,9 @@
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9CDFD8F2B7130360024E0AD /* core-web-browser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "core-web-browser"; path = "../core-web-browser"; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		F9E55D342C45F377008B7C64 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
+		F9E55D362C45F3E9008B7C64 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		F9E55D392C45F471008B7C64 /* HistoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenterTests.swift; sourceTree = "<group>"; };
 		F9E55FC82C02ABC90098995F /* WindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresenter.swift; sourceTree = "<group>"; };
 		F9E55FC92C02ABC90098995F /* WindowPresentableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresentableModel.swift; sourceTree = "<group>"; };
 		F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewAdapter.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				F9E55FD62C02AE900098995F /* Helpers */,
+				F9E55D382C45F452008B7C64 /* History */,
 				F9BDCDFE2C2ED6B500A6251E /* Menu */,
 				F9E55FCE2C02ABEE0098995F /* Window */,
 			);
@@ -351,6 +358,7 @@
 		F9E55D2E2C45E9FA008B7C64 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				F9E55D332C45F35B008B7C64 /* Presentation */,
 				F9E55D2F2C45EA18008B7C64 /* Views */,
 				F9E55D302C45EFA6008B7C64 /* ViewModels */,
 			);
@@ -371,6 +379,23 @@
 				F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F9E55D332C45F35B008B7C64 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F9E55D342C45F377008B7C64 /* HistoryPresenter.swift */,
+				F9E55D362C45F3E9008B7C64 /* HistoryModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F9E55D382C45F452008B7C64 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				F9E55D392C45F471008B7C64 /* HistoryPresenterTests.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		F9E55FC32C02AB720098995F /* Presentation */ = {
@@ -519,6 +544,8 @@
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F9BDCDFD2C2ED56300A6251E /* MenuPresenter.swift in Sources */,
+				F9E55D352C45F377008B7C64 /* HistoryPresenter.swift in Sources */,
+				F9E55D372C45F3E9008B7C64 /* HistoryModel.swift in Sources */,
 				F97BF77A2C259F88005FB9BD /* MenuViewModel.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
@@ -552,6 +579,7 @@
 				F95BA9492C316EA20002FDB1 /* MenuAdapterTests.swift in Sources */,
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F9E55FDA2C02AEF40098995F /* WhitelistStoreSpy.swift in Sources */,
+				F9E55D3A2C45F471008B7C64 /* HistoryPresenterTests.swift in Sources */,
 				F9E55FD22C02ABFE0098995F /* WindowPresenterTests.swift in Sources */,
 				F9E55FD52C02ACDC0098995F /* WindowPresenterSpy.swift in Sources */,
 			);
