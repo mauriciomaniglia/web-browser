@@ -32,6 +32,7 @@
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F9CDFD912B7130610024E0AD /* core-web-browser */; };
+		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FCA2C02ABC90098995F /* WindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FC82C02ABC90098995F /* WindowPresenter.swift */; };
 		F9E55FCB2C02ABC90098995F /* WindowPresentableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FC92C02ABC90098995F /* WindowPresentableModel.swift */; };
 		F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */; };
@@ -83,6 +84,7 @@
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9CDFD8F2B7130360024E0AD /* core-web-browser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "core-web-browser"; path = "../core-web-browser"; sourceTree = "<group>"; };
+		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FC82C02ABC90098995F /* WindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresenter.swift; sourceTree = "<group>"; };
 		F9E55FC92C02ABC90098995F /* WindowPresentableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPresentableModel.swift; sourceTree = "<group>"; };
 		F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewAdapter.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				F9E55D2F2C45EA18008B7C64 /* Views */,
+				F9E55D302C45EFA6008B7C64 /* ViewModels */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -360,6 +363,14 @@
 				F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F9E55D302C45EFA6008B7C64 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F9E55FC32C02AB720098995F /* Presentation */ = {
@@ -510,6 +521,7 @@
 				F9BDCDFD2C2ED56300A6251E /* MenuPresenter.swift in Sources */,
 				F97BF77A2C259F88005FB9BD /* MenuViewModel.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
+				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
 				F9E55FCA2C02ABC90098995F /* WindowPresenter.swift in Sources */,
