@@ -9,5 +9,6 @@ class HistoryViewModel: ObservableObject {
 
     @Published var historyList: [HistoryPage] = []
 
+    var didOpenHistoryView: (() -> Void)?
     var didSelectPageHistory: ((HistoryPage) -> Void)?
 }
