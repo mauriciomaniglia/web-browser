@@ -17,15 +17,14 @@ final class WindowComposer {
             history: historyStore,
             viewModel: windowViewModel)
 
-        let menuViewModel = MenuViewModel()
-        let menuPresenter = MenuPresenter(history: historyStore)
+        let menuViewModel = MenuViewModel(webView: webKitEngineWrapper)
+        let menuPresenter = MenuPresenter()
         let menuAdapter = MenuAdapter(
             viewModel: menuViewModel,
             presenter: menuPresenter,
             webView: webKitEngineWrapper)
         menuViewModel.didTapMenuButton = menuAdapter.didTapMenu
-        menuViewModel.didTapHistoryOption = menuAdapter.didTapHistory
-        menuViewModel.didSelectPageHistory = menuAdapter.didSelectPageHistory(_:)
+        menuViewModel.didTapHistoryOption = menuAdapter.didTapHistory        
         menuPresenter.didUpdatePresentableModel = menuAdapter.updateViewModel
 
         contentBlocking.setupStrictProtection()

@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    var didSelectPage: ((MenuViewModel.HistoryPage) -> Void)?
-    let pages: [MenuViewModel.HistoryPage]
+    @ObservedObject var viewModel: HistoryViewModel
 
     @State private var searchText: String = ""
 
@@ -26,8 +25,8 @@ struct HistoryView: View {
 
                 Spacer()
 
-                ForEach(pages.indices, id: \.self) { index in
-                    let item = pages[index]
+                ForEach(viewModel.historyList.indices, id: \.self) { index in
+                    let item = viewModel.historyList[index]
 
                     HStack {
                         Text("\(item.title)")
@@ -35,10 +34,10 @@ struct HistoryView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        didSelectPage?(item)
+                        viewModel.didSelectPageHistory?(item)
                     }
 
-                    if index < pages.count-1 {
+                    if index < viewModel.historyList.count-1 {
                         Divider()
                     }
                 }

@@ -12,8 +12,8 @@ struct MenuButton: View {
         .popover(isPresented: $menuViewModel.showMenu, arrowEdge: .trailing, content: {
             MenuView(viewModel: menuViewModel)
         })
-        .popover(isPresented: $menuViewModel.showHistory, content: {
-            HistoryView(didSelectPage: menuViewModel.didSelectPageHistory, pages: menuViewModel.historyList)
+        .popover(isPresented: $menuViewModel.showHistory, content: {            
+            HistoryView(viewModel: menuViewModel.historyViewModel)
         })
     }
 }

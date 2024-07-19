@@ -19,14 +19,8 @@ class MenuAdapter {
         presenter.didOpenHistoryView()
     }
 
-    func didSelectPageHistory(_ pageHistory: MenuViewModel.HistoryPage) {
-        presenter.didSelectPageHistory()
-        webView.load(SearchURLBuilder.makeURL(from: pageHistory.url.absoluteString))
-    }
-
     func updateViewModel(_ model: MenuModel) {
         viewModel.showMenu = model.showMenu
-        viewModel.showHistory = model.historyList != nil
-        viewModel.historyList = model.historyList?.compactMap { .init(title: $0.title, url: $0.url)} ?? []
+        viewModel.showHistory = model.showHistory
     }
 }

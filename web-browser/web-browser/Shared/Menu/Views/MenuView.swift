@@ -11,6 +11,7 @@ struct MenuView: View {
             }
             .contentShape(Rectangle())
             .onTapGesture {
+                viewModel.historyViewModel.didOpenHistoryView?()
                 viewModel.didTapHistoryOption?()
             }
         }

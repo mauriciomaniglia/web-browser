@@ -1,17 +1,20 @@
 import Foundation
+import core_web_browser
 
 class MenuViewModel: ObservableObject {
+    let webView: WebEngineContract
 
-    struct HistoryPage {
-        let title: String
-        let url: URL
+    init(webView: WebEngineContract) {
+        self.webView = webView
     }
+
+    lazy var historyViewModel: HistoryViewModel = {
+        HistoryComposer().makeHistoryViewModel(webView: webView)
+    }()
 
     @Published var showMenu: Bool = false
     @Published var showHistory: Bool = false
-    @Published var historyList: [HistoryPage] = []
 
     var didTapMenuButton: (() -> Void)?
     var didTapHistoryOption: (() -> Void)?
-    var didSelectPageHistory: ((HistoryPage) -> Void)?
 }
