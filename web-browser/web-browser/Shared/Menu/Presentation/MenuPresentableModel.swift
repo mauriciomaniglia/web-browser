@@ -1,6 +1,6 @@
 import Foundation
 
-struct MenuModel {
+struct MenuPresentableModel {
     let showMenu: Bool
     let showHistory: Bool
 }

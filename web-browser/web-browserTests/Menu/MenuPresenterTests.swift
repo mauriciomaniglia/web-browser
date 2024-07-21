@@ -6,7 +6,7 @@ class MenuPresenterTests: XCTestCase {
 
     func test_didOpenMenuView_deliversCorrectModel() {
         let sut = makeSUT()
-        var model: MenuModel!
+        var model: MenuPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
 
         sut.didOpenMenuView()
@@ -17,7 +17,7 @@ class MenuPresenterTests: XCTestCase {
 
     func test_didOpenHistoryView_deliversCorrectModel() {
         let sut = makeSUT()
-        var model: MenuModel!
+        var model: MenuPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
 
         sut.didOpenHistoryView()

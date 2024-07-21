@@ -21,7 +21,7 @@ class MenuAdapterTests: XCTestCase {
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
         let (sut, _, viewModel, _) = makeSUT()
-        let model = MenuModel(showMenu: true, showHistory: true)
+        let model = MenuPresentableModel(showMenu: true, showHistory: true)
 
         sut.updateViewModel(model)
 

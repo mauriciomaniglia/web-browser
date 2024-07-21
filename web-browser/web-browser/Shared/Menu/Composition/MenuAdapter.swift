@@ -19,7 +19,7 @@ class MenuAdapter {
         presenter.didOpenHistoryView()
     }
 
-    func updateViewModel(_ model: MenuModel) {
+    func updateViewModel(_ model: MenuPresentableModel) {
         viewModel.showMenu = model.showMenu
         viewModel.showHistory = model.showHistory
     }
