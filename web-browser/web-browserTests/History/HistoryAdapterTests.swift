@@ -24,8 +24,8 @@ class HistoryAdapterTests: XCTestCase {
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
         let (sut, presenter, viewModel, webView) = makeSUT()
-        let historyPage = HistoryModel.HistoryPage(title: "title", url: URL(string: "https://some-url.com")!)
-        let model = HistoryModel(historyList: [historyPage])
+        let historyPage = HistoryPresentableModel.HistoryPage(title: "title", url: URL(string: "https://some-url.com")!)
+        let model = HistoryPresentableModel(historyList: [historyPage])
 
         sut.updateViewModel(model)
 

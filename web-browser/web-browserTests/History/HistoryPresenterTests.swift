@@ -15,7 +15,7 @@ class HistoryPresenterTests: XCTestCase {
         let page2 = WebPage(title: "", url: URL(string: "http://page2.com")!, date: yesterday)
         let page3 = WebPage(title: nil, url: URL(string: "http://page3.com")!, date: today)
         history.mockWebPages = [page1, page2, page3]
-        var model: HistoryModel!
+        var model: HistoryPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
 
         sut.didOpenHistoryView()

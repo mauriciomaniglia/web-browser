@@ -19,7 +19,7 @@ class HistoryAdapter {
         webView.load(SearchURLBuilder.makeURL(from: pageHistory.url.absoluteString))
     }
 
-    func updateViewModel(_ model: HistoryModel) {        
+    func updateViewModel(_ model: HistoryPresentableModel) {        
         viewModel.historyList = model.historyList?.compactMap { .init(title: $0.title, url: $0.url)} ?? []
     }
 }

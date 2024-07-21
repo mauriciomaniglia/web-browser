@@ -1,6 +1,6 @@
 import Foundation
 
-struct HistoryModel {
+struct HistoryPresentableModel {
 
     struct HistoryPage: Equatable {
         let title: String
