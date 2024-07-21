@@ -13,7 +13,7 @@ struct MacOSWindow: View {
                 AddressBarView(viewModel: windowViewModel)
                 Spacer()
                 if windowViewModel.showMenuButton {
-                    MenuButton(menuViewModel: menuViewModel)
+                    MenuButton(viewModel: menuViewModel)
                 }
             }
             Spacer()

@@ -1,19 +1,19 @@
 import SwiftUI
 
 struct MenuButton: View {
-    @ObservedObject var menuViewModel: MenuViewModel
+    @ObservedObject var viewModel: MenuViewModel
 
     var body: some View {
-        Button(action: { menuViewModel.didTapMenuButton?() }) {
+        Button(action: { viewModel.didTapMenuButton?() }) {
             Image(systemName: "line.3.horizontal")
         }
         .buttonStyle(PlainButtonStyle())
         .foregroundColor(.primary)
-        .popover(isPresented: $menuViewModel.showMenu, arrowEdge: .trailing, content: {
-            MenuView(viewModel: menuViewModel)
+        .popover(isPresented: $viewModel.showMenu, arrowEdge: .trailing, content: {
+            MenuView(viewModel: viewModel)
         })
-        .popover(isPresented: $menuViewModel.showHistory, content: {            
-            HistoryView(viewModel: menuViewModel.historyViewModel)
+        .popover(isPresented: $viewModel.showHistory, content: {
+            HistoryView(viewModel: viewModel.historyViewModel)
         })
     }
 }
