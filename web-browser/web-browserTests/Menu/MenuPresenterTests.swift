@@ -4,7 +4,7 @@ import core_web_browser
 
 class MenuPresenterTests: XCTestCase {
 
-    func test_didOpenMenuView_deliversCorrectModel() {
+    func test_didOpenMenuView_deliversCorrectState() {
         let sut = makeSUT()
         var model: MenuPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
@@ -15,7 +15,7 @@ class MenuPresenterTests: XCTestCase {
         XCTAssertFalse(model.showHistory)
     }
 
-    func test_didOpenHistoryView_deliversCorrectModel() {
+    func test_didOpenHistoryView_deliversCorrectState() {
         let sut = makeSUT()
         var model: MenuPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
