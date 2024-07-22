@@ -4,7 +4,7 @@ import core_web_browser
 
 class HistoryPresenterTests: XCTestCase {
 
-    func test_didOpenHistoryView_deliversCorrectModel() {
+    func test_didOpenHistoryView_deliversCorrectState() {
         let (sut, history) = makeSUT()
 
         let today = Date()
