@@ -19,7 +19,7 @@ class MenuAdapterTests: XCTestCase {
         XCTAssertEqual(presenter.receivedMessages, [.didOpenHistoryView])
     }
 
-    func test_updateViewModel_updatesAllValuesCorrectly() {
+    func test_updateViewModel_deliversCorrectState() {
         let (sut, _, viewModel, _) = makeSUT()
         let model = MenuPresentableModel(showMenu: true, showHistory: true)
 
