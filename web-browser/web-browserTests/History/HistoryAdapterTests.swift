@@ -22,7 +22,7 @@ class HistoryAdapterTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://some-url.com")!)])
     }
 
-    func test_updateViewModel_updatesAllValuesCorrectly() {
+    func test_updateViewModel_deliversCorrectState() {
         let (sut, presenter, viewModel, webView) = makeSUT()
         let historyPage = HistoryPresentableModel.HistoryPage(title: "title", url: URL(string: "https://some-url.com")!)
         let model = HistoryPresentableModel(historyList: [historyPage])
