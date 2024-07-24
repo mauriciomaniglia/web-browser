@@ -3,24 +3,8 @@ import XCTest
 
 class MenuAdapterTests: XCTestCase {
 
-    func test_didTapMenu_sendsCorrectMessage() {
-        let (sut, presenter, _, _) = makeSUT()
-
-        sut.didTapMenu()
-
-        XCTAssertEqual(presenter.receivedMessages, [.didOpenMenuView])
-    }
-
-    func test_didTapHistory_sendsCorrectMessage() {
-        let (sut, presenter, _, _) = makeSUT()
-
-        sut.didTapHistory()
-
-        XCTAssertEqual(presenter.receivedMessages, [.didOpenHistoryView])
-    }
-
     func test_updateViewModel_deliversCorrectState() {
-        let (sut, _, viewModel, _) = makeSUT()
+        let (sut, viewModel) = makeSUT()
         let model = MenuPresentableModel(showMenu: true, showHistory: true)
 
         sut.updateViewModel(model)
@@ -31,12 +15,11 @@ class MenuAdapterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: MenuAdapter, presenter: MenuPresenterSpy, viewModel: MenuViewModel, webView: WebViewSpy) {
+    private func makeSUT() -> (sut: MenuAdapter, viewModel: MenuViewModel) {
         let webView = WebViewSpy()
         let viewModel = MenuViewModel(webView: webView)
-        let presenter = MenuPresenterSpy()
-        let sut = MenuAdapter(viewModel: viewModel, presenter: presenter, webView: webView)
+        let sut = MenuAdapter(viewModel: viewModel)
 
-        return (sut, presenter, viewModel, webView)
+        return (sut, viewModel)
     }
 }
