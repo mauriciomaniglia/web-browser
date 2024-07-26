@@ -10,33 +10,33 @@ final class WindowComposer {
         var windowViewModel = WindowViewModel()
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistoryStore()
-        let windowViewAdapter = WindowViewAdapter(
+        let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
             safelist: safelistStore,
-            history: historyStore,
-            viewModel: windowViewModel)
+            history: historyStore)
+        let windowAdapter = WindowViewAdapter(viewModel: windowViewModel)
         let menuViewModel = MenuComposer().makeViewModel(webView: webKitEngineWrapper)
 
         contentBlocking.setupStrictProtection()
 
-        windowViewModel.didTapBackButton = windowViewAdapter.didTapBackButton
-        windowViewModel.didTapForwardButton = windowViewAdapter.didTapForwardButton
-        windowViewModel.didTapCancelButton = windowViewAdapter.didEndEditing
-        windowViewModel.didReload = windowViewAdapter.didReload
-        windowViewModel.didStopLoading = windowViewAdapter.didStopLoading
-        windowViewModel.didStartSearch = windowViewAdapter.didRequestSearch
-        windowViewModel.didUpdateSafelist = windowViewAdapter.updateSafelist(url:isEnabled:)
-        windowViewModel.didBeginEditing = windowViewAdapter.didStartEditing
-        windowViewModel.didEndEditing = windowViewAdapter.didEndEditing
-        windowViewModel.didLongPressBackButton = windowViewAdapter.didLongPressBackButton
-        windowViewModel.didLongPressForwardButton = windowViewAdapter.didLongPressForwardButton
-        windowViewModel.didSelectBackListPage = windowViewAdapter.didSelectBackListPage(at:)
-        windowViewModel.didSelectForwardListPage = windowViewAdapter.didSelectForwardListPage(at:)
-        windowViewModel.didDismissBackForwardPageList = windowViewAdapter.didDismissBackForwardList
+        windowViewModel.didTapBackButton = windowFacade.didTapBackButton
+        windowViewModel.didTapForwardButton = windowFacade.didTapForwardButton
+        windowViewModel.didTapCancelButton = windowFacade.didEndEditing
+        windowViewModel.didReload = windowFacade.didReload
+        windowViewModel.didStopLoading = windowFacade.didStopLoading
+        windowViewModel.didStartSearch = windowFacade.didRequestSearch
+        windowViewModel.didUpdateSafelist = windowFacade.updateSafelist(url:isEnabled:)
+        windowViewModel.didBeginEditing = windowFacade.didStartEditing
+        windowViewModel.didEndEditing = windowFacade.didEndEditing
+        windowViewModel.didLongPressBackButton = windowFacade.didLongPressBackButton
+        windowViewModel.didLongPressForwardButton = windowFacade.didLongPressForwardButton
+        windowViewModel.didSelectBackListPage = windowFacade.didSelectBackListPage(at:)
+        windowViewModel.didSelectForwardListPage = windowFacade.didSelectForwardListPage(at:)
+        windowViewModel.didDismissBackForwardPageList = windowFacade.didDismissBackForwardList
 
-        webKitEngineWrapper.delegate = windowViewAdapter
-        windowPresenter.didUpdatePresentableModel = windowViewAdapter.updateViewModel
+        webKitEngineWrapper.delegate = windowFacade
+        windowPresenter.didUpdatePresentableModel = windowAdapter.updateViewModel
 
         #if os(iOS)
         return IOSWindow(
