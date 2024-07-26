@@ -1,13 +1,12 @@
 import Foundation
-import core_web_browser
 
-class WindowPresenter {
-    var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
+public class WindowPresenter {
+    public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
 
     private var model: WindowPresentableModel
     private let safelist: SafelistAPI
 
-    init(safelist: SafelistAPI) {
+    public init(safelist: SafelistAPI) {
         model = WindowPresentableModel(
             urlHost: nil, 
             fullURL: nil, 
@@ -27,7 +26,7 @@ class WindowPresenter {
         self.safelist = safelist
     }
 
-    func didStartNewWindow() {
+    public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
             urlHost: nil,
             fullURL: nil,
@@ -45,7 +44,7 @@ class WindowPresenter {
             forwardList: nil))
     }
 
-    func didStartEditing() {
+    public func didStartEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -66,7 +65,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didEndEditing() {
+    public func didEndEditing() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -87,7 +86,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
+    public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -108,7 +107,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didLoadPage(url: URL) {
+    public func didLoadPage(url: URL) {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let isOnSafelist = safelist.isRegisteredDomain(urlHost)
@@ -133,7 +132,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didLoadBackList(_ webPages: [WebPage]) {
+    public func didLoadBackList(_ webPages: [WebPage]) {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -154,7 +153,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didLoadForwardList(_ webPages: [WebPage]) {
+    public func didLoadForwardList(_ webPages: [WebPage]) {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -175,7 +174,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didDismissBackForwardList() {
+    public func didDismissBackForwardList() {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -196,7 +195,7 @@ class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    func didUpdateProgressBar(_ value: Double) {
+    public func didUpdateProgressBar(_ value: Double) {
         let progressValue = value >= 1 ? nil : value
 
         didUpdatePresentableModel?(.init(
