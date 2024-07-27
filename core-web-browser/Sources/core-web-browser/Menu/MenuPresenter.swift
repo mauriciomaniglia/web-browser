@@ -1,14 +1,14 @@
-import core_web_browser
+public class MenuPresenter {
+    public var didUpdatePresentableModel: ((MenuPresentableModel) -> Void)?
 
-class MenuPresenter {
-    var didUpdatePresentableModel: ((MenuPresentableModel) -> Void)?
+    public init() {}
 
-    func didOpenMenuView() {
+    public func didOpenMenuView() {
         let model = MenuPresentableModel(showMenu: true, showHistory: false)
         didUpdatePresentableModel?(model)
     }
 
-    func didOpenHistoryView() {
+    public func didOpenHistoryView() {
         let model = MenuPresentableModel(showMenu: false, showHistory: true)
         didUpdatePresentableModel?(model)
     }

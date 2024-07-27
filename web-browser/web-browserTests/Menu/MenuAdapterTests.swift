@@ -1,4 +1,5 @@
 import XCTest
+@testable import core_web_browser
 @testable import web_browser
 
 class MenuAdapterTests: XCTestCase {
