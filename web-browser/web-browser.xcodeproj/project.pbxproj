@@ -34,9 +34,6 @@
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9CDFD922B7130610024E0AD /* core-web-browser in Frameworks */ = {isa = PBXBuildFile; productRef = F9CDFD912B7130610024E0AD /* core-web-browser */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
-		F9E55D352C45F377008B7C64 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D342C45F377008B7C64 /* HistoryPresenter.swift */; };
-		F9E55D372C45F3E9008B7C64 /* HistoryPresentableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D362C45F3E9008B7C64 /* HistoryPresentableModel.swift */; };
-		F9E55D3A2C45F471008B7C64 /* HistoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D392C45F471008B7C64 /* HistoryPresenterTests.swift */; };
 		F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */; };
 		F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
@@ -85,9 +82,6 @@
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9CDFD8F2B7130360024E0AD /* core-web-browser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "core-web-browser"; path = "../core-web-browser"; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
-		F9E55D342C45F377008B7C64 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
-		F9E55D362C45F3E9008B7C64 /* HistoryPresentableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresentableModel.swift; sourceTree = "<group>"; };
-		F9E55D392C45F471008B7C64 /* HistoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenterTests.swift; sourceTree = "<group>"; };
 		F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewAdapter.swift; sourceTree = "<group>"; };
 		F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewAdapterTests.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
@@ -382,8 +376,6 @@
 		F9E55D332C45F35B008B7C64 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				F9E55D342C45F377008B7C64 /* HistoryPresenter.swift */,
-				F9E55D362C45F3E9008B7C64 /* HistoryPresentableModel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -392,7 +384,6 @@
 			isa = PBXGroup;
 			children = (
 				F94FD3ED2C4685D2001EDF1D /* Helpers */,
-				F9E55D392C45F471008B7C64 /* HistoryPresenterTests.swift */,
 				F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */,
 			);
 			path = History;
@@ -523,8 +514,6 @@
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
-				F9E55D352C45F377008B7C64 /* HistoryPresenter.swift in Sources */,
-				F9E55D372C45F3E9008B7C64 /* HistoryPresentableModel.swift in Sources */,
 				F98A17542C4C136300CC1FEC /* MenuComposer.swift in Sources */,
 				F97BF77A2C259F88005FB9BD /* MenuViewModel.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
@@ -555,7 +544,6 @@
 				F94FD3EC2C46854E001EDF1D /* HistoryAdapterTests.swift in Sources */,
 				F95BA9492C316EA20002FDB1 /* MenuAdapterTests.swift in Sources */,
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
-				F9E55D3A2C45F471008B7C64 /* HistoryPresenterTests.swift in Sources */,
 				F9745E512C558D1E008DC5E2 /* HistoryStoreMock.swift in Sources */,
 				F94FD3EF2C4685DF001EDF1D /* HistoryPresenterSpy.swift in Sources */,
 			);

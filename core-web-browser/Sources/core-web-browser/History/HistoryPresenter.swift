@@ -1,15 +1,13 @@
-import core_web_browser
-
-class HistoryPresenter {
+public class HistoryPresenter {
     private let history: HistoryAPI
 
-    var didUpdatePresentableModel: ((HistoryPresentableModel) -> Void)?
+    public var didUpdatePresentableModel: ((HistoryPresentableModel) -> Void)?
 
-    init(history: HistoryAPI) {
+    public init(history: HistoryAPI) {
         self.history = history
     }
 
-    func didOpenHistoryView() {
+    public func didOpenHistoryView() {
         let pages = history.getPages().sorted { $0.date > $1.date }
         let model = HistoryPresentableModel(historyList: mapHistoryPages(pages))
         didUpdatePresentableModel?(model)
