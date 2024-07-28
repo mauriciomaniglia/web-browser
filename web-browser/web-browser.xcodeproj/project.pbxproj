@@ -229,13 +229,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		F95BA94F2C3185A00002FDB1 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
 		F95BA9502C3185E80002FDB1 /* Composition */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				F95BA9502C3185E80002FDB1 /* Composition */,
-				F95BA94F2C3185A00002FDB1 /* Presentation */,
 				F95BA9512C3185FE0002FDB1 /* Views */,
 				F95BA9522C31860C0002FDB1 /* ViewModels */,
 			);
