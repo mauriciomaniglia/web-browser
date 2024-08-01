@@ -46,4 +46,26 @@ public class HistoryStore: HistoryAPI {
             return []
         }
     }
+
+    @MainActor
+    public func getPages(by searchTerm: String) -> [WebPage] {
+        guard let context = container?.mainContext else { return [] }
+
+        let predicate = #Predicate<HistoryPage> { page in
+            page.title.contains(searchTerm) ||
+            page.url.absoluteString.contains (searchTerm)
+        }
+
+        let filteredPages = FetchDescriptor<HistoryPage>(
+            predicate: predicate,
+            sortBy: [.init(\.date)]
+        )
+
+        do {
+            let results = try context.fetch(filteredPages)
+            return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+        } catch {
+            return []
+        }
+    }
 }
