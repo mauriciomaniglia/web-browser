@@ -190,4 +190,8 @@ private class HistoryStoreSpy: HistoryAPI {
         receivedMessages.append(.getPages)
         return []
     }
+
+    func getPages(by searchTerm: String) -> [core_web_browser.WebPage] {
+        return []
+    }
 }
