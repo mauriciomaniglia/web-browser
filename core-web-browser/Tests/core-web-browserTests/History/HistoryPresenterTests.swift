@@ -51,6 +51,14 @@ class HistoryPresenterTests: XCTestCase {
         XCTAssertEqual(model.historyList?[1].url, URL(string:"http://apple-blog.com")!)
     }
 
+    func test_didSearchTerm_sendsCorrectMessage() {
+        let (sut, history) = makeSUT()
+
+        sut.didSearchTerm("apple")
+
+        XCTAssertEqual(history.receivedMessages, [.getPagesByTerm("apple")])
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: HistoryPresenter, historyMock: HistoryStoreMock) {
