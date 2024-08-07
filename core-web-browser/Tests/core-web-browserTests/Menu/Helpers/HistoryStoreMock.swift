@@ -11,7 +11,7 @@ class HistoryStoreMock: HistoryAPI {
         return mockWebPages
     }
 
-    func getPages(by searchTerm: String) -> [core_web_browser.WebPage] {
-        return []
+    func getPages(by searchTerm: String) -> [WebPage] {
+        return mockWebPages
     }
 }

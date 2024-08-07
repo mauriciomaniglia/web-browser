@@ -27,6 +27,22 @@ class HistoryPresenterTests: XCTestCase {
         XCTAssertEqual(model.historyList?[2].url, URL(string:"http://page1.com")!)
     }
 
+    func test_didSearchTerm_deliversCorrectState() {
+        let (sut, history) = makeSUT()
+        let page1 = WebPage(title: "Apple Store", url: URL(string: "http://apple-store.com")!, date: Date())
+        let page2 = WebPage(title: "Apple Blog", url: URL(string: "http://apple-blog.com")!, date: Date())
+        history.mockWebPages = [page1, page2]
+        var model: HistoryPresentableModel!
+        sut.didUpdatePresentableModel = { model = $0 }
+
+        sut.didSearchTerm("apple")
+
+        XCTAssertEqual(model.historyList?[0].title, "Apple Store")
+        XCTAssertEqual(model.historyList?[0].url, URL(string:"http://apple-store.com")!)
+        XCTAssertEqual(model.historyList?[1].title, "Apple Blog")
+        XCTAssertEqual(model.historyList?[1].url, URL(string:"http://apple-blog.com")!)
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: HistoryPresenter, historyMock: HistoryStoreMock) {

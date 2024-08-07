@@ -13,6 +13,12 @@ public class HistoryPresenter {
         didUpdatePresentableModel?(model)
     }
 
+    public func didSearchTerm(_ term: String) {
+        let pages = history.getPages(by: term)
+        let model = HistoryPresentableModel(historyList: mapHistoryPages(pages))
+        didUpdatePresentableModel?(model)
+    }
+
     private func mapHistoryPages(_ pages: [WebPage]) -> [HistoryPresentableModel.HistoryPage] {
         pages.map {
             let title = $0.title ?? ""
