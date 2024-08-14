@@ -15,6 +15,10 @@ class HistoryAdapter {
         presenter.didOpenHistoryView()
     }
 
+    func didSearchTerm(_ term: String) {
+        presenter.didSearchTerm(term)
+    }
+
     func didSelectPageHistory(_ pageHistory: HistoryViewModel.HistoryPage) {        
         webView.load(SearchURLBuilder.makeURL(from: pageHistory.url.absoluteString))
     }

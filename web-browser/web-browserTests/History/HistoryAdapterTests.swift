@@ -13,6 +13,15 @@ class HistoryAdapterTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
+    func test_didSearchTerm_sendsCorrectMessage() {
+        let (sut, presenter, _, webView) = makeSUT()
+
+        sut.didSearchTerm("test")
+
+        XCTAssertEqual(presenter.receivedMessages, [.didSearchTerm("test")])
+        XCTAssertEqual(webView.receivedMessages, [])
+    }
+
     func test_didSelectPageHistory_sendsCorrectMessage() {
         let (sut, presenter, _, webView) = makeSUT()
         let pageHistory = HistoryViewModel.HistoryPage(title: "some title", url: URL(string: "http://some-url.com")!)
