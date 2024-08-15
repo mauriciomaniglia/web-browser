@@ -10,6 +10,7 @@ class HistoryComposer {
 
         viewModel.didSelectPageHistory = adapter.didSelectPageHistory(_:)
         viewModel.didOpenHistoryView = adapter.didOpenHistoryView
+        viewModel.didSearchTerm = adapter.didSearchTerm(_:)
         presenter.didUpdatePresentableModel = adapter.updateViewModel
 
         return viewModel

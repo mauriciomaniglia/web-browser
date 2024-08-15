@@ -13,6 +13,9 @@ struct HistoryView: View {
 
                     HStack {
                         TextField("Search History", text: $searchText)
+                            .onChange(of: searchText, { _, newValue in
+                                viewModel.didSearchTerm?(newValue)
+                            })
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
 
