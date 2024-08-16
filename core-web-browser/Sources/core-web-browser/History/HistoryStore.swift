@@ -10,11 +10,13 @@ public class HistoryStore: HistoryAPI {
         let title: String
         let url: URL
         let date: Date
+        let urlString: String
 
-        init(title: String, url: URL, date: Date) {
+        init(title: String, url: URL, date: Date, urlString: String) {
             self.title = title
             self.url = url
             self.date = date
+            self.urlString = urlString
         }
     }
 
@@ -29,7 +31,7 @@ public class HistoryStore: HistoryAPI {
         let pagetitle = page.title ?? ""
         let historyTitle = pagetitle.isEmpty ? page.url.absoluteString : pagetitle
 
-        context.insert(HistoryPage(title: historyTitle, url: page.url, date: Date()))
+        context.insert(HistoryPage(title: historyTitle, url: page.url, date: Date(), urlString: page.url.absoluteString))
         try? context.save()
     }
     
@@ -53,7 +55,7 @@ public class HistoryStore: HistoryAPI {
 
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||
-            page.url.absoluteString.contains (searchTerm)
+            page.urlString.contains(searchTerm)
         }
 
         let filteredPages = FetchDescriptor<HistoryPage>(
