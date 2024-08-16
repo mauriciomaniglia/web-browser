@@ -52,6 +52,7 @@ public class HistoryStore: HistoryAPI {
     @MainActor
     public func getPages(by searchTerm: String) -> [WebPage] {
         guard let context = container?.mainContext else { return [] }
+        guard !searchTerm.isEmpty else { return getPages() }
 
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||
