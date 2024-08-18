@@ -48,5 +48,8 @@ struct HistoryView: View {
             }
             .padding()
         }
+        .onAppear {
+            viewModel.didOpenHistoryView?()
+        }
     }
 }
