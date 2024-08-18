@@ -8,7 +8,7 @@ struct MacOSWindow: View {
 
     var body: some View {
         NavigationSplitView {
-            Sidebar()
+            Sidebar(menuViewModel: menuViewModel)
         } detail: {
             VStack {
                 HStack {
@@ -29,9 +29,11 @@ struct MacOSWindow: View {
 }
 
 struct Sidebar: View {
+    @ObservedObject var menuViewModel: MenuViewModel
+
     var body: some View {
         List {
-            NavigationLink(value: "History") {
+            NavigationLink(destination: HistoryView(viewModel: menuViewModel.historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }
