@@ -3,27 +3,26 @@ import SwiftUI
 struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
 
+    @Environment(\.dismiss) private var dismiss
+
     @State private var searchText: String = ""
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                VStack {
-                    Text("History")
-
-                    HStack {
-                        TextField("Search History", text: $searchText)
-                            .onChange(of: searchText, { _, newValue in
-                                viewModel.didSearchTerm?(newValue)
-                            })
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-
-                        Button(action: {}) {
-                            Text("Cancel")
-                        }
+                HStack {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
                     }
-                    .cornerRadius(10)
+
+                    TextField("Search History", text: $searchText)
+                        .onChange(of: searchText, { _, newValue in
+                            viewModel.didSearchTerm?(newValue)
+                        })
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
                 }
 
                 Spacer()
@@ -48,6 +47,7 @@ struct HistoryView: View {
             }
             .padding()
         }
+        .navigationTitle("History")
         .onAppear {
             viewModel.didOpenHistoryView?()
         }
