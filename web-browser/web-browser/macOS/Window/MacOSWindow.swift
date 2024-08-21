@@ -13,11 +13,7 @@ struct MacOSWindow: View {
             VStack {
                 HStack {
                     WindowNavigationButtons(viewModel: windowViewModel)
-                    AddressBarView(viewModel: windowViewModel)
-                    Spacer()
-                    if windowViewModel.showMenuButton {
-                        MenuButton(viewModel: menuViewModel)
-                    }
+                    AddressBarView(viewModel: windowViewModel)                   
                 }
                 Spacer()
                 webView
