@@ -37,6 +37,7 @@ struct HistoryView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         viewModel.didSelectPageHistory?(item)
+                        dismiss()
                     }
 
                     if index < viewModel.historyList.count-1 {
