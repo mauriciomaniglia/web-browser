@@ -19,29 +19,29 @@ extension Date {
         let now = Date()
 
         if calendar.isDateInToday(self) {
-            return "Today, \(formattedTime())"
+            return "Today"
         } else if calendar.isDateInYesterday(self) {
-            return "Yesterday, \(formattedTime())"
+            return "Yesterday"
         } else if let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)),
                   self >= startOfWeek {
             let weekday = calendar.component(.weekday, from: self)
             let weekdayString = calendar.weekdaySymbols[weekday - 1]
-            return "\(weekdayString), \(formattedTime())"
+            return "\(weekdayString)"
         } else {
-            return formattedDateAndTime()
+            return formattedDate()
         }
     }
 
-    private func formattedTime() -> String {
+    func formattedTime() -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         return formatter.string(from: self)
     }
 
-    private func formattedDateAndTime() -> String {
+    private func formattedDate() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.timeStyle = .short
+        formatter.timeStyle = .none
         return formatter.string(from: self)
     }
 }
