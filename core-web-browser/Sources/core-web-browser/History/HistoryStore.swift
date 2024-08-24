@@ -50,6 +50,28 @@ public class HistoryStore: HistoryAPI {
     }
 
     @MainActor
+    public func getPages() -> [[WebPage]] {
+        guard let context = container?.mainContext else { return [] }
+
+        let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
+
+        do {
+            let results = try context.fetch(allPages)
+            let webPages = results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+
+            let groupedPages = Dictionary(grouping: webPages, by: { Calendar.current.startOfDay(for: $0.date) })
+            let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
+                lhs.key.compare(rhs.key) == .orderedDescending
+            })
+
+            return sortedGroups.map { $0.value }
+
+        } catch {
+            return []
+        }
+    }
+
+    @MainActor
     public func getPages(by searchTerm: String) -> [WebPage] {
         guard let context = container?.mainContext else { return [] }
         guard !searchTerm.isEmpty else { return getPages() }
