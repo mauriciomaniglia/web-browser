@@ -34,20 +34,6 @@ public class HistoryStore: HistoryAPI {
         context.insert(HistoryPage(title: historyTitle, url: page.url, date: Date(), urlString: page.url.absoluteString))
         try? context.save()
     }
-    
-    @MainActor
-    public func getPages() -> [WebPage] {
-        guard let context = container?.mainContext else { return [] }
-
-        let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
-
-        do {
-            let results = try context.fetch(allPages)
-            return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
-        } catch {
-            return []
-        }
-    }
 
     @MainActor
     public func getPages() -> [[WebPage]] {
@@ -72,7 +58,7 @@ public class HistoryStore: HistoryAPI {
     }
 
     @MainActor
-    public func getPages(by searchTerm: String) -> [WebPage] {
+    public func getPages(by searchTerm: String) -> [[WebPage]] {
         guard let context = container?.mainContext else { return [] }
         guard !searchTerm.isEmpty else { return getPages() }
 
@@ -88,7 +74,14 @@ public class HistoryStore: HistoryAPI {
 
         do {
             let results = try context.fetch(filteredPages)
-            return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+            let webPages = results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+
+            let groupedPages = Dictionary(grouping: webPages, by: { Calendar.current.startOfDay(for: $0.date) })
+            let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
+                lhs.key.compare(rhs.key) == .orderedDescending
+            })
+
+            return sortedGroups.map { $0.value }
         } catch {
             return []
         }

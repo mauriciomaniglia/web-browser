@@ -8,22 +8,32 @@ public class HistoryPresenter {
     }
 
     public func didOpenHistoryView() {
-        let pages = history.getPages().sorted { $0.date > $1.date }
-        let model = HistoryPresentableModel(historyList: mapHistoryPages(pages))
+        let pages: [[WebPage]] = history.getPages()
+        let model = HistoryPresentableModel(list: mapSections(pages))
         didUpdatePresentableModel?(model)
     }
 
     public func didSearchTerm(_ term: String) {
         let pages = history.getPages(by: term)
-        let model = HistoryPresentableModel(historyList: mapHistoryPages(pages))
+        let model = HistoryPresentableModel(list: mapSections(pages))
         didUpdatePresentableModel?(model)
     }
 
-    private func mapHistoryPages(_ pages: [WebPage]) -> [HistoryPresentableModel.HistoryPage] {
+    private func mapSections(_ pages: [[WebPage]]) -> [HistoryPresentableModel.Section] {
+        pages.map {
+            let title = $0.first?.date.relativeTimeString() ?? ""
+            return HistoryPresentableModel.Section(title: title, pages: mapPages($0))
+        }
+    }
+
+    private func mapPages(_ pages: [WebPage]) -> [HistoryPresentableModel.Page] {
         pages.map {
             let title = $0.title ?? ""
-            return HistoryPresentableModel.HistoryPage.init(
-                title: title.isEmpty ? $0.url.absoluteString : title,
+            let dateAndTitle = $0.date.formattedTime() + " - " + title
+            let dateAndURL = $0.date.formattedTime() + " - " + $0.url.absoluteString
+
+            return HistoryPresentableModel.Page.init(
+                title: title.isEmpty ? dateAndURL : dateAndTitle,
                 url: $0.url)
         }
     }

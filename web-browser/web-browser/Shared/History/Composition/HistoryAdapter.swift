@@ -19,11 +19,11 @@ class HistoryAdapter {
         presenter.didSearchTerm(term)
     }
 
-    func didSelectPageHistory(_ pageHistory: HistoryViewModel.HistoryPage) {        
+    func didSelectPageHistory(_ pageHistory: HistoryViewModel.Page) {        
         webView.load(SearchURLBuilder.makeURL(from: pageHistory.url.absoluteString))
     }
 
-    func updateViewModel(_ model: HistoryPresentableModel) {        
-        viewModel.historyList = model.historyList?.compactMap { .init(title: $0.title, url: $0.url)} ?? []
+    func updateViewModel(_ model: HistoryPresentableModel) {
+        viewModel.historyList = model.list?.compactMap { .init(title: $0.title, pages: $0.pages.map { .init(title: $0.title, url: $0.url) })} ?? []
     }
 }

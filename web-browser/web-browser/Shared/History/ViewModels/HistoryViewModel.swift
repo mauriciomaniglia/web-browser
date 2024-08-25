@@ -2,14 +2,19 @@ import Foundation
 
 class HistoryViewModel: ObservableObject {
 
-    struct HistoryPage {
+    struct Section {
+        let title: String
+        let pages: [Page]
+    }
+
+    struct Page {
         let title: String
         let url: URL
     }
 
-    @Published var historyList: [HistoryPage] = []
+    @Published var historyList: [Section] = []
 
     var didOpenHistoryView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
-    var didSelectPageHistory: ((HistoryPage) -> Void)?
+    var didSelectPageHistory: ((Page) -> Void)?
 }

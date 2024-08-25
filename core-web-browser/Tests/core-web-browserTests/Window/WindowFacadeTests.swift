@@ -186,12 +186,12 @@ private class HistoryStoreSpy: HistoryAPI {
         receivedMessages.append(.save)
     }
 
-    func getPages() -> [WebPage] {
+    func getPages() -> [[WebPage]] {
         receivedMessages.append(.getPages)
         return []
     }
 
-    func getPages(by searchTerm: String) -> [core_web_browser.WebPage] {
+    func getPages(by searchTerm: String) -> [[WebPage]] {
         return []
     }
 }

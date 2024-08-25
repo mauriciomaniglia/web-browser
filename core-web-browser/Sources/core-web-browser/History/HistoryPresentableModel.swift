@@ -2,10 +2,15 @@ import Foundation
 
 public struct HistoryPresentableModel {
 
-    public struct HistoryPage: Equatable {
+    public struct Section: Equatable {
+        public let title: String
+        public let pages: [Page]
+    }
+
+    public struct Page: Equatable {
         public let title: String
         public let url: URL
     }
 
-    public let historyList: [HistoryPage]?
+    public let list: [Section]?
 }

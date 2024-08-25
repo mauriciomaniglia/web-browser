@@ -30,18 +30,28 @@ struct HistoryView: View {
                 ForEach(viewModel.historyList.indices, id: \.self) { index in
                     let item = viewModel.historyList[index]
 
-                    HStack {
-                        Text("\(item.title)")
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        viewModel.didSelectPageHistory?(item)
-                        dismiss()
-                    }
+                    let header = Text(item.title)
+                        .font(.title)
+                        .bold()
+                        .padding(.bottom)
 
-                    if index < viewModel.historyList.count-1 {
-                        Divider()
+                    Section(header: header) {
+                        ForEach(item.pages, id: \.url) { page in
+                            Spacer()
+                            HStack {
+                                Text("\(page.title)")
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                viewModel.didSelectPageHistory?(page)
+                                dismiss()
+                            }
+                        }
+
+                        if index < viewModel.historyList.count-1 {
+                            Divider()
+                        }
                     }
                 }
                 .presentationCompactAdaptation((.popover))
