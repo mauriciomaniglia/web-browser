@@ -24,6 +24,13 @@ class HistoryAdapter {
     }
 
     func updateViewModel(_ model: HistoryPresentableModel) {
-        viewModel.historyList = model.list?.compactMap { .init(title: $0.title, pages: $0.pages.map { .init(title: $0.title, url: $0.url) })} ?? []
+        let history = model.list?.compactMap {
+            let pages = $0.pages.map {
+                HistoryViewModel.Page(title: $0.title, url: $0.url)
+            }
+            return HistoryViewModel.Section(title: $0.title, pages: pages)
+        }
+
+        viewModel.historyList = history ?? []
     }
 }
