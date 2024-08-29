@@ -20,24 +20,31 @@ public class HistoryStore: HistoryAPI {
         }
     }
 
-    private let container = try? ModelContainer(for: HistoryPage.self)
+    private let container: ModelContainer
 
-    public init() {}
+    public init() {
+        do {
+            container = try ModelContainer(for: HistoryPage.self)
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error)")
+        }
+    }
 
     @MainActor
     public func save(page: WebPage) {
-        guard let context = container?.mainContext else { return }
+        let context = container.mainContext
 
         let pagetitle = page.title ?? ""
         let historyTitle = pagetitle.isEmpty ? page.url.absoluteString : pagetitle
 
         context.insert(HistoryPage(title: historyTitle, url: page.url, date: Date(), urlString: page.url.absoluteString))
+
         try? context.save()
     }
 
     @MainActor
     public func getPages() -> [[WebPage]] {
-        guard let context = container?.mainContext else { return [] }
+        let context = container.mainContext
 
         let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
 
@@ -59,7 +66,7 @@ public class HistoryStore: HistoryAPI {
 
     @MainActor
     public func getPages(by searchTerm: String) -> [[WebPage]] {
-        guard let context = container?.mainContext else { return [] }
+        let context = container.mainContext
         guard !searchTerm.isEmpty else { return getPages() }
 
         let predicate = #Predicate<HistoryPage> { page in
