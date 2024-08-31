@@ -8,18 +8,22 @@ struct VisionOSWindow: View {
 
     var body: some View {
         VStack {
-            HStack {
-                WindowNavigationButtons(viewModel: windowViewModel)
-                AddressBarView(viewModel: windowViewModel)
-                Spacer()
-                if windowViewModel.showMenuButton {
-                    MenuButton(viewModel: menuViewModel)
-                }
-            }
-            Spacer()
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding()
+        .ornament(
+            visibility: .visible,
+            attachmentAnchor: .scene(.top),
+            contentAlignment: .center
+        ) {
+            HStack {
+                Spacer()
+                WindowNavigationButtons(viewModel: windowViewModel)
+                AddressBarView(viewModel: windowViewModel)
+            }
+            .frame(width: 1000)
+            .padding()
+            .glassBackgroundEffect()
+        }
     }
 }
