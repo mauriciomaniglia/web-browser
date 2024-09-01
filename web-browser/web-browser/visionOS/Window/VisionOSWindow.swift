@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if os(visionOS)
 struct VisionOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
     @ObservedObject var menuViewModel: MenuViewModel
@@ -27,3 +28,4 @@ struct VisionOSWindow: View {
         }
     }
 }
+#endif
