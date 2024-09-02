@@ -16,5 +16,5 @@ class HistoryViewModel: ObservableObject {
 
     var didOpenHistoryView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
-    var didSelectPageHistory: ((Page) -> Void)?
+    var didSelectPage: ((String) -> Void)?
 }

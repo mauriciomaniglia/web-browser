@@ -34,7 +34,7 @@ struct HistoryView: View {
                     ForEach(item.pages, id: \.url) { page in
                         Text("\(page.title)")
                             .onTapGesture {
-                                viewModel.didSelectPageHistory?(page)
+                                viewModel.didSelectPage?(page.url)
                                 dismiss()
                             }
                     }

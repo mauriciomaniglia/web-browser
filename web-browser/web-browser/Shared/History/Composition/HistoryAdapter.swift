@@ -19,8 +19,8 @@ class HistoryAdapter {
         presenter.didSearchTerm(term)
     }
 
-    func didSelectPageHistory(_ pageHistory: HistoryViewModel.Page) {        
-        webView.load(SearchURLBuilder.makeURL(from: pageHistory.url))
+    func didSelectPage(_ url: String) {
+        webView.load(SearchURLBuilder.makeURL(from: url))
     }
 
     func updateViewModel(_ model: HistoryPresentableModel) {

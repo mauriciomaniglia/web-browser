@@ -26,7 +26,7 @@ class HistoryAdapterTests: XCTestCase {
         let (sut, presenter, _, webView) = makeSUT()
         let pageHistory = HistoryViewModel.Page(title: "some title", url: "http://some-url.com")
 
-        sut.didSelectPageHistory(pageHistory)
+        sut.didSelectPage(pageHistory.url)
 
         XCTAssertEqual(presenter.receivedMessages, [])
         XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://some-url.com")!)])
