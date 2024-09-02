@@ -1,6 +1,5 @@
 import XCTest
-@testable import core_web_browser
-@testable import web_browser
+import core_web_browser
 
 class HistoryFacadeTests: XCTestCase {
 
@@ -23,10 +22,9 @@ class HistoryFacadeTests: XCTestCase {
     }
 
     func test_didSelectPageHistory_sendsCorrectMessage() {
-        let (sut, presenter,webView) = makeSUT()
-        let pageHistory = HistoryViewModel.Page(title: "some title", url: "http://some-url.com")
+        let (sut, presenter,webView) = makeSUT()        
 
-        sut.didSelectPage(pageHistory.url)
+        sut.didSelectPage("http://some-url.com")
 
         XCTAssertEqual(presenter.receivedMessages, [])
         XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://some-url.com")!)])
