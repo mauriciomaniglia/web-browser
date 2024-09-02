@@ -2,25 +2,9 @@ import core_web_browser
 
 class HistoryAdapter {
     private var viewModel: HistoryViewModel
-    private let presenter: HistoryPresenter
-    private let webView: WebEngineContract
 
-    init(viewModel: HistoryViewModel, presenter: HistoryPresenter, webView: WebEngineContract) {
+    init(viewModel: HistoryViewModel) {
         self.viewModel = viewModel
-        self.presenter = presenter
-        self.webView = webView
-    }
-
-    func didOpenHistoryView() {
-        presenter.didOpenHistoryView()
-    }
-
-    func didSearchTerm(_ term: String) {
-        presenter.didSearchTerm(term)
-    }
-
-    func didSelectPage(_ url: String) {
-        webView.load(SearchURLBuilder.makeURL(from: url))
     }
 
     func updateViewModel(_ model: HistoryPresentableModel) {

@@ -6,11 +6,12 @@ class HistoryComposer {
         let viewModel = HistoryViewModel()
         let historyStore = HistoryStore()
         let presenter = HistoryPresenter(history: historyStore)
-        let adapter = HistoryAdapter(viewModel: viewModel, presenter: presenter, webView: webView)
+        let adapter = HistoryAdapter(viewModel: viewModel)
+        let facade = HistoryFacade(presenter: presenter, webView: webView)
 
-        viewModel.didSelectPage = adapter.didSelectPage(_:)
-        viewModel.didOpenHistoryView = adapter.didOpenHistoryView
-        viewModel.didSearchTerm = adapter.didSearchTerm(_:)
+        viewModel.didSelectPage = facade.didSelectPage(_:)
+        viewModel.didOpenHistoryView = facade.didOpenHistoryView
+        viewModel.didSearchTerm = facade.didSearchTerm(_:)
         presenter.didUpdatePresentableModel = adapter.updateViewModel
 
         return viewModel
