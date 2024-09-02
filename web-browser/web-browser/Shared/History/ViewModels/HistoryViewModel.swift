@@ -9,7 +9,7 @@ class HistoryViewModel: ObservableObject {
 
     struct Page {
         let title: String
-        let url: URL
+        let url: String
     }
 
     @Published var historyList: [Section] = []

@@ -20,13 +20,13 @@ class HistoryAdapter {
     }
 
     func didSelectPageHistory(_ pageHistory: HistoryViewModel.Page) {        
-        webView.load(SearchURLBuilder.makeURL(from: pageHistory.url.absoluteString))
+        webView.load(SearchURLBuilder.makeURL(from: pageHistory.url))
     }
 
     func updateViewModel(_ model: HistoryPresentableModel) {
         let history = model.list?.compactMap {
             let pages = $0.pages.map {
-                HistoryViewModel.Page(title: $0.title, url: $0.url)
+                HistoryViewModel.Page(title: $0.title, url: $0.url.absoluteString)
             }
             return HistoryViewModel.Section(title: $0.title, pages: pages)
         }

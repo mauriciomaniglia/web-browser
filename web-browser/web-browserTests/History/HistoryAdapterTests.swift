@@ -24,7 +24,7 @@ class HistoryAdapterTests: XCTestCase {
 
     func test_didSelectPageHistory_sendsCorrectMessage() {
         let (sut, presenter, _, webView) = makeSUT()
-        let pageHistory = HistoryViewModel.Page(title: "some title", url: URL(string: "http://some-url.com")!)
+        let pageHistory = HistoryViewModel.Page(title: "some title", url: "http://some-url.com")
 
         sut.didSelectPageHistory(pageHistory)
 
@@ -41,7 +41,7 @@ class HistoryAdapterTests: XCTestCase {
         sut.updateViewModel(model)
 
         XCTAssertEqual(viewModel.historyList.first?.pages.first?.title, "title")
-        XCTAssertEqual(viewModel.historyList.first?.pages.first?.url.absoluteString, "https://some-url.com")
+        XCTAssertEqual(viewModel.historyList.first?.pages.first?.url, "https://some-url.com")
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(presenter.receivedMessages, [])
     }
