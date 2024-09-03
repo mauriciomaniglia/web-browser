@@ -160,23 +160,6 @@ class WebKitEngineWrapperTests: XCTestCase {
 
     private class WKWebViewConfigurationDummy: WKWebViewConfiguration {}
 
-    private class WKUserContentControllerSpy: WKUserContentController {
-        enum Message {
-            case add
-            case removeAllContentRuleLists
-        }
-
-        var receivedMessages: [Message] = []
-
-        override func add(_ contentRuleList: WKContentRuleList) {
-            receivedMessages.append(.add)
-        }
-
-        override func removeAllContentRuleLists() {
-            receivedMessages.append(.removeAllContentRuleLists)
-        }
-    }
-
     private class WebViewSpy: WKWebView {
         enum Message: Equatable {
             case load(_ requestDescription: String)
