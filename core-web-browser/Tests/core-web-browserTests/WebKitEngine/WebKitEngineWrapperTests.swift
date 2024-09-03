@@ -132,7 +132,7 @@ class WebKitEngineWrapperTests: XCTestCase {
         let contentController = WKUserContentControllerSpy()
         let configuration = WKWebViewConfigurationDummy()
         configuration.userContentController = contentController
-        let webView = WebViewSpy(frame: .zero, configuration: configuration)
+        let webView = WebViewMock(frame: .zero, configuration: configuration)
         let ruleStore = WKContentRuleListStoreSpy()
         let sut = WebKitEngineWrapper(webView: webView, ruleStore: ruleStore)
 
@@ -145,12 +145,12 @@ class WebKitEngineWrapperTests: XCTestCase {
 
     private func makeSUT() -> (
         sut: WebKitEngineWrapper,
-        webView: WebViewSpy,
+        webView: WebViewMock,
         ruleStore: WKContentRuleListStoreSpy,
         delegate: WebViewProxyDelegateSpy)
     {
         let delegate = WebViewProxyDelegateSpy()
-        let webView = WebViewSpy()
+        let webView = WebViewMock()
         let ruleStore = WKContentRuleListStoreSpy()
         let sut = WebKitEngineWrapper(webView: webView, ruleStore: ruleStore)
         sut.delegate = delegate
@@ -159,62 +159,6 @@ class WebKitEngineWrapperTests: XCTestCase {
     }
 
     private class WKWebViewConfigurationDummy: WKWebViewConfiguration {}
-
-    private class WebViewSpy: WKWebView {
-        enum Message: Equatable {
-            case load(_ requestDescription: String)
-            case stopLoading
-            case goBack
-            case goForward
-        }
-
-        var receivedMessages = [Message]()
-        var registeredObservers = [String]()
-        var canGoBackMock = false
-        var canGoForwardMock = false
-        var mockURL: URL?
-        var mockTitle: String?
-
-        override var url: URL? {
-            mockURL
-        }
-
-        override var title: String? {
-            mockTitle
-        }
-
-        override func load(_ request: URLRequest) -> WKNavigation? {
-            receivedMessages.append(.load(request.description))
-            return super.load(request)
-        }
-
-        override func stopLoading() {
-            receivedMessages.append(.stopLoading)
-            return super.stopLoading()
-        }
-
-        override func goBack() -> WKNavigation? {
-            receivedMessages.append(.goBack)
-            return super.goBack()
-        }
-
-        override func goForward() -> WKNavigation? {
-            receivedMessages.append(.goForward)
-            return super.goForward()
-        }
-
-        override var canGoBack: Bool {
-            return canGoBackMock
-        }
-
-        override var canGoForward: Bool {
-            return canGoForwardMock
-        }
-
-        override func addObserver(_ observer: NSObject, forKeyPath keyPath: String, options: NSKeyValueObservingOptions = [], context: UnsafeMutableRawPointer?) {
-            registeredObservers.append(keyPath)
-        }
-    }
 
     private class WKContentRuleListStoreSpy: WKContentRuleListStore {
         enum Message: Equatable {
