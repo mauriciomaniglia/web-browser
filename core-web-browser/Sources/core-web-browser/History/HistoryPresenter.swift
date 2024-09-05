@@ -1,11 +1,7 @@
 public class HistoryPresenter {
-    private let history: HistoryAPI
-
     public var didUpdatePresentableModel: ((HistoryPresentableModel) -> Void)?
 
-    public init(history: HistoryAPI) {
-        self.history = history
-    }
+    public init() {}
 
     public func didLoadPages(_ pages: [[WebPage]]) {        
         let model = HistoryPresentableModel(list: mapSections(pages))

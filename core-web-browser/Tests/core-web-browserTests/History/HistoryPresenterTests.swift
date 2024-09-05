@@ -4,7 +4,7 @@ import core_web_browser
 class HistoryPresenterTests: XCTestCase {
 
     func test_didLoadPages_deliversCorrectState() {
-        let (sut, _) = makeSUT()
+        let sut = makeSUT()
 
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -27,10 +27,7 @@ class HistoryPresenterTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: HistoryPresenter, historyMock: HistoryStoreMock) {
-        let history = HistoryStoreMock()
-        let sut = HistoryPresenter(history: history)
-
-        return (sut, history)
+    private func makeSUT() -> HistoryPresenter {
+        return HistoryPresenter()
     }
 }
