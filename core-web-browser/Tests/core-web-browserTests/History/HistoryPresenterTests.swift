@@ -4,7 +4,7 @@ import core_web_browser
 class HistoryPresenterTests: XCTestCase {
 
     func test_didOpenHistoryView_deliversCorrectState() {
-        let (sut, history) = makeSUT()
+        let (sut, _) = makeSUT()
 
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -14,24 +14,15 @@ class HistoryPresenterTests: XCTestCase {
         let page1 = WebPage(title: "title 1", url: URL(string: "http://page1.com")!, date: today)
         let page2 = WebPage(title: "", url: URL(string: "http://page2.com")!, date: yesterday)
 
-        history.mockWebPages = [[page1, page2]]
         var model: HistoryPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
 
-        sut.didOpenHistoryView()
-        
+        sut.didOpenHistoryView([[page1, page2]])
+
         XCTAssertEqual(model.list?.first?.pages[0].title, "12:00 - title 1")
         XCTAssertEqual(model.list?.first?.pages[0].url, URL(string:"http://page1.com")!)
         XCTAssertEqual(model.list?.first?.pages[1].title, "12:00 - http://page2.com")
         XCTAssertEqual(model.list?.first?.pages[1].url, URL(string:"http://page2.com")!)
-    }
-
-    func test_didOpenHistoryView_sendsCorrectMessage() {
-        let (sut, history) = makeSUT()
-
-        sut.didOpenHistoryView()
-
-        XCTAssertEqual(history.receivedMessages, [.getPages])
     }
 
     func test_didSearchTerm_deliversCorrectState() {

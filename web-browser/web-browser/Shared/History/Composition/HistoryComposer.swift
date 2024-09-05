@@ -7,7 +7,7 @@ class HistoryComposer {
         let historyStore = HistoryStore()
         let presenter = HistoryPresenter(history: historyStore)
         let adapter = HistoryAdapter(viewModel: viewModel)
-        let facade = HistoryFacade(presenter: presenter, webView: webView)
+        let facade = HistoryFacade(presenter: presenter, webView: webView, history: historyStore)
 
         viewModel.didSelectPage = facade.didSelectPage(_:)
         viewModel.didOpenHistoryView = facade.didOpenHistoryView

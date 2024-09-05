@@ -36,7 +36,7 @@ class HistoryFacadeTests: XCTestCase {
         let history = HistoryStoreMock()
         let presenter = HistoryPresenterSpy(history: history)
         let webView = WebViewSpy()
-        let sut = HistoryFacade(presenter: presenter, webView: webView)
+        let sut = HistoryFacade(presenter: presenter, webView: webView, history: history)
 
         return (sut, presenter, webView)
     }

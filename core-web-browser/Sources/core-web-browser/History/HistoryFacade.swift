@@ -1,14 +1,17 @@
 public class HistoryFacade {
     private let presenter: HistoryPresenter
     private let webView: WebEngineContract
+    private let history: HistoryAPI
 
-    public init(presenter: HistoryPresenter, webView: WebEngineContract) {
+    public init(presenter: HistoryPresenter, webView: WebEngineContract, history: HistoryAPI) {
         self.presenter = presenter
         self.webView = webView
+        self.history = history
     }
 
     public func didOpenHistoryView() {
-        presenter.didOpenHistoryView()
+        let pages: [[WebPage]] = history.getPages()
+        presenter.didOpenHistoryView(pages)
     }
 
     public func didSearchTerm(_ term: String) {

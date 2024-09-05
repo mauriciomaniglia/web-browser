@@ -8,7 +8,7 @@ class HistoryPresenterSpy: HistoryPresenter {
 
     var receivedMessages = [Message]()
 
-    override func didOpenHistoryView() {
+    override func didOpenHistoryView(_ pages: [[WebPage]]) {
         receivedMessages.append(.didOpenHistoryView)
     }
 
