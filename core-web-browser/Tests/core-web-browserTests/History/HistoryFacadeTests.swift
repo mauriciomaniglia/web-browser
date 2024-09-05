@@ -3,12 +3,12 @@ import core_web_browser
 
 class HistoryFacadeTests: XCTestCase {
 
-    func test_didOpenHistoryView_sendsCorrectMessage() {
+    func test_didLoadPages_sendsCorrectMessage() {
         let (sut, presenter,webView) = makeSUT()
 
         sut.didOpenHistoryView()
 
-        XCTAssertEqual(presenter.receivedMessages, [.didOpenHistoryView])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadPages])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 

@@ -3,7 +3,7 @@ import core_web_browser
 
 class HistoryPresenterTests: XCTestCase {
 
-    func test_didOpenHistoryView_deliversCorrectState() {
+    func test_didLoadPages_deliversCorrectState() {
         let (sut, _) = makeSUT()
 
         let calendar = Calendar.current
@@ -17,7 +17,7 @@ class HistoryPresenterTests: XCTestCase {
         var model: HistoryPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }
 
-        sut.didOpenHistoryView([[page1, page2]])
+        sut.didLoadPages([[page1, page2]])
 
         XCTAssertEqual(model.list?.first?.pages[0].title, "12:00 - title 1")
         XCTAssertEqual(model.list?.first?.pages[0].url, URL(string:"http://page1.com")!)

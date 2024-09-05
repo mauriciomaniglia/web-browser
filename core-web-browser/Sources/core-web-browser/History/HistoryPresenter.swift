@@ -7,7 +7,7 @@ public class HistoryPresenter {
         self.history = history
     }
 
-    public func didOpenHistoryView(_ pages: [[WebPage]]) {        
+    public func didLoadPages(_ pages: [[WebPage]]) {        
         let model = HistoryPresentableModel(list: mapSections(pages))
         didUpdatePresentableModel?(model)
     }

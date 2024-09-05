@@ -11,7 +11,7 @@ public class HistoryFacade {
 
     public func didOpenHistoryView() {
         let pages: [[WebPage]] = history.getPages()
-        presenter.didOpenHistoryView(pages)
+        presenter.didLoadPages(pages)
     }
 
     public func didSearchTerm(_ term: String) {
