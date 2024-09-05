@@ -2,17 +2,12 @@
 
 class HistoryPresenterSpy: HistoryPresenter {
     enum Message: Equatable {
-        case didLoadPages
-        case didSearchTerm(String)
+        case didLoadPages        
     }
 
     var receivedMessages = [Message]()
 
     override func didLoadPages(_ pages: [[WebPage]]) {
         receivedMessages.append(.didLoadPages)
-    }
-
-    override func didSearchTerm(_ term: String) {
-        receivedMessages.append(.didSearchTerm(term))
     }
 }

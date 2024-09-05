@@ -17,7 +17,7 @@ class HistoryFacadeTests: XCTestCase {
 
         sut.didSearchTerm("test")
 
-        XCTAssertEqual(presenter.receivedMessages, [.didSearchTerm("test")])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoadPages])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 

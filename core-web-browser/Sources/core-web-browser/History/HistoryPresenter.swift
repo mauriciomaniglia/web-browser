@@ -12,12 +12,6 @@ public class HistoryPresenter {
         didUpdatePresentableModel?(model)
     }
 
-    public func didSearchTerm(_ term: String) {
-        let pages = history.getPages(by: term)
-        let model = HistoryPresentableModel(list: mapSections(pages))
-        didUpdatePresentableModel?(model)
-    }
-
     private func mapSections(_ pages: [[WebPage]]) -> [HistoryPresentableModel.Section] {
         pages.map {
             let title = $0.first?.date.relativeTimeString() ?? ""
