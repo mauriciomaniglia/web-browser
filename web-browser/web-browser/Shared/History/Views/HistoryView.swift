@@ -5,8 +5,6 @@ struct HistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
 
-    var didSearchTerm: ((String) -> Void)?
-
     var body: some View {
         HStack {
             Button {
@@ -17,7 +15,7 @@ struct HistoryView: View {
 
             TextField("Search History", text: $searchText)
                 .onChange(of: searchText, { _, newValue in
-                    didSearchTerm?(newValue)
+                    viewModel.didSearchTerm?(newValue)
                 })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
