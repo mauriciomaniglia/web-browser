@@ -7,18 +7,18 @@ class HistoryStoreMock: HistoryAPI {
     }
     
     var receivedMessages = [Message]()
-    var mockWebPages = [[WebPage]]()
+    var mockWebPages = [WebPage]()
 
     func save(page: WebPage) {
 
     }
 
-    func getPages() -> [[WebPage]] {
+    func getPages() -> [WebPage] {
         receivedMessages.append(.getPages)
         return mockWebPages
     }
 
-    func getPages(by searchTerm: String) -> [[WebPage]] {
+    func getPages(by searchTerm: String) -> [WebPage] {
         receivedMessages.append(.getPagesByTerm(searchTerm))
         return mockWebPages
     }

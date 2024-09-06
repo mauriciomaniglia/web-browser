@@ -10,12 +10,12 @@ public class HistoryFacade {
     }
 
     public func didOpenHistoryView() {
-        let pages: [[WebPage]] = history.getPages()
+        let pages = history.getPages()
         presenter.didLoadPages(pages)
     }
 
     public func didSearchTerm(_ term: String) {
-        let pages: [[WebPage]] = history.getPages(by: term)
+        let pages = history.getPages(by: term)
         presenter.didLoadPages(pages)
     }
 

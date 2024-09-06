@@ -1,10 +1,18 @@
+import Foundation
+
 public class HistoryPresenter {
     public var didUpdatePresentableModel: ((HistoryPresentableModel) -> Void)?
 
     public init() {}
 
-    public func didLoadPages(_ pages: [[WebPage]]) {        
-        let model = HistoryPresentableModel(list: mapSections(pages))
+    public func didLoadPages(_ pages: [WebPage]) {
+        let groupedPages = Dictionary(grouping: pages, by: { Calendar.current.startOfDay(for: $0.date) })
+        let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
+            lhs.key.compare(rhs.key) == .orderedDescending
+        })
+        let groupPagesSorted = sortedGroups.map { $0.value }
+
+        let model = HistoryPresentableModel(list: mapSections(groupPagesSorted))
         didUpdatePresentableModel?(model)
     }
 
