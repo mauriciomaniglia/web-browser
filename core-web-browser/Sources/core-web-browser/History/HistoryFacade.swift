@@ -15,7 +15,7 @@ public class HistoryFacade {
     }
 
     public func didSearchTerm(_ term: String) {
-        let pages = history.getPages(by: term)
+        let pages = term.isEmpty ? history.getPages() : history.getPages(by: term)
         presenter.didLoadPages(pages)
     }
 
