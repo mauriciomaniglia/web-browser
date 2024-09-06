@@ -4,11 +4,12 @@ import core_web_browser
 class HistoryFacadeTests: XCTestCase {
 
     func test_didLoadPages_sendsCorrectMessage() {
-        let (sut, presenter,webView, _) = makeSUT()
+        let (sut, presenter,webView, history) = makeSUT()
 
         sut.didOpenHistoryView()
 
         XCTAssertEqual(presenter.receivedMessages, [.didLoadPages])
+        XCTAssertEqual(history.receivedMessages, [.getPages])
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
@@ -33,11 +34,12 @@ class HistoryFacadeTests: XCTestCase {
     }
 
     func test_didSelectPageHistory_sendsCorrectMessage() {
-        let (sut, presenter,webView, _) = makeSUT()
+        let (sut, presenter,webView, history) = makeSUT()
 
         sut.didSelectPage("http://some-url.com")
 
         XCTAssertEqual(presenter.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://some-url.com")!)])
     }
 
