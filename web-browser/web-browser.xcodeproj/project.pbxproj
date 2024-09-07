@@ -27,7 +27,7 @@
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F9745E512C558D1E008DC5E2 /* HistoryStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9745E502C558D1E008DC5E2 /* HistoryStoreMock.swift */; };
-		F97BF7782C259A60005FB9BD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuView.swift */; };
+		F97BF7782C259A60005FB9BD /* IOSMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* IOSMenuView.swift */; };
 		F97BF77A2C259F88005FB9BD /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7792C259F88005FB9BD /* MenuViewModel.swift */; };
 		F98A17542C4C136300CC1FEC /* MenuComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A17532C4C136300CC1FEC /* MenuComposer.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
@@ -39,7 +39,7 @@
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */; };
 		F9F2083D2C8CED1300C3B033 /* VisionOSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */; };
-		F9FF5CFF2C41ECF700757BD5 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FF5CFE2C41ECF700757BD5 /* MenuButton.swift */; };
+		F9FF5CFF2C41ECF700757BD5 /* IOSMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FF5CFE2C41ECF700757BD5 /* IOSMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
 		F9745E502C558D1E008DC5E2 /* HistoryStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreMock.swift; sourceTree = "<group>"; };
-		F97BF7772C259A60005FB9BD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F97BF7772C259A60005FB9BD /* IOSMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSMenuView.swift; sourceTree = "<group>"; };
 		F97BF7792C259F88005FB9BD /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		F98A17532C4C136300CC1FEC /* MenuComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuComposer.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSMenu.swift; sourceTree = "<group>"; };
-		F9FF5CFE2C41ECF700757BD5 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		F9FF5CFE2C41ECF700757BD5 /* IOSMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSMenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,8 +402,8 @@
 		F9F2083E2C8CEDA700C3B033 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				F97BF7772C259A60005FB9BD /* MenuView.swift */,
-				F9FF5CFE2C41ECF700757BD5 /* MenuButton.swift */,
+				F97BF7772C259A60005FB9BD /* IOSMenuView.swift */,
+				F9FF5CFE2C41ECF700757BD5 /* IOSMenuButton.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9FF5CFF2C41ECF700757BD5 /* MenuButton.swift in Sources */,
+				F9FF5CFF2C41ECF700757BD5 /* IOSMenuButton.swift in Sources */,
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
@@ -526,7 +526,7 @@
 				F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
 				F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */,
-				F97BF7782C259A60005FB9BD /* MenuView.swift in Sources */,
+				F97BF7782C259A60005FB9BD /* IOSMenuView.swift in Sources */,
 				F91EFA852B71004D00500535 /* VisionOSWindow.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */,

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MenuButton: View {
+struct IOSMenuButton: View {
     @ObservedObject var viewModel: MenuViewModel
 
     var body: some View {
@@ -10,7 +10,7 @@ struct MenuButton: View {
         .buttonStyle(PlainButtonStyle())
         .foregroundColor(.primary)
         .popover(isPresented: $viewModel.showMenu, arrowEdge: .trailing, content: {
-            MenuView(viewModel: viewModel)
+            IOSMenuView(viewModel: viewModel)
         })
         .popover(isPresented: $viewModel.showHistory, content: {
             HistoryView(viewModel: viewModel.historyViewModel)

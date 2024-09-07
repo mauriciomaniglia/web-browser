@@ -15,7 +15,7 @@ struct IOSWindow: View {
                 WindowNavigationButtons(viewModel: windowViewModel)
                 Spacer()
                 if windowViewModel.showMenuButton {
-                    MenuButton(viewModel: menuViewModel)
+                    IOSMenuButton(viewModel: menuViewModel)
                 }
             }
             .padding()
