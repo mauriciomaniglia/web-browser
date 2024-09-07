@@ -32,24 +32,20 @@ public class HistoryStore: HistoryAPI {
 
     @MainActor
     public func save(page: WebPage) {
-        let context = container.mainContext
-
         let pagetitle = page.title ?? ""
         let historyTitle = pagetitle.isEmpty ? page.url.absoluteString : pagetitle
 
-        context.insert(HistoryPage(title: historyTitle, url: page.url, date: Date(), urlString: page.url.absoluteString))
+        container.mainContext.insert(HistoryPage(title: historyTitle, url: page.url, date: Date(), urlString: page.url.absoluteString))
 
-        try? context.save()
+        try? container.mainContext.save()
     }
 
     @MainActor
     public func getPages() -> [WebPage] {
-        let context = container.mainContext
-
         let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
 
         do {
-            let results = try context.fetch(allPages)
+            let results = try container.mainContext.fetch(allPages)
             return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
@@ -58,8 +54,6 @@ public class HistoryStore: HistoryAPI {
 
     @MainActor
     public func getPages(by searchTerm: String) -> [WebPage] {
-        let context = container.mainContext
-
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||
             page.urlString.contains(searchTerm)
@@ -71,7 +65,7 @@ public class HistoryStore: HistoryAPI {
         )
 
         do {
-            let results = try context.fetch(filteredPages)
+            let results = try container.mainContext.fetch(filteredPages)
             return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
