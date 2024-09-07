@@ -10,7 +10,7 @@ struct VisionOSWindow: View {
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            MacOSMenu(menuViewModel: menuViewModel)
+            VisionOSMenu(menuViewModel: menuViewModel)
         } detail: {
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
