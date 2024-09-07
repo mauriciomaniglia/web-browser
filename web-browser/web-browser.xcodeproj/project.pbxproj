@@ -182,6 +182,7 @@
 		F92921E92B70F94C00173702 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9F2083A2C8CECD600C3B033 /* Menu */,
 				F9E1477D2C0961370099CD98 /* Window */,
 			);
 			path = macOS;
@@ -326,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				F92921EA2B70F99400173702 /* MacOSWindow.swift */,
-				F94A60F02C758C52001384CB /* MacOSMenu.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -387,6 +387,14 @@
 				F9E55FD72C02AEE20098995F /* WebViewSpy.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F9F2083A2C8CECD600C3B033 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F94A60F02C758C52001384CB /* MacOSMenu.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
