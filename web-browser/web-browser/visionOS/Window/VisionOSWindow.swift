@@ -4,13 +4,17 @@ import SwiftUI
 struct VisionOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
     @ObservedObject var menuViewModel: MenuViewModel
+    @State var columnVisibility: NavigationSplitViewVisibility = .detailOnly
 
     let webView: AnyView
 
     var body: some View {
-        VStack {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            Sidebar(menuViewModel: menuViewModel)
+        } detail: {
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .navigationBarHidden(true)
         }
         .ornament(
             visibility: .visible,
@@ -19,6 +23,10 @@ struct VisionOSWindow: View {
         ) {
             HStack {
                 Spacer()
+                Button(action: toggleNavigationSplitVisibility) {
+                    Image(systemName: "sidebar.left")
+                }
+                Spacer(minLength: 20)
                 WindowNavigationButtons(viewModel: windowViewModel)
                 AddressBarView(viewModel: windowViewModel)
             }
@@ -26,6 +34,14 @@ struct VisionOSWindow: View {
             .padding()
             .glassBackgroundEffect()
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
+        }
+    }
+
+    private func toggleNavigationSplitVisibility() {
+        if columnVisibility == .detailOnly {
+            columnVisibility = .all
+        } else {
+            columnVisibility = .detailOnly
         }
     }
 }
