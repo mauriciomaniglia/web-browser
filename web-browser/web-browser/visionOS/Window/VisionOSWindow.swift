@@ -25,6 +25,7 @@ struct VisionOSWindow: View {
             .frame(width: 1000)
             .padding()
             .glassBackgroundEffect()
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
         }
     }
 }
