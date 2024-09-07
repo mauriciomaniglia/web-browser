@@ -177,6 +177,7 @@
 		F92921E82B70F94600173702 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9F2083E2C8CEDA700C3B033 /* Menu */,
 				F9E1477C2C0960E90099CD98 /* Window */,
 			);
 			path = iOS;
@@ -228,15 +229,6 @@
 			path = Composition;
 			sourceTree = "<group>";
 		};
-		F95BA9512C3185FE0002FDB1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F97BF7772C259A60005FB9BD /* MenuView.swift */,
-				F9FF5CFE2C41ECF700757BD5 /* MenuButton.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F95BA9522C31860C0002FDB1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				F95BA9502C3185E80002FDB1 /* Composition */,
-				F95BA9512C3185FE0002FDB1 /* Views */,
 				F95BA9522C31860C0002FDB1 /* ViewModels */,
 			);
 			path = Menu;
@@ -404,6 +395,15 @@
 			isa = PBXGroup;
 			children = (
 				F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		F9F2083E2C8CEDA700C3B033 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F97BF7772C259A60005FB9BD /* MenuView.swift */,
+				F9FF5CFE2C41ECF700757BD5 /* MenuButton.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
