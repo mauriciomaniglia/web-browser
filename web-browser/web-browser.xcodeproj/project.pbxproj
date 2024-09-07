@@ -17,7 +17,7 @@
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
-		F94A60F12C758C52001384CB /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* Sidebar.swift */; };
+		F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MacOSMenu.swift */; };
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */; };
 		F94FD3EC2C46854E001EDF1D /* HistoryAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */; };
@@ -65,7 +65,7 @@
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
-		F94A60F02C758C52001384CB /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		F94A60F02C758C52001384CB /* MacOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSMenu.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
 		F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapterTests.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				F92921EA2B70F99400173702 /* MacOSWindow.swift */,
-				F94A60F02C758C52001384CB /* Sidebar.swift */,
+				F94A60F02C758C52001384CB /* MacOSMenu.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
-				F94A60F12C758C52001384CB /* Sidebar.swift in Sources */,
+				F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
 				F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */,
 				F97BF7782C259A60005FB9BD /* MenuView.swift in Sources */,

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Sidebar: View {
+struct MacOSMenu: View {
     @ObservedObject var menuViewModel: MenuViewModel
 
     var body: some View {
