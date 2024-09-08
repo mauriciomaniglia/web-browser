@@ -2,18 +2,16 @@ import SwiftUI
 
 struct IOSMenuButton: View {
     @ObservedObject var viewModel: MenuViewModel
+    @State var isShowingSheet = false
 
     var body: some View {
-        Button(action: { viewModel.didTapMenuButton?() }) {
+        Button(action: { isShowingSheet.toggle() }) {
             Image(systemName: "line.3.horizontal")
         }
         .buttonStyle(PlainButtonStyle())
         .foregroundColor(.primary)
-        .popover(isPresented: $viewModel.showMenu, arrowEdge: .trailing, content: {
+        .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
             IOSMenuView(viewModel: viewModel)
-        })
-        .popover(isPresented: $viewModel.showHistory, content: {
-            HistoryView(viewModel: viewModel.historyViewModel)
         })
     }
 }
