@@ -16,7 +16,7 @@ final class WindowComposer {
             safelist: safelistStore,
             history: historyStore)
         let windowAdapter = WindowViewAdapter(viewModel: windowViewModel)
-        let menuViewModel = MenuComposer().makeViewModel(webView: webKitEngineWrapper)
+        let menuViewModel = MenuViewModel(webView: webKitEngineWrapper)
 
         contentBlocking.setupStrictProtection()
 
