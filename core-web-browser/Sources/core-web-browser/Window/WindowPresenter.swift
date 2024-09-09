@@ -9,8 +9,7 @@ public class WindowPresenter {
     public init(safelist: SafelistAPI) {
         model = WindowPresentableModel(
             urlHost: nil, 
-            fullURL: nil, 
-            showMenuButton: false,
+            fullURL: nil,
             showCancelButton: false,
             showClearButton: false,
             showStopButton: false,
@@ -30,7 +29,6 @@ public class WindowPresenter {
         didUpdatePresentableModel?(.init(
             urlHost: nil,
             fullURL: nil,
-            showMenuButton: true,
             showCancelButton: false,
             showClearButton: false,
             showStopButton: false,
@@ -48,7 +46,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: showCancelButton(),
             showClearButton: true,
             showStopButton: false,
@@ -69,7 +66,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: false,
             showClearButton: false,
             showStopButton: model.showStopButton,
@@ -90,7 +86,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: false,
             showClearButton: false,
             showStopButton: false,
@@ -115,7 +110,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: urlHost,
             fullURL: fullURL,
-            showMenuButton: true,
             showCancelButton: false,
             showClearButton: false,
             showStopButton: false,
@@ -136,7 +130,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: model.showCancelButton,
             showClearButton: model.showClearButton,
             showStopButton: model.showStopButton,
@@ -157,7 +150,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: model.showCancelButton,
             showClearButton: model.showClearButton,
             showStopButton: model.showStopButton,
@@ -178,7 +170,6 @@ public class WindowPresenter {
         let newModel = WindowPresentableModel(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: model.showCancelButton,
             showClearButton: model.showClearButton,
             showStopButton: model.showStopButton,
@@ -201,7 +192,6 @@ public class WindowPresenter {
         didUpdatePresentableModel?(.init(
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showMenuButton: true,
             showCancelButton: false,
             showClearButton: false,
             showStopButton: value < 1 ? true : false,
