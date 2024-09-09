@@ -2,7 +2,7 @@ import SwiftUI
 
 struct IOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
-    @ObservedObject var menuViewModel: MenuViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
 
     let webView: AnyView
 
@@ -14,7 +14,7 @@ struct IOSWindow: View {
             HStack {
                 WindowNavigationButtons(viewModel: windowViewModel)
                 Spacer()
-                IOSMenuButton(viewModel: menuViewModel)
+                IOSMenuButton(historyViewModel: historyViewModel)
             }
             .padding()
         }

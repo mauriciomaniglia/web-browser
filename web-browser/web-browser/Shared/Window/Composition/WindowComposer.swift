@@ -16,7 +16,7 @@ final class WindowComposer {
             safelist: safelistStore,
             history: historyStore)
         let windowAdapter = WindowViewAdapter(viewModel: windowViewModel)
-        let menuViewModel = MenuViewModel(webView: webKitEngineWrapper)
+        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
 
         contentBlocking.setupStrictProtection()
 
@@ -41,17 +41,17 @@ final class WindowComposer {
         #if os(iOS)
         return IOSWindow(
             windowViewModel: windowViewModel,
-            menuViewModel: menuViewModel,
+            historyViewModel: historyViewModel,
             webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(macOS)
         return MacOSWindow(
             windowViewModel: windowViewModel,
-            menuViewModel: menuViewModel,
+            historyViewModel: historyViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
         return VisionOSWindow(
             windowViewModel: windowViewModel,
-            menuViewModel: menuViewModel,
+            historyViewModel: historyViewModel,
             webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }

@@ -3,14 +3,14 @@ import SwiftUI
 #if os(visionOS)
 struct VisionOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
-    @ObservedObject var menuViewModel: MenuViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
     @State var columnVisibility: NavigationSplitViewVisibility = .detailOnly
 
     let webView: AnyView
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            VisionOSMenu(menuViewModel: menuViewModel)
+            VisionOSMenu(historyViewModel: historyViewModel)
         } detail: {
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

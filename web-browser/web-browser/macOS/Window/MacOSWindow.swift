@@ -2,13 +2,13 @@ import SwiftUI
 
 struct MacOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
-    @ObservedObject var menuViewModel: MenuViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
 
     let webView: AnyView
 
     var body: some View {
         NavigationSplitView {
-            MacOSMenu(menuViewModel: menuViewModel)
+            MacOSMenu(historyViewModel: historyViewModel)
         } detail: {
             VStack {
                 HStack {

@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct VisionOSMenu: View {
-    @ObservedObject var menuViewModel: MenuViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
 
     var body: some View {
         List {
-            NavigationLink(destination: HistoryView(viewModel: menuViewModel.historyViewModel)) {
+            NavigationLink(destination: HistoryView(viewModel: historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }

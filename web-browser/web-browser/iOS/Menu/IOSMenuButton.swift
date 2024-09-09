@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct IOSMenuButton: View {
-    @ObservedObject var viewModel: MenuViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
     @State var isShowingSheet = false
 
     var body: some View {
@@ -11,7 +11,7 @@ struct IOSMenuButton: View {
         .buttonStyle(PlainButtonStyle())
         .foregroundColor(.primary)
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
-            IOSMenuView(viewModel: viewModel)
+            IOSMenuView(historyViewModel: historyViewModel)
         })
     }
 }
