@@ -34,7 +34,6 @@
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */; };
 		F9F2083D2C8CED1300C3B033 /* VisionOSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */; };
-		F9FF5CFF2C41ECF700757BD5 /* IOSMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FF5CFE2C41ECF700757BD5 /* IOSMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +77,6 @@
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSMenu.swift; sourceTree = "<group>"; };
-		F9FF5CFE2C41ECF700757BD5 /* IOSMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSMenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				F97BF7772C259A60005FB9BD /* IOSMenuView.swift */,
-				F9FF5CFE2C41ECF700757BD5 /* IOSMenuButton.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9FF5CFF2C41ECF700757BD5 /* IOSMenuButton.swift in Sources */,
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F92921C02B70F5B300173702 /* ContentView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
