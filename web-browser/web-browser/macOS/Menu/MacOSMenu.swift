@@ -5,7 +5,7 @@ struct MacOSMenu: View {
 
     var body: some View {
         List {
-            NavigationLink(destination: HistoryView(viewModel: historyViewModel)) {
+            NavigationLink(destination: MacOSHistoryView(viewModel: historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }

@@ -16,6 +16,7 @@
 		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F94379A02C911B7900DEBFF7 /* MacOSHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
 		F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MacOSMenu.swift */; };
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
@@ -59,6 +60,7 @@
 		F92921EC2B70F9A100173702 /* IOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindow.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
+		F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSHistoryView.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
 		F94A60F02C758C52001384CB /* MacOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSMenu.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		F92921E92B70F94C00173702 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				F943799E2C911B5E00DEBFF7 /* History */,
 				F9F2083A2C8CECD600C3B033 /* Menu */,
 				F9E1477D2C0961370099CD98 /* Window */,
 			);
@@ -188,6 +191,14 @@
 				F98BF0C62B750A2900C29BDA /* Window */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		F943799E2C911B5E00DEBFF7 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		F94FD3E82C46817A001EDF1D /* Composition */ = {
@@ -476,6 +487,7 @@
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
+				F94379A02C911B7900DEBFF7 /* MacOSHistoryView.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */,
