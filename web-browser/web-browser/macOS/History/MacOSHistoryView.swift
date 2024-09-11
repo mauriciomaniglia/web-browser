@@ -5,6 +5,8 @@ struct MacOSHistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
 
+    @State private var isChecked: Bool = false
+
     var body: some View {
         HStack {
             Button {
@@ -30,11 +32,11 @@ struct MacOSHistoryView: View {
 
                 Section(header: header) {
                     ForEach(item.pages, id: \.url) { page in
-                        Text("\(page.title)")
-                            .onTapGesture {
-                                viewModel.didSelectPage?(page.url)
-                                dismiss()
-                            }
+                        Toggle(isOn: $isChecked) {
+                            Text(page.title)
+                        }
+                        .toggleStyle(CheckboxToggleStyle())
+                        .padding()
                     }
                     .onDelete(perform: delete)
                 }
