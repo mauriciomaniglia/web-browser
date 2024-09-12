@@ -5,8 +5,6 @@ struct MacOSHistoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
 
-    @State private var isChecked: Bool = false
-
     var body: some View {
         HStack {
             Button {
@@ -25,14 +23,16 @@ struct MacOSHistoryView: View {
         .padding()
 
         List {
-            ForEach(viewModel.historyList.indices, id: \.self) { index in
-                let item = viewModel.historyList[index]
+            ForEach(viewModel.historyList.indices, id: \.self) { sectionIndex in
+                let item = viewModel.historyList[sectionIndex]
 
                 let header = Text(item.title)
 
                 Section(header: header) {
-                    ForEach(item.pages, id: \.url) { page in
-                        Toggle(isOn: $isChecked) {
+                    ForEach(item.pages.indices, id: \.self) { pageIndex in
+                        let page = item.pages[pageIndex]
+
+                        Toggle(isOn: $viewModel.historyList[sectionIndex].pages[pageIndex].isSelected) {
                             Text(page.title)
                         }
                         .toggleStyle(CheckboxToggleStyle())

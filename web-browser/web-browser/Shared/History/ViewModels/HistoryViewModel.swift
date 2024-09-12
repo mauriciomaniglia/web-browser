@@ -4,12 +4,18 @@ class HistoryViewModel: ObservableObject {
 
     struct Section {
         let title: String
-        let pages: [Page]
+        var pages: [Page]
     }
 
-    struct Page {
+    struct Page: Identifiable {
+        let id = UUID()
         let title: String
         let url: String
+        var isSelected: Bool = false
+
+        mutating func select() {
+            isSelected.toggle()
+        }
     }
 
     @Published var historyList: [Section] = []
