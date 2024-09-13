@@ -4,7 +4,7 @@ class HistoryComposer {
 
     func makeHistoryViewModel(webView: WebEngineContract) -> HistoryViewModel {
         let viewModel = HistoryViewModel()
-        let historyStore = HistoryStore()
+        let historyStore = HistorySwiftDataStore()
         let presenter = HistoryPresenter()
         let adapter = HistoryAdapter(viewModel: viewModel)
         let facade = HistoryFacade(presenter: presenter, webView: webView, history: historyStore)

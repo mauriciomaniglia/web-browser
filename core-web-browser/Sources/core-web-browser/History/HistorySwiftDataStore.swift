@@ -4,7 +4,7 @@ import SwiftData
 @available(iOS 17, *)
 @available(macOS 14, *)
 
-public class HistoryStore: HistoryAPI {
+public class HistorySwiftDataStore: HistoryAPI {
     @Model
     class HistoryPage {
         let title: String

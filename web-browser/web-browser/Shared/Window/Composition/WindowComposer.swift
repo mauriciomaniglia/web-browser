@@ -9,7 +9,7 @@ final class WindowComposer {
         let windowPresenter = WindowPresenter(safelist: safelistStore)
         var windowViewModel = WindowViewModel()
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
-        let historyStore = HistoryStore()
+        let historyStore = HistorySwiftDataStore()
         let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
