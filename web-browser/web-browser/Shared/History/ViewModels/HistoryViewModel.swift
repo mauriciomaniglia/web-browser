@@ -20,6 +20,12 @@ class HistoryViewModel: ObservableObject {
 
     @Published var historyList: [Section] = []
 
+    var selectedPages: [Page] {
+        return historyList
+            .flatMap { $0.pages }
+            .filter { $0.isSelected }
+    }
+
     var didOpenHistoryView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
     var didSelectPage: ((String) -> Void)?
