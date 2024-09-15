@@ -22,6 +22,18 @@ struct MacOSHistoryView: View {
         }
         .padding()
 
+        if viewModel.selectedPages.count > 0 {
+            HStack {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "xmark")
+                }
+
+                Text("\(viewModel.selectedPages.count) selected")
+            }
+        }
+
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { sectionIndex in
                 let item = viewModel.historyList[sectionIndex]
