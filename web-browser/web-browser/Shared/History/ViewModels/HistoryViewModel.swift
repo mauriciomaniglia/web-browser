@@ -29,4 +29,12 @@ class HistoryViewModel: ObservableObject {
     var didOpenHistoryView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
     var didSelectPage: ((String) -> Void)?
+
+    func deselectAllPages() {
+        for sectionIndex in historyList.indices {
+            for pageIndex in historyList[sectionIndex].pages.indices {
+                historyList[sectionIndex].pages[pageIndex].isSelected = false
+            }
+        }
+    }
 }

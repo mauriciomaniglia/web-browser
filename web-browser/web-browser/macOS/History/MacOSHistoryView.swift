@@ -25,7 +25,7 @@ struct MacOSHistoryView: View {
         if viewModel.selectedPages.count > 0 {
             HStack {
                 Button {
-                    
+                    viewModel.deselectAllPages()
                 } label: {
                     Image(systemName: "xmark")
                 }
