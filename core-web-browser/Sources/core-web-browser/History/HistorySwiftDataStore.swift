@@ -7,12 +7,14 @@ import SwiftData
 public class HistorySwiftDataStore: HistoryAPI {
     @Model
     class HistoryPage {
+        @Attribute(.unique) let id: UUID
         let title: String
         let url: URL
         let date: Date
         let urlString: String
 
         init(title: String, url: URL, date: Date, urlString: String) {
+            self.id = UUID()
             self.title = title
             self.url = url
             self.date = date
@@ -69,6 +71,25 @@ public class HistorySwiftDataStore: HistoryAPI {
             return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
+        }
+    }
+
+    @MainActor
+    public func deletePages(withIDs ids: [UUID]) {
+        let predicate = #Predicate<HistoryPage> { page in
+            ids.contains(page.id)
+        }
+
+        let pagesToDelete = FetchDescriptor<HistoryPage>(predicate: predicate)
+
+        do {
+            let results = try container.mainContext.fetch(pagesToDelete)
+            for page in results {
+                container.mainContext.delete(page)
+            }
+            try container.mainContext.save()
+        } catch {
+            print("Error deleting pages: \(error)")
         }
     }
 }
