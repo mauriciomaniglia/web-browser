@@ -31,7 +31,16 @@ struct MacOSHistoryView: View {
                 }
 
                 Text("\(viewModel.selectedPages.count) selected")
+
+                Spacer()
+
+                Button {
+
+                } label: {
+                    Text("Delete")
+                }
             }
+            .padding()
         }
 
         List {
