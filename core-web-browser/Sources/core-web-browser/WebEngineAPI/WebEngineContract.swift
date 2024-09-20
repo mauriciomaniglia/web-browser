@@ -1,11 +1,13 @@
 import Foundation
 
 public struct WebPage {
+    public let id: UUID
     public let title: String?
     public let url: URL
     public let date: Date
 
     public init(title: String?, url: URL, date: Date) {
+        self.id = UUID()
         self.title = title
         self.url = url
         self.date = date

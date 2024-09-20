@@ -13,8 +13,8 @@ public class HistorySwiftDataStore: HistoryAPI {
         let date: Date
         let urlString: String
 
-        init(title: String, url: URL, date: Date, urlString: String) {
-            self.id = UUID()
+        init(id: UUID, title: String, url: URL, date: Date, urlString: String) {
+            self.id = id
             self.title = title
             self.url = url
             self.date = date
@@ -34,10 +34,17 @@ public class HistorySwiftDataStore: HistoryAPI {
 
     @MainActor
     public func save(page: WebPage) {
-        let pagetitle = page.title ?? ""
-        let historyTitle = pagetitle.isEmpty ? page.url.absoluteString : pagetitle
+        let title = page.title ?? ""
+        let historyTitle = title.isEmpty ? page.url.absoluteString : title
 
-        container.mainContext.insert(HistoryPage(title: historyTitle, url: page.url, date: Date(), urlString: page.url.absoluteString))
+        let historyPage = HistoryPage(
+            id: page.id,
+            title: historyTitle,
+            url: page.url,
+            date: Date(),
+            urlString: page.url.absoluteString)
+
+        container.mainContext.insert(historyPage)
 
         try? container.mainContext.save()
     }
