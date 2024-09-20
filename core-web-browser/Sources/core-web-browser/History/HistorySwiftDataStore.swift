@@ -7,11 +7,11 @@ import SwiftData
 public class HistorySwiftDataStore: HistoryAPI {
     @Model
     class HistoryPage {
-        @Attribute(.unique) let id: UUID
-        let title: String
-        let url: URL
-        let date: Date
-        let urlString: String
+        @Attribute(.unique) var id: UUID
+        var title: String
+        var url: URL
+        var date: Date
+        var urlString: String
 
         init(id: UUID, title: String, url: URL, date: Date, urlString: String) {
             self.id = id
