@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if os(macOS)
 struct MacOSMenu: View {
     @ObservedObject var historyViewModel: HistoryViewModel
 
@@ -12,3 +13,4 @@ struct MacOSMenu: View {
         .navigationSplitViewColumnWidth(min: 200, ideal: 200)
     }
 }
+#endif

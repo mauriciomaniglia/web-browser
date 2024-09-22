@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if os(macOS)
 struct MacOSHistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
@@ -73,3 +74,4 @@ struct MacOSHistoryView: View {
 
     }
 }
+#endif
