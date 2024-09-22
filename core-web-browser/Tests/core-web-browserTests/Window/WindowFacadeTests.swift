@@ -178,6 +178,7 @@ private class HistoryStoreSpy: HistoryAPI {
     enum Message {
         case save
         case getPages
+        case deletePages
     }
 
     var receivedMessages = [Message]()
@@ -193,5 +194,9 @@ private class HistoryStoreSpy: HistoryAPI {
 
     func getPages(by searchTerm: String) -> [WebPage] {
         return []
+    }
+
+    func deletePages(withIDs ids: [UUID]) {
+        receivedMessages.append(.deletePages)
     }
 }

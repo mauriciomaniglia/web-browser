@@ -1,9 +1,11 @@
+import Foundation
 import core_web_browser
 
 class HistoryStoreMock: HistoryAPI {
     enum Message: Equatable {
         case getPages
         case getPagesByTerm(String)
+        case deletePages
     }
     
     var receivedMessages = [Message]()
@@ -21,5 +23,9 @@ class HistoryStoreMock: HistoryAPI {
     func getPages(by searchTerm: String) -> [WebPage] {
         receivedMessages.append(.getPagesByTerm(searchTerm))
         return mockWebPages
+    }
+
+    func deletePages(withIDs ids: [UUID]) {
+        receivedMessages.append(.deletePages)
     }
 }
