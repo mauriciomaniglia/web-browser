@@ -6,7 +6,7 @@ class HistoryAdapterTests: XCTestCase {
 
     func test_updateViewModel_deliversCorrectState() {
         let (sut, viewModel) = makeSUT()
-        let page = HistoryPresentableModel.Page(title: "title", url: URL(string: "https://some-url.com")!)
+        let page = HistoryPresentableModel.Page(id: UUID(), title: "title", url: URL(string: "https://some-url.com")!)
         let section = HistoryPresentableModel.Section(title: "title", pages: [page])
         let model = HistoryPresentableModel(list: [section])
 

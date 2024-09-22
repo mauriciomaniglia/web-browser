@@ -8,6 +8,7 @@ public struct HistoryPresentableModel {
     }
 
     public struct Page: Equatable {
+        public let id: UUID
         public let title: String
         public let url: URL
     }

@@ -29,7 +29,7 @@ public class HistoryPresenter {
             let dateAndTitle = $0.date.formattedTime() + " - " + title
             let dateAndURL = $0.date.formattedTime() + " - " + $0.url.absoluteString
 
-            return HistoryPresentableModel.Page(title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
+            return HistoryPresentableModel.Page(id: $0.id, title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
         }
     }
 }

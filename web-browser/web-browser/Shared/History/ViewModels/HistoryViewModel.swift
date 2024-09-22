@@ -8,7 +8,7 @@ class HistoryViewModel: ObservableObject {
     }
 
     struct Page: Identifiable {
-        let id = UUID()
+        let id: UUID
         let title: String
         let url: String
         var isSelected: Bool = false
