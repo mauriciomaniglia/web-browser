@@ -29,6 +29,7 @@ class HistoryViewModel: ObservableObject {
     var didOpenHistoryView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
     var didSelectPage: ((String) -> Void)?
+    var didTapDeletePages: (([UUID]) -> Void)?
 
     func deselectAllPages() {
         for sectionIndex in historyList.indices {
@@ -36,5 +37,9 @@ class HistoryViewModel: ObservableObject {
                 historyList[sectionIndex].pages[pageIndex].isSelected = false
             }
         }
+    }
+
+    func deleteSelectedPages() {
+        didTapDeletePages?(selectedPages.map{ $0.id })
     }
 }

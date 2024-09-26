@@ -1,3 +1,5 @@
+import Foundation
+
 public class HistoryFacade {
     private let presenter: HistoryPresenter
     private let webView: WebEngineContract
@@ -21,5 +23,9 @@ public class HistoryFacade {
 
     public func didSelectPage(_ url: String) {
         webView.load(SearchURLBuilder.makeURL(from: url))
+    }
+
+    public func didTapDeletePages(_ pages: [UUID]) {
+        print(pages)
     }
 }

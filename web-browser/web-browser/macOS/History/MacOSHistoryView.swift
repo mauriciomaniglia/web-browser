@@ -36,7 +36,7 @@ struct MacOSHistoryView: View {
                 Spacer()
 
                 Button {
-
+                    viewModel.deleteSelectedPages()
                 } label: {
                     Text("Delete")
                 }
