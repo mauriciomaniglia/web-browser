@@ -212,13 +212,6 @@
 			path = Composition;
 			sourceTree = "<group>";
 		};
-		F95BA9522C31860C0002FDB1 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		F95DBA8B2B863A120048A987 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +223,6 @@
 		F97BF7762C259A48005FB9BD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				F95BA9522C31860C0002FDB1 /* ViewModels */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
