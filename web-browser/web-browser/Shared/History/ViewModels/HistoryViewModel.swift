@@ -40,6 +40,14 @@ class HistoryViewModel: ObservableObject {
     }
 
     func deleteSelectedPages() {
+        for sectionIndex in historyList.indices {
+            historyList[sectionIndex].pages.removeAll(where: { $0.isSelected })
+        }
+        remoteSectionsThatHaveNoPagesLeft()
         didTapDeletePages?(selectedPages.map{ $0.id })
+    }
+
+    private func remoteSectionsThatHaveNoPagesLeft() {
+        historyList.removeAll(where: { $0.pages.isEmpty })
     }
 }
