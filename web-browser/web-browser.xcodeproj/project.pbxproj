@@ -22,6 +22,7 @@
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */; };
 		F94FD3EC2C46854E001EDF1D /* HistoryAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */; };
+		F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */; };
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
@@ -66,6 +67,7 @@
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
 		F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapterTests.swift; sourceTree = "<group>"; };
+		F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelTests.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */,
+				F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */,
 				F94FD3EC2C46854E001EDF1D /* HistoryAdapterTests.swift in Sources */,
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
+				F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,12 +2,12 @@ import Foundation
 
 class HistoryViewModel: ObservableObject {
 
-    struct Section {
+    struct Section: Equatable {
         let title: String
         var pages: [Page]
     }
 
-    struct Page: Identifiable {
+    struct Page: Identifiable, Equatable {
         let id: UUID
         let title: String
         let url: String
