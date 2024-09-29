@@ -189,7 +189,6 @@
 			children = (
 				F98BF0C92B750A7F00C29BDA /* Helpers */,
 				F9E55D2E2C45E9FA008B7C64 /* History */,
-				F97BF7762C259A48005FB9BD /* Menu */,
 				F98BF0C62B750A2900C29BDA /* Window */,
 			);
 			path = Shared;
@@ -218,13 +217,6 @@
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		F97BF7762C259A48005FB9BD /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Menu;
 			sourceTree = "<group>";
 		};
 		F98BF0C62B750A2900C29BDA /* Window */ = {
