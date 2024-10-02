@@ -32,8 +32,9 @@ public class HistorySwiftDataStore: HistoryAPI {
         }
     }
 
-    @MainActor
     public func save(page: WebPage) {
+        let backgroundContext = ModelContext(container)
+
         let title = page.title ?? ""
         let historyTitle = title.isEmpty ? page.url.absoluteString : title
 
@@ -44,25 +45,27 @@ public class HistorySwiftDataStore: HistoryAPI {
             date: Date(),
             urlString: page.url.absoluteString)
 
-        container.mainContext.insert(historyPage)
+        backgroundContext.insert(historyPage)
 
-        try? container.mainContext.save()
+        try? backgroundContext.save()
     }
 
-    @MainActor
     public func getPages() -> [WebPage] {
+        let backgroundContext = ModelContext(container)
+
         let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
 
         do {
-            let results = try container.mainContext.fetch(allPages)
+            let results = try backgroundContext.fetch(allPages)
             return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }
     }
 
-    @MainActor
     public func getPages(by searchTerm: String) -> [WebPage] {
+        let backgroundContext = ModelContext(container)
+
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||
             page.urlString.contains(searchTerm)
@@ -74,15 +77,16 @@ public class HistorySwiftDataStore: HistoryAPI {
         )
 
         do {
-            let results = try container.mainContext.fetch(filteredPages)
+            let results = try backgroundContext.fetch(filteredPages)
             return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }
     }
 
-    @MainActor
     public func deletePages(withIDs ids: [UUID]) {
+        let backgroundContext = ModelContext(container)
+
         let predicate = #Predicate<HistoryPage> { page in
             ids.contains(page.id)
         }
@@ -90,11 +94,11 @@ public class HistorySwiftDataStore: HistoryAPI {
         let pagesToDelete = FetchDescriptor<HistoryPage>(predicate: predicate)
 
         do {
-            let results = try container.mainContext.fetch(pagesToDelete)
+            let results = try backgroundContext.fetch(pagesToDelete)
             for page in results {
-                container.mainContext.delete(page)
+                backgroundContext.delete(page)
             }
-            try container.mainContext.save()
+            try backgroundContext.save()
         } catch {
             print("Error deleting pages: \(error)")
         }
