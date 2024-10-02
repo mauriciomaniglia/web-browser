@@ -18,7 +18,7 @@ struct MacOSHistoryView: View {
         }
     }
 
-    var searchTopBar: some View {
+    private var searchTopBar: some View {
         HStack {
             Button {
                 dismiss()
@@ -35,7 +35,7 @@ struct MacOSHistoryView: View {
         .padding()
     }
 
-    var selectedPagesView: some View {
+    private var selectedPagesView: some View {
         HStack {
             Button {
                 viewModel.deselectAllPages()
@@ -53,7 +53,7 @@ struct MacOSHistoryView: View {
         .padding()
     }
 
-    var historyList: some View {
+    private var historyList: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { sectionIndex in
                 let item = viewModel.historyList[sectionIndex]
