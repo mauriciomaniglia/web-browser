@@ -8,7 +8,7 @@ struct MacOSHistoryView: View {
 
     var body: some View {
         searchTopBar
-        if viewModel.selectedPages.count > 0 {
+        if hasPagesSelected() {
             selectedPagesView
         }
         historyList
@@ -70,6 +70,10 @@ struct MacOSHistoryView: View {
                 }
             }
         }
+    }
+
+    private func hasPagesSelected() -> Bool {
+        viewModel.selectedPages.count > 0
     }
 }
 #endif
