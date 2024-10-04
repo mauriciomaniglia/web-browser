@@ -54,7 +54,7 @@ public class HistorySwiftDataStore: HistoryAPI {
 
         do {
             let results = try backgroundContext.fetch(allPages)
-            return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+            return results.map { WebPage(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }
@@ -73,7 +73,7 @@ public class HistorySwiftDataStore: HistoryAPI {
 
         do {
             let results = try backgroundContext.fetch(filteredPages)
-            return results.map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+            return results.map { WebPage(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }
