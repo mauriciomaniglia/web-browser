@@ -23,6 +23,7 @@ public class HistorySwiftDataStore: HistoryAPI {
     }
 
     private let container: ModelContainer
+    private lazy var backgroundContext = ModelContext(container)
 
     public init() {
         do {
@@ -33,8 +34,6 @@ public class HistorySwiftDataStore: HistoryAPI {
     }
 
     public func save(page: WebPage) {
-        let backgroundContext = ModelContext(container)
-
         let title = page.title ?? ""
         let historyTitle = title.isEmpty ? page.url.absoluteString : title
 
@@ -51,8 +50,6 @@ public class HistorySwiftDataStore: HistoryAPI {
     }
 
     public func getPages() -> [WebPage] {
-        let backgroundContext = ModelContext(container)
-
         let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
 
         do {
@@ -64,8 +61,6 @@ public class HistorySwiftDataStore: HistoryAPI {
     }
 
     public func getPages(by searchTerm: String) -> [WebPage] {
-        let backgroundContext = ModelContext(container)
-
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||
             page.urlString.contains(searchTerm)
@@ -85,8 +80,6 @@ public class HistorySwiftDataStore: HistoryAPI {
     }
 
     public func deletePages(withIDs ids: [UUID]) {
-        let backgroundContext = ModelContext(container)
-
         let predicate = #Predicate<HistoryPage> { page in
             ids.contains(page.id)
         }
