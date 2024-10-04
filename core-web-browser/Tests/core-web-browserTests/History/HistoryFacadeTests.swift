@@ -43,6 +43,18 @@ class HistoryFacadeTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://some-url.com")!)])
     }
 
+    func test_didTapDeletePages_sendsCorrectMessage() {
+        let (sut, presenter,webView, history) = makeSUT()
+        let page1ID = UUID()
+        let page2ID = UUID()
+
+        sut.didTapDeletePages([page1ID, page2ID])
+        
+        XCTAssertEqual(presenter.receivedMessages, [])
+        XCTAssertEqual(webView.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [.deletePages([page1ID, page2ID])])
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: HistoryFacade, presenter: HistoryPresenterSpy, webView: WebViewSpy, history: HistoryStoreMock) {

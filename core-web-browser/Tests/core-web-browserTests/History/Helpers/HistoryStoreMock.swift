@@ -5,7 +5,7 @@ class HistoryStoreMock: HistoryAPI {
     enum Message: Equatable {
         case getPages
         case getPagesByTerm(String)
-        case deletePages
+        case deletePages([UUID])
     }
     
     var receivedMessages = [Message]()
@@ -26,6 +26,6 @@ class HistoryStoreMock: HistoryAPI {
     }
 
     func deletePages(withIDs ids: [UUID]) {
-        receivedMessages.append(.deletePages)
+        receivedMessages.append(.deletePages(ids))
     }
 }

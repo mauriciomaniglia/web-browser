@@ -25,7 +25,7 @@ public class HistoryFacade {
         webView.load(SearchURLBuilder.makeURL(from: url))
     }
 
-    public func didTapDeletePages(_ pages: [UUID]) {
-        print(pages)
+    public func didTapDeletePages(_ pageIDs: [UUID]) {
+        history.deletePages(withIDs: pageIDs)
     }
 }
