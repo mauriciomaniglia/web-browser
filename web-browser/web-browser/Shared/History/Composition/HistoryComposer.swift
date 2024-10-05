@@ -13,6 +13,7 @@ class HistoryComposer {
         viewModel.didOpenHistoryView = facade.didOpenHistoryView
         viewModel.didSearchTerm = facade.didSearchTerm(_:)
         viewModel.didTapDeletePages = facade.didTapDeletePages
+        viewModel.didTapDeleteAllPages = facade.didTapDeleteAllPages
         presenter.didUpdatePresentableModel = adapter.updateViewModel
 
         return viewModel
