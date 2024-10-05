@@ -8,24 +8,24 @@ struct MacOSHistoryView: View {
     @State private var isShowingDeleteAllHistoryAlert = false
 
     var body: some View {
-        searchTopBar
+        SearchTopBar
             .navigationTitle("History")
             .onAppear {
                 viewModel.didOpenHistoryView?()
             }
 
         if hasPagesSelected() {
-            selectedPagesView
+            SelectedPagesView
         }
 
         if isHistoryEmpty() {
             EmptyView
         } else {
-            historyList
+            HistoryList
         }
     }
 
-    private var searchTopBar: some View {
+    private var SearchTopBar: some View {
         HStack {
             Button {
                 dismiss()
@@ -56,7 +56,7 @@ struct MacOSHistoryView: View {
         .padding()
     }
 
-    private var selectedPagesView: some View {
+    private var SelectedPagesView: some View {
         HStack {
             Button {
                 viewModel.deselectAllPages()
@@ -74,7 +74,7 @@ struct MacOSHistoryView: View {
         .padding()
     }
 
-    private var historyList: some View {
+    private var HistoryList: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { sectionIndex in
                 let item = viewModel.historyList[sectionIndex]
