@@ -5,6 +5,7 @@ struct MacOSHistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
+    @State private var isShowingDeleteAllHistoryAlert = false
 
     var body: some View {
         searchTopBar
@@ -31,6 +32,20 @@ struct MacOSHistoryView: View {
                 })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
+            Button {
+                isShowingDeleteAllHistoryAlert = true
+            } label: {
+                Text("Delete All")
+            }
+            .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
+                Alert(
+                    title: Text("Clear all browsing history?"),
+                    primaryButton: .default(Text("Clear")) {
+                        // Handle confirmation action here
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
         .padding()
     }
