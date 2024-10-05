@@ -28,4 +28,8 @@ public class HistoryFacade {
     public func didTapDeletePages(_ pageIDs: [UUID]) {
         history.deletePages(withIDs: pageIDs)
     }
+
+    public func didTapDeleteAllPages() {
+        history.deleteAllPages()
+    }
 }
