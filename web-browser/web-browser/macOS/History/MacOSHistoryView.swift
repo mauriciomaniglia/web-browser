@@ -41,7 +41,7 @@ struct MacOSHistoryView: View {
                 Alert(
                     title: Text("Clear all browsing history?"),
                     primaryButton: .default(Text("Clear")) {
-                        viewModel.didTapDeleteAllPages?()
+                        viewModel.deleteAllPages()
                     },
                     secondaryButton: .cancel()
                 )
