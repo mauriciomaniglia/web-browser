@@ -66,6 +66,18 @@ class HistoryViewModelTests: XCTestCase {
         XCTAssertEqual(sut.historyList, [section3])
     }
 
+    func test_deleteAllPages_deletes_all_pages() {
+        let section1 = anySection()
+        let section2 = anySection()
+        let section3 = anySection()
+        let sut = HistoryViewModel()
+        sut.historyList = [section1, section2, section3]
+        
+        sut.deleteAllPages()
+        
+        XCTAssertEqual(sut.historyList, [])
+    }
+
     // MARK: - Helpers
 
     private func anySection() -> HistoryViewModel.Section {
