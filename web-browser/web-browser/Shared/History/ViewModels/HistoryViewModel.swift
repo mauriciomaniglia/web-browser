@@ -30,6 +30,7 @@ class HistoryViewModel: ObservableObject {
     var didSearchTerm: ((String) -> Void)?
     var didSelectPage: ((String) -> Void)?
     var didTapDeletePages: (([UUID]) -> Void)?
+    var didTapDeleteAllPages: (() -> Void)?
 
     func deselectAllPages() {
         for sectionIndex in historyList.indices {
