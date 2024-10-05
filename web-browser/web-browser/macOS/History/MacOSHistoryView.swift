@@ -9,13 +9,19 @@ struct MacOSHistoryView: View {
 
     var body: some View {
         searchTopBar
+            .navigationTitle("History")
+            .onAppear {
+                viewModel.didOpenHistoryView?()
+            }
+
         if hasPagesSelected() {
             selectedPagesView
         }
-        historyList
-        .navigationTitle("History")
-        .onAppear {
-            viewModel.didOpenHistoryView?()
+
+        if isHistoryEmpty() {
+            EmptyView
+        } else {
+            historyList
         }
     }
 
@@ -87,8 +93,21 @@ struct MacOSHistoryView: View {
         }
     }
 
+    private var EmptyView: some View {
+        VStack {
+            Text("No history found.")
+                .font(.headline)
+                .padding()
+            Spacer()
+        }
+    }
+
     private func hasPagesSelected() -> Bool {
         viewModel.selectedPages.count > 0
+    }
+
+    private func isHistoryEmpty() -> Bool {
+        viewModel.historyList.isEmpty
     }
 }
 #endif
