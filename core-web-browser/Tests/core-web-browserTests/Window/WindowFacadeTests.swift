@@ -179,6 +179,7 @@ private class HistoryStoreSpy: HistoryAPI {
         case save
         case getPages
         case deletePages
+        case deleteAllPages
     }
 
     var receivedMessages = [Message]()
@@ -198,5 +199,9 @@ private class HistoryStoreSpy: HistoryAPI {
 
     func deletePages(withIDs ids: [UUID]) {
         receivedMessages.append(.deletePages)
+    }
+
+    func deleteAllPages() {
+        receivedMessages.append(.deleteAllPages)
     }
 }

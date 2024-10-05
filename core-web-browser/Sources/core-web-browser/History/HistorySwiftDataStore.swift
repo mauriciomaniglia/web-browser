@@ -96,4 +96,18 @@ public class HistorySwiftDataStore: HistoryAPI {
             print("Error deleting pages: \(error)")
         }
     }
+
+    public func deleteAllPages() {
+        let pagesToDelete = FetchDescriptor<HistoryPage>()
+
+        do {
+            let results = try backgroundContext.fetch(pagesToDelete)
+            for page in results {
+                backgroundContext.delete(page)
+            }
+            try backgroundContext.save()
+        } catch {
+            print("Error deleting all pages: \(error)")
+        }
+    }
 }

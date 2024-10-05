@@ -6,6 +6,7 @@ class HistoryStoreMock: HistoryAPI {
         case getPages
         case getPagesByTerm(String)
         case deletePages([UUID])
+        case deleteAllPages
     }
     
     var receivedMessages = [Message]()
@@ -27,5 +28,9 @@ class HistoryStoreMock: HistoryAPI {
 
     func deletePages(withIDs ids: [UUID]) {
         receivedMessages.append(.deletePages(ids))
+    }
+
+    func deleteAllPages() {
+        receivedMessages.append(.deleteAllPages)
     }
 }
