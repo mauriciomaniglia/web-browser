@@ -68,7 +68,9 @@ struct HistoryView: View {
                                 dismiss()
                             }
                     }
-                    .onDelete(perform: delete)
+                    .onDelete { offsets in
+                        viewModel.deletePages(at: offsets, inSection: index)
+                    }
                 }
             }
         }
@@ -85,9 +87,5 @@ struct HistoryView: View {
 
     private func isHistoryEmpty() -> Bool {
         viewModel.historyList.isEmpty
-    }
-
-    private func delete(at offsets: IndexSet) {
-
     }
 }
