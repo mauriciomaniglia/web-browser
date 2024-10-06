@@ -6,6 +6,15 @@ struct HistoryView: View {
     @State private var searchText: String = ""
 
     var body: some View {
+        SearchTopBar
+            .navigationTitle("History")
+            .onAppear {
+                viewModel.didOpenHistoryView?()
+            }
+        HistoryList
+    }
+
+    private var SearchTopBar: some View {
         HStack {
             Button {
                 dismiss()
@@ -21,7 +30,9 @@ struct HistoryView: View {
                 .padding()
         }
         .padding()
+    }
 
+    private var HistoryList: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { index in
                 let item = viewModel.historyList[index]
@@ -29,7 +40,7 @@ struct HistoryView: View {
                 let header = Text(item.title)
 
                 Section(header: header) {
-                    ForEach(item.pages, id: \.url) { page in
+                    ForEach(item.pages) { page in
                         Text("\(page.title)")
                             .onTapGesture {
                                 viewModel.didSelectPage?(page.url)
@@ -40,13 +51,9 @@ struct HistoryView: View {
                 }
             }
         }
-        .navigationTitle("History")
-        .onAppear {
-            viewModel.didOpenHistoryView?()
-        }
     }
 
-    func delete(at offsets: IndexSet) {
+    private func delete(at offsets: IndexSet) {
 
     }
 }
