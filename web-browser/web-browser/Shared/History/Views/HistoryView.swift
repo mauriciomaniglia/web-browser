@@ -12,7 +12,12 @@ struct HistoryView: View {
             .onAppear {
                 viewModel.didOpenHistoryView?()
             }
-        HistoryList
+
+        if isHistoryEmpty() {
+            EmptyView
+        } else {
+            HistoryList
+        }
     }
 
     private var SearchTopBar: some View {
@@ -67,6 +72,19 @@ struct HistoryView: View {
                 }
             }
         }
+    }
+
+    private var EmptyView: some View {
+        VStack {
+            Text("No history found.")
+                .font(.headline)
+                .padding()
+            Spacer()
+        }
+    }
+
+    private func isHistoryEmpty() -> Bool {
+        viewModel.historyList.isEmpty
     }
 
     private func delete(at offsets: IndexSet) {
