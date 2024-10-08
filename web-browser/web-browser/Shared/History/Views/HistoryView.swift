@@ -7,50 +7,43 @@ struct HistoryView: View {
     @State private var isShowingDeleteAllHistoryAlert = false
 
     var body: some View {
-        SearchTopBar
-            .navigationTitle("History")
+        ZStack {
+            Color(UIColor.systemGroupedBackground)
+                .edgesIgnoringSafeArea(.all)
+
+            VStack {
+                SearchTopBar
+
+                if isHistoryEmpty() {
+                    EmptyView
+                } else {
+                    HistoryList
+                }
+            }
             .onAppear {
                 viewModel.didOpenHistoryView?()
             }
-
-        if isHistoryEmpty() {
-            EmptyView
-        } else {
-            HistoryList
+            .navigationTitle("History")
+            .toolbar {
+                ToolbarItem {
+                    ClearAllHistoryButton
+                }
+            }
+            .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
+                ClearAllHistoryAlert
+            }
         }
     }
 
     private var SearchTopBar: some View {
         HStack {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "arrow.left")
-            }
-
             TextField("Search History", text: $searchText)
                 .onChange(of: searchText, { _, newValue in
                     viewModel.didSearchTerm?(newValue)
                 })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-
-            Button {
-                isShowingDeleteAllHistoryAlert = true
-            } label: {
-                Image(systemName: "trash")
-            }
-            .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
-                Alert(
-                    title: Text("Clear all browsing history?"),
-                    primaryButton: .default(Text("Clear")) {
-                        viewModel.deleteAllPages()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
         }
-        .padding()
     }
 
     private var HistoryList: some View {
@@ -83,6 +76,24 @@ struct HistoryView: View {
                 .padding()
             Spacer()
         }
+    }
+
+    private var ClearAllHistoryButton: some View {
+        Button {
+            isShowingDeleteAllHistoryAlert = true
+        } label: {
+            Image(systemName: "trash")
+        }
+    }
+
+    private var ClearAllHistoryAlert: Alert {
+        Alert(
+            title: Text("Clear all browsing history?"),
+            primaryButton: .default(Text("Clear")) {
+                viewModel.deleteAllPages()
+            },
+            secondaryButton: .cancel()
+        )
     }
 
     private func isHistoryEmpty() -> Bool {
