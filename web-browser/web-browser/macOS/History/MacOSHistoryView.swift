@@ -84,6 +84,17 @@ struct MacOSHistoryView: View {
                         let page = item.pages[pageIndex]
                         Toggle(isOn: $viewModel.historyList[sectionIndex].pages[pageIndex].isSelected) {
                             Text(page.title)
+                                .onTapGesture {
+                                    viewModel.didSelectPage?(page.url)
+                                    dismiss()
+                                }
+                                .onHover { hovering in
+                                    if hovering {
+                                        NSCursor.pointingHand.push()
+                                    } else {
+                                        NSCursor.pop()
+                                    }
+                                }
                         }
                         .toggleStyle(CheckboxToggleStyle())
                         .padding()
