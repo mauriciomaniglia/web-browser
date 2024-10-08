@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "core-web-browser",
             dependencies: [],
-            resources: [.process("WebKitEngine/JsonRules")]),
+            resources: [.process("_External/JsonRules")]),
         .testTarget(
             name: "core-web-browserTests",
             dependencies: ["core-web-browser"]),
