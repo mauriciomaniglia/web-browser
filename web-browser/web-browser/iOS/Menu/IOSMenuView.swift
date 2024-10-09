@@ -8,7 +8,7 @@ struct IOSMenuView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: HistoryView(viewModel: historyViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: IOSHistoryView(viewModel: historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
             }

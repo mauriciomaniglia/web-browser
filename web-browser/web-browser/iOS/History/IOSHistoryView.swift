@@ -1,7 +1,7 @@
 import SwiftUI
 
-#if canImport(UIKit)
-struct HistoryView: View {
+#if os(iOS)
+struct IOSHistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Binding var isPresented: Bool
     @State private var searchText: String = ""
