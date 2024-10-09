@@ -35,6 +35,7 @@
 		F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */; };
+		F9EE1E402CB6A8A60081B979 /* VisionOSHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE1E3F2CB6A8A60081B979 /* VisionOSHistoryView.swift */; };
 		F9F2083D2C8CED1300C3B033 /* VisionOSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewAdapterTests.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		F9EE1E3F2CB6A8A60081B979 /* VisionOSHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSHistoryView.swift; sourceTree = "<group>"; };
 		F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 		F91EFA832B71002A00500535 /* visionOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE1E3E2CB6A8840081B979 /* History */,
 				F9F2083B2C8CED0100C3B033 /* Menu */,
 				F9E1477F2C0962360099CD98 /* Window */,
 			);
@@ -340,6 +343,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		F9EE1E3E2CB6A8840081B979 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE1E3F2CB6A8A60081B979 /* VisionOSHistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		F9F2083A2C8CECD600C3B033 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +499,7 @@
 				F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F9F2083D2C8CED1300C3B033 /* VisionOSMenu.swift in Sources */,
+				F9EE1E402CB6A8A60081B979 /* VisionOSHistoryView.swift in Sources */,
 				F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,

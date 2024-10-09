@@ -11,7 +11,7 @@ struct VisionOSWindow: View {
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            VisionOSMenu(historyViewModel: historyViewModel, isPresented: $isShowingSheet)
+            VisionOSMenu(historyViewModel: historyViewModel)
         } detail: {
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
