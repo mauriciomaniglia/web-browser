@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if canImport(UIKit)
 struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
@@ -100,3 +101,4 @@ struct HistoryView: View {
         viewModel.historyList.isEmpty
     }
 }
+#endif

@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if os(iOS)
 struct IOSMenuView: View {
     @ObservedObject var historyViewModel: HistoryViewModel
 
@@ -13,3 +14,4 @@ struct IOSMenuView: View {
         }
     }
 }
+#endif
