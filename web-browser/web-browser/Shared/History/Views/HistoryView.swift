@@ -3,7 +3,7 @@ import SwiftUI
 #if canImport(UIKit)
 struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Binding var isPresented: Bool
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
 
@@ -59,7 +59,7 @@ struct HistoryView: View {
                         Text("\(page.title)")
                             .onTapGesture {
                                 viewModel.didSelectPage?(page.url)
-                                dismiss()
+                                isPresented = false
                             }
                     }
                     .onDelete { offsets in

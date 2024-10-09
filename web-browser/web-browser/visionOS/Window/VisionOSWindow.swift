@@ -5,12 +5,13 @@ struct VisionOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
     @State var columnVisibility: NavigationSplitViewVisibility = .detailOnly
+    @State var isShowingSheet = false
 
     let webView: AnyView
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            VisionOSMenu(historyViewModel: historyViewModel)
+            VisionOSMenu(historyViewModel: historyViewModel, isPresented: $isShowingSheet)
         } detail: {
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
