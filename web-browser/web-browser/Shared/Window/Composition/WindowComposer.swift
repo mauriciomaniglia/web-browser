@@ -49,7 +49,6 @@ final class WindowComposer {
         #elseif os(visionOS)
         return VisionOSWindow(
             windowViewModel: windowViewModel,
-            historyViewModel: historyViewModel,
             webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }
