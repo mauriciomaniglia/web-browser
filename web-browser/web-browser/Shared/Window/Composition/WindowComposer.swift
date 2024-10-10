@@ -5,9 +5,10 @@ final class WindowComposer {
 
     func composeView() -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
+        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
         let safelistStore = SafelistStore()
         let windowPresenter = WindowPresenter(safelist: safelistStore)
-        var windowViewModel = WindowViewModel()
+        var windowViewModel = WindowViewModel(historyViewModel: historyViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistorySwiftDataStore()
         let windowFacade = WindowFacade(
@@ -16,7 +17,6 @@ final class WindowComposer {
             safelist: safelistStore,
             history: historyStore)
         let windowAdapter = WindowViewAdapter(viewModel: windowViewModel)
-        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
 
         contentBlocking.setupStrictProtection()
 
@@ -46,7 +46,6 @@ final class WindowComposer {
         #elseif os(macOS)
         return MacOSWindow(
             windowViewModel: windowViewModel,
-            historyViewModel: historyViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
         #elseif os(visionOS)
         return VisionOSWindow(

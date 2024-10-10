@@ -45,7 +45,7 @@ class WindowViewAdapterTests: XCTestCase {
     // MARK: - Helpers
 
     private func makeSUT() -> WindowViewAdapter {
-        let viewModel = WindowViewModel()
+        let viewModel = WindowViewModel(historyViewModel: HistoryViewModel())
         return WindowViewAdapter(viewModel: viewModel)
     }
 }

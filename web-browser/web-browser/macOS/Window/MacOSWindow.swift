@@ -3,13 +3,12 @@ import SwiftUI
 #if os(macOS)
 struct MacOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
-    @ObservedObject var historyViewModel: HistoryViewModel
 
     let webView: AnyView
 
     var body: some View {
         NavigationSplitView {
-            MacOSMenu(historyViewModel: historyViewModel)
+            MacOSMenu(historyViewModel: windowViewModel.historyViewModel)
         } detail: {
             VStack {
                 HStack {

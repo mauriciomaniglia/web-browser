@@ -7,6 +7,12 @@ class WindowViewModel: ObservableObject {
         let url: String
     }
 
+    init(historyViewModel: HistoryViewModel) {
+        self.historyViewModel = historyViewModel
+    }
+
+    let historyViewModel: HistoryViewModel
+
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true
     @Published var showCancelButton: Bool = false
