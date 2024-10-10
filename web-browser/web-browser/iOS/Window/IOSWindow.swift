@@ -3,7 +3,6 @@ import SwiftUI
 #if os(iOS)
 struct IOSWindow: View {
     @ObservedObject var windowViewModel: WindowViewModel
-    @ObservedObject var historyViewModel: HistoryViewModel
     @State var isShowingSheet = false
 
     let webView: AnyView
@@ -25,7 +24,7 @@ struct IOSWindow: View {
             .padding()
         }
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
-            IOSMenuView(historyViewModel: historyViewModel, isPresented: $isShowingSheet)
+            IOSMenuView(windowViewModel: windowViewModel, isPresented: $isShowingSheet)
         })
     }
 }
