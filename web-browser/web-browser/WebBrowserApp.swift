@@ -6,7 +6,7 @@ struct WebBrowserApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AnyView(composer.composeView())
+            AnyView(composer.makeWindowView())
         }
         .commands {
             CommandMenu("Bookmarks") {

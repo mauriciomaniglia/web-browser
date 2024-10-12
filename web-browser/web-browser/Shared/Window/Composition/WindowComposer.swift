@@ -3,7 +3,7 @@ import core_web_browser
 
 final class WindowComposer {
 
-    func composeView() -> any View {
+    func makeWindowView() -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
         let safelistStore = SafelistStore()
