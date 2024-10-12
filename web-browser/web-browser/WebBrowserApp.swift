@@ -2,9 +2,11 @@ import SwiftUI
 
 @main
 struct WebBrowserApp: App {
+    let composer = WindowComposer()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AnyView(composer.composeView())
         }
         .commands {
             CommandMenu("Bookmarks") {
