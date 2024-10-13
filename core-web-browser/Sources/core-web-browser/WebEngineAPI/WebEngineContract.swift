@@ -15,7 +15,8 @@ public struct WebPage {
 }
 
 public protocol WebEngineContract {
-    func registerRule(name: String, content: String, safelist: [String])    
+    func getCurrentURL() -> URL?
+    func registerRule(name: String, content: String, safelist: [String])
     func removeAllRules()
     func load(_ url: URL)
     func reload()

@@ -12,6 +12,10 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         registerObserversForWebView()
     }
 
+    public func getCurrentURL() -> URL? {
+        webView.url
+    }
+
     public func registerRule(name: String, content: String, safelist: [String] = []) {
         ruleStore.lookUpContentRuleList(forIdentifier: name, completionHandler: { [ruleStore] ruleList, _ in
             if ruleList != nil { return }
