@@ -1,4 +1,4 @@
-import core_web_browser
+import Core
 
 class HistoryAdapter {
     private var viewModel: HistoryViewModel

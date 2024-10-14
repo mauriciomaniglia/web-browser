@@ -1,9 +1,9 @@
 import SwiftUI
-import core_web_browser
+import Core
 
 final class WindowComposer {
 
-    func makeWindowView() -> any View {
+    func makeWindowView(commandMenuViewModel: CommandMenuViewModel) -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
         let safelistStore = SafelistStore()
@@ -34,6 +34,8 @@ final class WindowComposer {
         windowViewModel.didSelectBackListPage = windowFacade.didSelectBackListPage(at:)
         windowViewModel.didSelectForwardListPage = windowFacade.didSelectForwardListPage(at:)
         windowViewModel.didDismissBackForwardPageList = windowFacade.didDismissBackForwardList
+
+        commandMenuViewModel.didTapAddBookmark = windowFacade.didTapAddBookmark
 
         webKitEngineWrapper.delegate = windowFacade
         windowPresenter.didUpdatePresentableModel = windowAdapter.updateViewModel

@@ -3,10 +3,11 @@ import SwiftUI
 @main
 struct WebBrowserApp: App {
     let composer = WindowComposer()
+    let commandMenuViewModel = CommandMenuViewModel()
 
     var body: some Scene {
         WindowGroup {
-            AnyView(composer.makeWindowView())
+            AnyView(composer.makeWindowView(commandMenuViewModel: commandMenuViewModel))
         }
         .commands {
             CommandMenu("Bookmarks") {
@@ -24,7 +25,7 @@ struct WebBrowserApp: App {
     }
 
     private func addBookmark() {
-        print("Add Bookmark")
+        commandMenuViewModel.didTapAddBookmark?()
     }
 
     private func showBookmarks() {

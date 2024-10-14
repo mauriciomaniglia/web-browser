@@ -1,5 +1,5 @@
 import Foundation
-import core_web_browser
+import Core
 
 final class WindowViewAdapter {
     let viewModel: WindowViewModel
