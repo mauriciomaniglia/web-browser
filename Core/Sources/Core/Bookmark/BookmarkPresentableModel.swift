@@ -1,7 +1,7 @@
 import Foundation
 
 public struct BookmarkPresentableModel {
-    let id: UUID
-    let title: String
-    let url: URL
+    public let id: UUID
+    public let title: String
+    public let url: URL
 }
