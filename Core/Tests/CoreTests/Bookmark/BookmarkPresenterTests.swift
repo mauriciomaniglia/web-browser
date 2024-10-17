@@ -6,16 +6,17 @@ class BookmarkPresenterTests: XCTestCase {
     func test_mapBookmark_returnsBookmark() {
         let page1 = WebPage(title: "title 1", url: URL(string: "http://example1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "http://example2.com")!, date: Date())
-        let pages = [page1, page2]
         let sut = BookmarkPresenter()
+        var presentableModels: [BookmarkPresentableModel]!
+        sut.didUpdatePresentableModels = { presentableModels = $0 }
 
-        let presentablePages = sut.mapBookmarks(from: pages)
+        sut.mapBookmarks(from: [page1, page2])
 
-        XCTAssertEqual(presentablePages[0].id, page1.id)
-        XCTAssertEqual(presentablePages[0].title, page1.title)
-        XCTAssertEqual(presentablePages[0].url, page1.url)
-        XCTAssertEqual(presentablePages[1].id, page2.id)
-        XCTAssertEqual(presentablePages[1].title, "http://example2.com")
-        XCTAssertEqual(presentablePages[1].url, page2.url)
+        XCTAssertEqual(presentableModels[0].id, page1.id)
+        XCTAssertEqual(presentableModels[0].title, page1.title)
+        XCTAssertEqual(presentableModels[0].url, page1.url)
+        XCTAssertEqual(presentableModels[1].id, page2.id)
+        XCTAssertEqual(presentableModels[1].title, "http://example2.com")
+        XCTAssertEqual(presentableModels[1].url, page2.url)
     }
 }
