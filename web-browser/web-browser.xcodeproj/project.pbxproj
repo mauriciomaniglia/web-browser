@@ -87,6 +87,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F9D6E3432CC3314500FD1C07 /* Bookmark */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Bookmark; sourceTree = "<group>"; };
+		F9EBC4932CC4535C00AB8E25 /* Bookmark */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Bookmark; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +166,7 @@
 		F92921CE2B70F5B500173702 /* web-browserTests */ = {
 			isa = PBXGroup;
 			children = (
+				F9EBC4932CC4535C00AB8E25 /* Bookmark */,
 				F9E55FD62C02AE900098995F /* Helpers */,
 				F9E55D382C45F452008B7C64 /* History */,
 				F9E55FCE2C02ABEE0098995F /* Window */,
@@ -418,6 +420,9 @@
 			);
 			dependencies = (
 				F92921CD2B70F5B500173702 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F9EBC4932CC4535C00AB8E25 /* Bookmark */,
 			);
 			name = "web-browserTests";
 			productName = "web-browserTests";
