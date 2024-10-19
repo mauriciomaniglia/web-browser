@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -84,6 +84,10 @@
 		F9F2083C2C8CED1300C3B033 /* VisionOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSMenu.swift; sourceTree = "<group>"; };
 		F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F9D6E3432CC3314500FD1C07 /* Bookmark */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Bookmark; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F92921B72B70F5B300173702 /* Frameworks */ = {
@@ -191,6 +195,7 @@
 		F92921EE2B70F9DD00173702 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F9D6E3432CC3314500FD1C07 /* Bookmark */,
 				F98BF0C92B750A7F00C29BDA /* Helpers */,
 				F9E55D2E2C45E9FA008B7C64 /* History */,
 				F98BF0C62B750A2900C29BDA /* Window */,
@@ -389,6 +394,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F9D6E3432CC3314500FD1C07 /* Bookmark */,
 			);
 			name = "web-browser";
 			packageProductDependencies = (
