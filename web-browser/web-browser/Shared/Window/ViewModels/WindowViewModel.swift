@@ -7,11 +7,13 @@ class WindowViewModel: ObservableObject {
         let url: String
     }
 
-    init(historyViewModel: HistoryViewModel) {
+    init(historyViewModel: HistoryViewModel, bookmarkViewModel: BookmarkViewModel) {
         self.historyViewModel = historyViewModel
+        self.bookmarkViewModel = bookmarkViewModel
     }
 
     let historyViewModel: HistoryViewModel
+    let bookmarkViewModel: BookmarkViewModel
 
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true

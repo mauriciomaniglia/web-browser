@@ -6,9 +6,10 @@ final class WindowComposer {
     func makeWindowView(commandMenuViewModel: CommandMenuViewModel) -> any View {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
+        let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper)
         let safelistStore = SafelistStore()
         let windowPresenter = WindowPresenter(safelist: safelistStore)
-        var windowViewModel = WindowViewModel(historyViewModel: historyViewModel)
+        var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistorySwiftDataStore()
         let windowFacade = WindowFacade(

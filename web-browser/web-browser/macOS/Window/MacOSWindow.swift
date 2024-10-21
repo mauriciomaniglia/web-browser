@@ -8,7 +8,7 @@ struct MacOSWindow: View {
 
     var body: some View {
         NavigationSplitView {
-            MacOSMenu(historyViewModel: windowViewModel.historyViewModel)
+            MacOSMenu(windowViewModel: windowViewModel)
         } detail: {
             VStack {
                 HStack {
