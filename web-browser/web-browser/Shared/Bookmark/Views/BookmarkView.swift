@@ -44,13 +44,6 @@ struct BookmarkView: View {
                         viewModel.didSelectPage?(bookmark.url.absoluteString)
                         dismiss()
                     }
-                    .onHover { hovering in
-                        if hovering {
-                            NSCursor.pointingHand.push()
-                        } else {
-                            NSCursor.pop()
-                        }
-                    }
             }
         }
     }
