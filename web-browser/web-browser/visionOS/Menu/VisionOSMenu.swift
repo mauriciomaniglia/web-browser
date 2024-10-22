@@ -6,6 +6,9 @@ struct VisionOSMenu: View {
 
     var body: some View {
         List {
+            NavigationLink(destination: BookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
+                Label("Bookmarks", systemImage: "bookmark")
+            }
             NavigationLink(destination: VisionOSHistoryView(viewModel: windowViewModel.historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
