@@ -12,8 +12,9 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         registerObserversForWebView()
     }
 
-    public func getCurrentURL() -> URL? {
-        webView.url
+    public func getCurrentPage() -> WebPage? {
+        guard let url = webView.url else { return nil }
+        return WebPage(title: webView.title, url: url, date: Date())
     }
 
     public func registerRule(name: String, content: String, safelist: [String] = []) {
