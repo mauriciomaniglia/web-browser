@@ -1,10 +1,11 @@
+import SwiftData
 import Core
 
 class BookmarkComposer {
 
-    func makeBookmarkViewModel(webView: WebEngineContract) -> BookmarkViewModel {
+    func makeBookmarkViewModel(webView: WebEngineContract, container: ModelContainer) -> BookmarkViewModel {
         let viewModel = BookmarkViewModel()
-        let bookmarkStore = BookmarkSwiftDataStore()
+        let bookmarkStore = BookmarkSwiftDataStore(container: container)
         let presenter = BookmarkPresenter()
         let adapter = BookmarkAdapter(viewModel: viewModel)
         let facade = BookmarkFacade(presenter: presenter, webView: webView, bookmark: bookmarkStore)

@@ -1,17 +1,25 @@
+import SwiftData
 import SwiftUI
 import Core
 
 final class WindowComposer {
 
     func makeWindowView(commandMenuViewModel: CommandMenuViewModel) -> any View {
+        let container: ModelContainer
+        do {
+            container = try ModelContainer(for: HistorySwiftDataStore.HistoryPage.self, BookmarkSwiftDataStore.Bookmark.self)
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error)")
+        }
+
         let webKitEngineWrapper = WebKitEngineWrapper()
-        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper)
-        let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper)
+        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper, container: container)
+        let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper, container: container)
         let safelistStore = SafelistStore()
         let windowPresenter = WindowPresenter(safelist: safelistStore)
         var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
-        let historyStore = HistorySwiftDataStore()
+        let historyStore = HistorySwiftDataStore(container: container)
         let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,

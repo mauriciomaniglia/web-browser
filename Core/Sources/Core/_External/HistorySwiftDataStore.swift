@@ -6,8 +6,8 @@ import SwiftData
 
 public class HistorySwiftDataStore: HistoryAPI {
     @Model
-    class HistoryPage {
-        @Attribute(.unique) var id: UUID
+    public class HistoryPage {
+        @Attribute(.unique) public var id: UUID
         var title: String
         var url: URL
         var date: Date
@@ -25,12 +25,8 @@ public class HistorySwiftDataStore: HistoryAPI {
     private let container: ModelContainer
     private lazy var backgroundContext = ModelContext(container)
 
-    public init() {
-        do {
-            container = try ModelContainer(for: HistoryPage.self)
-        } catch {
-            fatalError("Failed to initialize ModelContainer: \(error)")
-        }
+    public init(container: ModelContainer) {
+        self.container = container
     }
 
     public func save(page: WebPage) {
