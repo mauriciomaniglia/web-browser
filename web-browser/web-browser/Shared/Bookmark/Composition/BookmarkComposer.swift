@@ -12,6 +12,7 @@ class BookmarkComposer {
         viewModel.didSelectPage = facade.didSelectPage(_:)
         viewModel.didOpenBookmarkView = facade.didOpenBookmarkView
         viewModel.didSearchTerm = facade.didSearchTerm(_:)
+        viewModel.didTapSavePage = facade.didTapSavePage
         viewModel.didTapDeletePages = facade.didTapDeletePages
         presenter.didUpdatePresentableModels = adapter.updateViewModel
 
