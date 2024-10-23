@@ -3,7 +3,7 @@ import Core
 
 class BookmarkStoreMock: BookmarkAPI {
     enum Message: Equatable {
-        case save
+        case save(String)
         case getPages
         case getPagesByTerm(String)
         case deletePages([UUID])
@@ -13,7 +13,7 @@ class BookmarkStoreMock: BookmarkAPI {
     var mockWebPages = [WebPage]()
 
     func save(page: WebPage) {
-        receivedMessages.append(.save)
+        receivedMessages.append(.save(page.url.absoluteString))
     }
 
     func getPages() -> [WebPage] {

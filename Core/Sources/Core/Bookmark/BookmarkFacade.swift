@@ -25,6 +25,11 @@ public class BookmarkFacade {
         webView.load(SearchURLBuilder.makeURL(from: url))
     }
 
+    public func didTapSavePage(title: String?, url: URL) {
+        let page = WebPage(title: title, url: url, date: Date())
+        bookmark.save(page: page)
+    }
+
     public func didTapDeletePages(_ pageIDs: [UUID]) {
         bookmark.deletePages(withIDs: pageIDs)
     }
