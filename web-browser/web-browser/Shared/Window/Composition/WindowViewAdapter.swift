@@ -2,10 +2,14 @@ import Foundation
 import Core
 
 final class WindowViewAdapter {
+    let webView: WebEngineContract
     let viewModel: WindowViewModel
+    let bookmarkViewModel: BookmarkViewModel
 
-    init(viewModel: WindowViewModel) {
+    init(webView: WebEngineContract, viewModel: WindowViewModel, bookmarkViewModel: BookmarkViewModel) {
+        self.webView = webView
         self.viewModel = viewModel
+        self.bookmarkViewModel = bookmarkViewModel
     }
 
     func updateViewModel(_ model: WindowPresentableModel) {
@@ -24,5 +28,11 @@ final class WindowViewAdapter {
         viewModel.showBackList = model.backList != nil
         viewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
         viewModel.showForwardList = model.forwardList != nil
+    }
+
+    func didTapAddBookmark() {
+        if let currentPage = webView.getCurrentPage() {
+            bookmarkViewModel.didTapSavePage?(currentPage.title ?? "", currentPage.url)
+        }
     }
 }

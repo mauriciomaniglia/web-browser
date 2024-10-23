@@ -16,8 +16,13 @@ final class WindowComposer {
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
             safelist: safelistStore,
-            history: historyStore)
-        let windowAdapter = WindowViewAdapter(viewModel: windowViewModel)
+            history: historyStore
+        )
+        let windowAdapter = WindowViewAdapter(
+            webView: webKitEngineWrapper,
+            viewModel: windowViewModel,
+            bookmarkViewModel: bookmarkViewModel
+        )
 
         contentBlocking.setupStrictProtection()
 
@@ -36,7 +41,7 @@ final class WindowComposer {
         windowViewModel.didSelectForwardListPage = windowFacade.didSelectForwardListPage(at:)
         windowViewModel.didDismissBackForwardPageList = windowFacade.didDismissBackForwardList
 
-        commandMenuViewModel.didTapAddBookmark = windowFacade.didTapAddBookmark
+        commandMenuViewModel.didTapAddBookmark = windowAdapter.didTapAddBookmark
 
         webKitEngineWrapper.delegate = windowFacade
         windowPresenter.didUpdatePresentableModel = windowAdapter.updateViewModel

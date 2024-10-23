@@ -72,10 +72,6 @@ public final class WindowFacade {
             safelist.removeDomain(url)
         }
     }
-
-    public func didTapAddBookmark() {
-
-    }
 }
 
 extension WindowFacade: WebEngineDelegate {
