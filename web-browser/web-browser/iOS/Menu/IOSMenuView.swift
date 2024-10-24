@@ -8,7 +8,7 @@ struct IOSMenuView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: BookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
+                NavigationLink(destination: IOSBookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
                     Label("Bookmarks", systemImage: "bookmark")
                 }
                 NavigationLink(destination: IOSHistoryView(viewModel: windowViewModel.historyViewModel, isPresented: $isPresented)) {
