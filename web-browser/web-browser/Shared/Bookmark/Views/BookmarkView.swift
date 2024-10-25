@@ -39,11 +39,20 @@ struct BookmarkView: View {
     private var BookmarkList: some View {
         List {
             ForEach(viewModel.bookmarkList) { bookmark in
-                Text(bookmark.title)
-                    .onTapGesture {
-                        viewModel.didSelectPage?(bookmark.url.absoluteString)
-                        dismiss()
+                HStack {
+                    Text(bookmark.title)
+                        .onTapGesture {
+                            viewModel.didSelectPage?(bookmark.url.absoluteString)
+                            dismiss()
+                        }
+                    Spacer()
+                    Button {
+
+                    } label: {
+                        Image(systemName: "ellipsis")
                     }
+                }
+                .padding()
             }
         }
     }
