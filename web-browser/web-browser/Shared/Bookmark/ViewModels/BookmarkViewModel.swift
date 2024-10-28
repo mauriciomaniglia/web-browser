@@ -22,7 +22,10 @@ class BookmarkViewModel: ObservableObject {
     }
 
     func removeSelectedBookmark() {
-        bookmarkList.removeAll(where: { $0.id == selectedBookmark?.id})
+        if let selectedBookmark {
+            bookmarkList.removeAll(where: { $0.id == selectedBookmark.id})
+            didTapDeletePages?([selectedBookmark.id])
+        }
     }
 
     func undoCurrentSelection() {
