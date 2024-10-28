@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Set up build directory
-      run: echo "PACKAGE_DIR=core-web-browser" >> $GITHUB_ENV
+      run: echo "PACKAGE_DIR=Core" >> $GITHUB_ENV
       
     - name: Build
       run: swift build -v
