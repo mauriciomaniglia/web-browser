@@ -2,7 +2,7 @@ import Foundation
 
 class BookmarkViewModel: ObservableObject {
 
-    struct Bookmark: Identifiable {
+    struct Bookmark: Identifiable, Equatable {
         let id: UUID
         let title: String
         let url: URL
