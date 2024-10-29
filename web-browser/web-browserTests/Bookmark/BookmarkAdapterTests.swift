@@ -23,7 +23,7 @@ class BookmarkAdapterTests: XCTestCase {
 
     private func makeSUT() -> (sut: BookmarkAdapter, viewModel: BookmarkViewModel) {
         let viewModel = BookmarkViewModel()
-        let sut = BookmarkAdapter(viewModel: viewModel)
+        let sut = BookmarkAdapter(webView: WebViewSpy(), viewModel: viewModel)
 
         return (sut, viewModel)
     }

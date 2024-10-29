@@ -11,6 +11,7 @@ class BookmarkViewModel: ObservableObject {
     @Published var bookmarkList: [Bookmark] = []
     var selectedBookmark: Bookmark?
 
+    var didTapAddBookmark: (() -> Void)?
     var didOpenBookmarkView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
     var didSelectPage: ((String) -> Void)?

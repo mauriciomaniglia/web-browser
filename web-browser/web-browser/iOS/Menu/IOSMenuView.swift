@@ -9,7 +9,8 @@ struct IOSMenuView: View {
         NavigationView {
             List {
                 Button(action: {                    
-                    print("Performing custom action for Add Bookmark")
+                    windowViewModel.bookmarkViewModel.didTapAddBookmark?()
+                    isPresented = false
                 }) {
                     HStack {
                         Label("Add Bookmark", systemImage: "bookmark")
