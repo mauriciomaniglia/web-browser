@@ -29,10 +29,4 @@ final class WindowViewAdapter {
         viewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
         viewModel.showForwardList = model.forwardList != nil
     }
-
-    func didTapAddBookmark() {
-        if let currentPage = webView.getCurrentPage() {
-            bookmarkViewModel.didTapSavePage?(currentPage.title ?? "", currentPage.url)
-        }
-    }
 }

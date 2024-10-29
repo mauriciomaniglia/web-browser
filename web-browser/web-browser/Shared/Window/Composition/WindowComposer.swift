@@ -49,7 +49,7 @@ final class WindowComposer {
         windowViewModel.didSelectForwardListPage = windowFacade.didSelectForwardListPage(at:)
         windowViewModel.didDismissBackForwardPageList = windowFacade.didDismissBackForwardList
 
-        commandMenuViewModel.didTapAddBookmark = windowAdapter.didTapAddBookmark
+        commandMenuViewModel.didTapAddBookmark = bookmarkViewModel.didTapAddBookmark
 
         webKitEngineWrapper.delegate = windowFacade
         windowPresenter.didUpdatePresentableModel = windowAdapter.updateViewModel
