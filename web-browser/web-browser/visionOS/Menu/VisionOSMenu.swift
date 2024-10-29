@@ -6,8 +6,18 @@ struct VisionOSMenu: View {
 
     var body: some View {
         List {
+            Button(action: {
+                windowViewModel.bookmarkViewModel.didTapAddBookmark?()
+            }) {
+                HStack {
+                    Label("Add Bookmark", systemImage: "bookmark")
+                    Spacer()
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+
             NavigationLink(destination: BookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
-                Label("Bookmarks", systemImage: "bookmark")
+                Label("Bookmarks", systemImage: "book")
             }
             NavigationLink(destination: VisionOSHistoryView(viewModel: windowViewModel.historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
