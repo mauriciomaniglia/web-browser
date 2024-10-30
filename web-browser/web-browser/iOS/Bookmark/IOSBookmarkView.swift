@@ -2,7 +2,7 @@ import SwiftUI
 
 struct IOSBookmarkView: View {
     @ObservedObject var viewModel: BookmarkViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Binding var isPresented: Bool
     @State private var searchText: String = ""
 
     var body: some View {
@@ -44,7 +44,7 @@ struct IOSBookmarkView: View {
                 Text(bookmark.title)
                     .onTapGesture {
                         viewModel.didSelectPage?(bookmark.url.absoluteString)
-                        dismiss()
+                        isPresented = false
                     }
             }
             .onDelete { offsets in

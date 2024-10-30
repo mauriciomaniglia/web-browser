@@ -19,7 +19,7 @@ struct IOSMenuView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
 
-                NavigationLink(destination: IOSBookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
+                NavigationLink(destination: IOSBookmarkView(viewModel: windowViewModel.bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
                 NavigationLink(destination: IOSHistoryView(viewModel: windowViewModel.historyViewModel, isPresented: $isPresented)) {
