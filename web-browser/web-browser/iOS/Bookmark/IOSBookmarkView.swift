@@ -47,6 +47,9 @@ struct IOSBookmarkView: View {
                         dismiss()
                     }
             }
+            .onDelete { offsets in
+                viewModel.deleteBookmarks(at: offsets)
+            }
         }
     }
 
