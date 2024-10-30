@@ -32,4 +32,12 @@ class BookmarkViewModel: ObservableObject {
     func undoCurrentSelection() {
         selectedBookmark = nil
     }
+
+    func deleteBookmarks(at offsets: IndexSet) {
+        let pagesToDelete = offsets.compactMap { index in
+            bookmarkList[index]
+        }
+
+        didTapDeletePages?(pagesToDelete.map { $0.id })
+    }
 }
