@@ -6,16 +6,23 @@ struct IOSBookmarkView: View {
     @State private var searchText: String = ""
 
     var body: some View {
-        SearchTopBar
-            .navigationTitle("Bookmark")
-            .onAppear {
-                viewModel.didOpenBookmarkView?()
-            }
+        ZStack {
+            Color(UIColor.systemGroupedBackground)
+                .edgesIgnoringSafeArea(.all)
 
-        if isBookmarkEmpty() {
-            EmptyView
-        } else {
-            BookmarkList
+            VStack {
+                SearchTopBar
+                    .navigationTitle("Bookmark")
+                    .onAppear {
+                        viewModel.didOpenBookmarkView?()
+                    }
+
+                if isBookmarkEmpty() {
+                    EmptyView
+                } else {
+                    BookmarkList
+                }
+            }
         }
     }
 
