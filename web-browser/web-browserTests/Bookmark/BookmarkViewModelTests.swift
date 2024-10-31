@@ -38,4 +38,19 @@ class BookmarkViewModelTests: XCTestCase {
         XCTAssertFalse(sut.bookmarkList.contains(bookmark1))
     }
 
+    func test_deleteBookmarksAt_shouldRemoveBookmarksAtIndexesFromTheList() {
+        let sut = BookmarkViewModel()
+        let url = URL(string: "http://some.url.com")!
+        let bookmark1 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 1", url: url)
+        let bookmark2 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 2", url: url)
+        let bookmark3 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 3", url: url)
+        var pagesToDelete: [UUID] = []
+        sut.bookmarkList = [bookmark1, bookmark2, bookmark3]
+        sut.didTapDeletePages = { pagesToDelete = $0 }
+
+        sut.deleteBookmarks(at: [0, 1])
+
+        XCTAssertEqual(pagesToDelete, [bookmark1.id, bookmark2.id])
+    }
+
 }
