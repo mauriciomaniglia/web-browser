@@ -10,7 +10,9 @@ public class HistoryPresenter {
         let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
             lhs.key.compare(rhs.key) == .orderedDescending
         })
-        let groupPagesSorted = sortedGroups.map { $0.value }
+        let groupPagesSorted: [[WebPage]] = sortedGroups.map { _, pages in
+            pages.sorted(by: { $0.date > $1.date })
+        }
 
         let model = HistoryPresentableModel(list: mapSections(groupPagesSorted))
         didUpdatePresentableModel?(model)
