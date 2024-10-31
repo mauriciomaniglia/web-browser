@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if os(iOS)
 struct IOSBookmarkView: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Binding var isPresented: Bool
@@ -66,3 +67,4 @@ struct IOSBookmarkView: View {
         viewModel.bookmarkList.isEmpty
     }
 }
+#endif
