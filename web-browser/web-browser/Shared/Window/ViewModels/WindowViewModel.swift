@@ -21,6 +21,7 @@ class WindowViewModel: ObservableObject {
     @Published var showStopButton: Bool = false
     @Published var showReloadButton: Bool = false
     @Published var showClearButton: Bool = false
+    @Published var showAddBookmark: Bool = false
     @Published var progressBarValue: Double? = nil
     @Published var urlHost: String? = nil
     @Published var fullURL: String = ""
@@ -45,4 +46,8 @@ class WindowViewModel: ObservableObject {
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didBeginEditing: (() -> Void)?
     var didEndEditing: (() -> Void)?
+
+    func didTapAddBookmark() {
+        showAddBookmark = true
+    }
 }
