@@ -7,20 +7,37 @@ struct MacOSWindow: View {
     let webView: AnyView
 
     var body: some View {
-        NavigationSplitView {
-            MacOSMenu(windowViewModel: windowViewModel)
-        } detail: {
-            VStack {
-                HStack {
-                    WindowNavigationButtons(viewModel: windowViewModel)
-                    AddressBarView(viewModel: windowViewModel)                   
+        ZStack {
+            NavigationSplitView {
+                MacOSMenu(windowViewModel: windowViewModel)
+            } detail: {
+                VStack {
+                    HStack {
+                        WindowNavigationButtons(viewModel: windowViewModel)
+                        AddressBarView(viewModel: windowViewModel)
+                    }
+                    Spacer()
+                    webView
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                Spacer()
-                webView
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding()
             }
-            .padding()
+
+            if windowViewModel.showAddBookmark {
+                Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
+                AddBookmarkView
+            }
         }
+    }
+
+    private var AddBookmarkView: some View {
+        MacAddBookmarkView(
+            viewModel: windowViewModel,
+            isPresented: $windowViewModel.showAddBookmark,
+            name: windowViewModel.urlHost ?? ""
+        )
+        .transition(.scale)
+        .zIndex(1)
     }
 }
 #endif
