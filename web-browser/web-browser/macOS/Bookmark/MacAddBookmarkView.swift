@@ -23,6 +23,7 @@ struct MacAddBookmarkView: View {
                 Spacer()
 
                 Button("Done") {
+                    viewModel.bookmarkViewModel.didTapAddBookmark?()
                     isPresented = false
                 }
                 .buttonStyle(.borderedProminent)
