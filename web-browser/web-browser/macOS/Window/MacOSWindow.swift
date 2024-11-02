@@ -25,16 +25,17 @@ struct MacOSWindow: View {
 
             if windowViewModel.showAddBookmark {
                 Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
-                AddBookmarkView
+                AddBookmark
             }
         }
     }
 
-    private var AddBookmarkView: some View {
-        MacAddBookmarkView(
+    private var AddBookmark: some View {
+        AddBookmarkView(
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
-            name: windowViewModel.urlHost ?? ""
+            name: windowViewModel.urlHost ?? "",
+            backgroundColor: Color(NSColor.windowBackgroundColor)
         )
         .transition(.scale)
         .zIndex(1)

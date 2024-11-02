@@ -1,10 +1,10 @@
 import SwiftUI
 
-#if os(macOS)
-struct MacAddBookmarkView: View {
+struct AddBookmarkView: View {
     @ObservedObject var viewModel: WindowViewModel
     @Binding var isPresented: Bool
     @State var name = ""
+    let backgroundColor: Color
 
     var body: some View {
         VStack(spacing: 20) {
@@ -31,10 +31,9 @@ struct MacAddBookmarkView: View {
             .padding(.horizontal)
         }
         .padding()
-        .background(Color(NSColor.windowBackgroundColor))
+        .background(backgroundColor)
         .cornerRadius(12)
         .shadow(radius: 20)
         .frame(maxWidth: 300)
     }
 }
-#endif
