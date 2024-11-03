@@ -8,8 +8,8 @@ struct IOSMenuView: View {
     var body: some View {
         NavigationView {
             List {
-                Button(action: {                    
-                    windowViewModel.bookmarkViewModel.didTapAddBookmark?()
+                Button(action: {
+                    windowViewModel.didTapAddBookmark()
                     isPresented = false
                 }) {
                     HStack {

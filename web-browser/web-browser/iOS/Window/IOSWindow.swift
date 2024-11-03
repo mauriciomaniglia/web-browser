@@ -26,6 +26,13 @@ struct IOSWindow: View {
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
             IOSMenuView(windowViewModel: windowViewModel, isPresented: $isShowingSheet)
         })
+        .popover(isPresented: $windowViewModel.showAddBookmark, arrowEdge: .trailing, content: {
+            IOSAddBookmarkView(
+                viewModel: windowViewModel,
+                bookmarkName: windowViewModel.urlHost ?? "",
+                bookmarkURL: windowViewModel.fullURL
+            )
+        })
     }
 }
 
