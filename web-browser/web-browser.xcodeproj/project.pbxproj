@@ -15,6 +15,7 @@
 		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F92E5C242CD980150019A9AE /* MacOSAddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */; };
 		F92E5C302CD980A00019A9AE /* VisionOSAddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C2F2CD980A00019A9AE /* VisionOSAddBookmarkView.swift */; };
 		F94379A02C911B7900DEBFF7 /* MacOSHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
@@ -62,6 +63,7 @@
 		F92921EC2B70F9A100173702 /* IOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindow.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
+		F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAddBookmarkView.swift; sourceTree = "<group>"; };
 		F92E5C2F2CD980A00019A9AE /* VisionOSAddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionOSAddBookmarkView.swift; sourceTree = "<group>"; };
 		F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSHistoryView.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		F99988E72CD586EF00705D4F /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
+				F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
 				F92E5C302CD980A00019A9AE /* VisionOSAddBookmarkView.swift in Sources */,
+				F92E5C242CD980150019A9AE /* MacOSAddBookmarkView.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,

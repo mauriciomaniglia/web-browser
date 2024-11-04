@@ -31,7 +31,7 @@ struct MacOSWindow: View {
     }
 
     private var AddBookmark: some View {
-        AddBookmarkView(
+        MacOSAddBookmarkView(
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
             name: windowViewModel.urlHost ?? "",
