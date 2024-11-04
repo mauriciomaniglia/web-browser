@@ -7,7 +7,7 @@ struct VisionOSMenu: View {
     var body: some View {
         List {
             Button(action: {
-                windowViewModel.bookmarkViewModel.didTapAddBookmark?()
+                windowViewModel.showAddBookmark = true
             }) {
                 HStack {
                     Label("Add Bookmark", systemImage: "bookmark")

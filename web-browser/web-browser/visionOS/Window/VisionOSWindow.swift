@@ -35,6 +35,23 @@ struct VisionOSWindow: View {
             .glassBackgroundEffect()
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
         }
+        .overlay(alignment: .center) {
+            AddBookmarkAlert
+        }
+    }
+
+    private var AddBookmarkAlert: some View {
+        Group {
+            if windowViewModel.showAddBookmark {
+                VisionOSAddBookmarkView(
+                    viewModel: windowViewModel,
+                    bookmarkName: windowViewModel.urlHost ?? "",
+                    bookmarkURL: windowViewModel.fullURL
+                )
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(windowViewModel.showAddBookmark ? Color.black.opacity(0.3) : Color.clear)
     }
 
     private func toggleNavigationSplitVisibility() {
