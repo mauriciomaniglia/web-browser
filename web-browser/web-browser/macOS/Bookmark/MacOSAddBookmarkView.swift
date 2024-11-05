@@ -3,7 +3,8 @@ import SwiftUI
 struct MacOSAddBookmarkView: View {
     @ObservedObject var viewModel: WindowViewModel
     @Binding var isPresented: Bool
-    @State var name = ""
+    @State var bookmarkName = ""
+    @State var bookmarkURL = ""
     let backgroundColor: Color
 
     var body: some View {
@@ -11,9 +12,16 @@ struct MacOSAddBookmarkView: View {
             Text("Bookmark added")
                 .font(.headline)
 
-            TextField("Name", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal)
+            VStack(alignment: .leading, spacing: 8) {
+                TextField("Name", text: $bookmarkName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+
+                TextField("URL", text: $bookmarkURL)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                    .disabled(true)
+            }
 
             HStack {
                 Button("Remove") {

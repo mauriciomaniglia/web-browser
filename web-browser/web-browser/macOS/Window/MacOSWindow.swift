@@ -34,7 +34,8 @@ struct MacOSWindow: View {
         MacOSAddBookmarkView(
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
-            name: windowViewModel.urlHost ?? "",
+            bookmarkName: windowViewModel.urlHost ?? "",
+            bookmarkURL: windowViewModel.fullURL,
             backgroundColor: Color(NSColor.windowBackgroundColor)
         )
         .transition(.scale)
