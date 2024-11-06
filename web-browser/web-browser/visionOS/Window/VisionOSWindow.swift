@@ -45,7 +45,7 @@ struct VisionOSWindow: View {
             if windowViewModel.showAddBookmark {
                 VisionOSAddBookmarkView(
                     viewModel: windowViewModel,
-                    bookmarkName: windowViewModel.urlHost ?? "",
+                    bookmarkName: windowViewModel.title,
                     bookmarkURL: windowViewModel.fullURL
                 )
             }
