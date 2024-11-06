@@ -29,7 +29,7 @@ struct IOSWindow: View {
         .popover(isPresented: $windowViewModel.showAddBookmark, arrowEdge: .trailing, content: {
             IOSAddBookmarkView(
                 viewModel: windowViewModel,
-                bookmarkName: windowViewModel.urlHost ?? "",
+                bookmarkName: windowViewModel.title,
                 bookmarkURL: windowViewModel.fullURL
             )
         })
