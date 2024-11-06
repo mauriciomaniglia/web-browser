@@ -31,9 +31,10 @@ class WindowPresenterTests: XCTestCase {
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didStartNewWindow()
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertFalse(windowState!.showCancelButton)
@@ -57,6 +58,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didStartEditing()
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertEqual(windowState!.showCancelButton, showCancelButton())
@@ -78,9 +80,10 @@ class WindowPresenterTests: XCTestCase {
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didStartEditing()
 
+        XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertEqual(windowState!.showCancelButton, showCancelButton())
@@ -104,6 +107,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didEndEditing()
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertFalse(windowState!.showCancelButton)
@@ -125,9 +129,10 @@ class WindowPresenterTests: XCTestCase {
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didEndEditing()
 
+        XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(windowState!.showCancelButton)
@@ -151,6 +156,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertFalse(windowState!.showCancelButton)
@@ -173,8 +179,9 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdatePresentableModel = { windowState = $0 }
         safelist.isOnSafelist = true
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: nil, url: URL(string:"http://some-url.com/some-random-path/123")!)
 
+        XCTAssertEqual(windowState!.title, "some-url.com")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(windowState!.showCancelButton)
@@ -198,10 +205,11 @@ class WindowPresenterTests: XCTestCase {
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadBackList([page1, page2, page3])
 
+        XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(windowState!.showCancelButton)
@@ -230,10 +238,11 @@ class WindowPresenterTests: XCTestCase {
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadForwardList([page1, page2, page3])
 
+        XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(windowState!.showCancelButton)
@@ -261,11 +270,12 @@ class WindowPresenterTests: XCTestCase {
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didLoadForwardList([page1, page2])
 
         sut.didDismissBackForwardList()
 
+        XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(windowState!.showCancelButton)
@@ -289,6 +299,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateProgressBar(0.45)
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertFalse(windowState!.showCancelButton)
@@ -312,6 +323,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateProgressBar(1)
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertFalse(windowState!.showCancelButton)
@@ -335,6 +347,7 @@ class WindowPresenterTests: XCTestCase {
 
         sut.didUpdateProgressBar(1.5)
 
+        XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
         XCTAssertFalse(windowState!.showCancelButton)
@@ -356,9 +369,10 @@ class WindowPresenterTests: XCTestCase {
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didLoadPage(url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didUpdateProgressBar(0.45)
 
+        XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
         XCTAssertFalse(windowState!.showCancelButton)

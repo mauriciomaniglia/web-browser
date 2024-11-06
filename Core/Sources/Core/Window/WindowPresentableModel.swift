@@ -5,6 +5,7 @@ public struct WindowPresentableModel {
         public let url: String
     }
 
+    public let title: String?
     public let urlHost: String?
     public let fullURL: String?
     public let showCancelButton: Bool

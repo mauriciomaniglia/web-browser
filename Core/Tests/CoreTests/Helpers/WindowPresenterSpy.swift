@@ -23,7 +23,7 @@ class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didEndEditing)
     }
 
-    override func didLoadPage(url: URL) {
+    override func didLoadPage(title: String?, url: URL) {
         receivedMessages.append(.didLoadPage)
     }
 

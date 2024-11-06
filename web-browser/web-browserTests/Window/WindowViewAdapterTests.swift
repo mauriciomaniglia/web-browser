@@ -7,6 +7,7 @@ class WindowViewAdapterTests: XCTestCase {
     func test_updateViewModel_updatesAllValuesCorrectly() {
         let sut = makeSUT()
         let model = WindowPresentableModel(
+            title: "Apple Airpods",
             urlHost: "www.apple.com",
             fullURL: "http://apple.com/airpods",
             showCancelButton: true,

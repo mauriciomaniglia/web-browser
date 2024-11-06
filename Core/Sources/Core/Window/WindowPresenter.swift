@@ -8,7 +8,8 @@ public class WindowPresenter {
 
     public init(safelist: SafelistAPI) {
         model = WindowPresentableModel(
-            urlHost: nil, 
+            title: nil,
+            urlHost: nil,
             fullURL: nil,
             showCancelButton: false,
             showClearButton: false,
@@ -27,6 +28,7 @@ public class WindowPresenter {
 
     public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
+            title: nil,
             urlHost: nil,
             fullURL: nil,
             showCancelButton: false,
@@ -44,6 +46,7 @@ public class WindowPresenter {
 
     public func didStartEditing() {
         let newModel = WindowPresentableModel(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: showCancelButton(),
@@ -64,6 +67,7 @@ public class WindowPresenter {
 
     public func didEndEditing() {
         let newModel = WindowPresentableModel(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: false,
@@ -84,6 +88,7 @@ public class WindowPresenter {
 
     public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
         let newModel = WindowPresentableModel(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: false,
@@ -102,12 +107,14 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadPage(url: URL) {
+    public func didLoadPage(title: String?, url: URL) {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
+        let title = title ?? urlHost
         let isOnSafelist = safelist.isRegisteredDomain(urlHost)
 
         let newModel = WindowPresentableModel(
+            title: title,
             urlHost: urlHost,
             fullURL: fullURL,
             showCancelButton: false,
@@ -128,6 +135,7 @@ public class WindowPresenter {
 
     public func didLoadBackList(_ webPages: [WebPage]) {
         let newModel = WindowPresentableModel(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: model.showCancelButton,
@@ -148,6 +156,7 @@ public class WindowPresenter {
 
     public func didLoadForwardList(_ webPages: [WebPage]) {
         let newModel = WindowPresentableModel(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: model.showCancelButton,
@@ -168,6 +177,7 @@ public class WindowPresenter {
 
     public func didDismissBackForwardList() {
         let newModel = WindowPresentableModel(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: model.showCancelButton,
@@ -190,6 +200,7 @@ public class WindowPresenter {
         let progressValue = value >= 1 ? nil : value
 
         didUpdatePresentableModel?(.init(
+            title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
             showCancelButton: false,
