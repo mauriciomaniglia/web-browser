@@ -20,6 +20,7 @@ final class WindowViewAdapter {
         viewModel.showReloadButton = model.showReloadButton
         viewModel.showClearButton = model.showClearButton
         viewModel.progressBarValue = model.progressBarValue
+        viewModel.title = model.title ?? ""
         viewModel.urlHost = model.urlHost
         viewModel.fullURL = model.fullURL ?? ""
         viewModel.isWebsiteProtected = model.isWebsiteProtected

@@ -25,6 +25,7 @@ class WindowViewAdapterTests: XCTestCase {
 
         sut.updateViewModel(model)
 
+        XCTAssertEqual(sut.viewModel.title, model.title)
         XCTAssertEqual(sut.viewModel.urlHost, model.urlHost)
         XCTAssertEqual(sut.viewModel.fullURL, model.fullURL)
         XCTAssertEqual(sut.viewModel.showStopButton, model.showStopButton)

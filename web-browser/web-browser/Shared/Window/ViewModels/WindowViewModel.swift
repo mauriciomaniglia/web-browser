@@ -24,6 +24,7 @@ class WindowViewModel: ObservableObject {
     @Published var showClearButton: Bool = false
     @Published var showAddBookmark: Bool = false
     @Published var progressBarValue: Double? = nil
+    @Published var title: String = ""
     @Published var urlHost: String? = nil
     @Published var fullURL: String = ""
     @Published var isWebsiteProtected: Bool = true
