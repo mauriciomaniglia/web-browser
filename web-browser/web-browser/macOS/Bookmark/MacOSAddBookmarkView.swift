@@ -31,7 +31,7 @@ struct MacOSAddBookmarkView: View {
                 Spacer()
 
                 Button("Done") {
-                    viewModel.bookmarkViewModel.didTapAddBookmark?()
+                    viewModel.bookmarkViewModel.didTapAddBookmark?(bookmarkName, bookmarkURL)
                     isPresented = false
                 }
                 .buttonStyle(.borderedProminent)

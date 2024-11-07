@@ -35,7 +35,7 @@ struct IOSAddBookmarkView: View {
                 }),
                 trailing: Button("Save", action: {
                     viewModel.showAddBookmark = false
-                    viewModel.bookmarkViewModel.didTapAddBookmark?()
+                    viewModel.bookmarkViewModel.didTapAddBookmark?(bookmarkName, bookmarkURL)
                 })
             )
             .onAppear {

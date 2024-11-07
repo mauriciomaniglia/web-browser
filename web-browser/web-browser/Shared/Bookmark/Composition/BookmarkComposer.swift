@@ -10,11 +10,10 @@ class BookmarkComposer {
         let adapter = BookmarkAdapter(webView: webView, viewModel: viewModel)
         let facade = BookmarkFacade(presenter: presenter, webView: webView, bookmark: bookmarkStore)
 
-        viewModel.didTapAddBookmark = adapter.didTapAddBookmark
+        viewModel.didTapAddBookmark = facade.didTapSavePage
         viewModel.didSelectPage = facade.didSelectPage(_:)
         viewModel.didOpenBookmarkView = facade.didOpenBookmarkView
         viewModel.didSearchTerm = facade.didSearchTerm(_:)
-        viewModel.didTapSavePage = facade.didTapSavePage
         viewModel.didTapDeletePages = facade.didTapDeletePages
         presenter.didUpdatePresentableModels = adapter.updateViewModel
 

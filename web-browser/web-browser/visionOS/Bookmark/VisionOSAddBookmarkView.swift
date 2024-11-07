@@ -22,7 +22,7 @@ struct VisionOSAddBookmarkView: View {
 
                 Button(action: {
                     viewModel.showAddBookmark = false
-                    viewModel.bookmarkViewModel.didTapAddBookmark?()
+                    viewModel.bookmarkViewModel.didTapAddBookmark?(bookmarkName, bookmarkURL)
                 }) {
                     Text("Save")
                 }
@@ -30,9 +30,9 @@ struct VisionOSAddBookmarkView: View {
 
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    TextField("Title", text: .constant(bookmarkName))
+                    TextField("Title", text: $bookmarkName)
                         .textFieldStyle(.roundedBorder)
-                    TextField("URL", text: .constant(bookmarkURL))
+                    TextField("URL", text: $bookmarkURL)
                         .textFieldStyle(.roundedBorder)
                         .disabled(true)
                 }

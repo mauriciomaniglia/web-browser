@@ -46,7 +46,7 @@ class BookmarkFacadeTests: XCTestCase {
     func test_didTapSavePage_sendsCorrectMessage() {
         let (sut, presenter,webView, bookmarkStore) = makeSUT()
 
-        sut.didTapSavePage(title: "Some title", url: URL(string: "http://some-url.com")!)
+        sut.didTapSavePage(title: "Some title", url: "http://some-url.com")
 
         XCTAssertEqual(presenter.receivedMessages, [])
         XCTAssertEqual(bookmarkStore.receivedMessages, [.save("http://some-url.com")])
