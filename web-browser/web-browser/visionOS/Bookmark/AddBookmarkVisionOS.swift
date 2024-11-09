@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VisionOSAddBookmarkView: View {
+struct AddBookmarkVisionOS: View {
     @ObservedObject var viewModel: WindowViewModel
     @State var bookmarkName: String
     @State var bookmarkURL: String

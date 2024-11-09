@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(visionOS)
-struct VisionOSHistoryView: View {
+struct HistoryVisionOS: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""

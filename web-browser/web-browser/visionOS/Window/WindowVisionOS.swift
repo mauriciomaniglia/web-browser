@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(visionOS)
-struct VisionOSWindow: View {
+struct WindowVisionOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
     @State var columnVisibility: NavigationSplitViewVisibility = .detailOnly
     @State var isShowingSheet = false
@@ -10,7 +10,7 @@ struct VisionOSWindow: View {
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            VisionOSMenu(windowViewModel: windowViewModel)
+            MenuVisionOS(windowViewModel: windowViewModel)
         } detail: {
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -43,7 +43,7 @@ struct VisionOSWindow: View {
     private var AddBookmarkAlert: some View {
         Group {
             if windowViewModel.showAddBookmark {
-                VisionOSAddBookmarkView(
+                AddBookmarkVisionOS(
                     viewModel: windowViewModel,
                     bookmarkName: windowViewModel.title,
                     bookmarkURL: windowViewModel.fullURL
