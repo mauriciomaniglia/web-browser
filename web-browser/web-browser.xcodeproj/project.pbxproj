@@ -148,15 +148,14 @@
 		F92921BC2B70F5B300173702 /* web-browser */ = {
 			isa = PBXGroup;
 			children = (
+				F9C427332CDF87DC00C296E3 /* Assets */,
 				F92921EE2B70F9DD00173702 /* Shared */,
 				F91EFA832B71002A00500535 /* visionOS */,
 				F92921E92B70F94C00173702 /* macOS */,
 				F92921E82B70F94600173702 /* iOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
-				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
-				F92921C12B70F5B500173702 /* Assets.xcassets */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
-				F92921C42B70F5B500173702 /* Preview Content */,
+				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
 			);
 			path = "web-browser";
 			sourceTree = "<group>";
@@ -291,6 +290,15 @@
 				F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		F9C427332CDF87DC00C296E3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F92921C12B70F5B500173702 /* Assets.xcassets */,
+				F92921C42B70F5B500173702 /* Preview Content */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		F9CDFD902B7130610024E0AD /* Frameworks */ = {
@@ -693,7 +701,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"web-browser/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"web-browser/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = X9V22R376N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -733,7 +741,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"web-browser/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"web-browser/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = X9V22R376N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
