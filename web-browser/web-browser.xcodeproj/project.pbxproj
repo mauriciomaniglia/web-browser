@@ -155,7 +155,6 @@
 				F92921E82B70F94600173702 /* iOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
-				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
 			);
 			path = "web-browser";
 			sourceTree = "<group>";
@@ -193,6 +192,7 @@
 		F92921E92B70F94C00173702 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
 				F99988E72CD586EF00705D4F /* Bookmark */,
 				F943799E2C911B5E00DEBFF7 /* History */,
 				F9F2083A2C8CECD600C3B033 /* Menu */,
