@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct IOSWindow: View {
+struct WindowIOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
     @State var isShowingSheet = false
 
@@ -24,10 +24,10 @@ struct IOSWindow: View {
             .padding()
         }
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
-            IOSMenuView(windowViewModel: windowViewModel, isPresented: $isShowingSheet)
+            MenuIOS(windowViewModel: windowViewModel, isPresented: $isShowingSheet)
         })
         .popover(isPresented: $windowViewModel.showAddBookmark, arrowEdge: .trailing, content: {
-            IOSAddBookmarkView(
+            AddBookmarkIOS(
                 viewModel: windowViewModel,
                 bookmarkName: windowViewModel.title,
                 bookmarkURL: windowViewModel.fullURL

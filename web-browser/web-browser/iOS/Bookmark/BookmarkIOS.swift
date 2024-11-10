@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct IOSBookmarkView: View {
+struct BookmarkIOS: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Binding var isPresented: Bool
     @State private var searchText: String = ""

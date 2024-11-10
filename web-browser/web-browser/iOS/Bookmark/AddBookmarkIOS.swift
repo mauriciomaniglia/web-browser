@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct IOSAddBookmarkView: View {
+struct AddBookmarkIOS: View {
     @ObservedObject var viewModel: WindowViewModel
     @State var bookmarkName: String
     @State var bookmarkURL: String

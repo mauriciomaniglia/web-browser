@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct IOSMenuView: View {
+struct MenuIOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
     @Binding var isPresented: Bool
 
@@ -19,10 +19,10 @@ struct IOSMenuView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
 
-                NavigationLink(destination: IOSBookmarkView(viewModel: windowViewModel.bookmarkViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: BookmarkIOS(viewModel: windowViewModel.bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
-                NavigationLink(destination: IOSHistoryView(viewModel: windowViewModel.historyViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: HistoryIOS(viewModel: windowViewModel.historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
             }

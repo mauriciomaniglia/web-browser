@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct IOSHistoryView: View {
+struct HistoryIOS: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Binding var isPresented: Bool
     @State private var searchText: String = ""
