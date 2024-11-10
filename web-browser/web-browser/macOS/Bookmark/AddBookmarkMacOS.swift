@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MacOSAddBookmarkView: View {
+struct AddBookmarkMacOS: View {
     @ObservedObject var viewModel: WindowViewModel
     @Binding var isPresented: Bool
     @State var bookmarkName = ""

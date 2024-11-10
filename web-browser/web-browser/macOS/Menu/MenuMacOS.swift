@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(macOS)
-struct MacOSMenu: View {
+struct MenuMacOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
 
     var body: some View {
@@ -9,7 +9,7 @@ struct MacOSMenu: View {
             NavigationLink(destination: BookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
                 Label("Bookmarks", systemImage: "bookmark")
             }
-            NavigationLink(destination: MacOSHistoryView(viewModel: windowViewModel.historyViewModel)) {
+            NavigationLink(destination: HistoryMacOS(viewModel: windowViewModel.historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }

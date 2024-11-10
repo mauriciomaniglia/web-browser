@@ -11,15 +11,15 @@
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
 		F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C52B70F5B500173702 /* Preview Assets.xcassets */; };
-		F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* MacOSWindow.swift */; };
+		F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* WindowMacOS.swift */; };
 		F92921ED2B70F9A100173702 /* IOSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* IOSWindow.swift */; };
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
-		F92E5C242CD980150019A9AE /* MacOSAddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */; };
+		F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */; };
 		F92E5C302CD980A00019A9AE /* AddBookmarkVisionOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C2F2CD980A00019A9AE /* AddBookmarkVisionOS.swift */; };
-		F94379A02C911B7900DEBFF7 /* MacOSHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */; };
+		F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
-		F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MacOSMenu.swift */; };
+		F94A60F12C758C52001384CB /* MenuMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MenuMacOS.swift */; };
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */; };
 		F94FD3EC2C46854E001EDF1D /* HistoryAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */; };
@@ -59,15 +59,15 @@
 		F92921C32B70F5B500173702 /* web_browser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = web_browser.entitlements; sourceTree = "<group>"; };
 		F92921C52B70F5B500173702 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F92921CB2B70F5B500173702 /* web-browserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "web-browserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F92921EA2B70F99400173702 /* MacOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSWindow.swift; sourceTree = "<group>"; };
+		F92921EA2B70F99400173702 /* WindowMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowMacOS.swift; sourceTree = "<group>"; };
 		F92921EC2B70F9A100173702 /* IOSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWindow.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
-		F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSAddBookmarkView.swift; sourceTree = "<group>"; };
+		F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkMacOS.swift; sourceTree = "<group>"; };
 		F92E5C2F2CD980A00019A9AE /* AddBookmarkVisionOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkVisionOS.swift; sourceTree = "<group>"; };
-		F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSHistoryView.swift; sourceTree = "<group>"; };
+		F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMacOS.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
-		F94A60F02C758C52001384CB /* MacOSMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSMenu.swift; sourceTree = "<group>"; };
+		F94A60F02C758C52001384CB /* MenuMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMacOS.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
 		F94FD3EB2C46854E001EDF1D /* HistoryAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapterTests.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		F943799E2C911B5E00DEBFF7 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				F943799F2C911B7900DEBFF7 /* MacOSHistoryView.swift */,
+				F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 		F99988E72CD586EF00705D4F /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
-				F92E5C1E2CD980150019A9AE /* MacOSAddBookmarkView.swift */,
+				F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 		F9E1477D2C0961370099CD98 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F92921EA2B70F99400173702 /* MacOSWindow.swift */,
+				F92921EA2B70F99400173702 /* WindowMacOS.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 		F9F2083A2C8CECD600C3B033 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				F94A60F02C758C52001384CB /* MacOSMenu.swift */,
+				F94A60F02C758C52001384CB /* MenuMacOS.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -529,14 +529,14 @@
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
 				F92E5C302CD980A00019A9AE /* AddBookmarkVisionOS.swift in Sources */,
-				F92E5C242CD980150019A9AE /* MacOSAddBookmarkView.swift in Sources */,
+				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
-				F94379A02C911B7900DEBFF7 /* MacOSHistoryView.swift in Sources */,
+				F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
-				F94A60F12C758C52001384CB /* MacOSMenu.swift in Sources */,
+				F94A60F12C758C52001384CB /* MenuMacOS.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
 				F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */,
 				F97BF7782C259A60005FB9BD /* IOSMenuView.swift in Sources */,
@@ -548,7 +548,7 @@
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F9F2083D2C8CED1300C3B033 /* MenuVisionOS.swift in Sources */,
 				F9EE1E402CB6A8A60081B979 /* HistoryVisionOS.swift in Sources */,
-				F92921EB2B70F99400173702 /* MacOSWindow.swift in Sources */,
+				F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
 			);

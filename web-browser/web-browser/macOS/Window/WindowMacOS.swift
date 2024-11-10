@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(macOS)
-struct MacOSWindow: View {
+struct WindowMacOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
 
     let webView: AnyView
@@ -9,7 +9,7 @@ struct MacOSWindow: View {
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MacOSMenu(windowViewModel: windowViewModel)
+                MenuMacOS(windowViewModel: windowViewModel)
             } detail: {
                 VStack {
                     HStack {
@@ -31,7 +31,7 @@ struct MacOSWindow: View {
     }
 
     private var AddBookmark: some View {
-        MacOSAddBookmarkView(
+        AddBookmarkMacOS(
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
             bookmarkName: windowViewModel.urlHost ?? "",
