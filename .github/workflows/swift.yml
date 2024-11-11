@@ -37,10 +37,10 @@ jobs:
 
     # Build the web-browser Xcode project
     - name: Build web-browser project
-      run: xcodebuild build -scheme "web-browser" -destination "platform=macOS" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      run: xcodebuild build -scheme "web-browser" -destination "platform=macOS" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
       working-directory: web-browser
 
     # Run tests for the web-browser project
     - name: Run tests for web-browser project
-      run: xcodebuild test -scheme "web-browser" -destination "platform=macOS" -verbose
+      run: xcodebuild test -scheme "web-browser" -destination "platform=macOS" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
       working-directory: web-browser
