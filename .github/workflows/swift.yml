@@ -17,13 +17,24 @@ jobs:
     steps:  
     - uses: actions/checkout@v3
 
-    - name: Set up build directory
+    # Build and test the Core package
+    - name: Set up build directory for Core
       run: echo "PACKAGE_DIR=Core" >> $GITHUB_ENV
-      
-    - name: Build
+
+    - name: Build Core
       run: swift build -v
       working-directory: ${{ env.PACKAGE_DIR }}
-      
-    - name: Run tests
+
+    - name: Run tests for Core
       run: swift test -v
       working-directory: ${{ env.PACKAGE_DIR }}
+
+    # Build the web-browser Xcode project
+    - name: Build web-browser project
+      run: xcodebuild build -scheme "web-browser" -destination "platform=macOS" -verbose
+      working-directory: web-browser
+
+    # Run tests for the web-browser project
+    - name: Run tests for web-browser project
+      run: xcodebuild test -scheme "web-browser" -destination "platform=macOS" -verbose
+      working-directory: web-browser
