@@ -17,9 +17,6 @@ jobs:
     steps:  
     - uses: actions/checkout@v3
 
-    - name: Check Xcode version
-      run: xcodebuild -version
-
     - name: Clean Derived Data
       run: rm -rf ~/Library/Developer/Xcode/DerivedData
 
@@ -27,20 +24,11 @@ jobs:
     - name: Set up build directory for Core
       run: echo "PACKAGE_DIR=Core" >> $GITHUB_ENV
 
-    - name: Build Core
-      run: swift build -v
-      working-directory: ${{ env.PACKAGE_DIR }}
-
     - name: Run tests for Core
       run: swift test -v
       working-directory: ${{ env.PACKAGE_DIR }}
 
-    # Build the web-browser Xcode project
-    - name: Build web-browser project
-      run: xcodebuild build -scheme "web-browser" -destination "platform=macOS" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-      working-directory: web-browser
-
-    # Run tests for the web-browser project
+    # Build and test for the web-browser project
     - name: Run tests for web-browser project
       run: xcodebuild test -scheme "web-browser" -destination "platform=macOS" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
       working-directory: web-browser
