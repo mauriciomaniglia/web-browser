@@ -28,7 +28,17 @@ jobs:
       run: swift test -v
       working-directory: ${{ env.PACKAGE_DIR }}
 
-    # Build and test for the web-browser project
-    - name: Run tests for web-browser project
+    # Build and test for the web-browser project on MacOS
+    - name: Test for MacOS client
       run: xcodebuild test -scheme "web-browser" -destination "platform=macOS" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      working-directory: web-browser
+
+    # Build and test for the web-browser project on iOS
+    - name: Test for iOS client
+      run: xcodebuild test -scheme "web-browser" -destination "platform=iOS Simulator,name=iPhone 14" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      working-directory: web-browser
+
+    # Build and test for the web-browser project on VisionOS
+    - name: Test for VisionOS client
+      run: xcodebuild test -scheme "web-browser" -destination "platform=visionOS Simulator,name=Apple Vision Pro" -verbose CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
       working-directory: web-browser
