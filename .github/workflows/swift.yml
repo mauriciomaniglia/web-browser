@@ -20,6 +20,9 @@ jobs:
     - name: Set Xcode version
       run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
 
+    - name: Clean Derived Data
+      run: rm -rf ~/Library/Developer/Xcode/DerivedData
+
     # Build and test the Core package
     - name: Set up build directory for Core
       run: echo "PACKAGE_DIR=Core" >> $GITHUB_ENV
