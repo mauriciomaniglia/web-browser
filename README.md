@@ -9,27 +9,37 @@ Web browser for iOS | macOS | visionOS
 3. Build the `web-browser` scheme in Xcode.
 
 ## Core Library Architecture
-Contains all the code shared between iOS, macOS, and VisionOS. This library is completely decoupled from SwiftUI to facilitate future migrations to other UI frameworks or support other platforms outside Apple's ecosystem. 
-This library is separated by folders representing "sub-modules" in the system. The idea is to treat them as actual modules, although they reside in the same place. 
+The core library encompasses all shared code between iOS, macOS, and visionOS. It is designed to be entirely independent of SwiftUI, enabling seamless migration to other UI frameworks or support for platforms beyond Apple's ecosystem.
+
+The library is organized into folders, each representing a "sub-module" of the system. While these sub-modules are located within the same directory, they are conceptually treated as distinct modules to promote modularity and maintainability. 
 
 ### WebEngineAPI
-Contains a set of interfaces that all the components of the system should use to communicate with the web engine. Those interfaces represent the web engine, but we don't talk directly with those engines. For example, WebKit is the web engine in this project, but all the components from this library don't talk directly to it; they only talk through the interfaces. 
+The WebEngineAPI defines a set of interfaces that serve as the communication layer between the system components and the web engine. These interfaces abstract the functionality of the web engine, ensuring that system components never interact directly with the engine itself.
+
+For instance, while WebKit is the web engine used in this project, components within the library communicate only through the defined interfaces, maintaining a clean separation of concerns and promoting flexibility for future changes. 
 
 ### WebKitEngine
-Contains all the code related to Webkit. It is basically a wrapper for Webkit that decouples this project from this library and facilitates future migrations to other engines. This is the only place in this library that contains code related to Webkit. 
+The WebKitEngine module contains all code specific to WebKit. It serves as a wrapper around WebKit, decoupling the library from the engine and enabling easier migration to alternative web engines in the future.
+
+This module is the sole location within the library where WebKit-specific code resides, ensuring a clear separation of engine-specific logic from the rest of the project. 
 
 ### Search
-Contains logic that verifies whether the text typed by the user is a real URI or just plain text. If it's a valid URI, it redirects the user to the desired address; if not, it uses Google Search (at the moment)to search for the text.
+The Search module handles the logic for interpreting user input in the address bar. It determines whether the entered text is a valid URI or plain text.
+
+- If the input is a valid URI, the user is redirected to the specified address.
+- If the input is not a valid URI, it defaults to performing a Google Search (currently) for the text.
+
+This approach ensures a seamless experience for users, whether they enter a web address or a search query.
 
 ### Content Blocking
-Contains logic to apply restrictions on a website. It has rules to block cookies, crypto mining, fingerprints, and other activities. Those rules are applied by level(basic and strict). It also contains a safelist for adding exceptions to certain websites. 
+The Content Blocking module manages the logic for enforcing restrictions on websites. It includes rules designed to block cookies, cryptocurrency mining, fingerprinting, and other potentially intrusive activities.
+
+The rules are categorized into two levels:
+
+- Basic: Applies minimal restrictions for a balanced browsing experience.
+- Strict: Enforces comprehensive restrictions for enhanced privacy and security.
+
+Additionally, the module features a safelist, allowing users to add exceptions for specific websites where restrictions should not be applied.
 
 
 ![Current Core Library Architecture](core-module-current-architecture.png)
-
-## Client App Architecture
-
-### Window
-Contains all the logic and state of the current window. Things like whether a page is loading or whether a website protection button should appear or not, for example, reside here. All user interactions go through here as well. If the users start typing, tap on the back/forward button, and add a website to the safelist, for example. 
-
-![Current Client App Architecture](client-architecture.png)
