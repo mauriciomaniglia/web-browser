@@ -41,5 +41,8 @@ The rules are categorized into two levels:
 
 Additionally, the module features a safelist, allowing users to add exceptions for specific websites where restrictions should not be applied.
 
+### Bookmarks
+The Bookmarks module provides functionality for saving, organizing, and managing favorite websites. Users can add, delete (missing edit and reorder) bookmarks for quick access to frequently visited pages. The module ensures that bookmarks are stored persistently across sessions, offering a seamless user experience.
 
-![Current Core Library Architecture](core-module-current-architecture.png)
+### History
+The History module tracks and manages the user's browsing activity. It records visited websites chronologically, allowing users to review or revisit previously accessed pages. The module also includes functionality to search and delete entries, giving users full control over their browsing history.
