@@ -13,6 +13,8 @@ The core library encompasses all shared code between iOS, macOS, and visionOS. I
 
 The library is organized into folders, each representing a "sub-module" of the system. While these sub-modules are located within the same directory, they are conceptually treated as distinct modules to promote modularity and maintainability. 
 
+![Current Core Library Architecture](core-module-current-architecture.png)
+
 ### WebEngineAPI
 The WebEngineAPI defines a set of interfaces that serve as the communication layer between the system components and the web engine. These interfaces abstract the functionality of the web engine, ensuring that system components never interact directly with the engine itself.
 
