@@ -27,7 +27,7 @@ public class BookmarkFacade {
 
     public func didTapSavePage(title: String, url: String) {
         let page = WebPage(title: title, url: URL(string: url)!, date: Date())
-        bookmark.save(page: page)
+        bookmark.save(page)
     }
 
     public func didTapDeletePages(_ pageIDs: [UUID]) {

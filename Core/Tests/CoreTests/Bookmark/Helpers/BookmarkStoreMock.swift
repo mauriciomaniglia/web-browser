@@ -12,7 +12,7 @@ class BookmarkStoreMock: BookmarkAPI {
     var receivedMessages = [Message]()
     var mockWebPages = [WebPage]()
 
-    func save(page: WebPage) {
+    func save(_ page: WebPage) {
         receivedMessages.append(.save(page.url.absoluteString))
     }
 
