@@ -12,7 +12,7 @@ class HistoryStoreMock: HistoryAPI {
     var receivedMessages = [Message]()
     var mockWebPages = [WebPage]()
 
-    func save(page: WebPage) {
+    func save(_ page: WebPage) {
 
     }
 

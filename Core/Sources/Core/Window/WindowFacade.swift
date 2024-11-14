@@ -76,7 +76,7 @@ public final class WindowFacade {
 
 extension WindowFacade: WebEngineDelegate {
     public func didLoad(page: WebPage) {
-        history.save(page: page)
+        history.save(page)
         presenter.didLoadPage(title: page.title, url: page.url)
     }
 

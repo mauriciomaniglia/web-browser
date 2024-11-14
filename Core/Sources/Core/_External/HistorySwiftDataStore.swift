@@ -29,7 +29,7 @@ public class HistorySwiftDataStore: HistoryAPI {
         self.container = container
     }
 
-    public func save(page: WebPage) {
+    public func save(_ page: WebPage) {
         let title = page.title ?? ""
         let historyTitle = title.isEmpty ? page.url.absoluteString : title
 

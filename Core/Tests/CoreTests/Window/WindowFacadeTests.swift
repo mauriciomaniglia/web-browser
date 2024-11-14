@@ -184,7 +184,7 @@ private class HistoryStoreSpy: HistoryAPI {
 
     var receivedMessages = [Message]()
 
-    func save(page: WebPage) {
+    func save(_ page: WebPage) {
         receivedMessages.append(.save)
     }
 
