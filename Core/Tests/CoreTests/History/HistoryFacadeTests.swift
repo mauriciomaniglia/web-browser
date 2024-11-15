@@ -3,7 +3,7 @@ import Core
 
 class HistoryFacadeTests: XCTestCase {
 
-    func test_didLoadPages_sendsCorrectMessage() {
+    func test_didOpenHistoryView_sendsCorrectMessage() {
         let (sut, presenter,webView, history) = makeSUT()
 
         sut.didOpenHistoryView()
@@ -33,7 +33,7 @@ class HistoryFacadeTests: XCTestCase {
         XCTAssertEqual(webView.receivedMessages, [])
     }
 
-    func test_didSelectPageHistory_sendsCorrectMessage() {
+    func test_didSelectPage_sendsCorrectMessage() {
         let (sut, presenter,webView, history) = makeSUT()
 
         sut.didSelectPage("http://some-url.com")
