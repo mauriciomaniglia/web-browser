@@ -55,9 +55,15 @@ final class WindowComposer {
         windowPresenter.didUpdatePresentableModel = windowAdapter.updateViewModel
 
         #if os(iOS)
-        return WindowIOS(
-            windowViewModel: windowViewModel,
-            webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return WindowIOS(
+                windowViewModel: windowViewModel,
+                webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        } else {
+            return WindowIOS(
+                windowViewModel: windowViewModel,
+                webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+        }
         #elseif os(macOS)
         return WindowMacOS(
             windowViewModel: windowViewModel,
