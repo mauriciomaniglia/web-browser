@@ -56,7 +56,7 @@ final class WindowComposer {
 
         #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            return WindowIOS(
+            return WindowIPadOS(
                 windowViewModel: windowViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         } else {
