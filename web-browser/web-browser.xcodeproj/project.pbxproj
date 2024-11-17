@@ -128,13 +128,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F916A1FC2CE8C36B00350089 /* iPad */ = {
+		F916A1FC2CE8C36B00350089 /* iPadOS */ = {
 			isa = PBXGroup;
 			children = (
 				F916A2022CE8EB7600350089 /* Menu */,
 				F916A2012CE8EB6700350089 /* Window */,
 			);
-			path = iPad;
+			path = iPadOS;
 			sourceTree = "<group>";
 		};
 		F916A2012CE8EB6700350089 /* Window */ = {
@@ -192,7 +192,7 @@
 				F91EFA832B71002A00500535 /* visionOS */,
 				F92921E92B70F94C00173702 /* macOS */,
 				F92921E82B70F94600173702 /* iOS */,
-				F916A1FC2CE8C36B00350089 /* iPad */,
+				F916A1FC2CE8C36B00350089 /* iPadOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
 			);
