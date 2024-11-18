@@ -16,14 +16,12 @@ struct AddBookmarkIOS: View {
                         TextField("Name", text: $bookmarkName)
                             .textFieldStyle(.roundedBorder)
                             .focused($isNameFieldFocused)
-
                         TextField("URL", text: $bookmarkURL)
                             .disabled(true)
                             .textFieldStyle(.roundedBorder)
                             .keyboardType(.URL)
                     }
                 }
-
                 Spacer()
             }
             .padding()
@@ -31,11 +29,13 @@ struct AddBookmarkIOS: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button("Cancel", action: {
-                    viewModel.showAddBookmark = false
+                    viewModel.dismissAddBookmark()
                 }),
                 trailing: Button("Save", action: {
-                    viewModel.showAddBookmark = false
-                    viewModel.bookmarkViewModel.didTapAddBookmark?(bookmarkName, bookmarkURL)
+                    viewModel.saveAndDismissAddBookmark(
+                        name: bookmarkName,
+                        url: bookmarkURL
+                    )
                 })
             )
             .onAppear {
