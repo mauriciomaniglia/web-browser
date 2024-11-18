@@ -2,32 +2,30 @@ import SwiftUI
 
 struct AddBookmarkVisionOS: View {
     @ObservedObject var viewModel: WindowViewModel
+
     @State var bookmarkName: String
     @State var bookmarkURL: String
 
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                Button(action: { viewModel.showAddBookmark = false }) {
+                Button(action: viewModel.dismissAddBookmark) {
                     Image(systemName: "xmark")
                 }
-
                 Spacer()
-
                 Text("Add Bookmark")
                     .font(.title2)
                     .bold()
-
                 Spacer()
-
                 Button(action: {
-                    viewModel.showAddBookmark = false
-                    viewModel.bookmarkViewModel.didTapAddBookmark?(bookmarkName, bookmarkURL)
+                    viewModel.saveAndDismissAddBookmark(
+                        name: bookmarkName,
+                        url: bookmarkURL
+                    )
                 }) {
                     Text("Save")
                 }
             }
-
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     TextField("Title", text: $bookmarkName)
@@ -37,7 +35,6 @@ struct AddBookmarkVisionOS: View {
                         .disabled(true)
                 }
             }
-
             Spacer()
         }
         .padding()

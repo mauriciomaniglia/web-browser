@@ -52,4 +52,13 @@ class WindowViewModel: ObservableObject {
     func didTapAddBookmark() {
         showAddBookmark = true
     }
+
+    func dismissAddBookmark() {
+        showAddBookmark = false
+    }
+
+    func saveAndDismissAddBookmark(name: String, url: String) {
+        showAddBookmark = false
+        bookmarkViewModel.didTapAddBookmark?(name, url)
+    }
 }
