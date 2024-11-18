@@ -128,13 +128,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F916A1FC2CE8C36B00350089 /* iPadOS */ = {
+		F916A1FC2CE8C36B00350089 /* IPadOS */ = {
 			isa = PBXGroup;
 			children = (
 				F916A2022CE8EB7600350089 /* Menu */,
 				F916A2012CE8EB6700350089 /* Window */,
 			);
-			path = iPadOS;
+			path = IPadOS;
 			sourceTree = "<group>";
 		};
 		F916A2012CE8EB6700350089 /* Window */ = {
@@ -153,7 +153,7 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		F91EFA832B71002A00500535 /* visionOS */ = {
+		F91EFA832B71002A00500535 /* VisionOS */ = {
 			isa = PBXGroup;
 			children = (
 				F92E5C2E2CD9807E0019A9AE /* Bookmark */,
@@ -161,7 +161,7 @@
 				F9F2083B2C8CED0100C3B033 /* Menu */,
 				F9E1477F2C0962360099CD98 /* Window */,
 			);
-			path = visionOS;
+			path = VisionOS;
 			sourceTree = "<group>";
 		};
 		F92921B12B70F5B300173702 = {
@@ -189,10 +189,10 @@
 			children = (
 				F9C427332CDF87DC00C296E3 /* Assets */,
 				F92921EE2B70F9DD00173702 /* Shared */,
-				F91EFA832B71002A00500535 /* visionOS */,
-				F92921E92B70F94C00173702 /* macOS */,
-				F92921E82B70F94600173702 /* iOS */,
-				F916A1FC2CE8C36B00350089 /* iPadOS */,
+				F91EFA832B71002A00500535 /* VisionOS */,
+				F92921E92B70F94C00173702 /* MacOS */,
+				F92921E82B70F94600173702 /* IOS */,
+				F916A1FC2CE8C36B00350089 /* IPadOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
 			);
@@ -218,7 +218,7 @@
 			path = "web-browserTests";
 			sourceTree = "<group>";
 		};
-		F92921E82B70F94600173702 /* iOS */ = {
+		F92921E82B70F94600173702 /* IOS */ = {
 			isa = PBXGroup;
 			children = (
 				F932F2122CE23A8600B12B45 /* Bookmark */,
@@ -226,10 +226,10 @@
 				F9F2083E2C8CEDA700C3B033 /* Menu */,
 				F9E1477C2C0960E90099CD98 /* Window */,
 			);
-			path = iOS;
+			path = IOS;
 			sourceTree = "<group>";
 		};
-		F92921E92B70F94C00173702 /* macOS */ = {
+		F92921E92B70F94C00173702 /* MacOS */ = {
 			isa = PBXGroup;
 			children = (
 				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
@@ -238,7 +238,7 @@
 				F9F2083A2C8CECD600C3B033 /* Menu */,
 				F9E1477D2C0961370099CD98 /* Window */,
 			);
-			path = macOS;
+			path = MacOS;
 			sourceTree = "<group>";
 		};
 		F92921EE2B70F9DD00173702 /* Shared */ = {
