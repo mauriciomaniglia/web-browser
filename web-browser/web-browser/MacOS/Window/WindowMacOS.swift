@@ -35,8 +35,7 @@ struct WindowMacOS: View {
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
             bookmarkName: windowViewModel.urlHost ?? "",
-            bookmarkURL: windowViewModel.fullURL,
-            backgroundColor: Color(NSColor.windowBackgroundColor)
+            bookmarkURL: windowViewModel.fullURL
         )
         .transition(.scale)
         .zIndex(1)

@@ -5,7 +5,6 @@ struct AddBookmarkMacOS: View {
     @Binding var isPresented: Bool
     @State var bookmarkName = ""
     @State var bookmarkURL = ""
-    let backgroundColor: Color
 
     var body: some View {
         VStack(spacing: 20) {
@@ -36,7 +35,7 @@ struct AddBookmarkMacOS: View {
             .padding(.horizontal)
         }
         .padding()
-        .background(backgroundColor)
+        .background(Color(NSColor.windowBackgroundColor))
         .cornerRadius(12)
         .shadow(radius: 20)
         .frame(maxWidth: 300)
