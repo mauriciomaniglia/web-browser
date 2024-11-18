@@ -11,28 +11,25 @@ struct AddBookmarkMacOS: View {
         VStack(spacing: 20) {
             Text("Bookmark added")
                 .font(.headline)
-
             VStack(alignment: .leading, spacing: 8) {
                 TextField("Name", text: $bookmarkName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
-
                 TextField("URL", text: $bookmarkURL)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                     .disabled(true)
             }
-
             HStack {
                 Button("Remove") {
-                    isPresented = false
+                    viewModel.dismissAddBookmark()
                 }
-
                 Spacer()
-
                 Button("Done") {
-                    viewModel.bookmarkViewModel.didTapAddBookmark?(bookmarkName, bookmarkURL)
-                    isPresented = false
+                    viewModel.saveAndDismissAddBookmark(
+                        name: bookmarkName,
+                        url: bookmarkURL
+                    )
                 }
                 .buttonStyle(.borderedProminent)
             }
