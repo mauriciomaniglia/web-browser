@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if os(macOS)
 struct AddBookmarkMacOS: View {
     @ObservedObject var viewModel: WindowViewModel
     @Binding var isPresented: Bool
@@ -41,3 +42,4 @@ struct AddBookmarkMacOS: View {
         .frame(maxWidth: 300)
     }
 }
+#endif
