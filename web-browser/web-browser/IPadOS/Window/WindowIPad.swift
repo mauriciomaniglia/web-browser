@@ -25,6 +25,23 @@ struct WindowIPadOS: View {
                 }
             }
         }
+        .overlay(alignment: .center) {
+            AddBookmarkAlert
+        }
+    }
+
+    private var AddBookmarkAlert: some View {
+        Group {
+            if windowViewModel.showAddBookmark {
+                AddBookmarkIPadOS(
+                    viewModel: windowViewModel,
+                    bookmarkName: windowViewModel.title,
+                    bookmarkURL: windowViewModel.fullURL
+                )
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(windowViewModel.showAddBookmark ? Color.black.opacity(0.3) : Color.clear)
     }
 }
 #endif

@@ -11,6 +11,16 @@ struct MenuIPadOS: View {
     var body: some View {
         NavigationStack {
             List {
+                Button(action: {
+                    windowViewModel.showAddBookmark = true
+                }) {
+                    HStack {
+                        Label("Add Bookmark", systemImage: "bookmark")
+                        Spacer()
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
+
                 NavigationLink(value: AppScreen.bookmarks) {
                     Label("Bookmarks", systemImage: "book")
                 }
