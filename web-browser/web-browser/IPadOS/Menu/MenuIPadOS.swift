@@ -6,7 +6,7 @@ struct MenuIPadOS: View {
 
     var body: some View {
         List {
-            NavigationLink(destination: BookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
+            NavigationLink(destination: BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)) {
                 Label("Bookmarks", systemImage: "bookmark")
             }
         }

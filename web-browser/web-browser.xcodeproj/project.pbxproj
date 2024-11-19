@@ -38,6 +38,7 @@
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F96C74B92CBD29A1002AAF4F /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = F96C74B82CBD29A1002AAF4F /* Core */; };
+		F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */; };
 		F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuIOS.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
@@ -96,6 +97,7 @@
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
 		F96C74B72CBD267A002AAF4F /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../Core; sourceTree = SOURCE_ROOT; };
+		F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkIPadOS.swift; sourceTree = "<group>"; };
 		F97BF7772C259A60005FB9BD /* MenuIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIOS.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		F916A1FC2CE8C36B00350089 /* IPadOS */ = {
 			isa = PBXGroup;
 			children = (
+				F97A17632CECB4BB005978E9 /* Bookmark */,
 				F916A2022CE8EB7600350089 /* Menu */,
 				F916A2012CE8EB6700350089 /* Window */,
 			);
@@ -336,6 +339,14 @@
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F97A17632CECB4BB005978E9 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */,
+			);
+			path = Bookmark;
 			sourceTree = "<group>";
 		};
 		F98BF0C62B750A2900C29BDA /* Window */ = {
@@ -623,6 +634,7 @@
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
 				F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
+				F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F932F20C2CE23A7800B12B45 /* BookmarkAdapter.swift in Sources */,
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,
