@@ -22,11 +22,6 @@ struct BookmarkIPadOS: View {
 
     private var SearchTopBar: some View {
         HStack {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "arrow.left")
-            }
             TextField("Search Bookmark", text: $searchText)
                 .onChange(of: searchText, { _, newValue in
                     viewModel.didSearchTerm?(newValue)

@@ -1,16 +1,27 @@
 import SwiftUI
 
+enum AppScreen: Hashable {
+    case bookmarks
+}
+
 #if os(iOS)
 struct MenuIPadOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
 
     var body: some View {
-        List {
-            NavigationLink(destination: BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)) {
-                Label("Bookmarks", systemImage: "bookmark")
+        NavigationStack {
+            List {
+                NavigationLink(value: AppScreen.bookmarks) {
+                    Label("Bookmarks", systemImage: "book")
+                }
+            }
+            .navigationDestination(for: AppScreen.self) { screen in
+                switch screen {
+                case .bookmarks:
+                    BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)                
+                }
             }
         }
-        .navigationSplitViewColumnWidth(min: 200, ideal: 200)
     }
 }
 #endif
