@@ -21,10 +21,10 @@ jobs:
       run: rm -rf ~/Library/Developer/Xcode/DerivedData
 
     # Build and test the Core package
-    - name: Set up build directory for Core
-      run: echo "PACKAGE_DIR=Core" >> $GITHUB_ENV
+    - name: Set up build directory for Services
+      run: echo "PACKAGE_DIR=Services" >> $GITHUB_ENV
 
-    - name: Run tests for Core
+    - name: Run tests for Services
       run: swift test -v
       working-directory: ${{ env.PACKAGE_DIR }}
 
