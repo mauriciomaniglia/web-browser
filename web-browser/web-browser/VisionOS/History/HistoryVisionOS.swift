@@ -1,6 +1,6 @@
 import SwiftUI
 
-#if os(visionOS)
+#if os(visionOS) || os(iOS)
 struct HistoryVisionOS: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
@@ -28,7 +28,6 @@ struct HistoryVisionOS: View {
 
     private var SearchTopBar: some View {
         HStack {
-            BackButton
             SearchTextField
             ClearAllHistoryButton
         }
@@ -74,14 +73,6 @@ struct HistoryVisionOS: View {
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
-    }
-
-    private var BackButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "chevron.left")
-        }
     }
 
     private var ClearAllHistoryButton: some View {
