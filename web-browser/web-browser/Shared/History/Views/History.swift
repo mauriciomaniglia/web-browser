@@ -1,7 +1,6 @@
 import SwiftUI
 
-#if os(visionOS) || os(iOS)
-struct HistoryVisionOS: View {
+struct History: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
@@ -97,4 +96,3 @@ struct HistoryVisionOS: View {
         viewModel.historyList.isEmpty
     }
 }
-#endif

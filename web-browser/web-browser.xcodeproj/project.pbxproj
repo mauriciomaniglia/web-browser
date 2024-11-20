@@ -43,12 +43,12 @@
 		F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuIOS.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
+		F9DF54C72CEE04D600F92FC3 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* History.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */; };
 		F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */; };
-		F9EE1E402CB6A8A60081B979 /* HistoryVisionOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE1E3F2CB6A8A60081B979 /* HistoryVisionOS.swift */; };
 		F9F2083D2C8CED1300C3B033 /* MenuVisionOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2083C2C8CED1300C3B033 /* MenuVisionOS.swift */; };
 		F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -103,12 +103,12 @@
 		F97BF7772C259A60005FB9BD /* MenuIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIOS.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
+		F9DF54C62CEE04D600F92FC3 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewAdapter.swift; sourceTree = "<group>"; };
 		F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewAdapterTests.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIOS.swift; sourceTree = "<group>"; };
-		F9EE1E3F2CB6A8A60081B979 /* HistoryVisionOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVisionOS.swift; sourceTree = "<group>"; };
 		F9F2083C2C8CED1300C3B033 /* MenuVisionOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVisionOS.swift; sourceTree = "<group>"; };
 		F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				F92E5C2E2CD9807E0019A9AE /* Bookmark */,
-				F9EE1E3E2CB6A8840081B979 /* History */,
 				F9F2083B2C8CED0100C3B033 /* Menu */,
 				F9E1477F2C0962360099CD98 /* Window */,
 			);
@@ -415,6 +414,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F9DF54C52CEE049F00F92FC3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9DF54C62CEE04D600F92FC3 /* History.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F9E1477C2C0960E90099CD98 /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +449,7 @@
 		F9E55D2E2C45E9FA008B7C64 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				F9DF54C52CEE049F00F92FC3 /* Views */,
 				F94FD3E82C46817A001EDF1D /* Composition */,
 				F9E55D302C45EFA6008B7C64 /* ViewModels */,
 			);
@@ -479,14 +487,6 @@
 				F9E55FD72C02AEE20098995F /* WebViewSpy.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		F9EE1E3E2CB6A8840081B979 /* History */ = {
-			isa = PBXGroup;
-			children = (
-				F9EE1E3F2CB6A8A60081B979 /* HistoryVisionOS.swift */,
-			);
-			path = History;
 			sourceTree = "<group>";
 		};
 		F9EE1E412CB6AC060081B979 /* History */ = {
@@ -644,6 +644,7 @@
 				F932F2132CE23A8600B12B45 /* AddBookmarkIOS.swift in Sources */,
 				F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */,
 				F932F2142CE23A8600B12B45 /* BookmarkIOS.swift in Sources */,
+				F9DF54C72CEE04D600F92FC3 /* History.swift in Sources */,
 				F932F20E2CE23A7800B12B45 /* BookmarkViewModel.swift in Sources */,
 				F932F20F2CE23A7800B12B45 /* BookmarkView.swift in Sources */,
 				F94A60F12C758C52001384CB /* MenuMacOS.swift in Sources */,
@@ -657,7 +658,6 @@
 				F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F9F2083D2C8CED1300C3B033 /* MenuVisionOS.swift in Sources */,
-				F9EE1E402CB6A8A60081B979 /* HistoryVisionOS.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
