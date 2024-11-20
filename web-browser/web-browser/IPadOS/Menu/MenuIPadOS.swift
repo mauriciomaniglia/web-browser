@@ -2,6 +2,7 @@ import SwiftUI
 
 enum AppScreen: Hashable {
     case bookmarks
+    case history
 }
 
 #if os(iOS)
@@ -11,24 +12,22 @@ struct MenuIPadOS: View {
     var body: some View {
         NavigationStack {
             List {
-                Button(action: {
-                    windowViewModel.showAddBookmark = true
-                }) {
-                    HStack {
-                        Label("Add Bookmark", systemImage: "bookmark")
-                        Spacer()
-                    }
+                Button(action: { windowViewModel.showAddBookmark = true }) {
+                    Label("Add Bookmark", systemImage: "bookmark")
                 }
-                .buttonStyle(PlainButtonStyle())
-
                 NavigationLink(value: AppScreen.bookmarks) {
                     Label("Bookmarks", systemImage: "book")
+                }
+                NavigationLink(value: AppScreen.history) {
+                    Label("History", systemImage: "clock.arrow.circlepath")
                 }
             }
             .navigationDestination(for: AppScreen.self) { screen in
                 switch screen {
                 case .bookmarks:
-                    BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)                
+                    BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)
+                case .history:
+                    HistoryVisionOS(viewModel: windowViewModel.historyViewModel)
                 }
             }
         }
