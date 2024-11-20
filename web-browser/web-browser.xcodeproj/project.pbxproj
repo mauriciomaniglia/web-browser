@@ -37,9 +37,9 @@
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
-		F96C74B92CBD29A1002AAF4F /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = F96C74B82CBD29A1002AAF4F /* Core */; };
 		F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */; };
 		F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */; };
+		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
 		F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuIOS.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
@@ -97,7 +97,7 @@
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
-		F96C74B72CBD267A002AAF4F /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../Core; sourceTree = SOURCE_ROOT; };
+		F96C74B72CBD267A002AAF4F /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Services; path = ../Services; sourceTree = SOURCE_ROOT; };
 		F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkIPadOS.swift; sourceTree = "<group>"; };
 		F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkIPadOS.swift; sourceTree = "<group>"; };
 		F97BF7772C259A60005FB9BD /* MenuIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIOS.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F96C74B92CBD29A1002AAF4F /* Core in Frameworks */,
+				F97A2E752CEEACAC007E6D85 /* Services in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +171,7 @@
 		F92921B12B70F5B300173702 = {
 			isa = PBXGroup;
 			children = (
-				F96C74B72CBD267A002AAF4F /* Core */,
+				F96C74B72CBD267A002AAF4F /* Services */,
 				F92921BC2B70F5B300173702 /* web-browser */,
 				F92921CE2B70F5B500173702 /* web-browserTests */,
 				F92921BB2B70F5B300173702 /* Products */,
@@ -538,7 +538,7 @@
 			);
 			name = "web-browser";
 			packageProductDependencies = (
-				F96C74B82CBD29A1002AAF4F /* Core */,
+				F97A2E742CEEACAC007E6D85 /* Services */,
 			);
 			productName = "web-browser";
 			productReference = F92921BA2B70F5B300173702 /* web-browser.app */;
@@ -963,9 +963,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F96C74B82CBD29A1002AAF4F /* Core */ = {
+		F97A2E742CEEACAC007E6D85 /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Core;
+			productName = Services;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,5 +1,5 @@
 import SwiftData
-import Core
+import Services
 
 class BookmarkComposer {
 

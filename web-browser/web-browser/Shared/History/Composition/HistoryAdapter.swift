@@ -1,4 +1,4 @@
-import Core
+import Services
 
 class HistoryAdapter {
     private var viewModel: HistoryViewModel

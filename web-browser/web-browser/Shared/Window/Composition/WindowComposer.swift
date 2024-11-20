@@ -1,6 +1,6 @@
 import SwiftData
 import SwiftUI
-import Core
+import Services
 
 final class WindowComposer {
 

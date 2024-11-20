@@ -1,5 +1,5 @@
 import XCTest
-@testable import Core
+@testable import Services
 @testable import web_browser
 
 class HistoryAdapterTests: XCTestCase {

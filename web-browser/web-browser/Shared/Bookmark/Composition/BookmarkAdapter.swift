@@ -1,5 +1,5 @@
-import Core
 import Foundation
+import Services
 
 class BookmarkAdapter {
     private let webView: WebEngineContract

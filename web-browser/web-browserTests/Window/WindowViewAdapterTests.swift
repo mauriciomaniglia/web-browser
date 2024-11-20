@@ -1,6 +1,6 @@
 import XCTest
 @testable import web_browser
-@testable import Core
+@testable import Services
 
 class WindowViewAdapterTests: XCTestCase {
 

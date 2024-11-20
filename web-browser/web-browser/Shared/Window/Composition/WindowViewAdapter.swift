@@ -1,5 +1,5 @@
 import Foundation
-import Core
+import Services
 
 final class WindowViewAdapter {
     let webView: WebEngineContract
