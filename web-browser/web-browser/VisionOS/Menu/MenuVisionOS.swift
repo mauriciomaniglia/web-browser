@@ -5,25 +5,27 @@ struct MenuVisionOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
 
     var body: some View {
-        List {
-            Button(action: {
-                windowViewModel.showAddBookmark = true
-            }) {
-                HStack {
+        NavigationStack {
+            List {
+                Button(action: { windowViewModel.showAddBookmark = true }) {
                     Label("Add Bookmark", systemImage: "bookmark")
-                    Spacer()
+                }
+                NavigationLink(value: AppScreen.bookmarks) {
+                    Label("Bookmarks", systemImage: "book")
+                }
+                NavigationLink(value: AppScreen.history) {
+                    Label("History", systemImage: "clock.arrow.circlepath")
                 }
             }
-            .buttonStyle(PlainButtonStyle())
-
-            NavigationLink(destination: BookmarkView(viewModel: windowViewModel.bookmarkViewModel)) {
-                Label("Bookmarks", systemImage: "book")
-            }
-            NavigationLink(destination: HistoryVisionOS(viewModel: windowViewModel.historyViewModel)) {
-                Label("History", systemImage: "clock.arrow.circlepath")
+            .navigationDestination(for: AppScreen.self) { screen in
+                switch screen {
+                case .bookmarks:
+                    BookmarkView(viewModel: windowViewModel.bookmarkViewModel)
+                case .history:
+                    HistoryVisionOS(viewModel: windowViewModel.historyViewModel)
+                }
             }
         }
-        .navigationSplitViewColumnWidth(min: 200, ideal: 200)
     }
 }
 #endif
