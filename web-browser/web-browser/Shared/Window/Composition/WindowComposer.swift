@@ -24,7 +24,8 @@ final class WindowComposer {
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
             safelist: safelistStore,
-            history: historyStore
+            history: historyStore,
+            urlBuilder: SearchURLBuilder.makeURL(from:)
         )
         let windowAdapter = WindowViewAdapter(
             webView: webKitEngineWrapper,

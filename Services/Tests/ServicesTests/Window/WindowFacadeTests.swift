@@ -168,7 +168,12 @@ class WindowFacadeTests: XCTestCase {
         let safelist = SafelistStoreSpy()
         let presenter = WindowPresenterSpy(safelist: safelist)
         let history = HistoryStoreSpy()
-        let sut = WindowFacade(webView: webView, presenter: presenter, safelist: safelist, history: history)
+        let sut = WindowFacade(
+            webView: webView,
+            presenter: presenter,
+            safelist: safelist,
+            history: history,
+            urlBuilder: SearchURLBuilder.makeURL(from:))
 
         return (sut, webView, presenter, safelist, history)
     }
