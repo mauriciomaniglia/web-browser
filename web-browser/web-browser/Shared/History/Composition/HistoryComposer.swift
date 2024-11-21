@@ -8,7 +8,12 @@ class HistoryComposer {
         let historyStore = HistorySwiftDataStore(container: container)
         let presenter = HistoryPresenter()
         let adapter = HistoryAdapter(viewModel: viewModel)
-        let facade = HistoryFacade(presenter: presenter, webView: webView, history: historyStore)
+        let facade = HistoryFacade(
+            presenter: presenter,
+            webView: webView,
+            history: historyStore,
+            urlBuilder: SearchURLBuilder.makeURL(from:)
+        )
 
         viewModel.didSelectPage = facade.didSelectPage(_:)
         viewModel.didOpenHistoryView = facade.didOpenHistoryView
