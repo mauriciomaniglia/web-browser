@@ -4,11 +4,17 @@ public class BookmarkFacade {
     private let presenter: BookmarkPresenter
     private let webView: WebEngineContract
     private let bookmark: BookmarkAPI
+    private let urlBuilder: (String) -> URL
 
-    public init(presenter: BookmarkPresenter, webView: WebEngineContract, bookmark: BookmarkAPI) {
+    public init(presenter: BookmarkPresenter,
+                webView: WebEngineContract,
+                bookmark: BookmarkAPI,
+                urlBuilder: @escaping (String) -> URL)
+    {
         self.presenter = presenter
         self.webView = webView
         self.bookmark = bookmark
+        self.urlBuilder = urlBuilder
     }
 
     public func didOpenBookmarkView() {
@@ -21,8 +27,9 @@ public class BookmarkFacade {
         presenter.mapBookmarks(from: webPages)
     }
 
-    public func didSelectPage(_ url: String) {
-        webView.load(SearchURLBuilder.makeURL(from: url))
+    public func didSelectPage(_ urlString: String) {
+        let url = urlBuilder(urlString)
+        webView.load(url)
     }
 
     public func didTapSavePage(title: String, url: String) {

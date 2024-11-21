@@ -71,7 +71,12 @@ class BookmarkFacadeTests: XCTestCase {
         let bookmarkStore = BookmarkStoreMock()
         let presenter = BookmarkPresenterSpy()
         let webView = WebViewSpy()
-        let sut = BookmarkFacade(presenter: presenter, webView: webView, bookmark: bookmarkStore)
+        let sut = BookmarkFacade(
+            presenter: presenter,
+            webView: webView,
+            bookmark: bookmarkStore,
+            urlBuilder: SearchURLBuilder.makeURL(from:)
+        )
 
         return (sut, presenter, webView, bookmarkStore)
     }
