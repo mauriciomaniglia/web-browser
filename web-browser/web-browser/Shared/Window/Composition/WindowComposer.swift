@@ -23,7 +23,8 @@ final class WindowComposer {
         let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
-            safelist: safelistStore,
+            saveDomainToSafeList: safelistStore.saveDomain(_ :),
+            removeDomainFromSafeList: safelistStore.removeDomain(_:),
             history: historyStore,
             urlBuilder: SearchURLBuilder.makeURL(from:)
         )

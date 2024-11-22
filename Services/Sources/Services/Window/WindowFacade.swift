@@ -3,19 +3,22 @@ import Foundation
 public final class WindowFacade {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
-    private let safelist: SafelistAPI
+    private let saveDomainToSafeList: (String) -> Void
+    private let removeDomainFromSafeList: (String) -> Void
     private let history: HistoryAPI
     private let urlBuilder: (String) -> URL
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
-                safelist: SafelistAPI,
+                saveDomainToSafeList: @escaping (String) -> Void,
+                removeDomainFromSafeList: @escaping (String) -> Void,
                 history: HistoryAPI,
                 urlBuilder: @escaping (String) -> URL)
     {
         self.webView = webView
         self.presenter = presenter
-        self.safelist = safelist
+        self.saveDomainToSafeList = saveDomainToSafeList
+        self.removeDomainFromSafeList = removeDomainFromSafeList
         self.history = history
         self.urlBuilder = urlBuilder
     }
@@ -75,9 +78,9 @@ public final class WindowFacade {
 
     public func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
-            safelist.saveDomain(url)
+            saveDomainToSafeList(url)
         } else {
-            safelist.removeDomain(url)
+            removeDomainFromSafeList(url)
         }
     }
 }

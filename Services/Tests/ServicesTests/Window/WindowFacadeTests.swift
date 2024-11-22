@@ -203,7 +203,8 @@ class WindowFacadeTests: XCTestCase {
         let sut = WindowFacade(
             webView: webView,
             presenter: presenter,
-            safelist: safelist,
+            saveDomainToSafeList: safelist.saveDomain(_:),
+            removeDomainFromSafeList: safelist.removeDomain(_:),
             history: history,
             urlBuilder: SearchURLBuilder.makeURL(from:))
 
