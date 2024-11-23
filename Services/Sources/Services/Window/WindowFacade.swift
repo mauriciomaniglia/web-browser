@@ -5,21 +5,21 @@ public final class WindowFacade {
     private let presenter: WindowPresenter
     private let saveDomainToSafeList: (String) -> Void
     private let removeDomainFromSafeList: (String) -> Void
-    private let history: HistoryAPI
+    private let saveToHistory: (WebPage) -> Void
     private let urlBuilder: (String) -> URL
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
                 saveDomainToSafeList: @escaping (String) -> Void,
                 removeDomainFromSafeList: @escaping (String) -> Void,
-                history: HistoryAPI,
+                saveToHistory: @escaping (WebPage) -> Void,
                 urlBuilder: @escaping (String) -> URL)
     {
         self.webView = webView
         self.presenter = presenter
         self.saveDomainToSafeList = saveDomainToSafeList
         self.removeDomainFromSafeList = removeDomainFromSafeList
-        self.history = history
+        self.saveToHistory = saveToHistory
         self.urlBuilder = urlBuilder
     }
 
@@ -87,7 +87,7 @@ public final class WindowFacade {
 
 extension WindowFacade: WebEngineDelegate {
     public func didLoad(page: WebPage) {
-        history.save(page)
+        saveToHistory(page)
         presenter.didLoadPage(title: page.title, url: page.url)
     }
 

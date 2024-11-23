@@ -25,7 +25,7 @@ final class WindowComposer {
             presenter: windowPresenter,
             saveDomainToSafeList: safelistStore.saveDomain(_ :),
             removeDomainFromSafeList: safelistStore.removeDomain(_:),
-            history: historyStore,
+            saveToHistory: historyStore.save(_:),
             urlBuilder: SearchURLBuilder.makeURL(from:)
         )
         let windowAdapter = WindowViewAdapter(

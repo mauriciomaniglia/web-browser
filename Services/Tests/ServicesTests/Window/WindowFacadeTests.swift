@@ -205,7 +205,7 @@ class WindowFacadeTests: XCTestCase {
             presenter: presenter,
             saveDomainToSafeList: safelist.saveDomain(_:),
             removeDomainFromSafeList: safelist.removeDomain(_:),
-            history: history,
+            saveToHistory: history.save(_:),
             urlBuilder: SearchURLBuilder.makeURL(from:))
 
         return (sut, webView, presenter, safelist, history)
