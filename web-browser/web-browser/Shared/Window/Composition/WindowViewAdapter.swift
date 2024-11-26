@@ -5,11 +5,20 @@ final class WindowViewAdapter {
     let webView: WebEngineContract
     let viewModel: WindowViewModel
     let bookmarkViewModel: BookmarkViewModel
+    let history: HistoryAPI
+    let safelist: SafelistAPI
 
-    init(webView: WebEngineContract, viewModel: WindowViewModel, bookmarkViewModel: BookmarkViewModel) {
+    init(webView: WebEngineContract,
+         viewModel: WindowViewModel,
+         bookmarkViewModel: BookmarkViewModel,
+         history: HistoryAPI,
+         safelist: SafelistAPI)
+    {
         self.webView = webView
         self.viewModel = viewModel
         self.bookmarkViewModel = bookmarkViewModel
+        self.history = history
+        self.safelist = safelist
     }
 
     func updateViewModel(_ model: WindowPresentableModel) {
@@ -29,5 +38,19 @@ final class WindowViewAdapter {
         viewModel.showBackList = model.backList != nil
         viewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
         viewModel.showForwardList = model.forwardList != nil
+    }
+}
+
+extension WindowViewAdapter: WindowFacadeDelegate {
+    func saveDomainToSafeList(_ domain: String) {
+        safelist.saveDomain(domain)
+    }
+    
+    func removeDomainFromSafeList(_ domain: String) {
+        safelist.removeDomain(domain)
+    }
+    
+    func saveToHistory(_ page: WebPage) {
+        history.save(page)
     }
 }
