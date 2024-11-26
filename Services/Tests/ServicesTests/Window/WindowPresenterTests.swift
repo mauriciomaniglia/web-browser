@@ -393,7 +393,7 @@ class WindowPresenterTests: XCTestCase {
 
     private func makeSUT() -> (sut: WindowPresenter, safelist: SafelistStoreSpy) {
         let safelistSpy = SafelistStoreSpy()
-        let sut = WindowPresenter(safelist: safelistSpy)
+        let sut = WindowPresenter(isOnSafelist: safelistSpy.isRegisteredDomain(_:))
 
         return (sut, safelistSpy)
     }

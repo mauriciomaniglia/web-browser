@@ -4,9 +4,9 @@ public class WindowPresenter {
     public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
 
     private var model: WindowPresentableModel
-    private let safelist: SafelistAPI
+    private let isOnSafelist: (String) -> Bool
 
-    public init(safelist: SafelistAPI) {
+    public init(isOnSafelist: @escaping (String) -> Bool) {
         model = WindowPresentableModel(
             title: nil,
             urlHost: nil,
@@ -22,8 +22,7 @@ public class WindowPresenter {
             canGoForward: false, 
             backList: nil,
             forwardList: nil)
-
-        self.safelist = safelist
+        self.isOnSafelist = isOnSafelist
     }
 
     public func didStartNewWindow() {
@@ -111,7 +110,6 @@ public class WindowPresenter {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let title = title ?? urlHost
-        let isOnSafelist = safelist.isRegisteredDomain(urlHost)
 
         let newModel = WindowPresentableModel(
             title: title,
@@ -122,7 +120,7 @@ public class WindowPresenter {
             showStopButton: false,
             showReloadButton: true,
             showSiteProtection: true,
-            isWebsiteProtected: !isOnSafelist,
+            isWebsiteProtected: !isOnSafelist(urlHost),
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,

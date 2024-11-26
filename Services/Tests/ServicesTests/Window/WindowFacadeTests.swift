@@ -181,7 +181,7 @@ class WindowFacadeTests: XCTestCase {
     private func makeSUT() -> (sut: WindowFacade, webView: WebViewSpy, presenter: WindowPresenterSpy, delegate: WindowFacadeSpy) {
         let webView = WebViewSpy()
         let safelist = SafelistStoreSpy()
-        let presenter = WindowPresenterSpy(safelist: safelist)
+        let presenter = WindowPresenterSpy(isOnSafelist: safelist.isRegisteredDomain(_:))
         let delegate = WindowFacadeSpy()
         let sut = WindowFacade(
             webView: webView,
