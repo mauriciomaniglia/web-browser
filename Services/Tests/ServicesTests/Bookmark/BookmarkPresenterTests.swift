@@ -3,7 +3,7 @@ import Services
 
 class BookmarkPresenterTests: XCTestCase {
 
-    func test_mapBookmark_returnsBookmark() {
+    func test_mapBookmarks_returnsBookmark() {
         let page1 = WebPage(title: "title 1", url: URL(string: "http://example1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "http://example2.com")!, date: Date())
         let sut = BookmarkPresenter()
