@@ -18,7 +18,6 @@ final class WindowComposer {
         let safelistStore = SafelistStore()
         let windowPresenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
-        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistorySwiftDataStore(container: container)
         let windowAdapter = WindowViewAdapter(
             webView: webKitEngineWrapper,
@@ -27,6 +26,7 @@ final class WindowComposer {
             history: historyStore,
             safelist: safelistStore
         )
+        let contentBlocking = ContentBlocking(delegate: windowAdapter)
         let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,

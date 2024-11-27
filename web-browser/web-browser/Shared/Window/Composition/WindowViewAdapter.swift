@@ -54,3 +54,17 @@ extension WindowViewAdapter: WindowFacadeDelegate {
         history.save(page)
     }
 }
+
+extension WindowViewAdapter: ContentBlockingDelegate {
+    func load(_ rule: String) -> String? {
+        Helpers.loadJsonContent(filename: rule)
+    }
+    
+    func registerRule(name: String, content: String, safelist: [String]) {
+        webView.registerRule(name: name, content: content, safelist: safelist)
+    }
+    
+    func removeAllRules() {
+        webView.removeAllRules()
+    }
+}
