@@ -51,7 +51,7 @@ extension WindowViewAdapter: WindowFacadeDelegate {
     }
     
     func saveToHistory(_ page: WebPage) {
-        history.save(page)
+        history.save(.init(id: page.id, title: page.title, url: page.url, date: page.date))
     }
 }
 
