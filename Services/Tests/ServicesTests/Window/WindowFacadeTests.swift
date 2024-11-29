@@ -194,7 +194,7 @@ class WindowFacadeTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: WindowFacade,
+    private func makeSUT() -> (sut: WindowMediator,
                                webView: WebViewSpy,
                                presenter: WindowPresenterSpy,
                                safelist: SafelistStoreSpy,
@@ -204,7 +204,7 @@ class WindowFacadeTests: XCTestCase {
         let safelist = SafelistStoreSpy()
         let history = HistoryStoreMock()
         let presenter = WindowPresenterSpy(isOnSafelist: safelist.isRegisteredDomain(_:))
-        let sut = WindowFacade(
+        let sut = WindowMediator(
             webView: webView,
             presenter: presenter,
             safelist: safelist,

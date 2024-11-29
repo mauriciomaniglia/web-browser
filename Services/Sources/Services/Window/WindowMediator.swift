@@ -1,6 +1,6 @@
 import Foundation
 
-public final class WindowFacade {
+public final class WindowMediator {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
@@ -79,7 +79,7 @@ public final class WindowFacade {
     }
 }
 
-extension WindowFacade: WebEngineDelegate {
+extension WindowMediator: WebEngineDelegate {
     public func didLoad(page: WebPage) {
         history.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
         presenter.didLoadPage(title: page.title, url: page.url)
