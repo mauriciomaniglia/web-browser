@@ -1,6 +1,6 @@
 public struct WindowPresentableModel {
 
-    public struct WebPage {
+    public struct Page {
         public let title: String
         public let url: String
     }
@@ -18,6 +18,6 @@ public struct WindowPresentableModel {
     public let canGoBack: Bool
     public let canGoForward: Bool
     public var progressBarValue: Double?
-    public let backList: [WebPage]?
-    public let forwardList: [WebPage]?
+    public let backList: [Page]?
+    public let forwardList: [Page]?
 }

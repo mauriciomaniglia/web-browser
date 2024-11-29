@@ -215,7 +215,7 @@ public class WindowPresenter {
             forwardList: model.forwardList))
     }
 
-    private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.WebPage {
+    private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }
