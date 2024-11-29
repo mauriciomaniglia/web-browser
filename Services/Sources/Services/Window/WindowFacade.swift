@@ -5,23 +5,20 @@ public final class WindowFacade {
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
     private let history: HistoryAPI
-    private let urlBuilder: (String) -> URL
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
                 safelist: SafelistAPI,
-                history: HistoryAPI,
-                urlBuilder: @escaping (String) -> URL)
+                history: HistoryAPI)
     {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
         self.history = history
-        self.urlBuilder = urlBuilder
     }
 
     public func didRequestSearch(_ text: String) {
-        let url = urlBuilder(text)
+        let url = SearchURLBuilder.makeURL(from: text)
         webView.load(url)
     }
 

@@ -29,8 +29,7 @@ final class WindowComposer {
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
             safelist: safelistStore,
-            history: historyStore,
-            urlBuilder: SearchURLBuilder.makeURL(from:)
+            history: historyStore
         )
 
         contentBlocking.setupStrictProtection()

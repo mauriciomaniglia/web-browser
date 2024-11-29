@@ -208,8 +208,7 @@ class WindowFacadeTests: XCTestCase {
             webView: webView,
             presenter: presenter,
             safelist: safelist,
-            history: history,
-            urlBuilder: SearchURLBuilder.makeURL(from:))
+            history: history)
 
         return (sut, webView, presenter, safelist, history)
     }
