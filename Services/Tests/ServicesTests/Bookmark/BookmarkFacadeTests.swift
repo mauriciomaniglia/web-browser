@@ -67,11 +67,11 @@ class BookmarkFacadeTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: BookmarkFacade, presenter: BookmarkPresenterSpy, webView: WebViewSpy, bookmarkStore: BookmarkStoreMock) {
+    private func makeSUT() -> (sut: BookmarkMediator, presenter: BookmarkPresenterSpy, webView: WebViewSpy, bookmarkStore: BookmarkStoreMock) {
         let bookmarkStore = BookmarkStoreMock()
         let presenter = BookmarkPresenterSpy()
         let webView = WebViewSpy()
-        let sut = BookmarkFacade(
+        let sut = BookmarkMediator(
             presenter: presenter,
             webView: webView,
             bookmark: bookmarkStore,

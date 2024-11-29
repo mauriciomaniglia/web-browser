@@ -1,6 +1,6 @@
 import Foundation
 
-public class BookmarkFacade {
+public class BookmarkMediator {
     private let presenter: BookmarkPresenter
     private let webView: WebEngineContract
     private let bookmark: BookmarkAPI
