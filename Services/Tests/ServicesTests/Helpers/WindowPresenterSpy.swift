@@ -31,11 +31,11 @@ class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didUpdateProgressBar(value: value))
     }
 
-    override func didLoadBackList(_ webPages: [WebPage]) {
+    override func didLoadBackList(_ webPages: [WindowPageModel]) {
         receivedMessages.append(.didLoadBackList)
     }
 
-    override func didLoadForwardList(_ webPages: [WebPage]) {
+    override func didLoadForwardList(_ webPages: [WindowPageModel]) {
         receivedMessages.append(.didLoadForwardList)
     }
 

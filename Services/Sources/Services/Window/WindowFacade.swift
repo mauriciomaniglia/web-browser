@@ -54,12 +54,12 @@ public final class WindowFacade {
     }
 
     public func didLongPressBackButton() {
-        let webPages = webView.retrieveBackList()
+        let webPages = webView.retrieveBackList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadBackList(webPages)
     }
 
     public func didLongPressForwardButton() {
-        let webPages = webView.retrieveForwardList()
+        let webPages = webView.retrieveForwardList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadForwardList(webPages)
     }
 

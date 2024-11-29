@@ -20,8 +20,8 @@ class WindowViewAdapterTests: XCTestCase {
             canGoBack: true,
             canGoForward: true,
             progressBarValue: 0.5, 
-            backList: [WindowPresentableModel.WebPage(title: "back page title", url: "http://back-page.com")],
-            forwardList: [WindowPresentableModel.WebPage(title: "forward page title", url: "http://forward-page.com")])
+            backList: [WindowPresentableModel.Page(title: "back page title", url: "http://back-page.com")],
+            forwardList: [WindowPresentableModel.Page(title: "forward page title", url: "http://forward-page.com")])
 
         sut.updateViewModel(model)
 

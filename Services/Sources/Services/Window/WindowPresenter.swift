@@ -131,7 +131,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadBackList(_ webPages: [WebPage]) {
+    public func didLoadBackList(_ webPages: [WindowPageModel]) {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
@@ -152,7 +152,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadForwardList(_ webPages: [WebPage]) {
+    public func didLoadForwardList(_ webPages: [WindowPageModel]) {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
@@ -215,7 +215,7 @@ public class WindowPresenter {
             forwardList: model.forwardList))
     }
 
-    private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.Page {
+    private func mapWebPage(_ webPage: WindowPageModel) -> WindowPresentableModel.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }

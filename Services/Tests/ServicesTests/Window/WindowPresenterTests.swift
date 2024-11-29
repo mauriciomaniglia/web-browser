@@ -201,9 +201,9 @@ class WindowPresenterTests: XCTestCase {
     func test_didLoadBackList_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WindowPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
@@ -234,9 +234,9 @@ class WindowPresenterTests: XCTestCase {
     func test_didLoadForwardList_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WindowPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
@@ -267,8 +267,8 @@ class WindowPresenterTests: XCTestCase {
     func test_didDismissBackForwardList_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didLoadForwardList([page1, page2])
