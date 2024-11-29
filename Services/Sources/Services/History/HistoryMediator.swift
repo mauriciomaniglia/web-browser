@@ -1,6 +1,6 @@
 import Foundation
 
-public class HistoryFacade {
+public class HistoryMediator {
     private let presenter: HistoryPresenter
     private let webView: WebEngineContract
     private let history: HistoryAPI

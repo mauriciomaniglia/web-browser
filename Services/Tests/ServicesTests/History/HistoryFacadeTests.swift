@@ -67,11 +67,11 @@ class HistoryFacadeTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: HistoryFacade, presenter: HistoryPresenterSpy, webView: WebViewSpy, history: HistoryStoreMock) {
+    private func makeSUT() -> (sut: HistoryMediator, presenter: HistoryPresenterSpy, webView: WebViewSpy, history: HistoryStoreMock) {
         let history = HistoryStoreMock()
         let presenter = HistoryPresenterSpy()
         let webView = WebViewSpy()
-        let sut = HistoryFacade(
+        let sut = HistoryMediator(
             presenter: presenter,
             webView: webView,
             history: history)
