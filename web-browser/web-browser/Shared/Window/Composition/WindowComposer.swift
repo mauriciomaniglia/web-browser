@@ -22,15 +22,14 @@ final class WindowComposer {
         let windowAdapter = WindowViewAdapter(
             webView: webKitEngineWrapper,
             viewModel: windowViewModel,
-            bookmarkViewModel: bookmarkViewModel,
-            history: historyStore,
-            safelist: safelistStore
+            bookmarkViewModel: bookmarkViewModel
         )
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
-            delegate: windowAdapter,
+            safelist: safelistStore,
+            history: historyStore,
             urlBuilder: SearchURLBuilder.makeURL(from:)
         )
 

@@ -1,26 +1,22 @@
 import Foundation
 
-public protocol WindowFacadeDelegate {
-    func saveDomainToSafeList(_ domain: String)
-    func removeDomainFromSafeList(_ domain: String)
-    func saveToHistory(_ page: WebPage)
-}
-
 public final class WindowFacade {
-    private let delegate: WindowFacadeDelegate?
-
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
+    private let safelist: SafelistAPI
+    private let history: HistoryAPI
     private let urlBuilder: (String) -> URL
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
-                delegate: WindowFacadeDelegate,
+                safelist: SafelistAPI,
+                history: HistoryAPI,
                 urlBuilder: @escaping (String) -> URL)
     {
         self.webView = webView
         self.presenter = presenter
-        self.delegate = delegate
+        self.safelist = safelist
+        self.history = history
         self.urlBuilder = urlBuilder
     }
 
@@ -79,16 +75,16 @@ public final class WindowFacade {
 
     public func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
-            delegate?.saveDomainToSafeList(url)
+            safelist.saveDomain(url)
         } else {
-            delegate?.removeDomainFromSafeList(url)
+            safelist.removeDomain(url)
         }
     }
 }
 
 extension WindowFacade: WebEngineDelegate {
     public func didLoad(page: WebPage) {
-        delegate?.saveToHistory(page)
+        history.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
         presenter.didLoadPage(title: page.title, url: page.url)
     }
 

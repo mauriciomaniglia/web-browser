@@ -5,7 +5,9 @@ import XCTest
 class WindowViewAdapterTests: XCTestCase {
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
-        let (sut, _, _) = makeSUT()
+        let viewModel = WindowViewModel(historyViewModel: HistoryViewModel(), bookmarkViewModel: BookmarkViewModel())
+        let sut = WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel, bookmarkViewModel: BookmarkViewModel())
+
         let model = WindowPresentableModel(
             title: "Apple Airpods",
             urlHost: "www.apple.com",
@@ -42,47 +44,5 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.forwardList.first?.title, model.forwardList?.first?.title)
         XCTAssertEqual(sut.viewModel.forwardList.first?.url, model.forwardList?.first?.url)
         XCTAssertTrue(sut.viewModel.showBackList)
-    }
-
-    func test_saveDomainToSafeList_sendsCorrectMessages() {
-        let (sut, history, safelist) = makeSUT()
-
-        sut.saveDomainToSafeList("www.my-domain.com")
-
-        XCTAssertEqual(safelist.receivedMessages, [.saveDomain("www.my-domain.com")])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
-    func test_removeDomainFromSafeList_sendsCorrectMessages() {
-        let (sut, history, safelist) = makeSUT()
-
-        sut.removeDomainFromSafeList("www.my-domain.com")
-
-        XCTAssertEqual(safelist.receivedMessages, [.removeDomain("www.my-domain.com")])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
-    func test_saveToHistory_sendsCorrectMessages() {
-        let (sut, history, safelist) = makeSUT()
-        let page = WebPage(title: nil, url: URL(string: "www.my-domain.com")!, date: Date())
-
-        sut.saveToHistory(page)
-
-        XCTAssertEqual(history.receivedMessages, [.save(page.url)])
-        XCTAssertEqual(safelist.receivedMessages, [])
-    }
-
-    // MARK: - Helpers
-
-    private func makeSUT() -> (sut: WindowViewAdapter, history: HistoryStoreSpy, safelist: SafelistStoreSpy) {
-        let viewModel = WindowViewModel(historyViewModel: HistoryViewModel(), bookmarkViewModel: BookmarkViewModel())
-        let historySpy = HistoryStoreSpy()
-        let safelistSpy = SafelistStoreSpy()
-        let sut = WindowViewAdapter(webView: WebViewSpy(),
-                                    viewModel: viewModel,
-                                    bookmarkViewModel: BookmarkViewModel(),
-                                    history: historySpy,
-                                    safelist: safelistSpy)
-        return (sut, historySpy, safelistSpy)
     }
 }
