@@ -15,16 +15,11 @@ class ContentBlockingTests: XCTestCase {
         sut.setupBasicProtection()
 
         XCTAssertEqual(delegate.receivedMessages, [
-            .load("CookiesAdvertisingRules"),
-            .registerRule(name: "CookiesAdvertisingRules", content: "json content", safelist: []),
-            .load("CookiesAnalyticsRules"),
-            .registerRule(name: "CookiesAnalyticsRules", content: "json content", safelist: []),
-            .load("CookiesSocialRules"),
-            .registerRule(name: "CookiesSocialRules", content: "json content", safelist: []),
-            .load("CryptominingRules"),
-            .registerRule(name: "CryptominingRules", content: "json content", safelist: []),
-            .load("FingerprintingRules"),
-            .registerRule(name: "FingerprintingRules", content: "json content", safelist: [])
+            .registerRule("CookiesAdvertisingRules", "json content", []),
+            .registerRule("CookiesAnalyticsRules", "json content", []),
+            .registerRule("CookiesSocialRules", "json content", []),
+            .registerRule("CryptominingRules", "json content", []),
+            .registerRule("FingerprintingRules", "json content", [])
         ])
     }
 
@@ -35,16 +30,11 @@ class ContentBlockingTests: XCTestCase {
         sut.setupBasicProtection(safelist: safelist)
 
         XCTAssertEqual(delegate.receivedMessages, [
-            .load("CookiesAdvertisingRules"),
-            .registerRule(name: "CookiesAdvertisingRules", content: "json content", safelist: safelist),
-            .load("CookiesAnalyticsRules"),
-            .registerRule(name: "CookiesAnalyticsRules", content: "json content", safelist: safelist),
-            .load("CookiesSocialRules"),
-            .registerRule(name: "CookiesSocialRules", content: "json content", safelist: safelist),
-            .load("CryptominingRules"),
-            .registerRule(name: "CryptominingRules", content: "json content", safelist: safelist),
-            .load("FingerprintingRules"),
-            .registerRule(name: "FingerprintingRules", content: "json content", safelist: safelist)
+            .registerRule("CookiesAdvertisingRules", "json content", safelist),
+            .registerRule("CookiesAnalyticsRules", "json content", safelist),
+            .registerRule("CookiesSocialRules", "json content", safelist),
+            .registerRule("CryptominingRules", "json content", safelist),
+            .registerRule("FingerprintingRules", "json content", safelist)
         ])
     }
 
@@ -54,16 +44,11 @@ class ContentBlockingTests: XCTestCase {
         sut.setupStrictProtection()
 
         XCTAssertEqual(delegate.receivedMessages, [
-            .load("AdvertisingRules"),
-            .registerRule(name: "AdvertisingRules", content: "json content", safelist: []),
-            .load("AnalyticsRules"),
-            .registerRule(name: "AnalyticsRules", content: "json content", safelist: []),
-            .load("SocialRules"),
-            .registerRule(name: "SocialRules", content: "json content", safelist: []),
-            .load("CryptominingRules"),
-            .registerRule(name: "CryptominingRules", content: "json content", safelist: []),
-            .load("FingerprintingRules"),
-            .registerRule(name: "FingerprintingRules", content: "json content", safelist: [])
+            .registerRule("AdvertisingRules", "json content", []),
+            .registerRule("AnalyticsRules", "json content", []),
+            .registerRule("SocialRules", "json content", []),
+            .registerRule("CryptominingRules", "json content", []),
+            .registerRule("FingerprintingRules", "json content", [])
         ])
     }
 
@@ -74,16 +59,11 @@ class ContentBlockingTests: XCTestCase {
         sut.setupStrictProtection(safelist: safelist)
 
         XCTAssertEqual(delegate.receivedMessages, [
-            .load("AdvertisingRules"),
-            .registerRule(name: "AdvertisingRules", content: "json content", safelist: safelist),
-            .load("AnalyticsRules"),
-            .registerRule(name: "AnalyticsRules", content: "json content", safelist: safelist),
-            .load("SocialRules"),
-            .registerRule(name: "SocialRules", content: "json content", safelist: safelist),
-            .load("CryptominingRules"),
-            .registerRule(name: "CryptominingRules", content: "json content", safelist: safelist),
-            .load("FingerprintingRules"),
-            .registerRule(name: "FingerprintingRules", content: "json content", safelist: safelist)
+            .registerRule("AdvertisingRules", "json content", safelist),
+            .registerRule("AnalyticsRules", "json content", safelist),
+            .registerRule("SocialRules", "json content", safelist),
+            .registerRule("CryptominingRules", "json content", safelist),
+            .registerRule("FingerprintingRules", "json content", safelist)
         ])
     }
 
@@ -98,34 +78,9 @@ class ContentBlockingTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT(content: String? = nil) -> (sut: ContentBlocking, delegate: ContentBlockingDelegateSpy) {
-        let delegate = ContentBlockingDelegateSpy()
-        let sut = ContentBlocking(delegate: delegate)
-        delegate.mockRule = content
-        return (sut, delegate)
-    }
-}
-
-private class ContentBlockingDelegateSpy: ContentBlockingDelegate {
-    enum Message: Equatable {
-        case load(_ rule: String)
-        case registerRule(name: String, content: String, safelist: [String])
-        case removeAllRules
-    }
-
-    var receivedMessages: [Message] = []
-    var mockRule: String?
-
-    func load(_ rule: String) -> String? {
-        receivedMessages.append(.load(rule))
-        return mockRule
-    }
-    
-    func registerRule(name: String, content: String, safelist: [String]) {
-        receivedMessages.append(.registerRule(name: name, content: content, safelist: safelist))
-    }
-    
-    func removeAllRules() {
-        receivedMessages.append(.removeAllRules)
+    private func makeSUT(content: String? = nil) -> (sut: ContentBlocking, webView: WebViewSpy) {
+        let webView = WebViewSpy()
+        let sut = ContentBlocking(webView: webView, jsonLoader: { _ in "json content"})
+        return (sut, webView)
     }
 }

@@ -26,7 +26,7 @@ final class WindowComposer {
             history: historyStore,
             safelist: safelistStore
         )
-        let contentBlocking = ContentBlocking(delegate: windowAdapter)
+        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let windowFacade = WindowFacade(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,

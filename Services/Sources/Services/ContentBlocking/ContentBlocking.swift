@@ -1,14 +1,10 @@
-public protocol ContentBlockingDelegate {
-    func load(_ rule: String) -> String?
-    func registerRule(name: String, content: String, safelist: [String])
-    func removeAllRules()
-}
-
 final public class ContentBlocking {
-    private let delegate: ContentBlockingDelegate
+    private let webView: WebEngineContract
+    private let jsonLoader: (String) -> String?
 
-    public init(delegate: ContentBlockingDelegate) {
-        self.delegate = delegate
+    public init(webView: WebEngineContract, jsonLoader: @escaping (String) -> String? = Helpers.loadJsonContent(filename:)) {
+        self.webView = webView
+        self.jsonLoader = jsonLoader
     }
 
     public func setupBasicProtection(safelist: [String] = []) {
@@ -22,13 +18,13 @@ final public class ContentBlocking {
     }
 
     public func removeProtection() {
-        delegate.removeAllRules()
+        webView.removeAllRules()
     }
 
     private func registerRules(rules: [String], safelist: [String]) {
         for rule in rules {
-            if let content = delegate.load(rule) {
-                delegate.registerRule(name: rule, content: content, safelist: safelist)
+            if let content = jsonLoader(rule) {
+                webView.registerRule(name: rule, content: content, safelist: safelist)
             }
         }
     }
