@@ -74,8 +74,7 @@ class HistoryFacadeTests: XCTestCase {
         let sut = HistoryFacade(
             presenter: presenter,
             webView: webView,
-            history: history,
-            urlBuilder: SearchURLBuilder.makeURL(from:))
+            history: history)
 
         return (sut, presenter, webView, history)
     }

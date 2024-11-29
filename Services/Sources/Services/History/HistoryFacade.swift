@@ -4,17 +4,14 @@ public class HistoryFacade {
     private let presenter: HistoryPresenter
     private let webView: WebEngineContract
     private let history: HistoryAPI
-    private let urlBuilder: (String) -> URL
 
     public init(presenter: HistoryPresenter,
                 webView: WebEngineContract,
-                history: HistoryAPI,
-                urlBuilder: @escaping (String) -> URL)
+                history: HistoryAPI)
     {
         self.presenter = presenter
         self.webView = webView
         self.history = history
-        self.urlBuilder = urlBuilder
     }
 
     public func didOpenHistoryView() {
@@ -28,7 +25,7 @@ public class HistoryFacade {
     }
 
     public func didSelectPage(_ urlString: String) {
-        let url = urlBuilder(urlString)
+        let url = SearchURLBuilder.makeURL(from: urlString)
         webView.load(url)
     }
 

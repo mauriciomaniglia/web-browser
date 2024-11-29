@@ -11,8 +11,7 @@ class HistoryComposer {
         let facade = HistoryFacade(
             presenter: presenter,
             webView: webView,
-            history: historyStore,
-            urlBuilder: SearchURLBuilder.makeURL(from:)
+            history: historyStore
         )
 
         viewModel.didSelectPage = facade.didSelectPage(_:)
