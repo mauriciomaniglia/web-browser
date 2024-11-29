@@ -33,7 +33,7 @@ public class BookmarkFacade {
     }
 
     public func didTapSavePage(title: String, url: String) {
-        let page = WebPage(title: title, url: URL(string: url)!, date: Date())
+        let page = BookmarkModel(title: title, url: URL(string: url)!)
         bookmark.save(page)
     }
 

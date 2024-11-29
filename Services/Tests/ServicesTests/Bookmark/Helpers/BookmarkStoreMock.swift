@@ -10,20 +10,20 @@ class BookmarkStoreMock: BookmarkAPI {
     }
 
     var receivedMessages = [Message]()
-    var mockWebPages = [WebPage]()
+    var mockBookmarks = [BookmarkModel]()
 
-    func save(_ page: WebPage) {
-        receivedMessages.append(.save(page.url.absoluteString))
+    func save(_ bookmark: BookmarkModel) {
+        receivedMessages.append(.save(bookmark.url.absoluteString))
     }
 
-    func getPages() -> [WebPage] {
+    func getPages() -> [BookmarkModel] {
         receivedMessages.append(.getPages)
-        return mockWebPages
+        return mockBookmarks
     }
 
-    func getPages(by searchTerm: String) -> [WebPage] {
+    func getPages(by searchTerm: String) -> [BookmarkModel] {
         receivedMessages.append(.getPagesByTerm(searchTerm))
-        return mockWebPages
+        return mockBookmarks
     }
 
     func deletePages(withIDs ids: [UUID]) {

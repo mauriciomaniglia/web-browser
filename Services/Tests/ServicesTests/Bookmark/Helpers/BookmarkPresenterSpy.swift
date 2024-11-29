@@ -7,7 +7,7 @@ class BookmarkPresenterSpy: BookmarkPresenter {
 
     var receivedMessages = [Message]()
 
-    override func mapBookmarks(from pages: [WebPage]) {
+    override func mapBookmarks(from pages: [BookmarkModel]) {
         receivedMessages.append(.mapBookmarks)
     }
 }
