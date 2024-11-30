@@ -25,31 +25,31 @@ public class BookmarkSwiftDataStore: BookmarkAPI {
         self.container = container
     }
 
-    public func save(_ page: WebPage) {
-        let title = page.title ?? ""
+    public func save(_ bookmark: BookmarkModel) {
+        let title = bookmark.title ?? ""
 
         let bookmark = Bookmark(
-            id: page.id,
-            title: title.isEmpty ? page.url.absoluteString : title,
-            url: page.url)
+            id: bookmark.id,
+            title: title.isEmpty ? bookmark.url.absoluteString : title,
+            url: bookmark.url)
 
         backgroundContext.insert(bookmark)
 
         try? backgroundContext.save()
     }
 
-    public func getPages() -> [WebPage] {
+    public func getPages() -> [BookmarkModel] {
         let allPages = FetchDescriptor<Bookmark>()
 
         do {
             let results = try backgroundContext.fetch(allPages)
-            return results.map { WebPage(id: $0.id, title: $0.title, url: $0.url, date: Date()) }
+            return results.map { BookmarkModel(id: $0.id, title: $0.title, url: $0.url) }
         } catch {
             return []
         }
     }
 
-    public func getPages(by searchTerm: String) -> [WebPage] {
+    public func getPages(by searchTerm: String) -> [BookmarkModel] {
         let predicate = #Predicate<Bookmark> { page in
             page.title.contains(searchTerm)
         }
@@ -60,7 +60,7 @@ public class BookmarkSwiftDataStore: BookmarkAPI {
 
         do {
             let results = try backgroundContext.fetch(filteredBookmarks)
-            return results.map { WebPage(id: $0.id, title: $0.title, url: $0.url, date: Date()) }
+            return results.map { BookmarkModel(id: $0.id, title: $0.title, url: $0.url) }
         } catch {
             return []
         }

@@ -16,21 +16,20 @@ final class WindowComposer {
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper, container: container)
         let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper, container: container)
         let safelistStore = SafelistStore()
-        let windowPresenter = WindowPresenter(safelist: safelistStore)
+        let windowPresenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
-        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
         let historyStore = HistorySwiftDataStore(container: container)
-        let windowFacade = WindowFacade(
-            webView: webKitEngineWrapper,
-            presenter: windowPresenter,
-            safelist: safelistStore,
-            history: historyStore,
-            urlBuilder: SearchURLBuilder.makeURL(from:)
-        )
         let windowAdapter = WindowViewAdapter(
             webView: webKitEngineWrapper,
             viewModel: windowViewModel,
             bookmarkViewModel: bookmarkViewModel
+        )
+        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
+        let windowFacade = WindowMediator(
+            webView: webKitEngineWrapper,
+            presenter: windowPresenter,
+            safelist: safelistStore,
+            history: historyStore
         )
 
         contentBlocking.setupStrictProtection()

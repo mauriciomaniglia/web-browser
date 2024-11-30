@@ -1,8 +1,8 @@
 import Foundation
 
 public protocol BookmarkAPI {
-    func save(_ page: WebPage)
-    func getPages() -> [WebPage]
-    func getPages(by searchTerm: String) -> [WebPage]
+    func save(_ bookmark: BookmarkModel)
+    func getPages() -> [BookmarkModel]
+    func getPages(by searchTerm: String) -> [BookmarkModel]
     func deletePages(withIDs ids: [UUID])
 }

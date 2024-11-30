@@ -1,27 +1,24 @@
 import Foundation
 
-public final class WindowFacade {
+public final class WindowMediator {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
     private let history: HistoryAPI
-    private let urlBuilder: (String) -> URL
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
                 safelist: SafelistAPI,
-                history: HistoryAPI,
-                urlBuilder: @escaping (String) -> URL)
+                history: HistoryAPI)
     {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
         self.history = history
-        self.urlBuilder = urlBuilder
     }
 
     public func didRequestSearch(_ text: String) {
-        let url = urlBuilder(text)
+        let url = SearchURLBuilder.makeURL(from: text)
         webView.load(url)
     }
 
@@ -50,12 +47,12 @@ public final class WindowFacade {
     }
 
     public func didLongPressBackButton() {
-        let webPages = webView.retrieveBackList()
+        let webPages = webView.retrieveBackList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadBackList(webPages)
     }
 
     public func didLongPressForwardButton() {
-        let webPages = webView.retrieveForwardList()
+        let webPages = webView.retrieveForwardList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadForwardList(webPages)
     }
 
@@ -82,9 +79,9 @@ public final class WindowFacade {
     }
 }
 
-extension WindowFacade: WebEngineDelegate {
+extension WindowMediator: WebEngineDelegate {
     public func didLoad(page: WebPage) {
-        history.save(page)
+        history.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
         presenter.didLoadPage(title: page.title, url: page.url)
     }
 

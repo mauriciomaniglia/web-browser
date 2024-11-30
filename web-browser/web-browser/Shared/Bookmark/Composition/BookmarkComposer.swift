@@ -8,11 +8,10 @@ class BookmarkComposer {
         let bookmarkStore = BookmarkSwiftDataStore(container: container)
         let presenter = BookmarkPresenter()
         let adapter = BookmarkAdapter(webView: webView, viewModel: viewModel)
-        let facade = BookmarkFacade(
+        let facade = BookmarkMediator(
             presenter: presenter,
             webView: webView,
-            bookmark: bookmarkStore,
-            urlBuilder: SearchURLBuilder.makeURL(from:)
+            bookmark: bookmarkStore
         )
 
         viewModel.didTapAddBookmark = facade.didTapSavePage

@@ -4,9 +4,9 @@ public class WindowPresenter {
     public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
 
     private var model: WindowPresentableModel
-    private let safelist: SafelistAPI
+    private let isOnSafelist: (String) -> Bool
 
-    public init(safelist: SafelistAPI) {
+    public init(isOnSafelist: @escaping (String) -> Bool) {
         model = WindowPresentableModel(
             title: nil,
             urlHost: nil,
@@ -22,8 +22,7 @@ public class WindowPresenter {
             canGoForward: false, 
             backList: nil,
             forwardList: nil)
-
-        self.safelist = safelist
+        self.isOnSafelist = isOnSafelist
     }
 
     public func didStartNewWindow() {
@@ -111,7 +110,6 @@ public class WindowPresenter {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let title = title ?? urlHost
-        let isOnSafelist = safelist.isRegisteredDomain(urlHost)
 
         let newModel = WindowPresentableModel(
             title: title,
@@ -122,7 +120,7 @@ public class WindowPresenter {
             showStopButton: false,
             showReloadButton: true,
             showSiteProtection: true,
-            isWebsiteProtected: !isOnSafelist,
+            isWebsiteProtected: !isOnSafelist(urlHost),
             showWebView: true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
@@ -133,7 +131,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadBackList(_ webPages: [WebPage]) {
+    public func didLoadBackList(_ webPages: [WindowPageModel]) {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
@@ -154,7 +152,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didLoadForwardList(_ webPages: [WebPage]) {
+    public func didLoadForwardList(_ webPages: [WindowPageModel]) {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
@@ -217,7 +215,7 @@ public class WindowPresenter {
             forwardList: model.forwardList))
     }
 
-    private func mapWebPage(_ webPage: WebPage) -> WindowPresentableModel.WebPage {
+    private func mapWebPage(_ webPage: WindowPageModel) -> WindowPresentableModel.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }

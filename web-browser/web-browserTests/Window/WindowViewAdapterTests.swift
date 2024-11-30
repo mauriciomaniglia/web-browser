@@ -5,7 +5,9 @@ import XCTest
 class WindowViewAdapterTests: XCTestCase {
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
-        let sut = makeSUT()
+        let viewModel = WindowViewModel(historyViewModel: HistoryViewModel(), bookmarkViewModel: BookmarkViewModel())
+        let sut = WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel, bookmarkViewModel: BookmarkViewModel())
+
         let model = WindowPresentableModel(
             title: "Apple Airpods",
             urlHost: "www.apple.com",
@@ -20,8 +22,8 @@ class WindowViewAdapterTests: XCTestCase {
             canGoBack: true,
             canGoForward: true,
             progressBarValue: 0.5, 
-            backList: [WindowPresentableModel.WebPage(title: "back page title", url: "http://back-page.com")],
-            forwardList: [WindowPresentableModel.WebPage(title: "forward page title", url: "http://forward-page.com")])
+            backList: [WindowPresentableModel.Page(title: "back page title", url: "http://back-page.com")],
+            forwardList: [WindowPresentableModel.Page(title: "forward page title", url: "http://forward-page.com")])
 
         sut.updateViewModel(model)
 
@@ -42,12 +44,5 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.forwardList.first?.title, model.forwardList?.first?.title)
         XCTAssertEqual(sut.viewModel.forwardList.first?.url, model.forwardList?.first?.url)
         XCTAssertTrue(sut.viewModel.showBackList)
-    }
-
-    // MARK: - Helpers
-
-    private func makeSUT() -> WindowViewAdapter {
-        let viewModel = WindowViewModel(historyViewModel: HistoryViewModel(), bookmarkViewModel: BookmarkViewModel())
-        return WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel, bookmarkViewModel: BookmarkViewModel())
     }
 }

@@ -1,20 +1,17 @@
 import Foundation
 
-public class BookmarkFacade {
+public class BookmarkMediator {
     private let presenter: BookmarkPresenter
     private let webView: WebEngineContract
     private let bookmark: BookmarkAPI
-    private let urlBuilder: (String) -> URL
 
     public init(presenter: BookmarkPresenter,
                 webView: WebEngineContract,
-                bookmark: BookmarkAPI,
-                urlBuilder: @escaping (String) -> URL)
+                bookmark: BookmarkAPI)
     {
         self.presenter = presenter
         self.webView = webView
         self.bookmark = bookmark
-        self.urlBuilder = urlBuilder
     }
 
     public func didOpenBookmarkView() {
@@ -28,12 +25,12 @@ public class BookmarkFacade {
     }
 
     public func didSelectPage(_ urlString: String) {
-        let url = urlBuilder(urlString)
+        let url = SearchURLBuilder.makeURL(from: urlString)
         webView.load(url)
     }
 
     public func didTapSavePage(title: String, url: String) {
-        let page = WebPage(title: title, url: URL(string: url)!, date: Date())
+        let page = BookmarkModel(title: title, url: URL(string: url)!)
         bookmark.save(page)
     }
 

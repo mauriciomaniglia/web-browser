@@ -12,9 +12,9 @@ class HistoryPresenterTests: XCTestCase {
         let today = calendar.date(bySettingHour: time.hour!, minute: time.minute!, second: time.second!, of: Date())!
         let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
 
-        let page1 = WebPage(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
-        let page2 = WebPage(title: "title 2", url: URL(string: "http://page2.com")!, date: today)
-        let page3 = WebPage(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
+        let page1 = HistoryPageModel(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
+        let page2 = HistoryPageModel(title: "title 2", url: URL(string: "http://page2.com")!, date: today)
+        let page3 = HistoryPageModel(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
 
         var model: HistoryPresentableModel!
         sut.didUpdatePresentableModel = { model = $0 }

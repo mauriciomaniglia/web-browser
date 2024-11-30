@@ -6,7 +6,10 @@ final class WindowViewAdapter {
     let viewModel: WindowViewModel
     let bookmarkViewModel: BookmarkViewModel
 
-    init(webView: WebEngineContract, viewModel: WindowViewModel, bookmarkViewModel: BookmarkViewModel) {
+    init(webView: WebEngineContract,
+         viewModel: WindowViewModel,
+         bookmarkViewModel: BookmarkViewModel)
+    {
         self.webView = webView
         self.viewModel = viewModel
         self.bookmarkViewModel = bookmarkViewModel

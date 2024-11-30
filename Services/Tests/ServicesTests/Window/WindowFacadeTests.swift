@@ -71,7 +71,6 @@ class WindowFacadeTests: XCTestCase {
 
     func test_didTapForwardButton_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
-
         sut.didTapForwardButton()
 
         XCTAssertEqual(presenter.receivedMessages, [])
@@ -109,9 +108,9 @@ class WindowFacadeTests: XCTestCase {
         sut.didLoad(page: page)
 
         XCTAssertEqual(presenter.receivedMessages, [.didLoadPage])
-        XCTAssertEqual(history.receivedMessages, [.save])
-        XCTAssertEqual(webView.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(webView.receivedMessages, [])
     }
 
     func test_didUpdateNavigationButtons_sendsCorrectMessage() {
@@ -121,8 +120,8 @@ class WindowFacadeTests: XCTestCase {
 
         XCTAssertEqual(presenter.receivedMessages, [.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)])
         XCTAssertEqual(webView.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
     }
 
     func test_didUpdateLoadingProgress_sendsCorrectMessages() {
@@ -132,8 +131,8 @@ class WindowFacadeTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(presenter.receivedMessages, [.didUpdateProgressBar(value: 0.5)])
-        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
     }
 
     func test_didSelectBackListPage_sendsCorrectMessages() {
@@ -143,8 +142,8 @@ class WindowFacadeTests: XCTestCase {
 
         XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
         XCTAssertEqual(webView.receivedMessages, [.navigateToBackListPage])
-        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
     }
 
     func test_didSelectForwardListPage_sendsCorrectMessages() {
@@ -154,8 +153,8 @@ class WindowFacadeTests: XCTestCase {
 
         XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
         XCTAssertEqual(webView.receivedMessages, [.navigateToForwardListPage])
-        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
     }
 
     func test_didDismissBackForwardList_sendsCorrectMessages() {
@@ -165,8 +164,8 @@ class WindowFacadeTests: XCTestCase {
 
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
-        XCTAssertEqual(history.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(history.receivedMessages, [])
     }
 
     func test_updateSafelist_withURLEnabled_addURLToSafelist() {
@@ -175,7 +174,7 @@ class WindowFacadeTests: XCTestCase {
 
         sut.updateSafelist(url: url, isEnabled: true)
 
-        XCTAssertEqual(safelist.receivedMessages, [.saveDomain(url)])
+        XCTAssertEqual(safelist.receivedMessages, [.saveDomain("http://some-url.com")])
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(presenter.receivedMessages, [])
         XCTAssertEqual(history.receivedMessages, [])
@@ -187,7 +186,7 @@ class WindowFacadeTests: XCTestCase {
 
         sut.updateSafelist(url: url, isEnabled: false)
 
-        XCTAssertEqual(safelist.receivedMessages, [.removeDomain(url)])
+        XCTAssertEqual(safelist.receivedMessages, [.removeDomain("http://some-url.com")])
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(presenter.receivedMessages, [])
         XCTAssertEqual(history.receivedMessages, [])
@@ -195,50 +194,22 @@ class WindowFacadeTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: WindowFacade, webView: WebViewSpy, presenter: WindowPresenterSpy, safelist: SafelistStoreSpy, history: HistoryStoreSpy) {
+    private func makeSUT() -> (sut: WindowMediator,
+                               webView: WebViewSpy,
+                               presenter: WindowPresenterSpy,
+                               safelist: SafelistStoreSpy,
+                               history: HistoryStoreMock)
+    {
         let webView = WebViewSpy()
         let safelist = SafelistStoreSpy()
-        let presenter = WindowPresenterSpy(safelist: safelist)
-        let history = HistoryStoreSpy()
-        let sut = WindowFacade(
+        let history = HistoryStoreMock()
+        let presenter = WindowPresenterSpy(isOnSafelist: safelist.isRegisteredDomain(_:))
+        let sut = WindowMediator(
             webView: webView,
             presenter: presenter,
             safelist: safelist,
-            history: history,
-            urlBuilder: SearchURLBuilder.makeURL(from:))
+            history: history)
 
         return (sut, webView, presenter, safelist, history)
-    }
-}
-
-private class HistoryStoreSpy: HistoryAPI {
-    enum Message {
-        case save
-        case getPages
-        case deletePages
-        case deleteAllPages
-    }
-
-    var receivedMessages = [Message]()
-
-    func save(_ page: WebPage) {
-        receivedMessages.append(.save)
-    }
-
-    func getPages() -> [WebPage] {
-        receivedMessages.append(.getPages)
-        return []
-    }
-
-    func getPages(by searchTerm: String) -> [WebPage] {
-        return []
-    }
-
-    func deletePages(withIDs ids: [UUID]) {
-        receivedMessages.append(.deletePages)
-    }
-
-    func deleteAllPages() {
-        receivedMessages.append(.deleteAllPages)
     }
 }

@@ -5,12 +5,12 @@ public class HistoryPresenter {
 
     public init() {}
 
-    public func didLoadPages(_ pages: [WebPage]) {
+    public func didLoadPages(_ pages: [HistoryPageModel]) {
         let groupedPages = Dictionary(grouping: pages, by: { Calendar.current.startOfDay(for: $0.date) })
         let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
             lhs.key.compare(rhs.key) == .orderedDescending
         })
-        let groupPagesSorted: [[WebPage]] = sortedGroups.map { _, pages in
+        let groupPagesSorted: [[HistoryPageModel]] = sortedGroups.map { _, pages in
             pages.sorted(by: { $0.date > $1.date })
         }
 
@@ -18,14 +18,14 @@ public class HistoryPresenter {
         didUpdatePresentableModel?(model)
     }
 
-    private func mapSections(_ pages: [[WebPage]]) -> [HistoryPresentableModel.Section] {
+    private func mapSections(_ pages: [[HistoryPageModel]]) -> [HistoryPresentableModel.Section] {
         pages.map {
             let title = $0.first?.date.relativeTimeString() ?? ""
             return HistoryPresentableModel.Section(title: title, pages: mapPages($0))
         }
     }
 
-    private func mapPages(_ pages: [WebPage]) -> [HistoryPresentableModel.Page] {
+    private func mapPages(_ pages: [HistoryPageModel]) -> [HistoryPresentableModel.Page] {
         pages.map {
             let title = $0.title ?? ""
             let dateAndTitle = $0.date.formattedTime() + " - " + title

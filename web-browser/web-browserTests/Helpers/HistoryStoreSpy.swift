@@ -1,33 +1,32 @@
 import Foundation
-import Services
+@testable import web_browser
+@testable import Services
 
-class HistoryStoreMock: HistoryAPI {
+class HistoryStoreSpy: HistoryAPI {
     enum Message: Equatable {
+        case save(_ url: URL)
         case getPages
-        case getPagesByTerm(String)
-        case deletePages([UUID])
+        case deletePages
         case deleteAllPages
     }
-    
+
     var receivedMessages = [Message]()
-    var mockWebPages = [HistoryPageModel]()
 
     func save(_ page: HistoryPageModel) {
-
+        receivedMessages.append(.save(page.url))
     }
 
     func getPages() -> [HistoryPageModel] {
         receivedMessages.append(.getPages)
-        return mockWebPages
+        return []
     }
 
     func getPages(by searchTerm: String) -> [HistoryPageModel] {
-        receivedMessages.append(.getPagesByTerm(searchTerm))
-        return mockWebPages
+        return []
     }
 
     func deletePages(withIDs ids: [UUID]) {
-        receivedMessages.append(.deletePages(ids))
+        receivedMessages.append(.deletePages)
     }
 
     func deleteAllPages() {
