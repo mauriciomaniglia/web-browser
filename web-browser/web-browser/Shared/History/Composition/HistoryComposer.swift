@@ -11,7 +11,7 @@ class HistoryComposer {
         let facade = HistoryMediator(
             presenter: presenter,
             webView: webView,
-            history: historyStore
+            historyStore: historyStore
         )
 
         viewModel.didSelectPage = facade.didSelectPage(_:)

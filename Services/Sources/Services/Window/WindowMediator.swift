@@ -4,17 +4,17 @@ public final class WindowMediator {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
     private let safelist: SafelistAPI
-    private let history: HistoryAPI
+    private let historyStore: HistoryStoreAPI
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
                 safelist: SafelistAPI,
-                history: HistoryAPI)
+                historyStore: HistoryStoreAPI)
     {
         self.webView = webView
         self.presenter = presenter
         self.safelist = safelist
-        self.history = history
+        self.historyStore = historyStore
     }
 
     public func didRequestSearch(_ text: String) {
@@ -81,7 +81,7 @@ public final class WindowMediator {
 
 extension WindowMediator: WebEngineDelegate {
     public func didLoad(page: WebPage) {
-        history.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
+        historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
         presenter.didLoadPage(title: page.title, url: page.url)
     }
 

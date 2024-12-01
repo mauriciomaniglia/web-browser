@@ -2,7 +2,7 @@ import Foundation
 @testable import web_browser
 @testable import Services
 
-class HistoryStoreSpy: HistoryAPI {
+class HistoryStoreSpy: HistoryStoreAPI {
     enum Message: Equatable {
         case save(_ url: URL)
         case getPages

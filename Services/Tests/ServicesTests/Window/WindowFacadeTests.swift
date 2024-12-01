@@ -198,18 +198,18 @@ class WindowFacadeTests: XCTestCase {
                                webView: WebViewSpy,
                                presenter: WindowPresenterSpy,
                                safelist: SafelistStoreSpy,
-                               history: HistoryStoreMock)
+                               historyStore: HistoryStoreMock)
     {
         let webView = WebViewSpy()
         let safelist = SafelistStoreSpy()
-        let history = HistoryStoreMock()
+        let historyStore = HistoryStoreMock()
         let presenter = WindowPresenterSpy(isOnSafelist: safelist.isRegisteredDomain(_:))
         let sut = WindowMediator(
             webView: webView,
             presenter: presenter,
             safelist: safelist,
-            history: history)
+            historyStore: historyStore)
 
-        return (sut, webView, presenter, safelist, history)
+        return (sut, webView, presenter, safelist, historyStore)
     }
 }

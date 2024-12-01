@@ -29,7 +29,7 @@ final class WindowComposer {
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
             safelist: safelistStore,
-            history: historyStore
+            historyStore: historyStore
         )
 
         contentBlocking.setupStrictProtection()

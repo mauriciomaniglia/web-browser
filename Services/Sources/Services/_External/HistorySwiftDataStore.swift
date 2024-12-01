@@ -4,7 +4,7 @@ import SwiftData
 @available(iOS 17, *)
 @available(macOS 14, *)
 
-public class HistorySwiftDataStore: HistoryAPI {
+public class HistorySwiftDataStore: HistoryStoreAPI {
     @Model
     public class HistoryPage {
         @Attribute(.unique) public var id: UUID

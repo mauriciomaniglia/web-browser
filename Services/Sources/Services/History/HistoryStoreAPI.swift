@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol HistoryAPI {
+public protocol HistoryStoreAPI {
     func save(_ page: HistoryPageModel)
     func getPages() -> [HistoryPageModel]
     func getPages(by searchTerm: String) -> [HistoryPageModel]

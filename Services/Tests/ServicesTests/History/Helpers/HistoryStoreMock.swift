@@ -1,7 +1,7 @@
 import Foundation
 import Services
 
-class HistoryStoreMock: HistoryAPI {
+class HistoryStoreMock: HistoryStoreAPI {
     enum Message: Equatable {
         case getPages
         case getPagesByTerm(String)
