@@ -207,7 +207,7 @@ class WindowFacadeTests: XCTestCase {
         let sut = WindowMediator(
             webView: webView,
             presenter: presenter,
-            safelist: safelist,
+            safelistStore: safelist,
             historyStore: historyStore)
 
         return (sut, webView, presenter, safelist, historyStore)

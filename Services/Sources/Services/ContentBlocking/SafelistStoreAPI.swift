@@ -1,4 +1,4 @@
-public protocol SafelistAPI {
+public protocol SafelistStoreAPI {
     func isRegisteredDomain(_ domain: String) -> Bool
     func fetchRegisteredDomains() -> [String]
     func saveDomain(_ domain: String)

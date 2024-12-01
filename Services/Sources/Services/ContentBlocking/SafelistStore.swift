@@ -1,6 +1,6 @@
 import Foundation
 
-public class SafelistStore: SafelistAPI {
+public class SafelistStore: SafelistStoreAPI {
     public init() {}
 
     public func isRegisteredDomain(_ domain: String) -> Bool {

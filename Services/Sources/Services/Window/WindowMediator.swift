@@ -3,17 +3,17 @@ import Foundation
 public final class WindowMediator {
     private let webView: WebEngineContract
     private let presenter: WindowPresenter
-    private let safelist: SafelistAPI
+    private let safelistStore: SafelistStoreAPI
     private let historyStore: HistoryStoreAPI
 
     public init(webView: WebEngineContract,
                 presenter: WindowPresenter,
-                safelist: SafelistAPI,
+                safelistStore: SafelistStoreAPI,
                 historyStore: HistoryStoreAPI)
     {
         self.webView = webView
         self.presenter = presenter
-        self.safelist = safelist
+        self.safelistStore = safelistStore
         self.historyStore = historyStore
     }
 
@@ -72,9 +72,9 @@ public final class WindowMediator {
 
     public func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
-            safelist.saveDomain(url)
+            safelistStore.saveDomain(url)
         } else {
-            safelist.removeDomain(url)
+            safelistStore.removeDomain(url)
         }
     }
 }

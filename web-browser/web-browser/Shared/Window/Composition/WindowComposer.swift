@@ -28,7 +28,7 @@ final class WindowComposer {
         let windowFacade = WindowMediator(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
-            safelist: safelistStore,
+            safelistStore: safelistStore,
             historyStore: historyStore
         )
 

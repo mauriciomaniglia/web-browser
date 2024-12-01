@@ -2,7 +2,7 @@ import Foundation
 @testable import web_browser
 @testable import Services
 
-class SafelistStoreSpy: SafelistAPI {
+class SafelistStoreSpy: SafelistStoreAPI {
     enum Message: Equatable {
         case isRegisteredDomain(_ domain: String)
         case fetchRegisteredDomains
