@@ -4,7 +4,7 @@ import SwiftData
 @available(iOS 17, *)
 @available(macOS 14, *)
 
-public class BookmarkSwiftDataStore: BookmarkAPI {
+public class BookmarkSwiftDataStore: BookmarkStoreAPI {
     @Model
     public class Bookmark {
         @Attribute(.unique) public var id: UUID

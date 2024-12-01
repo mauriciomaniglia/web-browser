@@ -1,7 +1,7 @@
 import Foundation
 import Services
 
-class BookmarkStoreMock: BookmarkAPI {
+class BookmarkStoreMock: BookmarkStoreAPI {
     enum Message: Equatable {
         case save(String)
         case getPages

@@ -74,7 +74,7 @@ class BookmarkFacadeTests: XCTestCase {
         let sut = BookmarkMediator(
             presenter: presenter,
             webView: webView,
-            bookmark: bookmarkStore
+            bookmarkStore: bookmarkStore
         )
 
         return (sut, presenter, webView, bookmarkStore)

@@ -11,7 +11,7 @@ class BookmarkComposer {
         let facade = BookmarkMediator(
             presenter: presenter,
             webView: webView,
-            bookmark: bookmarkStore
+            bookmarkStore: bookmarkStore
         )
 
         viewModel.didTapAddBookmark = facade.didTapSavePage

@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol BookmarkAPI {
+public protocol BookmarkStoreAPI {
     func save(_ bookmark: BookmarkModel)
     func getPages() -> [BookmarkModel]
     func getPages(by searchTerm: String) -> [BookmarkModel]

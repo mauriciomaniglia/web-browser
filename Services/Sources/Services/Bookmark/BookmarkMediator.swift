@@ -3,24 +3,24 @@ import Foundation
 public class BookmarkMediator {
     private let presenter: BookmarkPresenter
     private let webView: WebEngineContract
-    private let bookmark: BookmarkAPI
+    private let bookmarkStore: BookmarkStoreAPI
 
     public init(presenter: BookmarkPresenter,
                 webView: WebEngineContract,
-                bookmark: BookmarkAPI)
+                bookmarkStore: BookmarkStoreAPI)
     {
         self.presenter = presenter
         self.webView = webView
-        self.bookmark = bookmark
+        self.bookmarkStore = bookmarkStore
     }
 
     public func didOpenBookmarkView() {
-        let webPages = bookmark.getPages()
+        let webPages = bookmarkStore.getPages()
         presenter.mapBookmarks(from: webPages)
     }
 
     public func didSearchTerm(_ term: String) {
-        let webPages = term.isEmpty ? bookmark.getPages() : bookmark.getPages(by: term)
+        let webPages = term.isEmpty ? bookmarkStore.getPages() : bookmarkStore.getPages(by: term)
         presenter.mapBookmarks(from: webPages)
     }
 
@@ -31,10 +31,10 @@ public class BookmarkMediator {
 
     public func didTapSavePage(title: String, url: String) {
         let page = BookmarkModel(title: title, url: URL(string: url)!)
-        bookmark.save(page)
+        bookmarkStore.save(page)
     }
 
     public func didTapDeletePages(_ pageIDs: [UUID]) {
-        bookmark.deletePages(withIDs: pageIDs)
+        bookmarkStore.deletePages(withIDs: pageIDs)
     }
 }
