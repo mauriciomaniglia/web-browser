@@ -43,6 +43,7 @@
 		F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */; };
 		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
 		F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuIOS.swift */; };
+		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* History.swift */; };
@@ -105,6 +106,7 @@
 		F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkIPadOS.swift; sourceTree = "<group>"; };
 		F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkIPadOS.swift; sourceTree = "<group>"; };
 		F97BF7772C259A60005FB9BD /* MenuIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIOS.swift; sourceTree = "<group>"; };
+		F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSwiftDataStore.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		F932F20B2CE23A7800B12B45 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
+				F987B3A82CFDD9D400474A1E /* Store */,
 				F932F2062CE23A7800B12B45 /* Composition */,
 				F932F2082CE23A7800B12B45 /* ViewModels */,
 				F932F20A2CE23A7800B12B45 /* Views */,
@@ -353,6 +356,14 @@
 				F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		F987B3A82CFDD9D400474A1E /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		F98BF0C62B750A2900C29BDA /* Window */ = {
@@ -637,6 +648,7 @@
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
 				F92E5C302CD980A00019A9AE /* AddBookmarkVisionOS.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,
+				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
 				F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
