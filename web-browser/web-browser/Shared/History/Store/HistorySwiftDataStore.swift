@@ -2,9 +2,6 @@ import Foundation
 import SwiftData
 import Services
 
-@available(iOS 17, *)
-@available(macOS 14, *)
-
 public class HistorySwiftDataStore: HistoryStoreAPI {
     @Model
     public class HistoryPage {
