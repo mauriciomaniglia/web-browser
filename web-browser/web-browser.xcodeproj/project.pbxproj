@@ -45,6 +45,12 @@
 		F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuIOS.swift */; };
 		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
+		F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
+		F987B3B32CFDDB3500474A1E /* WebKitEngineWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B22CFDDB3500474A1E /* WebKitEngineWrapperTests.swift */; };
+		F987B3B92CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */; };
+		F987B3BA2CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */; };
+		F987B3BB2CFDDB3D00474A1E /* WKUserContentControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */; };
+		F987B3BC2CFDDB3D00474A1E /* WebViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* History.swift */; };
@@ -109,6 +115,12 @@
 		F97BF7772C259A60005FB9BD /* MenuIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIOS.swift; sourceTree = "<group>"; };
 		F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySwiftDataStore.swift; sourceTree = "<group>"; };
+		F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitEngineWrapper.swift; sourceTree = "<group>"; };
+		F987B3B22CFDDB3500474A1E /* WebKitEngineWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitEngineWrapperTests.swift; sourceTree = "<group>"; };
+		F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewMock.swift; sourceTree = "<group>"; };
+		F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewProxyDelegateSpy.swift; sourceTree = "<group>"; };
+		F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKContentRuleListStoreSpy.swift; sourceTree = "<group>"; };
+		F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKUserContentControllerSpy.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -222,6 +234,7 @@
 		F92921CE2B70F5B500173702 /* web-browserTests */ = {
 			isa = PBXGroup;
 			children = (
+				F987B3B12CFDDB2800474A1E /* WebEngine */,
 				F932F2012CE23A6A00B12B45 /* Bookmark */,
 				F9E55FD62C02AE900098995F /* Helpers */,
 				F9E55D382C45F452008B7C64 /* History */,
@@ -256,6 +269,7 @@
 		F92921EE2B70F9DD00173702 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F987B3AE2CFDDAC500474A1E /* WebEngine */,
 				F932F20B2CE23A7800B12B45 /* Bookmark */,
 				F98BF0C92B750A7F00C29BDA /* Helpers */,
 				F9E55D2E2C45E9FA008B7C64 /* History */,
@@ -374,6 +388,34 @@
 				F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		F987B3AE2CFDDAC500474A1E /* WebEngine */ = {
+			isa = PBXGroup;
+			children = (
+				F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */,
+			);
+			path = WebEngine;
+			sourceTree = "<group>";
+		};
+		F987B3B12CFDDB2800474A1E /* WebEngine */ = {
+			isa = PBXGroup;
+			children = (
+				F987B3B82CFDDB3D00474A1E /* Helpers */,
+				F987B3B22CFDDB3500474A1E /* WebKitEngineWrapperTests.swift */,
+			);
+			path = WebEngine;
+			sourceTree = "<group>";
+		};
+		F987B3B82CFDDB3D00474A1E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */,
+				F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */,
+				F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */,
+				F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F98BF0C62B750A2900C29BDA /* Window */ = {
@@ -681,6 +723,7 @@
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
 				F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */,
 				F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */,
+				F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */,
 				F91EFA852B71004D00500535 /* WindowVisionOS.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F92921ED2B70F9A100173702 /* WindowIOS.swift in Sources */,
@@ -704,6 +747,11 @@
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */,
 				F947B9202CF613AD0026E4E7 /* SafelistStoreSpy.swift in Sources */,
+				F987B3B32CFDDB3500474A1E /* WebKitEngineWrapperTests.swift in Sources */,
+				F987B3B92CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift in Sources */,
+				F987B3BA2CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift in Sources */,
+				F987B3BB2CFDDB3D00474A1E /* WKUserContentControllerSpy.swift in Sources */,
+				F987B3BC2CFDDB3D00474A1E /* WebViewMock.swift in Sources */,
 				F932F2022CE23A6A00B12B45 /* BookmarkAdapterTests.swift in Sources */,
 				F932F2032CE23A6A00B12B45 /* BookmarkViewModelTests.swift in Sources */,
 			);

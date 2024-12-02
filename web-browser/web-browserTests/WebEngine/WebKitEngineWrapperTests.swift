@@ -1,6 +1,6 @@
 import XCTest
 import WebKit
-import Services
+import web_browser
 
 class WebKitEngineWrapperTests: XCTestCase {
     let navigation = WKNavigation()

@@ -1,4 +1,5 @@
 import WebKit
+import Services
 
 public final class WebKitEngineWrapper: NSObject, WebEngineContract {
     public var delegate: WebEngineDelegate?

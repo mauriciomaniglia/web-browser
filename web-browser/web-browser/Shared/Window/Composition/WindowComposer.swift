@@ -1,6 +1,6 @@
 import SwiftData
 import SwiftUI
-import Services
+@testable import Services
 
 final class WindowComposer {
 
