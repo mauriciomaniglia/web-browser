@@ -51,6 +51,16 @@
 		F987B3BA2CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */; };
 		F987B3BB2CFDDB3D00474A1E /* WKUserContentControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */; };
 		F987B3BC2CFDDB3D00474A1E /* WebViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */; };
+		F987B3C72CFDDC7800474A1E /* SocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C52CFDDC7800474A1E /* SocialRules.json */; };
+		F987B3C82CFDDC7800474A1E /* CookiesAdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */; };
+		F987B3C92CFDDC7800474A1E /* CryptominingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C32CFDDC7800474A1E /* CryptominingRules.json */; };
+		F987B3CA2CFDDC7800474A1E /* CookiesContentRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C12CFDDC7800474A1E /* CookiesContentRules.json */; };
+		F987B3CB2CFDDC7800474A1E /* CookiesSocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */; };
+		F987B3CC2CFDDC7800474A1E /* CookiesAnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */; };
+		F987B3CD2CFDDC7800474A1E /* AnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */; };
+		F987B3CE2CFDDC7800474A1E /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
+		F987B3CF2CFDDC7800474A1E /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
+		F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* History.swift */; };
@@ -121,6 +131,16 @@
 		F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewProxyDelegateSpy.swift; sourceTree = "<group>"; };
 		F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKContentRuleListStoreSpy.swift; sourceTree = "<group>"; };
 		F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKUserContentControllerSpy.swift; sourceTree = "<group>"; };
+		F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AdvertisingRules.json; sourceTree = "<group>"; };
+		F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AnalyticsRules.json; sourceTree = "<group>"; };
+		F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CookiesAdvertisingRules.json; sourceTree = "<group>"; };
+		F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CookiesAnalyticsRules.json; sourceTree = "<group>"; };
+		F987B3C12CFDDC7800474A1E /* CookiesContentRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CookiesContentRules.json; sourceTree = "<group>"; };
+		F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CookiesSocialRules.json; sourceTree = "<group>"; };
+		F987B3C32CFDDC7800474A1E /* CryptominingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CryptominingRules.json; sourceTree = "<group>"; };
+		F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FingerprintingRules.json; sourceTree = "<group>"; };
+		F987B3C52CFDDC7800474A1E /* SocialRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SocialRules.json; sourceTree = "<group>"; };
+		F987B3D02CFDDD4800474A1E /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -393,6 +413,7 @@
 		F987B3AE2CFDDAC500474A1E /* WebEngine */ = {
 			isa = PBXGroup;
 			children = (
+				F987B3C62CFDDC7800474A1E /* JsonRules */,
 				F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */,
 			);
 			path = WebEngine;
@@ -416,6 +437,22 @@
 				F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F987B3C62CFDDC7800474A1E /* JsonRules */ = {
+			isa = PBXGroup;
+			children = (
+				F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */,
+				F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */,
+				F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */,
+				F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */,
+				F987B3C12CFDDC7800474A1E /* CookiesContentRules.json */,
+				F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */,
+				F987B3C32CFDDC7800474A1E /* CryptominingRules.json */,
+				F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */,
+				F987B3C52CFDDC7800474A1E /* SocialRules.json */,
+			);
+			path = JsonRules;
 			sourceTree = "<group>";
 		};
 		F98BF0C62B750A2900C29BDA /* Window */ = {
@@ -453,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
+				F987B3D02CFDDD4800474A1E /* JsonLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -678,6 +716,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */,
+				F987B3C72CFDDC7800474A1E /* SocialRules.json in Resources */,
+				F987B3C82CFDDC7800474A1E /* CookiesAdvertisingRules.json in Resources */,
+				F987B3C92CFDDC7800474A1E /* CryptominingRules.json in Resources */,
+				F987B3CA2CFDDC7800474A1E /* CookiesContentRules.json in Resources */,
+				F987B3CB2CFDDC7800474A1E /* CookiesSocialRules.json in Resources */,
+				F987B3CC2CFDDC7800474A1E /* CookiesAnalyticsRules.json in Resources */,
+				F987B3CD2CFDDC7800474A1E /* AnalyticsRules.json in Resources */,
+				F987B3CE2CFDDC7800474A1E /* AdvertisingRules.json in Resources */,
+				F987B3CF2CFDDC7800474A1E /* FingerprintingRules.json in Resources */,
 				F92921C22B70F5B500173702 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +777,7 @@
 				F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */,
 				F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
+				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
 				F9F2083D2C8CED1300C3B033 /* MenuVisionOS.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,

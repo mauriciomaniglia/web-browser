@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "Services",
             dependencies: [],
-            resources: [.process("_External/JsonRules")]),
+            resources: []),
         .testTarget(
             name: "ServicesTests",
             dependencies: ["Services"]),

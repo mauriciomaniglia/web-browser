@@ -24,7 +24,7 @@ final class WindowComposer {
             viewModel: windowViewModel,
             bookmarkViewModel: bookmarkViewModel
         )
-        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper)
+        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         let windowFacade = WindowMediator(
             webView: webKitEngineWrapper,
             presenter: windowPresenter,
