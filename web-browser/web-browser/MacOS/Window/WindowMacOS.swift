@@ -15,6 +15,7 @@ struct WindowMacOS: View {
                     HStack {
                         WindowNavigationButtons(viewModel: windowViewModel)
                         AddressBarView(viewModel: windowViewModel)
+                        ShareButton
                     }
                     Spacer()
                     webView
@@ -28,6 +29,14 @@ struct WindowMacOS: View {
                 AddBookmark
             }
         }
+    }
+
+    private var ShareButton: some View {
+        Button(action: {}) {
+            Image(systemName: "square.and.arrow.up")
+                .font(.system(size: 17))
+        }
+        .buttonStyle(.borderless)
     }
 
     private var AddBookmark: some View {
