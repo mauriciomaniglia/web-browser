@@ -14,9 +14,9 @@ struct WindowIOS: View {
                 .frame(maxWidth:.infinity, maxHeight: .infinity)
             HStack {
                 WindowNavigationButtons(viewModel: windowViewModel)
-
                 Spacer()
-
+                ShareButton
+                Spacer()
                 Button(action: { isShowingSheet.toggle() }) {
                     Image(systemName: "line.3.horizontal")
                 }
@@ -33,6 +33,13 @@ struct WindowIOS: View {
                 bookmarkURL: windowViewModel.fullURL
             )
         })
+    }
+
+    private var ShareButton: some View {
+        Button(action: {}) {
+            Image(systemName: "square.and.arrow.up")
+        }
+        .buttonStyle(.borderless)
     }
 }
 
