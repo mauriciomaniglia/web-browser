@@ -29,7 +29,9 @@ struct WindowVisionOS: View {
                 Spacer(minLength: 20)
                 WindowNavigationButtons(viewModel: windowViewModel)
                 AddressBarView(viewModel: windowViewModel)
-                ShareButton
+                if canShowShareButton {
+                    ShareButton
+                }
             }
             .frame(width: 1000)
             .padding()
@@ -41,8 +43,12 @@ struct WindowVisionOS: View {
         }
     }
 
+    private var canShowShareButton: Bool {
+        !windowViewModel.fullURL.isEmpty
+    }
+
     private var ShareButton: some View {
-        Button(action: {}) {
+        ShareLink(item: URL(string: windowViewModel.fullURL)!) {
             Image(systemName: "square.and.arrow.up")
         }
     }
