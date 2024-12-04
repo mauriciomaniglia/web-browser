@@ -29,6 +29,7 @@ struct WindowVisionOS: View {
                 Spacer(minLength: 20)
                 WindowNavigationButtons(viewModel: windowViewModel)
                 AddressBarView(viewModel: windowViewModel)
+                ShareButton
             }
             .frame(width: 1000)
             .padding()
@@ -37,6 +38,12 @@ struct WindowVisionOS: View {
         }
         .overlay(alignment: .center) {
             AddBookmarkAlert
+        }
+    }
+
+    private var ShareButton: some View {
+        Button(action: {}) {
+            Image(systemName: "square.and.arrow.up")
         }
     }
 
