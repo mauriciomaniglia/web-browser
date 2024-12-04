@@ -15,7 +15,9 @@ struct WindowMacOS: View {
                     HStack {
                         WindowNavigationButtons(viewModel: windowViewModel)
                         AddressBarView(viewModel: windowViewModel)
-                        ShareButton
+                        if canShowShareButton {
+                            ShareButton
+                        }
                     }
                     Spacer()
                     webView
@@ -31,8 +33,12 @@ struct WindowMacOS: View {
         }
     }
 
+    private var canShowShareButton: Bool {
+        !windowViewModel.fullURL.isEmpty
+    }
+
     private var ShareButton: some View {
-        Button(action: {}) {
+        ShareLink(item: URL(string: windowViewModel.fullURL)!) {
             Image(systemName: "square.and.arrow.up")
                 .font(.system(size: 17))
         }
