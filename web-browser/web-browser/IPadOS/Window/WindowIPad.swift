@@ -22,6 +22,11 @@ struct WindowIPadOS: View {
                     ToolbarItem(placement: .principal) {
                         AddressBarView(viewModel: windowViewModel)
                     }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {}) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                    }
                 }
             }
         }
