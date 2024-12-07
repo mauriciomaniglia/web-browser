@@ -15,10 +15,6 @@ struct WindowIOS: View {
             HStack {
                 WindowNavigationButtons(viewModel: windowViewModel)
                 Spacer()
-                if canShowShareButton {
-                    ShareButton
-                }
-                Spacer()
                 Button(action: { isShowingSheet.toggle() }) {
                     Image(systemName: "line.3.horizontal")
                 }
@@ -35,16 +31,6 @@ struct WindowIOS: View {
                 bookmarkURL: windowViewModel.fullURL
             )
         })
-    }
-
-    private var canShowShareButton: Bool {
-        !windowViewModel.fullURL.isEmpty
-    }
-
-    private var ShareButton: some View {
-        ShareLink(item: URL(string: windowViewModel.fullURL)!) {
-            Image(systemName: "square.and.arrow.up")
-        }
     }
 }
 
