@@ -277,7 +277,7 @@
 		F92921E92B70F94C00173702 /* MacOS */ = {
 			isa = PBXGroup;
 			children = (
-				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
+				F96B23D72D06647C000D4B98 /* MenuBar */,
 				F99988E72CD586EF00705D4F /* Bookmark */,
 				F943799E2C911B5E00DEBFF7 /* History */,
 				F9F2083A2C8CECD600C3B033 /* Menu */,
@@ -383,6 +383,14 @@
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F96B23D72D06647C000D4B98 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
+			);
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 		F97A17632CECB4BB005978E9 /* Bookmark */ = {
