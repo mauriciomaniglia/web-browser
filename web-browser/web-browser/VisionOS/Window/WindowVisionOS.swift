@@ -29,7 +29,7 @@ struct WindowVisionOS: View {
                 Spacer(minLength: 20)
                 WindowNavigationButtons(viewModel: windowViewModel)
                 AddressBarView(viewModel: windowViewModel)
-                if canShowShareButton {
+                if windowViewModel.canShowShareButton() {
                     ShareButton
                 }
             }
@@ -41,10 +41,6 @@ struct WindowVisionOS: View {
         .overlay(alignment: .center) {
             AddBookmarkAlert
         }
-    }
-
-    private var canShowShareButton: Bool {
-        !windowViewModel.fullURL.isEmpty
     }
 
     private var ShareButton: some View {

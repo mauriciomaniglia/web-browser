@@ -15,7 +15,7 @@ struct WindowMacOS: View {
                     HStack {
                         WindowNavigationButtons(viewModel: windowViewModel)
                         AddressBarView(viewModel: windowViewModel)
-                        if canShowShareButton {
+                        if windowViewModel.canShowShareButton() {
                             ShareButton
                         }
                     }
@@ -31,10 +31,6 @@ struct WindowMacOS: View {
                 AddBookmark
             }
         }
-    }
-
-    private var canShowShareButton: Bool {
-        !windowViewModel.fullURL.isEmpty
     }
 
     private var ShareButton: some View {

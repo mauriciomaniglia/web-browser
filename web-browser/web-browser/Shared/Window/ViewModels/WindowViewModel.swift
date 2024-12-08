@@ -61,4 +61,8 @@ class WindowViewModel: ObservableObject {
         showAddBookmark = false
         bookmarkViewModel.didTapAddBookmark?(name, url)
     }
+
+    func canShowShareButton() -> Bool {
+        !fullURL.isEmpty
+    }
 }
