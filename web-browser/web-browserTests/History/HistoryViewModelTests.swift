@@ -8,7 +8,7 @@ class HistoryViewModelTests: XCTestCase {
         XCTAssertEqual(sut.selectedPages, [])
     }
 
-    func test_selectedPages_has_one_page_when_one_page_is_selected() {
+    func test_selectedPages_makesCorrectSelection() {
         let anySection = anySection()
         let sut = HistoryViewModel()
         sut.historyList = [anySection]
@@ -18,7 +18,7 @@ class HistoryViewModelTests: XCTestCase {
         XCTAssertEqual(sut.selectedPages, [sut.historyList[0].pages[0]])
     }
 
-    func test_selectedPages_has_no_pages_when_toggles_selection() {
+    func test_selectedPages_whenSelectingTwice_removesSelection() {
         let anySection = anySection()
         let sut = HistoryViewModel()
         sut.historyList = [anySection]
@@ -29,7 +29,7 @@ class HistoryViewModelTests: XCTestCase {
         XCTAssertEqual(sut.selectedPages, [])
     }
 
-    func test_deselectAllPages_deselects_selectable_pages() {
+    func test_deselectAllPages_removesSelectedPages() {
         let section1 = anySection()
         let section2 = anySection()
         let section3 = anySection()
@@ -50,7 +50,7 @@ class HistoryViewModelTests: XCTestCase {
         XCTAssertEqual(sut.historyList, [section1, section2, section3])
     }
 
-    func test_deleteSelectedPages_deletes_selected_pages() {
+    func test_deleteSelectedPages_removesSelectedPages() {
         let section1 = anySection()
         let section2 = anySection()
         let section3 = anySection()
@@ -66,7 +66,7 @@ class HistoryViewModelTests: XCTestCase {
         XCTAssertEqual(sut.historyList, [section3])
     }
 
-    func test_deleteAllPages_deletes_all_pages() {
+    func test_deleteAllPages_removesAllPages() {
         let section1 = anySection()
         let section2 = anySection()
         let section3 = anySection()
