@@ -20,7 +20,7 @@ struct WindowIPadOS: View {
                         WindowNavigationButtons(viewModel: windowViewModel)
                     }
                     ToolbarItem(placement: .principal) {
-                        AddressBarView(viewModel: windowViewModel)
+                        AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
                     }
                     if windowViewModel.canShowShareButton() {
                         ToolbarItem(placement: .navigationBarTrailing) {

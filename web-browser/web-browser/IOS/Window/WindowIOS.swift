@@ -9,7 +9,7 @@ struct WindowIOS: View {
 
     var body: some View {
         VStack {
-            AddressBarView(viewModel: windowViewModel)
+            AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
             webView
                 .frame(maxWidth:.infinity, maxHeight: .infinity)
             HStack {

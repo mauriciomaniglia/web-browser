@@ -14,7 +14,7 @@ struct WindowMacOS: View {
                 VStack {
                     HStack {
                         WindowNavigationButtons(viewModel: windowViewModel)
-                        AddressBarView(viewModel: windowViewModel)
+                        AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
                         if windowViewModel.canShowShareButton() {
                             ShareButton
                         }
@@ -45,7 +45,7 @@ struct WindowMacOS: View {
         AddBookmarkMacOS(
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
-            bookmarkName: windowViewModel.urlHost ?? "",
+            bookmarkName: windowViewModel.urlHost,
             bookmarkURL: windowViewModel.fullURL
         )
         .transition(.scale)

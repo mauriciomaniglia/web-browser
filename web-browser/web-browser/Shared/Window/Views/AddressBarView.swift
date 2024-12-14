@@ -2,6 +2,8 @@ import SwiftUI
 
 struct AddressBarView: View {
     @ObservedObject var viewModel: WindowViewModel
+    @State var searchText: String
+
     @State private var isShowingSheet = false
     @FocusState private var isTextFieldFocused: Bool
 
@@ -51,9 +53,9 @@ struct AddressBarView: View {
     }
 
     private var SearchTextField: some View {
-        TextField("Search or enter address", text: $viewModel.fullURL)
+        TextField("Search or enter address", text: $searchText)
             .textFieldStyle(.plain)
-            .onSubmit { viewModel.didStartSearch?(viewModel.fullURL) }
+            .onSubmit { viewModel.didStartSearch?(searchText) }
             .focused($isTextFieldFocused)
             .onChange(of: isTextFieldFocused) { _, isFocused in
                 if isFocused {
@@ -79,7 +81,7 @@ struct AddressBarView: View {
     }
 
     private var ClearButton: some View {
-        Button(action: { viewModel.fullURL = "" }) {
+        Button(action: { searchText = "" }) {
             Image(systemName: "xmark.circle")
         }
         .buttonStyle(PlainButtonStyle())

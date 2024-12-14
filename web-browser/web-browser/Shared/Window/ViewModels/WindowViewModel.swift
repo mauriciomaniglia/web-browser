@@ -25,7 +25,7 @@ class WindowViewModel: ObservableObject {
     @Published var showAddBookmark: Bool = false
     @Published var progressBarValue: Double? = nil
     @Published var title: String = ""
-    @Published var urlHost: String? = nil
+    @Published var urlHost: String = ""
     @Published var fullURL: String = ""
     @Published var isWebsiteProtected: Bool = true
     @Published var showSiteProtection: Bool = false
@@ -63,6 +63,6 @@ class WindowViewModel: ObservableObject {
     }
 
     func canShowShareButton() -> Bool {
-        !fullURL.isEmpty
+        !urlHost.isEmpty
     }
 }

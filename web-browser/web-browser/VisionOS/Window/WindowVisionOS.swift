@@ -28,7 +28,7 @@ struct WindowVisionOS: View {
                 }
                 Spacer(minLength: 20)
                 WindowNavigationButtons(viewModel: windowViewModel)
-                AddressBarView(viewModel: windowViewModel)
+                AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
                 if windowViewModel.canShowShareButton() {
                     ShareButton
                 }
