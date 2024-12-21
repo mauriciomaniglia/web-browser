@@ -61,7 +61,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
         XCTAssertNil(windowState!.fullURL)
-        XCTAssertEqual(windowState!.showCancelButton, showCancelButton())
+        XCTAssertTrue(windowState!.showCancelButton)
         XCTAssertTrue(windowState!.showClearButton)
         XCTAssertFalse(windowState!.showStopButton)
         XCTAssertFalse(windowState!.showReloadButton)
@@ -86,7 +86,7 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
         XCTAssertEqual(windowState!.fullURL, "http://some-url.com/some-random-path/123")
-        XCTAssertEqual(windowState!.showCancelButton, showCancelButton())
+        XCTAssertTrue(windowState!.showCancelButton)
         XCTAssertTrue(windowState!.showClearButton)
         XCTAssertFalse(windowState!.showStopButton)
         XCTAssertFalse(windowState!.showReloadButton)
@@ -396,16 +396,6 @@ class WindowPresenterTests: XCTestCase {
         let sut = WindowPresenter(isOnSafelist: safelistSpy.isRegisteredDomain(_:))
 
         return (sut, safelistSpy)
-    }
-
-    private func showCancelButton() -> Bool {
-        #if os(iOS)
-        true
-        #elseif os(macOS)
-        false
-        #elseif os(visionOS)
-        false
-        #endif
     }
 }
 

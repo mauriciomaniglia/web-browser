@@ -48,7 +48,7 @@ public class WindowPresenter {
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: showCancelButton(),
+            showCancelButton: true,
             showClearButton: true,
             showStopButton: false,
             showReloadButton: false,
@@ -218,15 +218,5 @@ public class WindowPresenter {
     private func mapWebPage(_ webPage: WindowPageModel) -> WindowPresentableModel.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
-    }
-
-    private func showCancelButton() -> Bool {
-        #if os(iOS)
-        true
-        #elseif os(macOS)
-        false
-        #elseif os(visionOS)
-        false
-        #endif
     }
 }

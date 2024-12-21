@@ -35,9 +35,11 @@ struct AddressBarView: View {
                 .frame(height: 40)
                 .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
 
+                #if os(iOS)
                 if viewModel.showCancelButton {
                     CancelButton
                 }
+                #endif
             }
             .padding(.horizontal)
 
