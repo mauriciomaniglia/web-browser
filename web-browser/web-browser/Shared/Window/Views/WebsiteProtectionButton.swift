@@ -12,12 +12,12 @@ struct WebsiteProtectionButton: View {
         .foregroundColor(.gray)
         .popover(isPresented: $isShowingSheet, content: {
             VStack(alignment: .leading) {
-                Text(viewModel.urlHost ?? "")
+                Text(viewModel.urlHost)
 
                 Toggle("Protection for this website", isOn: $viewModel.isWebsiteProtected)
                     .toggleStyle(SwitchToggleStyle())
                     .onChange(of: viewModel.isWebsiteProtected) { oldValue, newValue in
-                        viewModel.didUpdateSafelist?(viewModel.urlHost ?? "", oldValue)
+                        viewModel.didUpdateSafelist?(viewModel.urlHost, oldValue)
                     }
 
                 .presentationDetents([.large, .medium])
