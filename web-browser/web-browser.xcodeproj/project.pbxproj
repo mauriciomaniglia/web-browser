@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */; };
 		F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */; };
-		F91EFA852B71004D00500535 /* WindowVisionOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91EFA842B71004D00500535 /* WindowVisionOS.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
 		F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C52B70F5B500173702 /* Preview Assets.xcassets */; };
@@ -18,7 +17,6 @@
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
 		F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */; };
-		F92E5C302CD980A00019A9AE /* AddBookmarkVisionOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C2F2CD980A00019A9AE /* AddBookmarkVisionOS.swift */; };
 		F932F2022CE23A6A00B12B45 /* BookmarkAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F1FF2CE23A6A00B12B45 /* BookmarkAdapterTests.swift */; };
 		F932F2032CE23A6A00B12B45 /* BookmarkViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */; };
 		F932F20C2CE23A7800B12B45 /* BookmarkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2042CE23A7800B12B45 /* BookmarkAdapter.swift */; };
@@ -69,7 +67,6 @@
 		F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */; };
-		F9F2083D2C8CED1300C3B033 /* MenuVisionOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2083C2C8CED1300C3B033 /* MenuVisionOS.swift */; };
 		F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +83,6 @@
 /* Begin PBXFileReference section */
 		F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowIPad.swift; sourceTree = "<group>"; };
 		F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIPadOS.swift; sourceTree = "<group>"; };
-		F91EFA842B71004D00500535 /* WindowVisionOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowVisionOS.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
 		F92921C12B70F5B500173702 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +94,6 @@
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
 		F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkMacOS.swift; sourceTree = "<group>"; };
-		F92E5C2F2CD980A00019A9AE /* AddBookmarkVisionOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkVisionOS.swift; sourceTree = "<group>"; };
 		F932F1FF2CE23A6A00B12B45 /* BookmarkAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapterTests.swift; sourceTree = "<group>"; };
 		F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTests.swift; sourceTree = "<group>"; };
 		F932F2042CE23A7800B12B45 /* BookmarkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapter.swift; sourceTree = "<group>"; };
@@ -149,7 +144,6 @@
 		F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewAdapterTests.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIOS.swift; sourceTree = "<group>"; };
-		F9F2083C2C8CED1300C3B033 /* MenuVisionOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVisionOS.swift; sourceTree = "<group>"; };
 		F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,16 +192,6 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		F91EFA832B71002A00500535 /* VisionOS */ = {
-			isa = PBXGroup;
-			children = (
-				F92E5C2E2CD9807E0019A9AE /* Bookmark */,
-				F9F2083B2C8CED0100C3B033 /* Menu */,
-				F9E1477F2C0962360099CD98 /* Window */,
-			);
-			path = VisionOS;
-			sourceTree = "<group>";
-		};
 		F92921B12B70F5B300173702 = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +217,6 @@
 			children = (
 				F9C427332CDF87DC00C296E3 /* Assets */,
 				F92921EE2B70F9DD00173702 /* Shared */,
-				F91EFA832B71002A00500535 /* VisionOS */,
 				F92921E92B70F94C00173702 /* MacOS */,
 				F92921E82B70F94600173702 /* IOS */,
 				F916A1FC2CE8C36B00350089 /* IPadOS */,
@@ -296,14 +279,6 @@
 				F98BF0C62B750A2900C29BDA /* Window */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		F92E5C2E2CD9807E0019A9AE /* Bookmark */ = {
-			isa = PBXGroup;
-			children = (
-				F92E5C2F2CD980A00019A9AE /* AddBookmarkVisionOS.swift */,
-			);
-			path = Bookmark;
 			sourceTree = "<group>";
 		};
 		F932F2012CE23A6A00B12B45 /* Bookmark */ = {
@@ -551,14 +526,6 @@
 			path = Window;
 			sourceTree = "<group>";
 		};
-		F9E1477F2C0962360099CD98 /* Window */ = {
-			isa = PBXGroup;
-			children = (
-				F91EFA842B71004D00500535 /* WindowVisionOS.swift */,
-			);
-			path = Window;
-			sourceTree = "<group>";
-		};
 		F9E55D2E2C45E9FA008B7C64 /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,14 +584,6 @@
 			isa = PBXGroup;
 			children = (
 				F94A60F02C758C52001384CB /* MenuMacOS.swift */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		F9F2083B2C8CED0100C3B033 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				F9F2083C2C8CED1300C3B033 /* MenuVisionOS.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -754,7 +713,6 @@
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */,
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
-				F92E5C302CD980A00019A9AE /* AddBookmarkVisionOS.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,
 				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
 				F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */,
@@ -779,14 +737,12 @@
 				F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */,
 				F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */,
 				F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */,
-				F91EFA852B71004D00500535 /* WindowVisionOS.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F92921ED2B70F9A100173702 /* WindowIOS.swift in Sources */,
 				F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */,
 				F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
-				F9F2083D2C8CED1300C3B033 /* MenuVisionOS.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
@@ -972,11 +928,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.web-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1012,11 +968,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.web-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
