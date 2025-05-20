@@ -68,10 +68,6 @@ final class WindowComposer {
         return WindowMacOS(
             windowViewModel: windowViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
-        #elseif os(visionOS)
-        return WindowVisionOS(
-            windowViewModel: windowViewModel,
-            webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
         #endif
     }
 }
