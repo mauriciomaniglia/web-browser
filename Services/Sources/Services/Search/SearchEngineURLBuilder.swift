@@ -6,6 +6,11 @@ public final class SearchEngineURLBuilder {
         return buildURL(searchTemplate: searchTemplate, query: query)
     }
 
+    public static func buildAutocompleteURL(query: String) -> URL {
+        let searchTemplate = "https://www.google.com/complete/search?q={searchTerms}"
+        return buildURL(searchTemplate: searchTemplate, query: query)
+    }
+
     private static func buildURL(searchTemplate: String, query: String) -> URL {
         let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: .searchTermsAllowed)!
 
