@@ -1,10 +1,14 @@
 import Foundation
 
 public final class SearchEngineURLBuilder {
-    public static func buildURL(fromTerm query: String) -> URL {
+    public static func buildSearchURL(query: String) -> URL {
         let searchTemplate = "https://www.google.com/search?q={searchTerms}&ie=utf-8&oe=utf-8"
+        return buildURL(searchTemplate: searchTemplate, query: query)
+    }
+
+    private static func buildURL(searchTemplate: String, query: String) -> URL {
         let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: .searchTermsAllowed)!
-        
+
         let templateAllowedSet = NSMutableCharacterSet()
         templateAllowedSet.formUnion(with: .URLAllowed)
         templateAllowedSet.formUnion(with: CharacterSet(charactersIn: "{}"))

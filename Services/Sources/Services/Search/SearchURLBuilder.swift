@@ -6,7 +6,7 @@ public final class SearchURLBuilder {
         if let url = URIFixup.getURL(text) {
             return url
         } else {
-            return SearchEngineURLBuilder.buildURL(fromTerm: text)
+            return SearchEngineURLBuilder.buildSearchURL(query: text)
         }
     }
 }
