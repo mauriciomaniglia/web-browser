@@ -7,7 +7,7 @@ public final class SearchEngineURLBuilder {
     }
 
     public static func buildAutocompleteURL(query: String) -> URL {
-        let searchTemplate = "https://www.google.com/complete/search?q={searchTerms}"
+        let searchTemplate = "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
         return buildURL(searchTemplate: searchTemplate, query: query)
     }
 

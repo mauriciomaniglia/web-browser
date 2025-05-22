@@ -14,8 +14,8 @@ class SearchEngineURLBuilderTests: XCTestCase {
         let url1 = SearchEngineURLBuilder.buildAutocompleteURL(query: "computer")
         let url2 = SearchEngineURLBuilder.buildAutocompleteURL(query: "computer science")
 
-        XCTAssertEqual(url1.absoluteString, "https://www.google.com/complete/search?q=computer")
-        XCTAssertEqual(url2.absoluteString, "https://www.google.com/complete/search?q=computer%20science")
+        XCTAssertEqual(url1.absoluteString, "https://www.google.com/complete/search?client=firefox&q=computer")
+        XCTAssertEqual(url2.absoluteString, "https://www.google.com/complete/search?client=firefox&q=computer%20science")
     }
 }
 
