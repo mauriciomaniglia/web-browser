@@ -1,8 +1,41 @@
-//
-//  File.swift
-//  Services
-//
-//  Created by Mauricio Cesar on 21/05/25.
-//
-
 import Foundation
+
+final class SearchAutocompleteService {
+    private let urlSession = URLSession(configuration: .ephemeral)
+    private var task: URLSessionTask?
+    private lazy var invalidResponseError: NSError = {
+        NSError(
+            domain: "SearchSuggestClient",
+            code: 1,
+            userInfo: nil
+        )
+    }()
+
+    func query(_ url: URL, callback: @escaping (_ response: [String]?, _ error: NSError?) -> Void) {
+        task = urlSession.dataTask(with: url) { data, response, error in
+            guard let data = data,
+                  let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode)
+            else {
+                callback(nil, self.invalidResponseError)
+                return
+            }
+
+            let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+            let array = json as? [Any]
+
+            if array?.count ?? 0 < 2 {
+                callback(nil, self.invalidResponseError)
+                return
+            }
+
+            guard let suggestions = array?[1] as? [String] else {
+                callback(nil, self.invalidResponseError)
+                return
+            }
+
+            callback(suggestions, nil)
+        }
+        task?.resume()
+    }
+}
