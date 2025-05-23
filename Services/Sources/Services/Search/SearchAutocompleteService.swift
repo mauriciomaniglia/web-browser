@@ -22,14 +22,13 @@ final class SearchAutocompleteService {
             }
 
             let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-            let array = json as? [Any]
 
-            if array?.count ?? 0 < 2 {
+            guard let array = json as? [Any], array.count >= 2 else {
                 callback(nil, self.invalidResponseError)
                 return
             }
 
-            guard let suggestions = array?[1] as? [String] else {
+            guard let suggestions = array[1] as? [String] else {
                 callback(nil, self.invalidResponseError)
                 return
             }
