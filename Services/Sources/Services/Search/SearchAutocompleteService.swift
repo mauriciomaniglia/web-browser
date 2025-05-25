@@ -1,6 +1,8 @@
 import Foundation
 
 final class SearchAutocompleteService {
+    typealias SearchAutocompleteResponse = (_ response: [String]?, _ error: NSError?) -> Void
+
     private let urlSession = URLSession(configuration: .ephemeral)
     private var task: URLSessionTask?
     private lazy var invalidResponseError: NSError = {
@@ -11,7 +13,7 @@ final class SearchAutocompleteService {
         )
     }()
 
-    func query(_ url: URL, callback: @escaping (_ response: [String]?, _ error: NSError?) -> Void) {
+    func query(_ url: URL, callback: @escaping SearchAutocompleteResponse) {
         task = urlSession.dataTask(with: url) { data, response, error in
             guard let data = data,
                   let httpResponse = response as? HTTPURLResponse,
