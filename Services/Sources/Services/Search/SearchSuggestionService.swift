@@ -1,6 +1,10 @@
 import Foundation
 
-final class SearchSuggestionService {
+protocol SearchSuggestionServiceContract {
+    func query(_ url: URL, callback: @escaping SearchSuggestionService.SearchSuggestionResponse)
+}
+
+final class SearchSuggestionService: SearchSuggestionServiceContract {
     typealias SearchSuggestionResponse = (_ response: [String]?, _ error: NSError?) -> Void
 
     private let urlSession = URLSession(configuration: .ephemeral)
