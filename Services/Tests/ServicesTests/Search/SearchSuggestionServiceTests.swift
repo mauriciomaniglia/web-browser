@@ -2,96 +2,89 @@ import XCTest
 @testable import Services
 
 class SearchSuggestionServiceTests: XCTestCase {
-    func test_handleResponse_whenDataIsEmpty_returnsError() {
+    func test_handleResponse_whenDataIsEmpty_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
 
-        sut.handleResponse(data: nil, response: HTTPURLResponse(), error: nil, callback)
+        sut.handleResponse(data: nil, response: HTTPURLResponse(), callback)
 
-        XCTAssertNil(receivedResponse.suggestion)
-        XCTAssertEqual(receivedResponse.error, searchSuggestError())
+        XCTAssertNil(receivedSuggestions)
     }
 
-    func test_handleResponse_whenDataIsInvalidJSON_returnsError() {
+    func test_handleResponse_whenDataIsInvalidJSON_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
         let invalidJSONData = "".data(using: .utf8)!
 
-        sut.handleResponse(data: invalidJSONData, response: HTTPURLResponse(), error: nil, callback)
+        sut.handleResponse(data: invalidJSONData, response: HTTPURLResponse(), callback)
 
-        XCTAssertNil(receivedResponse.suggestion)
-        XCTAssertEqual(receivedResponse.error, searchSuggestError())
+        XCTAssertNil(receivedSuggestions)
     }
 
-    func test_handleResponse_whenJSONHasMissingQueryData_returnsError() {
+    func test_handleResponse_whenJSONHasMissingQueryData_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
 
-        sut.handleResponse(data: invalidSearchResponseMissingQueryData(), response: HTTPURLResponse(), error: nil, callback)
+        sut.handleResponse(data: invalidSearchResponseMissingQueryData(), response: HTTPURLResponse(), callback)
 
-        XCTAssertNil(receivedResponse.suggestion)
-        XCTAssertEqual(receivedResponse.error, searchSuggestError())
+        XCTAssertNil(receivedSuggestions)
     }
 
-    func test_handleResponse_whenJSONHasInvalidSearchSuggestionTypeData_returnsError() {
+    func test_handleResponse_whenJSONHasInvalidSearchSuggestionTypeData_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
 
-        sut.handleResponse(data: invalidSearchSuggestionsTypeData(), response: HTTPURLResponse(), error: nil, callback)
+        sut.handleResponse(data: invalidSearchSuggestionsTypeData(), response: HTTPURLResponse(), callback)
 
-        XCTAssertNil(receivedResponse.suggestion)
-        XCTAssertEqual(receivedResponse.error, searchSuggestError())
+        XCTAssertNil(receivedSuggestions)
     }
 
-    func test_handleResponse_whenIsNonHTTPResponse_returnsError() {
+    func test_handleResponse_whenIsNonHTTPResponse_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
 
-        sut.handleResponse(data: validData(), response: URLResponse(), error: nil, callback)
+        sut.handleResponse(data: validData(), response: URLResponse(), callback)
 
-        XCTAssertNil(receivedResponse.suggestion)
-        XCTAssertEqual(receivedResponse.error, searchSuggestError())
+        XCTAssertNil(receivedSuggestions)
     }
 
-    func test_handleResponse_whenHTTPResponseIsNot2xx_returnsError() {
+    func test_handleResponse_whenHTTPResponseIsNot2xx_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
 
-        sut.handleResponse(data: validData(), response: httpResponseWith500StatusCode(), error: nil, callback)
+        sut.handleResponse(data: validData(), response: httpResponseWith500StatusCode(), callback)
 
-        XCTAssertNil(receivedResponse.suggestion)
-        XCTAssertEqual(receivedResponse.error, searchSuggestError())
+        XCTAssertNil(receivedSuggestions)
     }
 
-    func test_handleResponse_whenResponseHasCorrectData_returnCorrectSuggestions() {
+    func test_handleResponse_whenResponseHasCorrectData_returnSuggestions() {
         let sut = SearchSuggestionService()
-        var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
-            receivedResponse = (suggestions, error)
+        var receivedSuggestions: [String]?
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
+            receivedSuggestions = suggestions
         }
 
-        sut.handleResponse(data: validData(), response: HTTPURLResponse(), error: nil, callback)
+        sut.handleResponse(data: validData(), response: HTTPURLResponse(), callback)
 
-        XCTAssertEqual(receivedResponse.suggestion, ["suggestion1", "suggestion2", "suggestion3"])
-        XCTAssertNil(receivedResponse.error)
+        XCTAssertEqual(receivedSuggestions, ["suggestion1", "suggestion2", "suggestion3"])
     }
 
     // MARK: - Helpers
@@ -101,10 +94,6 @@ class SearchSuggestionServiceTests: XCTestCase {
                                statusCode: 500,
                                httpVersion: nil,
                                headerFields: nil)!
-    }
-
-    private func searchSuggestError() -> NSError {
-        NSError(domain: "SearchSuggestClient", code: 1, userInfo: nil)
     }
 
     private func validData() -> Data {
