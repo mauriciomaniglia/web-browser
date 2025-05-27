@@ -1,7 +1,7 @@
 import Foundation
 
-final class SearchAutocompleteService {
-    typealias SearchAutocompleteResponse = (_ response: [String]?, _ error: NSError?) -> Void
+final class SearchSuggestionService {
+    typealias SearchSuggestionResponse = (_ response: [String]?, _ error: NSError?) -> Void
 
     private let urlSession = URLSession(configuration: .ephemeral)
     private var task: URLSessionTask?
@@ -13,14 +13,14 @@ final class SearchAutocompleteService {
         )
     }()
 
-    func query(_ url: URL, callback: @escaping SearchAutocompleteResponse) {
+    func query(_ url: URL, callback: @escaping SearchSuggestionResponse) {
         task = urlSession.dataTask(with: url) { [weak self] data, response, error in
             self?.handleResponse(data: data, response: response, error: error, callback)
         }
         task?.resume()
     }
 
-    func handleResponse(data: Data?, response: URLResponse?, error: (any Error)?, _ callback: @escaping SearchAutocompleteResponse) {
+    func handleResponse(data: Data?, response: URLResponse?, error: (any Error)?, _ callback: @escaping SearchSuggestionResponse) {
         guard let data = data,
               let httpResponse = response as? HTTPURLResponse,
               (200..<300).contains(httpResponse.statusCode)

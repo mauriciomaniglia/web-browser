@@ -1,11 +1,11 @@
 import XCTest
 @testable import Services
 
-class SearchAutocompleteServiceTests: XCTestCase {
+class SearchSuggestionServiceTests: XCTestCase {
     func test_handleResponse_whenDataIsEmpty_returnsError() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
 
@@ -16,9 +16,9 @@ class SearchAutocompleteServiceTests: XCTestCase {
     }
 
     func test_handleResponse_whenDataIsInvalidJSON_returnsError() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
         let invalidJSONData = "".data(using: .utf8)!
@@ -30,9 +30,9 @@ class SearchAutocompleteServiceTests: XCTestCase {
     }
 
     func test_handleResponse_whenJSONHasMissingQueryData_returnsError() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
 
@@ -43,9 +43,9 @@ class SearchAutocompleteServiceTests: XCTestCase {
     }
 
     func test_handleResponse_whenJSONHasInvalidSearchSuggestionTypeData_returnsError() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
 
@@ -56,9 +56,9 @@ class SearchAutocompleteServiceTests: XCTestCase {
     }
 
     func test_handleResponse_whenIsNonHTTPResponse_returnsError() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
 
@@ -69,9 +69,9 @@ class SearchAutocompleteServiceTests: XCTestCase {
     }
 
     func test_handleResponse_whenHTTPResponseIsNot2xx_returnsError() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
 
@@ -82,9 +82,9 @@ class SearchAutocompleteServiceTests: XCTestCase {
     }
 
     func test_handleResponse_whenResponseHasCorrectData_returnCorrectSuggestions() {
-        let sut = SearchAutocompleteService()
+        let sut = SearchSuggestionService()
         var receivedResponse: (suggestion: [String]?, error: NSError?)
-        let callback: SearchAutocompleteService.SearchAutocompleteResponse = { suggestions, error in
+        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions, error in
             receivedResponse = (suggestions, error)
         }
 
