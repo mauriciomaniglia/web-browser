@@ -25,7 +25,7 @@ public class HistoryMediator {
     }
 
     public func didSelectPage(_ urlString: String) {
-        let url = SearchURLBuilder.makeURL(from: urlString)
+        let url = SearchAPI.makeURL(from: urlString)
         webView.load(url)
     }
 

@@ -1,6 +1,6 @@
 import Foundation
 
-public final class SearchURLBuilder {
+public final class SearchAPI {
 
     public static func makeURL(from text: String) -> URL {
         if let url = URIFixup.getURL(text) {
