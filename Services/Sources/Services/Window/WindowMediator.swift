@@ -18,7 +18,7 @@ public final class WindowMediator {
     }
 
     public func didRequestSearch(_ text: String) {
-        let url = SearchAPI.makeURL(from: text)
+        let url = URLBuilderAPI.makeURL(from: text)
         webView.load(url)
     }
 

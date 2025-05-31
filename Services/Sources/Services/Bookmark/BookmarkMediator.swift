@@ -25,7 +25,7 @@ public class BookmarkMediator {
     }
 
     public func didSelectPage(_ urlString: String) {
-        let url = SearchAPI.makeURL(from: urlString)
+        let url = URLBuilderAPI.makeURL(from: urlString)
         webView.load(url)
     }
 
