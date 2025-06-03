@@ -5,8 +5,7 @@ import XCTest
 class SearchSuggestionAPITests: XCTestCase {
 
     func test_getSuggestion_whenThereIsNoSuggestion_deliversInputQuery() {
-        let service = MockSearchSuggestionService()
-        let sut = SearchSuggestionAPI(searchSuggestionService: service)
+        let (sut, service) = makeSUT()
         var receivedSuggestions: [String]?
 
         sut.getSuggestions(from: "apple") { suggestions in
@@ -18,8 +17,7 @@ class SearchSuggestionAPITests: XCTestCase {
     }
 
     func test_getSuggestion_whenThereIsSuggestion_deliversInputQueryAndSuggestions() {
-        let service = MockSearchSuggestionService()
-        let sut = SearchSuggestionAPI(searchSuggestionService: service)
+        let (sut, service) = makeSUT()
         var receivedSuggestions: [String]?
 
         sut.getSuggestions(from: "apple") { suggestions in
@@ -28,6 +26,22 @@ class SearchSuggestionAPITests: XCTestCase {
         service.simulateResponseWithSuggestions(["apple watch", "apple tv", "apple music"])
 
         XCTAssertEqual(receivedSuggestions, ["apple", "apple watch", "apple tv", "apple music"])
+    }
+
+    // MARK: - Helpers
+
+    private func makeSUT() -> (SearchSuggestionAPI, MockSearchSuggestionService) {
+        let searchSuggestionService = MockSearchSuggestionService()
+        let bookmarkStore = BookmarkStoreMock()
+        let historyStore = HistoryStoreMock()
+
+        let sut = SearchSuggestionAPI(
+            searchSuggestionService: searchSuggestionService,
+            bookmarkStore: bookmarkStore,
+            historyStore: historyStore
+        )
+
+        return (sut, searchSuggestionService)
     }
 }
 
