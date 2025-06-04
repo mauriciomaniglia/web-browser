@@ -25,23 +25,23 @@ class WindowFacadeTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didStartEditing_sendsCorrectMessages() {
+    func test_didStartTyping_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 
-        sut.didStartEditing()
+        sut.didStartTyping()
 
-        XCTAssertEqual(presenter.receivedMessages, [.didStartEditing])
+        XCTAssertEqual(presenter.receivedMessages, [.didStartTyping])
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didEndEditing_sendsCorrectMessages() {
+    func test_didEndTyping_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 
-        sut.didEndEditing()
+        sut.didEndTyping()
 
-        XCTAssertEqual(presenter.receivedMessages, [.didEndEditing])
+        XCTAssertEqual(presenter.receivedMessages, [.didEndTyping])
         XCTAssertEqual(webView.receivedMessages, [])
         XCTAssertEqual(safelist.receivedMessages, [])
         XCTAssertEqual(history.receivedMessages, [])

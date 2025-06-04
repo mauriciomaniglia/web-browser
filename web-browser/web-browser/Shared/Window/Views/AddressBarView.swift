@@ -61,9 +61,9 @@ struct AddressBarView: View {
             .focused($isTextFieldFocused)
             .onChange(of: isTextFieldFocused) { _, isFocused in
                 if isFocused {
-                    viewModel.didBeginEditing?()
+                    viewModel.didStartTyping?()
                 } else {
-                    viewModel.didEndEditing?()
+                    viewModel.didEndTyping?()
                 }
             }
     }

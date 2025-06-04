@@ -51,12 +51,12 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.forwardList)
     }
 
-    func test_didStartEditing_deliversCorrectWindowState() {
+    func test_didStartTyping_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didStartEditing()
+        sut.didStartTyping()
 
         XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
@@ -81,7 +81,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
-        sut.didStartEditing()
+        sut.didStartTyping()
 
         XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
@@ -105,7 +105,7 @@ class WindowPresenterTests: XCTestCase {
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didEndEditing()
+        sut.didEndTyping()
 
         XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
@@ -130,7 +130,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
-        sut.didEndEditing()
+        sut.didEndTyping()
 
         XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")

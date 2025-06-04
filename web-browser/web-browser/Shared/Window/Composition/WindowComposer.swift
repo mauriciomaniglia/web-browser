@@ -36,13 +36,13 @@ final class WindowComposer {
 
         windowViewModel.didTapBackButton = windowFacade.didTapBackButton
         windowViewModel.didTapForwardButton = windowFacade.didTapForwardButton
-        windowViewModel.didTapCancelButton = windowFacade.didEndEditing
+        windowViewModel.didTapCancelButton = windowFacade.didEndTyping
         windowViewModel.didReload = windowFacade.didReload
         windowViewModel.didStopLoading = windowFacade.didStopLoading
         windowViewModel.didStartSearch = windowFacade.didRequestSearch
         windowViewModel.didUpdateSafelist = windowFacade.updateSafelist(url:isEnabled:)
-        windowViewModel.didBeginEditing = windowFacade.didStartEditing
-        windowViewModel.didEndEditing = windowFacade.didEndEditing
+        windowViewModel.didStartTyping = windowFacade.didStartTyping
+        windowViewModel.didEndTyping = windowFacade.didEndTyping
         windowViewModel.didLongPressBackButton = windowFacade.didLongPressBackButton
         windowViewModel.didLongPressForwardButton = windowFacade.didLongPressForwardButton
         windowViewModel.didSelectBackListPage = windowFacade.didSelectBackListPage(at:)

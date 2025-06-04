@@ -26,12 +26,12 @@ public final class WindowMediator {
         webView.reload()
     }
 
-    public func didStartEditing() {
-        presenter.didStartEditing()
+    public func didStartTyping() {
+        presenter.didStartTyping()
     }
 
-    public func didEndEditing() {
-        presenter.didEndEditing()
+    public func didEndTyping() {
+        presenter.didEndTyping()
     }
 
     public func didStopLoading() {

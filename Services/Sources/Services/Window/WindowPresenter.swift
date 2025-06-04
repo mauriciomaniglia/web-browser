@@ -43,7 +43,7 @@ public class WindowPresenter {
             forwardList: nil))
     }
 
-    public func didStartEditing() {
+    public func didStartTyping() {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
@@ -64,7 +64,7 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
-    public func didEndEditing() {
+    public func didEndTyping() {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
