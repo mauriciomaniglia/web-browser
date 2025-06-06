@@ -1,10 +1,6 @@
 import Foundation
 
-protocol SearchSuggestionAPIContract {
-    func getSuggestions(from text: String, callback: @escaping ([String]) -> Void)
-}
-
-public final class SearchSuggestionAPI: SearchSuggestionAPIContract {
+public final class SearchSuggestionAPI {
     let searchSuggestionService: SearchSuggestionServiceContract
     let bookmarkStore: BookmarkStoreAPI
     let historyStore: HistoryStoreAPI
