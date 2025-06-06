@@ -2,7 +2,7 @@ import Foundation
 import XCTest
 @testable import Services
 
-class SearchSuggestionAPITests: XCTestCase {
+class SearchSuggestionMediatorTests: XCTestCase {
 
     func test_getSuggestion_whenThereIsNoSuggestion_deliversInputQuery() {
         let (sut, service) = makeSUT()
@@ -30,12 +30,12 @@ class SearchSuggestionAPITests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (SearchSuggestionAPI, MockSearchSuggestionService) {
+    private func makeSUT() -> (SearchSuggestionMediator, MockSearchSuggestionService) {
         let searchSuggestionService = MockSearchSuggestionService()
         let bookmarkStore = BookmarkStoreMock()
         let historyStore = HistoryStoreMock()
 
-        let sut = SearchSuggestionAPI(
+        let sut = SearchSuggestionMediator(
             searchSuggestionService: searchSuggestionService,
             bookmarkStore: bookmarkStore,
             historyStore: historyStore

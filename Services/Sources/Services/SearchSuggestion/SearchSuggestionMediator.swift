@@ -1,6 +1,6 @@
 import Foundation
 
-public final class SearchSuggestionAPI {
+public final class SearchSuggestionMediator {
     let searchSuggestionService: SearchSuggestionServiceContract
     let bookmarkStore: BookmarkStoreAPI
     let historyStore: HistoryStoreAPI
