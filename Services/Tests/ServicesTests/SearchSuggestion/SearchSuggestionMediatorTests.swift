@@ -5,21 +5,37 @@ import XCTest
 class SearchSuggestionMediatorTests: XCTestCase {
 
     func test_getSuggestion_whenThereIsNoSuggestion_deliversInputQuery() {
-        let (sut, service, _, _, presenter) = makeSUT()
+        let (sut, service, bookmarkStore, historyStore, presenter) = makeSUT()
+        let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
+        let history = HistoryPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
+        bookmarkStore.mockBookmarks = [bookmark]
+        historyStore.mockWebPages = [history]
 
         sut.getSuggestions(from: "apple")
         service.simulateResponseWithNoSuggestions()
 
-        XCTAssertEqual(presenter.receivedMessages, [.didLoad(searchSuggestions: ["apple"])])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoad(
+            searchSuggestions: ["apple"],
+            historyModels: [history],
+            bookmarkModels: [bookmark]
+        )])
     }
 
     func test_getSuggestion_whenThereIsSuggestion_deliversInputQueryAndSuggestions() {
-        let (sut, service, _, _, presenter) = makeSUT()
+        let (sut, service, bookmarkStore, historyStore, presenter) = makeSUT()
+        let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
+        let history = HistoryPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
+        bookmarkStore.mockBookmarks = [bookmark]
+        historyStore.mockWebPages = [history]
 
         sut.getSuggestions(from: "apple")
         service.simulateResponseWithSuggestions(["apple watch", "apple tv", "apple music"])
 
-        XCTAssertEqual(presenter.receivedMessages, [.didLoad(searchSuggestions: ["apple", "apple watch", "apple tv", "apple music"])])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoad(
+            searchSuggestions: ["apple", "apple watch", "apple tv", "apple music"],
+            historyModels: [history],
+            bookmarkModels: [bookmark]
+        )])
     }
 
     // MARK: - Helpers
@@ -59,12 +75,20 @@ private class MockSearchSuggestionService: SearchSuggestionServiceContract {
 
 private class SearchSuggestionPresenterMock: SearchSuggestionPresenter {
     enum Message: Equatable {
-        case didLoad(searchSuggestions: [String])
+        case didLoad(
+            searchSuggestions: [String],
+            historyModels: [HistoryPageModel],
+            bookmarkModels: [BookmarkModel]
+        )
     }
 
     var receivedMessages: [Message] = []
 
     override func didLoad(searchSuggestions: [String], historyModels: [HistoryPageModel], bookmarkModels: [BookmarkModel]) {
-        receivedMessages.append(.didLoad(searchSuggestions: searchSuggestions))
+        receivedMessages.append(.didLoad(
+            searchSuggestions: searchSuggestions,
+            historyModels: historyModels,
+            bookmarkModels: bookmarkModels
+        ))
     }
 }
