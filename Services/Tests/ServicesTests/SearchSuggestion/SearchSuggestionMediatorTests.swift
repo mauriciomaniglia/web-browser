@@ -5,43 +5,39 @@ import XCTest
 class SearchSuggestionMediatorTests: XCTestCase {
 
     func test_getSuggestion_whenThereIsNoSuggestion_deliversInputQuery() {
-        let (sut, service) = makeSUT()
-        var receivedSuggestions: [String]?
+        let (sut, service, _, _, presenter) = makeSUT()
 
-        sut.getSuggestions(from: "apple") { suggestions in
-            receivedSuggestions = suggestions
-        }
+        sut.getSuggestions(from: "apple")
         service.simulateResponseWithNoSuggestions()
 
-        XCTAssertEqual(receivedSuggestions, ["apple"])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoad(searchSuggestions: ["apple"])])
     }
 
     func test_getSuggestion_whenThereIsSuggestion_deliversInputQueryAndSuggestions() {
-        let (sut, service) = makeSUT()
-        var receivedSuggestions: [String]?
+        let (sut, service, _, _, presenter) = makeSUT()
 
-        sut.getSuggestions(from: "apple") { suggestions in
-            receivedSuggestions = suggestions
-        }
+        sut.getSuggestions(from: "apple")
         service.simulateResponseWithSuggestions(["apple watch", "apple tv", "apple music"])
 
-        XCTAssertEqual(receivedSuggestions, ["apple", "apple watch", "apple tv", "apple music"])
+        XCTAssertEqual(presenter.receivedMessages, [.didLoad(searchSuggestions: ["apple", "apple watch", "apple tv", "apple music"])])
     }
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (SearchSuggestionMediator, MockSearchSuggestionService) {
+    private func makeSUT() -> (SearchSuggestionMediator, MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock, SearchSuggestionPresenterMock) {
         let searchSuggestionService = MockSearchSuggestionService()
         let bookmarkStore = BookmarkStoreMock()
         let historyStore = HistoryStoreMock()
+        let presenter = SearchSuggestionPresenterMock()
 
         let sut = SearchSuggestionMediator(
             searchSuggestionService: searchSuggestionService,
             bookmarkStore: bookmarkStore,
-            historyStore: historyStore
+            historyStore: historyStore,
+            presenter: presenter
         )
 
-        return (sut, searchSuggestionService)
+        return (sut, searchSuggestionService, bookmarkStore, historyStore, presenter)
     }
 }
 
@@ -58,5 +54,17 @@ private class MockSearchSuggestionService: SearchSuggestionServiceContract {
 
     func simulateResponseWithSuggestions(_ suggestions: [String]) {
         receivedCallback?(suggestions)
+    }
+}
+
+private class SearchSuggestionPresenterMock: SearchSuggestionPresenter {
+    enum Message: Equatable {
+        case didLoad(searchSuggestions: [String])
+    }
+
+    var receivedMessages: [Message] = []
+
+    override func didLoad(searchSuggestions: [String], historyModels: [HistoryPageModel], bookmarkModels: [BookmarkModel]) {
+        receivedMessages.append(.didLoad(searchSuggestions: searchSuggestions))
     }
 }
