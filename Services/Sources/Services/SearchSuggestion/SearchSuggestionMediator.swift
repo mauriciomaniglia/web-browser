@@ -6,7 +6,7 @@ public final class SearchSuggestionMediator {
     let historyStore: HistoryStoreAPI
     let presenter: SearchSuggestionPresenter
 
-    init(
+    public init(
         searchSuggestionService: SearchSuggestionServiceContract,
         bookmarkStore: BookmarkStoreAPI,
         historyStore: HistoryStoreAPI,
