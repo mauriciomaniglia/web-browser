@@ -1,16 +1,18 @@
 import Foundation
 
-protocol SearchSuggestionServiceContract {
+public protocol SearchSuggestionServiceContract {
     func query(_ url: URL, callback: @escaping SearchSuggestionService.SearchSuggestionResponse)
 }
 
-final class SearchSuggestionService: SearchSuggestionServiceContract {
-    typealias SearchSuggestionResponse = (_ suggestions: [String]?) -> Void
+public final class SearchSuggestionService: SearchSuggestionServiceContract {
+    public typealias SearchSuggestionResponse = (_ suggestions: [String]?) -> Void
 
     private let urlSession = URLSession(configuration: .ephemeral)
     private var task: URLSessionTask?
 
-    func query(_ url: URL, callback: @escaping SearchSuggestionResponse) {
+    public init() {}
+
+    public func query(_ url: URL, callback: @escaping SearchSuggestionResponse) {
         task = urlSession.dataTask(with: url) { [weak self] data, response, error in
             self?.handleResponse(data: data, response: response, callback)
         }
