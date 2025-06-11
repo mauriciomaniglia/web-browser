@@ -29,6 +29,7 @@
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
 		F947B91E2CF613430026E4E7 /* HistoryStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */; };
 		F947B9202CF613AD0026E4E7 /* SafelistStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91F2CF613AD0026E4E7 /* SafelistStoreSpy.swift */; };
+		F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
 		F94A60F12C758C52001384CB /* MenuMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MenuMacOS.swift */; };
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */; };
@@ -106,6 +107,7 @@
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
 		F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreSpy.swift; sourceTree = "<group>"; };
 		F947B91F2CF613AD0026E4E7 /* SafelistStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafelistStoreSpy.swift; sourceTree = "<group>"; };
+		F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionComposer.swift; sourceTree = "<group>"; };
 		F94A60F02C758C52001384CB /* MenuMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMacOS.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		F92921EE2B70F9DD00173702 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F949B5482DFA2F47006CC1F4 /* SearchSuggestion */,
 				F987B3AE2CFDDAC500474A1E /* WebEngine */,
 				F932F20B2CE23A7800B12B45 /* Bookmark */,
 				F98BF0C92B750A7F00C29BDA /* Helpers */,
@@ -341,6 +344,14 @@
 				F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		F949B5482DFA2F47006CC1F4 /* SearchSuggestion */ = {
+			isa = PBXGroup;
+			children = (
+				F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */,
+			);
+			path = SearchSuggestion;
 			sourceTree = "<group>";
 		};
 		F94FD3E82C46817A001EDF1D /* Composition */ = {
@@ -740,6 +751,7 @@
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F92921ED2B70F9A100173702 /* WindowIOS.swift in Sources */,
 				F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */,
+				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
 				F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
