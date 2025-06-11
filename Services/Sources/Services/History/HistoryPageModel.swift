@@ -1,6 +1,6 @@
 import Foundation
 
-public struct HistoryPageModel {
+public struct HistoryPageModel: Equatable {
     public let id: UUID
     public let title: String?
     public let url: URL

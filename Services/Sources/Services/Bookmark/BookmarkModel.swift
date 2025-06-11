@@ -1,6 +1,6 @@
 import Foundation
 
-public struct BookmarkModel {
+public struct BookmarkModel: Equatable {
     public let id: UUID
     public let title: String?
     public let url: URL
