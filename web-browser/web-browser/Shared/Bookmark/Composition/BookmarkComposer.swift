@@ -8,17 +8,17 @@ class BookmarkComposer {
         let bookmarkStore = BookmarkSwiftDataStore(container: container)
         let presenter = BookmarkPresenter()
         let adapter = BookmarkAdapter(webView: webView, viewModel: viewModel)
-        let facade = BookmarkMediator(
+        let mediator = BookmarkMediator(
             presenter: presenter,
             webView: webView,
             bookmarkStore: bookmarkStore
         )
 
-        viewModel.didTapAddBookmark = facade.didTapSavePage
-        viewModel.didSelectPage = facade.didSelectPage(_:)
-        viewModel.didOpenBookmarkView = facade.didOpenBookmarkView
-        viewModel.didSearchTerm = facade.didSearchTerm(_:)
-        viewModel.didTapDeletePages = facade.didTapDeletePages
+        viewModel.didTapAddBookmark = mediator.didTapSavePage
+        viewModel.didSelectPage = mediator.didSelectPage(_:)
+        viewModel.didOpenBookmarkView = mediator.didOpenBookmarkView
+        viewModel.didSearchTerm = mediator.didSearchTerm(_:)
+        viewModel.didTapDeletePages = mediator.didTapDeletePages
         presenter.didUpdatePresentableModels = adapter.updateViewModel
 
         return viewModel
