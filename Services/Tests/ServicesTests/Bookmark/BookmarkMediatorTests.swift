@@ -1,7 +1,7 @@
 import XCTest
 @testable import Services
 
-class BookmarkFacadeTests: XCTestCase {
+class BookmarkMediatorTests: XCTestCase {
 
     func test_didOpenBookmarkView_sendsCorrectMessage() {
         let (sut, presenter,webView, bookmarkStore) = makeSUT()
