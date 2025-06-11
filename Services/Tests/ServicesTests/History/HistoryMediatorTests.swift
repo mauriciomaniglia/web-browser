@@ -1,7 +1,7 @@
 import XCTest
 import Services
 
-class HistoryFacadeTests: XCTestCase {
+class HistoryMediatorTests: XCTestCase {
 
     func test_didOpenHistoryView_sendsCorrectMessage() {
         let (sut, presenter,webView, history) = makeSUT()
