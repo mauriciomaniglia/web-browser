@@ -62,6 +62,9 @@ struct AddressBarView: View {
             .onChange(of: isTextFieldFocused) { _, isFocused in
                 viewModel.didChangeFocus?(isFocused)
             }
+            .onChange(of: searchText) { _, newText in
+                viewModel.didStartTyping?(newText)
+            }
     }
 
     private var StopButton: some View {

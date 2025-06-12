@@ -46,6 +46,7 @@ class WindowViewModel: ObservableObject {
     var didStartSearch: ((String) -> Void)?
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didChangeFocus: ((Bool) -> Void)?
+    var didStartTyping: ((String) -> Void)?
 
     func didTapAddBookmark() {
         showAddBookmark = true

@@ -21,6 +21,7 @@ final class WindowComposer {
         let historyStore = HistorySwiftDataStore(container: container)
         let adapter = WindowViewAdapter(webView: webKitEngineWrapper, viewModel: windowViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
+        let searchSuggestionMediator = SearchSuggestionComposer().makeSearchSuggestion(container: container)
         let mediator = WindowMediator(
             webView: webKitEngineWrapper,
             presenter: presenter,
@@ -37,6 +38,7 @@ final class WindowComposer {
         windowViewModel.didStartSearch = mediator.didRequestSearch
         windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
         windowViewModel.didChangeFocus = mediator.didChangeFocus
+        windowViewModel.didStartTyping = searchSuggestionMediator.didStartTyping(query:)
         windowViewModel.didLongPressBackButton = mediator.didLongPressBackButton
         windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
         windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
