@@ -18,15 +18,14 @@ public final class SearchSuggestionMediator {
         self.presenter = presenter
     }
 
-    public func getSuggestions(from text: String) {
-        let url = SearchEngineURLBuilder.buildAutocompleteURL(query: text)
+    public func didStartTyping(query: String) {
+        let queryURL = SearchEngineURLBuilder.buildAutocompleteURL(query: query)
+        let bookmarkModels = bookmarkStore.getPages(by: query)
+        let historyPageModels = historyStore.getPages(by: query)
 
-        let bookmarkModels = bookmarkStore.getPages(by: text)
-        let historyPageModels = historyStore.getPages(by: text)
-
-        searchSuggestionService.query(url) { [weak self] suggestions in
+        searchSuggestionService.query(queryURL) { [weak self] suggestions in
             if var suggestions {
-                suggestions.insert(text, at: 0)
+                suggestions.insert(query, at: 0)
                 self?.presenter.didLoad(
                     searchSuggestions: suggestions,
                     historyModels: historyPageModels,
@@ -34,7 +33,7 @@ public final class SearchSuggestionMediator {
                 )
             } else {
                 self?.presenter.didLoad(
-                    searchSuggestions: [text],
+                    searchSuggestions: [query],
                     historyModels: historyPageModels,
                     bookmarkModels: bookmarkModels
                 )
