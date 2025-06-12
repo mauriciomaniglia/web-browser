@@ -6,7 +6,7 @@ class WindowViewAdapterTests: XCTestCase {
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
         let viewModel = WindowViewModel(historyViewModel: HistoryViewModel(), bookmarkViewModel: BookmarkViewModel())
-        let sut = WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel, bookmarkViewModel: BookmarkViewModel())
+        let sut = WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel)
 
         let model = WindowPresentableModel(
             title: "Apple Airpods",

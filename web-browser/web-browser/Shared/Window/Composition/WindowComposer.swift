@@ -19,11 +19,7 @@ final class WindowComposer {
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
         let historyStore = HistorySwiftDataStore(container: container)
-        let adapter = WindowViewAdapter(
-            webView: webKitEngineWrapper,
-            viewModel: windowViewModel,
-            bookmarkViewModel: bookmarkViewModel
-        )
+        let adapter = WindowViewAdapter(webView: webKitEngineWrapper, viewModel: windowViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         let mediator = WindowMediator(
             webView: webKitEngineWrapper,
