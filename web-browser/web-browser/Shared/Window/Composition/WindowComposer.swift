@@ -36,13 +36,11 @@ final class WindowComposer {
 
         windowViewModel.didTapBackButton = mediator.didTapBackButton
         windowViewModel.didTapForwardButton = mediator.didTapForwardButton
-        windowViewModel.didTapCancelButton = mediator.didEndTyping
         windowViewModel.didReload = mediator.didReload
         windowViewModel.didStopLoading = mediator.didStopLoading
         windowViewModel.didStartSearch = mediator.didRequestSearch
         windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
-        windowViewModel.didStartTyping = mediator.didStartTyping
-        windowViewModel.didEndTyping = mediator.didEndTyping
+        windowViewModel.didChangeFocus = mediator.didChangeFocus
         windowViewModel.didLongPressBackButton = mediator.didLongPressBackButton
         windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
         windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)

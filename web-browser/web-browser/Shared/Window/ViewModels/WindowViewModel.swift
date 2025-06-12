@@ -41,13 +41,11 @@ class WindowViewModel: ObservableObject {
     var didSelectBackListPage: ((Int) -> Void)?
     var didSelectForwardListPage: ((Int) -> Void)?
     var didDismissBackForwardPageList: (() -> Void)?
-    var didTapCancelButton: (() -> Void)?
     var didReload: (() -> Void)?
     var didStopLoading: (() -> Void)?
     var didStartSearch: ((String) -> Void)?
     var didUpdateSafelist: ((String, Bool) -> Void)?
-    var didStartTyping: (() -> Void)?
-    var didEndTyping: (() -> Void)?
+    var didChangeFocus: ((Bool) -> Void)?
 
     func didTapAddBookmark() {
         showAddBookmark = true

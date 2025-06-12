@@ -25,10 +25,10 @@ class WindowFacadeTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didStartTyping_sendsCorrectMessages() {
+    func test_didChangeFocus_whenIsFocus_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 
-        sut.didStartTyping()
+        sut.didChangeFocus(true)
 
         XCTAssertEqual(presenter.receivedMessages, [.didStartTyping])
         XCTAssertEqual(webView.receivedMessages, [])
@@ -36,10 +36,10 @@ class WindowFacadeTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didEndTyping_sendsCorrectMessages() {
+    func test_didChangeFocus_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 
-        sut.didEndTyping()
+        sut.didChangeFocus(false)
 
         XCTAssertEqual(presenter.receivedMessages, [.didEndTyping])
         XCTAssertEqual(webView.receivedMessages, [])
