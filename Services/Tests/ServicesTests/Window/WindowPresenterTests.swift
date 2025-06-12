@@ -51,12 +51,12 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.forwardList)
     }
 
-    func test_didStartTyping_deliversCorrectWindowState() {
+    func test_didChangeFocus_whenIsFocused_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didStartTyping()
+        sut.didChangeFocus(isFocused: true)
 
         XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
@@ -75,13 +75,13 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.forwardList)
     }
 
-    func test_didStartEditing_withPageAlreadyLoaded_deliversCorrectWindowState() {
+    func test_didChangeFocus_whenIsFocusedWithPageLoaded_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
-
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
-        sut.didStartTyping()
+
+        sut.didChangeFocus(isFocused: true)
 
         XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")
@@ -100,12 +100,12 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.forwardList)
     }
 
-    func test_didEndEditing_deliversCorrectWindowState() {
+    func test_didChangeFocus_whenIsNotFocused_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
-        sut.didEndTyping()
+        sut.didChangeFocus(isFocused: false)
 
         XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
@@ -124,13 +124,13 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.forwardList)
     }
 
-    func test_didEndEditing_withPageAlreadyLoaded_deliversCorrectWindowState() {
+    func test_didChangeFocus_whenIsNotFocusedWithPageALoaded_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
         sut.didUpdatePresentableModel = { windowState = $0 }
-
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
-        sut.didEndTyping()
+
+        sut.didChangeFocus(isFocused: false)
 
         XCTAssertEqual(windowState!.title, "Some title")
         XCTAssertEqual(windowState!.urlHost, "some-url.com")

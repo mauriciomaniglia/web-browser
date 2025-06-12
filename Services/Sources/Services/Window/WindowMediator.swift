@@ -27,11 +27,7 @@ public final class WindowMediator {
     }
 
     public func didChangeFocus(_ isFocused: Bool) {
-        if isFocused {
-            presenter.didStartTyping()
-        } else {
-            presenter.didEndTyping()
-        }
+        presenter.didChangeFocus(isFocused: isFocused)
     }
 
     public func didStopLoading() {

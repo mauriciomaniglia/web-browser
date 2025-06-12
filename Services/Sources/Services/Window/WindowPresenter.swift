@@ -2,10 +2,10 @@ import Foundation
 
 public class WindowPresenter {
     public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
-
+    
     private var model: WindowPresentableModel
     private let isOnSafelist: (String) -> Bool
-
+    
     public init(isOnSafelist: @escaping (String) -> Bool) {
         model = WindowPresentableModel(
             title: nil,
@@ -24,7 +24,7 @@ public class WindowPresenter {
             forwardList: nil)
         self.isOnSafelist = isOnSafelist
     }
-
+    
     public func didStartNewWindow() {
         didUpdatePresentableModel?(.init(
             title: nil,
@@ -43,36 +43,15 @@ public class WindowPresenter {
             forwardList: nil))
     }
 
-    public func didStartTyping() {
+    public func didChangeFocus(isFocused: Bool) {
         let newModel = WindowPresentableModel(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: true,
-            showClearButton: true,
-            showStopButton: false,
-            showReloadButton: false,
-            showSiteProtection: model.showSiteProtection,
-            isWebsiteProtected: model.isWebsiteProtected,
-            showWebView: model.showWebView,
-            canGoBack: model.canGoBack,
-            canGoForward: model.canGoForward,
-            backList: nil,
-            forwardList: nil)
-
-        model = newModel
-        didUpdatePresentableModel?(newModel)
-    }
-
-    public func didEndTyping() {
-        let newModel = WindowPresentableModel(
-            title: model.title,
-            urlHost: model.urlHost,
-            fullURL: model.fullURL,
-            showCancelButton: false,
-            showClearButton: false,
-            showStopButton: model.showStopButton,
-            showReloadButton: model.showReloadButton, 
+            showCancelButton: isFocused,
+            showClearButton: isFocused,
+            showStopButton: isFocused ? false : model.showStopButton,
+            showReloadButton: isFocused ? false : model.showReloadButton,
             showSiteProtection: model.showSiteProtection,
             isWebsiteProtected: model.isWebsiteProtected,
             showWebView: model.showWebView,
