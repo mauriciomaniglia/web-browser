@@ -16,43 +16,43 @@ final class WindowComposer {
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper, container: container)
         let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper, container: container)
         let safelistStore = SafelistStore()
-        let windowPresenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
+        let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
         let historyStore = HistorySwiftDataStore(container: container)
-        let windowAdapter = WindowViewAdapter(
+        let adapter = WindowViewAdapter(
             webView: webKitEngineWrapper,
             viewModel: windowViewModel,
             bookmarkViewModel: bookmarkViewModel
         )
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
-        let windowFacade = WindowMediator(
+        let mediator = WindowMediator(
             webView: webKitEngineWrapper,
-            presenter: windowPresenter,
+            presenter: presenter,
             safelistStore: safelistStore,
             historyStore: historyStore
         )
 
         contentBlocking.setupStrictProtection()
 
-        windowViewModel.didTapBackButton = windowFacade.didTapBackButton
-        windowViewModel.didTapForwardButton = windowFacade.didTapForwardButton
-        windowViewModel.didTapCancelButton = windowFacade.didEndTyping
-        windowViewModel.didReload = windowFacade.didReload
-        windowViewModel.didStopLoading = windowFacade.didStopLoading
-        windowViewModel.didStartSearch = windowFacade.didRequestSearch
-        windowViewModel.didUpdateSafelist = windowFacade.updateSafelist(url:isEnabled:)
-        windowViewModel.didStartTyping = windowFacade.didStartTyping
-        windowViewModel.didEndTyping = windowFacade.didEndTyping
-        windowViewModel.didLongPressBackButton = windowFacade.didLongPressBackButton
-        windowViewModel.didLongPressForwardButton = windowFacade.didLongPressForwardButton
-        windowViewModel.didSelectBackListPage = windowFacade.didSelectBackListPage(at:)
-        windowViewModel.didSelectForwardListPage = windowFacade.didSelectForwardListPage(at:)
-        windowViewModel.didDismissBackForwardPageList = windowFacade.didDismissBackForwardList
+        windowViewModel.didTapBackButton = mediator.didTapBackButton
+        windowViewModel.didTapForwardButton = mediator.didTapForwardButton
+        windowViewModel.didTapCancelButton = mediator.didEndTyping
+        windowViewModel.didReload = mediator.didReload
+        windowViewModel.didStopLoading = mediator.didStopLoading
+        windowViewModel.didStartSearch = mediator.didRequestSearch
+        windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
+        windowViewModel.didStartTyping = mediator.didStartTyping
+        windowViewModel.didEndTyping = mediator.didEndTyping
+        windowViewModel.didLongPressBackButton = mediator.didLongPressBackButton
+        windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
+        windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
+        windowViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
+        windowViewModel.didDismissBackForwardPageList = mediator.didDismissBackForwardList
 
         commandMenuViewModel.didTapAddBookmark = windowViewModel.didTapAddBookmark
 
-        webKitEngineWrapper.delegate = windowFacade
-        windowPresenter.didUpdatePresentableModel = windowAdapter.updateViewModel
+        webKitEngineWrapper.delegate = mediator
+        presenter.didUpdatePresentableModel = adapter.updateViewModel
 
         #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
