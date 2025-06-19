@@ -14,7 +14,14 @@ struct WindowMacOS: View {
                 VStack {
                     HStack {
                         WindowNavigationButtons(viewModel: windowViewModel)
+
+                        Spacer()
+
                         AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
+                            .frame(minWidth: 0, maxWidth: 800)
+
+                        Spacer()
+
                         if windowViewModel.canShowShareButton() {
                             ShareButton
                         }
