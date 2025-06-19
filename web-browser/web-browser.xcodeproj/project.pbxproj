@@ -60,6 +60,7 @@
 		F987B3CE2CFDDC7800474A1E /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
 		F987B3CF2CFDDC7800474A1E /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
 		F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
+		F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* History.swift */; };
@@ -138,6 +139,7 @@
 		F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FingerprintingRules.json; sourceTree = "<group>"; };
 		F987B3C52CFDDC7800474A1E /* SocialRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SocialRules.json; sourceTree = "<group>"; };
 		F987B3D02CFDDD4800474A1E /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
+		F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewModel.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */,
+				F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */,
 			);
 			path = SearchSuggestion;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */,
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,
+				F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */,
 				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
 				F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
