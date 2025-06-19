@@ -3,7 +3,7 @@ import Services
 
 class SearchSuggestionComposer {
 
-    func makeSearchSuggestion(container: ModelContainer) -> SearchSuggestionMediator {
+    func makeSearchSuggestionViewModel(container: ModelContainer) -> SearchSuggestionViewModel {
         let bookmarkStore = BookmarkSwiftDataStore(container: container)
         let historyStore = HistorySwiftDataStore(container: container)
         let searchSuggestionService = SearchSuggestionService()
@@ -18,7 +18,8 @@ class SearchSuggestionComposer {
         )
 
         presenter.didUpdatePresentableModel = adapter.updateViewModel(_:)
+        viewModel.didStartTyping = mediator.didStartTyping
 
-        return mediator
+        return viewModel
     }
 }

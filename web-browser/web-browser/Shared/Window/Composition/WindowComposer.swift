@@ -15,13 +15,13 @@ final class WindowComposer {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper, container: container)
         let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper, container: container)
+        let searchSuggestionViewModel = SearchSuggestionComposer().makeSearchSuggestionViewModel(container: container)
         let safelistStore = SafelistStore()
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
         let historyStore = HistorySwiftDataStore(container: container)
         let adapter = WindowViewAdapter(webView: webKitEngineWrapper, viewModel: windowViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
-        let searchSuggestionMediator = SearchSuggestionComposer().makeSearchSuggestion(container: container)
         let mediator = WindowMediator(
             webView: webKitEngineWrapper,
             presenter: presenter,
@@ -38,7 +38,7 @@ final class WindowComposer {
         windowViewModel.didStartSearch = mediator.didRequestSearch
         windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
         windowViewModel.didChangeFocus = mediator.didChangeFocus
-        windowViewModel.didStartTyping = searchSuggestionMediator.didStartTyping(query:)
+        windowViewModel.didStartTyping = searchSuggestionViewModel.didStartTyping
         windowViewModel.didLongPressBackButton = mediator.didLongPressBackButton
         windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
         windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)

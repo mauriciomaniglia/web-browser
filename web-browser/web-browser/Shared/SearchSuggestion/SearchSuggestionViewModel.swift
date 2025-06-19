@@ -21,4 +21,6 @@ class SearchSuggestionViewModel: ObservableObject {
     @Published var bookmarkSuggestions: [Bookmark] = []
     @Published var historyPageSuggestions: [HistoryPage] = []
     @Published var searchSuggestions: [SearchSuggestion] = []
+
+    var didStartTyping: ((String) -> Void)?
 }
