@@ -19,6 +19,7 @@ class WindowViewAdapterTests: XCTestCase {
             showSiteProtection: true,
             isWebsiteProtected: true,
             showWebView: true,
+            showSearchSuggestions: true,
             canGoBack: true,
             canGoForward: true,
             progressBarValue: 0.5, 
@@ -35,6 +36,8 @@ class WindowViewAdapterTests: XCTestCase {
         XCTAssertEqual(sut.viewModel.showClearButton, model.showReloadButton)
         XCTAssertEqual(sut.viewModel.showSiteProtection, model.showSiteProtection)
         XCTAssertEqual(sut.viewModel.isWebsiteProtected, model.isWebsiteProtected)
+        XCTAssertEqual(sut.viewModel.showWebView, model.showWebView)
+        XCTAssertEqual(sut.viewModel.showSearchSuggestions, model.showSearchSuggestions)
         XCTAssertEqual(sut.viewModel.isBackButtonDisabled, !model.canGoBack)
         XCTAssertEqual(sut.viewModel.isForwardButtonDisabled, !model.canGoForward)
         XCTAssertEqual(sut.viewModel.progressBarValue, model.progressBarValue)
