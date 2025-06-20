@@ -30,6 +30,7 @@ class WindowViewModel: ObservableObject {
     @Published var isWebsiteProtected: Bool = true
     @Published var showSiteProtection: Bool = false
     @Published var showWebView: Bool = false
+    @Published var showSearchSuggestions: Bool = false
     @Published var backList: [WebPage] = []
     @Published var showBackList: Bool = false
     @Published var forwardList: [WebPage] = []
