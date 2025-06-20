@@ -15,6 +15,7 @@ public struct WindowPresentableModel {
     public let showSiteProtection: Bool
     public let isWebsiteProtected: Bool
     public let showWebView: Bool
+    public let showSearchSuggestions: Bool
     public let canGoBack: Bool
     public let canGoForward: Bool
     public var progressBarValue: Double?
