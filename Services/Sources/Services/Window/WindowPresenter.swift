@@ -67,6 +67,30 @@ public class WindowPresenter {
         didUpdatePresentableModel?(newModel)
     }
 
+    public func didStartTyping(oldText: String, newText: String) {
+        guard oldText != newText else { return }
+
+        let newModel = WindowPresentableModel(
+            title: model.title,
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: false,
+            showClearButton: true,
+            showStopButton: false,
+            showReloadButton: false,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: model.showWebView,
+            showSearchSuggestions: true,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: nil)
+
+        model = newModel
+        didUpdatePresentableModel?(newModel)
+    }
+
     public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
         let newModel = WindowPresentableModel(
             title: model.title,
