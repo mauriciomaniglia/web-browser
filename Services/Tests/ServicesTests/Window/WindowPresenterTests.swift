@@ -104,6 +104,41 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState!.forwardList)
     }
 
+    func test_didStartTyping_whenInputChanged_deliversCorrectWindowState() {
+        let (sut, _) = makeSUT()
+        var windowState: WindowPresentableModel?
+        sut.didUpdatePresentableModel = { windowState = $0 }
+
+        sut.didStartTyping(oldText: "lin", newText: "linux")
+
+        XCTAssertNil(windowState!.title)
+        XCTAssertNil(windowState!.urlHost)
+        XCTAssertNil(windowState!.fullURL)
+        XCTAssertFalse(windowState!.showCancelButton)
+        XCTAssertTrue(windowState!.showClearButton)
+        XCTAssertFalse(windowState!.showStopButton)
+        XCTAssertFalse(windowState!.showReloadButton)
+        XCTAssertFalse(windowState!.showSiteProtection)
+        XCTAssertTrue(windowState!.isWebsiteProtected)
+        XCTAssertFalse(windowState!.showWebView)
+        XCTAssertTrue(windowState!.showSearchSuggestions)
+        XCTAssertFalse(windowState!.canGoBack)
+        XCTAssertFalse(windowState!.canGoForward)
+        XCTAssertNil(windowState!.progressBarValue)
+        XCTAssertNil(windowState!.backList)
+        XCTAssertNil(windowState!.forwardList)
+    }
+
+    func test_didStartTyping_whenInputDidNotChanged_doesNothing() {
+        let (sut, _) = makeSUT()
+        var windowState: WindowPresentableModel?
+        sut.didUpdatePresentableModel = { windowState = $0 }
+
+        sut.didStartTyping(oldText: "linux", newText: "linux")
+
+        XCTAssertNil(windowState)
+    }
+
     func test_didChangeFocus_whenIsNotFocused_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresentableModel?
