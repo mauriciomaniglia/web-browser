@@ -4,6 +4,7 @@ import Foundation
 class WindowPresenterSpy: WindowPresenter {
     enum Message: Equatable {
         case didChangeFocus(isFocused: Bool)
+        case didStartTyping(oldText: String, newText: String)
         case didLoadPage
         case didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool)
         case didUpdateProgressBar(value: Double)
@@ -16,6 +17,10 @@ class WindowPresenterSpy: WindowPresenter {
 
     override func didChangeFocus(isFocused: Bool) {
         receivedMessages.append(.didChangeFocus(isFocused: isFocused))
+    }
+
+    override func didStartTyping(oldText: String, newText: String) {
+        receivedMessages.append(.didStartTyping(oldText: oldText, newText: newText))
     }
 
     override func didLoadPage(title: String?, url: URL) {

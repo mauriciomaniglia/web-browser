@@ -30,6 +30,10 @@ public final class WindowMediator {
         presenter.didChangeFocus(isFocused: isFocused)
     }
 
+    public func didStartTyping(oldText: String, newText: String) {
+        presenter.didStartTyping(oldText: oldText, newText: newText)
+    }
+
     public func didStopLoading() {
         webView.stopLoading()
     }
