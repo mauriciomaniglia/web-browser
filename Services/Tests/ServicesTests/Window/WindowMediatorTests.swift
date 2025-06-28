@@ -1,7 +1,7 @@
 import XCTest
 @testable import Services
 
-class WindowFacadeTests: XCTestCase {
+class WindowMediatorTests: XCTestCase {
 
     func test_didRequestSearch_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
