@@ -62,8 +62,8 @@ struct AddressBarView: View {
             .onChange(of: isTextFieldFocused) { _, isFocused in
                 viewModel.didChangeFocus?(isFocused)
             }
-            .onChange(of: searchText) { _, newText in
-                viewModel.didStartTyping?(newText)
+            .onChange(of: searchText) { oldText, newText in
+                viewModel.didStartTyping?(oldText, newText)
             }
     }
 
