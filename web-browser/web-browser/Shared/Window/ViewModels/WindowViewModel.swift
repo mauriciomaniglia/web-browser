@@ -8,13 +8,18 @@ class WindowViewModel: ObservableObject {
         let url: String
     }
 
-    init(historyViewModel: HistoryViewModel, bookmarkViewModel: BookmarkViewModel) {
+    init(historyViewModel: HistoryViewModel,
+         bookmarkViewModel: BookmarkViewModel,
+         searchSuggestionViewModel: SearchSuggestionViewModel)
+    {
         self.historyViewModel = historyViewModel
         self.bookmarkViewModel = bookmarkViewModel
+        self.searchSuggestionViewModel = searchSuggestionViewModel
     }
 
     let historyViewModel: HistoryViewModel
     let bookmarkViewModel: BookmarkViewModel
+    let searchSuggestionViewModel: SearchSuggestionViewModel
 
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true

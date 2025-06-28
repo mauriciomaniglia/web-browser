@@ -18,7 +18,11 @@ final class WindowComposer {
         let searchSuggestionViewModel = SearchSuggestionComposer().makeSearchSuggestionViewModel(container: container)
         let safelistStore = SafelistStore()
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
-        var windowViewModel = WindowViewModel(historyViewModel: historyViewModel, bookmarkViewModel: bookmarkViewModel)
+        var windowViewModel = WindowViewModel(
+            historyViewModel: historyViewModel,
+            bookmarkViewModel: bookmarkViewModel,
+            searchSuggestionViewModel: searchSuggestionViewModel
+        )
         let historyStore = HistorySwiftDataStore(container: container)
         let adapter = WindowViewAdapter(webView: webKitEngineWrapper, viewModel: windowViewModel)
         let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
