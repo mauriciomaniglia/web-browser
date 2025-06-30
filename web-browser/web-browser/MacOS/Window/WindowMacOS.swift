@@ -37,6 +37,10 @@ struct WindowMacOS: View {
                 Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                 AddBookmark
             }
+
+            if windowViewModel.showSearchSuggestions {
+                SearchSuggestion
+            }
         }
     }
 
@@ -57,6 +61,18 @@ struct WindowMacOS: View {
         )
         .transition(.scale)
         .zIndex(1)
+    }
+
+    private var SearchSuggestion: some View {
+        SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+            .frame(width: 800, alignment: .top)
+            .offset(
+                x: 45,
+                y: 60
+            )
+            .zIndex(2)
+            .transition(.opacity)
+            .animation(.easeInOut, value: windowViewModel.showSearchSuggestions)
     }
 }
 #endif
