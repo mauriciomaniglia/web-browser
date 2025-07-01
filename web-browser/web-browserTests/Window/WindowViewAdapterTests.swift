@@ -5,7 +5,11 @@ import XCTest
 class WindowViewAdapterTests: XCTestCase {
 
     func test_updateViewModel_updatesAllValuesCorrectly() {
-        let viewModel = WindowViewModel(historyViewModel: HistoryViewModel(), bookmarkViewModel: BookmarkViewModel())
+        let viewModel = WindowViewModel(
+            historyViewModel: HistoryViewModel(),
+            bookmarkViewModel: BookmarkViewModel(),
+            searchSuggestionViewModel: SearchSuggestionViewModel()
+        )
         let sut = WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel)
 
         let model = WindowPresentableModel(
