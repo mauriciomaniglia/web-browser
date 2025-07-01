@@ -3,17 +3,20 @@ import Combine
 
 class SearchSuggestionViewModel: ObservableObject {
 
-    struct Bookmark {
+    struct Bookmark: Identifiable {
+        let id = UUID()
         let title: String
         let url: URL
     }
 
-    struct HistoryPage {
+    struct HistoryPage: Identifiable {
+        let id = UUID()
         let title: String
         let url: URL
     }
 
-    struct SearchSuggestion {
+    struct SearchSuggestion: Identifiable {
+        let id = UUID()
         let title: String
         let url: URL
     }

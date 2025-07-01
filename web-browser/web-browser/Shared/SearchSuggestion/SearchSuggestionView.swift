@@ -7,7 +7,7 @@ struct SearchSuggestionView: View {
         List {
             if !viewModel.searchSuggestions.isEmpty {
                 Section(header: Text("Google suggestions")) {
-                    ForEach(viewModel.searchSuggestions, id: \.title) { model in
+                    ForEach(viewModel.searchSuggestions) { model in
                         HStack {
                             Text("\(model.title)")
                                 .onTapGesture {
@@ -21,7 +21,7 @@ struct SearchSuggestionView: View {
 
             if !viewModel.bookmarkSuggestions.isEmpty {
                 Section(header: Text("Bookmark")) {
-                    ForEach(viewModel.bookmarkSuggestions, id: \.title) { model in
+                    ForEach(viewModel.bookmarkSuggestions) { model in
                         HStack {
                             Text("\(model.title)")
                                 .onTapGesture {
@@ -35,7 +35,7 @@ struct SearchSuggestionView: View {
 
             if !viewModel.historyPageSuggestions.isEmpty {
                 Section(header: Text("History")) {
-                    ForEach(viewModel.historyPageSuggestions, id: \.title) { model in
+                    ForEach(viewModel.historyPageSuggestions) { model in
                         HStack {
                             Text("\(model.title)")
                                 .onTapGesture {
