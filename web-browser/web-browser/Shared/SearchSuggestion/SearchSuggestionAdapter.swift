@@ -1,3 +1,4 @@
+import Foundation
 import Services
 
 final class SearchSuggestionAdapter {
@@ -8,8 +9,10 @@ final class SearchSuggestionAdapter {
     }
 
     func updateViewModel(_ model: SearchSuggestionPresentableModel) {
-        viewModel.bookmarkSuggestions = model.bookmarkSuggestions.map { .init(title: $0.title, url: $0.url)}
-        viewModel.historyPageSuggestions = model.historyPageSuggestions.map { .init(title: $0.title, url: $0.url)}
-        viewModel.searchSuggestions = model.searchSuggestions.map { .init(title: $0.title, url: $0.url) }
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.bookmarkSuggestions = model.bookmarkSuggestions.map { .init(title: $0.title, url: $0.url)}
+            self?.viewModel.historyPageSuggestions = model.historyPageSuggestions.map { .init(title: $0.title, url: $0.url)}
+            self?.viewModel.searchSuggestions = model.searchSuggestions.map { .init(title: $0.title, url: $0.url) }
+        }
     }
 }
