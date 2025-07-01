@@ -23,4 +23,5 @@ class SearchSuggestionViewModel: ObservableObject {
     @Published var searchSuggestions: [SearchSuggestion] = []
 
     var didStartTyping: ((String) -> Void)?
+    var didSelectPage: ((URL) -> Void)?
 }

@@ -15,7 +15,7 @@ final class WindowComposer {
         let webKitEngineWrapper = WebKitEngineWrapper()
         let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper, container: container)
         let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper, container: container)
-        let searchSuggestionViewModel = SearchSuggestionComposer().makeSearchSuggestionViewModel(container: container)
+        let searchSuggestionViewModel = SearchSuggestionComposer().makeSearchSuggestionViewModel(webView: webKitEngineWrapper, container: container)
         let safelistStore = SafelistStore()
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(

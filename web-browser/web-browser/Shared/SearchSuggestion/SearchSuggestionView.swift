@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SearchSuggestionView: View {
     @ObservedObject var viewModel: SearchSuggestionViewModel
-    var didSelectPage: ((Int) -> Void)?
 
     var body: some View {
         List {
@@ -11,6 +10,9 @@ struct SearchSuggestionView: View {
                     ForEach(viewModel.searchSuggestions, id: \.title) { model in
                         HStack {
                             Text("\(model.title)")
+                                .onTapGesture {
+                                    viewModel.didSelectPage?(model.url)
+                                }
                             Spacer()
                         }
                     }
@@ -22,6 +24,9 @@ struct SearchSuggestionView: View {
                     ForEach(viewModel.bookmarkSuggestions, id: \.title) { model in
                         HStack {
                             Text("\(model.title)")
+                                .onTapGesture {
+                                    viewModel.didSelectPage?(model.url)
+                                }
                             Spacer()
                         }
                     }
@@ -33,6 +38,9 @@ struct SearchSuggestionView: View {
                     ForEach(viewModel.historyPageSuggestions, id: \.title) { model in
                         HStack {
                             Text("\(model.title)")
+                                .onTapGesture {
+                                    viewModel.didSelectPage?(model.url)
+                                }
                             Spacer()
                         }
                     }
