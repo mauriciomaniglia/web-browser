@@ -299,38 +299,14 @@
 			path = Bookmark;
 			sourceTree = "<group>";
 		};
-		F932F2062CE23A7800B12B45 /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				F932F2042CE23A7800B12B45 /* BookmarkAdapter.swift */,
-				F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */,
-			);
-			path = Composition;
-			sourceTree = "<group>";
-		};
-		F932F2082CE23A7800B12B45 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		F932F20A2CE23A7800B12B45 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F932F2092CE23A7800B12B45 /* BookmarkView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F932F20B2CE23A7800B12B45 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
-				F987B3A82CFDD9D400474A1E /* Store */,
-				F932F2062CE23A7800B12B45 /* Composition */,
-				F932F2082CE23A7800B12B45 /* ViewModels */,
-				F932F20A2CE23A7800B12B45 /* Views */,
+				F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */,
+				F932F2042CE23A7800B12B45 /* BookmarkAdapter.swift */,
+				F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */,
+				F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */,
+				F932F2092CE23A7800B12B45 /* BookmarkView.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -363,23 +339,6 @@
 			path = SearchSuggestion;
 			sourceTree = "<group>";
 		};
-		F94FD3E82C46817A001EDF1D /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */,
-				F9462B172C4890B000451759 /* HistoryComposer.swift */,
-			);
-			path = Composition;
-			sourceTree = "<group>";
-		};
-		F95DBA8B2B863A120048A987 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		F96B23D72D06647C000D4B98 /* MenuBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,22 +354,6 @@
 				F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */,
 			);
 			path = Bookmark;
-			sourceTree = "<group>";
-		};
-		F987B3A82CFDD9D400474A1E /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
-		F987B3AB2CFDDA4A00474A1E /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */,
-			);
-			path = Store;
 			sourceTree = "<group>";
 		};
 		F987B3AE2CFDDAC500474A1E /* WebEngine */ = {
@@ -461,9 +404,10 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F98BF0C82B750A5900C29BDA /* Composition */,
+				F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */,
+				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
+				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
 				F98BF0C72B750A3300C29BDA /* Views */,
-				F95DBA8B2B863A120048A987 /* ViewModels */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -478,15 +422,6 @@
 				F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F98BF0C82B750A5900C29BDA /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */,
-				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
-			);
-			path = Composition;
 			sourceTree = "<group>";
 		};
 		F98BF0C92B750A7F00C29BDA /* Helpers */ = {
@@ -522,14 +457,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F9DF54C52CEE049F00F92FC3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F9DF54C62CEE04D600F92FC3 /* History.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		F9E1477C2C0960E90099CD98 /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,20 +476,13 @@
 		F9E55D2E2C45E9FA008B7C64 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				F987B3AB2CFDDA4A00474A1E /* Store */,
-				F9DF54C52CEE049F00F92FC3 /* Views */,
-				F94FD3E82C46817A001EDF1D /* Composition */,
-				F9E55D302C45EFA6008B7C64 /* ViewModels */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
-		F9E55D302C45EFA6008B7C64 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
+				F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */,
+				F9DF54C62CEE04D600F92FC3 /* History.swift */,
+				F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */,
+				F9462B172C4890B000451759 /* HistoryComposer.swift */,
 				F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */,
 			);
-			path = ViewModels;
+			path = History;
 			sourceTree = "<group>";
 		};
 		F9E55D382C45F452008B7C64 /* History */ = {
