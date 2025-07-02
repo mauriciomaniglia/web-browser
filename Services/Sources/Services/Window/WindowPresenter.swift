@@ -74,7 +74,7 @@ public class WindowPresenter {
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
-            showCancelButton: false,
+            showCancelButton: true,
             showClearButton: true,
             showStopButton: false,
             showReloadButton: false,
