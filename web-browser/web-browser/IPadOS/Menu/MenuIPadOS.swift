@@ -28,7 +28,7 @@ struct MenuIPadOS: View {
                 case .bookmarks:
                     BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)
                 case .history:
-                    History(viewModel: windowViewModel.historyViewModel)
+                    HistoryView(viewModel: windowViewModel.historyViewModel)
                 }
             }
         }
