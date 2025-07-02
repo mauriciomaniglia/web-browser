@@ -21,6 +21,10 @@ struct WindowIPadOS: View {
                     }
                     ToolbarItem(placement: .principal) {
                         AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
+                            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
+                                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+                                    .frame(width: 550)
+                            }
                     }
                     if windowViewModel.canShowShareButton() {
                         ToolbarItem(placement: .navigationBarTrailing) {
