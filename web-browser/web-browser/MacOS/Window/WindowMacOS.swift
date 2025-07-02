@@ -19,6 +19,10 @@ struct WindowMacOS: View {
 
                         AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
                             .frame(minWidth: 0, maxWidth: 800)
+                            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
+                                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+                                    .frame(width: 550)
+                            }
 
                         Spacer()
 
@@ -36,10 +40,6 @@ struct WindowMacOS: View {
             if windowViewModel.showAddBookmark {
                 Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                 AddBookmark
-            }
-
-            if windowViewModel.showSearchSuggestions {
-                SearchSuggestion
             }
         }
     }
@@ -61,18 +61,6 @@ struct WindowMacOS: View {
         )
         .transition(.scale)
         .zIndex(1)
-    }
-
-    private var SearchSuggestion: some View {
-        SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
-            .frame(width: 800, alignment: .top)
-            .offset(
-                x: 45,
-                y: 60
-            )
-            .zIndex(2)
-            .transition(.opacity)
-            .animation(.easeInOut, value: windowViewModel.showSearchSuggestions)
     }
 }
 #endif
