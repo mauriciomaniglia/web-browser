@@ -10,8 +10,13 @@ struct WindowIOS: View {
     var body: some View {
         VStack {
             AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
-            webView
-                .frame(maxWidth:.infinity, maxHeight: .infinity)
+
+            if windowViewModel.showSearchSuggestions {
+                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+            } else {
+                webView.frame(maxWidth:.infinity, maxHeight: .infinity)
+            }
+
             HStack {
                 WindowNavigationButtons(viewModel: windowViewModel)
                 Spacer()
