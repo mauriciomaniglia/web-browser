@@ -33,6 +33,8 @@ struct SearchSuggestionView: View {
             }
         }
         .padding()
+
+        Spacer()
     }
 }
 

@@ -12,7 +12,9 @@ struct WindowIOS: View {
             AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
 
             if windowViewModel.showSearchSuggestions {
-                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+                ScrollView {
+                    SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+                }
             } else {
                 webView.frame(maxWidth:.infinity, maxHeight: .infinity)
             }
