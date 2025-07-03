@@ -2,30 +2,27 @@ import SwiftUI
 
 struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
-    @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
 
     var body: some View {
         VStack {
-            SearchTopBar
+            SearchTopBarView
 
-            if isHistoryEmpty() {
+            if viewModel.historyList.isEmpty {
                 EmptyView
             } else {
-                HistoryList
+                HistoryListView
             }
         }
-        .onAppear {
-            viewModel.didOpenHistoryView?()
-        }
         .navigationTitle("History")
-        .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
-            ClearAllHistoryAlert
-        }
+        .onAppear(perform: viewModel.didOpenHistoryView)
+        .alert(isPresented: $isShowingDeleteAllHistoryAlert) { ClearAllHistoryAlert }
     }
 
-    private var SearchTopBar: some View {
+    // MARK: SubViews
+
+    var SearchTopBarView: some View {
         HStack {
             SearchTextField
             ClearAllHistoryButton
@@ -33,66 +30,65 @@ struct HistoryView: View {
         .padding()
     }
 
-    private var HistoryList: some View {
+    var HistoryListView: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { index in
-                let item = viewModel.historyList[index]
-
-                let header = Text(item.title)
-
-                Section(header: header) {
-                    ForEach(item.pages) { page in
-                        Text("\(page.title)")
-                            .onTapGesture {
-                                viewModel.didSelectPage?(page.url)
-                                dismiss()
-                            }
-                    }
-                    .onDelete { offsets in
-                        viewModel.deletePages(at: offsets, inSection: index)
-                    }
-                }
+                HistoryListItem(viewModel: viewModel, index: index)
             }
         }
     }
 
-    private var EmptyView: some View {
+    var EmptyView: some View {
         VStack {
             Text("No history found.")
                 .font(.headline)
                 .padding()
+
             Spacer()
         }
     }
 
-    private var SearchTextField: some View {
+    var SearchTextField: some View {
         TextField("Search History", text: $searchText)
-            .onChange(of: searchText, { _, newValue in
-                viewModel.didSearchTerm?(newValue)
-            })
+            .onChange(of: searchText, { _, newValue in viewModel.didSearchTerm?(newValue) })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
     }
 
-    private var ClearAllHistoryButton: some View {
-        Button {
-            isShowingDeleteAllHistoryAlert = true
-        } label: {
-            Image(systemName: "trash")
-        }
+    var ClearAllHistoryButton: some View {
+        Button { isShowingDeleteAllHistoryAlert = true } label: { Image(systemName: "trash") }
     }
 
-    private var ClearAllHistoryAlert: Alert {
+    var ClearAllHistoryAlert: Alert {
         Alert(
             title: Text("Clear all browsing history?"),
-            primaryButton: .default(Text("Clear")) {
-                viewModel.deleteAllPages()
-            },
+            primaryButton: .default(Text("Clear")) { viewModel.deleteAllPages() },
             secondaryButton: .cancel()
         )
     }
+}
 
-    private func isHistoryEmpty() -> Bool {
-        viewModel.historyList.isEmpty
+struct HistoryListItem: View {
+    @Environment(\.dismiss) private var dismiss
+
+    let viewModel: HistoryViewModel
+    let index: Int
+
+    var body: some View {
+        let item = viewModel.historyList[index]
+        let headerTitle = Text(item.title)
+
+        Section(header: headerTitle) {
+            ForEach(item.pages) { page in
+                Text("\(page.title)")
+                    .onTapGesture {
+                        viewModel.didSelectPage?(page.url)
+                        dismiss()
+                    }
+            }
+            .onDelete { offsets in
+                viewModel.deletePages(at: offsets, inSection: index)
+            }
+        }
     }
 }
