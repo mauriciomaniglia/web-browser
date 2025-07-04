@@ -2,15 +2,11 @@ import Foundation
 
 public class HistoryMediator {
     private let presenter: HistoryPresenter
-    private let webView: WebEngineContract
     private let historyStore: HistoryStoreAPI
 
-    public init(presenter: HistoryPresenter,
-                webView: WebEngineContract,
-                historyStore: HistoryStoreAPI)
+    public init(presenter: HistoryPresenter, historyStore: HistoryStoreAPI)
     {
         self.presenter = presenter
-        self.webView = webView
         self.historyStore = historyStore
     }
 
@@ -22,11 +18,6 @@ public class HistoryMediator {
     public func didSearchTerm(_ term: String) {
         let pages = term.isEmpty ? historyStore.getPages() : historyStore.getPages(by: term)
         presenter.didLoadPages(pages)
-    }
-
-    public func didSelectPage(_ urlString: String) {
-        let url = URLBuilderAPI.makeURL(from: urlString)
-        webView.load(url)
     }
 
     public func didTapDeletePages(_ pageIDs: [UUID]) {

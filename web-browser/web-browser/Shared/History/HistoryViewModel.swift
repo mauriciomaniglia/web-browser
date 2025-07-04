@@ -11,7 +11,7 @@ class HistoryViewModel: ObservableObject {
     struct Page: Identifiable, Equatable {
         let id: UUID
         let title: String
-        let url: String
+        let url: URL
         var isSelected: Bool = false
 
         mutating func select() {
@@ -29,7 +29,7 @@ class HistoryViewModel: ObservableObject {
 
     var didOpenHistoryView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
-    var didSelectPage: ((String) -> Void)?
+    var didSelectPage: ((URL) -> Void)?
     var didTapDeletePages: (([UUID]) -> Void)?
     var didTapDeleteAllPages: (() -> Void)?
 

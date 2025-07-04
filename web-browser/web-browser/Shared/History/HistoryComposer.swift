@@ -8,13 +8,9 @@ class HistoryComposer {
         let historyStore = HistorySwiftDataStore(container: container)
         let presenter = HistoryPresenter()
         let adapter = HistoryAdapter(viewModel: viewModel)
-        let mediator = HistoryMediator(
-            presenter: presenter,
-            webView: webView,
-            historyStore: historyStore
-        )
+        let mediator = HistoryMediator(presenter: presenter, historyStore: historyStore)
 
-        viewModel.didSelectPage = mediator.didSelectPage(_:)
+        viewModel.didSelectPage = webView.load
         viewModel.didOpenHistoryView = mediator.didOpenHistoryView
         viewModel.didSearchTerm = mediator.didSearchTerm(_:)
         viewModel.didTapDeletePages = mediator.didTapDeletePages

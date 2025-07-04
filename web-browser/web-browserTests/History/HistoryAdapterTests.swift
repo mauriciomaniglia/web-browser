@@ -13,7 +13,7 @@ class HistoryAdapterTests: XCTestCase {
         sut.updateViewModel(model)
 
         XCTAssertEqual(viewModel.historyList.first?.pages.first?.title, "title")
-        XCTAssertEqual(viewModel.historyList.first?.pages.first?.url, "https://some-url.com")        
+        XCTAssertEqual(viewModel.historyList.first?.pages.first?.url, URL(string:"https://some-url.com")!)        
     }
 
     // MARK: - Helpers

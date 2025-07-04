@@ -85,6 +85,6 @@ class HistoryViewModelTests: XCTestCase {
     }
 
     private func anyPage() -> HistoryViewModel.Page {
-        return .init(id: UUID(), title: "Any Title", url: "Any URL")
+        return .init(id: UUID(), title: "Any Title", url: URL(string: "http://any-url.com")!)
     }
 }
