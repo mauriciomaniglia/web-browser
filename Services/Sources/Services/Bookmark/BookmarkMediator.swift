@@ -2,15 +2,11 @@ import Foundation
 
 public class BookmarkMediator {
     private let presenter: BookmarkPresenter
-    private let webView: WebEngineContract
     private let bookmarkStore: BookmarkStoreAPI
 
-    public init(presenter: BookmarkPresenter,
-                webView: WebEngineContract,
-                bookmarkStore: BookmarkStoreAPI)
+    public init(presenter: BookmarkPresenter, bookmarkStore: BookmarkStoreAPI)
     {
         self.presenter = presenter
-        self.webView = webView
         self.bookmarkStore = bookmarkStore
     }
 
@@ -22,11 +18,6 @@ public class BookmarkMediator {
     public func didSearchTerm(_ term: String) {
         let webPages = term.isEmpty ? bookmarkStore.getPages() : bookmarkStore.getPages(by: term)
         presenter.mapBookmarks(from: webPages)
-    }
-
-    public func didSelectPage(_ urlString: String) {
-        let url = URLBuilderAPI.makeURL(from: urlString)
-        webView.load(url)
     }
 
     public func didTapSavePage(title: String, url: String) {

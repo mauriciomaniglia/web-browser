@@ -15,7 +15,7 @@ class BookmarkViewModel: ObservableObject {
     var didTapAddBookmark: ((String, String) -> Void)?
     var didOpenBookmarkView: (() -> Void)?
     var didSearchTerm: ((String) -> Void)?
-    var didSelectPage: ((String) -> Void)?
+    var didSelectPage: ((URL) -> Void)?
     var didTapDeletePages: (([UUID]) -> Void)?
 
     func setSelectedBookmark(_ bookmark: Bookmark) {

@@ -71,7 +71,7 @@ struct BookmarkListItem: View {
         HStack {
             Text(bookmark.title)
                 .onTapGesture {
-                    viewModel.didSelectPage?(bookmark.url.absoluteString)
+                    viewModel.didSelectPage?(bookmark.url)
                     dismiss()
                 }
 
