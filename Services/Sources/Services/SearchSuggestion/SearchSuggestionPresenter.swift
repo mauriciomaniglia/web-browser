@@ -1,14 +1,40 @@
 import Foundation
 
 public class SearchSuggestionPresenter {
-    public var didUpdatePresentableModel: ((SearchSuggestionPresentableModel) -> Void)?
+
+    public struct Model {
+
+        public struct Bookmark {
+            public let title: String
+            public let url: URL
+        }
+
+        public struct HistoryPage {
+            public let title: String
+            public let url: URL
+        }
+
+        public struct SearchSuggestion {
+            public let title: String
+            public let url: URL
+        }
+
+        public let bookmarkSuggestions: [Bookmark]
+        public let historyPageSuggestions: [HistoryPage]
+        public let searchSuggestions: [SearchSuggestion]
+    }
+
+    public var didUpdatePresentableModel: ((Model) -> Void)?
 
     public init() {}
 
-    public func didLoad(searchSuggestions: [String], historyModels: [HistoryPageModel], bookmarkModels: [BookmarkModel]) {
-
+    public func didLoad(
+        searchSuggestions: [String],
+        historyModels: [HistoryPageModel],
+        bookmarkModels: [BookmarkModel])
+    {
         let searchSuggestionModels = searchSuggestions.map { suggestion in
-            SearchSuggestionPresentableModel.SearchSuggestion(
+            Model.SearchSuggestion(
                 title: suggestion,
                 url: URLBuilderAPI.makeURL(from: suggestion)
             )
@@ -17,18 +43,18 @@ public class SearchSuggestionPresenter {
         .map { $0 }
 
         let historySuggestions = historyModels.compactMap { model in
-            model.title.map { SearchSuggestionPresentableModel.HistoryPage(title: $0, url: model.url) }
+            model.title.map { Model.HistoryPage(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
         let bookmarkSuggestions = bookmarkModels.compactMap { model in
-            model.title.map { SearchSuggestionPresentableModel.Bookmark(title: $0, url: model.url) }
+            model.title.map { Model.Bookmark(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
-        let model = SearchSuggestionPresentableModel(
+        let model = Model(
             bookmarkSuggestions: bookmarkSuggestions,
             historyPageSuggestions: historySuggestions,
             searchSuggestions: searchSuggestionModels

@@ -8,7 +8,7 @@ final class SearchSuggestionAdapter {
         self.viewModel = viewModel
     }
 
-    func updateViewModel(_ model: SearchSuggestionPresentableModel) {
+    func updateViewModel(_ model: SearchSuggestionPresenter.Model) {
         DispatchQueue.main.async { [weak self] in
             self?.viewModel.bookmarkSuggestions = model.bookmarkSuggestions.map { .init(title: $0.title, url: $0.url)}
             self?.viewModel.historyPageSuggestions = model.historyPageSuggestions.map { .init(title: $0.title, url: $0.url)}

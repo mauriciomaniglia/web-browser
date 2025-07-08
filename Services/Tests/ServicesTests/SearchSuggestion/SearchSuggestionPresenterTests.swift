@@ -5,7 +5,7 @@ class SearchSuggestionPresenterTests: XCTestCase {
 
     func test_didLoad_deliversCorrectState() {
         let sut = makeSUT()
-        var model: SearchSuggestionPresentableModel!
+        var model: SearchSuggestionPresenter.Model!
         sut.didUpdatePresentableModel = { model = $0 }
 
         sut.didLoad(
@@ -27,7 +27,7 @@ class SearchSuggestionPresenterTests: XCTestCase {
 
     func test_didLoad_shouldDeliverOnlyTheTenFirstResults() {
         let sut = makeSUT()
-        var model: SearchSuggestionPresentableModel!
+        var model: SearchSuggestionPresenter.Model!
         let searchSuggestions = (1...12).map { "Serch Suggestion \($0)" }
         let historyPageModels = (1...12).map { makeHistoryModel(title: "History title \($0)") }
         let bookmarkModels = (1...12).map { makeBookmarkModel(title: "Bookmark title \($0)") }
