@@ -17,12 +17,7 @@ struct WindowMacOS: View {
 
                         Spacer()
 
-                        AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
-                            .frame(minWidth: 0, maxWidth: 800)
-                            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
-                                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
-                                    .frame(width: 550)
-                            }
+                        AddressBar
 
                         Spacer()
 
@@ -31,8 +26,8 @@ struct WindowMacOS: View {
                         }
                     }
                     Spacer()
-                    webView
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                    webView.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .padding()
             }
@@ -44,7 +39,18 @@ struct WindowMacOS: View {
         }
     }
 
-    private var ShareButton: some View {
+    // MARK: SubViews
+
+    var AddressBar: some View {
+        AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
+            .frame(minWidth: 0, maxWidth: 800)
+            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
+                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+                    .frame(width: 550)
+            }
+    }
+
+    var ShareButton: some View {
         ShareLink(item: URL(string: windowViewModel.fullURL)!) {
             Image(systemName: "square.and.arrow.up")
                 .font(.system(size: 17))
@@ -52,7 +58,7 @@ struct WindowMacOS: View {
         .buttonStyle(.borderless)
     }
 
-    private var AddBookmark: some View {
+    var AddBookmark: some View {
         AddBookmarkMacOS(
             viewModel: windowViewModel,
             isPresented: $windowViewModel.showAddBookmark,
