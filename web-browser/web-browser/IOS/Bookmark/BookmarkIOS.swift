@@ -44,7 +44,7 @@ struct BookmarkIOS: View {
             ForEach(viewModel.bookmarkList) { bookmark in
                 Text(bookmark.title)
                     .onTapGesture {
-                        viewModel.didSelectPage?(bookmark.url.absoluteString)
+                        viewModel.didSelectPage?(bookmark.url)
                         isPresented = false
                     }
             }
