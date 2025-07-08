@@ -5,7 +5,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didStartNewWindow_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didStartNewWindow()
@@ -29,7 +29,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didStartNewWindow_whenCallFromAnyPreviousState_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
@@ -55,7 +55,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didChangeFocus_whenIsFocused_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didChangeFocus(isFocused: true)
@@ -80,7 +80,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didChangeFocus_whenIsFocusedWithPageLoaded_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
@@ -106,7 +106,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didStartTyping_whenInputChanged_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didStartTyping(oldText: "lin", newText: "linux")
@@ -131,7 +131,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didStartTyping_whenInputDidNotChanged_doesNothing() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didStartTyping(oldText: "linux", newText: "linux")
@@ -141,7 +141,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didChangeFocus_whenIsNotFocused_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didChangeFocus(isFocused: false)
@@ -166,7 +166,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didChangeFocus_whenIsNotFocusedWithPageALoaded_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
@@ -192,7 +192,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didUpdateNavigationButtons_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)
@@ -217,7 +217,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didLoadPage_deliversCorrectWindowState() {
         let (sut, safelist) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
         safelist.isOnSafelist = true
 
@@ -243,7 +243,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didLoadBackList_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WindowPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
@@ -277,7 +277,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didLoadForwardList_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WindowPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
@@ -311,7 +311,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didDismissBackForwardList_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didUpdatePresentableModel = { windowState = $0 }
@@ -340,7 +340,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didUpdateProgressBar_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didUpdateProgressBar(0.45)
@@ -365,7 +365,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didUpdateProgressBar_whenValueIsOne_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didUpdateProgressBar(1)
@@ -390,7 +390,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didUpdateProgressBar_whenValueGreaterThanOne_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didUpdateProgressBar(1.5)
@@ -415,7 +415,7 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didUpdateProgressBar_whenNavigationUpdates_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
-        var windowState: WindowPresentableModel?
+        var windowState: WindowPresenter.Model?
         sut.didUpdatePresentableModel = { windowState = $0 }
 
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)

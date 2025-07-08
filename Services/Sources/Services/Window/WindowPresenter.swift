@@ -1,13 +1,38 @@
 import Foundation
 
 public class WindowPresenter {
-    public var didUpdatePresentableModel: ((WindowPresentableModel) -> Void)?
-    
-    private var model: WindowPresentableModel
+
+    public struct Model {
+
+        public struct Page {
+            public let title: String
+            public let url: String
+        }
+
+        public let title: String?
+        public let urlHost: String?
+        public let fullURL: String?
+        public let showCancelButton: Bool
+        public let showClearButton: Bool
+        public let showStopButton: Bool
+        public let showReloadButton: Bool
+        public let showSiteProtection: Bool
+        public let isWebsiteProtected: Bool
+        public let showWebView: Bool
+        public let showSearchSuggestions: Bool
+        public let canGoBack: Bool
+        public let canGoForward: Bool
+        public var progressBarValue: Double?
+        public let backList: [Page]?
+        public let forwardList: [Page]?
+    }
+
+    public var didUpdatePresentableModel: ((Model) -> Void)?
+    private var model: Model
     private let isOnSafelist: (String) -> Bool
     
     public init(isOnSafelist: @escaping (String) -> Bool) {
-        model = WindowPresentableModel(
+        model = Model(
             title: nil,
             urlHost: nil,
             fullURL: nil,
@@ -46,7 +71,7 @@ public class WindowPresenter {
     }
 
     public func didChangeFocus(isFocused: Bool) {
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -70,7 +95,7 @@ public class WindowPresenter {
     public func didStartTyping(oldText: String, newText: String) {
         guard oldText != newText else { return }
 
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -92,7 +117,7 @@ public class WindowPresenter {
     }
 
     public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -118,7 +143,7 @@ public class WindowPresenter {
         let urlHost = url.host ?? fullURL
         let title = title ?? urlHost
 
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: title,
             urlHost: urlHost,
             fullURL: fullURL,
@@ -140,7 +165,7 @@ public class WindowPresenter {
     }
 
     public func didLoadBackList(_ webPages: [WindowPageModel]) {
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -162,7 +187,7 @@ public class WindowPresenter {
     }
 
     public func didLoadForwardList(_ webPages: [WindowPageModel]) {
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -184,7 +209,7 @@ public class WindowPresenter {
     }
 
     public func didDismissBackForwardList() {
-        let newModel = WindowPresentableModel(
+        let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -227,7 +252,7 @@ public class WindowPresenter {
             forwardList: model.forwardList))
     }
 
-    private func mapWebPage(_ webPage: WindowPageModel) -> WindowPresentableModel.Page {
+    private func mapWebPage(_ webPage: WindowPageModel) -> Model.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }

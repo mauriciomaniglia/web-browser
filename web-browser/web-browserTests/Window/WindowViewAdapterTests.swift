@@ -12,7 +12,7 @@ class WindowViewAdapterTests: XCTestCase {
         )
         let sut = WindowViewAdapter(webView: WebViewSpy(), viewModel: viewModel)
 
-        let model = WindowPresentableModel(
+        let model = WindowPresenter.Model(
             title: "Apple Airpods",
             urlHost: "www.apple.com",
             fullURL: "http://apple.com/airpods",
@@ -27,8 +27,8 @@ class WindowViewAdapterTests: XCTestCase {
             canGoBack: true,
             canGoForward: true,
             progressBarValue: 0.5, 
-            backList: [WindowPresentableModel.Page(title: "back page title", url: "http://back-page.com")],
-            forwardList: [WindowPresentableModel.Page(title: "forward page title", url: "http://forward-page.com")])
+            backList: [WindowPresenter.Model.Page(title: "back page title", url: "http://back-page.com")],
+            forwardList: [WindowPresenter.Model.Page(title: "forward page title", url: "http://forward-page.com")])
 
         sut.updateViewModel(model)
 

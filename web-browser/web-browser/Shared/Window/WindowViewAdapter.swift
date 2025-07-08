@@ -10,7 +10,7 @@ final class WindowViewAdapter {
         self.viewModel = viewModel
     }
 
-    func updateViewModel(_ model: WindowPresentableModel) {
+    func updateViewModel(_ model: WindowPresenter.Model) {
         viewModel.isBackButtonDisabled = !model.canGoBack
         viewModel.isForwardButtonDisabled = !model.canGoForward
         viewModel.showCancelButton = model.showCancelButton
