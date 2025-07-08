@@ -7,7 +7,7 @@ class BookmarkPresenterTests: XCTestCase {
         let bookmark1 = BookmarkModel(title: "title 1", url: URL(string: "http://example1.com")!)
         let bookmark2 = BookmarkModel(title: nil, url: URL(string: "http://example2.com")!)
         let sut = BookmarkPresenter()
-        var presentableModels: [BookmarkPresentableModel]!
+        var presentableModels: [BookmarkPresenter.Model]!
         sut.didUpdatePresentableModels = { presentableModels = $0 }
 
         sut.mapBookmarks(from: [bookmark1, bookmark2])

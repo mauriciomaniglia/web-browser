@@ -6,8 +6,8 @@ class BookmarkAdapterTests: XCTestCase {
 
     func test_updateViewModel_deliversCorrectState() {
         let (sut, viewModel) = makeSUT()
-        let model1 = BookmarkPresentableModel(id: UUID(), title: "title1", url: URL(string: "https://some-url.com")!)
-        let model2 = BookmarkPresentableModel(id: UUID(), title: "title2", url: URL(string: "https://some-other-url.com")!)
+        let model1 = BookmarkPresenter.Model(id: UUID(), title: "title1", url: URL(string: "https://some-url.com")!)
+        let model2 = BookmarkPresenter.Model(id: UUID(), title: "title2", url: URL(string: "https://some-other-url.com")!)
 
         sut.updateViewModel([model1, model2])
 
