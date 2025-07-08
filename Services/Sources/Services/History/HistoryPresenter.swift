@@ -1,7 +1,23 @@
 import Foundation
 
 public class HistoryPresenter {
-    public var didUpdatePresentableModel: ((HistoryPresentableModel) -> Void)?
+
+    public struct Model {
+        public struct Section: Equatable {
+            public let title: String
+            public let pages: [Page]
+        }
+
+        public struct Page: Equatable {
+            public let id: UUID
+            public let title: String
+            public let url: URL
+        }
+
+        public let list: [Section]?
+    }
+
+    public var didUpdatePresentableModel: ((Model) -> Void)?
 
     public init() {}
 
@@ -14,24 +30,24 @@ public class HistoryPresenter {
             pages.sorted(by: { $0.date > $1.date })
         }
 
-        let model = HistoryPresentableModel(list: mapSections(groupPagesSorted))
+        let model = Model(list: mapSections(groupPagesSorted))
         didUpdatePresentableModel?(model)
     }
 
-    private func mapSections(_ pages: [[HistoryPageModel]]) -> [HistoryPresentableModel.Section] {
+    private func mapSections(_ pages: [[HistoryPageModel]]) -> [Model.Section] {
         pages.map {
             let title = $0.first?.date.relativeTimeString() ?? ""
-            return HistoryPresentableModel.Section(title: title, pages: mapPages($0))
+            return Model.Section(title: title, pages: mapPages($0))
         }
     }
 
-    private func mapPages(_ pages: [HistoryPageModel]) -> [HistoryPresentableModel.Page] {
+    private func mapPages(_ pages: [HistoryPageModel]) -> [Model.Page] {
         pages.map {
             let title = $0.title ?? ""
             let dateAndTitle = $0.date.formattedTime() + " - " + title
             let dateAndURL = $0.date.formattedTime() + " - " + $0.url.absoluteString
 
-            return HistoryPresentableModel.Page(id: $0.id, title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
+            return Model.Page(id: $0.id, title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
         }
     }
 }

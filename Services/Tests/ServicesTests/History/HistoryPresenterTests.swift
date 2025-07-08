@@ -16,7 +16,7 @@ class HistoryPresenterTests: XCTestCase {
         let page2 = HistoryPageModel(title: "title 2", url: URL(string: "http://page2.com")!, date: today)
         let page3 = HistoryPageModel(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
 
-        var model: HistoryPresentableModel!
+        var model: HistoryPresenter.Model!
         sut.didUpdatePresentableModel = { model = $0 }
 
         sut.didLoadPages([page1, page2, page3])
