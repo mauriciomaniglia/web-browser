@@ -22,10 +22,6 @@ public final class WindowMediator {
         webView.load(url)
     }
 
-    public func didReload() {
-        webView.reload()
-    }
-
     public func didChangeFocus(_ isFocused: Bool) {
         presenter.didChangeFocus(isFocused: isFocused)
     }

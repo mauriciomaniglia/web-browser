@@ -14,17 +14,6 @@ class WindowMediatorTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didReload_sendsCorrectMessages() {
-        let (sut, webView, presenter, safelist, history) = makeSUT()
-
-        sut.didReload()
-
-        XCTAssertEqual(webView.receivedMessages, [.reload])
-        XCTAssertEqual(presenter.receivedMessages, [])
-        XCTAssertEqual(safelist.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
     func test_didChangeFocus_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 
