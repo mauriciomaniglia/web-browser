@@ -12,8 +12,8 @@ class BookmarkStoreMock: BookmarkStoreAPI {
     var receivedMessages = [Message]()
     var mockBookmarks = [BookmarkModel]()
 
-    func save(_ bookmark: BookmarkModel) {
-        receivedMessages.append(.save(bookmark.url.absoluteString))
+    func save(title: String, url: String) {
+        receivedMessages.append(.save(url))
     }
 
     func getPages() -> [BookmarkModel] {

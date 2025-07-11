@@ -19,9 +19,4 @@ public class BookmarkMediator {
         let webPages = term.isEmpty ? bookmarkStore.getPages() : bookmarkStore.getPages(by: term)
         presenter.mapBookmarks(from: webPages)
     }
-
-    public func didTapSavePage(title: String, url: String) {
-        let page = BookmarkModel(title: title, url: URL(string: url)!)
-        bookmarkStore.save(page)
-    }
 }

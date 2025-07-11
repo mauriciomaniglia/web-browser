@@ -23,13 +23,11 @@ public class BookmarkSwiftDataStore: BookmarkStoreAPI {
         self.container = container
     }
 
-    public func save(_ bookmark: BookmarkModel) {
-        let title = bookmark.title ?? ""
-
+    public func save(title: String, url: String) {
         let bookmark = Bookmark(
-            id: bookmark.id,
-            title: title.isEmpty ? bookmark.url.absoluteString : title,
-            url: bookmark.url)
+            id: UUID(),
+            title: title.isEmpty ? url : title,
+            url: URL(string: url)!)
 
         backgroundContext.insert(bookmark)
 

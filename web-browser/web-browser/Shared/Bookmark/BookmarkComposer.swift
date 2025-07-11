@@ -10,7 +10,7 @@ class BookmarkComposer {
         let adapter = BookmarkAdapter(webView: webView, viewModel: viewModel)
         let mediator = BookmarkMediator(presenter: presenter, bookmarkStore: bookmarkStore)
 
-        viewModel.didTapAddBookmark = mediator.didTapSavePage
+        viewModel.didTapAddBookmark = bookmarkStore.save(title:url:)
         viewModel.didSelectPage = webView.load
         viewModel.didOpenBookmarkView = mediator.didOpenBookmarkView
         viewModel.didSearchTerm = mediator.didSearchTerm(_:)

@@ -30,15 +30,6 @@ class BookmarkMediatorTests: XCTestCase {
         XCTAssertEqual(bookmarkStore.receivedMessages, [.getPages])
     }
 
-    func test_didTapSavePage_sendsCorrectMessage() {
-        let (sut, presenter, bookmarkStore) = makeSUT()
-
-        sut.didTapSavePage(title: "Some title", url: "http://some-url.com")
-
-        XCTAssertEqual(presenter.receivedMessages, [])
-        XCTAssertEqual(bookmarkStore.receivedMessages, [.save("http://some-url.com")])
-    }
-
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: BookmarkMediator, presenter: BookmarkPresenterSpy, bookmarkStore: BookmarkStoreMock) {
