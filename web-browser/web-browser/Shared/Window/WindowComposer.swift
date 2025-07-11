@@ -35,8 +35,8 @@ final class WindowComposer {
 
         contentBlocking.setupStrictProtection()
 
-        windowViewModel.didTapBackButton = mediator.didTapBackButton
-        windowViewModel.didTapForwardButton = mediator.didTapForwardButton
+        windowViewModel.didTapBackButton = webKitEngineWrapper.didTapBackButton
+        windowViewModel.didTapForwardButton = webKitEngineWrapper.didTapForwardButton
         windowViewModel.didReload = webKitEngineWrapper.reload
         windowViewModel.didStopLoading = webKitEngineWrapper.stopLoading
         windowViewModel.didStartSearch = mediator.didRequestSearch

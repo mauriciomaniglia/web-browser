@@ -22,14 +22,6 @@ public final class WindowMediator {
         webView.load(url)
     }
 
-    public func didTapBackButton() {
-        webView.didTapBackButton()
-    }
-
-    public func didTapForwardButton() {
-        webView.didTapForwardButton()
-    }
-
     public func didLongPressBackButton() {
         let webPages = webView.retrieveBackList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadBackList(webPages)
