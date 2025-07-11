@@ -14,17 +14,6 @@ class WindowMediatorTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didChangeFocus_sendsCorrectMessages() {
-        let (sut, webView, presenter, safelist, history) = makeSUT()
-
-        sut.didChangeFocus(true)
-
-        XCTAssertEqual(presenter.receivedMessages, [.didChangeFocus(isFocused: true)])
-        XCTAssertEqual(webView.receivedMessages, [])
-        XCTAssertEqual(safelist.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
     func test_didStartTyping_sendsCorrectMessage() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 

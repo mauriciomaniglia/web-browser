@@ -41,7 +41,7 @@ final class WindowComposer {
         windowViewModel.didStopLoading = webKitEngineWrapper.stopLoading
         windowViewModel.didStartSearch = mediator.didRequestSearch
         windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
-        windowViewModel.didChangeFocus = mediator.didChangeFocus
+        windowViewModel.didChangeFocus = presenter.didChangeFocus
         windowViewModel.didStartTyping = { oldText, newText in
             searchSuggestionViewModel.didStartTyping?(newText)
             mediator.didStartTyping(oldText: oldText, newText: newText)

@@ -22,10 +22,6 @@ public final class WindowMediator {
         webView.load(url)
     }
 
-    public func didChangeFocus(_ isFocused: Bool) {
-        presenter.didChangeFocus(isFocused: isFocused)
-    }
-
     public func didStartTyping(oldText: String, newText: String) {
         presenter.didStartTyping(oldText: oldText, newText: newText)
     }
