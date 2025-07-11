@@ -14,7 +14,7 @@ class BookmarkComposer {
         viewModel.didSelectPage = webView.load
         viewModel.didOpenBookmarkView = mediator.didOpenBookmarkView
         viewModel.didSearchTerm = mediator.didSearchTerm(_:)
-        viewModel.didTapDeletePages = mediator.didTapDeletePages
+        viewModel.didTapDeletePages = bookmarkStore.deletePages(withIDs:)
         presenter.didUpdatePresentableModels = adapter.updateViewModel
 
         return viewModel

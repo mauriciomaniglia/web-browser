@@ -39,17 +39,6 @@ class BookmarkMediatorTests: XCTestCase {
         XCTAssertEqual(bookmarkStore.receivedMessages, [.save("http://some-url.com")])
     }
 
-    func test_didTapDeletePages_sendsCorrectMessage() {
-        let (sut, presenter, bookmarkStore) = makeSUT()
-        let page1ID = UUID()
-        let page2ID = UUID()
-
-        sut.didTapDeletePages([page1ID, page2ID])
-
-        XCTAssertEqual(presenter.receivedMessages, [])
-        XCTAssertEqual(bookmarkStore.receivedMessages, [.deletePages([page1ID, page2ID])])
-    }
-
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: BookmarkMediator, presenter: BookmarkPresenterSpy, bookmarkStore: BookmarkStoreMock) {

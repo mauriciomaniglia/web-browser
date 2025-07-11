@@ -24,8 +24,4 @@ public class BookmarkMediator {
         let page = BookmarkModel(title: title, url: URL(string: url)!)
         bookmarkStore.save(page)
     }
-
-    public func didTapDeletePages(_ pageIDs: [UUID]) {
-        bookmarkStore.deletePages(withIDs: pageIDs)
-    }
 }
