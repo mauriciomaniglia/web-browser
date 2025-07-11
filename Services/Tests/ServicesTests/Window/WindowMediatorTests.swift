@@ -36,17 +36,6 @@ class WindowMediatorTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didStopLoading_sendsCorrectMessage() {
-        let (sut, webView, presenter, safelist, history) = makeSUT()
-
-        sut.didStopLoading()
-
-        XCTAssertEqual(presenter.receivedMessages, [])
-        XCTAssertEqual(webView.receivedMessages, [.stopLoading])
-        XCTAssertEqual(safelist.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
     func test_didTapBackButton_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 

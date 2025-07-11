@@ -30,10 +30,6 @@ public final class WindowMediator {
         presenter.didStartTyping(oldText: oldText, newText: newText)
     }
 
-    public func didStopLoading() {
-        webView.stopLoading()
-    }
-
     public func didTapBackButton() {
         webView.didTapBackButton()
     }

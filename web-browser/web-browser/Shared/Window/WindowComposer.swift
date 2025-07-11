@@ -38,7 +38,7 @@ final class WindowComposer {
         windowViewModel.didTapBackButton = mediator.didTapBackButton
         windowViewModel.didTapForwardButton = mediator.didTapForwardButton
         windowViewModel.didReload = webKitEngineWrapper.reload
-        windowViewModel.didStopLoading = mediator.didStopLoading
+        windowViewModel.didStopLoading = webKitEngineWrapper.stopLoading
         windowViewModel.didStartSearch = mediator.didRequestSearch
         windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
         windowViewModel.didChangeFocus = mediator.didChangeFocus
