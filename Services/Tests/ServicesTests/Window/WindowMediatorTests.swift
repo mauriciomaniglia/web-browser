@@ -92,17 +92,6 @@ class WindowMediatorTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didDismissBackForwardList_sendsCorrectMessages() {
-        let (sut, webView, presenter, safelist, history) = makeSUT()
-
-        sut.didDismissBackForwardList()
-
-        XCTAssertEqual(webView.receivedMessages, [])
-        XCTAssertEqual(presenter.receivedMessages, [.didDismissBackForwardList])
-        XCTAssertEqual(safelist.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
     func test_updateSafelist_withURLEnabled_addURLToSafelist() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
         let url = "http://some-url.com"

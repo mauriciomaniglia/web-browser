@@ -42,10 +42,6 @@ public final class WindowMediator {
         webView.navigateToForwardListPage(at: index)
     }
 
-    public func didDismissBackForwardList() {
-        presenter.didDismissBackForwardList()
-    }
-
     public func updateSafelist(url: String, isEnabled: Bool) {
         if isEnabled {
             safelistStore.saveDomain(url)

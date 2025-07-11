@@ -50,7 +50,7 @@ final class WindowComposer {
         windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
         windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
         windowViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
-        windowViewModel.didDismissBackForwardPageList = mediator.didDismissBackForwardList
+        windowViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
         commandMenuViewModel.didTapAddBookmark = windowViewModel.didTapAddBookmark
 
