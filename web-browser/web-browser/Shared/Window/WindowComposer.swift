@@ -44,7 +44,7 @@ final class WindowComposer {
         windowViewModel.didChangeFocus = presenter.didChangeFocus
         windowViewModel.didStartTyping = { oldText, newText in
             searchSuggestionViewModel.didStartTyping?(newText)
-            mediator.didStartTyping(oldText: oldText, newText: newText)
+            presenter.didStartTyping(oldText: oldText, newText: newText)
         }
         windowViewModel.didLongPressBackButton = mediator.didLongPressBackButton
         windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton

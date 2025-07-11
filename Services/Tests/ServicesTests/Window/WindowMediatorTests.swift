@@ -14,17 +14,6 @@ class WindowMediatorTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [])
     }
 
-    func test_didStartTyping_sendsCorrectMessage() {
-        let (sut, webView, presenter, safelist, history) = makeSUT()
-
-        sut.didStartTyping(oldText: "app", newText: "apple")
-
-        XCTAssertEqual(presenter.receivedMessages, [.didStartTyping(oldText: "app", newText: "apple")])
-        XCTAssertEqual(webView.receivedMessages, [])
-        XCTAssertEqual(safelist.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [])
-    }
-
     func test_didTapBackButton_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
 

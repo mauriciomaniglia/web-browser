@@ -22,10 +22,6 @@ public final class WindowMediator {
         webView.load(url)
     }
 
-    public func didStartTyping(oldText: String, newText: String) {
-        presenter.didStartTyping(oldText: oldText, newText: newText)
-    }
-
     public func didTapBackButton() {
         webView.didTapBackButton()
     }
