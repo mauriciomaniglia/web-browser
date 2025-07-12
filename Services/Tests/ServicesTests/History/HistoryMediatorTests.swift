@@ -30,17 +30,6 @@ class HistoryMediatorTests: XCTestCase {
         XCTAssertEqual(history.receivedMessages, [.getPages])
     }
 
-    func test_didTapDeletePages_sendsCorrectMessage() {
-        let (sut, presenter, history) = makeSUT()
-        let page1ID = UUID()
-        let page2ID = UUID()
-
-        sut.didTapDeletePages([page1ID, page2ID])
-        
-        XCTAssertEqual(presenter.receivedMessages, [])
-        XCTAssertEqual(history.receivedMessages, [.deletePages([page1ID, page2ID])])
-    }
-
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: HistoryMediator, presenter: HistoryPresenterSpy, historyStore: HistoryStoreMock) {

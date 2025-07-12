@@ -19,8 +19,4 @@ public class HistoryMediator {
         let pages = term.isEmpty ? historyStore.getPages() : historyStore.getPages(by: term)
         presenter.didLoadPages(pages)
     }
-
-    public func didTapDeletePages(_ pageIDs: [UUID]) {
-        historyStore.deletePages(withIDs: pageIDs)
-    }
 }
