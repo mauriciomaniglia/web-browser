@@ -23,8 +23,4 @@ public class HistoryMediator {
     public func didTapDeletePages(_ pageIDs: [UUID]) {
         historyStore.deletePages(withIDs: pageIDs)
     }
-
-    public func didTapDeleteAllPages() {
-        historyStore.deleteAllPages()
-    }
 }

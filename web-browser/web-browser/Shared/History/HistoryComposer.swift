@@ -14,7 +14,7 @@ class HistoryComposer {
         viewModel.didOpenHistoryView = mediator.didOpenHistoryView
         viewModel.didSearchTerm = mediator.didSearchTerm(_:)
         viewModel.didTapDeletePages = mediator.didTapDeletePages
-        viewModel.didTapDeleteAllPages = mediator.didTapDeleteAllPages
+        viewModel.didTapDeleteAllPages = historyStore.deleteAllPages
         presenter.didUpdatePresentableModel = adapter.updateViewModel
 
         return viewModel
