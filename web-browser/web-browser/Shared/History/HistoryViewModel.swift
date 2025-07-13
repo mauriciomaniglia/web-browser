@@ -47,7 +47,7 @@ class HistoryViewModel: ObservableObject {
         for sectionIndex in historyList.indices {
             historyList[sectionIndex].pages.removeAll(where: { $0.isSelected })
         }
-        remoteSectionsThatHaveNoPagesLeft()
+        removeSectionsThatHaveNoPagesLeft()
     }
 
     func deletePages(at offsets: IndexSet, inSection sectionIndex: Int) {
@@ -63,7 +63,7 @@ class HistoryViewModel: ObservableObject {
         historyList.removeAll()
     }
 
-    private func remoteSectionsThatHaveNoPagesLeft() {
+    private func removeSectionsThatHaveNoPagesLeft() {
         historyList.removeAll(where: { $0.pages.isEmpty })
     }
 }
