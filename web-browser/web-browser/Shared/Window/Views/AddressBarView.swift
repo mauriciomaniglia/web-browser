@@ -43,9 +43,7 @@ struct AddressBarView: View {
             }
             .padding(.horizontal)
 
-            if (viewModel.progressBarValue != nil) {
-                ProgressBar
-            }
+            ProgressBar
         }
         .onAppear {
             DispatchQueue.main.async {
@@ -96,7 +94,8 @@ struct AddressBarView: View {
     }
 
     private var ProgressBar: some View {
-        ProgressView(value: viewModel.progressBarValue, total: 1.0)
+        ProgressView(value: viewModel.progressBarValue ?? 0, total: 1.0)
+            .opacity(viewModel.progressBarValue != nil ? 1 : 0)
             .padding(EdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18))
     }
 
