@@ -113,7 +113,7 @@ class WindowPresenterTests: XCTestCase {
 
         XCTAssertNil(windowState!.title)
         XCTAssertNil(windowState!.urlHost)
-        XCTAssertNil(windowState!.fullURL)
+        XCTAssertEqual(windowState!.fullURL, "linux")
         XCTAssertTrue(windowState!.showCancelButton)
         XCTAssertTrue(windowState!.showClearButton)
         XCTAssertFalse(windowState!.showStopButton)

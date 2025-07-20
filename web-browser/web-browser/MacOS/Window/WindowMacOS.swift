@@ -42,7 +42,7 @@ struct WindowMacOS: View {
     // MARK: SubViews
 
     var AddressBar: some View {
-        AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
+        AddressBarView(viewModel: windowViewModel, searchText: $windowViewModel.fullURL)
             .frame(minWidth: 0, maxWidth: 800)
             .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
                 SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)

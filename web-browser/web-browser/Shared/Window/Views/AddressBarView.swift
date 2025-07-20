@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AddressBarView: View {
     @ObservedObject var viewModel: WindowViewModel
-    @State var searchText: String
+    @Binding var searchText: String
 
     @State private var isShowingSheet = false
     @FocusState private var isTextFieldFocused: Bool

@@ -98,7 +98,7 @@ public class WindowPresenter {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
-            fullURL: model.fullURL,
+            fullURL: newText,
             showCancelButton: true,
             showClearButton: true,
             showStopButton: false,
