@@ -106,7 +106,7 @@ public class WindowPresenter {
             showSiteProtection: model.showSiteProtection,
             isWebsiteProtected: model.isWebsiteProtected,
             showWebView: model.showWebView,
-            showSearchSuggestions: true,
+            showSearchSuggestions: newText.isEmpty ? false : true,
             canGoBack: model.canGoBack,
             canGoForward: model.canGoForward,
             backList: nil,

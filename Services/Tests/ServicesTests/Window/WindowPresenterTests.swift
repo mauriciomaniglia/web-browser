@@ -139,6 +139,16 @@ class WindowPresenterTests: XCTestCase {
         XCTAssertNil(windowState)
     }
 
+    func test_didStartTyping_whenInputIsEmpty_shouldNotShowSearchSuggestions() {
+        let (sut, _) = makeSUT()
+        var windowState: WindowPresenter.Model?
+        sut.didUpdatePresentableModel = { windowState = $0 }
+
+        sut.didStartTyping(oldText: "linux", newText: "")
+
+        XCTAssertFalse(windowState!.showSearchSuggestions)
+    }
+
     func test_didChangeFocus_whenIsNotFocused_deliversCorrectWindowState() {
         let (sut, _) = makeSUT()
         var windowState: WindowPresenter.Model?
