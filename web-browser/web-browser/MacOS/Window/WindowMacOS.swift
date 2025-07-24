@@ -44,7 +44,7 @@ struct WindowMacOS: View {
     var AddressBar: some View {
         AddressBarView(viewModel: windowViewModel, searchText: $windowViewModel.fullURL)
             .frame(minWidth: 0, maxWidth: 800)
-            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
+            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.center)) {
                 SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
                     .frame(width: 550)
             }
