@@ -65,7 +65,7 @@
 		F989C4AF2E048D6D0021132F /* SearchSuggestionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AE2E048D6D0021132F /* SearchSuggestionAdapter.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
-		F9DF54C72CEE04D600F92FC3 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* HistoryView.swift */; };
+		F9DF54C72CEE04D600F92FC3 /* HistoryIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FCD2C02ABD00098995F /* WindowViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */; };
 		F9E55FD12C02ABFE0098995F /* WindowViewAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */; };
@@ -146,7 +146,7 @@
 		F989C4AE2E048D6D0021132F /* SearchSuggestionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionAdapter.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
-		F9DF54C62CEE04D600F92FC3 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIPadOS.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewAdapter.swift; sourceTree = "<group>"; };
 		F9E55FCF2C02ABFE0098995F /* WindowViewAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewAdapterTests.swift; sourceTree = "<group>"; };
@@ -177,6 +177,7 @@
 		F916A1FC2CE8C36B00350089 /* IPadOS */ = {
 			isa = PBXGroup;
 			children = (
+				F93D187A2E3436B70010BABE /* History */,
 				F97A17632CECB4BB005978E9 /* Bookmark */,
 				F916A2022CE8EB7600350089 /* Menu */,
 				F916A2012CE8EB6700350089 /* Window */,
@@ -318,6 +319,14 @@
 				F932F2112CE23A8600B12B45 /* BookmarkIOS.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		F93D187A2E3436B70010BABE /* History */ = {
+			isa = PBXGroup;
+			children = (
+				F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		F943799E2C911B5E00DEBFF7 /* History */ = {
@@ -477,7 +486,6 @@
 			isa = PBXGroup;
 			children = (
 				F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */,
-				F9DF54C62CEE04D600F92FC3 /* HistoryView.swift */,
 				F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */,
 				F9462B172C4890B000451759 /* HistoryComposer.swift */,
 				F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */,
@@ -671,7 +679,7 @@
 				F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */,
 				F989C4AF2E048D6D0021132F /* SearchSuggestionAdapter.swift in Sources */,
 				F932F2142CE23A8600B12B45 /* BookmarkIOS.swift in Sources */,
-				F9DF54C72CEE04D600F92FC3 /* HistoryView.swift in Sources */,
+				F9DF54C72CEE04D600F92FC3 /* HistoryIPadOS.swift in Sources */,
 				F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */,
 				F932F20E2CE23A7800B12B45 /* BookmarkViewModel.swift in Sources */,
 				F932F20F2CE23A7800B12B45 /* BookmarkView.swift in Sources */,

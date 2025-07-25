@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HistoryView: View {
+struct HistoryIPadOS: View {
     @ObservedObject var viewModel: HistoryViewModel
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
