@@ -9,7 +9,7 @@ struct WindowIOS: View {
 
     var body: some View {
         VStack {
-            AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
+            AddressBarView(viewModel: windowViewModel, searchText: $windowViewModel.fullURL)
 
             if windowViewModel.showSearchSuggestions {
                 ScrollView {

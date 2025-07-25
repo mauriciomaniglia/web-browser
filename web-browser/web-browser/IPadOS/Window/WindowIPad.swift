@@ -20,7 +20,7 @@ struct WindowIPadOS: View {
                         WindowNavigationButtons(viewModel: windowViewModel)
                     }
                     ToolbarItem(placement: .principal) {
-                        AddressBarView(viewModel: windowViewModel, searchText: windowViewModel.fullURL)
+                        AddressBarView(viewModel: windowViewModel, searchText: $windowViewModel.fullURL)
                             .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
                                 SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
                                     .frame(width: 550)
