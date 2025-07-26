@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BookmarkView: View {
+struct BookmarkMacOS: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
