@@ -33,10 +33,11 @@ struct BookmarkMacOS: View {
     private var BookmarkListView: some View {
         List {
             ForEach(viewModel.bookmarkList) { bookmark in
-                BookmarkListItem(
+                ListItem(
                     viewModel: viewModel,
                     isShowingDeleteBookmarkAlert: $isShowingDeleteBookmarkAlert,
-                    bookmark: bookmark)
+                    bookmark: bookmark
+                )
             }
         }
         .alert(isPresented: $isShowingDeleteBookmarkAlert) { RemoveItemAlert }
@@ -59,31 +60,31 @@ struct BookmarkMacOS: View {
             secondaryButton: .cancel() { viewModel.undoCurrentSelection() }
         )
     }
-}
 
-struct BookmarkListItem: View {
-    @ObservedObject var viewModel: BookmarkViewModel
-    @Environment(\.dismiss) private var dismiss
-    @Binding var isShowingDeleteBookmarkAlert: Bool
-    let bookmark: BookmarkViewModel.Bookmark
+    struct ListItem: View {
+        @ObservedObject var viewModel: BookmarkViewModel
+        @Environment(\.dismiss) private var dismiss
+        @Binding var isShowingDeleteBookmarkAlert: Bool
+        let bookmark: BookmarkViewModel.Bookmark
 
-    var body: some View {
-        HStack {
-            Text(bookmark.title)
-                .onTapGesture {
-                    viewModel.didSelectPage?(bookmark.url)
-                    dismiss()
+        var body: some View {
+            HStack {
+                Text(bookmark.title)
+                    .onTapGesture {
+                        viewModel.didSelectPage?(bookmark.url)
+                        dismiss()
+                    }
+
+                Spacer()
+
+                Button {
+                    viewModel.setSelectedBookmark(bookmark)
+                    isShowingDeleteBookmarkAlert = true
+                } label: {
+                    Image(systemName: "ellipsis")
                 }
-
-            Spacer()
-
-            Button {
-                viewModel.setSelectedBookmark(bookmark)
-                isShowingDeleteBookmarkAlert = true
-            } label: {
-                Image(systemName: "ellipsis")
             }
+            .padding()
         }
-        .padding()
     }
 }
