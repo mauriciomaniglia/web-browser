@@ -4,39 +4,21 @@ import SwiftUI
 struct BookmarkIOS: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Binding var isPresented: Bool
-    @State private var searchText: String = ""
 
     var body: some View {
-        ZStack {
-            Color(UIColor.systemGroupedBackground)
-                .edgesIgnoringSafeArea(.all)
-
-            VStack {
-                SearchTopBar
-                    .navigationTitle("Bookmark")
-                    .onAppear {
-                        viewModel.didOpenBookmarkView?()
-                    }
-
-                if isBookmarkEmpty() {
-                    EmptyView
-                } else {
-                    BookmarkList
-                }
+        VStack {
+            if isBookmarkEmpty() {
+                EmptyView
+            } else {
+                BookmarkList
             }
-        }
-    }
 
-    private var SearchTopBar: some View {
-        HStack {
-            TextField("Search Bookmark", text: $searchText)
-                .onChange(of: searchText, { _, newValue in
-                    viewModel.didSearchTerm?(newValue)
-                })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
         }
-        .padding()
+        .navigationTitle("Bookmark")
+        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
+        .onAppear {
+            viewModel.didOpenBookmarkView?()
+        }
     }
 
     private var BookmarkList: some View {
