@@ -16,9 +16,7 @@ struct BookmarkIOS: View {
         }
         .navigationTitle("Bookmark")
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear {
-            viewModel.didOpenBookmarkView?()
-        }
+        .onAppear(perform: viewModel.didOpenBookmarkView)
     }
 
     private var BookmarkList: some View {

@@ -15,10 +15,8 @@ struct BookmarkIPadOS: View {
                 BookmarkList
             }
         }
-        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear {
-            viewModel.didOpenBookmarkView?()
-        }
+        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")       
+        .onAppear(perform: viewModel.didOpenBookmarkView)
     }
 
     private var BookmarkList: some View {
