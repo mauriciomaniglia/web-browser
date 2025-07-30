@@ -8,28 +8,17 @@ struct BookmarkIPadOS: View {
     @State private var isShowingDeleteBookmarkAlert = false
 
     var body: some View {
-        SearchTopBar
-            .onAppear {
-                viewModel.didOpenBookmarkView?()
+        VStack {
+            if isBookmarkEmpty() {
+                EmptyView
+            } else {
+                BookmarkList
             }
-
-        if isBookmarkEmpty() {
-            EmptyView
-        } else {
-            BookmarkList
         }
-    }
-
-    private var SearchTopBar: some View {
-        HStack {
-            TextField("Search Bookmark", text: $searchText)
-                .onChange(of: searchText, { _, newValue in
-                    viewModel.didSearchTerm?(newValue)
-                })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
+        .onAppear {
+            viewModel.didOpenBookmarkView?()
         }
-        .padding()
     }
 
     private var BookmarkList: some View {
@@ -52,17 +41,19 @@ struct BookmarkIPadOS: View {
                 .padding()
             }
         }
-        .alert(isPresented: $isShowingDeleteBookmarkAlert) {
-            Alert(
-                title: Text("Remove?"),
-                primaryButton: .default(Text("Yes")) {
-                    viewModel.removeSelectedBookmark()
-                },
-                secondaryButton: .cancel() {
-                    viewModel.undoCurrentSelection()
-                }
-            )
-        }
+        .alert(isPresented: $isShowingDeleteBookmarkAlert) { alertView }
+    }
+
+    private var alertView: Alert {
+        Alert(
+            title: Text("Remove?"),
+            primaryButton: .default(Text("Yes")) {
+                viewModel.removeSelectedBookmark()
+            },
+            secondaryButton: .cancel() {
+                viewModel.undoCurrentSelection()
+            }
+        )
     }
 
     private var EmptyView: some View {
