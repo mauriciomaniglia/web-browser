@@ -7,27 +7,22 @@ struct BookmarkMacOS: View {
     @State private var isShowingDeleteBookmarkAlert = false
 
     var body: some View {
-        SearchTopBar
-            .navigationTitle("Bookmark")
-            .onAppear(perform: viewModel.didOpenBookmarkView)
+        VStack {
+            HStack {
+                Button { dismiss() } label: { Image(systemName: "arrow.left") }
+                Spacer()
+            }
+            .padding()
 
-        if viewModel.bookmarkList.isEmpty {
-            EmptyView
-        } else {
-            BookmarkListView
+            if viewModel.bookmarkList.isEmpty {
+                EmptyView
+            } else {
+                BookmarkListView
+            }
         }
-    }
-
-    private var SearchTopBar: some View {
-        HStack {
-            Button { dismiss() } label: { Image(systemName: "arrow.left") }
-
-            TextField("Search Bookmark", text: $searchText)
-                .onChange(of: searchText, { _, newValue in viewModel.didSearchTerm?(newValue) })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-        }
-        .padding()
+        .navigationTitle("Bookmark")
+        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
+        .onAppear(perform: viewModel.didOpenBookmarkView)
     }
 
     private var BookmarkListView: some View {
