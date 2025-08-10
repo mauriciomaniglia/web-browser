@@ -28,6 +28,7 @@ struct WindowIOS: View {
             }
             .padding()
         }
+        .background(Color(.systemGray6))
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
             MenuIOS(windowViewModel: windowViewModel, isPresented: $isShowingSheet)
         })
