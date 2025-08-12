@@ -16,7 +16,9 @@ struct WindowIOS: View {
                     SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
                 }
             } else {
-                webView.frame(maxWidth:.infinity, maxHeight: .infinity)
+                webView
+                    .frame(maxWidth:.infinity, maxHeight: .infinity)
+                    .opacity(windowViewModel.showWebView ? 1 : 0)
             }
 
             HStack {
