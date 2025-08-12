@@ -27,7 +27,9 @@ struct WindowMacOS: View {
                     }
                     Spacer()
 
-                    webView.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    webView
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .opacity(windowViewModel.showWebView ? 1 : 0)
                 }
                 .padding()
             }
