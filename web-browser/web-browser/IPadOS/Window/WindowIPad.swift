@@ -14,6 +14,7 @@ struct WindowIPadOS: View {
                 VStack {
                     webView
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .opacity(windowViewModel.showWebView ? 1 : 0)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
