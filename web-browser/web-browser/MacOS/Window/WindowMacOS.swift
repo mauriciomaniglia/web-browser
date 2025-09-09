@@ -21,8 +21,12 @@ struct WindowMacOS: View {
 
                         Spacer()
 
-                        if windowViewModel.canShowShareButton() {
-                            ShareButton
+                        if let url = URL(string: windowViewModel.fullURL) {
+                            ShareLink(item: url) {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 17))
+                            }
+                            .buttonStyle(.borderless)
                         }
                     }
                     Spacer()
@@ -50,14 +54,6 @@ struct WindowMacOS: View {
                 SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
                     .frame(width: 550)
             }
-    }
-
-    var ShareButton: some View {
-        ShareLink(item: URL(string: windowViewModel.fullURL)!) {
-            Image(systemName: "square.and.arrow.up")
-                .font(.system(size: 17))
-        }
-        .buttonStyle(.borderless)
     }
 
     var AddBookmark: some View {

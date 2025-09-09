@@ -27,9 +27,11 @@ struct WindowIPadOS: View {
                                     .frame(width: 550)
                             }
                     }
-                    if windowViewModel.canShowShareButton() {
+                    if let url = URL(string: windowViewModel.fullURL) {
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            ShareButton
+                            ShareLink(item: url) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
                         }
                     }
                 }
@@ -37,12 +39,6 @@ struct WindowIPadOS: View {
         }
         .overlay(alignment: .center) {
             AddBookmarkAlert
-        }
-    }
-
-    private var ShareButton: some View {
-        ShareLink(item: URL(string: windowViewModel.fullURL)!) {
-            Image(systemName: "square.and.arrow.up")
         }
     }
 

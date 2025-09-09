@@ -25,17 +25,13 @@ struct MenuIOS: View {
                 NavigationLink(destination: HistoryIOS(viewModel: windowViewModel.historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
-                if windowViewModel.canShowShareButton() {
-                    ShareButton
+                if let url = URL(string: windowViewModel.fullURL) {
+                    ShareLink(item: url) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                            .tint(.primary)
+                    }
                 }
             }
-        }
-    }
-
-    private var ShareButton: some View {
-        ShareLink(item: URL(string: windowViewModel.fullURL)!) {
-            Label("Share", systemImage: "square.and.arrow.up")
-                .tint(.primary)
         }
     }
 }
