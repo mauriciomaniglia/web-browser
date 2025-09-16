@@ -13,8 +13,8 @@ struct MenuIPadOS: View {
     var body: some View {
         NavigationStack {
             List {
-                Button(action: { windowViewModel.showAddBookmark = true }) {
-                    Label("Add Bookmark", systemImage: "bookmark")
+                if windowViewModel.showWebView {
+                    AddBookmarkButton
                 }
                 NavigationLink(value: Menu.bookmarks) {
                     Label("Bookmarks", systemImage: "book")
@@ -31,6 +31,12 @@ struct MenuIPadOS: View {
                     HistoryIPadOS(viewModel: windowViewModel.historyViewModel)
                 }
             }
+        }
+    }
+
+    var AddBookmarkButton: some View {
+        Button(action: { windowViewModel.showAddBookmark = true }) {
+            Label("Add Bookmark", systemImage: "bookmark")
         }
     }
 }
