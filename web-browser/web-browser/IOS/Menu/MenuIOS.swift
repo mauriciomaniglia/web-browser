@@ -8,17 +8,9 @@ struct MenuIOS: View {
     var body: some View {
         NavigationView {
             List {
-                Button(action: {
-                    windowViewModel.didTapAddBookmark()
-                    isPresented = false
-                }) {
-                    HStack {
-                        Label("Add Bookmark", systemImage: "bookmark")
-                        Spacer()
-                    }
+                if windowViewModel.showWebView {
+                    AddBookmarkButton
                 }
-                .buttonStyle(PlainButtonStyle())
-
                 NavigationLink(destination: BookmarkIOS(viewModel: windowViewModel.bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
@@ -33,6 +25,19 @@ struct MenuIOS: View {
                 }
             }
         }
+    }
+
+    var AddBookmarkButton: some View {
+        Button(action: {
+            windowViewModel.didTapAddBookmark()
+            isPresented = false
+        }) {
+            HStack {
+                Label("Add Bookmark", systemImage: "bookmark")
+                Spacer()
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 #endif
