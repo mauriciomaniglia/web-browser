@@ -12,10 +12,10 @@ final class WindowComposer {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
 
-        let webKitEngineWrapper = WebKitEngineWrapper()
-        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitEngineWrapper, container: container)
-        let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitEngineWrapper, container: container)
-        let searchSuggestionViewModel = SearchSuggestionComposer().makeSearchSuggestionViewModel(webView: webKitEngineWrapper, container: container)
+        let webKitWrapper = WebKitEngineWrapper()
+        let historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitWrapper, container: container)
+        let bookmarkViewModel = BookmarkComposer().makeBookmarkViewModel(webView: webKitWrapper, container: container)
+        let searchSuggestionViewModel = SearchSuggestionComposer().makeSearchSuggestionViewModel(webView: webKitWrapper, container: container)
         let safelistStore = SafelistStore()
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         var windowViewModel = WindowViewModel(
@@ -24,10 +24,10 @@ final class WindowComposer {
             searchSuggestionViewModel: searchSuggestionViewModel
         )
         let historyStore = HistorySwiftDataStore(container: container)
-        let adapter = WindowViewAdapter(webView: webKitEngineWrapper, viewModel: windowViewModel)
-        let contentBlocking = ContentBlocking(webView: webKitEngineWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
+        let adapter = WindowViewAdapter(webView: webKitWrapper, viewModel: windowViewModel)
+        let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         let mediator = WindowMediator(
-            webView: webKitEngineWrapper,
+            webView: webKitWrapper,
             presenter: presenter,
             safelistStore: safelistStore,
             historyStore: historyStore
@@ -35,10 +35,10 @@ final class WindowComposer {
 
         contentBlocking.setupStrictProtection()
 
-        windowViewModel.didTapBackButton = webKitEngineWrapper.didTapBackButton
-        windowViewModel.didTapForwardButton = webKitEngineWrapper.didTapForwardButton
-        windowViewModel.didReload = webKitEngineWrapper.reload
-        windowViewModel.didStopLoading = webKitEngineWrapper.stopLoading
+        windowViewModel.didTapBackButton = webKitWrapper.didTapBackButton
+        windowViewModel.didTapForwardButton = webKitWrapper.didTapForwardButton
+        windowViewModel.didReload = webKitWrapper.reload
+        windowViewModel.didStopLoading = webKitWrapper.stopLoading
         windowViewModel.didStartSearch = mediator.didRequestSearch
         windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
         windowViewModel.didChangeFocus = presenter.didChangeFocus
@@ -54,23 +54,23 @@ final class WindowComposer {
 
         commandMenuViewModel.didTapAddBookmark = windowViewModel.didTapAddBookmark
 
-        webKitEngineWrapper.delegate = mediator
+        webKitWrapper.delegate = mediator
         presenter.didUpdatePresentableModel = adapter.updateViewModel
 
         #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
             return WindowIPadOS(
                 windowViewModel: windowViewModel,
-                webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+                webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         } else {
             return WindowIOS(
                 windowViewModel: windowViewModel,
-                webView: AnyView(WebViewUIKitWrapper(webView: webKitEngineWrapper.webView)))
+                webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }
         #elseif os(macOS)
         return WindowMacOS(
             windowViewModel: windowViewModel,
-            webView: AnyView(WebViewAppKitWrapper(webView: webKitEngineWrapper.webView)))
+            webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
         #endif
     }
 }
