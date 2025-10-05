@@ -1,5 +1,5 @@
 import SwiftUI
-@testable import Services
+import Services
 
 final class WindowComposer {
 
