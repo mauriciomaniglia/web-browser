@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* TabViewFactory.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
 		F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */; };
 		F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F901D9882E93240900F3B3D9 /* TabViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewFactory.swift; sourceTree = "<group>"; };
 		F90877042E1028E000023426 /* SearchSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionView.swift; sourceTree = "<group>"; };
 		F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowIPad.swift; sourceTree = "<group>"; };
 		F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIPadOS.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 				F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */,
 				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
@@ -658,6 +661,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */,
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */,
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
