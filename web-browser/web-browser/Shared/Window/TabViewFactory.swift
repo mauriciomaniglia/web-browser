@@ -2,7 +2,11 @@ import SwiftData
 import SwiftUI
 import Services
 
-final class TabViewFactory {
+protocol TabFactory {
+    func createNewTab() -> any View
+}
+
+final class TabViewFactory: TabFactory {
     let composer: WindowComposer
     let container: ModelContainer
     let webKitWrapper: WebKitEngineWrapper
@@ -28,9 +32,8 @@ final class TabViewFactory {
         self.safelistStore = SafelistStore()
     }
 
-    func makeTabView(commandMenuViewModel: CommandMenuViewModel) -> any View {
+    func createNewTab() -> any View {
         composer.makeWindowView(
-            commandMenuViewModel: commandMenuViewModel,
             webKitWrapper: webKitWrapper,
             historyViewModel: historyViewModel,
             bookmarkViewModel: bookmarkViewModel,

@@ -4,7 +4,6 @@ import Services
 final class WindowComposer {
 
     func makeWindowView(
-        commandMenuViewModel: CommandMenuViewModel,
         webKitWrapper: WebKitEngineWrapper,
         historyViewModel: HistoryViewModel,
         bookmarkViewModel: BookmarkViewModel,
@@ -45,8 +44,6 @@ final class WindowComposer {
         windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
         windowViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
         windowViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
-
-        commandMenuViewModel.didTapAddBookmark = windowViewModel.didTapAddBookmark
 
         webKitWrapper.delegate = mediator
         presenter.didUpdatePresentableModel = adapter.updateViewModel
