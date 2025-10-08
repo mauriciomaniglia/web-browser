@@ -32,6 +32,7 @@
 		F947B91E2CF613430026E4E7 /* HistoryStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */; };
 		F947B9202CF613AD0026E4E7 /* SafelistStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91F2CF613AD0026E4E7 /* SafelistStoreSpy.swift */; };
 		F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
+		F94A3BA32E96FC4400ADF7DA /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A3BA22E96FC4400ADF7DA /* TabBarViewModel.swift */; };
 		F94A60F12C758C52001384CB /* MenuMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MenuMacOS.swift */; };
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F94FD3EA2C46818D001EDF1D /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */; };
@@ -114,6 +115,7 @@
 		F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreSpy.swift; sourceTree = "<group>"; };
 		F947B91F2CF613AD0026E4E7 /* SafelistStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafelistStoreSpy.swift; sourceTree = "<group>"; };
 		F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionComposer.swift; sourceTree = "<group>"; };
+		F94A3BA22E96FC4400ADF7DA /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		F94A60F02C758C52001384CB /* MenuMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMacOS.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
+				F94A3BA22E96FC4400ADF7DA /* TabBarViewModel.swift */,
 				F9E55FCC2C02ABD00098995F /* WindowViewAdapter.swift */,
 				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
@@ -701,6 +704,7 @@
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,
+				F94A3BA32E96FC4400ADF7DA /* TabBarViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
