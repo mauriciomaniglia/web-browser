@@ -1,20 +1,24 @@
 import Foundation
 
+public protocol SearchSuggestionPresenterDelegate: AnyObject {
+    func didUpdatePresentableModel(_ model: SearchSuggestionPresenter.Model)
+}
+
 public class SearchSuggestionPresenter {
 
-    public struct Model {
+    public struct Model: Equatable {
 
-        public struct Bookmark {
+        public struct Bookmark: Equatable {
             public let title: String
             public let url: URL
         }
 
-        public struct HistoryPage {
+        public struct HistoryPage: Equatable {
             public let title: String
             public let url: URL
         }
 
-        public struct SearchSuggestion {
+        public struct SearchSuggestion: Equatable {
             public let title: String
             public let url: URL
         }
@@ -24,7 +28,7 @@ public class SearchSuggestionPresenter {
         public let searchSuggestions: [SearchSuggestion]
     }
 
-    public var didUpdatePresentableModel: ((Model) -> Void)?
+    public weak var delegate: SearchSuggestionPresenterDelegate?
 
     public init() {}
 
@@ -60,6 +64,6 @@ public class SearchSuggestionPresenter {
             searchSuggestions: searchSuggestionModels
         )
 
-        didUpdatePresentableModel?(model)
+        delegate?.didUpdatePresentableModel(model)
     }
 }
