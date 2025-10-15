@@ -1,29 +1,49 @@
+import Foundation
 import SwiftData
 import Services
 
 class SearchSuggestionComposer {
+    let viewModel: SearchSuggestionViewModel
+    let mediator: SearchSuggestionMediator
+    let presenter: SearchSuggestionPresenter
+    let webView: WebEngineContract
 
-    func makeSearchSuggestionViewModel(
-        webView: WebEngineContract,
-        container: ModelContainer) -> SearchSuggestionViewModel
-    {
+    init(container: ModelContainer, webView: WebEngineContract) {
         let bookmarkStore = BookmarkSwiftDataStore(container: container)
         let historyStore = HistorySwiftDataStore(container: container)
         let searchSuggestionService = SearchSuggestionService()
-        let presenter = SearchSuggestionPresenter()
-        let viewModel = SearchSuggestionViewModel()
-        let adapter = SearchSuggestionAdapter(viewModel: viewModel)
-        let mediator = SearchSuggestionMediator(
+
+        self.webView = webView
+        self.presenter = SearchSuggestionPresenter()
+        self.viewModel = SearchSuggestionViewModel()
+        self.mediator = SearchSuggestionMediator(
             searchSuggestionService: searchSuggestionService,
             bookmarkStore: bookmarkStore,
             historyStore: historyStore,
             presenter: presenter
         )
 
-        presenter.didUpdatePresentableModel = adapter.updateViewModel(_:)
-        viewModel.didStartTyping = mediator.didStartTyping
-        viewModel.didSelectPage = webView.load(_:)
+        presenter.delegate = self
+        viewModel.delegate = self
+    }
+}
 
-        return viewModel
+extension SearchSuggestionComposer: SearchSuggestionViewModelDelegate {
+    func didStartTyping(_ text: String) {
+        mediator.didStartTyping(query: text)
+    }
+
+    func didSelectPage(_ pageURL: URL) {
+        webView.load(pageURL)
+    }
+}
+
+extension SearchSuggestionComposer: SearchSuggestionPresenterDelegate {
+    func didUpdatePresentableModel(_ model: Services.SearchSuggestionPresenter.Model) {
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.bookmarkSuggestions = model.bookmarkSuggestions.map { .init(title: $0.title, url: $0.url)}
+            self?.viewModel.historyPageSuggestions = model.historyPageSuggestions.map { .init(title: $0.title, url: $0.url)}
+            self?.viewModel.searchSuggestions = model.searchSuggestions.map { .init(title: $0.title, url: $0.url) }
+        }
     }
 }

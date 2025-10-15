@@ -7,28 +7,28 @@ struct SearchSuggestionView: View {
         VStack(alignment: .leading, spacing: 0) {
             if !viewModel.searchSuggestions.isEmpty {
                 SuggestionSectionView(
+                    viewModel: viewModel,
                     title: "Google Suggestions",
                     suggestions: viewModel.searchSuggestions,
-                    iconName: "magnifyingglass",
-                    onTap: viewModel.didSelectPage
+                    iconName: "magnifyingglass"
                 )
             }
 
             if !viewModel.bookmarkSuggestions.isEmpty {
                 SuggestionSectionView(
+                    viewModel: viewModel,
                     title: "Bookmarks",
                     suggestions: viewModel.bookmarkSuggestions,
-                    iconName: "bookmark.fill",
-                    onTap: viewModel.didSelectPage
+                    iconName: "bookmark.fill"
                 )
             }
 
             if !viewModel.historyPageSuggestions.isEmpty {
                 SuggestionSectionView(
+                    viewModel: viewModel,
                     title: "History",
                     suggestions: viewModel.historyPageSuggestions,
-                    iconName: "clock.arrow.circlepath",
-                    onTap: viewModel.didSelectPage
+                    iconName: "clock.arrow.circlepath"
                 )
             }
         }
@@ -39,10 +39,11 @@ struct SearchSuggestionView: View {
 }
 
 struct SuggestionSectionView: View {
+    @ObservedObject var viewModel: SearchSuggestionViewModel
+
     let title: String
     let suggestions: [SearchSuggestionViewModel.Item]
     let iconName: String
-    let onTap: ((URL) -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -54,7 +55,7 @@ struct SuggestionSectionView: View {
 
             ForEach(suggestions) { model in
                 Button(action: {
-                    onTap?(model.url)
+                    viewModel.delegate?.didSelectPage(model.url)
                 }) {
                     HStack(spacing: 12) {
                         Image(systemName: iconName)

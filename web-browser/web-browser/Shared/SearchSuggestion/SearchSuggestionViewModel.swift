@@ -1,6 +1,11 @@
 import Foundation
 import Combine
 
+protocol SearchSuggestionViewModelDelegate: AnyObject {
+    func didStartTyping(_ text: String)
+    func didSelectPage(_ pageURL: URL)
+}
+
 class SearchSuggestionViewModel: ObservableObject {
 
     struct Item: Identifiable {
@@ -13,6 +18,5 @@ class SearchSuggestionViewModel: ObservableObject {
     @Published var historyPageSuggestions: [Item] = []
     @Published var searchSuggestions: [Item] = []
 
-    var didStartTyping: ((String) -> Void)?
-    var didSelectPage: ((URL) -> Void)?
+    weak var delegate: SearchSuggestionViewModelDelegate?
 }
