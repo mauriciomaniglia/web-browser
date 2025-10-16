@@ -1,13 +1,17 @@
 import Foundation
 
+public protocol BookmarkPresenterDelegate: AnyObject {
+    func didUpdatePresentableModels(_ models: [BookmarkPresenter.Model])
+}
+
 public class BookmarkPresenter {
-    public struct Model {
+    public struct Model: Equatable {
         public let id: UUID
         public let title: String
         public let url: URL
     }
 
-    public var didUpdatePresentableModels: (([Model]) -> Void)?
+    public weak var delegate: BookmarkPresenterDelegate?
 
     public init() {}
 
@@ -17,7 +21,7 @@ public class BookmarkPresenter {
             return Model(id: $0.id, title: title, url: $0.url)
         }
 
-        didUpdatePresentableModels?(presentableModels)
+        delegate?.didUpdatePresentableModels(presentableModels)
     }
 }
 

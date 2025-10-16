@@ -1,22 +1,44 @@
 import XCTest
-import Services
+@testable import Services
 
 class BookmarkPresenterTests: XCTestCase {
 
     func test_mapBookmarks_returnsBookmark() {
-        let bookmark1 = BookmarkModel(title: "title 1", url: URL(string: "http://example1.com")!)
-        let bookmark2 = BookmarkModel(title: nil, url: URL(string: "http://example2.com")!)
+        let (model1, presentableModel1) = makeModel(title: "title 1", urlString: "http://example1.com")
+        let (model2, presentableModel2) = makeModel(title: "title 2", urlString: "http://example2.com")
+        let (sut, delegate) = makeSUT()
+
+        sut.mapBookmarks(from: [model1, model2])
+
+        XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModels([presentableModel1, presentableModel2])])
+    }
+
+    // MARK: - Helpers
+
+    private func makeSUT() -> (sut: BookmarkPresenter, delegate: BookmarkPresenterDelegateMock) {
         let sut = BookmarkPresenter()
-        var presentableModels: [BookmarkPresenter.Model]!
-        sut.didUpdatePresentableModels = { presentableModels = $0 }
+        let delegate = BookmarkPresenterDelegateMock()
+        sut.delegate = delegate
 
-        sut.mapBookmarks(from: [bookmark1, bookmark2])
+        return (sut, delegate)
+    }
 
-        XCTAssertEqual(presentableModels[0].id, bookmark1.id)
-        XCTAssertEqual(presentableModels[0].title, bookmark1.title)
-        XCTAssertEqual(presentableModels[0].url, bookmark1.url)
-        XCTAssertEqual(presentableModels[1].id, bookmark2.id)
-        XCTAssertEqual(presentableModels[1].title, "http://example2.com")
-        XCTAssertEqual(presentableModels[1].url, bookmark2.url)
+    private func makeModel(title: String, urlString: String) -> (model: BookmarkModel, presentableModel: BookmarkPresenter.Model) {
+        let model = BookmarkModel(title: title, url: URL(string: urlString)!)
+        let presentableModel = BookmarkPresenter.Model(id: model.id, title: model.title!, url: model.url)
+
+        return (model, presentableModel)
+    }
+}
+
+private class BookmarkPresenterDelegateMock: BookmarkPresenterDelegate {
+    enum Message: Equatable {
+        case didUpdatePresentableModels(_ models: [BookmarkPresenter.Model])
+    }
+
+    var receivedMessages = [Message]()
+
+    func didUpdatePresentableModels(_ models: [BookmarkPresenter.Model]) {
+        receivedMessages.append(.didUpdatePresentableModels(models))
     }
 }
