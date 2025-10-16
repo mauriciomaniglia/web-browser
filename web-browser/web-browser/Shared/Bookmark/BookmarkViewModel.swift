@@ -1,6 +1,14 @@
 import Foundation
 import Combine
 
+protocol BookmarkViewModelDelegate: AnyObject {
+    func didTapAddBookmark(name: String, urlString: String)
+    func didOpenBookmarkView()
+    func didSearchTerm(_ query: String)
+    func didSelectPage(_ pageURL: URL)
+    func didTapDeletePages(_ pagesID: [UUID])
+}
+
 class BookmarkViewModel: ObservableObject {
 
     struct Bookmark: Identifiable, Equatable {
@@ -14,15 +22,11 @@ class BookmarkViewModel: ObservableObject {
 
     @Published var searchText: String = "" {
         didSet {
-            didSearchTerm?(searchText)
+            delegate?.didSearchTerm(searchText)
         }
     }
 
-    var didTapAddBookmark: ((String, String) -> Void)?
-    var didOpenBookmarkView: (() -> Void)?
-    var didSearchTerm: ((String) -> Void)?
-    var didSelectPage: ((URL) -> Void)?
-    var didTapDeletePages: (([UUID]) -> Void)?
+    weak var delegate: BookmarkViewModelDelegate?
 
     func setSelectedBookmark(_ bookmark: Bookmark) {
         selectedBookmark = bookmark
@@ -31,7 +35,7 @@ class BookmarkViewModel: ObservableObject {
     func removeSelectedBookmark() {
         if let selectedBookmark {
             bookmarkList.removeAll(where: { $0.id == selectedBookmark.id})
-            didTapDeletePages?([selectedBookmark.id])
+            delegate?.didTapDeletePages([selectedBookmark.id])
         }
     }
 
@@ -44,6 +48,6 @@ class BookmarkViewModel: ObservableObject {
             bookmarkList[index]
         }
 
-        didTapDeletePages?(pagesToDelete.map { $0.id })
+        delegate?.didTapDeletePages(pagesToDelete.map { $0.id })
     }
 }

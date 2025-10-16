@@ -36,7 +36,7 @@ final class TabViewFactory: TabFactory {
         composer.makeWindowView(
             webKitWrapper: webKitWrapper,
             historyViewModel: historyViewModel,
-            bookmarkViewModel: bookmarkComposer.makeBookmarkViewModel(webView: webKitWrapper, container: container),
+            bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
             safelistStore: safelistStore,
             historyStore: historyStore)

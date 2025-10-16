@@ -22,7 +22,7 @@ struct BookmarkMacOS: View {
         }
         .navigationTitle("Bookmark")
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear(perform: viewModel.didOpenBookmarkView)
+        .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
     }
 
     private var BookmarkListView: some View {
@@ -66,7 +66,7 @@ struct BookmarkMacOS: View {
             HStack {
                 Text(bookmark.title)
                     .onTapGesture {
-                        viewModel.didSelectPage?(bookmark.url)
+                        viewModel.delegate?.didSelectPage(bookmark.url)
                         dismiss()
                     }
 

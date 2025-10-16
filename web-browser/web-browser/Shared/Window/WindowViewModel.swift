@@ -65,6 +65,6 @@ class WindowViewModel: ObservableObject {
 
     func saveAndDismissAddBookmark(name: String, url: String) {
         showAddBookmark = false
-        bookmarkViewModel.didTapAddBookmark?(name, url)
+        bookmarkViewModel.delegate?.didTapAddBookmark(name: name, urlString: url)
     }
 }

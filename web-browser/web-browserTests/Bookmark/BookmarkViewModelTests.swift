@@ -4,7 +4,7 @@ import XCTest
 class BookmarkViewModelTests: XCTestCase {
 
     func test_setSelectedBookmark_shouldSetSelectedBookmark() {
-        let sut = BookmarkViewModel()
+        let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark = BookmarkViewModel.Bookmark(id: UUID(), title: "Some Title", url: url)
 
@@ -14,7 +14,7 @@ class BookmarkViewModelTests: XCTestCase {
     }
 
     func test_undoCurrentSelection_shouldRemoveSelectedBookmark() {
-        let sut = BookmarkViewModel()
+        let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark = BookmarkViewModel.Bookmark(id: UUID(), title: "Some Title", url: url)
 
@@ -25,7 +25,7 @@ class BookmarkViewModelTests: XCTestCase {
     }
 
     func test_removeSelectedBookmark_shouldRemoveSelectedBookmarkFromTheList() {
-        let sut = BookmarkViewModel()
+        let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark1 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 1", url: url)
         let bookmark2 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 2", url: url)
@@ -39,33 +39,58 @@ class BookmarkViewModelTests: XCTestCase {
     }
 
     func test_removeSelectedBookmark_shouldInformBookmarksToDelete() {
-        let sut = BookmarkViewModel()
+        let (sut, delegate) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark1 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 1", url: url)
         let bookmark2 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 2", url: url)
-        var bookmarksToDelete: [UUID] = []
         sut.bookmarkList = [bookmark1, bookmark2]
-        sut.didTapDeletePages = { bookmarksToDelete = $0 }
 
         sut.setSelectedBookmark(bookmark1)
         sut.removeSelectedBookmark()
 
-        XCTAssertEqual(bookmarksToDelete, [bookmark1.id])
+        XCTAssertEqual(delegate.receivedMessages, [.didTapDeletePages([bookmark1.id])])
     }
 
     func test_deleteBookmarksAt_shouldRemoveBookmarksAtIndexesFromTheList() {
-        let sut = BookmarkViewModel()
+        let (sut, delegate) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark1 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 1", url: url)
         let bookmark2 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 2", url: url)
         let bookmark3 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 3", url: url)
-        var pagesToDelete: [UUID] = []
         sut.bookmarkList = [bookmark1, bookmark2, bookmark3]
-        sut.didTapDeletePages = { pagesToDelete = $0 }
 
         sut.deleteBookmarks(at: [0, 1])
 
-        XCTAssertEqual(pagesToDelete, [bookmark1.id, bookmark2.id])
+        XCTAssertEqual(delegate.receivedMessages, [.didTapDeletePages([bookmark1.id, bookmark2.id])])
     }
 
+    // MARK: - Helpers
+
+    private func makeSUT() -> (sut: BookmarkViewModel, delegate: BookmarkViewModelDelegateMock) {
+        let sut = BookmarkViewModel()
+        let delegate = BookmarkViewModelDelegateMock()
+        sut.delegate = delegate
+
+        return (sut, delegate)
+    }
+}
+
+private class BookmarkViewModelDelegateMock: BookmarkViewModelDelegate {
+    enum Message: Equatable {
+        case didTapDeletePages(_ pages: [UUID])
+    }
+
+    var receivedMessages = [Message]()
+
+    func didTapAddBookmark(name: String, urlString: String) {}
+
+    func didOpenBookmarkView() {}
+
+    func didSearchTerm(_ query: String) {}
+
+    func didSelectPage(_ pageURL: URL) {}
+
+    func didTapDeletePages(_ pagesID: [UUID]) {
+        receivedMessages.append(.didTapDeletePages(pagesID))
+    }
 }
