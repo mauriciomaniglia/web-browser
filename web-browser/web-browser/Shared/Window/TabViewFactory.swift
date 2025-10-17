@@ -11,7 +11,7 @@ final class TabViewFactory: TabFactory {
     let container: ModelContainer
     let webKitWrapper: WebKitEngineWrapper
     let historyStore: HistoryStoreAPI
-    let historyViewModel: HistoryViewModel
+    let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
     let safelistStore: SafelistStoreAPI
@@ -26,7 +26,7 @@ final class TabViewFactory: TabFactory {
         self.composer = WindowComposer()
         self.historyStore = HistorySwiftDataStore(container: container)
         self.webKitWrapper = WebKitEngineWrapper()
-        self.historyViewModel = HistoryComposer().makeHistoryViewModel(webView: webKitWrapper, container: container)
+        self.historyComposer = HistoryComposer()
         self.bookmarkComposer = BookmarkComposer(container: container, webView: webKitWrapper)
         self.searchSuggestionComposer = SearchSuggestionComposer(container: container, webView: webKitWrapper)
         self.safelistStore = SafelistStore()
@@ -35,7 +35,7 @@ final class TabViewFactory: TabFactory {
     func createNewTab() -> any View {
         composer.makeWindowView(
             webKitWrapper: webKitWrapper,
-            historyViewModel: historyViewModel,
+            historyViewModel: historyComposer.makeHistoryViewModel(webView: webKitWrapper, container: container),
             bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
             safelistStore: safelistStore,

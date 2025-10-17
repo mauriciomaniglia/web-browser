@@ -1,5 +1,9 @@
 import Foundation
 
+public protocol HistoryPresenterDelegate: AnyObject {
+    func didUpdatePresentableModel(_ model: HistoryPresenter.Model)
+}
+
 public class HistoryPresenter {
 
     public struct Model {
@@ -17,7 +21,7 @@ public class HistoryPresenter {
         public let list: [Section]?
     }
 
-    public var didUpdatePresentableModel: ((Model) -> Void)?
+    public weak var delegate: HistoryPresenterDelegate?
 
     public init() {}
 
@@ -31,7 +35,7 @@ public class HistoryPresenter {
         }
 
         let model = Model(list: mapSections(groupPagesSorted))
-        didUpdatePresentableModel?(model)
+        delegate?.didUpdatePresentableModel(model)
     }
 
     private func mapSections(_ pages: [[HistoryPageModel]]) -> [Model.Section] {
