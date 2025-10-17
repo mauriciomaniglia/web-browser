@@ -1,17 +1,16 @@
 import Foundation
-import SwiftData
 import Services
 
 class BookmarkComposer {
     let webView: WebEngineContract
-    let bookmarkStore: BookmarkSwiftDataStore
+    let bookmarkStore: BookmarkStoreAPI
     let viewModel: BookmarkViewModel
     let presenter: BookmarkPresenter
     let mediator: BookmarkMediator
 
-    init(container: ModelContainer, webView: WebEngineContract) {
+    init(webView: WebEngineContract, bookmarkStore: BookmarkStoreAPI) {
         self.webView = webView
-        self.bookmarkStore = BookmarkSwiftDataStore(container: container)
+        self.bookmarkStore = bookmarkStore
         self.viewModel = BookmarkViewModel()
         self.presenter = BookmarkPresenter()
         self.mediator = BookmarkMediator(presenter: presenter, bookmarkStore: bookmarkStore)

@@ -1,5 +1,4 @@
 import Foundation
-import SwiftData
 import Services
 
 class HistoryComposer {
@@ -9,7 +8,7 @@ class HistoryComposer {
     let presenter: HistoryPresenter
     let mediator: HistoryMediator
 
-    init(container: ModelContainer, webView: WebEngineContract, historyStore: HistoryStoreAPI) {
+    init(webView: WebEngineContract, historyStore: HistoryStoreAPI) {
         self.webView = webView
         self.viewModel = HistoryViewModel()
         self.presenter = HistoryPresenter()

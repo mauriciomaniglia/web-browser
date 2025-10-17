@@ -1,5 +1,4 @@
 import Foundation
-import SwiftData
 import Services
 
 class SearchSuggestionComposer {
@@ -8,8 +7,7 @@ class SearchSuggestionComposer {
     let presenter: SearchSuggestionPresenter
     let webView: WebEngineContract
 
-    init(container: ModelContainer, webView: WebEngineContract, historyStore: HistoryStoreAPI) {
-        let bookmarkStore = BookmarkSwiftDataStore(container: container)
+    init(webView: WebEngineContract, historyStore: HistoryStoreAPI, bookmarkStore: BookmarkStoreAPI) {
         let searchSuggestionService = SearchSuggestionService()
 
         self.webView = webView
