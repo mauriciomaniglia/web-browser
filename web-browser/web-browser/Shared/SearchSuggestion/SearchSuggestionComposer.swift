@@ -8,9 +8,8 @@ class SearchSuggestionComposer {
     let presenter: SearchSuggestionPresenter
     let webView: WebEngineContract
 
-    init(container: ModelContainer, webView: WebEngineContract) {
+    init(container: ModelContainer, webView: WebEngineContract, historyStore: HistoryStoreAPI) {
         let bookmarkStore = BookmarkSwiftDataStore(container: container)
-        let historyStore = HistorySwiftDataStore(container: container)
         let searchSuggestionService = SearchSuggestionService()
 
         self.webView = webView

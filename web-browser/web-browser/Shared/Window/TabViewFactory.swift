@@ -26,9 +26,9 @@ final class TabViewFactory: TabFactory {
         self.composer = WindowComposer()
         self.historyStore = HistorySwiftDataStore(container: container)
         self.webKitWrapper = WebKitEngineWrapper()
-        self.historyComposer = HistoryComposer(container: container, webView: webKitWrapper)
+        self.historyComposer = HistoryComposer(container: container, webView: webKitWrapper, historyStore: historyStore)
         self.bookmarkComposer = BookmarkComposer(container: container, webView: webKitWrapper)
-        self.searchSuggestionComposer = SearchSuggestionComposer(container: container, webView: webKitWrapper)
+        self.searchSuggestionComposer = SearchSuggestionComposer(container: container, webView: webKitWrapper, historyStore: historyStore)
         self.safelistStore = SafelistStore()
     }
 

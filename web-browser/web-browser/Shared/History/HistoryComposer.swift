@@ -4,16 +4,16 @@ import Services
 
 class HistoryComposer {
     let webView: WebEngineContract
-    let historyStore: HistorySwiftDataStore
+    let historyStore: HistoryStoreAPI
     let viewModel: HistoryViewModel
     let presenter: HistoryPresenter
     let mediator: HistoryMediator
 
-    init(container: ModelContainer, webView: WebEngineContract) {
+    init(container: ModelContainer, webView: WebEngineContract, historyStore: HistoryStoreAPI) {
         self.webView = webView
         self.viewModel = HistoryViewModel()
         self.presenter = HistoryPresenter()
-        self.historyStore = HistorySwiftDataStore(container: container)
+        self.historyStore = historyStore
         self.mediator = HistoryMediator(presenter: presenter, historyStore: historyStore)
 
         viewModel.delegate = self
