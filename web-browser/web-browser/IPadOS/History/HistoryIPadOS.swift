@@ -16,7 +16,7 @@ struct HistoryIPadOS: View {
             }
         }
         .navigationTitle("History")
-        .onAppear(perform: viewModel.didOpenHistoryView)
+        .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
         .alert(isPresented: $isShowingDeleteAllHistoryAlert) { ClearAllHistoryAlert }
     }
 
@@ -50,7 +50,7 @@ struct HistoryIPadOS: View {
 
     var SearchTextField: some View {
         TextField("Search History", text: $searchText)
-            .onChange(of: searchText, { _, newValue in viewModel.didSearchTerm?(newValue) })
+            .onChange(of: searchText, { _, newValue in viewModel.delegate?.didSearchTerm(newValue) })
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
     }
@@ -82,7 +82,7 @@ struct HistoryListItem: View {
             ForEach(item.pages) { page in
                 Text("\(page.title)")
                     .onTapGesture {
-                        viewModel.didSelectPage?(page.url)
+                        viewModel.delegate?.didSelectPage(page.url)
                         dismiss()
                     }
             }

@@ -10,9 +10,7 @@ struct HistoryMacOS: View {
     var body: some View {
         SearchTopBar
             .navigationTitle("History")
-            .onAppear {
-                viewModel.didOpenHistoryView?()
-            }
+            .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
 
         if hasPagesSelected() {
             SelectedPagesView
@@ -34,7 +32,7 @@ struct HistoryMacOS: View {
             }
             TextField("Search History", text: $searchText)
                 .onChange(of: searchText, { _, newValue in
-                    viewModel.didSearchTerm?(newValue)
+                    viewModel.delegate?.didSearchTerm(newValue)
                 })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -85,7 +83,7 @@ struct HistoryMacOS: View {
                         Toggle(isOn: $viewModel.historyList[sectionIndex].pages[pageIndex].isSelected) {
                             Text(page.title)
                                 .onTapGesture {
-                                    viewModel.didSelectPage?(page.url)
+                                    viewModel.delegate?.didSelectPage(page.url)
                                     dismiss()
                                 }
                                 .onHover { hovering in

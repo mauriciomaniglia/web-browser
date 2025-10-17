@@ -1,6 +1,14 @@
 import Foundation
 import Combine
 
+protocol HistoryViewModelDelegate: AnyObject {
+    func didOpenHistoryView()
+    func didSearchTerm(_ query: String)
+    func didSelectPage(_ pageURL: URL)
+    func didTapDeletePages(_ pages: [UUID])
+    func didTapDeleteAllPages()
+}
+
 class HistoryViewModel: ObservableObject {
 
     struct Section: Equatable {
@@ -21,17 +29,13 @@ class HistoryViewModel: ObservableObject {
 
     @Published var historyList: [Section] = []
 
+    weak var delegate: HistoryViewModelDelegate?
+
     var selectedPages: [Page] {
         return historyList
             .flatMap { $0.pages }
             .filter { $0.isSelected }
     }
-
-    var didOpenHistoryView: (() -> Void)?
-    var didSearchTerm: ((String) -> Void)?
-    var didSelectPage: ((URL) -> Void)?
-    var didTapDeletePages: (([UUID]) -> Void)?
-    var didTapDeleteAllPages: (() -> Void)?
 
     func deselectAllPages() {
         for sectionIndex in historyList.indices {
@@ -42,7 +46,7 @@ class HistoryViewModel: ObservableObject {
     }
 
     func deleteSelectedPages() {
-        didTapDeletePages?(selectedPages.map { $0.id })
+        delegate?.didTapDeletePages(selectedPages.map { $0.id })
 
         for sectionIndex in historyList.indices {
             historyList[sectionIndex].pages.removeAll(where: { $0.isSelected })
@@ -55,11 +59,11 @@ class HistoryViewModel: ObservableObject {
             historyList[sectionIndex].pages.indices.contains(index) ? historyList[sectionIndex].pages[index] : nil
         }
 
-        didTapDeletePages?(pagesToDelete.map { $0.id })
+        delegate?.didTapDeletePages(pagesToDelete.map { $0.id })
     }
 
     func deleteAllPages() {
-        didTapDeleteAllPages?()
+        delegate?.didTapDeleteAllPages()
         historyList.removeAll()
     }
 

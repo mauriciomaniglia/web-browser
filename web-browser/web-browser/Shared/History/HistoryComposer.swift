@@ -1,23 +1,45 @@
+import Foundation
 import SwiftData
 import Services
 
 class HistoryComposer {
-    let viewModel = HistoryViewModel()
-    let presenter = HistoryPresenter()
+    let webView: WebEngineContract
+    let historyStore: HistorySwiftDataStore
+    let viewModel: HistoryViewModel
+    let presenter: HistoryPresenter
+    let mediator: HistoryMediator
 
-    func makeHistoryViewModel(webView: WebEngineContract, container: ModelContainer) -> HistoryViewModel {
-        let historyStore = HistorySwiftDataStore(container: container)
-        let mediator = HistoryMediator(presenter: presenter, historyStore: historyStore)
+    init(container: ModelContainer, webView: WebEngineContract) {
+        self.webView = webView
+        self.viewModel = HistoryViewModel()
+        self.presenter = HistoryPresenter()
+        self.historyStore = HistorySwiftDataStore(container: container)
+        self.mediator = HistoryMediator(presenter: presenter, historyStore: historyStore)
 
-        viewModel.didSelectPage = webView.load
-        viewModel.didOpenHistoryView = mediator.didOpenHistoryView
-        viewModel.didSearchTerm = mediator.didSearchTerm(_:)
-        viewModel.didTapDeletePages = historyStore.deletePages(withIDs:)
-        viewModel.didTapDeleteAllPages = historyStore.deleteAllPages
-
+        viewModel.delegate = self
         presenter.delegate = self
+    }
+}
 
-        return viewModel
+extension HistoryComposer: HistoryViewModelDelegate {
+    func didOpenHistoryView() {
+        mediator.didOpenHistoryView()
+    }
+
+    func didSearchTerm(_ query: String) {
+        mediator.didSearchTerm(query)
+    }
+
+    func didSelectPage(_ pageURL: URL) {
+        webView.load(pageURL)
+    }
+
+    func didTapDeletePages(_ pages: [UUID]) {
+        historyStore.deletePages(withIDs: pages)
+    }
+
+    func didTapDeleteAllPages() {
+        historyStore.deleteAllPages()
     }
 }
 
