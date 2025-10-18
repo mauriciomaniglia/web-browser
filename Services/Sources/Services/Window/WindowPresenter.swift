@@ -1,5 +1,9 @@
 import Foundation
 
+public protocol WindowPresenterDelegate: AnyObject {
+    func didUpdatePresentableModel(_ model: WindowPresenter.Model)
+}
+
 public class WindowPresenter {
 
     public struct Model {
@@ -27,7 +31,7 @@ public class WindowPresenter {
         public let forwardList: [Page]?
     }
 
-    public var didUpdatePresentableModel: ((Model) -> Void)?
+    public weak var delegate: WindowPresenterDelegate?
     private var model: Model
     private let isOnSafelist: (String) -> Bool
     
@@ -52,7 +56,7 @@ public class WindowPresenter {
     }
     
     public func didStartNewWindow() {
-        didUpdatePresentableModel?(.init(
+        delegate?.didUpdatePresentableModel(.init(
             title: nil,
             urlHost: nil,
             fullURL: nil,
@@ -89,7 +93,7 @@ public class WindowPresenter {
             forwardList: nil)
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didStartTyping(oldText: String, newText: String) {
@@ -113,7 +117,7 @@ public class WindowPresenter {
             forwardList: nil)
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
@@ -135,7 +139,7 @@ public class WindowPresenter {
             forwardList: model.forwardList)
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didLoadPage(title: String?, url: URL) {
@@ -161,7 +165,7 @@ public class WindowPresenter {
             forwardList: model.forwardList)
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didLoadBackList(_ webPages: [WindowPageModel]) {
@@ -183,7 +187,7 @@ public class WindowPresenter {
             forwardList: nil)
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didLoadForwardList(_ webPages: [WindowPageModel]) {
@@ -205,7 +209,7 @@ public class WindowPresenter {
             forwardList: webPages.map(mapWebPage))
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didDismissBackForwardList() {
@@ -227,13 +231,13 @@ public class WindowPresenter {
             forwardList: nil)
 
         model = newModel
-        didUpdatePresentableModel?(newModel)
+        delegate?.didUpdatePresentableModel(newModel)
     }
 
     public func didUpdateProgressBar(_ value: Double) {
         let progressValue = value >= 1 ? nil : value
 
-        didUpdatePresentableModel?(.init(
+        delegate?.didUpdatePresentableModel(.init(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,

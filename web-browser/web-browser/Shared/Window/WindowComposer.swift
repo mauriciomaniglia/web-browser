@@ -2,6 +2,18 @@ import SwiftUI
 import Services
 
 final class WindowComposer {
+    let windowViewModel: WindowViewModel
+
+    init(historyViewModel: HistoryViewModel,
+         bookmarkViewModel: BookmarkViewModel,
+         searchSuggestionViewModel: SearchSuggestionViewModel
+    ) {
+        self.windowViewModel = WindowViewModel(
+            historyViewModel: historyViewModel,
+            bookmarkViewModel: bookmarkViewModel,
+            searchSuggestionViewModel: searchSuggestionViewModel
+        )
+    }
 
     func makeWindowView(
         webKitWrapper: WebKitEngineWrapper,
@@ -12,12 +24,6 @@ final class WindowComposer {
         historyStore: HistoryStoreAPI
     ) -> any View {
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
-        var windowViewModel = WindowViewModel(
-            historyViewModel: historyViewModel,
-            bookmarkViewModel: bookmarkViewModel,
-            searchSuggestionViewModel: searchSuggestionViewModel
-        )
-        let adapter = WindowViewAdapter(webView: webKitWrapper, viewModel: windowViewModel)
         let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         let mediator = WindowMediator(
             webView: webKitWrapper,
@@ -46,7 +52,7 @@ final class WindowComposer {
         windowViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
         webKitWrapper.delegate = mediator
-        presenter.didUpdatePresentableModel = adapter.updateViewModel
+        presenter.delegate = self
 
         #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -63,5 +69,28 @@ final class WindowComposer {
             windowViewModel: windowViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
         #endif
+    }
+}
+
+extension WindowComposer: WindowPresenterDelegate {
+    func didUpdatePresentableModel(_ model: Services.WindowPresenter.Model) {
+        windowViewModel.isBackButtonDisabled = !model.canGoBack
+        windowViewModel.isForwardButtonDisabled = !model.canGoForward
+        windowViewModel.showCancelButton = model.showCancelButton
+        windowViewModel.showStopButton = model.showStopButton
+        windowViewModel.showReloadButton = model.showReloadButton
+        windowViewModel.showClearButton = model.showClearButton
+        windowViewModel.progressBarValue = model.progressBarValue
+        windowViewModel.title = model.title ?? ""
+        windowViewModel.urlHost = model.urlHost ?? ""
+        windowViewModel.fullURL = model.fullURL ?? ""
+        windowViewModel.isWebsiteProtected = model.isWebsiteProtected
+        windowViewModel.showSiteProtection = model.showSiteProtection
+        windowViewModel.showWebView = model.showWebView
+        windowViewModel.showSearchSuggestions = model.showSearchSuggestions
+        windowViewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        windowViewModel.showBackList = model.backList != nil
+        windowViewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        windowViewModel.showForwardList = model.forwardList != nil
     }
 }

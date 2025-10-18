@@ -24,7 +24,6 @@ final class TabViewFactory: TabFactory {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
 
-        self.composer = WindowComposer()
         self.historyStore = HistorySwiftDataStore(container: container)
         self.bookmarkStore = BookmarkSwiftDataStore(container: container)
         self.webKitWrapper = WebKitEngineWrapper()
@@ -36,6 +35,11 @@ final class TabViewFactory: TabFactory {
             bookmarkStore: bookmarkStore
         )
         self.safelistStore = SafelistStore()
+        self.composer = WindowComposer(
+            historyViewModel: historyComposer.viewModel,
+            bookmarkViewModel: bookmarkComposer.viewModel,
+            searchSuggestionViewModel: searchSuggestionComposer.viewModel
+        )
     }
 
     func createNewTab() -> any View {
