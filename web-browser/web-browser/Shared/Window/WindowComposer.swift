@@ -2,27 +2,35 @@ import SwiftUI
 import Services
 
 final class WindowComposer {
+    let webKitWrapper: WebKitEngineWrapper
+    let historyViewModel: HistoryViewModel
+    let bookmarkViewModel: BookmarkViewModel
+    let searchSuggestionViewModel: SearchSuggestionViewModel
+    let safelistStore: SafelistStoreAPI
+    let historyStore: HistoryStoreAPI
     let windowViewModel: WindowViewModel
+    let view: any View
 
-    init(historyViewModel: HistoryViewModel,
+    init(webKitWrapper: WebKitEngineWrapper,
+         historyViewModel: HistoryViewModel,
          bookmarkViewModel: BookmarkViewModel,
-         searchSuggestionViewModel: SearchSuggestionViewModel
+         searchSuggestionViewModel: SearchSuggestionViewModel,
+         safelistStore: SafelistStoreAPI,
+         historyStore: HistoryStoreAPI
     ) {
+        self.webKitWrapper = webKitWrapper
+        self.historyViewModel = historyViewModel
+        self.bookmarkViewModel = bookmarkViewModel
+        self.searchSuggestionViewModel = searchSuggestionViewModel
+        self.safelistStore = safelistStore
+        self.historyStore = historyStore
+
         self.windowViewModel = WindowViewModel(
             historyViewModel: historyViewModel,
             bookmarkViewModel: bookmarkViewModel,
             searchSuggestionViewModel: searchSuggestionViewModel
         )
-    }
 
-    func makeWindowView(
-        webKitWrapper: WebKitEngineWrapper,
-        historyViewModel: HistoryViewModel,
-        bookmarkViewModel: BookmarkViewModel,
-        searchSuggestionViewModel: SearchSuggestionViewModel,
-        safelistStore: SafelistStoreAPI,
-        historyStore: HistoryStoreAPI
-    ) -> any View {
         let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         let mediator = WindowMediator(
@@ -51,24 +59,24 @@ final class WindowComposer {
         windowViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
         windowViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
-        webKitWrapper.delegate = mediator
-        presenter.delegate = self
-
         #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            return WindowIPadOS(
+            self.view = WindowIPadOS(
                 windowViewModel: windowViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         } else {
-            return WindowIOS(
+            self.view = WindowIOS(
                 windowViewModel: windowViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }
         #elseif os(macOS)
-        return WindowMacOS(
+        self.view = WindowMacOS(
             windowViewModel: windowViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
         #endif
+
+        webKitWrapper.delegate = mediator
+        presenter.delegate = self
     }
 }
 

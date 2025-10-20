@@ -2,20 +2,22 @@ import SwiftData
 import SwiftUI
 import Services
 
-protocol TabFactory {
-    func createNewTab() -> any View
-}
-
-final class TabViewFactory: TabFactory {
-    let composer: WindowComposer
-    let container: ModelContainer
-    let webKitWrapper: WebKitEngineWrapper
-    let historyStore: HistoryStoreAPI
-    let bookmarkStore: BookmarkStoreAPI
+struct SingleTab: Identifiable {
+    let id: UUID
+    let webView: WebKitEngineWrapper
     let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
-    let safelistStore: SafelistStoreAPI
+    let safelistStore: SafelistStore
+    let windowComposer: WindowComposer
+}
+
+final class TabViewFactory {
+    let container: ModelContainer
+    let historyStore: HistoryStoreAPI
+    let bookmarkStore: BookmarkStoreAPI
+
+    var tabs: [SingleTab] = []
 
     init() {
         do {
@@ -26,29 +28,40 @@ final class TabViewFactory: TabFactory {
 
         self.historyStore = HistorySwiftDataStore(container: container)
         self.bookmarkStore = BookmarkSwiftDataStore(container: container)
-        self.webKitWrapper = WebKitEngineWrapper()
-        self.historyComposer = HistoryComposer(webView: webKitWrapper, historyStore: historyStore)
-        self.bookmarkComposer = BookmarkComposer(webView: webKitWrapper, bookmarkStore: bookmarkStore)
-        self.searchSuggestionComposer = SearchSuggestionComposer(
+    }
+
+    func createNewTab() -> SingleTab {
+        let webKitWrapper = WebKitEngineWrapper()
+        let historyComposer = HistoryComposer(webView: webKitWrapper, historyStore: historyStore)
+        let bookmarkComposer = BookmarkComposer(webView: webKitWrapper, bookmarkStore: bookmarkStore)
+        let searchSuggestionComposer = SearchSuggestionComposer(
             webView: webKitWrapper,
             historyStore: historyStore,
             bookmarkStore: bookmarkStore
         )
-        self.safelistStore = SafelistStore()
-        self.composer = WindowComposer(
-            historyViewModel: historyComposer.viewModel,
-            bookmarkViewModel: bookmarkComposer.viewModel,
-            searchSuggestionViewModel: searchSuggestionComposer.viewModel
-        )
-    }
+        let safelistStore = SafelistStore()
 
-    func createNewTab() -> any View {
-        composer.makeWindowView(
+        let composer = WindowComposer(
             webKitWrapper: webKitWrapper,
             historyViewModel: historyComposer.viewModel,
             bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
             safelistStore: safelistStore,
-            historyStore: historyStore)
+            historyStore: historyStore
+        )
+
+        let newTab = SingleTab(
+            id: UUID(),
+            webView: webKitWrapper,
+            historyComposer: historyComposer,
+            bookmarkComposer: bookmarkComposer,
+            searchSuggestionComposer: searchSuggestionComposer,
+            safelistStore: safelistStore,
+            windowComposer: composer
+        )
+
+        tabs.append(newTab)
+
+        return newTab
     }
 }
