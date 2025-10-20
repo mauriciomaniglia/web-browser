@@ -7,7 +7,7 @@ struct WebBrowserApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AnyView(tabViewFactory.createNewTab())
+            AnyView(tabViewFactory.createNewTab().windowComposer.view)
         }
         .commands {
             CommandMenu("Bookmarks") {

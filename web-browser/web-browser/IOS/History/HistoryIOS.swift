@@ -22,7 +22,7 @@ struct HistoryIOS: View {
                 }
             }
             .onAppear {
-                viewModel.didOpenHistoryView?()
+                viewModel.delegate?.didOpenHistoryView()
             }
             .navigationTitle("History")
             .toolbar {
@@ -40,7 +40,7 @@ struct HistoryIOS: View {
         HStack {
             TextField("Search History", text: $searchText)
                 .onChange(of: searchText, { _, newValue in
-                    viewModel.didSearchTerm?(newValue)
+                    viewModel.delegate?.didSearchTerm(newValue)
                 })
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -58,7 +58,7 @@ struct HistoryIOS: View {
                     ForEach(item.pages) { page in
                         Text("\(page.title)")
                             .onTapGesture {
-                                viewModel.didSelectPage?(page.url)
+                                viewModel.delegate?.didSelectPage(page.url)
                                 isPresented = false
                             }
                     }
