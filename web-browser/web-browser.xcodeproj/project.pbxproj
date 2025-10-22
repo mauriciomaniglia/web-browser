@@ -35,6 +35,7 @@
 		F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */; };
 		F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */; };
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
+		F9641DDA2EA800690034A834 /* BrowserTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9641DD92EA800690034A834 /* BrowserTabViewController.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */; };
 		F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */; };
@@ -64,6 +65,7 @@
 		F9DF54C72CEE04D600F92FC3 /* HistoryIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
+		F9E6EA5A2EA905590026A8BD /* BrowserTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E6EA592EA905590026A8BD /* BrowserTabView.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */; };
 		F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,7 @@
 		F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelTests.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
+		F9641DD92EA800690034A834 /* BrowserTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTabViewController.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
 		F96C74B72CBD267A002AAF4F /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Services; path = ../Services; sourceTree = SOURCE_ROOT; };
 		F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkIPadOS.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 		F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIPadOS.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
+		F9E6EA592EA905590026A8BD /* BrowserTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTabView.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIOS.swift; sourceTree = "<group>"; };
 		F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -403,6 +407,7 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				F9641DD92EA800690034A834 /* BrowserTabViewController.swift */,
 				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
@@ -428,6 +433,7 @@
 			children = (
 				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
 				F987B3D02CFDDD4800474A1E /* JsonLoader.swift */,
+				F9E6EA592EA905590026A8BD /* BrowserTabView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -657,6 +663,8 @@
 				F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,
+				F9641DDA2EA800690034A834 /* BrowserTabViewController.swift in Sources */,
+				F9E6EA5A2EA905590026A8BD /* BrowserTabView.swift in Sources */,
 				F932F2132CE23A8600B12B45 /* AddBookmarkIOS.swift in Sources */,
 				F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */,
 				F932F2142CE23A8600B12B45 /* BookmarkIOS.swift in Sources */,

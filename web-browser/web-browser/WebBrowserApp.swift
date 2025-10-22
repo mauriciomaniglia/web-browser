@@ -7,7 +7,20 @@ struct WebBrowserApp: App {
 
     var body: some Scene {
         WindowGroup {
+            #if os(iOS)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                BrowserTabView {
+                    AnyView(tabViewFactory.createNewTab().windowComposer.view)
+                }
+                .ignoresSafeArea()
+            } else {
+                AnyView(tabViewFactory.createNewTab().windowComposer.view)
+            }
+            #endif
+
+            #if os(macOS)
             AnyView(tabViewFactory.createNewTab().windowComposer.view)
+            #endif
         }
         .commands {
             CommandMenu("Bookmarks") {
