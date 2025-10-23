@@ -25,6 +25,7 @@
 		F932F20F2CE23A7800B12B45 /* BookmarkMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2092CE23A7800B12B45 /* BookmarkMacOS.swift */; };
 		F932F2132CE23A8600B12B45 /* AddBookmarkIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2102CE23A8600B12B45 /* AddBookmarkIOS.swift */; };
 		F932F2142CE23A8600B12B45 /* BookmarkIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2112CE23A8600B12B45 /* BookmarkIOS.swift */; };
+		F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
 		F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
 		F947B91E2CF613430026E4E7 /* HistoryStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */; };
@@ -104,6 +105,7 @@
 		F932F2092CE23A7800B12B45 /* BookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkMacOS.swift; sourceTree = "<group>"; };
 		F932F2102CE23A8600B12B45 /* AddBookmarkIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkIOS.swift; sourceTree = "<group>"; };
 		F932F2112CE23A8600B12B45 /* BookmarkIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkIOS.swift; sourceTree = "<group>"; };
+		F941ED382EAA4BE7007FCB44 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMacOS.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
 		F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreSpy.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				F9641DD92EA800690034A834 /* BrowserTabViewController.swift */,
+				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
@@ -664,6 +667,7 @@
 				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,
 				F9641DDA2EA800690034A834 /* BrowserTabViewController.swift in Sources */,
+				F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */,
 				F9E6EA5A2EA905590026A8BD /* BrowserTabView.swift in Sources */,
 				F932F2132CE23A8600B12B45 /* AddBookmarkIOS.swift in Sources */,
 				F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */,
