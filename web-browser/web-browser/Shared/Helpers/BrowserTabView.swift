@@ -11,3 +11,15 @@ struct BrowserTabView<Content: View>: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: BrowserTabViewController<Content>, context: Context) {}
 }
 #endif
+
+#if canImport(AppKit)
+struct BrowserTabView<Content: View>: NSViewControllerRepresentable {
+    let contentProvider: () -> Content
+
+    func makeNSViewController(context: Context) -> BrowserTabViewController<Content> {
+        return BrowserTabViewController(contentProvider: contentProvider)
+    }
+
+    func updateNSViewController(_ nsViewController: BrowserTabViewController<Content>, context: Context) {}
+}
+#endif
