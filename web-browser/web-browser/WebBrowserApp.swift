@@ -19,10 +19,11 @@ struct WebBrowserApp: App {
             #endif
 
             #if os(macOS)
-            BrowserTabView {
-                AnyView(tabViewFactory.createNewTab().windowComposer.view)
-            }
-            .ignoresSafeArea()
+            let windowComposer = tabViewFactory.createNewTab().windowComposer
+            WindowMacOS(
+                tabFactory: tabViewFactory,
+                windowViewModel: windowComposer.windowViewModel
+            )
             #endif
         }
         .commands {
