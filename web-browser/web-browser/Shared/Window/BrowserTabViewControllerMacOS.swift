@@ -1,11 +1,12 @@
 #if canImport(AppKit)
 import SwiftUI
 
-class BrowserTabViewController<Content: View>: NSViewController {
-    private var hostingControllers: [NSHostingController<Content>] = []
+class BrowserTabViewController: NSViewController {
+    private var hostingControllers: [NSHostingController<TabContentViewMacOS>] = []
     private var tabViewController: NSTabViewController!
     private var tabBarHostingView: NSHostingView<TabBarView>!
-    private let contentProvider: () -> Content
+
+    private let tabFactory: TabViewFactory
 
     private var currentIndex: Int {
         get { tabViewController.selectedTabViewItemIndex }
@@ -16,8 +17,8 @@ class BrowserTabViewController<Content: View>: NSViewController {
         }
     }
 
-    init(contentProvider: @escaping () -> Content) {
-        self.contentProvider = contentProvider
+    init(tabFactory: TabViewFactory) {
+        self.tabFactory = tabFactory
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,7 +36,23 @@ class BrowserTabViewController<Content: View>: NSViewController {
         super.viewDidLoad()
         setupTabViewController()
         setupTabBar()
-        addNewTab()
+
+        if tabFactory.tabs.isEmpty {
+            addNewTab()
+        } else {
+            for tab in tabFactory.tabs {
+                let content = tab.windowComposer.view as! TabContentViewMacOS
+                let hostingController = NSHostingController(rootView: content)
+                hostingControllers.append(hostingController)
+
+                let tabViewItem = NSTabViewItem(viewController: hostingController)
+                tabViewItem.label = "Tab \(hostingControllers.count)"
+                tabViewController.addTabViewItem(tabViewItem)
+
+                currentIndex = hostingControllers.count - 1
+                refreshTabBar()
+            }
+        }
     }
 
     private func setupTabViewController() {
@@ -105,7 +122,7 @@ class BrowserTabViewController<Content: View>: NSViewController {
     }
 
     func addNewTab() {
-        let content = contentProvider()
+        let content = tabFactory.createNewTab().windowComposer.view as! TabContentViewMacOS
         let hostingController = NSHostingController(rootView: content)
         hostingControllers.append(hostingController)
 
