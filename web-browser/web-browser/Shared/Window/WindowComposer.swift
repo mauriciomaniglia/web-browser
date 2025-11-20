@@ -70,7 +70,7 @@ final class WindowComposer {
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }
         #elseif os(macOS)
-        self.view = WindowMacOS(
+        self.view = TabContentViewMacOS(
             windowViewModel: windowViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
         #endif

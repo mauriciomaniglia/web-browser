@@ -62,6 +62,7 @@
 		F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
 		F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
 		F9C070402EC751F3001C7E04 /* BrowserTabViewControllerMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C0703F2EC751F3001C7E04 /* BrowserTabViewControllerMacOS.swift */; };
+		F9C070422ECA6C4A001C7E04 /* TabContentViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* HistoryIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */; };
@@ -145,6 +146,7 @@
 		F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewModel.swift; sourceTree = "<group>"; };
 		F989C4AE2E048D6D0021132F /* SearchSuggestionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionAdapter.swift; sourceTree = "<group>"; };
 		F9C0703F2EC751F3001C7E04 /* BrowserTabViewControllerMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTabViewControllerMacOS.swift; sourceTree = "<group>"; };
+		F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewMacOS.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIPadOS.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				F92921EA2B70F99400173702 /* WindowMacOS.swift */,
+				F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */,
+				F9C070422ECA6C4A001C7E04 /* TabContentViewMacOS.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
 				F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */,
