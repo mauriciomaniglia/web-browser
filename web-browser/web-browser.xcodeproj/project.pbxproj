@@ -182,6 +182,7 @@
 				F93D187A2E3436B70010BABE /* History */,
 				F97A17632CECB4BB005978E9 /* Bookmark */,
 				F916A2022CE8EB7600350089 /* Menu */,
+				F9CA92E12ED0EC2D0092842D /* Tab */,
 				F916A2012CE8EB6700350089 /* Window */,
 			);
 			path = IPadOS;
@@ -274,6 +275,7 @@
 				F99988E72CD586EF00705D4F /* Bookmark */,
 				F943799E2C911B5E00DEBFF7 /* History */,
 				F9F2083A2C8CECD600C3B033 /* Menu */,
+				F9CA92E02ED0EC0A0092842D /* Tab */,
 				F9E1477D2C0961370099CD98 /* Window */,
 			);
 			path = MacOS;
@@ -287,6 +289,7 @@
 				F932F20B2CE23A7800B12B45 /* Bookmark */,
 				F98BF0C92B750A7F00C29BDA /* Helpers */,
 				F9E55D2E2C45E9FA008B7C64 /* History */,
+				F9CA92DF2ED0EBC10092842D /* Tab */,
 				F98BF0C62B750A2900C29BDA /* Window */,
 			);
 			path = Shared;
@@ -413,10 +416,6 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F9641DD92EA800690034A834 /* BrowserTabViewController.swift */,
-				F9C0703F2EC751F3001C7E04 /* BrowserTabViewControllerMacOS.swift */,
-				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
-				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
 				F98BF0C72B750A3300C29BDA /* Views */,
@@ -464,6 +463,32 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		F9CA92DF2ED0EBC10092842D /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
+				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		F9CA92E02ED0EC0A0092842D /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				F9C0703F2EC751F3001C7E04 /* BrowserTabViewControllerMacOS.swift */,
+				F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		F9CA92E12ED0EC2D0092842D /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				F9641DD92EA800690034A834 /* BrowserTabViewController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		F9CDFD902B7130610024E0AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				F92921EA2B70F99400173702 /* WindowMacOS.swift */,
-				F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
