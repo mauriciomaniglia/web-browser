@@ -440,7 +440,6 @@
 			children = (
 				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
 				F987B3D02CFDDD4800474A1E /* JsonLoader.swift */,
-				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -466,6 +465,7 @@
 		F9CA92DF2ED0EBC10092842D /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 			);
