@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* TabViewFactory.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
-		F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */; };
+		F916A1FE2CE8C3FE00350089 /* WindowIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FD2CE8C3FE00350089 /* WindowIPadOS.swift */; };
 		F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
@@ -87,7 +87,7 @@
 /* Begin PBXFileReference section */
 		F901D9882E93240900F3B3D9 /* TabViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewFactory.swift; sourceTree = "<group>"; };
 		F90877042E1028E000023426 /* SearchSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionView.swift; sourceTree = "<group>"; };
-		F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowIPad.swift; sourceTree = "<group>"; };
+		F916A1FD2CE8C3FE00350089 /* WindowIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowIPadOS.swift; sourceTree = "<group>"; };
 		F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIPadOS.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		F916A2012CE8EB6700350089 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F916A1FD2CE8C3FE00350089 /* WindowIPad.swift */,
+				F916A1FD2CE8C3FE00350089 /* WindowIPadOS.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -684,7 +684,7 @@
 			files = (
 				F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */,
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
-				F916A1FE2CE8C3FE00350089 /* WindowIPad.swift in Sources */,
+				F916A1FE2CE8C3FE00350089 /* WindowIPadOS.swift in Sources */,
 				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,
 				F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */,
