@@ -12,7 +12,7 @@ struct WindowMacOS: View {
             NavigationSplitView {
                 MenuMacOS(windowViewModel: windowViewModel)
             } detail: {
-                BrowserTabView(tabFactory: tabFactory)
+                TabBarViewControllerWrapper(tabFactory: tabFactory)
             }
 
             if windowViewModel.showAddBookmark {

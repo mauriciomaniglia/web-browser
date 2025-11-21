@@ -2,7 +2,7 @@
 import UIKit
 import SwiftUI
 
-class BrowserTabViewController<Content: View>: UIViewController {
+class TabBarViewController<Content: View>: UIViewController {
     private var hostingControllers: [UIHostingController<Content>] = []
     private var currentIndex: Int = 0
     private var currentController: UIHostingController<Content>?

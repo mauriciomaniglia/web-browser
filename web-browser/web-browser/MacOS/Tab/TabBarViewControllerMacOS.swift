@@ -1,7 +1,7 @@
 #if canImport(AppKit)
 import SwiftUI
 
-class BrowserTabViewController: NSViewController {
+class TabBarViewController: NSViewController {
     private var hostingControllers: [NSHostingController<TabContentViewMacOS>] = []
     private var tabViewController: NSTabViewController!
     private var tabBarHostingView: NSHostingView<TabBarView>!
