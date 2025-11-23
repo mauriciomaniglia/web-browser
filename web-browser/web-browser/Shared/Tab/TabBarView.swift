@@ -51,6 +51,6 @@ struct TabBarView: View {
             }
         }
         .padding(.vertical, 4)
-        .background(Color.white)
+        .background(Color.purple)
     }
 }

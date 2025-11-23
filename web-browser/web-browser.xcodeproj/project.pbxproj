@@ -71,7 +71,6 @@
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9E6EA5A2EA905590026A8BD /* TabBarViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */; };
 		F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */; };
-		F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +155,6 @@
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerWrapper.swift; sourceTree = "<group>"; };
 		F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIOS.swift; sourceTree = "<group>"; };
-		F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,7 +271,6 @@
 		F92921E92B70F94C00173702 /* MacOS */ = {
 			isa = PBXGroup;
 			children = (
-				F96B23D72D06647C000D4B98 /* MenuBar */,
 				F99988E72CD586EF00705D4F /* Bookmark */,
 				F943799E2C911B5E00DEBFF7 /* History */,
 				F9F2083A2C8CECD600C3B033 /* Menu */,
@@ -351,14 +348,6 @@
 				F90877042E1028E000023426 /* SearchSuggestionView.swift */,
 			);
 			path = SearchSuggestion;
-			sourceTree = "<group>";
-		};
-		F96B23D72D06647C000D4B98 /* MenuBar */ = {
-			isa = PBXGroup;
-			children = (
-				F9F2C3CD2CBC7F4D0083004B /* CommandMenuViewModel.swift */,
-			);
-			path = MenuBar;
 			sourceTree = "<group>";
 		};
 		F97A17632CECB4BB005978E9 /* Bookmark */ = {
@@ -685,7 +674,6 @@
 				F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */,
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F916A1FE2CE8C3FE00350089 /* WindowIPadOS.swift in Sources */,
-				F9F2C3CE2CBC7F4D0083004B /* CommandMenuViewModel.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,
 				F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */,
 				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
