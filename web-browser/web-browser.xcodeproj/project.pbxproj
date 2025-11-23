@@ -101,7 +101,6 @@
 		F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkMacOS.swift; sourceTree = "<group>"; };
 		F932F1FF2CE23A6A00B12B45 /* BookmarkAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapterTests.swift; sourceTree = "<group>"; };
 		F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTests.swift; sourceTree = "<group>"; };
-		F932F2042CE23A7800B12B45 /* BookmarkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapter.swift; sourceTree = "<group>"; };
 		F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkComposer.swift; sourceTree = "<group>"; };
 		F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		F932F2092CE23A7800B12B45 /* BookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkMacOS.swift; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 		F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionComposer.swift; sourceTree = "<group>"; };
 		F94A60F02C758C52001384CB /* MenuMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMacOS.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
-		F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
 		F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelTests.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 		F987B3C52CFDDC7800474A1E /* SocialRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SocialRules.json; sourceTree = "<group>"; };
 		F987B3D02CFDDD4800474A1E /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
 		F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewModel.swift; sourceTree = "<group>"; };
-		F989C4AE2E048D6D0021132F /* SearchSuggestionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionAdapter.swift; sourceTree = "<group>"; };
 		F9C0703F2EC751F3001C7E04 /* TabBarViewControllerMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerMacOS.swift; sourceTree = "<group>"; };
 		F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewMacOS.swift; sourceTree = "<group>"; };
 		F9CA92E22ED0F4D60092842D /* TabContentViewIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewIPadOS.swift; sourceTree = "<group>"; };
@@ -307,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */,
-				F932F2042CE23A7800B12B45 /* BookmarkAdapter.swift */,
 				F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */,
 				F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */,
 			);
@@ -343,7 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */,
-				F989C4AE2E048D6D0021132F /* SearchSuggestionAdapter.swift */,
 				F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */,
 				F90877042E1028E000023426 /* SearchSuggestionView.swift */,
 			);
@@ -508,7 +503,6 @@
 			isa = PBXGroup;
 			children = (
 				F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */,
-				F94FD3E92C46818D001EDF1D /* HistoryAdapter.swift */,
 				F9462B172C4890B000451759 /* HistoryComposer.swift */,
 				F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */,
 			);
