@@ -1,6 +1,6 @@
 import Foundation
 
-public struct WindowPageModel {
+public struct PageModel {
     public let id: UUID
     public let title: String?
     public let url: URL

@@ -1,7 +1,7 @@
 import Foundation
 @testable import Services
 
-class WindowPresenterSpy: WindowPresenter {
+class TabPresenterSpy: TabPresenter {
     enum Message: Equatable {
         case didChangeFocus(isFocused: Bool)
         case didStartTyping(oldText: String, newText: String)
@@ -31,11 +31,11 @@ class WindowPresenterSpy: WindowPresenter {
         receivedMessages.append(.didUpdateProgressBar(value: value))
     }
 
-    override func didLoadBackList(_ webPages: [WindowPageModel]) {
+    override func didLoadBackList(_ webPages: [PageModel]) {
         receivedMessages.append(.didLoadBackList)
     }
 
-    override func didLoadForwardList(_ webPages: [WindowPageModel]) {
+    override func didLoadForwardList(_ webPages: [PageModel]) {
         receivedMessages.append(.didLoadForwardList)
     }
 

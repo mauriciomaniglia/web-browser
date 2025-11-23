@@ -1,7 +1,7 @@
 import XCTest
 @testable import Services
 
-class WindowMediatorTests: XCTestCase {
+class TabMediatorTests: XCTestCase {
 
     func test_didRequestSearch_sendsCorrectMessages() {
         let (sut, webView, presenter, safelist, history) = makeSUT()
@@ -118,17 +118,17 @@ class WindowMediatorTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: WindowMediator,
+    private func makeSUT() -> (sut: TabMediator,
                                webView: WebViewSpy,
-                               presenter: WindowPresenterSpy,
+                               presenter: TabPresenterSpy,
                                safelist: SafelistStoreSpy,
                                historyStore: HistoryStoreMock)
     {
         let webView = WebViewSpy()
         let safelist = SafelistStoreSpy()
         let historyStore = HistoryStoreMock()
-        let presenter = WindowPresenterSpy(isOnSafelist: safelist.isRegisteredDomain(_:))
-        let sut = WindowMediator(
+        let presenter = TabPresenterSpy(isOnSafelist: safelist.isRegisteredDomain(_:))
+        let sut = TabMediator(
             webView: webView,
             presenter: presenter,
             safelistStore: safelist,

@@ -1,13 +1,13 @@
 import Foundation
 
-public final class WindowMediator {
+public final class TabMediator {
     private let webView: WebEngineContract
-    private let presenter: WindowPresenter
+    private let presenter: TabPresenter
     private let safelistStore: SafelistStoreAPI
     private let historyStore: HistoryStoreAPI
 
     public init(webView: WebEngineContract,
-                presenter: WindowPresenter,
+                presenter: TabPresenter,
                 safelistStore: SafelistStoreAPI,
                 historyStore: HistoryStoreAPI)
     {
@@ -23,12 +23,12 @@ public final class WindowMediator {
     }
 
     public func didLongPressBackButton() {
-        let webPages = webView.retrieveBackList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
+        let webPages = webView.retrieveBackList().map { PageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadBackList(webPages)
     }
 
     public func didLongPressForwardButton() {
-        let webPages = webView.retrieveForwardList().map { WindowPageModel(title: $0.title, url: $0.url, date: $0.date) }
+        let webPages = webView.retrieveForwardList().map { PageModel(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadForwardList(webPages)
     }
 
@@ -51,7 +51,7 @@ public final class WindowMediator {
     }
 }
 
-extension WindowMediator: WebEngineDelegate {
+extension TabMediator: WebEngineDelegate {
     public func didLoad(page: WebPage) {
         historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
         presenter.didLoadPage(title: page.title, url: page.url)

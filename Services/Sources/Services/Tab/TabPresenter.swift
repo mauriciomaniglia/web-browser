@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol WindowPresenterDelegate: AnyObject {
-    func didUpdatePresentableModel(_ model: WindowPresenter.Model)
+public protocol TabPresenterDelegate: AnyObject {
+    func didUpdatePresentableModel(_ model: TabPresenter.Model)
 }
 
-public class WindowPresenter {
+public class TabPresenter {
 
     public struct Model {
 
@@ -31,7 +31,7 @@ public class WindowPresenter {
         public let forwardList: [Page]?
     }
 
-    public weak var delegate: WindowPresenterDelegate?
+    public weak var delegate: TabPresenterDelegate?
     private var model: Model
     private let isOnSafelist: (String) -> Bool
     
@@ -168,7 +168,7 @@ public class WindowPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didLoadBackList(_ webPages: [WindowPageModel]) {
+    public func didLoadBackList(_ webPages: [PageModel]) {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -190,7 +190,7 @@ public class WindowPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didLoadForwardList(_ webPages: [WindowPageModel]) {
+    public func didLoadForwardList(_ webPages: [PageModel]) {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -256,7 +256,7 @@ public class WindowPresenter {
             forwardList: model.forwardList))
     }
 
-    private func mapWebPage(_ webPage: WindowPageModel) -> Model.Page {
+    private func mapWebPage(_ webPage: PageModel) -> Model.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }

@@ -1,7 +1,7 @@
 import XCTest
 @testable import Services
 
-class WindowPresenterTests: XCTestCase {
+class TabPresenterTests: XCTestCase {
 
     func test_didStartNewWindow_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
@@ -242,9 +242,9 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didLoadBackList_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
-        let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = WindowPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = PageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = PageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = PageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadBackList([page1, page2, page3])
@@ -275,9 +275,9 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didLoadForwardList_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
-        let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = WindowPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = PageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = PageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = PageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadForwardList([page1, page2, page3])
@@ -308,8 +308,8 @@ class WindowPresenterTests: XCTestCase {
 
     func test_didDismissBackForwardList_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
-        let page1 = WindowPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WindowPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page1 = PageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = PageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didLoadForwardList([page1, page2])
 
@@ -433,25 +433,25 @@ class WindowPresenterTests: XCTestCase {
 
     // MARK: -- Helpers
 
-    private func makeSUT() -> (sut: WindowPresenter, safelist: SafelistStoreSpy, delegate: WindowPresenterDelegateMock) {
+    private func makeSUT() -> (sut: TabPresenter, safelist: SafelistStoreSpy, delegate: TabPresenterDelegateMock) {
         let safelistSpy = SafelistStoreSpy()
-        let sut = WindowPresenter(isOnSafelist: safelistSpy.isRegisteredDomain(_:))
-        let delegate = WindowPresenterDelegateMock()
+        let sut = TabPresenter(isOnSafelist: safelistSpy.isRegisteredDomain(_:))
+        let delegate = TabPresenterDelegateMock()
         sut.delegate = delegate
 
         return (sut, safelistSpy, delegate)
     }
 }
 
-private class WindowPresenterDelegateMock: WindowPresenterDelegate {
+private class TabPresenterDelegateMock: TabPresenterDelegate {
     enum Message {
         case didUpdatePresentableModel
     }
 
     var receivedMessages = [Message]()
-    var presentableModel: WindowPresenter.Model?
+    var presentableModel: TabPresenter.Model?
 
-    func didUpdatePresentableModel(_ model: WindowPresenter.Model) {
+    func didUpdatePresentableModel(_ model: TabPresenter.Model) {
         receivedMessages.append(.didUpdatePresentableModel)
         presentableModel = model
     }

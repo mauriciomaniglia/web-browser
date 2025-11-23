@@ -31,9 +31,9 @@ final class WindowComposer {
             searchSuggestionViewModel: searchSuggestionViewModel
         )
 
-        let presenter = WindowPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
+        let presenter = TabPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
-        let mediator = WindowMediator(
+        let mediator = TabMediator(
             webView: webKitWrapper,
             presenter: presenter,
             safelistStore: safelistStore,
@@ -80,8 +80,8 @@ final class WindowComposer {
     }
 }
 
-extension WindowComposer: WindowPresenterDelegate {
-    func didUpdatePresentableModel(_ model: Services.WindowPresenter.Model) {
+extension WindowComposer: TabPresenterDelegate {
+    func didUpdatePresentableModel(_ model: Services.TabPresenter.Model) {
         windowViewModel.isBackButtonDisabled = !model.canGoBack
         windowViewModel.isForwardButtonDisabled = !model.canGoForward
         windowViewModel.showCancelButton = model.showCancelButton
