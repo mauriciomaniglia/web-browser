@@ -5,17 +5,17 @@ import SwiftUI
 struct WindowMacOS: View {
     let tabFactory: TabViewFactory
 
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MenuMacOS(windowViewModel: windowViewModel)
+                MenuMacOS(tabViewModel: tabViewModel)
             } detail: {
                 TabBarViewControllerWrapper(tabFactory: tabFactory)
             }
 
-            if windowViewModel.showAddBookmark {
+            if tabViewModel.showAddBookmark {
                 Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                 AddBookmark
             }
@@ -26,10 +26,10 @@ struct WindowMacOS: View {
 
     var AddBookmark: some View {
         AddBookmarkMacOS(
-            viewModel: windowViewModel,
-            isPresented: $windowViewModel.showAddBookmark,
-            bookmarkName: windowViewModel.urlHost,
-            bookmarkURL: windowViewModel.fullURL
+            viewModel: tabViewModel,
+            isPresented: $tabViewModel.showAddBookmark,
+            bookmarkName: tabViewModel.urlHost,
+            bookmarkURL: tabViewModel.fullURL
         )
         .transition(.scale)
         .zIndex(1)

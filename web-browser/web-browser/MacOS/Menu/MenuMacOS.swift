@@ -2,14 +2,14 @@ import SwiftUI
 
 #if os(macOS)
 struct MenuMacOS: View {
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
 
     var body: some View {
         List {
-            NavigationLink(destination: BookmarkMacOS(viewModel: windowViewModel.bookmarkViewModel)) {
+            NavigationLink(destination: BookmarkMacOS(viewModel: tabViewModel.bookmarkViewModel)) {
                 Label("Bookmarks", systemImage: "bookmark")
             }
-            NavigationLink(destination: HistoryMacOS(viewModel: windowViewModel.historyViewModel)) {
+            NavigationLink(destination: HistoryMacOS(viewModel: tabViewModel.historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }

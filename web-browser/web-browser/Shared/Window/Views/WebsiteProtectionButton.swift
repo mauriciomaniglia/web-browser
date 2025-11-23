@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WebsiteProtectionButton: View {
-    @ObservedObject var viewModel: WindowViewModel
+    @ObservedObject var viewModel: TabViewModel
     @State var isShowingSheet = false
 
     var body: some View {

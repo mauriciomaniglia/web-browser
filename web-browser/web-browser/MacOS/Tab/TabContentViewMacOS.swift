@@ -2,18 +2,18 @@ import SwiftUI
 
 #if os(macOS)
 struct TabContentViewMacOS: View {
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
 
     let webView: AnyView
 
     var body: some View {
         VStack {
             HStack {
-                WindowNavigationButtons(viewModel: windowViewModel)
+                WindowNavigationButtons(viewModel: tabViewModel)
                 Spacer()
                 AddressBar
                 Spacer()
-                if let url = URL(string: windowViewModel.fullURL) {
+                if let url = URL(string: tabViewModel.fullURL) {
                     ShareLink(item: url) {
                         Image(systemName: "square.and.arrow.up")
                             .font(.system(size: 17))
@@ -24,7 +24,7 @@ struct TabContentViewMacOS: View {
             Spacer()
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .opacity(windowViewModel.showWebView ? 1 : 0)
+                .opacity(tabViewModel.showWebView ? 1 : 0)
         }
         .padding()
     }
@@ -32,10 +32,10 @@ struct TabContentViewMacOS: View {
     // MARK: SubViews
 
     var AddressBar: some View {
-        AddressBarView(viewModel: windowViewModel, searchText: $windowViewModel.fullURL)
+        AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
             .frame(minWidth: 0, maxWidth: 800)
-            .popover(isPresented: $windowViewModel.showSearchSuggestions, attachmentAnchor: .point(.center)) {
-                SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+            .popover(isPresented: $tabViewModel.showSearchSuggestions, attachmentAnchor: .point(.center)) {
+                SearchSuggestionView(viewModel: tabViewModel.searchSuggestionViewModel)
                     .frame(width: 550)
             }
     }

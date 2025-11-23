@@ -2,7 +2,7 @@ import SwiftUI
 
 struct NavigationHistoryView: View {
     var didSelectPage: ((Int) -> Void)?
-    let pageList: [WindowViewModel.WebPage]
+    let pageList: [TabViewModel.WebPage]
 
     var body: some View {
         VStack(alignment: .leading) {

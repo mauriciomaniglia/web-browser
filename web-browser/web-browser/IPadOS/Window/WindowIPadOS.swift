@@ -2,16 +2,16 @@ import SwiftUI
 
 #if os(iOS)
 struct WindowIPadOS: View {
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
 
     let webView: AnyView
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MenuIPadOS(windowViewModel: windowViewModel)
+                MenuIPadOS(tabViewModel: tabViewModel)
             } detail: {
-                TabContentViewIPadOS(windowViewModel: windowViewModel, webView: webView)
+                TabContentViewIPadOS(tabViewModel: tabViewModel, webView: webView)
             }
         }
         .overlay(alignment: .center) {
@@ -21,16 +21,16 @@ struct WindowIPadOS: View {
 
     private var AddBookmarkAlert: some View {
         Group {
-            if windowViewModel.showAddBookmark {
+            if tabViewModel.showAddBookmark {
                 AddBookmarkIPadOS(
-                    viewModel: windowViewModel,
-                    bookmarkName: windowViewModel.title,
-                    bookmarkURL: windowViewModel.fullURL
+                    viewModel: tabViewModel,
+                    bookmarkName: tabViewModel.title,
+                    bookmarkURL: tabViewModel.fullURL
                 )
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(windowViewModel.showAddBookmark ? Color.black.opacity(0.3) : Color.clear)
+        .background(tabViewModel.showAddBookmark ? Color.black.opacity(0.3) : Color.clear)
     }
 }
 #endif

@@ -8,7 +8,7 @@ final class TabComposer {
     let searchSuggestionViewModel: SearchSuggestionViewModel
     let safelistStore: SafelistStoreAPI
     let historyStore: HistoryStoreAPI
-    let windowViewModel: WindowViewModel
+    let tabViewModel: TabViewModel
     let view: any View
 
     init(webKitWrapper: WebKitEngineWrapper,
@@ -25,7 +25,7 @@ final class TabComposer {
         self.safelistStore = safelistStore
         self.historyStore = historyStore
 
-        self.windowViewModel = WindowViewModel(
+        self.tabViewModel = TabViewModel(
             historyViewModel: historyViewModel,
             bookmarkViewModel: bookmarkViewModel,
             searchSuggestionViewModel: searchSuggestionViewModel
@@ -42,36 +42,36 @@ final class TabComposer {
 
         contentBlocking.setupStrictProtection()
 
-        windowViewModel.didTapBackButton = webKitWrapper.didTapBackButton
-        windowViewModel.didTapForwardButton = webKitWrapper.didTapForwardButton
-        windowViewModel.didReload = webKitWrapper.reload
-        windowViewModel.didStopLoading = webKitWrapper.stopLoading
-        windowViewModel.didStartSearch = mediator.didRequestSearch
-        windowViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
-        windowViewModel.didChangeFocus = presenter.didChangeFocus
-        windowViewModel.didStartTyping = { oldText, newText in
+        tabViewModel.didTapBackButton = webKitWrapper.didTapBackButton
+        tabViewModel.didTapForwardButton = webKitWrapper.didTapForwardButton
+        tabViewModel.didReload = webKitWrapper.reload
+        tabViewModel.didStopLoading = webKitWrapper.stopLoading
+        tabViewModel.didStartSearch = mediator.didRequestSearch
+        tabViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
+        tabViewModel.didChangeFocus = presenter.didChangeFocus
+        tabViewModel.didStartTyping = { oldText, newText in
             searchSuggestionViewModel.delegate?.didStartTyping(newText)
             presenter.didStartTyping(oldText: oldText, newText: newText)
         }
-        windowViewModel.didLongPressBackButton = mediator.didLongPressBackButton
-        windowViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
-        windowViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
-        windowViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
-        windowViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
+        tabViewModel.didLongPressBackButton = mediator.didLongPressBackButton
+        tabViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
+        tabViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
+        tabViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
+        tabViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
         #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.view = WindowIPadOS(
-                windowViewModel: windowViewModel,
+                tabViewModel: tabViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         } else {
             self.view = WindowIOS(
-                windowViewModel: windowViewModel,
+                tabViewModel: tabViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }
         #elseif os(macOS)
         self.view = TabContentViewMacOS(
-            windowViewModel: windowViewModel,
+            tabViewModel: tabViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
         #endif
 
@@ -82,23 +82,23 @@ final class TabComposer {
 
 extension TabComposer: TabPresenterDelegate {
     func didUpdatePresentableModel(_ model: Services.TabPresenter.Model) {
-        windowViewModel.isBackButtonDisabled = !model.canGoBack
-        windowViewModel.isForwardButtonDisabled = !model.canGoForward
-        windowViewModel.showCancelButton = model.showCancelButton
-        windowViewModel.showStopButton = model.showStopButton
-        windowViewModel.showReloadButton = model.showReloadButton
-        windowViewModel.showClearButton = model.showClearButton
-        windowViewModel.progressBarValue = model.progressBarValue
-        windowViewModel.title = model.title ?? ""
-        windowViewModel.urlHost = model.urlHost ?? ""
-        windowViewModel.fullURL = model.fullURL ?? ""
-        windowViewModel.isWebsiteProtected = model.isWebsiteProtected
-        windowViewModel.showSiteProtection = model.showSiteProtection
-        windowViewModel.showWebView = model.showWebView
-        windowViewModel.showSearchSuggestions = model.showSearchSuggestions
-        windowViewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
-        windowViewModel.showBackList = model.backList != nil
-        windowViewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
-        windowViewModel.showForwardList = model.forwardList != nil
+        tabViewModel.isBackButtonDisabled = !model.canGoBack
+        tabViewModel.isForwardButtonDisabled = !model.canGoForward
+        tabViewModel.showCancelButton = model.showCancelButton
+        tabViewModel.showStopButton = model.showStopButton
+        tabViewModel.showReloadButton = model.showReloadButton
+        tabViewModel.showClearButton = model.showClearButton
+        tabViewModel.progressBarValue = model.progressBarValue
+        tabViewModel.title = model.title ?? ""
+        tabViewModel.urlHost = model.urlHost ?? ""
+        tabViewModel.fullURL = model.fullURL ?? ""
+        tabViewModel.isWebsiteProtected = model.isWebsiteProtected
+        tabViewModel.showSiteProtection = model.showSiteProtection
+        tabViewModel.showWebView = model.showWebView
+        tabViewModel.showSearchSuggestions = model.showSearchSuggestions
+        tabViewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        tabViewModel.showBackList = model.backList != nil
+        tabViewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        tabViewModel.showForwardList = model.forwardList != nil
     }
 }

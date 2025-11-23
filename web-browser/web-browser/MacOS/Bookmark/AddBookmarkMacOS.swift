@@ -2,7 +2,7 @@ import SwiftUI
 
 #if os(macOS)
 struct AddBookmarkMacOS: View {
-    @ObservedObject var viewModel: WindowViewModel
+    @ObservedObject var viewModel: TabViewModel
     @Binding var isPresented: Bool
     @State var bookmarkName = ""
     @State var bookmarkURL = ""

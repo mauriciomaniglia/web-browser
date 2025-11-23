@@ -8,12 +8,12 @@ struct MenuIPadOS: View {
         case history
     }
 
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
 
     var body: some View {
         NavigationStack {
             List {
-                if windowViewModel.showWebView {
+                if tabViewModel.showWebView {
                     AddBookmarkButton
                 }
                 NavigationLink(value: Menu.bookmarks) {
@@ -26,16 +26,16 @@ struct MenuIPadOS: View {
             .navigationDestination(for: Menu.self) { screen in
                 switch screen {
                 case .bookmarks:
-                    BookmarkIPadOS(viewModel: windowViewModel.bookmarkViewModel)
+                    BookmarkIPadOS(viewModel: tabViewModel.bookmarkViewModel)
                 case .history:
-                    HistoryIPadOS(viewModel: windowViewModel.historyViewModel)
+                    HistoryIPadOS(viewModel: tabViewModel.historyViewModel)
                 }
             }
         }
     }
 
     var AddBookmarkButton: some View {
-        Button(action: { windowViewModel.showAddBookmark = true }) {
+        Button(action: { tabViewModel.showAddBookmark = true }) {
             Label("Add Bookmark", systemImage: "bookmark")
         }
     }

@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-class WindowViewModel: ObservableObject {
+class TabViewModel: ObservableObject {
 
     struct WebPage {
         let title: String

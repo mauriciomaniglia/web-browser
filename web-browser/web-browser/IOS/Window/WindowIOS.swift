@@ -2,27 +2,27 @@ import SwiftUI
 
 #if os(iOS)
 struct WindowIOS: View {
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
     @State var isShowingSheet = false
 
     let webView: AnyView
 
     var body: some View {
         VStack {
-            AddressBarView(viewModel: windowViewModel, searchText: $windowViewModel.fullURL)
+            AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
 
-            if windowViewModel.showSearchSuggestions {
+            if tabViewModel.showSearchSuggestions {
                 ScrollView {
-                    SearchSuggestionView(viewModel: windowViewModel.searchSuggestionViewModel)
+                    SearchSuggestionView(viewModel: tabViewModel.searchSuggestionViewModel)
                 }
             } else {
                 webView
                     .frame(maxWidth:.infinity, maxHeight: .infinity)
-                    .opacity(windowViewModel.showWebView ? 1 : 0)
+                    .opacity(tabViewModel.showWebView ? 1 : 0)
             }
 
             HStack {
-                WindowNavigationButtons(viewModel: windowViewModel)
+                WindowNavigationButtons(viewModel: tabViewModel)
                 Spacer()
                 Button(action: { isShowingSheet.toggle() }) {
                     Image(systemName: "line.3.horizontal")
@@ -32,13 +32,13 @@ struct WindowIOS: View {
         }
         .background(Color(.systemGray6))
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
-            MenuIOS(windowViewModel: windowViewModel, isPresented: $isShowingSheet)
+            MenuIOS(tabViewModel: tabViewModel, isPresented: $isShowingSheet)
         })
-        .popover(isPresented: $windowViewModel.showAddBookmark, arrowEdge: .trailing, content: {
+        .popover(isPresented: $tabViewModel.showAddBookmark, arrowEdge: .trailing, content: {
             AddBookmarkIOS(
-                viewModel: windowViewModel,
-                bookmarkName: windowViewModel.title,
-                bookmarkURL: windowViewModel.fullURL
+                viewModel: tabViewModel,
+                bookmarkName: tabViewModel.title,
+                bookmarkURL: tabViewModel.fullURL
             )
         })
     }

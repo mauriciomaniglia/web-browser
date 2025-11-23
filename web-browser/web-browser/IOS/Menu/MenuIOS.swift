@@ -2,22 +2,22 @@ import SwiftUI
 
 #if os(iOS)
 struct MenuIOS: View {
-    @ObservedObject var windowViewModel: WindowViewModel
+    @ObservedObject var tabViewModel: TabViewModel
     @Binding var isPresented: Bool
 
     var body: some View {
         NavigationView {
             List {
-                if windowViewModel.showWebView {
+                if tabViewModel.showWebView {
                     AddBookmarkButton
                 }
-                NavigationLink(destination: BookmarkIOS(viewModel: windowViewModel.bookmarkViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: BookmarkIOS(viewModel: tabViewModel.bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
-                NavigationLink(destination: HistoryIOS(viewModel: windowViewModel.historyViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: HistoryIOS(viewModel: tabViewModel.historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
-                if let url = URL(string: windowViewModel.fullURL) {
+                if let url = URL(string: tabViewModel.fullURL) {
                     ShareLink(item: url) {
                         Label("Share", systemImage: "square.and.arrow.up")
                             .tint(.primary)
@@ -29,7 +29,7 @@ struct MenuIOS: View {
 
     var AddBookmarkButton: some View {
         Button(action: {
-            windowViewModel.didTapAddBookmark()
+            tabViewModel.didTapAddBookmark()
             isPresented = false
         }) {
             HStack {

@@ -21,7 +21,7 @@ struct WebBrowserApp: App {
             let windowComposer = tabViewFactory.createNewTab().tabComposer
             WindowMacOS(
                 tabFactory: tabViewFactory,
-                windowViewModel: windowComposer.windowViewModel
+                tabViewModel: windowComposer.tabViewModel
             )
             #endif
         }

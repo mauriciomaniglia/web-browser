@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddressBarView: View {
-    @ObservedObject var viewModel: WindowViewModel
+    @ObservedObject var viewModel: TabViewModel
     @Binding var searchText: String
 
     @State private var isShowingSheet = false
