@@ -9,7 +9,7 @@ struct SingleTab: Identifiable {
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
     let safelistStore: SafelistStore
-    let windowComposer: WindowComposer
+    let tabComposer: TabComposer
 }
 
 final class TabViewFactory {
@@ -41,7 +41,7 @@ final class TabViewFactory {
         )
         let safelistStore = SafelistStore()
 
-        let composer = WindowComposer(
+        let composer = TabComposer(
             webKitWrapper: webKitWrapper,
             historyViewModel: historyComposer.viewModel,
             bookmarkViewModel: bookmarkComposer.viewModel,
@@ -57,7 +57,7 @@ final class TabViewFactory {
             bookmarkComposer: bookmarkComposer,
             searchSuggestionComposer: searchSuggestionComposer,
             safelistStore: safelistStore,
-            windowComposer: composer
+            tabComposer: composer
         )
 
         tabs.append(newTab)

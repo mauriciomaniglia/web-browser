@@ -9,16 +9,16 @@ struct WebBrowserApp: App {
             #if os(iOS)
             if UIDevice.current.userInterfaceIdiom == .pad {
                 TabBarViewControllerWrapper {
-                    AnyView(tabViewFactory.createNewTab().windowComposer.view)
+                    AnyView(tabViewFactory.createNewTab().tabComposer.view)
                 }
                 .ignoresSafeArea()
             } else {
-                AnyView(tabViewFactory.createNewTab().windowComposer.view)
+                AnyView(tabViewFactory.createNewTab().tabComposer.view)
             }
             #endif
 
             #if os(macOS)
-            let windowComposer = tabViewFactory.createNewTab().windowComposer
+            let windowComposer = tabViewFactory.createNewTab().tabComposer
             WindowMacOS(
                 tabFactory: tabViewFactory,
                 windowViewModel: windowComposer.windowViewModel

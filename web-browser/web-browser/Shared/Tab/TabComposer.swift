@@ -1,7 +1,7 @@
 import SwiftUI
 import Services
 
-final class WindowComposer {
+final class TabComposer {
     let webKitWrapper: WebKitEngineWrapper
     let historyViewModel: HistoryViewModel
     let bookmarkViewModel: BookmarkViewModel
@@ -80,7 +80,7 @@ final class WindowComposer {
     }
 }
 
-extension WindowComposer: TabPresenterDelegate {
+extension TabComposer: TabPresenterDelegate {
     func didUpdatePresentableModel(_ model: Services.TabPresenter.Model) {
         windowViewModel.isBackButtonDisabled = !model.canGoBack
         windowViewModel.isForwardButtonDisabled = !model.canGoForward

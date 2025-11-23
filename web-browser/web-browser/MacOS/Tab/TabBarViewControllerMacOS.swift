@@ -41,7 +41,7 @@ class TabBarViewController: NSViewController {
             addNewTab()
         } else {
             for tab in tabFactory.tabs {
-                let content = tab.windowComposer.view as! TabContentViewMacOS
+                let content = tab.tabComposer.view as! TabContentViewMacOS
                 let hostingController = NSHostingController(rootView: content)
                 hostingControllers.append(hostingController)
 
@@ -122,7 +122,7 @@ class TabBarViewController: NSViewController {
     }
 
     func addNewTab() {
-        let content = tabFactory.createNewTab().windowComposer.view as! TabContentViewMacOS
+        let content = tabFactory.createNewTab().tabComposer.view as! TabContentViewMacOS
         let hostingController = NSHostingController(rootView: content)
         hostingControllers.append(hostingController)
 

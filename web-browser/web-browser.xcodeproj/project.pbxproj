@@ -65,7 +65,7 @@
 		F9C070422ECA6C4A001C7E04 /* TabContentViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */; };
 		F9CA92E32ED0F4D60092842D /* TabContentViewIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA92E22ED0F4D60092842D /* TabContentViewIPadOS.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
-		F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */; };
+		F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* HistoryIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
@@ -149,7 +149,7 @@
 		F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewMacOS.swift; sourceTree = "<group>"; };
 		F9CA92E22ED0F4D60092842D /* TabContentViewIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewIPadOS.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
-		F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
+		F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIPadOS.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
@@ -407,7 +407,6 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F9CDFD8D2B71282E0024E0AD /* WindowComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* WindowViewModel.swift */,
 				F98BF0C72B750A3300C29BDA /* Views */,
 			);
@@ -458,6 +457,7 @@
 			children = (
 				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
+				F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */,
 				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 			);
 			path = Tab;
@@ -707,7 +707,7 @@
 				F92921ED2B70F9A100173702 /* WindowIOS.swift in Sources */,
 				F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */,
 				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
-				F9CDFD8E2B71282E0024E0AD /* WindowComposer.swift in Sources */,
+				F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* WindowViewModel.swift in Sources */,
