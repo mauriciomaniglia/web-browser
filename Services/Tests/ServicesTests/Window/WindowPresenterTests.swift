@@ -33,7 +33,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didStartNewWindow()
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel, .didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertFalse(delegate.presentableModel!.showCancelButton)
@@ -57,7 +57,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didChangeFocus(isFocused: true)
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertTrue(delegate.presentableModel!.showCancelButton)
@@ -106,7 +106,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didStartTyping(oldText: "lin", newText: "linux")
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertEqual(delegate.presentableModel!.fullURL, "linux")
         XCTAssertTrue(delegate.presentableModel!.showCancelButton)
@@ -148,7 +148,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didChangeFocus(isFocused: false)
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertFalse(delegate.presentableModel!.showCancelButton)
@@ -197,7 +197,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertFalse(delegate.presentableModel!.showCancelButton)
@@ -340,7 +340,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(0.45)
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertFalse(delegate.presentableModel!.showCancelButton)
@@ -364,7 +364,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(1)
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertFalse(delegate.presentableModel!.showCancelButton)
@@ -388,7 +388,7 @@ class WindowPresenterTests: XCTestCase {
         sut.didUpdateProgressBar(1.5)
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
-        XCTAssertNil(delegate.presentableModel!.title)
+        XCTAssertEqual(delegate.presentableModel!.title, "Start Page")
         XCTAssertNil(delegate.presentableModel!.urlHost)
         XCTAssertNil(delegate.presentableModel!.fullURL)
         XCTAssertFalse(delegate.presentableModel!.showCancelButton)

@@ -37,7 +37,7 @@ public class WindowPresenter {
     
     public init(isOnSafelist: @escaping (String) -> Bool) {
         model = Model(
-            title: nil,
+            title: "Start Page",
             urlHost: nil,
             fullURL: nil,
             showCancelButton: false,
@@ -57,7 +57,7 @@ public class WindowPresenter {
     
     public func didStartNewWindow() {
         delegate?.didUpdatePresentableModel(.init(
-            title: nil,
+            title: "Start Page",
             urlHost: nil,
             fullURL: nil,
             showCancelButton: false,
