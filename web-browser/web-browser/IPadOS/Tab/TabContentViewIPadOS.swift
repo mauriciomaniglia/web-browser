@@ -1,5 +1,6 @@
 import SwiftUI
 
+#if canImport(UIKit)
 struct TabContentViewIPadOS: View {
     @ObservedObject var windowViewModel: WindowViewModel
 
@@ -32,3 +33,4 @@ struct TabContentViewIPadOS: View {
         }
     }
 }
+#endif
