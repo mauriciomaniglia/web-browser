@@ -24,8 +24,7 @@ final class TabComposer {
         self.historyStore = historyStore
 
         self.tabViewModel = TabViewModel(
-            bookmarkViewModel: bookmarkViewModel,
-            searchSuggestionViewModel: searchSuggestionViewModel
+            bookmarkViewModel: bookmarkViewModel
         )
 
         let presenter = TabPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
@@ -61,16 +60,19 @@ final class TabComposer {
             self.view = WindowIPadOS(
                 tabViewModel: tabViewModel,
                 historyViewModel: historyViewModel,
+                searchSuggestionViewModel: searchSuggestionViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         } else {
             self.view = WindowIOS(
                 tabViewModel: tabViewModel,
                 historyViewModel: historyViewModel,
+                searchSuggestionViewModel: searchSuggestionViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }
         #elseif os(macOS)
         self.view = TabContentViewMacOS(
             tabViewModel: tabViewModel,
+            searchSuggestionViewModel: searchSuggestionViewModel,
             webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
         #endif
 

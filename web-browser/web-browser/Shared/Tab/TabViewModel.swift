@@ -8,15 +8,12 @@ class TabViewModel: ObservableObject {
         let url: String
     }
 
-    init(bookmarkViewModel: BookmarkViewModel,
-         searchSuggestionViewModel: SearchSuggestionViewModel)
+    init(bookmarkViewModel: BookmarkViewModel)
     {
         self.bookmarkViewModel = bookmarkViewModel
-        self.searchSuggestionViewModel = searchSuggestionViewModel
     }
 
     let bookmarkViewModel: BookmarkViewModel
-    let searchSuggestionViewModel: SearchSuggestionViewModel
 
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true

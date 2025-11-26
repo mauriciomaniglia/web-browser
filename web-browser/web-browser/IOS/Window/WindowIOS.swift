@@ -4,6 +4,7 @@ import SwiftUI
 struct WindowIOS: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
+    @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
     @State var isShowingSheet = false
 
     let webView: AnyView
@@ -14,7 +15,7 @@ struct WindowIOS: View {
 
             if tabViewModel.showSearchSuggestions {
                 ScrollView {
-                    SearchSuggestionView(viewModel: tabViewModel.searchSuggestionViewModel)
+                    SearchSuggestionView(viewModel: searchSuggestionViewModel)
                 }
             } else {
                 webView

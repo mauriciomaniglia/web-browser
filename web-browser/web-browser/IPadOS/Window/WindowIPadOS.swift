@@ -4,6 +4,7 @@ import SwiftUI
 struct WindowIPadOS: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
+    @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
     let webView: AnyView
 
@@ -12,7 +13,11 @@ struct WindowIPadOS: View {
             NavigationSplitView {
                 MenuIPadOS(tabViewModel: tabViewModel, historyViewModel: historyViewModel)
             } detail: {
-                TabContentViewIPadOS(tabViewModel: tabViewModel, webView: webView)
+                TabContentViewIPadOS(
+                    tabViewModel: tabViewModel,
+                    searchSuggestionViewModel: searchSuggestionViewModel,
+                    webView: webView
+                )
             }
         }
         .overlay(alignment: .center) {

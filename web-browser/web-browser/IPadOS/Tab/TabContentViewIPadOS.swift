@@ -3,6 +3,7 @@ import SwiftUI
 #if canImport(UIKit)
 struct TabContentViewIPadOS: View {
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
     let webView: AnyView
 
@@ -19,7 +20,7 @@ struct TabContentViewIPadOS: View {
             ToolbarItem(placement: .principal) {
                 AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
                     .popover(isPresented: $tabViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
-                        SearchSuggestionView(viewModel: tabViewModel.searchSuggestionViewModel)
+                        SearchSuggestionView(viewModel: searchSuggestionViewModel)
                             .frame(width: 550)
                     }
             }
