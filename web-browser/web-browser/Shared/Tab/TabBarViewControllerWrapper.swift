@@ -2,10 +2,11 @@ import SwiftUI
 
 #if canImport(UIKit)
 struct TabBarViewControllerWrapper<Content: View>: UIViewControllerRepresentable {
+    let tabFactory: TabViewFactory
     let contentProvider: () -> Content
 
     func makeUIViewController(context: Context) -> TabBarViewController<Content> {
-        TabBarViewController(contentProvider: contentProvider)
+        TabBarViewController(tabFactory: tabFactory, contentProvider: contentProvider)
     }
 
     func updateUIViewController(_ uiViewController: TabBarViewController<Content>, context: Context) {}

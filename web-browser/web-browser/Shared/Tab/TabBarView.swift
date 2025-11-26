@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct TabBarView: View {
+    let tabFactory: TabViewFactory
+
     var tabs: [String]
     @Binding var currentIndex: Int
     var onAdd: () -> Void
@@ -36,6 +38,7 @@ struct TabBarView: View {
                         .onTapGesture {
                             currentIndex = index
                             onSelect(index)
+                            tabFactory.didSelectTabAt(index: index)
                         }
                     }
                 }

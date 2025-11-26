@@ -3,13 +3,14 @@ import SwiftUI
 #if os(iOS)
 struct WindowIPadOS: View {
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
 
     let webView: AnyView
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MenuIPadOS(tabViewModel: tabViewModel)
+                MenuIPadOS(tabViewModel: tabViewModel, historyViewModel: historyViewModel)
             } detail: {
                 TabContentViewIPadOS(tabViewModel: tabViewModel, webView: webView)
             }

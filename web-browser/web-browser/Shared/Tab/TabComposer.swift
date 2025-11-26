@@ -3,7 +3,6 @@ import Services
 
 final class TabComposer {
     let webKitWrapper: WebKitEngineWrapper
-    let historyViewModel: HistoryViewModel
     let bookmarkViewModel: BookmarkViewModel
     let searchSuggestionViewModel: SearchSuggestionViewModel
     let safelistStore: SafelistStoreAPI
@@ -12,21 +11,19 @@ final class TabComposer {
     let view: any View
 
     init(webKitWrapper: WebKitEngineWrapper,
-         historyViewModel: HistoryViewModel,
          bookmarkViewModel: BookmarkViewModel,
+         historyViewModel: HistoryViewModel,
          searchSuggestionViewModel: SearchSuggestionViewModel,
          safelistStore: SafelistStoreAPI,
          historyStore: HistoryStoreAPI
     ) {
         self.webKitWrapper = webKitWrapper
-        self.historyViewModel = historyViewModel
         self.bookmarkViewModel = bookmarkViewModel
         self.searchSuggestionViewModel = searchSuggestionViewModel
         self.safelistStore = safelistStore
         self.historyStore = historyStore
 
         self.tabViewModel = TabViewModel(
-            historyViewModel: historyViewModel,
             bookmarkViewModel: bookmarkViewModel,
             searchSuggestionViewModel: searchSuggestionViewModel
         )
@@ -63,10 +60,12 @@ final class TabComposer {
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.view = WindowIPadOS(
                 tabViewModel: tabViewModel,
+                historyViewModel: historyViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         } else {
             self.view = WindowIOS(
                 tabViewModel: tabViewModel,
+                historyViewModel: historyViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }
         #elseif os(macOS)

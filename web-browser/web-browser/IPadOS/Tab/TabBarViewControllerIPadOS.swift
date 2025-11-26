@@ -9,7 +9,10 @@ class TabBarViewController<Content: View>: UIViewController {
     private let contentProvider: () -> Content
     private var tabBarHostingController: UIHostingController<TabBarView>!
 
-    init(contentProvider: @escaping () -> Content) {
+    private let tabFactory: TabViewFactory
+
+    init(tabFactory: TabViewFactory, contentProvider: @escaping () -> Content) {
+        self.tabFactory = tabFactory
         self.contentProvider = contentProvider
         super.init(nibName: nil, bundle: nil)
     }
@@ -27,6 +30,7 @@ class TabBarViewController<Content: View>: UIViewController {
 
     private func setupTabBar() {
         let tabBarView = TabBarView(
+            tabFactory: tabFactory,
             tabs: hostingControllers.enumerated().map { "Tab \($0.offset + 1)" },
             currentIndex: Binding(
                 get: { self.currentIndex },
@@ -60,6 +64,7 @@ class TabBarViewController<Content: View>: UIViewController {
     private func refreshTabBar() {
         let updatedTabs = hostingControllers.enumerated().map { "Tab \($0.offset + 1)" }
         tabBarHostingController.rootView = TabBarView(
+            tabFactory: tabFactory,
             tabs: updatedTabs,
             currentIndex: Binding(
                 get: { self.currentIndex },

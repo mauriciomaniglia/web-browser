@@ -6,11 +6,12 @@ struct WindowMacOS: View {
     let tabFactory: TabViewFactory
 
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MenuMacOS(tabViewModel: tabViewModel)
+                MenuMacOS(tabViewModel: tabViewModel, historyViewModel: historyViewModel)
             } detail: {
                 TabBarViewControllerWrapper(tabFactory: tabFactory)
             }

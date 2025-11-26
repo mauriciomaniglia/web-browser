@@ -3,6 +3,7 @@ import SwiftUI
 #if os(iOS)
 struct MenuIOS: View {
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
     @Binding var isPresented: Bool
 
     var body: some View {
@@ -14,7 +15,7 @@ struct MenuIOS: View {
                 NavigationLink(destination: BookmarkIOS(viewModel: tabViewModel.bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
-                NavigationLink(destination: HistoryIOS(viewModel: tabViewModel.historyViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: HistoryIOS(viewModel: historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
                 if let url = URL(string: tabViewModel.fullURL) {

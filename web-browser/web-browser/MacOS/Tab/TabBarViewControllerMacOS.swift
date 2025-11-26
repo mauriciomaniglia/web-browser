@@ -78,6 +78,7 @@ class TabBarViewController: NSViewController {
 
     private func setupTabBar() {
         let tabBarView = TabBarView(
+            tabFactory: tabFactory,
             tabs: [],
             currentIndex: Binding(
                 get: { self.currentIndex },
@@ -108,6 +109,7 @@ class TabBarViewController: NSViewController {
         let titles = hostingControllers.enumerated().map { "Tab \($0.offset + 1)" }
 
         tabBarHostingView.rootView = TabBarView(
+            tabFactory: tabFactory,
             tabs: titles,
             currentIndex: Binding(
                 get: { self.currentIndex },

@@ -8,16 +8,13 @@ class TabViewModel: ObservableObject {
         let url: String
     }
 
-    init(historyViewModel: HistoryViewModel,
-         bookmarkViewModel: BookmarkViewModel,
+    init(bookmarkViewModel: BookmarkViewModel,
          searchSuggestionViewModel: SearchSuggestionViewModel)
     {
-        self.historyViewModel = historyViewModel
         self.bookmarkViewModel = bookmarkViewModel
         self.searchSuggestionViewModel = searchSuggestionViewModel
     }
 
-    let historyViewModel: HistoryViewModel
     let bookmarkViewModel: BookmarkViewModel
     let searchSuggestionViewModel: SearchSuggestionViewModel
 

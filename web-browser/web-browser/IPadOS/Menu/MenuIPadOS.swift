@@ -9,6 +9,7 @@ struct MenuIPadOS: View {
     }
 
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel
 
     var body: some View {
         NavigationStack {
@@ -28,7 +29,7 @@ struct MenuIPadOS: View {
                 case .bookmarks:
                     BookmarkIPadOS(viewModel: tabViewModel.bookmarkViewModel)
                 case .history:
-                    HistoryIPadOS(viewModel: tabViewModel.historyViewModel)
+                    HistoryIPadOS(viewModel: historyViewModel)
                 }
             }
         }

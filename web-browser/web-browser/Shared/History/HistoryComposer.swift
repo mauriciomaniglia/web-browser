@@ -1,15 +1,19 @@
 import Foundation
 import Services
 
+protocol HistoryUserActionDelegate {
+    func didSelectPage(_ pageURL: URL)
+}
+
 class HistoryComposer {
-    let webView: WebEngineContract
     let historyStore: HistoryStoreAPI
     let viewModel: HistoryViewModel
     let presenter: HistoryPresenter
     let mediator: HistoryMediator
 
-    init(webView: WebEngineContract, historyStore: HistoryStoreAPI) {
-        self.webView = webView
+    var userActionDelegate: HistoryUserActionDelegate?
+
+    init(historyStore: HistoryStoreAPI) {
         self.viewModel = HistoryViewModel()
         self.presenter = HistoryPresenter()
         self.historyStore = historyStore
@@ -30,7 +34,7 @@ extension HistoryComposer: HistoryViewModelDelegate {
     }
 
     func didSelectPage(_ pageURL: URL) {
-        webView.load(pageURL)
+        userActionDelegate?.didSelectPage(pageURL)
     }
 
     func didTapDeletePages(_ pages: [UUID]) {
