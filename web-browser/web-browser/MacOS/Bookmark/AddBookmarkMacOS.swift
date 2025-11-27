@@ -2,7 +2,8 @@ import SwiftUI
 
 #if os(macOS)
 struct AddBookmarkMacOS: View {
-    @ObservedObject var viewModel: TabViewModel
+    @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @Binding var isPresented: Bool
     @State var bookmarkName = ""
     @State var bookmarkURL = ""
@@ -22,14 +23,15 @@ struct AddBookmarkMacOS: View {
             }
             HStack {
                 Button("Remove") {
-                    viewModel.dismissAddBookmark()
+                    tabViewModel.dismissAddBookmark()
                 }
                 Spacer()
                 Button("Done") {
-                    viewModel.saveAndDismissAddBookmark(
+                    tabViewModel.saveAndDismissAddBookmark(
                         name: bookmarkName,
                         url: bookmarkURL
                     )
+                    bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
                 }
                 .buttonStyle(.borderedProminent)
             }

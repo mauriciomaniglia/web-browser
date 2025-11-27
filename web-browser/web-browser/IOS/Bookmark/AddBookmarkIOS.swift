@@ -2,7 +2,8 @@ import SwiftUI
 
 #if os(iOS)
 struct AddBookmarkIOS: View {
-    @ObservedObject var viewModel: TabViewModel
+    @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @State var bookmarkName: String
     @State var bookmarkURL: String
 
@@ -29,13 +30,14 @@ struct AddBookmarkIOS: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Button("Cancel", action: {
-                    viewModel.dismissAddBookmark()
+                    tabViewModel.dismissAddBookmark()
                 }),
                 trailing: Button("Save", action: {
-                    viewModel.saveAndDismissAddBookmark(
+                    tabViewModel.saveAndDismissAddBookmark(
                         name: bookmarkName,
                         url: bookmarkURL
                     )
+                    bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
                 })
             )
             .onAppear {

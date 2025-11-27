@@ -8,13 +8,6 @@ class TabViewModel: ObservableObject {
         let url: String
     }
 
-    init(bookmarkViewModel: BookmarkViewModel)
-    {
-        self.bookmarkViewModel = bookmarkViewModel
-    }
-
-    let bookmarkViewModel: BookmarkViewModel
-
     @Published var isBackButtonDisabled: Bool = true
     @Published var isForwardButtonDisabled: Bool = true
     @Published var showCancelButton: Bool = false
@@ -59,6 +52,6 @@ class TabViewModel: ObservableObject {
 
     func saveAndDismissAddBookmark(name: String, url: String) {
         showAddBookmark = false
-        bookmarkViewModel.delegate?.didTapAddBookmark(name: name, urlString: url)
+        //bookmarkViewModel.delegate?.didTapAddBookmark(name: name, urlString: url)
     }
 }

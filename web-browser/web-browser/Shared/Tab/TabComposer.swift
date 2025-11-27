@@ -22,10 +22,7 @@ final class TabComposer {
         self.searchSuggestionViewModel = searchSuggestionViewModel
         self.safelistStore = safelistStore
         self.historyStore = historyStore
-
-        self.tabViewModel = TabViewModel(
-            bookmarkViewModel: bookmarkViewModel
-        )
+        self.tabViewModel = TabViewModel()
 
         let presenter = TabPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
         let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
@@ -60,12 +57,14 @@ final class TabComposer {
             self.view = WindowIPadOS(
                 tabViewModel: tabViewModel,
                 historyViewModel: historyViewModel,
+                bookmarkViewModel: bookmarkViewModel,
                 searchSuggestionViewModel: searchSuggestionViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         } else {
             self.view = WindowIOS(
                 tabViewModel: tabViewModel,
                 historyViewModel: historyViewModel,
+                bookmarkViewModel: bookmarkViewModel,
                 searchSuggestionViewModel: searchSuggestionViewModel,
                 webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
         }

@@ -9,6 +9,7 @@ struct MenuIPadOS: View {
     }
 
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
 
     var body: some View {
@@ -27,7 +28,7 @@ struct MenuIPadOS: View {
             .navigationDestination(for: Menu.self) { screen in
                 switch screen {
                 case .bookmarks:
-                    BookmarkIPadOS(viewModel: tabViewModel.bookmarkViewModel)
+                    BookmarkIPadOS(viewModel: bookmarkViewModel)
                 case .history:
                     HistoryIPadOS(viewModel: historyViewModel)
                 }

@@ -6,12 +6,13 @@ struct WindowMacOS: View {
     let tabFactory: TabViewFactory
 
     @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MenuMacOS(tabViewModel: tabViewModel, historyViewModel: historyViewModel)
+                MenuMacOS(tabViewModel: tabViewModel, bookmarkViewModel: bookmarkViewModel, historyViewModel: historyViewModel)
             } detail: {
                 TabBarViewControllerWrapper(tabFactory: tabFactory)
             }
@@ -27,7 +28,8 @@ struct WindowMacOS: View {
 
     var AddBookmark: some View {
         AddBookmarkMacOS(
-            viewModel: tabViewModel,
+            tabViewModel: tabViewModel,
+            bookmarkViewModel: bookmarkViewModel,
             isPresented: $tabViewModel.showAddBookmark,
             bookmarkName: tabViewModel.urlHost,
             bookmarkURL: tabViewModel.fullURL

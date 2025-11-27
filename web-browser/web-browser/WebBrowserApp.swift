@@ -22,6 +22,7 @@ struct WebBrowserApp: App {
             WindowMacOS(
                 tabFactory: tabViewFactory,
                 tabViewModel: windowComposer.tabViewModel,
+                bookmarkViewModel: tabViewFactory.bookmarkComposer.viewModel,
                 historyViewModel: tabViewFactory.historyComposer.viewModel
             )
             #endif
