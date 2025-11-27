@@ -1,15 +1,19 @@
 import Foundation
 import Services
 
+protocol BookmarkUserActionDelegate {
+    func didSelectPageFromBookmark(_ pageURL: URL)
+}
+
 class BookmarkComposer {
-    let webView: WebEngineContract
     let bookmarkStore: BookmarkStoreAPI
     let viewModel: BookmarkViewModel
     let presenter: BookmarkPresenter
     let mediator: BookmarkMediator
 
-    init(webView: WebEngineContract, bookmarkStore: BookmarkStoreAPI) {
-        self.webView = webView
+    var userActionDelegate: BookmarkUserActionDelegate?
+
+    init(bookmarkStore: BookmarkStoreAPI) {
         self.bookmarkStore = bookmarkStore
         self.viewModel = BookmarkViewModel()
         self.presenter = BookmarkPresenter()
@@ -34,7 +38,7 @@ extension BookmarkComposer: BookmarkViewModelDelegate {
     }
     
     func didSelectPage(_ pageURL: URL) {
-        webView.load(pageURL)
+        userActionDelegate?.didSelectPageFromBookmark(pageURL)
     }
     
     func didTapDeletePages(_ pagesID: [UUID]) {
