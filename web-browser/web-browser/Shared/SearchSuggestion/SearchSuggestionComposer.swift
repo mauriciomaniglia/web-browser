@@ -1,16 +1,20 @@
 import Foundation
 import Services
 
+protocol SearchSuggestionUserActionDelegate {
+    func didSelectPageFromSearchSuggestion(_ pageURL: URL)
+}
+
 class SearchSuggestionComposer {
     let viewModel: SearchSuggestionViewModel
     let mediator: SearchSuggestionMediator
     let presenter: SearchSuggestionPresenter
-    let webView: WebEngineContract
 
-    init(webView: WebEngineContract, historyStore: HistoryStoreAPI, bookmarkStore: BookmarkStoreAPI) {
+    var userActionDelegate: SearchSuggestionUserActionDelegate?
+
+    init(historyStore: HistoryStoreAPI, bookmarkStore: BookmarkStoreAPI) {
         let searchSuggestionService = SearchSuggestionService()
 
-        self.webView = webView
         self.presenter = SearchSuggestionPresenter()
         self.viewModel = SearchSuggestionViewModel()
         self.mediator = SearchSuggestionMediator(
@@ -31,7 +35,7 @@ extension SearchSuggestionComposer: SearchSuggestionViewModelDelegate {
     }
 
     func didSelectPage(_ pageURL: URL) {
-        webView.load(pageURL)
+        userActionDelegate?.didSelectPageFromSearchSuggestion(pageURL)
     }
 }
 

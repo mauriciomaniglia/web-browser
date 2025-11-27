@@ -18,6 +18,7 @@ final class TabViewFactory {
     let bookmarkStore: BookmarkStoreAPI
 
     let historyComposer: HistoryComposer
+    let searchSuggestionComposer: SearchSuggestionComposer
 
     var tabs: [SingleTab] = []
     var selectedTab: SingleTab?
@@ -33,16 +34,12 @@ final class TabViewFactory {
         self.bookmarkStore = BookmarkSwiftDataStore(container: container)
 
         self.historyComposer = HistoryComposer(historyStore: historyStore)
+        self.searchSuggestionComposer = SearchSuggestionComposer(historyStore: historyStore, bookmarkStore: bookmarkStore)
     }
 
     func createNewTab() -> SingleTab {
         let webKitWrapper = WebKitEngineWrapper()
         let bookmarkComposer = BookmarkComposer(webView: webKitWrapper, bookmarkStore: bookmarkStore)
-        let searchSuggestionComposer = SearchSuggestionComposer(
-            webView: webKitWrapper,
-            historyStore: historyStore,
-            bookmarkStore: bookmarkStore
-        )
         let safelistStore = SafelistStore()
 
         let composer = TabComposer(
@@ -68,6 +65,7 @@ final class TabViewFactory {
         selectedTab = newTab
 
         historyComposer.userActionDelegate = self
+        searchSuggestionComposer.userActionDelegate = self
 
         return newTab
     }
@@ -79,6 +77,12 @@ final class TabViewFactory {
 
 extension TabViewFactory: HistoryUserActionDelegate {
     func didSelectPage(_ pageURL: URL) {
+        selectedTab?.tabComposer.webKitWrapper.load(pageURL)
+    }
+}
+
+extension TabViewFactory: SearchSuggestionUserActionDelegate {
+    func didSelectPageFromSearchSuggestion(_ pageURL: URL) {
         selectedTab?.tabComposer.webKitWrapper.load(pageURL)
     }
 }
