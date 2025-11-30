@@ -2,18 +2,16 @@
 import UIKit
 import SwiftUI
 
-class TabBarViewController<Content: View>: UIViewController {
-    private var hostingControllers: [UIHostingController<Content>] = []
+class TabBarViewController: UIViewController {
+    private var hostingControllers: [UIHostingController<WindowIPadOS>] = []
     private var currentIndex: Int = 0
-    private var currentController: UIHostingController<Content>?
-    private let contentProvider: () -> Content
+    private var currentController: UIHostingController<WindowIPadOS>?
     private var tabBarHostingController: UIHostingController<TabBarView>!
 
     private let tabFactory: TabViewFactory
 
-    init(tabFactory: TabViewFactory, contentProvider: @escaping () -> Content) {
+    init(tabFactory: TabViewFactory) {
         self.tabFactory = tabFactory
-        self.contentProvider = contentProvider
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -25,7 +23,15 @@ class TabBarViewController<Content: View>: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupTabBar()
-        addNewTab()
+
+        if tabFactory.tabs.isEmpty {
+            addNewTab()
+        } else {
+            for tab in tabFactory.tabs {
+                let tabContent = tab.view as! WindowIPadOS
+                addNewTab(tabContent)
+            }
+        }
     }
 
     private func setupTabBar() {
@@ -81,9 +87,9 @@ class TabBarViewController<Content: View>: UIViewController {
         )
     }
 
-    func addNewTab() {
-        let newContent = contentProvider()
-        let hostingController = UIHostingController(rootView: newContent)
+    func addNewTab(_ tabContent: WindowIPadOS? = nil) {
+        let content = tabContent ?? (tabFactory.createNewTab().view as! WindowIPadOS)
+        let hostingController = UIHostingController(rootView: content)
         hostingControllers.append(hostingController)
         currentIndex = hostingControllers.count - 1
         refreshTabBar()
@@ -93,6 +99,8 @@ class TabBarViewController<Content: View>: UIViewController {
     func closeTab(at index: Int) {
         guard hostingControllers.indices.contains(index) else { return }
         hostingControllers.remove(at: index)
+        tabFactory.tabs.remove(at: index)
+
         if currentIndex >= hostingControllers.count {
             currentIndex = max(0, hostingControllers.count - 1)
         }
@@ -105,7 +113,7 @@ class TabBarViewController<Content: View>: UIViewController {
         }
     }
 
-    private func showController(_ controller: UIHostingController<Content>) {
+    private func showController(_ controller: UIHostingController<WindowIPadOS>) {
         currentController?.view.removeFromSuperview()
         currentController = controller
         addChild(controller)

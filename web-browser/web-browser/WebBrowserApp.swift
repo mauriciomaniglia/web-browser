@@ -8,10 +8,7 @@ struct WebBrowserApp: App {
         WindowGroup {
             #if os(iOS)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                TabBarViewControllerWrapper(tabFactory: tabViewFactory) {
-                    AnyView(tabViewFactory.createNewTab().view)
-                }
-                .ignoresSafeArea()
+                TabBarViewControllerWrapper(tabFactory: tabViewFactory)
             } else {
                 AnyView(tabViewFactory.createNewTab().view)
             }
