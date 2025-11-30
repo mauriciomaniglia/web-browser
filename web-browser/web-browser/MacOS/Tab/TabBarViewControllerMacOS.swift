@@ -71,7 +71,6 @@ class TabBarViewController: NSViewController {
     private func setupTabBar() {
         let tabBarView = TabBarView(
             tabFactory: tabFactory,
-            tabs: [],
             currentIndex: Binding(
                 get: { self.currentIndex },
                 set: { _ in } // Will be updated in refresh
@@ -98,11 +97,8 @@ class TabBarViewController: NSViewController {
     }
 
     private func refreshTabBar() {
-        let titles = hostingControllers.enumerated().map { "Tab \($0.offset + 1)" }
-
         tabBarHostingView.rootView = TabBarView(
             tabFactory: tabFactory,
-            tabs: titles,
             currentIndex: Binding(
                 get: { self.currentIndex },
                 set: { [weak self] newValue in
@@ -134,6 +130,8 @@ class TabBarViewController: NSViewController {
         let tabViewItem = tabViewController.tabView.tabViewItems[index]
         tabViewController.removeTabViewItem(tabViewItem)
         hostingControllers.remove(at: index)
+
+        tabFactory.tabs.remove(at: index)
 
         // Adjust current index if needed
         if currentIndex >= hostingControllers.count, !hostingControllers.isEmpty {

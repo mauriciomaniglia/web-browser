@@ -1,9 +1,25 @@
 import SwiftUI
 
+struct TabBarCell: View {
+    @ObservedObject var viewModel: TabViewModel
+    let index: Int
+    var onClose: (Int) -> Void
+
+    var body: some View {
+        Text(viewModel.title)
+            .font(.system(size: 14))
+            .lineLimit(1)
+        Button(action: { onClose(index) }) {
+            Image(systemName: "xmark")
+                .font(.system(size: 12, weight: .bold))
+        }
+        .buttonStyle(.plain)
+    }
+}
+
 struct TabBarView: View {
     let tabFactory: TabViewFactory
 
-    var tabs: [String]
     @Binding var currentIndex: Int
     var onAdd: () -> Void
     var onClose: (Int) -> Void
@@ -13,16 +29,12 @@ struct TabBarView: View {
         HStack(spacing: 8) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(tabs.indices, id: \.self) { index in
+                    ForEach(tabFactory.tabs.indices, id: \.self) { index in
                         HStack(spacing: 4) {
-                            Text(tabs[index])
-                                .font(.system(size: 14))
-                                .lineLimit(1)
-                            Button(action: { onClose(index) }) {
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 12, weight: .bold))
-                            }
-                            .buttonStyle(.plain)
+                            TabBarCell(
+                                viewModel: tabFactory.tabs[index].tabViewModel,
+                                index: index,
+                                onClose: onClose)
                         }
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)

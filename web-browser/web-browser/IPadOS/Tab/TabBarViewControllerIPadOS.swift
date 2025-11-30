@@ -31,7 +31,6 @@ class TabBarViewController<Content: View>: UIViewController {
     private func setupTabBar() {
         let tabBarView = TabBarView(
             tabFactory: tabFactory,
-            tabs: hostingControllers.enumerated().map { "Tab \($0.offset + 1)" },
             currentIndex: Binding(
                 get: { self.currentIndex },
                 set: { newValue in
@@ -62,10 +61,8 @@ class TabBarViewController<Content: View>: UIViewController {
     }
 
     private func refreshTabBar() {
-        let updatedTabs = hostingControllers.enumerated().map { "Tab \($0.offset + 1)" }
         tabBarHostingController.rootView = TabBarView(
             tabFactory: tabFactory,
-            tabs: updatedTabs,
             currentIndex: Binding(
                 get: { self.currentIndex },
                 set: { newValue in
