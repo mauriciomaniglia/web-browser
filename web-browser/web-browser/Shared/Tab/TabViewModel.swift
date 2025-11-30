@@ -16,7 +16,7 @@ class TabViewModel: ObservableObject {
     @Published var showClearButton: Bool = false
     @Published var showAddBookmark: Bool = false
     @Published var progressBarValue: Double? = nil
-    @Published var title: String = ""
+    @Published var title: String = "Start Page"
     @Published var urlHost: String = ""
     @Published var fullURL: String = ""
     @Published var isWebsiteProtected: Bool = true

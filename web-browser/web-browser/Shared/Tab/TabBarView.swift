@@ -36,11 +36,12 @@ struct TabBarView: View {
                                 index: index,
                                 onClose: onClose)
                         }
+                        .frame(width: 150)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(index == currentIndex ? Color.gray.opacity(0.2) : Color.clear)
+                                .fill(index == currentIndex ? Color.gray.opacity(0.8) : Color.clear)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.gray.opacity(0.4))

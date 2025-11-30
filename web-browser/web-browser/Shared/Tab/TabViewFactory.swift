@@ -39,7 +39,6 @@ final class TabViewFactory {
             historyStore: historyStore
         )
         self.selectedTab = composer
-        tabs.append(composer)
 
         historyComposer.userActionDelegate = self
         bookmarkComposer.userActionDelegate = self
