@@ -41,16 +41,8 @@ class TabBarViewController: NSViewController {
             addNewTab()
         } else {
             for tab in tabFactory.tabs {
-                let content = tab.view as! TabContentViewMacOS
-                let hostingController = NSHostingController(rootView: content)
-                hostingControllers.append(hostingController)
-
-                let tabViewItem = NSTabViewItem(viewController: hostingController)
-                tabViewItem.label = "Tab \(hostingControllers.count)"
-                tabViewController.addTabViewItem(tabViewItem)
-
-                currentIndex = hostingControllers.count - 1
-                refreshTabBar()
+                let tabContent = tab.view as! TabContentViewMacOS
+                addNewTab(tabContent)
             }
         }
     }
@@ -123,8 +115,8 @@ class TabBarViewController: NSViewController {
         )
     }
 
-    func addNewTab() {
-        let content = tabFactory.createNewTab().view as! TabContentViewMacOS
+    func addNewTab(_ tabContent: TabContentViewMacOS? = nil) {
+        let content = tabContent ?? (tabFactory.createNewTab().view as! TabContentViewMacOS)
         let hostingController = NSHostingController(rootView: content)
         hostingControllers.append(hostingController)
 
