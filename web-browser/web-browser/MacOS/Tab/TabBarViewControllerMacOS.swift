@@ -88,11 +88,9 @@ class TabBarViewController: NSViewController {
         NSLayoutConstraint.activate([
             tabBarHostingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tabBarHostingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tabBarHostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tabBarHostingView.heightAnchor.constraint(equalToConstant: 48)
+            tabBarHostingView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
 
-        // Now pin tab view below tab bar
         tabViewController.view.topAnchor.constraint(equalTo: tabBarHostingView.bottomAnchor).isActive = true
     }
 
