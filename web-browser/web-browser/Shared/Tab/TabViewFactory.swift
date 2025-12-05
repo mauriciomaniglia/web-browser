@@ -13,6 +13,7 @@ final class TabViewFactory {
 
     var tabs: [TabComposer] = []
     var selectedTab: TabComposer
+    var selectedTabIndex: Int = 0
 
     init() {
         do {
@@ -60,12 +61,14 @@ final class TabViewFactory {
 
         tabs.append(composer)
         selectedTab = composer
+        selectedTabIndex = tabs.count + 1
 
         return composer
     }
 
     func didSelectTabAt(index: Int) {
         selectedTab = tabs[index]
+        selectedTabIndex = index
     }
 }
 

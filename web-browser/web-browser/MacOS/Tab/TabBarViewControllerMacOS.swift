@@ -45,6 +45,8 @@ class TabBarViewController: NSViewController {
                 addNewTab(tabContent)
             }
         }
+
+        selectTab(at: tabFactory.selectedTabIndex)
     }
 
     private func setupTabViewController() {
