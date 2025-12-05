@@ -1,26 +1,10 @@
 import SwiftUI
 
-struct TabBarCell: View {
-    @ObservedObject var viewModel: TabViewModel
-    let index: Int
-    var onClose: (Int) -> Void
-
-    var body: some View {
-        Text(viewModel.title)
-            .font(.system(size: 14))
-            .lineLimit(1)
-        Button(action: { onClose(index) }) {
-            Image(systemName: "xmark")
-                .font(.system(size: 12, weight: .bold))
-        }
-        .buttonStyle(.plain)
-    }
-}
-
 struct TabBarView: View {
     let windowComposer: WindowComposer
 
     @Binding var currentIndex: Int
+
     var onAdd: () -> Void
     var onClose: (Int) -> Void
     var onSelect: (Int) -> Void
@@ -30,29 +14,13 @@ struct TabBarView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(windowComposer.tabs.indices, id: \.self) { index in
-                        HStack(spacing: 4) {
-                            TabBarCell(
-                                viewModel: windowComposer.tabs[index].tabViewModel,
-                                index: index,
-                                onClose: onClose)
-                        }
-                        .frame(width: 150)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(index == currentIndex ? Color.gray.opacity(0.8) : Color.clear)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.gray.opacity(0.4))
-                                )
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            currentIndex = index
-                            onSelect(index)
-                            windowComposer.didSelectTab(at: index)
-                        }
+                        TabView(
+                            viewModel: windowComposer.tabs[index].tabViewModel,
+                            currentIndex: $currentIndex,
+                            windowComposer: windowComposer,
+                            index: index,
+                            onClose: onClose,
+                            onSelect: onSelect)
                     }
                 }
                 .padding(.horizontal, 8)
@@ -68,5 +36,45 @@ struct TabBarView: View {
         }
         .padding(.vertical, 4)
         .background(Color.purple)
+    }
+}
+
+struct TabView: View {
+    @ObservedObject var viewModel: TabViewModel
+    @Binding var currentIndex: Int
+
+    let windowComposer: WindowComposer
+    let index: Int
+    var onClose: (Int) -> Void
+    var onSelect: (Int) -> Void
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Text(viewModel.title)
+                .font(.system(size: 14))
+                .lineLimit(1)
+            Button(action: { onClose(index) }) {
+                Image(systemName: "xmark")
+                    .font(.system(size: 12, weight: .bold))
+            }
+            .buttonStyle(.plain)
+        }
+        .frame(width: 150)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(index == currentIndex ? Color.gray.opacity(0.8) : Color.clear)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.gray.opacity(0.4))
+                )
+        )
+        .contentShape(Rectangle())
+        .onTapGesture {
+            currentIndex = index
+            onSelect(index)
+            windowComposer.didSelectTab(at: index)
+        }
     }
 }
