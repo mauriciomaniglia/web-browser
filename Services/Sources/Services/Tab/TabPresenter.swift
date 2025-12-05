@@ -97,7 +97,7 @@ public class TabPresenter {
     }
 
     public func didStartTyping(oldText: String, newText: String) {
-        guard oldText != newText else { return }
+        guard oldText != newText && newText != model.fullURL else { return }
 
         let newModel = Model(
             title: model.title,

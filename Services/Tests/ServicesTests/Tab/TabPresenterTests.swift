@@ -142,6 +142,16 @@ class TabPresenterTests: XCTestCase {
         XCTAssertFalse(delegate.presentableModel!.showSearchSuggestions)
     }
 
+    func test_didStartTyping_whenInputAndModelHasSameURL_shouldNotCallSearchSuggestionsAgain() {
+        let (sut, _, delegate) = makeSUT()
+
+        sut.didStartTyping(oldText: "", newText: "www.linux.com")
+        sut.didStartTyping(oldText: "", newText: "www.linux.com")
+
+        XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel])
+        XCTAssertTrue(delegate.presentableModel!.showSearchSuggestions)
+    }
+
     func test_didChangeFocus_whenIsNotFocused_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
 
