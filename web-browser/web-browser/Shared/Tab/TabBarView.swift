@@ -51,7 +51,7 @@ struct TabBarView: View {
                         .onTapGesture {
                             currentIndex = index
                             onSelect(index)
-                            windowComposer.didSelectTabAt(index: index)
+                            windowComposer.didSelectTab(at: index)
                         }
                     }
                 }

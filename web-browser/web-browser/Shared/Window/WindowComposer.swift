@@ -68,7 +68,7 @@ final class WindowComposer {
         return composer
     }
 
-    func didSelectTabAt(index: Int) {
+    func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
         selectedTabIndex = index
     }
