@@ -18,7 +18,7 @@ struct TabBarCell: View {
 }
 
 struct TabBarView: View {
-    let tabFactory: TabViewFactory
+    let windowComposer: WindowComposer
 
     @Binding var currentIndex: Int
     var onAdd: () -> Void
@@ -29,10 +29,10 @@ struct TabBarView: View {
         HStack(spacing: 8) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(tabFactory.tabs.indices, id: \.self) { index in
+                    ForEach(windowComposer.tabs.indices, id: \.self) { index in
                         HStack(spacing: 4) {
                             TabBarCell(
-                                viewModel: tabFactory.tabs[index].tabViewModel,
+                                viewModel: windowComposer.tabs[index].tabViewModel,
                                 index: index,
                                 onClose: onClose)
                         }
@@ -51,7 +51,7 @@ struct TabBarView: View {
                         .onTapGesture {
                             currentIndex = index
                             onSelect(index)
-                            tabFactory.didSelectTabAt(index: index)
+                            windowComposer.didSelectTabAt(index: index)
                         }
                     }
                 }

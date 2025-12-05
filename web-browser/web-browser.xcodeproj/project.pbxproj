@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* TabViewFactory.swift */; };
+		F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
 		F916A1FE2CE8C3FE00350089 /* WindowIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FD2CE8C3FE00350089 /* WindowIPadOS.swift */; };
 		F916A2002CE8EAC100350089 /* MenuIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */; };
@@ -84,7 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F901D9882E93240900F3B3D9 /* TabViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewFactory.swift; sourceTree = "<group>"; };
+		F901D9882E93240900F3B3D9 /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F90877042E1028E000023426 /* SearchSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionView.swift; sourceTree = "<group>"; };
 		F916A1FD2CE8C3FE00350089 /* WindowIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowIPadOS.swift; sourceTree = "<group>"; };
 		F916A1FF2CE8EAC100350089 /* MenuIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIPadOS.swift; sourceTree = "<group>"; };
@@ -402,6 +402,7 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				F901D9882E93240900F3B3D9 /* WindowComposer.swift */,
 				F98BF0C72B750A3300C29BDA /* Views */,
 			);
 			path = Window;
@@ -452,7 +453,6 @@
 				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */,
-				F901D9882E93240900F3B3D9 /* TabViewFactory.swift */,
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
 			);
 			path = Tab;
@@ -665,7 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F901D9892E93240900F3B3D9 /* TabViewFactory.swift in Sources */,
+				F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */,
 				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
 				F916A1FE2CE8C3FE00350089 /* WindowIPadOS.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */,

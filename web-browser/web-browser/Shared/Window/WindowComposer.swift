@@ -2,8 +2,9 @@ import SwiftData
 import SwiftUI
 import Services
 
-final class TabViewFactory {
+final class WindowComposer {
     let container: ModelContainer
+    let safelistStore: SafelistStoreAPI
     let historyStore: HistoryStoreAPI
     let bookmarkStore: BookmarkStoreAPI
 
@@ -21,6 +22,8 @@ final class TabViewFactory {
         } catch {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
+
+        self.safelistStore = SafelistStore()
 
         self.historyStore = HistorySwiftDataStore(container: container)
         self.bookmarkStore = BookmarkSwiftDataStore(container: container)
@@ -48,7 +51,6 @@ final class TabViewFactory {
 
     func createNewTab() -> TabComposer {
         let webKitWrapper = WebKitEngineWrapper()
-        let safelistStore = SafelistStore()
 
         let composer = TabComposer(
             webKitWrapper: webKitWrapper,
@@ -72,19 +74,19 @@ final class TabViewFactory {
     }
 }
 
-extension TabViewFactory: HistoryUserActionDelegate {
+extension WindowComposer: HistoryUserActionDelegate {
     func didSelectPage(_ pageURL: URL) {
         selectedTab.webKitWrapper.load(pageURL)
     }
 }
 
-extension TabViewFactory: SearchSuggestionUserActionDelegate {
+extension WindowComposer: SearchSuggestionUserActionDelegate {
     func didSelectPageFromSearchSuggestion(_ pageURL: URL) {
         selectedTab.webKitWrapper.load(pageURL)
     }
 }
 
-extension TabViewFactory: BookmarkUserActionDelegate {
+extension WindowComposer: BookmarkUserActionDelegate {
     func didSelectPageFromBookmark(_ pageURL: URL) {
         selectedTab.webKitWrapper.load(pageURL)
     }

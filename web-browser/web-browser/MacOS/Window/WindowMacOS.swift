@@ -3,7 +3,7 @@ import SwiftUI
 #if os(macOS)
 
 struct WindowMacOS: View {
-    let tabFactory: TabViewFactory
+    let windowComposer: WindowComposer
 
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
@@ -14,7 +14,7 @@ struct WindowMacOS: View {
             NavigationSplitView {
                 MenuMacOS(tabViewModel: tabViewModel, bookmarkViewModel: bookmarkViewModel, historyViewModel: historyViewModel)
             } detail: {
-                TabBarViewControllerWrapper(tabFactory: tabFactory)
+                TabBarViewControllerWrapper(windowComposer: windowComposer)
             }
 
             if tabViewModel.showAddBookmark {

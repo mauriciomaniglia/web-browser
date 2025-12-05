@@ -2,10 +2,10 @@ import SwiftUI
 
 #if canImport(UIKit)
 struct TabBarViewControllerWrapper: UIViewControllerRepresentable {
-    let tabFactory: TabViewFactory
+    let windowComposer: WindowComposer
 
     func makeUIViewController(context: Context) -> TabBarViewController {
-        TabBarViewController(tabFactory: tabFactory)
+        TabBarViewController(windowComposer: windowComposer)
     }
 
     func updateUIViewController(_ uiViewController: TabBarViewController, context: Context) {}
@@ -14,10 +14,10 @@ struct TabBarViewControllerWrapper: UIViewControllerRepresentable {
 
 #if canImport(AppKit)
 struct TabBarViewControllerWrapper: NSViewControllerRepresentable {
-    let tabFactory: TabViewFactory
+    let windowComposer: WindowComposer
 
     func makeNSViewController(context: Context) -> TabBarViewController {
-        return TabBarViewController(tabFactory: tabFactory)
+        return TabBarViewController(windowComposer: windowComposer)
     }
 
     func updateNSViewController(_ nsViewController: TabBarViewController, context: Context) {}

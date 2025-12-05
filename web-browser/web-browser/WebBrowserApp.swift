@@ -2,24 +2,24 @@ import SwiftUI
 
 @main
 struct WebBrowserApp: App {
-    let tabViewFactory = TabViewFactory()
+    let windowComposer = WindowComposer()
 
     var body: some Scene {
         WindowGroup {
             #if os(iOS)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                TabBarViewControllerWrapper(tabFactory: tabViewFactory)
+                TabBarViewControllerWrapper(windowComposer: windowComposer)
             } else {
-                AnyView(tabViewFactory.createNewTab().view)
+                AnyView(windowComposer.createNewTab().view)
             }
             #endif
 
             #if os(macOS)
             WindowMacOS(
-                tabFactory: tabViewFactory,
-                tabViewModel: tabViewFactory.selectedTab.tabViewModel,
-                bookmarkViewModel: tabViewFactory.bookmarkComposer.viewModel,
-                historyViewModel: tabViewFactory.historyComposer.viewModel
+                windowComposer: windowComposer,
+                tabViewModel: windowComposer.selectedTab.tabViewModel,
+                bookmarkViewModel: windowComposer.bookmarkComposer.viewModel,
+                historyViewModel: windowComposer.historyComposer.viewModel
             )
             #endif
         }
