@@ -52,6 +52,5 @@ class TabViewModel: ObservableObject {
 
     func saveAndDismissAddBookmark(name: String, url: String) {
         showAddBookmark = false
-        //bookmarkViewModel.delegate?.didTapAddBookmark(name: name, urlString: url)
     }
 }
