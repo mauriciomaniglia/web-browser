@@ -8,7 +8,7 @@ struct TabContentViewMacOS: View {
     let webView: AnyView
 
     var body: some View {
-        VStack {
+        ZStack(alignment: .top) {
             HStack {
                 WindowNavigationButtons(viewModel: tabViewModel)
                 Spacer()
@@ -22,10 +22,18 @@ struct TabContentViewMacOS: View {
                     .buttonStyle(.borderless)
                 }
             }
+            if tabViewModel.showSearchSuggestions {
+                SearchSuggestionView(viewModel: searchSuggestionViewModel)                    
+                    .frame(width: 550)
+                    .offset(y: 42)
+                    .zIndex(2)
+            }
             Spacer()
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .opacity(tabViewModel.showWebView ? 1 : 0)
+                .offset(y: 60)
+                .zIndex(1)
         }
         .padding()
     }
@@ -35,10 +43,6 @@ struct TabContentViewMacOS: View {
     var AddressBar: some View {
         AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
             .frame(minWidth: 0, maxWidth: 800)
-            .popover(isPresented: $tabViewModel.showSearchSuggestions, attachmentAnchor: .point(.center)) {
-                SearchSuggestionView(viewModel: searchSuggestionViewModel)
-                    .frame(width: 550)
-            }
     }
 }
 #endif

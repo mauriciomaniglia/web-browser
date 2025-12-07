@@ -8,10 +8,18 @@ struct TabContentViewIPadOS: View {
     let webView: AnyView
 
     var body: some View {
-        VStack {
+        ZStack(alignment: .top) {
+            if tabViewModel.showSearchSuggestions {
+                SearchSuggestionView(viewModel: searchSuggestionViewModel)
+                    .frame(width: 550)
+                    .offset(y: 0)
+                    .zIndex(2)
+            }
+            Spacer()
             webView
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .opacity(tabViewModel.showWebView ? 1 : 0)
+                .zIndex(1)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -19,10 +27,6 @@ struct TabContentViewIPadOS: View {
             }
             ToolbarItem(placement: .principal) {
                 AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
-                    .popover(isPresented: $tabViewModel.showSearchSuggestions, attachmentAnchor: .point(.bottom)) {
-                        SearchSuggestionView(viewModel: searchSuggestionViewModel)
-                            .frame(width: 550)
-                    }
             }
             if let url = URL(string: tabViewModel.fullURL) {
                 ToolbarItem(placement: .navigationBarTrailing) {

@@ -5,74 +5,69 @@ struct SearchSuggestionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if !viewModel.searchSuggestions.isEmpty {
-                SuggestionSectionView(
-                    viewModel: viewModel,
-                    title: "Google Suggestions",
-                    suggestions: viewModel.searchSuggestions,
-                    iconName: "magnifyingglass"
-                )
-            }
-
-            if !viewModel.bookmarkSuggestions.isEmpty {
-                SuggestionSectionView(
-                    viewModel: viewModel,
-                    title: "Bookmarks",
-                    suggestions: viewModel.bookmarkSuggestions,
-                    iconName: "bookmark.fill"
-                )
-            }
-
-            if !viewModel.historyPageSuggestions.isEmpty {
-                SuggestionSectionView(
-                    viewModel: viewModel,
-                    title: "History",
-                    suggestions: viewModel.historyPageSuggestions,
-                    iconName: "clock.arrow.circlepath"
-                )
-            }
-        }
-        .padding()
-
-        Spacer()
-    }
-}
-
-struct SuggestionSectionView: View {
-    @ObservedObject var viewModel: SearchSuggestionViewModel
-
-    let title: String
-    let suggestions: [SearchSuggestionViewModel.Item]
-    let iconName: String
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(title.uppercased())
+            Text("GOOGLE SUGGESTIONS")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.horizontal)
                 .padding(.top, 8)
 
-            ForEach(suggestions) { model in
-                Button(action: {
-                    viewModel.delegate?.didSelectPage(model.url)
-                }) {
-                    HStack(spacing: 12) {
-                        Image(systemName: iconName)
-                            .foregroundColor(.gray)
-                        Text(model.title)
-                            .foregroundColor(.primary)
-                        Spacer()
-                    }
-                    .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .contentShape(Rectangle())
+            ForEach(viewModel.searchSuggestions) { suggestion in
+                SearchSuggestionRow(image: "magnifyingglass", suggestion: suggestion.title) {
+                    viewModel.delegate?.didSelectPage(suggestion.url)
                 }
-                .buttonStyle(PlainButtonStyle())
+            }
 
-                Divider()
-                    .padding(.leading, 44)
+            Text("BOOKMARK")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+                .padding(.top, 8)
+
+            ForEach(viewModel.bookmarkSuggestions) { bookmark in
+                SearchSuggestionRow(image: "bookmark.fill", suggestion: bookmark.title) {
+                    viewModel.delegate?.didSelectPage(bookmark.url)
+                }
+            }
+
+            Text("HISTORY")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+                .padding(.top, 8)
+
+            ForEach(viewModel.historyPageSuggestions) { history in
+                SearchSuggestionRow(image: "clock.arrow.circlepath", suggestion: history.title) {
+                    viewModel.delegate?.didSelectPage(history.url)
+                }
             }
         }
+        .frame(minWidth: 200, maxWidth: 500)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.accentColor)
+                .shadow(radius: 5)
+        )
+        .cornerRadius(10)
+    }
+}
+
+struct SearchSuggestionRow: View {
+    let image: String
+    let suggestion: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: image)
+                Text(suggestion)
+                Spacer()
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 10)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PlainButtonStyle())
+        .foregroundColor(.primary)
     }
 }
