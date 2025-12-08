@@ -5,7 +5,7 @@ struct TabContentViewIPadOS: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
-    let webView: AnyView
+    let webView: WebView
 
     var body: some View {
         ZStack(alignment: .top) {

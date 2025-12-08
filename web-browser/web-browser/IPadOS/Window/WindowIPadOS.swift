@@ -7,7 +7,7 @@ struct WindowIPadOS: View {
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
-    let webView: AnyView
+    let webView: WebView
 
     var body: some View {
         ZStack {

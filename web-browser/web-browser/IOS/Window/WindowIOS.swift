@@ -8,7 +8,7 @@ struct WindowIOS: View {
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
     @State var isShowingSheet = false
 
-    let webView: AnyView
+    let webView: WebView
 
     var body: some View {
         VStack {
