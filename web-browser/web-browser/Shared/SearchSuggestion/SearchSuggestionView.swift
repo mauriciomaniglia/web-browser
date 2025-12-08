@@ -5,41 +5,23 @@ struct SearchSuggestionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("GOOGLE SUGGESTIONS")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-                .padding(.top, 8)
+            SearchSuggestionSection(
+                title: "GOOGLE SUGGESTIONS",
+                icon: "magnifyingglass",
+                items: viewModel.searchSuggestions,
+                action: viewModel.delegate!.didSelectPage)
 
-            ForEach(viewModel.searchSuggestions) { suggestion in
-                SearchSuggestionRow(image: "magnifyingglass", suggestion: suggestion.title) {
-                    viewModel.delegate?.didSelectPage(suggestion.url)
-                }
-            }
+            SearchSuggestionSection(
+                title: "BOOKMARK",
+                icon: "bookmark.fill",
+                items: viewModel.bookmarkSuggestions,
+                action: viewModel.delegate!.didSelectPage)
 
-            Text("BOOKMARK")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-                .padding(.top, 8)
-
-            ForEach(viewModel.bookmarkSuggestions) { bookmark in
-                SearchSuggestionRow(image: "bookmark.fill", suggestion: bookmark.title) {
-                    viewModel.delegate?.didSelectPage(bookmark.url)
-                }
-            }
-
-            Text("HISTORY")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-                .padding(.top, 8)
-
-            ForEach(viewModel.historyPageSuggestions) { history in
-                SearchSuggestionRow(image: "clock.arrow.circlepath", suggestion: history.title) {
-                    viewModel.delegate?.didSelectPage(history.url)
-                }
-            }
+            SearchSuggestionSection(
+                title: "HISTORY",
+                icon: "clock.arrow.circlepath",
+                items: viewModel.historyPageSuggestions,
+                action: viewModel.delegate!.didSelectPage)
         }
         .frame(minWidth: 200, maxWidth: 500)
         .background(
@@ -51,16 +33,39 @@ struct SearchSuggestionView: View {
     }
 }
 
+struct SearchSuggestionSection: View {
+    let title: String
+    let icon: String
+    let items: [SearchSuggestionViewModel.Item]
+    let action: (URL) -> Void
+
+    var body: some View {
+        if !items.isEmpty {
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+                .padding(.top, 8)
+        }
+
+        ForEach(items) { item in
+            SearchSuggestionRow(title: item.title, image: icon) {
+                action(item.url)
+            }
+        }
+    }
+}
+
 struct SearchSuggestionRow: View {
+    let title: String
     let image: String
-    let suggestion: String
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             HStack {
                 Image(systemName: image)
-                Text(suggestion)
+                Text(title)
                 Spacer()
             }
             .padding(.vertical, 8)
