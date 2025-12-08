@@ -64,7 +64,7 @@
 		F9C070402EC751F3001C7E04 /* TabBarViewControllerMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C0703F2EC751F3001C7E04 /* TabBarViewControllerMacOS.swift */; };
 		F9C070422ECA6C4A001C7E04 /* TabContentViewMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */; };
 		F9CA92E32ED0F4D60092842D /* TabContentViewIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA92E22ED0F4D60092842D /* TabContentViewIPadOS.swift */; };
-		F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */; };
+		F9CDFD792B711A7C0024E0AD /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */; };
 		F9DF54C72CEE04D600F92FC3 /* HistoryIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
@@ -145,7 +145,7 @@
 		F9C0703F2EC751F3001C7E04 /* TabBarViewControllerMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerMacOS.swift; sourceTree = "<group>"; };
 		F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewMacOS.swift; sourceTree = "<group>"; };
 		F9CA92E22ED0F4D60092842D /* TabContentViewIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentViewIPadOS.swift; sourceTree = "<group>"; };
-		F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitWrapper.swift; sourceTree = "<group>"; };
+		F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabComposer.swift; sourceTree = "<group>"; };
 		F9DF54C62CEE04D600F92FC3 /* HistoryIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIPadOS.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
@@ -423,7 +423,7 @@
 		F98BF0C92B750A7F00C29BDA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F9CDFD782B711A7C0024E0AD /* WebKitWrapper.swift */,
+				F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */,
 				F987B3D02CFDDD4800474A1E /* JsonLoader.swift */,
 			);
 			path = Helpers;
@@ -681,7 +681,7 @@
 				F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
 				F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */,
-				F9CDFD792B711A7C0024E0AD /* WebKitWrapper.swift in Sources */,
+				F9CDFD792B711A7C0024E0AD /* WebViewWrapper.swift in Sources */,
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,
 				F9641DDA2EA800690034A834 /* TabBarViewControllerIPadOS.swift in Sources */,
 				F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */,

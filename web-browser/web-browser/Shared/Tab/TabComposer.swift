@@ -59,20 +59,20 @@ final class TabComposer {
                 historyViewModel: historyViewModel,
                 bookmarkViewModel: bookmarkViewModel,
                 searchSuggestionViewModel: searchSuggestionViewModel,
-                webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
+                webView: AnyView(WebView(content: webKitWrapper.webView)))
         } else {
             self.view = WindowIOS(
                 tabViewModel: tabViewModel,
                 historyViewModel: historyViewModel,
                 bookmarkViewModel: bookmarkViewModel,
                 searchSuggestionViewModel: searchSuggestionViewModel,
-                webView: AnyView(WebViewUIKitWrapper(webView: webKitWrapper.webView)))
+                webView: AnyView(WebView(content: webKitWrapper.webView)))
         }
         #elseif os(macOS)
         self.view = TabContentViewMacOS(
             tabViewModel: tabViewModel,
             searchSuggestionViewModel: searchSuggestionViewModel,
-            webView: AnyView(WebViewAppKitWrapper(webView: webKitWrapper.webView)))
+            webView: AnyView(WebView(content: webKitWrapper.webView)))
         #endif
 
         webKitWrapper.delegate = mediator
