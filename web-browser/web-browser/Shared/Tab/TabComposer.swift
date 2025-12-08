@@ -3,10 +3,6 @@ import Services
 
 final class TabComposer {
     let webKitWrapper: WebKitEngineWrapper
-    let bookmarkViewModel: BookmarkViewModel
-    let searchSuggestionViewModel: SearchSuggestionViewModel
-    let safelistStore: SafelistStoreAPI
-    let historyStore: HistoryStoreAPI
     let tabViewModel: TabViewModel
     let view: any View
 
@@ -18,10 +14,6 @@ final class TabComposer {
          historyStore: HistoryStoreAPI
     ) {
         self.webKitWrapper = webKitWrapper
-        self.bookmarkViewModel = bookmarkViewModel
-        self.searchSuggestionViewModel = searchSuggestionViewModel
-        self.safelistStore = safelistStore
-        self.historyStore = historyStore
         self.tabViewModel = TabViewModel()
 
         let presenter = TabPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
