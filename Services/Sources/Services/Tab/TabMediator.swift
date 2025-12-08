@@ -23,12 +23,12 @@ public final class TabMediator {
     }
 
     public func didLongPressBackButton() {
-        let webPages = webView.retrieveBackList().map { PageModel(title: $0.title, url: $0.url, date: $0.date) }
+        let webPages = webView.retrieveBackList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadBackList(webPages)
     }
 
     public func didLongPressForwardButton() {
-        let webPages = webView.retrieveForwardList().map { PageModel(title: $0.title, url: $0.url, date: $0.date) }
+        let webPages = webView.retrieveForwardList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
         presenter.didLoadForwardList(webPages)
     }
 

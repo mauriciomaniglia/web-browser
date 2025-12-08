@@ -31,11 +31,11 @@ class TabPresenterSpy: TabPresenter {
         receivedMessages.append(.didUpdateProgressBar(value: value))
     }
 
-    override func didLoadBackList(_ webPages: [PageModel]) {
+    override func didLoadBackList(_ webPages: [WebPage]) {
         receivedMessages.append(.didLoadBackList)
     }
 
-    override func didLoadForwardList(_ webPages: [PageModel]) {
+    override func didLoadForwardList(_ webPages: [WebPage]) {
         receivedMessages.append(.didLoadForwardList)
     }
 

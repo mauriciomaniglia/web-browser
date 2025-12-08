@@ -252,9 +252,9 @@ class TabPresenterTests: XCTestCase {
 
     func test_didLoadBackList_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
-        let page1 = PageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = PageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = PageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadBackList([page1, page2, page3])
@@ -285,9 +285,9 @@ class TabPresenterTests: XCTestCase {
 
     func test_didLoadForwardList_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
-        let page1 = PageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = PageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = PageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didLoadForwardList([page1, page2, page3])
@@ -318,8 +318,8 @@ class TabPresenterTests: XCTestCase {
 
     func test_didDismissBackForwardList_deliversCorrectWindowState() {
         let (sut, _, delegate) = makeSUT()
-        let page1 = PageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = PageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didLoadForwardList([page1, page2])
 

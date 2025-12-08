@@ -168,7 +168,7 @@ public class TabPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didLoadBackList(_ webPages: [PageModel]) {
+    public func didLoadBackList(_ webPages: [WebPage]) {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -190,7 +190,7 @@ public class TabPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didLoadForwardList(_ webPages: [PageModel]) {
+    public func didLoadForwardList(_ webPages: [WebPage]) {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -256,7 +256,7 @@ public class TabPresenter {
             forwardList: model.forwardList))
     }
 
-    private func mapWebPage(_ webPage: PageModel) -> Model.Page {
+    private func mapWebPage(_ webPage: WebPage) -> Model.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }
