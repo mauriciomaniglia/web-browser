@@ -58,14 +58,12 @@ class TabBarViewController: NSViewController {
 
         tabViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
-        // We'll set top constraint later, after tab bar
         NSLayoutConstraint.activate([
             tabViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tabViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tabViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        // Observe selection changes on NSTabViewController
         tabViewController.addObserver(self, forKeyPath: "selectedTabViewItemIndex", options: [.new], context: nil)
     }
 
@@ -74,7 +72,7 @@ class TabBarViewController: NSViewController {
             windowComposer: windowComposer,
             currentIndex: Binding(
                 get: { self.currentIndex },
-                set: { _ in } // Will be updated in refresh
+                set: { _ in }
             ),
             onAdd: { [weak self] in self?.addNewTab() },
             onClose: { [weak self] index in self?.closeTab(at: index) },
@@ -132,7 +130,6 @@ class TabBarViewController: NSViewController {
 
         windowComposer.tabs.remove(at: index)
 
-        // Adjust current index if needed
         if currentIndex >= hostingControllers.count, !hostingControllers.isEmpty {
             currentIndex = hostingControllers.count - 1
         } else if hostingControllers.isEmpty {
@@ -148,7 +145,6 @@ class TabBarViewController: NSViewController {
         refreshTabBar()
     }
 
-    // MARK: - KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "selectedTabViewItemIndex",
            let controller = object as? NSTabViewController,
