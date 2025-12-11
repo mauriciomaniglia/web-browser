@@ -74,9 +74,9 @@ class TabBarViewController: NSViewController {
                 get: { self.currentIndex },
                 set: { _ in }
             ),
-            onAdd: { [weak self] in self?.addNewTab() },
-            onClose: { [weak self] index in self?.closeTab(at: index) },
-            onSelect: { [weak self] index in self?.selectTab(at: index) }
+            onAdd: { [unowned self] in self.addNewTab() },
+            onClose: { [unowned self] index in self.closeTab(at: index) },
+            onSelect: { [unowned self] index in self.selectTab(at: index) }
         )
 
         tabBarHostingView = NSHostingView(rootView: tabBarView)
@@ -97,14 +97,14 @@ class TabBarViewController: NSViewController {
         tabBarHostingView.rootView = TabBarView(
             windowComposer: windowComposer,
             currentIndex: Binding(
-                get: { self.currentIndex },
-                set: { [weak self] newValue in
-                    self?.selectTab(at: newValue)
+                get: { [unowned self] in self.currentIndex },
+                set: { [unowned self] newValue in
+                    self.selectTab(at: newValue)
                 }
             ),
-            onAdd: { [weak self] in self?.addNewTab() },
-            onClose: { [weak self] index in self?.closeTab(at: index) },
-            onSelect: { [weak self] index in self?.selectTab(at: index) }
+            onAdd: { [unowned self] in self.addNewTab() },
+            onClose: { [unowned self] index in self.closeTab(at: index) },
+            onSelect: { [unowned self] index in self.selectTab(at: index) }
         )
     }
 
