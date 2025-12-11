@@ -37,17 +37,17 @@ class TabBarViewController: UIViewController {
         let tabBarView = TabBarView(
             windowComposer: windowComposer,
             currentIndex: Binding(
-                get: { self.currentIndex },
-                set: { newValue in
+                get: { [unowned self] in self.currentIndex },
+                set: { [unowned self] newValue in
                     self.currentIndex = newValue
                     self.showController(self.hostingControllers[newValue])
                 }
             ),
-            onAdd: { [weak self] in self?.addNewTab() },
-            onClose: { [weak self] index in self?.closeTab(at: index) },
-            onSelect: { [weak self] index in
-                self?.currentIndex = index
-                self?.showController(self!.hostingControllers[index])
+            onAdd: { [unowned self] in self.addNewTab() },
+            onClose: { [unowned self] index in self.closeTab(at: index) },
+            onSelect: { [unowned self] index in
+                self.currentIndex = index
+                self.showController(self.hostingControllers[index])
             }
         )
 
@@ -69,19 +69,19 @@ class TabBarViewController: UIViewController {
         tabBarHostingController.rootView = TabBarView(
             windowComposer: windowComposer,
             currentIndex: Binding(
-                get: { self.currentIndex },
-                set: { newValue in
+                get: { [unowned self] in self.currentIndex },
+                set: { [unowned self] newValue in
                     self.currentIndex = newValue
                     self.showController(self.hostingControllers[newValue])
                     self.refreshTabBar()
                 }
             ),
-            onAdd: { [weak self] in self?.addNewTab() },
-            onClose: { [weak self] index in self?.closeTab(at: index) },
-            onSelect: { [weak self] index in
-                self?.currentIndex = index
-                self?.showController(self!.hostingControllers[index])
-                self?.refreshTabBar()
+            onAdd: { [unowned self] in self.addNewTab() },
+            onClose: { [unowned self] index in self.closeTab(at: index) },
+            onSelect: { [unowned self] index in
+                self.currentIndex = index
+                self.showController(self.hostingControllers[index])
+                self.refreshTabBar()
             }
         )
     }
