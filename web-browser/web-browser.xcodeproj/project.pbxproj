@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -119,6 +119,7 @@
 		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
 		F9641DD92EA800690034A834 /* TabBarViewControllerIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerIPadOS.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
+		F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPadOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96C74B72CBD267A002AAF4F /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Services; path = ../Services; sourceTree = SOURCE_ROOT; };
 		F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkIPadOS.swift; sourceTree = "<group>"; };
 		F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkIPadOS.swift; sourceTree = "<group>"; };
@@ -154,6 +155,10 @@
 		F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIOS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F96998A32EEDF0D400C3286D /* iPadOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "iPadOS-web-browser"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		F92921B72B70F5B300173702 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -164,6 +169,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F92921C82B70F5B500173702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969989F2EEDF0D400C3286D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,6 +219,7 @@
 				F96C74B72CBD267A002AAF4F /* Services */,
 				F92921BC2B70F5B300173702 /* web-browser */,
 				F92921CE2B70F5B500173702 /* web-browserTests */,
+				F96998A32EEDF0D400C3286D /* iPadOS-web-browser */,
 				F92921BB2B70F5B300173702 /* Products */,
 				F9CDFD902B7130610024E0AD /* Frameworks */,
 			);
@@ -217,6 +230,7 @@
 			children = (
 				F92921BA2B70F5B300173702 /* web-browser.app */,
 				F92921CB2B70F5B500173702 /* web-browserTests.xctest */,
+				F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -592,6 +606,28 @@
 			productReference = F92921CB2B70F5B500173702 /* web-browserTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F96998A12EEDF0D400C3286D /* iPadOS-web-browser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F96998AC2EEDF0D600C3286D /* Build configuration list for PBXNativeTarget "iPadOS-web-browser" */;
+			buildPhases = (
+				F969989E2EEDF0D400C3286D /* Sources */,
+				F969989F2EEDF0D400C3286D /* Frameworks */,
+				F96998A02EEDF0D400C3286D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F96998A32EEDF0D400C3286D /* iPadOS-web-browser */,
+			);
+			name = "iPadOS-web-browser";
+			packageProductDependencies = (
+			);
+			productName = "iPadOS-web-browser";
+			productReference = F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -599,7 +635,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					F92921B92B70F5B300173702 = {
@@ -608,6 +644,9 @@
 					F92921CA2B70F5B500173702 = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = F92921B92B70F5B300173702;
+					};
+					F96998A12EEDF0D400C3286D = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -628,6 +667,7 @@
 			targets = (
 				F92921B92B70F5B300173702 /* web-browser */,
 				F92921CA2B70F5B500173702 /* web-browserTests */,
+				F96998A12EEDF0D400C3286D /* iPadOS-web-browser */,
 			);
 		};
 /* End PBXProject section */
@@ -652,6 +692,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F92921C92B70F5B500173702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F96998A02EEDF0D400C3286D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -724,6 +771,13 @@
 				F987B3BB2CFDDB3D00474A1E /* WKUserContentControllerSpy.swift in Sources */,
 				F987B3BC2CFDDB3D00474A1E /* WebViewMock.swift in Sources */,
 				F932F2032CE23A6A00B12B45 /* BookmarkViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969989E2EEDF0D400C3286D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +1032,65 @@
 			};
 			name = Release;
 		};
+		F96998AA2EEDF0D600C3286D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.iPadOS-web-browser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F96998AB2EEDF0D600C3286D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.iPadOS-web-browser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1004,6 +1117,15 @@
 			buildConfigurations = (
 				F92921E32B70F5B500173702 /* Debug */,
 				F92921E42B70F5B500173702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F96998AC2EEDF0D600C3286D /* Build configuration list for PBXNativeTarget "iPadOS-web-browser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F96998AA2EEDF0D600C3286D /* Debug */,
+				F96998AB2EEDF0D600C3286D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
