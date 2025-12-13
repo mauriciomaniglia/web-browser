@@ -1,7 +1,6 @@
 import SwiftUI
 
-#if os(iOS)
-struct MenuIPadOS: View {
+struct Menu: View {
 
     enum Menu: Hashable {
         case bookmarks
@@ -28,9 +27,9 @@ struct MenuIPadOS: View {
             .navigationDestination(for: Menu.self) { screen in
                 switch screen {
                 case .bookmarks:
-                    BookmarkIPadOS(viewModel: bookmarkViewModel)
+                    Bookmark(viewModel: bookmarkViewModel)
                 case .history:
-                    HistoryIPadOS(viewModel: historyViewModel)
+                    History(viewModel: historyViewModel)
                 }
             }
         }
@@ -42,4 +41,3 @@ struct MenuIPadOS: View {
         }
     }
 }
-#endif

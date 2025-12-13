@@ -1,7 +1,6 @@
 import SwiftUI
 
-#if canImport(UIKit)
-struct TabContentViewIPadOS: View {
+struct TabContentView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
@@ -38,4 +37,3 @@ struct TabContentViewIPadOS: View {
         }
     }
 }
-#endif

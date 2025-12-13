@@ -1,7 +1,6 @@
 import SwiftUI
 
-#if os(iOS)
-struct AddBookmarkIPadOS: View {
+struct AddBookmark: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
 
@@ -45,4 +44,3 @@ struct AddBookmarkIPadOS: View {
         .background(Color(UIColor.systemBackground))
     }
 }
-#endif

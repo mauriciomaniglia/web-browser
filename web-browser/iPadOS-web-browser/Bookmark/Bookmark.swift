@@ -1,7 +1,6 @@
 import SwiftUI
 
-#if os(iOS)
-struct BookmarkIPadOS: View {
+struct Bookmark: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
@@ -67,4 +66,3 @@ struct BookmarkIPadOS: View {
         viewModel.bookmarkList.isEmpty
     }
 }
-#endif

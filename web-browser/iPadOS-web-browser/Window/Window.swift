@@ -1,7 +1,6 @@
 import SwiftUI
 
-#if os(iOS)
-struct WindowIPadOS: View {
+struct Window: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
@@ -12,13 +11,13 @@ struct WindowIPadOS: View {
     var body: some View {
         ZStack {
             NavigationSplitView {
-                MenuIPadOS(
+                Menu(
                     tabViewModel: tabViewModel,
                     bookmarkViewModel: bookmarkViewModel,
                     historyViewModel: historyViewModel
                 )
             } detail: {
-                TabContentViewIPadOS(
+                TabContentView(
                     tabViewModel: tabViewModel,
                     searchSuggestionViewModel: searchSuggestionViewModel,
                     webView: webView
@@ -33,7 +32,7 @@ struct WindowIPadOS: View {
     private var AddBookmarkAlert: some View {
         Group {
             if tabViewModel.showAddBookmark {
-                AddBookmarkIPadOS(
+                AddBookmark(
                     tabViewModel: tabViewModel,
                     bookmarkViewModel: bookmarkViewModel,
                     bookmarkName: tabViewModel.title,
@@ -45,4 +44,3 @@ struct WindowIPadOS: View {
         .background(tabViewModel.showAddBookmark ? Color.black.opacity(0.3) : Color.clear)
     }
 }
-#endif

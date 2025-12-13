@@ -1,11 +1,10 @@
-#if canImport(UIKit)
 import UIKit
 import SwiftUI
 
 class TabBarViewController: UIViewController {
-    private var hostingControllers: [UIHostingController<WindowIPadOS>] = []
+    private var hostingControllers: [UIHostingController<Window>] = []
     private var currentIndex: Int = 0
-    private var currentController: UIHostingController<WindowIPadOS>?
+    private var currentController: UIHostingController<Window>?
     private var tabBarHostingController: UIHostingController<TabBarView>!
     private let windowComposer: WindowComposer
 
@@ -27,7 +26,7 @@ class TabBarViewController: UIViewController {
             addNewTab()
         } else {
             for tab in windowComposer.tabs {
-                let tabContent = tab.view as! WindowIPadOS
+                let tabContent = tab.view
                 addNewTab(tabContent)
             }
         }
@@ -86,8 +85,8 @@ class TabBarViewController: UIViewController {
         )
     }
 
-    func addNewTab(_ tabContent: WindowIPadOS? = nil) {
-        let content = tabContent ?? (windowComposer.createNewTab().view as! WindowIPadOS)
+    func addNewTab(_ tabContent: Window? = nil) {
+        let content = tabContent ?? (windowComposer.createNewTab().view)
         let hostingController = UIHostingController(rootView: content)
         hostingControllers.append(hostingController)
         currentIndex = hostingControllers.count - 1
@@ -112,7 +111,7 @@ class TabBarViewController: UIViewController {
         }
     }
 
-    private func showController(_ controller: UIHostingController<WindowIPadOS>) {
+    private func showController(_ controller: UIHostingController<Window>) {
         currentController?.view.removeFromSuperview()
         currentController = controller
         addChild(controller)
@@ -128,4 +127,3 @@ class TabBarViewController: UIViewController {
         ])
     }
 }
-#endif
