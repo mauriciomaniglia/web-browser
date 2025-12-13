@@ -38,6 +38,35 @@
 		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
 		F9641DDA2EA800690034A834 /* TabBarViewControllerIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9641DD92EA800690034A834 /* TabBarViewControllerIPadOS.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
+		F96998AD2EEDF21200C3286D /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
+		F96998AE2EEDF21200C3286D /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
+		F96998AF2EEDF21200C3286D /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
+		F96998B02EEDF21200C3286D /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
+		F96998B12EEDF21200C3286D /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
+		F96998B22EEDF21200C3286D /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
+		F96998B32EEDF21200C3286D /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
+		F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
+		F96998B52EEDF21200C3286D /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
+		F96998B62EEDF21200C3286D /* TabBarViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */; };
+		F96998B72EEDF21200C3286D /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
+		F96998B82EEDF21200C3286D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
+		F96998B92EEDF21200C3286D /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
+		F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
+		F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
+		F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
+		F96998BD2EEDF21200C3286D /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F96998BE2EEDF21200C3286D /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
+		F96998BF2EEDF21200C3286D /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
+		F96998C02EEDF21200C3286D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
+		F96998C12EEDF21200C3286D /* CookiesContentRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C12CFDDC7800474A1E /* CookiesContentRules.json */; };
+		F96998C22EEDF21200C3286D /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
+		F96998C32EEDF21200C3286D /* CryptominingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C32CFDDC7800474A1E /* CryptominingRules.json */; };
+		F96998C42EEDF21200C3286D /* CookiesAnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */; };
+		F96998C52EEDF21200C3286D /* AnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */; };
+		F96998C62EEDF21200C3286D /* CookiesAdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */; };
+		F96998C72EEDF21200C3286D /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
+		F96998C82EEDF21200C3286D /* SocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C52CFDDC7800474A1E /* SocialRules.json */; };
+		F96998C92EEDF21200C3286D /* CookiesSocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */; };
 		F978B4122CED3306004DCEED /* AddBookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978B4112CED3306004DCEED /* AddBookmarkIPadOS.swift */; };
 		F97A17652CECB4EA005978E9 /* BookmarkIPadOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97A17642CECB4EA005978E9 /* BookmarkIPadOS.swift */; };
 		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
@@ -702,6 +731,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96998C12EEDF21200C3286D /* CookiesContentRules.json in Resources */,
+				F96998C22EEDF21200C3286D /* AdvertisingRules.json in Resources */,
+				F96998C32EEDF21200C3286D /* CryptominingRules.json in Resources */,
+				F96998C42EEDF21200C3286D /* CookiesAnalyticsRules.json in Resources */,
+				F96998C52EEDF21200C3286D /* AnalyticsRules.json in Resources */,
+				F96998C62EEDF21200C3286D /* CookiesAdvertisingRules.json in Resources */,
+				F96998C72EEDF21200C3286D /* FingerprintingRules.json in Resources */,
+				F96998C82EEDF21200C3286D /* SocialRules.json in Resources */,
+				F96998C92EEDF21200C3286D /* CookiesSocialRules.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +816,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96998AD2EEDF21200C3286D /* WebsiteProtectionButton.swift in Sources */,
+				F96998AE2EEDF21200C3286D /* TabViewModel.swift in Sources */,
+				F96998AF2EEDF21200C3286D /* BookmarkComposer.swift in Sources */,
+				F96998B02EEDF21200C3286D /* BookmarkViewModel.swift in Sources */,
+				F96998B12EEDF21200C3286D /* SearchSuggestionView.swift in Sources */,
+				F96998B22EEDF21200C3286D /* NavigationHistoryView.swift in Sources */,
+				F96998B32EEDF21200C3286D /* CustomGestureButton.swift in Sources */,
+				F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */,
+				F96998B52EEDF21200C3286D /* HistoryComposer.swift in Sources */,
+				F96998B62EEDF21200C3286D /* TabBarViewControllerWrapper.swift in Sources */,
+				F96998B72EEDF21200C3286D /* WebViewWrapper.swift in Sources */,
+				F96998B82EEDF21200C3286D /* HistoryViewModel.swift in Sources */,
+				F96998B92EEDF21200C3286D /* WebKitEngineWrapper.swift in Sources */,
+				F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */,
+				F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */,
+				F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */,
+				F96998BD2EEDF21200C3286D /* WindowNavigationButtons.swift in Sources */,
+				F96998BE2EEDF21200C3286D /* SearchSuggestionComposer.swift in Sources */,
+				F96998BF2EEDF21200C3286D /* HistorySwiftDataStore.swift in Sources */,
+				F96998C02EEDF21200C3286D /* TabBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
