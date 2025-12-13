@@ -45,23 +45,13 @@ final class TabComposer {
         tabViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
         #if os(iOS)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.view = WindowIPadOS(
-                tabViewModel: tabViewModel,
-                historyViewModel: historyViewModel,
-                bookmarkViewModel: bookmarkViewModel,
-                searchSuggestionViewModel: searchSuggestionViewModel,
-                webView: WebView(content: webKitWrapper.webView)
-            )
-        } else {
-            self.view = WindowIOS(
-                tabViewModel: tabViewModel,
-                historyViewModel: historyViewModel,
-                bookmarkViewModel: bookmarkViewModel,
-                searchSuggestionViewModel: searchSuggestionViewModel,
-                webView: WebView(content: webKitWrapper.webView)
-            )
-        }
+        self.view = WindowIOS(
+            tabViewModel: tabViewModel,
+            historyViewModel: historyViewModel,
+            bookmarkViewModel: bookmarkViewModel,
+            searchSuggestionViewModel: searchSuggestionViewModel,
+            webView: WebView(content: webKitWrapper.webView)
+        )
         #elseif os(macOS)
         self.view = TabContentViewMacOS(
             tabViewModel: tabViewModel,
