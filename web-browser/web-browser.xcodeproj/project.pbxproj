@@ -13,7 +13,6 @@
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
 		F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C52B70F5B500173702 /* Preview Assets.xcassets */; };
 		F92921EB2B70F99400173702 /* WindowMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* WindowMacOS.swift */; };
-		F92921ED2B70F9A100173702 /* WindowIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EC2B70F9A100173702 /* WindowIOS.swift */; };
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
 		F92E5C242CD980150019A9AE /* AddBookmarkMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */; };
@@ -21,8 +20,6 @@
 		F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
 		F932F20E2CE23A7800B12B45 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
 		F932F20F2CE23A7800B12B45 /* BookmarkMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2092CE23A7800B12B45 /* BookmarkMacOS.swift */; };
-		F932F2132CE23A8600B12B45 /* AddBookmarkIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2102CE23A8600B12B45 /* AddBookmarkIOS.swift */; };
-		F932F2142CE23A8600B12B45 /* BookmarkIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2112CE23A8600B12B45 /* BookmarkIOS.swift */; };
 		F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
 		F94379A02C911B7900DEBFF7 /* HistoryMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
@@ -67,7 +64,6 @@
 		F96998EA2EEDF3FF00C3286D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F96998E92EEDF3FF00C3286D /* Services */; };
 		F96999182EEEE9E400C3286D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F96999172EEEE9E400C3286D /* Services */; };
 		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
-		F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97BF7772C259A60005FB9BD /* MenuIOS.swift */; };
 		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
 		F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
@@ -94,7 +90,6 @@
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
 		F9E6EA5A2EA905590026A8BD /* TabBarViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */; };
-		F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +112,6 @@
 		F92921C52B70F5B500173702 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F92921CB2B70F5B500173702 /* web-browserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "web-browserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921EA2B70F99400173702 /* WindowMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowMacOS.swift; sourceTree = "<group>"; };
-		F92921EC2B70F9A100173702 /* WindowIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowIOS.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
 		F92E5C1E2CD980150019A9AE /* AddBookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkMacOS.swift; sourceTree = "<group>"; };
@@ -126,8 +120,6 @@
 		F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkComposer.swift; sourceTree = "<group>"; };
 		F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		F932F2092CE23A7800B12B45 /* BookmarkMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkMacOS.swift; sourceTree = "<group>"; };
-		F932F2102CE23A8600B12B45 /* AddBookmarkIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkIOS.swift; sourceTree = "<group>"; };
-		F932F2112CE23A8600B12B45 /* BookmarkIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkIOS.swift; sourceTree = "<group>"; };
 		F941ED382EAA4BE7007FCB44 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F943799F2C911B7900DEBFF7 /* HistoryMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMacOS.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
@@ -143,7 +135,6 @@
 		F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPadOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969990C2EEEE9BC00C3286D /* iOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96C74B72CBD267A002AAF4F /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Services; path = ../Services; sourceTree = SOURCE_ROOT; };
-		F97BF7772C259A60005FB9BD /* MenuIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIOS.swift; sourceTree = "<group>"; };
 		F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitEngineWrapper.swift; sourceTree = "<group>"; };
@@ -170,7 +161,6 @@
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerWrapper.swift; sourceTree = "<group>"; };
-		F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryIOS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -243,7 +233,6 @@
 				F9C427332CDF87DC00C296E3 /* Assets */,
 				F92921EE2B70F9DD00173702 /* Shared */,
 				F92921E92B70F94C00173702 /* MacOS */,
-				F92921E82B70F94600173702 /* IOS */,
 				F92921BD2B70F5B300173702 /* WebBrowserApp.swift */,
 				F92921C32B70F5B500173702 /* web_browser.entitlements */,
 			);
@@ -267,17 +256,6 @@
 				F9E55D382C45F452008B7C64 /* History */,
 			);
 			path = "web-browserTests";
-			sourceTree = "<group>";
-		};
-		F92921E82B70F94600173702 /* IOS */ = {
-			isa = PBXGroup;
-			children = (
-				F932F2122CE23A8600B12B45 /* Bookmark */,
-				F9EE1E412CB6AC060081B979 /* History */,
-				F9F2083E2C8CEDA700C3B033 /* Menu */,
-				F9E1477C2C0960E90099CD98 /* Window */,
-			);
-			path = IOS;
 			sourceTree = "<group>";
 		};
 		F92921E92B70F94C00173702 /* MacOS */ = {
@@ -321,15 +299,6 @@
 				F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */,
 				F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */,
 				F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */,
-			);
-			path = Bookmark;
-			sourceTree = "<group>";
-		};
-		F932F2122CE23A8600B12B45 /* Bookmark */ = {
-			isa = PBXGroup;
-			children = (
-				F932F2102CE23A8600B12B45 /* AddBookmarkIOS.swift */,
-				F932F2112CE23A8600B12B45 /* BookmarkIOS.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -472,14 +441,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F9E1477C2C0960E90099CD98 /* Window */ = {
-			isa = PBXGroup;
-			children = (
-				F92921EC2B70F9A100173702 /* WindowIOS.swift */,
-			);
-			path = Window;
-			sourceTree = "<group>";
-		};
 		F9E1477D2C0961370099CD98 /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,26 +477,10 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		F9EE1E412CB6AC060081B979 /* History */ = {
-			isa = PBXGroup;
-			children = (
-				F9EB8F1B2C2AD79900DA699D /* HistoryIOS.swift */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
 		F9F2083A2C8CECD600C3B033 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				F94A60F02C758C52001384CB /* MenuMacOS.swift */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		F9F2083E2C8CEDA700C3B033 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				F97BF7772C259A60005FB9BD /* MenuIOS.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -747,18 +692,13 @@
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,
 				F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */,
 				F9E6EA5A2EA905590026A8BD /* TabBarViewControllerWrapper.swift in Sources */,
-				F932F2132CE23A8600B12B45 /* AddBookmarkIOS.swift in Sources */,
-				F932F2142CE23A8600B12B45 /* BookmarkIOS.swift in Sources */,
 				F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */,
 				F932F20E2CE23A7800B12B45 /* BookmarkViewModel.swift in Sources */,
 				F932F20F2CE23A7800B12B45 /* BookmarkMacOS.swift in Sources */,
 				F94A60F12C758C52001384CB /* MenuMacOS.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
-				F97BF7782C259A60005FB9BD /* MenuIOS.swift in Sources */,
 				F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
-				F92921ED2B70F9A100173702 /* WindowIOS.swift in Sources */,
-				F9EB8F1C2C2AD79900DA699D /* HistoryIOS.swift in Sources */,
 				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
