@@ -6,18 +6,12 @@ struct WebBrowserApp: App {
 
     var body: some Scene {
         WindowGroup {
-            #if os(iOS)
-            AnyView(windowComposer.createNewTab().view)
-            #endif
-
-            #if os(macOS)
             WindowMacOS(
                 windowComposer: windowComposer,
                 tabViewModel: windowComposer.selectedTab.tabViewModel,
                 bookmarkViewModel: windowComposer.bookmarkComposer.viewModel,
                 historyViewModel: windowComposer.historyComposer.viewModel
             )
-            #endif
         }
     }
 }
