@@ -6,7 +6,7 @@ struct WebBrowserApp: App {
 
     var body: some Scene {
         WindowGroup {
-            WindowMacOS(
+            Window(
                 windowComposer: windowComposer,
                 tabViewModel: windowComposer.selectedTab.tabViewModel,
                 bookmarkViewModel: windowComposer.bookmarkComposer.viewModel,

@@ -2,7 +2,7 @@
 import SwiftUI
 
 class TabBarViewController: NSViewController {
-    private var hostingControllers: [NSHostingController<TabContentViewMacOS>] = []
+    private var hostingControllers: [NSHostingController<TabContentView>] = []
     private var tabViewController: NSTabViewController!
     private var tabBarHostingView: NSHostingView<TabBarView>!
     private let windowComposer: WindowComposer
@@ -40,7 +40,7 @@ class TabBarViewController: NSViewController {
             addNewTab()
         } else {
             for tab in windowComposer.tabs {
-                let tabContent = tab.view as! TabContentViewMacOS
+                let tabContent = tab.view
                 addNewTab(tabContent)
             }
         }
@@ -108,8 +108,8 @@ class TabBarViewController: NSViewController {
         )
     }
 
-    func addNewTab(_ tabContent: TabContentViewMacOS? = nil) {
-        let content = tabContent ?? (windowComposer.createNewTab().view as! TabContentViewMacOS)
+    func addNewTab(_ tabContent: TabContentView? = nil) {
+        let content = tabContent ?? (windowComposer.createNewTab().view)
         let hostingController = NSHostingController(rootView: content)
         hostingControllers.append(hostingController)
 

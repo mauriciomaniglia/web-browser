@@ -4,7 +4,7 @@ import Services
 final class TabComposer {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
-    let view: TabContentViewMacOS
+    let view: TabContentView
 
     init(webKitWrapper: WebKitEngineWrapper,
          bookmarkViewModel: BookmarkViewModel,
@@ -44,7 +44,7 @@ final class TabComposer {
         tabViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
         tabViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
-        self.view = TabContentViewMacOS(
+        self.view = TabContentView(
             tabViewModel: tabViewModel,
             searchSuggestionViewModel: searchSuggestionViewModel,
             webView: WebView(content: webKitWrapper.webView)

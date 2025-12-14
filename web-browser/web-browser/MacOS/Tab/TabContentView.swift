@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(macOS)
-struct TabContentViewMacOS: View {
+struct TabContentView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 

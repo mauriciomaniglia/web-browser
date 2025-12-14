@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(macOS)
-struct AddBookmarkMacOS: View {
+struct AddBookmark: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @Binding var isPresented: Bool
