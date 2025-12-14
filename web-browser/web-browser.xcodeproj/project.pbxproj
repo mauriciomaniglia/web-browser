@@ -446,9 +446,7 @@
 		F9CA92DF2ED0EBC10092842D /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
-				F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */,
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
 			);
 			path = Tab;
@@ -459,6 +457,8 @@
 			children = (
 				F9C0703F2EC751F3001C7E04 /* TabBarViewControllerMacOS.swift */,
 				F9C070412ECA6C4A001C7E04 /* TabContentViewMacOS.swift */,
+				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
+				F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
