@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(macOS)
 struct Menu: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
@@ -18,4 +17,3 @@ struct Menu: View {
         .navigationSplitViewColumnWidth(min: 200, ideal: 200)
     }
 }
-#endif

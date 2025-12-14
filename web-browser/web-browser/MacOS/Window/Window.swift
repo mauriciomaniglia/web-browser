@@ -1,7 +1,5 @@
 import SwiftUI
 
-#if os(macOS)
-
 struct Window: View {
     let windowComposer: WindowComposer
 
@@ -32,4 +30,3 @@ struct Window: View {
         }
     }
 }
-#endif

@@ -1,4 +1,3 @@
-#if canImport(AppKit)
 import SwiftUI
 
 class TabBarViewController: NSViewController {
@@ -157,4 +156,3 @@ class TabBarViewController: NSViewController {
         tabViewController?.removeObserver(self, forKeyPath: "selectedTabViewItemIndex")
     }
 }
-#endif

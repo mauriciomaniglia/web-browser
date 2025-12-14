@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(macOS)
 struct TabContentView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
@@ -45,4 +44,3 @@ struct TabContentView: View {
             .frame(minWidth: 0, maxWidth: 800)
     }
 }
-#endif
