@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if canImport(AppKit)
 struct TabBarViewControllerWrapper: NSViewControllerRepresentable {
     let windowComposer: WindowComposer
 
@@ -10,4 +9,3 @@ struct TabBarViewControllerWrapper: NSViewControllerRepresentable {
 
     func updateNSViewController(_ nsViewController: TabBarViewController, context: Context) {}
 }
-#endif
