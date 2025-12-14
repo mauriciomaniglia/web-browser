@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct WindowIOS: View {
+struct Window: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
@@ -35,7 +35,7 @@ struct WindowIOS: View {
         }
         .background(Color(.systemGray6))
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
-            MenuIOS(
+            Menu(
                 tabViewModel: tabViewModel,
                 bookmarkViewModel: bookmarkViewModel,
                 historyViewModel: historyViewModel,
@@ -43,7 +43,7 @@ struct WindowIOS: View {
             )
         })
         .popover(isPresented: $tabViewModel.showAddBookmark, arrowEdge: .trailing, content: {
-            AddBookmarkIOS(
+            AddBookmark(
                 tabViewModel: tabViewModel,
                 bookmarkViewModel: bookmarkViewModel,
                 bookmarkName: tabViewModel.title,

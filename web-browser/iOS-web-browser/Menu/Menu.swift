@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct MenuIOS: View {
+struct Menu: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
@@ -13,10 +13,10 @@ struct MenuIOS: View {
                 if tabViewModel.showWebView {
                     AddBookmarkButton
                 }
-                NavigationLink(destination: BookmarkIOS(viewModel: bookmarkViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: Bookmark(viewModel: bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
-                NavigationLink(destination: HistoryIOS(viewModel: historyViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: History(viewModel: historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
                 if let url = URL(string: tabViewModel.fullURL) {
