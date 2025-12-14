@@ -63,6 +63,35 @@
 		F96998CA2EEDF36500C3286D /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F96998EA2EEDF3FF00C3286D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F96998E92EEDF3FF00C3286D /* Services */; };
 		F96999182EEEE9E400C3286D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F96999172EEEE9E400C3286D /* Services */; };
+		F969992E2EEEEAAC00C3286D /* CryptominingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C32CFDDC7800474A1E /* CryptominingRules.json */; };
+		F969992F2EEEEAAC00C3286D /* CookiesAdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */; };
+		F96999302EEEEAAC00C3286D /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
+		F96999312EEEEAAC00C3286D /* CookiesContentRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C12CFDDC7800474A1E /* CookiesContentRules.json */; };
+		F96999322EEEEAAC00C3286D /* SocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C52CFDDC7800474A1E /* SocialRules.json */; };
+		F96999332EEEEAAC00C3286D /* AnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */; };
+		F96999342EEEEAAC00C3286D /* CookiesSocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */; };
+		F96999352EEEEAAC00C3286D /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
+		F96999362EEEEAAC00C3286D /* CookiesAnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */; };
+		F96999372EEEEAAC00C3286D /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
+		F96999382EEEEAAC00C3286D /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
+		F96999392EEEEAAC00C3286D /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
+		F969993B2EEEEAAC00C3286D /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
+		F969993C2EEEEAAC00C3286D /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
+		F969993D2EEEEAAC00C3286D /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
+		F969993E2EEEEAAC00C3286D /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
+		F969993F2EEEEAAC00C3286D /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
+		F96999402EEEEAAC00C3286D /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
+		F96999422EEEEAAC00C3286D /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
+		F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
+		F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
+		F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
+		F96999462EEEEAAC00C3286D /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
+		F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
+		F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
+		F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
+		F969994A2EEEEAAC00C3286D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
+		F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
 		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
@@ -666,6 +695,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F969992E2EEEEAAC00C3286D /* CryptominingRules.json in Resources */,
+				F969992F2EEEEAAC00C3286D /* CookiesAdvertisingRules.json in Resources */,
+				F96999302EEEEAAC00C3286D /* FingerprintingRules.json in Resources */,
+				F96999312EEEEAAC00C3286D /* CookiesContentRules.json in Resources */,
+				F96999322EEEEAAC00C3286D /* SocialRules.json in Resources */,
+				F96999332EEEEAAC00C3286D /* AnalyticsRules.json in Resources */,
+				F96999342EEEEAAC00C3286D /* CookiesSocialRules.json in Resources */,
+				F96999352EEEEAAC00C3286D /* AdvertisingRules.json in Resources */,
+				F96999362EEEEAAC00C3286D /* CookiesAnalyticsRules.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +795,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96999372EEEEAAC00C3286D /* SearchSuggestionComposer.swift in Sources */,
+				F96999382EEEEAAC00C3286D /* WindowComposer.swift in Sources */,
+				F96999392EEEEAAC00C3286D /* HistoryComposer.swift in Sources */,
+				F969993B2EEEEAAC00C3286D /* SearchSuggestionViewModel.swift in Sources */,
+				F969993C2EEEEAAC00C3286D /* WebViewWrapper.swift in Sources */,
+				F969993D2EEEEAAC00C3286D /* JsonLoader.swift in Sources */,
+				F969993E2EEEEAAC00C3286D /* CustomGestureButton.swift in Sources */,
+				F969993F2EEEEAAC00C3286D /* HistorySwiftDataStore.swift in Sources */,
+				F96999402EEEEAAC00C3286D /* WindowNavigationButtons.swift in Sources */,
+				F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */,
+				F96999422EEEEAAC00C3286D /* NavigationHistoryView.swift in Sources */,
+				F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */,
+				F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */,
+				F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */,
+				F96999462EEEEAAC00C3286D /* BookmarkSwiftDataStore.swift in Sources */,
+				F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */,
+				F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */,
+				F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */,
+				F969994A2EEEEAAC00C3286D /* TabBarView.swift in Sources */,
+				F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
