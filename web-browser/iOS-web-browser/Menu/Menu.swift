@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(iOS)
 struct Menu: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
@@ -42,4 +41,3 @@ struct Menu: View {
         .buttonStyle(PlainButtonStyle())
     }
 }
-#endif

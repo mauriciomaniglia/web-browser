@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(iOS)
 struct AddBookmark: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
@@ -47,4 +46,3 @@ struct AddBookmark: View {
         }
     }
 }
-#endif

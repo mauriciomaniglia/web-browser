@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(iOS)
 struct History: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Binding var isPresented: Bool
@@ -101,4 +100,3 @@ struct History: View {
         viewModel.historyList.isEmpty
     }
 }
-#endif

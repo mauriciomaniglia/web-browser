@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(iOS)
 struct Window: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
@@ -52,5 +51,3 @@ struct Window: View {
         })
     }
 }
-
-#endif
