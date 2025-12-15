@@ -26,6 +26,10 @@ struct Window: View {
             HStack {
                 WindowNavigationButtons(viewModel: tabViewModel)
                 Spacer()
+                Button(action: {}) {
+                    Image(systemName: "plus.square")
+                }
+                Spacer()
                 Button(action: { isShowingSheet.toggle() }) {
                     Image(systemName: "line.3.horizontal")
                 }
