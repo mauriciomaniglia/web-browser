@@ -7,6 +7,9 @@ struct Window: View {
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
     @State var isShowingSheet = false
 
+    @State private var isShowingTabManager = false
+    @StateObject private var tabManager = TabManager()
+
     let webView: WebView
 
     var body: some View {
@@ -26,7 +29,7 @@ struct Window: View {
             HStack {
                 WindowNavigationButtons(viewModel: tabViewModel)
                 Spacer()
-                Button(action: {}) {
+                Button(action: { isShowingTabManager = true }) {
                     Image(systemName: "plus.square")
                 }
                 Spacer()
@@ -37,6 +40,9 @@ struct Window: View {
             .padding()
         }
         .background(Color(.systemGray6))
+        .fullScreenCover(isPresented: $isShowingTabManager) {
+            TabManagerScreen(tabManager: tabManager, isPresented: $isShowingTabManager)
+        }
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
             Menu(
                 tabViewModel: tabViewModel,

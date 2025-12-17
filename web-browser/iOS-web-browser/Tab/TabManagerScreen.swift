@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TabManagerScreen: View {
     @StateObject var tabManager = TabManager()
+    @Binding var isPresented: Bool
 
     let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -14,6 +15,7 @@ struct TabManagerScreen: View {
                 LazyVGrid(columns: columns, spacing: 30) {
                     ForEach(tabManager.tabs) { tab in
                         TabCardView(tab: tab)
+                            .environmentObject(tabManager)
                     }
                 }
                 .padding(.horizontal, 10)
@@ -21,6 +23,9 @@ struct TabManagerScreen: View {
                 .padding(.bottom, 120)
             }
             .background(Color(.systemGroupedBackground))
+
+            ToolbarView(isPresented: $isPresented)
+                .environmentObject(tabManager)
 
         }
         .edgesIgnoringSafeArea(.bottom)
