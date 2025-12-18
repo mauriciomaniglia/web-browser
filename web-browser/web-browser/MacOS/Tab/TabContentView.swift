@@ -3,6 +3,7 @@ import SwiftUI
 struct TabContentView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
 
     let webView: WebView
 
@@ -21,6 +22,7 @@ struct TabContentView: View {
                     .buttonStyle(.borderless)
                 }
             }
+
             if tabViewModel.showSearchSuggestions {
                 SearchSuggestionView(viewModel: searchSuggestionViewModel)                    
                     .frame(width: 550)
@@ -33,6 +35,18 @@ struct TabContentView: View {
                 .opacity(tabViewModel.showWebView ? 1 : 0)
                 .offset(y: 60)
                 .zIndex(1)
+
+            if tabViewModel.showAddBookmark {
+                AddBookmark(
+                    tabViewModel: tabViewModel,
+                    bookmarkViewModel: bookmarkViewModel,
+                    isPresented: $tabViewModel.showAddBookmark,
+                    bookmarkName: tabViewModel.urlHost,
+                    bookmarkURL: tabViewModel.fullURL
+                )
+                .transition(.scale)
+                .zIndex(3)
+            }
         }
         .padding()
     }
