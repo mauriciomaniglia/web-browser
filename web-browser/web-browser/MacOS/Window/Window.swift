@@ -10,7 +10,7 @@ struct Window: View {
     var body: some View {
         ZStack {
             NavigationSplitView {
-                Menu(tabViewModel: tabViewModel, bookmarkViewModel: bookmarkViewModel, historyViewModel: historyViewModel)
+                Menu(bookmarkViewModel: bookmarkViewModel,historyViewModel: historyViewModel)
             } detail: {
                 TabBarViewControllerWrapper(windowComposer: windowComposer)
             }
