@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ToolbarView: View {
-    @EnvironmentObject var tabManager: TabDisplayManager
+    @EnvironmentObject var tabManager: TabManager
     @Binding var isPresented: Bool
 
     var body: some View {
@@ -20,7 +20,7 @@ struct ToolbarView: View {
 
     private var NewTabButton: some View {
         Button {
-            tabManager.addNewTab()
+            _ = tabManager.createNewTab()
         } label: {
             HStack {
                 Image(systemName: "plus")

@@ -48,7 +48,8 @@ final class WindowComposer {
             historyViewModel: historyComposer.viewModel,
             bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
-            webView: WebView(content: tab.webKitWrapper.webView)
+            tabManager: tabManager,
+            webView: WebView(content: tab.webKitWrapper.webView),
         )
     }
 }

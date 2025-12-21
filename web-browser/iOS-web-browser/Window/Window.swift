@@ -5,10 +5,10 @@ struct Window: View {
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
-    @State var isShowingSheet = false
+    @ObservedObject var tabManager: TabManager
 
+    @State var isShowingSheet = false
     @State private var isShowingTabManager = false
-    @StateObject private var tabManager = TabDisplayManager()
 
     let webView: WebView
 
@@ -29,9 +29,9 @@ struct Window: View {
             HStack {
                 WindowNavigationButtons(viewModel: tabViewModel)
                 Spacer()
-//                Button(action: { isShowingTabManager = true }) {
-//                    Image(systemName: "plus.square")
-//                }
+                Button(action: { isShowingTabManager = true }) {
+                    Image(systemName: "plus.square")
+                }
                 Spacer()
                 Button(action: { isShowingSheet.toggle() }) {
                     Image(systemName: "line.3.horizontal")

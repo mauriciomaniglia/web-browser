@@ -2,7 +2,11 @@ import SwiftData
 import SwiftUI
 import Services
 
-final class TabManager {
+final class TabManager: ObservableObject {
+    @Published var tabs: [TabComposer] = []
+    var selectedTab: TabComposer?
+    var selectedTabIndex: Int = 0
+
     let safelistStore: SafelistStoreAPI
     let historyStore: HistoryStoreAPI
     let bookmarkStore: BookmarkStoreAPI
@@ -10,10 +14,6 @@ final class TabManager {
     let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
-
-    var tabs: [TabComposer] = []
-    var selectedTab: TabComposer?
-    var selectedTabIndex: Int = 0
 
     init(safelistStore: SafelistStoreAPI,
          historyStore: HistoryStoreAPI,
@@ -60,6 +60,10 @@ final class TabManager {
 
     func closeTab(at index: Int) {
         tabs.remove(at: index)
+    }
+
+    func closeTab(_ tab: TabComposer) {
+        tabs.removeAll(where: { $0.tabViewModel.fullURL == tab.tabViewModel.fullURL })
     }
 }
 

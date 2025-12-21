@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct TabCardView: View {
-    @EnvironmentObject var tabManager: TabDisplayManager
-    var tab: TabViewData
+    @EnvironmentObject var tabManager: TabManager
+    var tab: TabComposer
 
     struct Constants {
         static let screenWidth = UIScreen.main.bounds.width
@@ -30,7 +30,7 @@ struct TabCardView: View {
         HStack {
             Spacer()
             Button {
-                tabManager.closeTab(tab: tab)
+                tabManager.closeTab(tab)
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .font(.title3)
@@ -43,7 +43,7 @@ struct TabCardView: View {
 
     private var ScreenshotPlaceholder: some View {
         RoundedRectangle(cornerRadius: 15)
-            .fill(tab.screenshotColor)
+            .fill(Color.mint)
             .aspectRatio(1, contentMode: .fit)
             .padding(.horizontal, 10)
             .overlay(
@@ -54,7 +54,7 @@ struct TabCardView: View {
     }
 
     private var CardTitle: some View {
-        Text(tab.title)
+        Text(tab.tabViewModel.title)
             .font(.subheadline)
             .lineLimit(1)
             .padding(.vertical, 10)

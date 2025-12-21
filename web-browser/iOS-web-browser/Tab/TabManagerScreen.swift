@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabManagerScreen: View {
-    @StateObject var tabManager = TabDisplayManager()
+    var tabManager: TabManager
     @Binding var isPresented: Bool
 
     let columns = [
@@ -13,8 +13,8 @@ struct TabManagerScreen: View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(tabManager.tabs) { tab in
-                        TabCardView(tab: tab)
+                    ForEach(tabManager.tabs.indices, id: \.self) { index in
+                        TabCardView(tab: tabManager.tabs[index])
                             .environmentObject(tabManager)
                     }
                 }
