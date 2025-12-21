@@ -127,7 +127,7 @@ class TabBarViewController: NSViewController {
         tabViewController.removeTabViewItem(tabViewItem)
         hostingControllers.remove(at: index)
 
-        tabManager.tabs.remove(at: index)
+        tabManager.closeTab(at: index)
 
         if currentIndex >= hostingControllers.count, !hostingControllers.isEmpty {
             currentIndex = hostingControllers.count - 1

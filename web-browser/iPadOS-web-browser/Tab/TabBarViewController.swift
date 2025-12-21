@@ -97,7 +97,7 @@ class TabBarViewController: UIViewController {
     func closeTab(at index: Int) {
         guard hostingControllers.indices.contains(index) else { return }
         hostingControllers.remove(at: index)
-        tabManager.tabs.remove(at: index)
+        tabManager.closeTab(at: index)
 
         if currentIndex >= hostingControllers.count {
             currentIndex = max(0, hostingControllers.count - 1)

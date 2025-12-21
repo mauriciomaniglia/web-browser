@@ -57,6 +57,10 @@ final class TabManager {
         selectedTab = tabs[index]
         selectedTabIndex = index
     }
+
+    func closeTab(at index: Int) {
+        tabs.remove(at: index)
+    }
 }
 
 extension TabManager: HistoryUserActionDelegate {
