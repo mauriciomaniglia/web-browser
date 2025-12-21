@@ -2,14 +2,14 @@ import UIKit
 import SwiftUI
 
 class TabBarViewController: UIViewController {
-    private var hostingControllers: [UIHostingController<Window>] = []
+    private var hostingControllers: [UIHostingController<TabContentView>] = []
     private var currentIndex: Int = 0
-    private var currentController: UIHostingController<Window>?
+    private var currentController: UIHostingController<TabContentView>?
     private var tabBarHostingController: UIHostingController<TabBarView>!
-    private let windowComposer: WindowComposer
+    private let tabManager: TabManager
 
-    init(windowComposer: WindowComposer) {
-        self.windowComposer = windowComposer
+    init(tabManager: TabManager) {
+        self.tabManager = tabManager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -22,10 +22,10 @@ class TabBarViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupTabBar()
 
-        if windowComposer.tabs.isEmpty {
+        if tabManager.tabs.isEmpty {
             addNewTab()
         } else {
-            for tab in windowComposer.tabs {
+            for tab in tabManager.tabs {
                 let tabContent = tab.view
                 addNewTab(tabContent)
             }
@@ -34,7 +34,7 @@ class TabBarViewController: UIViewController {
 
     private func setupTabBar() {
         let tabBarView = TabBarView(
-            windowComposer: windowComposer,
+            tabManager: tabManager,
             currentIndex: Binding(
                 get: { [unowned self] in self.currentIndex },
                 set: { [unowned self] newValue in
@@ -66,7 +66,7 @@ class TabBarViewController: UIViewController {
 
     private func refreshTabBar() {
         tabBarHostingController.rootView = TabBarView(
-            windowComposer: windowComposer,
+            tabManager: tabManager,
             currentIndex: Binding(
                 get: { [unowned self] in self.currentIndex },
                 set: { [unowned self] newValue in
@@ -85,8 +85,8 @@ class TabBarViewController: UIViewController {
         )
     }
 
-    func addNewTab(_ tabContent: Window? = nil) {
-        let content = tabContent ?? (windowComposer.createNewTab().view)
+    func addNewTab(_ tabContent: TabContentView? = nil) {
+        let content = tabContent ?? (tabManager.createNewTab().view)
         let hostingController = UIHostingController(rootView: content)
         hostingControllers.append(hostingController)
         currentIndex = hostingControllers.count - 1
@@ -97,7 +97,7 @@ class TabBarViewController: UIViewController {
     func closeTab(at index: Int) {
         guard hostingControllers.indices.contains(index) else { return }
         hostingControllers.remove(at: index)
-        windowComposer.tabs.remove(at: index)
+        tabManager.tabs.remove(at: index)
 
         if currentIndex >= hostingControllers.count {
             currentIndex = max(0, hostingControllers.count - 1)
@@ -111,7 +111,7 @@ class TabBarViewController: UIViewController {
         }
     }
 
-    private func showController(_ controller: UIHostingController<Window>) {
+    private func showController(_ controller: UIHostingController<TabContentView>) {
         currentController?.view.removeFromSuperview()
         currentController = controller
         addChild(controller)

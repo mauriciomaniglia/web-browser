@@ -6,7 +6,7 @@ struct iOS_web_browserApp: App {
 
     var body: some Scene {
         WindowGroup {
-            windowComposer.createNewTab().view
+            windowComposer.createNewWindow()
         }
     }
 }

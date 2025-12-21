@@ -6,11 +6,7 @@ struct WebBrowserApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Window(
-                windowComposer: windowComposer,
-                bookmarkViewModel: windowComposer.bookmarkComposer.viewModel,
-                historyViewModel: windowComposer.historyComposer.viewModel
-            )
+            windowComposer.createNewWindow()
         }
     }
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    let windowComposer: WindowComposer
+    let tabManager: TabManager
 
     @Binding var currentIndex: Int
 
@@ -13,11 +13,11 @@ struct TabBarView: View {
         HStack(spacing: 8) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(windowComposer.tabs.indices, id: \.self) { index in
+                    ForEach(tabManager.tabs.indices, id: \.self) { index in
                         TabView(
-                            viewModel: windowComposer.tabs[index].tabViewModel,
+                            viewModel: tabManager.tabs[index].tabViewModel,
                             currentIndex: $currentIndex,
-                            windowComposer: windowComposer,
+                            tabManager: tabManager,
                             index: index,
                             onClose: onClose,
                             onSelect: onSelect)
@@ -43,7 +43,7 @@ struct TabView: View {
     @ObservedObject var viewModel: TabViewModel
     @Binding var currentIndex: Int
 
-    let windowComposer: WindowComposer
+    let tabManager: TabManager
     let index: Int
     var onClose: (Int) -> Void
     var onSelect: (Int) -> Void
@@ -74,7 +74,7 @@ struct TabView: View {
         .onTapGesture {
             currentIndex = index
             onSelect(index)
-            windowComposer.didSelectTab(at: index)
+            tabManager.didSelectTab(at: index)
         }
     }
 }

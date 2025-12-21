@@ -60,7 +60,6 @@
 		F96998C72EEDF21200C3286D /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
 		F96998C82EEDF21200C3286D /* SocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C52CFDDC7800474A1E /* SocialRules.json */; };
 		F96998C92EEDF21200C3286D /* CookiesSocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */; };
-		F96998CA2EEDF36500C3286D /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F96998EA2EEDF3FF00C3286D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F96998E92EEDF3FF00C3286D /* Services */; };
 		F96999182EEEE9E400C3286D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F96999172EEEE9E400C3286D /* Services */; };
 		F969992E2EEEEAAC00C3286D /* CryptominingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C32CFDDC7800474A1E /* CryptominingRules.json */; };
@@ -73,7 +72,6 @@
 		F96999352EEEEAAC00C3286D /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
 		F96999362EEEEAAC00C3286D /* CookiesAnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */; };
 		F96999372EEEEAAC00C3286D /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
-		F96999382EEEEAAC00C3286D /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F96999392EEEEAAC00C3286D /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
 		F969993B2EEEEAAC00C3286D /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
 		F969993C2EEEEAAC00C3286D /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
@@ -118,6 +116,9 @@
 		F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
+		F9E5D1142EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
+		F9E5D1152EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
+		F9E5D1162EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
 		F9E6EA5A2EA905590026A8BD /* TabBarViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,7 @@
 		F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabComposer.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
+		F9E5D1132EF5C7D9009BA82C /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -398,7 +400,6 @@
 		F98BF0C62B750A2900C29BDA /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F901D9882E93240900F3B3D9 /* WindowComposer.swift */,
 				F98BF0C72B750A3300C29BDA /* Views */,
 			);
 			path = Window;
@@ -448,6 +449,7 @@
 			children = (
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
+				F9E5D1132EF5C7D9009BA82C /* TabManager.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -474,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				F92921EA2B70F99400173702 /* Window.swift */,
+				F901D9882E93240900F3B3D9 /* WindowComposer.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				F932F20F2CE23A7800B12B45 /* Bookmark.swift in Sources */,
 				F94A60F12C758C52001384CB /* Menu.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
+				F9E5D1162EF5C7D9009BA82C /* TabManager.swift in Sources */,
 				F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
@@ -768,7 +772,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F96998CA2EEDF36500C3286D /* WindowComposer.swift in Sources */,
 				F96998AD2EEDF21200C3286D /* WebsiteProtectionButton.swift in Sources */,
 				F96998AE2EEDF21200C3286D /* TabViewModel.swift in Sources */,
 				F96998AF2EEDF21200C3286D /* BookmarkComposer.swift in Sources */,
@@ -779,6 +782,7 @@
 				F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */,
 				F96998B52EEDF21200C3286D /* HistoryComposer.swift in Sources */,
 				F96998B72EEDF21200C3286D /* WebViewWrapper.swift in Sources */,
+				F9E5D1152EF5C7D9009BA82C /* TabManager.swift in Sources */,
 				F96998B82EEDF21200C3286D /* HistoryViewModel.swift in Sources */,
 				F96998B92EEDF21200C3286D /* WebKitEngineWrapper.swift in Sources */,
 				F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */,
@@ -796,7 +800,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F96999372EEEEAAC00C3286D /* SearchSuggestionComposer.swift in Sources */,
-				F96999382EEEEAAC00C3286D /* WindowComposer.swift in Sources */,
 				F96999392EEEEAAC00C3286D /* HistoryComposer.swift in Sources */,
 				F969993B2EEEEAAC00C3286D /* SearchSuggestionViewModel.swift in Sources */,
 				F969993C2EEEEAAC00C3286D /* WebViewWrapper.swift in Sources */,
@@ -813,6 +816,7 @@
 				F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */,
 				F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */,
 				F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */,
+				F9E5D1142EF5C7D9009BA82C /* TabManager.swift in Sources */,
 				F969994A2EEEEAAC00C3286D /* TabBarView.swift in Sources */,
 				F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */,
 			);

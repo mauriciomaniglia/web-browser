@@ -6,7 +6,7 @@ struct iPadOS_web_browserApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabBarViewControllerWrapper(windowComposer: windowComposer)
+            windowComposer.createNewWindow()
         }
     }
 }

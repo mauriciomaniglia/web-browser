@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct TabBarViewControllerWrapper: NSViewControllerRepresentable {
-    let windowComposer: WindowComposer
+    let tabManager: TabManager
 
     func makeNSViewController(context: Context) -> TabBarViewController {
-        return TabBarViewController(windowComposer: windowComposer)
+        return TabBarViewController(tabManager: tabManager)
     }
 
     func updateNSViewController(_ nsViewController: TabBarViewController, context: Context) {}

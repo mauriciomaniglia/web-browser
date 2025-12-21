@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabManagerScreen: View {
-    @StateObject var tabManager = TabManager()
+    @StateObject var tabManager = TabDisplayManager()
     @Binding var isPresented: Bool
 
     let columns = [

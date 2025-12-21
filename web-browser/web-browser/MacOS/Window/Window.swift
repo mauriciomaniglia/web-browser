@@ -1,17 +1,15 @@
 import SwiftUI
 
 struct Window: View {
-    let windowComposer: WindowComposer
-
-    @ObservedObject var bookmarkViewModel: BookmarkViewModel
-    @ObservedObject var historyViewModel: HistoryViewModel
+    let menu: Menu
+    let tabBarController: TabBarViewControllerWrapper
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                Menu(bookmarkViewModel: bookmarkViewModel,historyViewModel: historyViewModel)
+                menu
             } detail: {
-                TabBarViewControllerWrapper(windowComposer: windowComposer)
+                tabBarController
             }
         }
     }

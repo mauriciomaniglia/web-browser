@@ -4,7 +4,7 @@ class TabBarViewController: NSViewController {
     private var hostingControllers: [NSHostingController<TabContentView>] = []
     private var tabViewController: NSTabViewController!
     private var tabBarHostingView: NSHostingView<TabBarView>!
-    private let windowComposer: WindowComposer
+    private let tabManager: TabManager
 
     private var currentIndex: Int {
         get { tabViewController.selectedTabViewItemIndex }
@@ -15,8 +15,8 @@ class TabBarViewController: NSViewController {
         }
     }
 
-    init(windowComposer: WindowComposer) {
-        self.windowComposer = windowComposer
+    init(tabManager: TabManager) {
+        self.tabManager = tabManager
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,16 +35,16 @@ class TabBarViewController: NSViewController {
         setupTabViewController()
         setupTabBar()
 
-        if windowComposer.tabs.isEmpty {
+        if tabManager.tabs.isEmpty {
             addNewTab()
         } else {
-            for tab in windowComposer.tabs {
+            for tab in tabManager.tabs {
                 let tabContent = tab.view
                 addNewTab(tabContent)
             }
         }
 
-        selectTab(at: windowComposer.selectedTabIndex)
+        selectTab(at: tabManager.selectedTabIndex)
     }
 
     private func setupTabViewController() {
@@ -68,7 +68,7 @@ class TabBarViewController: NSViewController {
 
     private func setupTabBar() {
         let tabBarView = TabBarView(
-            windowComposer: windowComposer,
+            tabManager: tabManager,
             currentIndex: Binding(
                 get: { self.currentIndex },
                 set: { _ in }
@@ -94,7 +94,7 @@ class TabBarViewController: NSViewController {
 
     private func refreshTabBar() {
         tabBarHostingView.rootView = TabBarView(
-            windowComposer: windowComposer,
+            tabManager: tabManager,
             currentIndex: Binding(
                 get: { [unowned self] in self.currentIndex },
                 set: { [unowned self] newValue in
@@ -108,7 +108,7 @@ class TabBarViewController: NSViewController {
     }
 
     func addNewTab(_ tabContent: TabContentView? = nil) {
-        let content = tabContent ?? (windowComposer.createNewTab().view)
+        let content = tabContent ?? (tabManager.createNewTab().view)
         let hostingController = NSHostingController(rootView: content)
         hostingControllers.append(hostingController)
 
@@ -127,7 +127,7 @@ class TabBarViewController: NSViewController {
         tabViewController.removeTabViewItem(tabViewItem)
         hostingControllers.remove(at: index)
 
-        windowComposer.tabs.remove(at: index)
+        tabManager.tabs.remove(at: index)
 
         if currentIndex >= hostingControllers.count, !hostingControllers.isEmpty {
             currentIndex = hostingControllers.count - 1

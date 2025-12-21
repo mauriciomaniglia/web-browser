@@ -6,7 +6,7 @@ struct TabViewData: Identifiable {
     var screenshotColor: Color = Color.gray.opacity(0.3)
 }
 
-class TabManager: ObservableObject {
+class TabDisplayManager: ObservableObject {
     @Published var tabs: [TabViewData] = []
 
     func closeTab(tab: TabViewData) {

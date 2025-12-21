@@ -8,7 +8,7 @@ struct Window: View {
     @State var isShowingSheet = false
 
     @State private var isShowingTabManager = false
-    @StateObject private var tabManager = TabManager()
+    @StateObject private var tabManager = TabDisplayManager()
 
     let webView: WebView
 

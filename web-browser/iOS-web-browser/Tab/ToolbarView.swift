@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ToolbarView: View {
-    @EnvironmentObject var tabManager: TabManager
+    @EnvironmentObject var tabManager: TabDisplayManager
     @Binding var isPresented: Bool
 
     var body: some View {

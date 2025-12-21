@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabCardView: View {
-    @EnvironmentObject var tabManager: TabManager
+    @EnvironmentObject var tabManager: TabDisplayManager
     var tab: TabViewData
 
     struct Constants {
