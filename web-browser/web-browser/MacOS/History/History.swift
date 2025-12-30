@@ -7,53 +7,65 @@ struct History: View {
     @State private var isShowingDeleteAllHistoryAlert = false
 
     var body: some View {
-        SearchTopBar
-            .navigationTitle("History")
-            .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
+        searchBar
 
-        if hasPagesSelected() {
-            SelectedPagesView
+        if hasPagesSelected {
+            selectedPages
         }
 
-        if isHistoryEmpty() {
-            EmptyView
+        if isHistoryEmpty {
+            emptyList
         } else {
-            HistoryList
+            historyList
         }
     }
 
-    private var SearchTopBar: some View {
+    var searchBar: some View {
         HStack {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "arrow.left")
-            }
-            TextField("Search History", text: $searchText)
-                .onChange(of: searchText, { _, newValue in
-                    viewModel.delegate?.didSearchTerm(newValue)
-                })
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            Button {
-                isShowingDeleteAllHistoryAlert = true
-            } label: {
-                Text("Delete All")
-            }
-            .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
-                Alert(
-                    title: Text("Clear all browsing history?"),
-                    primaryButton: .default(Text("Clear")) {
-                        viewModel.deleteAllPages()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
+            dismissButton
+            searchTextField
+            deleteAllButton
         }
         .padding()
+        .navigationTitle("History")
+        .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
     }
 
-    private var SelectedPagesView: some View {
+    var dismissButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+        }
+    }
+
+    var searchTextField: some View {
+        TextField("Search History", text: $searchText)
+            .onChange(of: searchText, { _, newValue in
+                viewModel.delegate?.didSearchTerm(newValue)
+            })
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
+    }
+
+    var deleteAllButton: some View {
+        Button {
+            isShowingDeleteAllHistoryAlert = true
+        } label: {
+            Text("Delete All")
+        }
+        .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
+            Alert(
+                title: Text("Clear all browsing history?"),
+                primaryButton: .default(Text("Clear")) {
+                    viewModel.deleteAllPages()
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+
+    var selectedPages: some View {
         HStack {
             Button {
                 viewModel.deselectAllPages()
@@ -71,7 +83,7 @@ struct History: View {
         .padding()
     }
 
-    private var HistoryList: some View {
+    var historyList: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { sectionIndex in
                 let item = viewModel.historyList[sectionIndex]
@@ -101,7 +113,7 @@ struct History: View {
         }
     }
 
-    private var EmptyView: some View {
+    var emptyList: some View {
         VStack {
             Text("No history found.")
                 .font(.headline)
@@ -110,11 +122,11 @@ struct History: View {
         }
     }
 
-    private func hasPagesSelected() -> Bool {
+    var hasPagesSelected: Bool {
         viewModel.selectedPages.count > 0
     }
 
-    private func isHistoryEmpty() -> Bool {
+    var isHistoryEmpty: Bool {
         viewModel.historyList.isEmpty
     }
 }
