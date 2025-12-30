@@ -6,36 +6,35 @@ struct History: View {
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
 
+    // MARK: Body
+
     var body: some View {
-        ZStack {
-            Color(UIColor.systemGroupedBackground)
-                .edgesIgnoringSafeArea(.all)
+        VStack {
+            searchBar
 
-            VStack {
-                SearchTopBar
-
-                if isHistoryEmpty() {
-                    EmptyView
-                } else {
-                    HistoryList
-                }
+            if isHistoryEmpty {
+                emptyList
+            } else {
+                historyList
             }
-            .onAppear {
-                viewModel.delegate?.didOpenHistoryView()
+        }
+        .onAppear {
+            viewModel.delegate?.didOpenHistoryView()
+        }
+        .navigationTitle("History")
+        .toolbar {
+            ToolbarItem {
+                clearAllButton
             }
-            .navigationTitle("History")
-            .toolbar {
-                ToolbarItem {
-                    ClearAllHistoryButton
-                }
-            }
-            .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
-                ClearAllHistoryAlert
-            }
+        }
+        .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
+            clearAllAlert
         }
     }
 
-    private var SearchTopBar: some View {
+    // MARK: - Search Bar
+
+    var searchBar: some View {
         HStack {
             TextField("Search History", text: $searchText)
                 .onChange(of: searchText, { _, newValue in
@@ -46,7 +45,13 @@ struct History: View {
         }
     }
 
-    private var HistoryList: some View {
+    // MARK: - List
+
+    var isHistoryEmpty: Bool {
+        viewModel.historyList.isEmpty
+    }
+
+    var historyList: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { index in
                 let item = viewModel.historyList[index]
@@ -69,7 +74,7 @@ struct History: View {
         }
     }
 
-    private var EmptyView: some View {
+    var emptyList: some View {
         VStack {
             Text("No history found.")
                 .font(.headline)
@@ -78,7 +83,9 @@ struct History: View {
         }
     }
 
-    private var ClearAllHistoryButton: some View {
+    // MARK: Clear Button
+
+    var clearAllButton: some View {
         Button {
             isShowingDeleteAllHistoryAlert = true
         } label: {
@@ -86,7 +93,7 @@ struct History: View {
         }
     }
 
-    private var ClearAllHistoryAlert: Alert {
+    var clearAllAlert: Alert {
         Alert(
             title: Text("Clear all browsing history?"),
             primaryButton: .default(Text("Clear")) {
@@ -94,9 +101,5 @@ struct History: View {
             },
             secondaryButton: .cancel()
         )
-    }
-
-    private func isHistoryEmpty() -> Bool {
-        viewModel.historyList.isEmpty
     }
 }
