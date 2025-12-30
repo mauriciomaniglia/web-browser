@@ -6,11 +6,13 @@ struct History: View {
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
 
+    // MARK: Body
+
     var body: some View {
         searchBar
 
         if hasPagesSelected {
-            selectedPages
+            selectedPagesBar
         }
 
         if isHistoryEmpty {
@@ -20,9 +22,11 @@ struct History: View {
         }
     }
 
+    // MARK: - Search Bar
+
     var searchBar: some View {
         HStack {
-            dismissButton
+            backButton
             searchTextField
             deleteAllButton
         }
@@ -31,7 +35,7 @@ struct History: View {
         .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
     }
 
-    var dismissButton: some View {
+    var backButton: some View {
         Button {
             dismiss()
         } label: {
@@ -65,7 +69,13 @@ struct History: View {
         }
     }
 
-    var selectedPages: some View {
+    // MARK: Selected Pages Bar
+
+    var hasPagesSelected: Bool {
+        viewModel.selectedPages.count > 0
+    }
+
+    var selectedPagesBar: some View {
         HStack {
             Button {
                 viewModel.deselectAllPages()
@@ -81,6 +91,12 @@ struct History: View {
             }
         }
         .padding()
+    }
+
+    // MARK: List
+
+    var isHistoryEmpty: Bool {
+        viewModel.historyList.isEmpty
     }
 
     var historyList: some View {
@@ -120,13 +136,5 @@ struct History: View {
                 .padding()
             Spacer()
         }
-    }
-
-    var hasPagesSelected: Bool {
-        viewModel.selectedPages.count > 0
-    }
-
-    var isHistoryEmpty: Bool {
-        viewModel.historyList.isEmpty
     }
 }
