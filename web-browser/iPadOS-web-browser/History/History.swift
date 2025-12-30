@@ -2,6 +2,7 @@ import SwiftUI
 
 struct History: View {
     @ObservedObject var viewModel: HistoryViewModel
+    @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
 
@@ -68,7 +69,21 @@ struct History: View {
     var historyList: some View {
         List {
             ForEach(viewModel.historyList.indices, id: \.self) { index in
-                HistoryListItem(viewModel: viewModel, index: index)
+                let item = viewModel.historyList[index]
+                let header = Text(item.title)
+
+                Section(header: header) {
+                    ForEach(item.pages) { page in
+                        Text("\(page.title)")
+                            .onTapGesture {
+                                viewModel.delegate?.didSelectPage(page.url)
+                                dismiss()
+                            }
+                    }
+                    .onDelete { offsets in
+                        viewModel.deletePages(at: offsets, inSection: index)
+                    }
+                }
             }
         }
     }
@@ -80,31 +95,6 @@ struct History: View {
                 .padding()
 
             Spacer()
-        }
-    }
-}
-
-struct HistoryListItem: View {
-    @Environment(\.dismiss) private var dismiss
-
-    let viewModel: HistoryViewModel
-    let index: Int
-
-    var body: some View {
-        let item = viewModel.historyList[index]
-        let headerTitle = Text(item.title)
-
-        Section(header: headerTitle) {
-            ForEach(item.pages) { page in
-                Text("\(page.title)")
-                    .onTapGesture {
-                        viewModel.delegate?.didSelectPage(page.url)
-                        dismiss()
-                    }
-            }
-            .onDelete { offsets in
-                viewModel.deletePages(at: offsets, inSection: index)
-            }
         }
     }
 }
