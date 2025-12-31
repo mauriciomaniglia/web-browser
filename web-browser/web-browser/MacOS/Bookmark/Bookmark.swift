@@ -4,20 +4,18 @@ struct Bookmark: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
-    @State private var isShowingDeleteBookmarkAlert = false
+    @State private var isShowingDeleteAlert = false
+
+    // MARK: - Body
 
     var body: some View {
         VStack {
-            HStack {
-                Button { dismiss() } label: { Image(systemName: "arrow.left") }
-                Spacer()
-            }
-            .padding()
+            backButton
 
-            if viewModel.bookmarkList.isEmpty {
-                EmptyView
+            if isBookmarkEmpty {
+                emptyList
             } else {
-                BookmarkListView
+                bookmarkList
             }
         }
         .navigationTitle("Bookmark")
@@ -25,20 +23,36 @@ struct Bookmark: View {
         .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
     }
 
-    private var BookmarkListView: some View {
+    // MARK: - Buttons
+
+    var backButton: some View {
+        HStack {
+            Button { dismiss() } label: { Image(systemName: "arrow.left") }
+            Spacer()
+        }
+        .padding()
+    }
+
+    // MARK: - List
+
+    var isBookmarkEmpty: Bool {
+        viewModel.bookmarkList.isEmpty
+    }
+
+    var bookmarkList: some View {
         List {
             ForEach(viewModel.bookmarkList) { bookmark in
-                ListItem(
+                BookmarkRow(
                     viewModel: viewModel,
-                    isShowingDeleteBookmarkAlert: $isShowingDeleteBookmarkAlert,
+                    isShowingDeleteBookmarkAlert: $isShowingDeleteAlert,
                     bookmark: bookmark
                 )
             }
         }
-        .alert(isPresented: $isShowingDeleteBookmarkAlert) { RemoveItemAlert }
+        .alert(isPresented: $isShowingDeleteAlert) { removeItemAlert }
     }
 
-    private var EmptyView: some View {
+    var emptyList: some View {
         VStack {
             Text("No bookmark found.")
                 .font(.headline)
@@ -48,38 +62,40 @@ struct Bookmark: View {
         }
     }
 
-    private var RemoveItemAlert: Alert {
+    // MARK: - Alert
+
+    var removeItemAlert: Alert {
         Alert(
             title: Text("Remove?"),
             primaryButton: .default(Text("Yes")) { viewModel.removeSelectedBookmark() },
             secondaryButton: .cancel() { viewModel.undoCurrentSelection() }
         )
     }
+}
 
-    struct ListItem: View {
-        @ObservedObject var viewModel: BookmarkViewModel
-        @Environment(\.dismiss) private var dismiss
-        @Binding var isShowingDeleteBookmarkAlert: Bool
-        let bookmark: BookmarkViewModel.Bookmark
+struct BookmarkRow: View {
+    @ObservedObject var viewModel: BookmarkViewModel
+    @Environment(\.dismiss) private var dismiss
+    @Binding var isShowingDeleteBookmarkAlert: Bool
+    let bookmark: BookmarkViewModel.Bookmark
 
-        var body: some View {
-            HStack {
-                Text(bookmark.title)
-                    .onTapGesture {
-                        viewModel.delegate?.didSelectPage(bookmark.url)
-                        dismiss()
-                    }
-
-                Spacer()
-
-                Button {
-                    viewModel.setSelectedBookmark(bookmark)
-                    isShowingDeleteBookmarkAlert = true
-                } label: {
-                    Image(systemName: "ellipsis")
+    var body: some View {
+        HStack {
+            Text(bookmark.title)
+                .onTapGesture {
+                    viewModel.delegate?.didSelectPage(bookmark.url)
+                    dismiss()
                 }
+
+            Spacer()
+
+            Button {
+                viewModel.setSelectedBookmark(bookmark)
+                isShowingDeleteBookmarkAlert = true
+            } label: {
+                Image(systemName: "ellipsis")
             }
-            .padding()
         }
+        .padding()
     }
 }
