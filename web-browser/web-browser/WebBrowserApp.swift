@@ -8,5 +8,8 @@ struct WebBrowserApp: App {
         WindowGroup {
             windowComposer.createNewWindow()
         }
+        .commands {
+            MenuCommands(tabManager: windowComposer.tabManager)
+        }
     }
 }
