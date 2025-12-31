@@ -7,39 +7,64 @@ struct AddBookmark: View {
     @State var bookmarkName = ""
     @State var bookmarkURL = ""
 
+    // MARK: - Body
+
     var body: some View {
         VStack(spacing: 20) {
-            Text("Bookmark added")
-                .font(.headline)
-            VStack(alignment: .leading, spacing: 8) {
-                TextField("Name", text: $bookmarkName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                TextField("URL", text: $bookmarkURL)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                    .disabled(true)
-            }
-            HStack {
-                Button("Remove") {
-                    tabViewModel.dismissAddBookmark()
-                }
-                Spacer()
-                Button("Done") {
-                    tabViewModel.saveAndDismissAddBookmark(
-                        name: bookmarkName,
-                        url: bookmarkURL
-                    )
-                    bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .padding(.horizontal)
+            header
+            form
+            footer
         }
         .padding()
         .background(Color(NSColor.windowBackgroundColor))
         .cornerRadius(12)
         .shadow(radius: 20)
         .frame(maxWidth: 300)
+    }
+
+    // MARK: - Header
+
+    var header: some View {
+        Text("Bookmark added")
+            .font(.headline)
+    }
+
+    // MARK: - Form
+
+    var form: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            TextField("Name", text: $bookmarkName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
+            TextField("URL", text: $bookmarkURL)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
+                .disabled(true)
+        }
+    }
+
+    // MARK: - Footer
+
+    var footer: some View {
+        HStack {
+            dismissButton
+            Spacer()
+            doneButton
+        }
+        .padding(.horizontal)
+    }
+
+    var dismissButton: some View {
+        Button("Remove") {
+            tabViewModel.dismissAddBookmark()
+        }
+    }
+
+    var doneButton: some View {
+        Button("Done") {
+            tabViewModel.saveAndDismissAddBookmark(name: bookmarkName, url: bookmarkURL)
+            bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
+        }
+        .buttonStyle(.borderedProminent)
     }
 }
