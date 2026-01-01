@@ -11,12 +11,14 @@ struct Menu: View {
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
 
+    // MARK: - Body
+
     var body: some View {
         VStack {
             NavigationStack {
                 List {
                     if tabViewModel.showWebView {
-                        AddBookmarkButton
+                        addBookmarkButton
                     }
                     NavigationLink(value: Menu.bookmarks) {
                         Label("Bookmarks", systemImage: "book")
@@ -38,7 +40,9 @@ struct Menu: View {
         .frame(width: 500, height: 500)
     }
 
-    var AddBookmarkButton: some View {
+    // MARK: - Buttons
+
+    var addBookmarkButton: some View {
         Button(action: { tabViewModel.showAddBookmark = true }) {
             Label("Add Bookmark", systemImage: "bookmark")
         }
