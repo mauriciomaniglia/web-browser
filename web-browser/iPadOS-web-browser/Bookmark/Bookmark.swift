@@ -2,23 +2,33 @@ import SwiftUI
 
 struct Bookmark: View {
     @ObservedObject var viewModel: BookmarkViewModel
+
     @Environment(\.dismiss) private var dismiss
+
     @State private var searchText: String = ""
     @State private var isShowingDeleteBookmarkAlert = false
 
+    // MARK: - Body
+
     var body: some View {
         VStack {
-            if isBookmarkEmpty() {
-                EmptyView
+            if isBookmarkEmpty {
+                emptyList
             } else {
-                BookmarkList
+                bookmarkList
             }
         }
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")       
         .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
     }
 
-    private var BookmarkList: some View {
+    // MARK: - List
+
+    var isBookmarkEmpty: Bool {
+        viewModel.bookmarkList.isEmpty
+    }
+
+    var bookmarkList: some View {
         List {
             ForEach(viewModel.bookmarkList) { bookmark in
                 HStack {
@@ -41,7 +51,18 @@ struct Bookmark: View {
         .alert(isPresented: $isShowingDeleteBookmarkAlert) { alertView }
     }
 
-    private var alertView: Alert {
+    var emptyList: some View {
+        VStack {
+            Text("No bookmark found.")
+                .font(.headline)
+                .padding()
+            Spacer()
+        }
+    }
+
+    // MARK: - Alerts
+
+    var alertView: Alert {
         Alert(
             title: Text("Remove?"),
             primaryButton: .default(Text("Yes")) {
@@ -51,18 +72,5 @@ struct Bookmark: View {
                 viewModel.undoCurrentSelection()
             }
         )
-    }
-
-    private var EmptyView: some View {
-        VStack {
-            Text("No bookmark found.")
-                .font(.headline)
-                .padding()
-            Spacer()
-        }
-    }
-
-    private func isBookmarkEmpty() -> Bool {
-        viewModel.bookmarkList.isEmpty
     }
 }
