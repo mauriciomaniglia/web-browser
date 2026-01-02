@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NavigationHistoryView: View {
+struct NavigationList: View {
     var didSelectPage: ((Int) -> Void)?
     let pageList: [TabViewModel.WebPage]
 

@@ -31,14 +31,14 @@
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */; };
 		F95DBA8D2B863A2C0048A987 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
-		F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
+		F9632D952C186D7800A4F7F9 /* NavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationList.swift */; };
 		F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F96998AD2EEDF21200C3286D /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F96998AE2EEDF21200C3286D /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
 		F96998AF2EEDF21200C3286D /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
 		F96998B02EEDF21200C3286D /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
 		F96998B12EEDF21200C3286D /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
-		F96998B22EEDF21200C3286D /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
+		F96998B22EEDF21200C3286D /* NavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationList.swift */; };
 		F96998B32EEDF21200C3286D /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
 		F96998B52EEDF21200C3286D /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
@@ -81,7 +81,7 @@
 		F969993F2EEEEAAC00C3286D /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
 		F96999402EEEEAAC00C3286D /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
 		F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
-		F96999422EEEEAAC00C3286D /* NavigationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */; };
+		F96999422EEEEAAC00C3286D /* NavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationList.swift */; };
 		F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
 		F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
@@ -162,7 +162,7 @@
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
 		F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelTests.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
-		F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHistoryView.swift; sourceTree = "<group>"; };
+		F9632D942C186D7800A4F7F9 /* NavigationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationList.swift; sourceTree = "<group>"; };
 		F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGestureButton.swift; sourceTree = "<group>"; };
 		F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPadOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969990C2EEEE9BC00C3286D /* iOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,7 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				F92921EF2B70F9F900173702 /* AddressBarView.swift */,
-				F9632D942C186D7800A4F7F9 /* NavigationHistoryView.swift */,
+				F9632D942C186D7800A4F7F9 /* NavigationList.swift */,
 				F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */,
 				F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */,
 				F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */,
@@ -736,7 +736,7 @@
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
 				F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */,
 				F9C070422ECA6C4A001C7E04 /* TabContentView.swift in Sources */,
-				F9632D952C186D7800A4F7F9 /* NavigationHistoryView.swift in Sources */,
+				F9632D952C186D7800A4F7F9 /* NavigationList.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
 				F94379A02C911B7900DEBFF7 /* History.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
@@ -789,7 +789,7 @@
 				F96998AF2EEDF21200C3286D /* BookmarkComposer.swift in Sources */,
 				F96998B02EEDF21200C3286D /* BookmarkViewModel.swift in Sources */,
 				F96998B12EEDF21200C3286D /* SearchSuggestionView.swift in Sources */,
-				F96998B22EEDF21200C3286D /* NavigationHistoryView.swift in Sources */,
+				F96998B22EEDF21200C3286D /* NavigationList.swift in Sources */,
 				F96998B32EEDF21200C3286D /* CustomGestureButton.swift in Sources */,
 				F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */,
 				F96998B52EEDF21200C3286D /* HistoryComposer.swift in Sources */,
@@ -820,7 +820,7 @@
 				F969993F2EEEEAAC00C3286D /* HistorySwiftDataStore.swift in Sources */,
 				F96999402EEEEAAC00C3286D /* WindowNavigationButtons.swift in Sources */,
 				F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */,
-				F96999422EEEEAAC00C3286D /* NavigationHistoryView.swift in Sources */,
+				F96999422EEEEAAC00C3286D /* NavigationList.swift in Sources */,
 				F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */,
 				F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */,
 				F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */,

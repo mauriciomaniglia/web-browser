@@ -10,7 +10,7 @@ struct WindowNavigationButtons: View {
                                 longPressAction: { viewModel.didLongPressBackButton?() }, 
                                 isDisabled: viewModel.isBackButtonDisabled)
             .popover(isPresented: $viewModel.showBackList, arrowEdge: .bottom, content: {
-                NavigationHistoryView(didSelectPage: viewModel.didSelectBackListPage, pageList: viewModel.backList)
+                NavigationList(didSelectPage: viewModel.didSelectBackListPage, pageList: viewModel.backList)
             })
             .onChange(of: viewModel.showBackList) { _, isPresented in
                 if !isPresented {
@@ -23,7 +23,7 @@ struct WindowNavigationButtons: View {
                                 longPressAction: { viewModel.didLongPressForwardButton?() }, 
                                 isDisabled: viewModel.isForwardButtonDisabled)
             .popover(isPresented: $viewModel.showForwardList, arrowEdge: .bottom, content: {
-                NavigationHistoryView(didSelectPage: viewModel.didSelectForwardListPage, pageList: viewModel.forwardList)
+                NavigationList(didSelectPage: viewModel.didSelectForwardListPage, pageList: viewModel.forwardList)
             })
             .onChange(of: viewModel.showForwardList) { _, isPresented in
                 if !isPresented {
