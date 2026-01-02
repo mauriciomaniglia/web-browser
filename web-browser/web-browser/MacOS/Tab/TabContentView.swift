@@ -7,54 +7,92 @@ struct TabContentView: View {
 
     let webView: WebView
 
+    // MARK: - Body
+
     var body: some View {
         ZStack(alignment: .top) {
-            HStack {
-                WindowNavigationButtons(viewModel: tabViewModel)
-                Spacer()
-                AddressBar
-                Spacer()
-                if let url = URL(string: tabViewModel.fullURL) {
-                    ShareLink(item: url) {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 17))
-                    }
-                    .buttonStyle(.borderless)
-                }
-            }
-
-            if tabViewModel.showSearchSuggestions {
-                SearchSuggestionView(viewModel: searchSuggestionViewModel)                    
-                    .frame(width: 550)
-                    .offset(y: 42)
-                    .zIndex(2)
+            mainToolbar
+            if shouldShowSearchSuggestions {
+                searchSuggestions
             }
             Spacer()
-            webView
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .opacity(tabViewModel.showWebView ? 1 : 0)
-                .offset(y: 60)
-                .zIndex(1)
-
-            if tabViewModel.showAddBookmark {
-                AddBookmark(
-                    tabViewModel: tabViewModel,
-                    bookmarkViewModel: bookmarkViewModel,
-                    isPresented: $tabViewModel.showAddBookmark,
-                    bookmarkName: tabViewModel.urlHost,
-                    bookmarkURL: tabViewModel.fullURL
-                )
-                .transition(.scale)
-                .zIndex(3)
+            webViewFrame
+            if shouldShowAddBookmark {
+                addBookmarkDialog
             }
         }
         .padding()
     }
 
-    // MARK: SubViews
+    // MARK: - Toolbar
 
-    var AddressBar: some View {
+    var mainToolbar: some View {
+        HStack {
+            navigationButtons
+            Spacer()
+            addressBar
+            Spacer()
+            if let url = URL(string: tabViewModel.fullURL) {
+                shareLink(url)
+            }
+        }
+    }
+
+    var navigationButtons: some View {
+        WindowNavigationButtons(viewModel: tabViewModel)
+    }
+
+    var addressBar: some View {
         AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
             .frame(minWidth: 0, maxWidth: 800)
+    }
+
+    func shareLink(_ url: URL) -> some View {
+        ShareLink(item: url) {
+            Image(systemName: "square.and.arrow.up")
+                .font(.system(size: 17))
+        }
+        .buttonStyle(.borderless)
+    }
+
+    // MARK: - Search Suggestion
+
+    var shouldShowSearchSuggestions: Bool {
+        tabViewModel.showSearchSuggestions
+    }
+
+    var searchSuggestions: some View {
+        SearchSuggestionView(viewModel: searchSuggestionViewModel)
+            .frame(width: 550)
+            .offset(y: 42)
+            .zIndex(2)
+    }
+
+    // MARK: - Web View
+
+    var webViewFrame: some View {
+        webView
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .opacity(tabViewModel.showWebView ? 1 : 0)
+            .offset(y: 60)
+            .zIndex(1)
+    }
+
+    // MARK: - Bookmark
+
+    var shouldShowAddBookmark: Bool {
+        tabViewModel.showAddBookmark
+    }
+
+    var addBookmarkDialog: some View {
+        AddBookmark(
+            tabViewModel: tabViewModel,
+            bookmarkViewModel: bookmarkViewModel,
+            isPresented: $tabViewModel.showAddBookmark,
+            bookmarkName: tabViewModel.urlHost,
+            bookmarkURL: tabViewModel.fullURL
+        )
+        .transition(.scale)
+        .zIndex(3)
     }
 }
