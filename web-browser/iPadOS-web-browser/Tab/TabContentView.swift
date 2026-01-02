@@ -43,7 +43,7 @@ struct TabContentView: View {
 
     var searchBar: some View {
         HStack {
-            WindowNavigationButtons(viewModel: tabViewModel)
+            NavigationBar(viewModel: tabViewModel)
             AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
             menuButton
             if let url = URL(string: tabViewModel.fullURL) {

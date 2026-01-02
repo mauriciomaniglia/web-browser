@@ -27,7 +27,7 @@ struct Window: View {
             }
 
             HStack {
-                WindowNavigationButtons(viewModel: tabViewModel)
+                NavigationBar(viewModel: tabViewModel)
                 Spacer()
                 Button(action: { isShowingTabManager = true }) {
                     Image(systemName: "plus.square")

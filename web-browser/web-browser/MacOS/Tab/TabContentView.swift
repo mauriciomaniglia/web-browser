@@ -39,7 +39,7 @@ struct TabContentView: View {
     }
 
     var navigationButtons: some View {
-        WindowNavigationButtons(viewModel: tabViewModel)
+        NavigationBar(viewModel: tabViewModel)
     }
 
     var addressBar: some View {

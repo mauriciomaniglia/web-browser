@@ -15,7 +15,7 @@
 		F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C52B70F5B500173702 /* Preview Assets.xcassets */; };
 		F92921EB2B70F99400173702 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* Window.swift */; };
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
-		F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F92921F22B70FA0C00173702 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* NavigationBar.swift */; };
 		F92E5C242CD980150019A9AE /* AddBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* AddBookmark.swift */; };
 		F932F2032CE23A6A00B12B45 /* BookmarkViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */; };
 		F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
@@ -48,7 +48,7 @@
 		F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
 		F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
-		F96998BD2EEDF21200C3286D /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F96998BD2EEDF21200C3286D /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* NavigationBar.swift */; };
 		F96998BE2EEDF21200C3286D /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
 		F96998BF2EEDF21200C3286D /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
 		F96998C02EEDF21200C3286D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
@@ -79,7 +79,7 @@
 		F969993D2EEEEAAC00C3286D /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
 		F969993E2EEEEAAC00C3286D /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
 		F969993F2EEEEAAC00C3286D /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
-		F96999402EEEEAAC00C3286D /* WindowNavigationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */; };
+		F96999402EEEEAAC00C3286D /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* NavigationBar.swift */; };
 		F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
 		F96999422EEEEAAC00C3286D /* NavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationList.swift */; };
 		F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
@@ -145,7 +145,7 @@
 		F92921CB2B70F5B500173702 /* web-browserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "web-browserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921EA2B70F99400173702 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
-		F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNavigationButtons.swift; sourceTree = "<group>"; };
+		F92921F12B70FA0C00173702 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		F92E5C1E2CD980150019A9AE /* AddBookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmark.swift; sourceTree = "<group>"; };
 		F932F1FF2CE23A6A00B12B45 /* BookmarkAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapterTests.swift; sourceTree = "<group>"; };
 		F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTests.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 			children = (
 				F92921EF2B70F9F900173702 /* AddressBarView.swift */,
 				F9632D942C186D7800A4F7F9 /* NavigationList.swift */,
-				F92921F12B70FA0C00173702 /* WindowNavigationButtons.swift */,
+				F92921F12B70FA0C00173702 /* NavigationBar.swift */,
 				F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */,
 				F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */,
 			);
@@ -729,7 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */,
-				F92921F22B70FA0C00173702 /* WindowNavigationButtons.swift in Sources */,
+				F92921F22B70FA0C00173702 /* NavigationBar.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmark.swift in Sources */,
 				F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */,
 				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
@@ -800,7 +800,7 @@
 				F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */,
 				F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */,
 				F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */,
-				F96998BD2EEDF21200C3286D /* WindowNavigationButtons.swift in Sources */,
+				F96998BD2EEDF21200C3286D /* NavigationBar.swift in Sources */,
 				F96998BE2EEDF21200C3286D /* SearchSuggestionComposer.swift in Sources */,
 				F96998BF2EEDF21200C3286D /* HistorySwiftDataStore.swift in Sources */,
 				F96998C02EEDF21200C3286D /* TabBarView.swift in Sources */,
@@ -818,7 +818,7 @@
 				F969993D2EEEEAAC00C3286D /* JsonLoader.swift in Sources */,
 				F969993E2EEEEAAC00C3286D /* CustomGestureButton.swift in Sources */,
 				F969993F2EEEEAAC00C3286D /* HistorySwiftDataStore.swift in Sources */,
-				F96999402EEEEAAC00C3286D /* WindowNavigationButtons.swift in Sources */,
+				F96999402EEEEAAC00C3286D /* NavigationBar.swift in Sources */,
 				F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */,
 				F96999422EEEEAAC00C3286D /* NavigationList.swift in Sources */,
 				F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */,
