@@ -4,21 +4,24 @@ struct ToolbarView: View {
     @EnvironmentObject var tabManager: TabManager
     @Binding var isPresented: Bool
 
+    // MARK: - Body
+
     var body: some View {
         HStack {
-            NewTabButton
+            newTabButton
             Spacer()
-            DoneButton
+            closeButton
         }
         .frame(height: 50)
         .padding(.bottom, 20)
         .background(
-            VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-                .ignoresSafeArea()
+            blurBackground
         )
     }
 
-    private var NewTabButton: some View {
+    // MARK: - Buttons
+
+    var newTabButton: some View {
         Button {
             _ = tabManager.createNewTab()
         } label: {
@@ -31,13 +34,20 @@ struct ToolbarView: View {
         .padding(.leading, 15)
     }
 
-    private var DoneButton: some View {
+    var closeButton: some View {
         Button("Done") {
             isPresented = false
         }
         .font(.headline)
         .fontWeight(.semibold)
         .padding(.trailing, 15)
+    }
+
+    // MARK: - Visual Effects
+
+    var blurBackground: some View {
+        VisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
+            .ignoresSafeArea()
     }
 }
 
