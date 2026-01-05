@@ -14,7 +14,7 @@ struct TabManagerScreen: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30) {
                     ForEach(tabManager.tabs.indices, id: \.self) { index in
-                        TabCardView(tab: tabManager.tabs[index])
+                        TabCardView(isPresented: $isPresented, tab: tabManager.tabs[index], index: index)
                             .environmentObject(tabManager)
                     }
                 }

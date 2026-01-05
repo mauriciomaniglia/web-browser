@@ -2,7 +2,10 @@ import SwiftUI
 
 struct TabCardView: View {
     @EnvironmentObject var tabManager: TabManager
+    @Binding var isPresented: Bool
+
     var tab: TabComposer
+    var index: Int
 
     struct Constants {
         static let screenWidth = UIScreen.main.bounds.width
@@ -13,17 +16,23 @@ struct TabCardView: View {
     let cardWidth = (Constants.screenWidth - 3 * Constants.spacing) / Constants.columns
 
     var body: some View {
-        VStack {
-            CloseButton
-            ScreenshotPlaceholder
-            Spacer()
-            CardTitle
+        Button {
+            tabManager.didSelectTab(at: index)
+            isPresented = false
+        } label: {
+            VStack {
+                CloseButton
+                ScreenshotPlaceholder
+                Spacer()
+                CardTitle
 
+            }
+            .frame(width: cardWidth)
+            .background(Color(.systemBackground))
+            .cornerRadius(20)
+            .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 5)
         }
-        .frame(width: cardWidth)
-        .background(Color(.systemBackground))
-        .cornerRadius(20)
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 5)
+
     }
 
     private var CloseButton: some View {

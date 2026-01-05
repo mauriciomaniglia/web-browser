@@ -41,15 +41,13 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> Window {
-        let tab = tabManager.createNewTab()
+       _ = tabManager.createNewTab()
 
-        return Window(
-            tabViewModel: tab.tabViewModel,
+        return Window(            
             historyViewModel: historyComposer.viewModel,
             bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
             tabManager: tabManager,
-            webView: WebView(content: tab.webKitWrapper.webView),
         )
     }
 }

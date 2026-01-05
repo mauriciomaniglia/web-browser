@@ -4,7 +4,7 @@ import Services
 
 final class TabManager: ObservableObject {
     @Published var tabs: [TabComposer] = []
-    var selectedTab: TabComposer?
+    @Published var selectedTab: TabComposer?
     var selectedTabIndex: Int = 0
 
     let safelistStore: SafelistStoreAPI

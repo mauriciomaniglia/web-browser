@@ -4,6 +4,7 @@ import Services
 final class TabComposer {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
+    let id = UUID()
 
     init(webKitWrapper: WebKitEngineWrapper,
          bookmarkViewModel: BookmarkViewModel,
