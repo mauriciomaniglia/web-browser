@@ -2,7 +2,7 @@ import WebKit
 import Services
 
 public final class WebKitEngineWrapper: NSObject, WebEngineContract {
-    public var delegate: WebEngineDelegate?
+    public weak var delegate: WebEngineDelegate?
     public let webView: WKWebView
     let ruleStore: WKContentRuleListStore
 
