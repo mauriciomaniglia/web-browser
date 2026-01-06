@@ -21,10 +21,10 @@ struct TabCardView: View {
             isPresented = false
         } label: {
             VStack {
-                CloseButton
-                ScreenshotPlaceholder
+                closeButton
+                screenshotPlaceholder
                 Spacer()
-                CardTitle
+                cardTitle
 
             }
             .frame(width: cardWidth)
@@ -35,7 +35,7 @@ struct TabCardView: View {
 
     }
 
-    private var CloseButton: some View {
+    var closeButton: some View {
         HStack {
             Spacer()
             Button {
@@ -50,7 +50,7 @@ struct TabCardView: View {
         .background(Color(.systemBackground))
     }
 
-    private var ScreenshotPlaceholder: some View {
+    var screenshotPlaceholder: some View {
         RoundedRectangle(cornerRadius: 15)
             .fill(Color.mint)
             .aspectRatio(1, contentMode: .fit)
@@ -62,7 +62,7 @@ struct TabCardView: View {
             )
     }
 
-    private var CardTitle: some View {
+    var cardTitle: some View {
         Text(tab.tabViewModel.title)
             .font(.subheadline)
             .lineLimit(1)
