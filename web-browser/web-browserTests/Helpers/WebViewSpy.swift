@@ -2,6 +2,7 @@ import Foundation
 import Services
 
 class WebViewSpy: WebEngineContract {
+
     enum Message: Equatable {
         case getCurrentPage
         case registerRule(_ name: String, _ content: String, _ safelist: [String] = [])
@@ -15,6 +16,7 @@ class WebViewSpy: WebEngineContract {
         case retrieveForwardList
         case navigateToBackListPage
         case navigateToForwardListPage
+        case takeSnapshot
     }
 
     var receivedMessages = [Message]()
@@ -68,5 +70,9 @@ class WebViewSpy: WebEngineContract {
 
     func navigateToForwardListPage(at index: Int) {
         receivedMessages.append(.navigateToForwardListPage)
+    }
+
+    func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void) {
+        receivedMessages.append(.takeSnapshot)
     }
 }

@@ -1,10 +1,11 @@
 import SwiftUI
 import Services
 
-final class TabComposer {
+final class TabComposer: ObservableObject, Identifiable {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
     let id = UUID()
+    @Published var snapshot: UIImage?
 
     init(webKitWrapper: WebKitEngineWrapper,
          bookmarkViewModel: BookmarkViewModel,

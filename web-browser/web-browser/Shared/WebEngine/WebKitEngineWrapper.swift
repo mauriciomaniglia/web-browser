@@ -110,6 +110,13 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         }
     }
 
+    public func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void) {
+        let config = WKSnapshotConfiguration()
+        webView.takeSnapshot(with: config) { image, error in
+            completionHandler(image as? T)
+        }
+    }
+
     // MARK: Private methods
 
     private func applyRule(name: String) {

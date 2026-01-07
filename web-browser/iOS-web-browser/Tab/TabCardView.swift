@@ -3,8 +3,8 @@ import SwiftUI
 struct TabCardView: View {
     @EnvironmentObject var tabManager: TabManager
     @Binding var isPresented: Bool
+    @ObservedObject var tab: TabComposer
 
-    var tab: TabComposer
     var index: Int
 
     struct Constants {
@@ -51,17 +51,23 @@ struct TabCardView: View {
     }
 
     var screenshotPlaceholder: some View {
-        RoundedRectangle(cornerRadius: 15)
-            .fill(Color.mint)
-            .aspectRatio(1, contentMode: .fit)
-            .padding(.horizontal, 10)
-            .overlay(
-                Text("Placeholder")
-                    .foregroundColor(.white)
-                    .font(.headline)
-            )
+        Group {
+            if let image = tab.snapshot {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: cardWidth - 20, height: cardWidth - 20)
+                    .clipped()
+            } else {
+                RoundedRectangle(cornerRadius: 15)
+                    .overlay(Text("Loading...").foregroundColor(.white))
+            }
+        }
+        .frame(height: cardWidth - 20)
+        .cornerRadius(15)
+        .padding(.horizontal, 10)
     }
-
+    
     var cardTitle: some View {
         Text(tab.tabViewModel.title)
             .font(.subheadline)

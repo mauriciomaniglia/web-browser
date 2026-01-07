@@ -80,7 +80,12 @@ struct WindowContent: View {
     }
 
     var addNewTabButton: some View {
-        Button(action: { isShowingTabManager = true }) {
+        Button(action: {
+            isShowingTabManager = true
+            tabManager.captureSnapshots {
+                isShowingTabManager = true
+            }
+        }) {
             Image(systemName: "plus.square")
         }
     }

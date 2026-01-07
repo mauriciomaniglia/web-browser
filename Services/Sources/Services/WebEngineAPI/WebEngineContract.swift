@@ -13,4 +13,5 @@ public protocol WebEngineContract {
     func retrieveForwardList() -> [WebPage]
     func navigateToBackListPage(at index: Int)
     func navigateToForwardListPage(at index: Int)
+    func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void)
 }
