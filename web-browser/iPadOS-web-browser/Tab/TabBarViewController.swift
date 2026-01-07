@@ -96,6 +96,16 @@ class TabBarViewController: UIViewController {
 
     func closeTab(at index: Int) {
         guard hostingControllers.indices.contains(index) else { return }
+
+        let controllerToRemove = hostingControllers[index]
+
+        if controllerToRemove == currentController {
+            controllerToRemove.willMove(toParent: nil)
+            controllerToRemove.view.removeFromSuperview()
+            controllerToRemove.removeFromParent()
+            currentController = nil
+        }
+
         hostingControllers.remove(at: index)
         tabManager.closeTab(at: index)
 
@@ -112,7 +122,11 @@ class TabBarViewController: UIViewController {
     }
 
     private func showController(_ controller: UIHostingController<TabContentView>) {
-        currentController?.view.removeFromSuperview()
+        if let oldController = currentController {
+            oldController.willMove(toParent: nil)
+            oldController.view.removeFromSuperview()
+            oldController.removeFromParent()
+        }
         currentController = controller
         addChild(controller)
         view.addSubview(controller.view)
