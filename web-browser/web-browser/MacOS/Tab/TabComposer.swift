@@ -34,9 +34,9 @@ final class TabComposer {
         tabViewModel.didStartSearch = mediator.didRequestSearch
         tabViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
         tabViewModel.didChangeFocus = presenter.didChangeFocus
-        tabViewModel.didStartTyping = { oldText, newText in
+        tabViewModel.didStartTyping = { [weak presenter] oldText, newText in
             searchSuggestionViewModel.delegate?.didStartTyping(newText)
-            presenter.didStartTyping(oldText: oldText, newText: newText)
+            presenter?.didStartTyping(oldText: oldText, newText: newText)
         }
         tabViewModel.didLongPressBackButton = mediator.didLongPressBackButton
         tabViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
@@ -44,7 +44,7 @@ final class TabComposer {
         tabViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
         tabViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
 
-        self.view = TabContentView(
+        view = TabContentView(
             tabViewModel: tabViewModel,
             searchSuggestionViewModel: searchSuggestionViewModel,
             bookmarkViewModel: bookmarkViewModel,
