@@ -15,6 +15,7 @@ class WebViewSpy: WebEngineContract {
         case retrieveForwardList
         case navigateToBackListPage
         case navigateToForwardListPage
+        case takeSnapshot
     }
 
     var receivedMessages = [Message]()
@@ -68,5 +69,9 @@ class WebViewSpy: WebEngineContract {
 
     func navigateToForwardListPage(at index: Int) {
         receivedMessages.append(.navigateToForwardListPage)
+    }
+
+    func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void) {
+        receivedMessages.append(.takeSnapshot)
     }
 }
