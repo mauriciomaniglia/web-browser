@@ -41,8 +41,8 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> Window {
-        let tabBarController = TabBarViewControllerWrapper(tabManager: tabManager)
+        tabManager.createNewTab()
 
-        return Window(tabBarController: tabBarController)
+        return Window(tabBar: TabBarView(tabManager: tabManager))
     }
 }

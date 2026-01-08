@@ -41,12 +41,14 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> Window {
+        tabManager.createNewTab()
+
         let menu = Menu(
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel
         )
-        let tabBarController = TabBarViewControllerWrapper(tabManager: tabManager)
+        let tabBar = TabBarView(tabManager: tabManager)
 
-        return Window(menu: menu, tabBarController: tabBarController)
+        return Window(menu: menu, tabBar: tabBar)
     }
 }

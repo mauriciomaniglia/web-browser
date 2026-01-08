@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct Window: View {
-    let tabBarController: TabBarViewControllerWrapper
+    let tabBar: TabBarView
 
     var body: some View {
-        tabBarController
+        tabBar
     }
 }

@@ -39,7 +39,7 @@ struct TabCardView: View {
         HStack {
             Spacer()
             Button {
-                tabManager.closeTab(tab)
+                tabManager.closeTab(at: index)
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .font(.title3)

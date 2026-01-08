@@ -23,7 +23,7 @@ struct ToolbarView: View {
 
     var newTabButton: some View {
         Button {
-            _ = tabManager.createNewTab()
+            tabManager.createNewTab()
         } label: {
             HStack {
                 Image(systemName: "plus")

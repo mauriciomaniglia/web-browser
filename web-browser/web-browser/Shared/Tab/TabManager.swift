@@ -34,7 +34,7 @@ final class TabManager: ObservableObject {
         searchSuggestionComposer.userActionDelegate = self
     }
 
-    func createNewTab() -> TabComposer {
+    func createNewTab() {
         let webKitWrapper = WebKitEngineWrapper()
 
         let composer = TabComposer(
@@ -49,8 +49,6 @@ final class TabManager: ObservableObject {
         tabs.append(composer)
         selectedTab = composer
         selectedTabIndex = tabs.count + 1
-
-        return composer
     }
 
     func didSelectTab(at index: Int) {
@@ -60,10 +58,7 @@ final class TabManager: ObservableObject {
 
     func closeTab(at index: Int) {
         tabs.remove(at: index)
-    }
-
-    func closeTab(_ tab: TabComposer) {
-        tabs.removeAll(where: { $0.tabViewModel.fullURL == tab.tabViewModel.fullURL })
+        selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
     }
 }
 

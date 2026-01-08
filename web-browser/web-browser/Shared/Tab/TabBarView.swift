@@ -1,80 +1,85 @@
 import SwiftUI
 
 struct TabBarView: View {
-    let tabManager: TabManager
-
-    @Binding var currentIndex: Int
-
-    var onAdd: () -> Void
-    var onClose: (Int) -> Void
-    var onSelect: (Int) -> Void
+    @ObservedObject var tabManager: TabManager
 
     var body: some View {
-        HStack(spacing: 8) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
-                    ForEach(tabManager.tabs.indices, id: \.self) { index in
-                        TabView(
-                            viewModel: tabManager.tabs[index].tabViewModel,
-                            currentIndex: $currentIndex,
-                            tabManager: tabManager,
-                            index: index,
-                            onClose: onClose,
-                            onSelect: onSelect)
+        VStack(spacing: 0) {
+            HStack {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(tabManager.tabs.indices, id: \.self) { index in
+                            TabButton(
+                                viewModel: tabManager.tabs[index].tabViewModel,
+                                isSelected: tabManager.tabs[index].id == tabManager.selectedTab!.id,
+                                onSelect: { tabManager.didSelectTab(at: index) },
+                                onClose: { tabManager.closeTab(at: index) }
+                            )
+                        }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal, 8)
+                Button(action: tabManager.createNewTab) {
+                    Image(systemName: "plus")
+                        .padding(8)
+                        .background(Color.clear)
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                }
+                .padding(.trailing)
             }
+            .padding(.vertical, 8)
+            .background(Color.mint)
+            .shadow(radius: 1)
 
-            Button(action: onAdd) {
-                Image(systemName: "plus")
-                    .font(.system(size: 16, weight: .bold))
-                    .frame(width: 32, height: 32)
-                    .background(Color.clear)
-                    .clipShape(Circle())
+            if let selectedTab = tabManager.selectedTab {
+                VStack {
+                    Spacer()
+                    selectedTab.view
+                        .id(selectedTab.id)
+                }
+            } else {
+                Spacer()
+                ContentUnavailableView("No Tabs Open", systemImage: "plus.square.on.square")
+                Spacer()
             }
         }
-        .padding(.vertical, 4)
-        .background(Color.purple)
     }
 }
 
-struct TabView: View {
+struct TabButton: View {
     @ObservedObject var viewModel: TabViewModel
-    @Binding var currentIndex: Int
 
-    let tabManager: TabManager
-    let index: Int
-    var onClose: (Int) -> Void
-    var onSelect: (Int) -> Void
+    let isSelected: Bool
+    let onSelect: () -> Void
+    let onClose: () -> Void
 
     var body: some View {
-        HStack(spacing: 4) {
+        HStack(spacing: 8) {
             Text(viewModel.title)
-                .font(.system(size: 14))
+                .font(.subheadline)
                 .lineLimit(1)
-            Button(action: { onClose(index) }) {
+            Spacer()
+            Button(action: onClose) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.system(size: 10, weight: .bold))
             }
             .buttonStyle(.plain)
+            .padding(4)
+            .background(Color.black.opacity(0.1))
+            .clipShape(Circle())
         }
         .frame(width: 150)
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.1))
+        .cornerRadius(8)
+        .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .fill(index == currentIndex ? Color.gray.opacity(0.8) : Color.clear)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray.opacity(0.4))
-                )
+                .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 1)
         )
-        .contentShape(Rectangle())
         .onTapGesture {
-            currentIndex = index
-            onSelect(index)
-            tabManager.didSelectTab(at: index)
+            onSelect()
         }
     }
 }

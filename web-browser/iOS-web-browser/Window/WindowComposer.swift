@@ -41,9 +41,9 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> Window {
-       _ = tabManager.createNewTab()
+        tabManager.createNewTab()
 
-        return Window(            
+        return Window(
             historyViewModel: historyComposer.viewModel,
             bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,

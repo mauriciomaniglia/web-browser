@@ -89,7 +89,6 @@
 		F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
 		F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
 		F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
-		F969994A2EEEEAAC00C3286D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
 		F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
 		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
@@ -111,7 +110,6 @@
 		F987B3CF2CFDDC7800474A1E /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
 		F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
 		F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
-		F9C070402EC751F3001C7E04 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C0703F2EC751F3001C7E04 /* TabBarViewController.swift */; };
 		F9C070422ECA6C4A001C7E04 /* TabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C070412ECA6C4A001C7E04 /* TabContentView.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
 		F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */; };
@@ -120,7 +118,6 @@
 		F9E5D1142EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
 		F9E5D1152EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
 		F9E5D1162EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
-		F9E6EA5A2EA905590026A8BD /* TabBarViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,14 +183,12 @@
 		F987B3C52CFDDC7800474A1E /* SocialRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SocialRules.json; sourceTree = "<group>"; };
 		F987B3D02CFDDD4800474A1E /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
 		F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewModel.swift; sourceTree = "<group>"; };
-		F9C0703F2EC751F3001C7E04 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F9C070412ECA6C4A001C7E04 /* TabContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentView.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapper.swift; sourceTree = "<group>"; };
 		F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabComposer.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9E5D1132EF5C7D9009BA82C /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
-		F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -468,9 +463,7 @@
 		F9CA92E02ED0EC0A0092842D /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				F9C0703F2EC751F3001C7E04 /* TabBarViewController.swift */,
 				F9C070412ECA6C4A001C7E04 /* TabContentView.swift */,
-				F9E6EA592EA905590026A8BD /* TabBarViewControllerWrapper.swift */,
 				F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */,
 			);
 			path = Tab;
@@ -743,7 +736,6 @@
 				F9CDFD792B711A7C0024E0AD /* WebViewWrapper.swift in Sources */,
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,
 				F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */,
-				F9E6EA5A2EA905590026A8BD /* TabBarViewControllerWrapper.swift in Sources */,
 				F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */,
 				F932F20E2CE23A7800B12B45 /* BookmarkViewModel.swift in Sources */,
 				F932F20F2CE23A7800B12B45 /* Bookmark.swift in Sources */,
@@ -759,7 +751,6 @@
 				F92921EB2B70F99400173702 /* Window.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* TabViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
-				F9C070402EC751F3001C7E04 /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,7 +820,6 @@
 				F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */,
 				F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */,
 				F9E5D1142EF5C7D9009BA82C /* TabManager.swift in Sources */,
-				F969994A2EEEEAAC00C3286D /* TabBarView.swift in Sources */,
 				F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
