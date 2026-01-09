@@ -22,7 +22,6 @@ struct NavigationList: View {
                     Divider()
                 }
             }
-            .presentationCompactAdaptation((.popover))
         }
         .padding()
     }

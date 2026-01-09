@@ -19,8 +19,9 @@ struct NavigationBar: View {
                             action: { viewModel.didTapBackButton?() },
                             longPressAction: { viewModel.didLongPressBackButton?() },
                             isDisabled: viewModel.isBackButtonDisabled)
-        .popover(isPresented: $viewModel.showBackList, arrowEdge: .bottom, content: {
+        .popover(isPresented: $viewModel.showBackList, content: {
             NavigationList(didSelectPage: viewModel.didSelectBackListPage, pageList: viewModel.backList)
+                .presentationCompactAdaptation(.popover)
         })
         .onChange(of: viewModel.showBackList) { _, isPresented in
             if !isPresented {
@@ -34,8 +35,9 @@ struct NavigationBar: View {
                             action: { viewModel.didTapForwardButton?() },
                             longPressAction: { viewModel.didLongPressForwardButton?() },
                             isDisabled: viewModel.isForwardButtonDisabled)
-        .popover(isPresented: $viewModel.showForwardList, arrowEdge: .bottom, content: {
+        .popover(isPresented: $viewModel.showForwardList, content: {
             NavigationList(didSelectPage: viewModel.didSelectForwardListPage, pageList: viewModel.forwardList)
+                .presentationCompactAdaptation(.popover)
         })
         .onChange(of: viewModel.showForwardList) { _, isPresented in
             if !isPresented {
