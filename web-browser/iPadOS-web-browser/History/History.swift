@@ -2,19 +2,49 @@ import SwiftUI
 
 struct History: View {
     @ObservedObject var viewModel: HistoryViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Binding var isShowingHistory: Bool
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
 
     // MARK: Body
 
     var body: some View {
-        searchBar
+        VStack {
+            header
+            searchBar
+            if isHistoryEmpty {
+                emptyList
+            } else {
+                historyList
+            }
+        }
+        .padding()
+        .frame(maxWidth: 500, maxHeight: 500)
+        .background(Color(UIColor.systemGroupedBackground))
+    }
 
-        if isHistoryEmpty {
-            emptyList
-        } else {
-            historyList
+    // MARK: - Header
+
+    var header: some View {
+        HStack {
+            Spacer()
+            title
+            Spacer()
+            closeButton
+        }
+    }
+
+    var title: some View {
+        Text("History")
+            .font(.title2)
+            .bold()
+    }
+
+    var closeButton: some View {
+        Button(action: {
+            isShowingHistory.toggle()
+        }) {
+            Text("Done")
         }
     }
 
@@ -27,7 +57,7 @@ struct History: View {
         }
         .padding()
         .navigationTitle("History")
-        .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
+        .onAppear(perform: viewModel.delegate?.didOpenHistoryView)        
         .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
             clearAllHistoryAlert
         }
@@ -77,7 +107,7 @@ struct History: View {
                         Text("\(page.title)")
                             .onTapGesture {
                                 viewModel.delegate?.didSelectPage(page.url)
-                                dismiss()
+                                isShowingHistory.toggle()
                             }
                     }
                     .onDelete { offsets in

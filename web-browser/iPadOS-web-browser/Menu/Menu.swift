@@ -1,42 +1,22 @@
 import SwiftUI
 
 struct Menu: View {
-
-    enum Menu: Hashable {
-        case bookmarks
-        case history
-    }
-
     @ObservedObject var tabViewModel: TabViewModel
-    @ObservedObject var bookmarkViewModel: BookmarkViewModel
-    @ObservedObject var historyViewModel: HistoryViewModel
 
     @Binding var isShowingMenu: Bool
+    @Binding var isShowingBookmarks: Bool
+    @Binding var isShowingHistory: Bool
 
     // MARK: - Body
 
     var body: some View {
         VStack {
-            NavigationStack {
-                List {
-                    if tabViewModel.showWebView {
-                        addBookmarkButton
-                    }
-                    NavigationLink(value: Menu.bookmarks) {
-                        Label("Bookmarks", systemImage: "book")
-                    }
-                    NavigationLink(value: Menu.history) {
-                        Label("History", systemImage: "clock.arrow.circlepath")
-                    }
+            List {
+                if tabViewModel.showWebView {
+                    addBookmarkButton
                 }
-                .navigationDestination(for: Menu.self) { screen in
-                    switch screen {
-                    case .bookmarks:
-                        Bookmark(viewModel: bookmarkViewModel)
-                    case .history:
-                        History(viewModel: historyViewModel)
-                    }
-                }
+                bookmarksButton
+                historyButton
             }
         }
         .frame(width: 500, height: 500)
@@ -46,10 +26,28 @@ struct Menu: View {
 
     var addBookmarkButton: some View {
         Button(action: {
-            tabViewModel.showAddBookmark = true
             isShowingMenu.toggle()
+            tabViewModel.didTapAddBookmark()
         }) {
             Label("Add Bookmark", systemImage: "bookmark")
+        }
+    }
+
+    var bookmarksButton: some View {
+        Button(action: {
+            isShowingMenu.toggle()
+            isShowingBookmarks.toggle()
+        }) {
+            Label("Bookmarks", systemImage: "book")
+        }
+    }
+
+    var historyButton: some View {
+        Button(action: {
+            isShowingMenu.toggle()
+            isShowingHistory.toggle()
+        }) {
+            Label("History", systemImage: "clock.arrow.circlepath")
         }
     }
 }

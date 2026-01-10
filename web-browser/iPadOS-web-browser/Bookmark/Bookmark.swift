@@ -2,9 +2,7 @@ import SwiftUI
 
 struct Bookmark: View {
     @ObservedObject var viewModel: BookmarkViewModel
-
-    @Environment(\.dismiss) private var dismiss
-
+    @Binding var isShowingBookmarks: Bool
     @State private var searchText: String = ""
     @State private var isShowingDeleteBookmarkAlert = false
 
@@ -12,14 +10,43 @@ struct Bookmark: View {
 
     var body: some View {
         VStack {
+            header
             if isBookmarkEmpty {
                 emptyList
             } else {
                 bookmarkList
             }
         }
-        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")       
+        .padding()
+        .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
         .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
+        .frame(maxWidth: 500, maxHeight: 500)
+        .background(Color(UIColor.systemGroupedBackground))
+    }
+
+    // MARK: - Header
+
+    var header: some View {
+        HStack {
+            Spacer()
+            title
+            Spacer()
+            closeButton
+        }
+    }
+
+    var title: some View {
+        Text("Bookmarks")
+            .font(.title2)
+            .bold()
+    }
+
+    var closeButton: some View {
+        Button(action: {
+            isShowingBookmarks.toggle()
+        }) {
+            Text("Done")
+        }
     }
 
     // MARK: - List
@@ -35,7 +62,7 @@ struct Bookmark: View {
                     Text(bookmark.title)
                         .onTapGesture {
                             viewModel.delegate?.didSelectPage(bookmark.url)
-                            dismiss()
+                            isShowingBookmarks.toggle()
                         }
                     Spacer()
                     Button {

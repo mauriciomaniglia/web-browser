@@ -7,6 +7,8 @@ struct TabContentView: View {
     @ObservedObject var historyViewModel: HistoryViewModel
 
     @State var isShowingMenu: Bool = false
+    @State var isShowingBookmarks: Bool = false
+    @State var isShowingHistory: Bool = false
 
     let webView: WebView
 
@@ -22,7 +24,13 @@ struct TabContentView: View {
             webViewFrame
         }
         .overlay(alignment: .center) {
-            addBookmarkAlert
+            if tabViewModel.showAddBookmark {
+                addBookmarkAlert
+            } else if isShowingBookmarks {
+                bookmarkAlert
+            } else if isShowingHistory {
+                historyAlert
+            }
         }
     }
 
@@ -62,9 +70,9 @@ struct TabContentView: View {
         .buttonStyle(PlainButtonStyle())
         .popover(isPresented: $isShowingMenu, content: {
             Menu(tabViewModel: tabViewModel,
-                 bookmarkViewModel: bookmarkViewModel,
-                 historyViewModel: historyViewModel,
-                 isShowingMenu: $isShowingMenu)
+                 isShowingMenu: $isShowingMenu,
+                 isShowingBookmarks: $isShowingBookmarks,
+                 isShowingHistory: $isShowingHistory)
         })
     }
 
@@ -82,16 +90,30 @@ struct TabContentView: View {
 
     var addBookmarkAlert: some View {
         Group {
-            if tabViewModel.showAddBookmark {
-                AddBookmark(
-                    tabViewModel: tabViewModel,
-                    bookmarkViewModel: bookmarkViewModel,
-                    bookmarkName: tabViewModel.title,
-                    bookmarkURL: tabViewModel.fullURL
-                )
-            }
+            AddBookmark(
+                tabViewModel: tabViewModel,
+                bookmarkViewModel: bookmarkViewModel,
+                bookmarkName: tabViewModel.title,
+                bookmarkURL: tabViewModel.fullURL
+            )
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(tabViewModel.showAddBookmark ? Color.black.opacity(0.3) : Color.clear)
+        .background(Color.black.opacity(0.3))
+    }
+
+    var bookmarkAlert: some View {
+        Group {
+            Bookmark(viewModel: bookmarkViewModel, isShowingBookmarks: $isShowingBookmarks)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.3))
+    }
+
+    var historyAlert: some View {
+        Group {
+            History(viewModel: historyViewModel, isShowingHistory: $isShowingHistory)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.3))
     }
 }
