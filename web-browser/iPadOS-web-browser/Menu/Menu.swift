@@ -11,6 +11,8 @@ struct Menu: View {
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
 
+    @Binding var isShowingMenu: Bool
+
     // MARK: - Body
 
     var body: some View {
@@ -43,7 +45,10 @@ struct Menu: View {
     // MARK: - Buttons
 
     var addBookmarkButton: some View {
-        Button(action: { tabViewModel.showAddBookmark = true }) {
+        Button(action: {
+            tabViewModel.showAddBookmark = true
+            isShowingMenu.toggle()
+        }) {
             Label("Add Bookmark", systemImage: "bookmark")
         }
     }

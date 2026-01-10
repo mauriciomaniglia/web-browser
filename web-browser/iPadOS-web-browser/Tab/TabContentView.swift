@@ -63,7 +63,8 @@ struct TabContentView: View {
         .popover(isPresented: $isShowingMenu, content: {
             Menu(tabViewModel: tabViewModel,
                  bookmarkViewModel: bookmarkViewModel,
-                 historyViewModel: historyViewModel)
+                 historyViewModel: historyViewModel,
+                 isShowingMenu: $isShowingMenu)
         })
     }
 
