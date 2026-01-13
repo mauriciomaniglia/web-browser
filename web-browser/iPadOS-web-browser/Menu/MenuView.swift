@@ -1,13 +1,11 @@
 import SwiftUI
 
-struct Menu: View {
+struct MenuView: View {
     @ObservedObject var tabViewModel: TabViewModel
 
     @Binding var isShowingMenu: Bool
     @Binding var isShowingBookmarks: Bool
     @Binding var isShowingHistory: Bool
-
-    // MARK: - Body
 
     var body: some View {
         VStack {
@@ -21,8 +19,6 @@ struct Menu: View {
         }
         .frame(width: 500, height: 500)
     }
-
-    // MARK: - Buttons
 
     var addBookmarkButton: some View {
         Button(action: {

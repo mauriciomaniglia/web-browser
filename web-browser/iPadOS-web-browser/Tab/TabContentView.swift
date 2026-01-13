@@ -63,7 +63,7 @@ struct TabContentView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .popover(isPresented: $isShowingMenu, content: {
-            Menu(tabViewModel: tabViewModel,
+            MenuView(tabViewModel: tabViewModel,
                  isShowingMenu: $isShowingMenu,
                  isShowingBookmarks: $isShowingBookmarks,
                  isShowingHistory: $isShowingHistory)
