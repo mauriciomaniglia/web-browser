@@ -1,12 +1,10 @@
 import SwiftUI
 
-struct Bookmark: View {
+struct BookmarkView: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Binding var isShowingBookmarks: Bool
     @State private var searchText: String = ""
     @State private var isShowingDeleteBookmarkAlert = false
-
-    // MARK: - Body
 
     var body: some View {
         VStack {
@@ -23,8 +21,6 @@ struct Bookmark: View {
         .frame(maxWidth: 500, maxHeight: 500)
         .background(Color(UIColor.systemGroupedBackground))
     }
-
-    // MARK: - Header
 
     var header: some View {
         HStack {
@@ -48,8 +44,6 @@ struct Bookmark: View {
             Text("Done")
         }
     }
-
-    // MARK: - List
 
     var isBookmarkEmpty: Bool {
         viewModel.bookmarkList.isEmpty
@@ -86,8 +80,6 @@ struct Bookmark: View {
             Spacer()
         }
     }
-
-    // MARK: - Alerts
 
     var alertView: Alert {
         Alert(

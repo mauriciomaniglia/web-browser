@@ -1,13 +1,11 @@
 import SwiftUI
 
-struct AddBookmark: View {
+struct AddBookmarkView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
 
     @State var bookmarkName: String
     @State var bookmarkURL: String
-
-    // MARK: - Body
 
     var body: some View {
         VStack(spacing: 20) {
@@ -19,8 +17,6 @@ struct AddBookmark: View {
         .frame(maxWidth: 400, maxHeight: 400)
         .background(Color(UIColor.systemBackground))
     }
-
-    // MARK: - Header
 
     var header: some View {
         HStack {
@@ -55,8 +51,6 @@ struct AddBookmark: View {
             Text("Save")
         }
     }
-
-    // MARK: - Form
 
     var form: some View {
         HStack {

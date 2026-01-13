@@ -80,7 +80,7 @@ struct TabContentView: View {
 
     var addBookmarkAlert: some View {
         Group {
-            AddBookmark(
+            AddBookmarkView(
                 tabViewModel: tabViewModel,
                 bookmarkViewModel: bookmarkViewModel,
                 bookmarkName: tabViewModel.title,
@@ -93,7 +93,7 @@ struct TabContentView: View {
 
     var bookmarkAlert: some View {
         Group {
-            Bookmark(viewModel: bookmarkViewModel, isShowingBookmarks: $isShowingBookmarks)
+            BookmarkView(viewModel: bookmarkViewModel, isShowingBookmarks: $isShowingBookmarks)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black.opacity(0.3))
