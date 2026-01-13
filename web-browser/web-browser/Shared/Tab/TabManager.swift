@@ -5,7 +5,6 @@ import Services
 final class TabManager: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?
-    var selectedTabIndex: Int = 0
 
     let safelistStore: SafelistStoreAPI
     let historyStore: HistoryStoreAPI
@@ -48,12 +47,10 @@ final class TabManager: ObservableObject {
 
         tabs.append(composer)
         selectedTab = composer
-        selectedTabIndex = tabs.count + 1
     }
 
     func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
-        selectedTabIndex = index
     }
 
     func closeTab(at index: Int) {
