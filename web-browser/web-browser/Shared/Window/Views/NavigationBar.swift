@@ -3,16 +3,12 @@ import SwiftUI
 struct NavigationBar: View {
     @ObservedObject var viewModel: TabViewModel
 
-    // MARK: - Body
-
     var body: some View {
         HStack(spacing: 20) {
             backButton
             forwardButton
         }
     }
-
-    // MARK: - Buttons
 
     var backButton: some View {
         CustomGestureButton(imageName: "arrow.left",
