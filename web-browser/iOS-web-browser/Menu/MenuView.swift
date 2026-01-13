@@ -15,7 +15,7 @@ struct MenuView: View {
                 NavigationLink(destination: Bookmark(viewModel: bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
-                NavigationLink(destination: History(viewModel: historyViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: HistoryView(viewModel: historyViewModel, isPresented: $isPresented)) {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
                 if let url = URL(string: tabViewModel.fullURL) {

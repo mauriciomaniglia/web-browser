@@ -1,12 +1,10 @@
 import SwiftUI
 
-struct History: View {
+struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Binding var isPresented: Bool
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
-
-    // MARK: Body
 
     var body: some View {
         VStack {
@@ -32,8 +30,6 @@ struct History: View {
         }
     }
 
-    // MARK: - Search Bar
-
     var searchBar: some View {
         HStack {
             TextField("Search History", text: $searchText)
@@ -44,8 +40,6 @@ struct History: View {
                 .padding()
         }
     }
-
-    // MARK: - List
 
     var isHistoryEmpty: Bool {
         viewModel.historyList.isEmpty
@@ -82,8 +76,6 @@ struct History: View {
             Spacer()
         }
     }
-
-    // MARK: Clear Button
 
     var clearAllButton: some View {
         Button {
