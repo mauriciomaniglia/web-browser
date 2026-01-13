@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Bookmark: View {
+struct BookmarkView: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Binding var isPresented: Bool
 

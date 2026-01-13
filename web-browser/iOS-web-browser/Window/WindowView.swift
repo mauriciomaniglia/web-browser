@@ -126,12 +126,12 @@ struct WindowContent: View {
     }
 
     var addBookmarkAlert: some View {
-        AddBookmark(
+        AddBookmarkView(
             tabViewModel: tabViewModel,
             bookmarkViewModel: bookmarkViewModel,
             bookmarkName: tabViewModel.title,
             bookmarkURL: tabViewModel.fullURL
-        )
+        )        
     }
 }
 

@@ -12,7 +12,7 @@ struct MenuView: View {
                 if tabViewModel.showWebView {
                     AddBookmarkButton
                 }
-                NavigationLink(destination: Bookmark(viewModel: bookmarkViewModel, isPresented: $isPresented)) {
+                NavigationLink(destination: BookmarkView(viewModel: bookmarkViewModel, isPresented: $isPresented)) {
                     Label("Bookmarks", systemImage: "book")
                 }
                 NavigationLink(destination: HistoryView(viewModel: historyViewModel, isPresented: $isPresented)) {

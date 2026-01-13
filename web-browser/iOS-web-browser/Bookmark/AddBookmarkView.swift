@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AddBookmark: View {
+struct AddBookmarkView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
 
@@ -8,8 +8,6 @@ struct AddBookmark: View {
     @State var bookmarkURL: String
 
     @FocusState private var isNameFieldFocused: Bool
-
-    // MARK: - Body
 
     var body: some View {
         NavigationView {
@@ -28,8 +26,6 @@ struct AddBookmark: View {
         }
     }
 
-    // MARK: - Buttons
-
     var cancelButton: some View {
         Button("Cancel", action: {
             tabViewModel.dismissAddBookmark()
@@ -45,8 +41,6 @@ struct AddBookmark: View {
             bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
         })
     }
-
-    // MARK: - Form
 
     var form: some View {
         HStack {
