@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WindowView: View {
-    let menu: Menu
+    let menu: MenuView
     let tabBar: TabBarView
 
     var body: some View {

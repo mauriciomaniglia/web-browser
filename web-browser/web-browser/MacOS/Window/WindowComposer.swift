@@ -43,7 +43,7 @@ final class WindowComposer {
     func createNewWindow() -> WindowView {
         tabManager.createNewTab()
 
-        let menu = Menu(
+        let menu = MenuView(
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel
         )
