@@ -6,7 +6,7 @@ struct MenuView: View {
 
     var body: some View {
         List {
-            NavigationLink(destination: Bookmark(viewModel: bookmarkViewModel)) {
+            NavigationLink(destination: BookmarkView(viewModel: bookmarkViewModel)) {
                 Label("Bookmarks", systemImage: "bookmark")
             }
             NavigationLink(destination: HistoryView(viewModel: historyViewModel)) {

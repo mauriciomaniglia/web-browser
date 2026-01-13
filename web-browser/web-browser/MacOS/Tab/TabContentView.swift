@@ -75,7 +75,7 @@ struct TabContentView: View {
     }
 
     var addBookmarkDialog: some View {
-        AddBookmark(
+        AddBookmarkView(
             tabViewModel: tabViewModel,
             bookmarkViewModel: bookmarkViewModel,
             isPresented: $tabViewModel.showAddBookmark,

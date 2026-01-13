@@ -1,12 +1,10 @@
 import SwiftUI
 
-struct Bookmark: View {
+struct BookmarkView: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
     @State private var isShowingDeleteAlert = false
-
-    // MARK: - Body
 
     var body: some View {
         VStack {
@@ -23,8 +21,6 @@ struct Bookmark: View {
         .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
     }
 
-    // MARK: - Buttons
-
     var backButton: some View {
         HStack {
             Button { dismiss() } label: { Image(systemName: "arrow.left") }
@@ -32,8 +28,6 @@ struct Bookmark: View {
         }
         .padding()
     }
-
-    // MARK: - List
 
     var isBookmarkEmpty: Bool {
         viewModel.bookmarkList.isEmpty
@@ -61,8 +55,6 @@ struct Bookmark: View {
             Spacer()
         }
     }
-
-    // MARK: - Alert
 
     var removeItemAlert: Alert {
         Alert(
