@@ -101,7 +101,7 @@ struct TabContentView: View {
 
     var historyAlert: some View {
         Group {
-            History(viewModel: historyViewModel, isShowingHistory: $isShowingHistory)
+            HistoryView(viewModel: historyViewModel, isShowingHistory: $isShowingHistory)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black.opacity(0.3))

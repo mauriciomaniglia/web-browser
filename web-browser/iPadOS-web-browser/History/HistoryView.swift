@@ -1,12 +1,10 @@
 import SwiftUI
 
-struct History: View {
+struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Binding var isShowingHistory: Bool
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
-
-    // MARK: Body
 
     var body: some View {
         VStack {
@@ -22,8 +20,6 @@ struct History: View {
         .frame(maxWidth: 500, maxHeight: 500)
         .background(Color(UIColor.systemGroupedBackground))
     }
-
-    // MARK: - Header
 
     var header: some View {
         HStack {
@@ -47,8 +43,6 @@ struct History: View {
             Text("Done")
         }
     }
-
-    // MARK: Search Bar
 
     var searchBar: some View {
         HStack {
@@ -89,8 +83,6 @@ struct History: View {
             Image(systemName: "trash")
         }
     }
-
-    // MARK: List
 
     var isHistoryEmpty: Bool {
         viewModel.historyList.isEmpty
