@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Window: View {
+struct WindowView: View {
     let tabBar: TabBarView
 
     var body: some View {

@@ -40,9 +40,9 @@ final class WindowComposer {
         )
     }
 
-    func createNewWindow() -> Window {
+    func createNewWindow() -> WindowView {
         tabManager.createNewTab()
 
-        return Window(tabBar: TabBarView(tabManager: tabManager))
+        return WindowView(tabBar: TabBarView(tabManager: tabManager))
     }
 }
