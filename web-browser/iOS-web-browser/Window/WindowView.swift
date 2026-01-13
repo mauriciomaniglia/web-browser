@@ -131,7 +131,8 @@ struct WindowContent: View {
             bookmarkViewModel: bookmarkViewModel,
             bookmarkName: tabViewModel.title,
             bookmarkURL: tabViewModel.fullURL
-        )        
+        )
+        .presentationDetents([.fraction(0.3), .medium])
     }
 }
 
