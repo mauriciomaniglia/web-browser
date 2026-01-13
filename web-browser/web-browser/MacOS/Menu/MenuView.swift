@@ -9,7 +9,7 @@ struct MenuView: View {
             NavigationLink(destination: Bookmark(viewModel: bookmarkViewModel)) {
                 Label("Bookmarks", systemImage: "bookmark")
             }
-            NavigationLink(destination: History(viewModel: historyViewModel)) {
+            NavigationLink(destination: HistoryView(viewModel: historyViewModel)) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }

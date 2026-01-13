@@ -22,7 +22,7 @@
 		F932F20E2CE23A7800B12B45 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
 		F932F20F2CE23A7800B12B45 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2092CE23A7800B12B45 /* Bookmark.swift */; };
 		F941ED392EAA4BE7007FCB44 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
-		F94379A02C911B7900DEBFF7 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* History.swift */; };
+		F94379A02C911B7900DEBFF7 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943799F2C911B7900DEBFF7 /* HistoryView.swift */; };
 		F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
 		F947B91E2CF613430026E4E7 /* HistoryStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */; };
 		F947B9202CF613AD0026E4E7 /* SafelistStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947B91F2CF613AD0026E4E7 /* SafelistStoreSpy.swift */; };
@@ -150,7 +150,7 @@
 		F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		F932F2092CE23A7800B12B45 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		F941ED382EAA4BE7007FCB44 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		F943799F2C911B7900DEBFF7 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		F943799F2C911B7900DEBFF7 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		F9462B172C4890B000451759 /* HistoryComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryComposer.swift; sourceTree = "<group>"; };
 		F947B91D2CF613430026E4E7 /* HistoryStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreSpy.swift; sourceTree = "<group>"; };
 		F947B91F2CF613AD0026E4E7 /* SafelistStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafelistStoreSpy.swift; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 		F943799E2C911B5E00DEBFF7 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				F943799F2C911B7900DEBFF7 /* History.swift */,
+				F943799F2C911B7900DEBFF7 /* HistoryView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -731,7 +731,7 @@
 				F9C070422ECA6C4A001C7E04 /* TabContentView.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationList.swift in Sources */,
 				F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */,
-				F94379A02C911B7900DEBFF7 /* History.swift in Sources */,
+				F94379A02C911B7900DEBFF7 /* HistoryView.swift in Sources */,
 				F9462B182C4890B000451759 /* HistoryComposer.swift in Sources */,
 				F9CDFD792B711A7C0024E0AD /* WebViewWrapper.swift in Sources */,
 				F932F20D2CE23A7800B12B45 /* BookmarkComposer.swift in Sources */,

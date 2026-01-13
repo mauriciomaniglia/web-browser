@@ -1,12 +1,10 @@
 import SwiftUI
 
-struct History: View {
+struct HistoryView: View {
     @ObservedObject var viewModel: HistoryViewModel
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
     @State private var isShowingDeleteAllHistoryAlert = false
-
-    // MARK: Body
 
     var body: some View {
         searchBar
@@ -21,8 +19,6 @@ struct History: View {
             historyList
         }
     }
-
-    // MARK: - Search Bar
 
     var searchBar: some View {
         HStack {
@@ -69,8 +65,6 @@ struct History: View {
         }
     }
 
-    // MARK: Selected Pages Bar
-
     var hasPagesSelected: Bool {
         viewModel.selectedPages.count > 0
     }
@@ -92,8 +86,6 @@ struct History: View {
         }
         .padding()
     }
-
-    // MARK: List
 
     var isHistoryEmpty: Bool {
         viewModel.historyList.isEmpty
