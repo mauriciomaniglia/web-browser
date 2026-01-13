@@ -40,7 +40,7 @@ final class WindowComposer {
         )
     }
 
-    func createNewWindow() -> Window {
+    func createNewWindow() -> WindowView {
         tabManager.createNewTab()
 
         let menu = Menu(
@@ -49,6 +49,6 @@ final class WindowComposer {
         )
         let tabBar = TabBarView(tabManager: tabManager)
 
-        return Window(menu: menu, tabBar: tabBar)
+        return WindowView(menu: menu, tabBar: tabBar)
     }
 }

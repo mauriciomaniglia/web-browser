@@ -13,7 +13,7 @@
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
 		F92921C62B70F5B500173702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C52B70F5B500173702 /* Preview Assets.xcassets */; };
-		F92921EB2B70F99400173702 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* Window.swift */; };
+		F92921EB2B70F99400173702 /* WindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EA2B70F99400173702 /* WindowView.swift */; };
 		F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
 		F92921F22B70FA0C00173702 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* NavigationBar.swift */; };
 		F92E5C242CD980150019A9AE /* AddBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E5C1E2CD980150019A9AE /* AddBookmark.swift */; };
@@ -140,7 +140,7 @@
 		F92921C32B70F5B500173702 /* web_browser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = web_browser.entitlements; sourceTree = "<group>"; };
 		F92921C52B70F5B500173702 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F92921CB2B70F5B500173702 /* web-browserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "web-browserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F92921EA2B70F99400173702 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		F92921EA2B70F99400173702 /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		F92E5C1E2CD980150019A9AE /* AddBookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmark.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 		F9E1477D2C0961370099CD98 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				F92921EA2B70F99400173702 /* Window.swift */,
+				F92921EA2B70F99400173702 /* WindowView.swift */,
 				F901D9882E93240900F3B3D9 /* WindowComposer.swift */,
 			);
 			path = Window;
@@ -748,7 +748,7 @@
 				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
-				F92921EB2B70F99400173702 /* Window.swift in Sources */,
+				F92921EB2B70F99400173702 /* WindowView.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* TabViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
 			);
