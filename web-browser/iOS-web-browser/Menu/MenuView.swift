@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Menu: View {
+struct MenuView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var historyViewModel: HistoryViewModel

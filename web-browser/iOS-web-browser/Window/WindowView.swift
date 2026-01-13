@@ -116,7 +116,7 @@ struct WindowContent: View {
     }
 
     var menuAlert: some View {
-        Menu(
+        MenuView(
             tabViewModel: tabViewModel,
             bookmarkViewModel: bookmarkViewModel,
             historyViewModel: historyViewModel,
