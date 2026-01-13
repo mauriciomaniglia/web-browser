@@ -26,7 +26,7 @@ struct WindowContent: View {
         }
         .background(Color(.systemGray6))
         .fullScreenCover(isPresented: $isShowingTabManager) {
-            tabManagerScreen
+            tabManagerView
         }
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
             menuAlert
@@ -96,10 +96,10 @@ struct WindowContent: View {
         }
     }
 
-    // MARK: - Tab Manager Screen
+    // MARK: - Tab Manager View
 
-    var tabManagerScreen: some View {
-        TabManagerScreen(tabManager: tabManager, isPresented: $isShowingTabManager)
+    var tabManagerView: some View {
+        TabManagerView(tabManager: tabManager, isPresented: $isShowingTabManager)
     }
 
     // MARK: - Alerts
