@@ -12,8 +12,6 @@ struct TabContentView: View {
 
     let webView: WebView
 
-    // MARK: - Body
-
     var body: some View {
         ZStack(alignment: .top) {
             searchBar
@@ -34,8 +32,6 @@ struct TabContentView: View {
         }
     }
 
-    // MARK: - Search Suggestions
-
     var shouldShowSearchSuggestions: Bool {
         tabViewModel.showSearchSuggestions
     }
@@ -46,8 +42,6 @@ struct TabContentView: View {
             .offset(y: 55)
             .zIndex(2)
     }
-
-    // MARK: - Search Bar
 
     var searchBar: some View {
         HStack {
@@ -76,8 +70,6 @@ struct TabContentView: View {
         })
     }
 
-    // MARK: - Web View
-
     var webViewFrame: some View {
         webView
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -85,8 +77,6 @@ struct TabContentView: View {
             .offset(y: 75)
             .zIndex(1)
     }
-
-    // MARK: Bookmark
 
     var addBookmarkAlert: some View {
         Group {
