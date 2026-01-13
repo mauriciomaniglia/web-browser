@@ -1,5 +1,30 @@
 import SwiftUI
 
+struct WindowView: View {
+    @ObservedObject var historyViewModel: HistoryViewModel
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
+    @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
+    @ObservedObject var tabManager: TabManager
+
+    var body: some View {
+        Group {
+            if let selectedTab = tabManager.selectedTab {
+                WindowContent(
+                    tabViewModel: selectedTab.tabViewModel,
+                    historyViewModel: historyViewModel,
+                    bookmarkViewModel: bookmarkViewModel,
+                    searchSuggestionViewModel: searchSuggestionViewModel,
+                    tabManager: tabManager,
+                    webView: WebView(content: selectedTab.webKitWrapper.webView)
+                )
+                .id(selectedTab.id)
+            } else {
+                Text("No Tabs Open")
+            }
+        }
+    }
+}
+
 struct WindowContent: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var historyViewModel: HistoryViewModel
@@ -11,8 +36,6 @@ struct WindowContent: View {
     @State private var isShowingTabManager = false
 
     let webView: WebView
-
-    // MARK: - Body
 
     var body: some View {
         VStack {
@@ -36,13 +59,9 @@ struct WindowContent: View {
         })
     }
 
-    // MARK: - Address Bar
-
     var addressBar: some View {
         AddressBarView(viewModel: tabViewModel, searchText: $tabViewModel.fullURL)
     }
-
-    // MARK: - Search Suggestions
 
     var shouldShowSearchSuggestions: Bool {
         tabViewModel.showSearchSuggestions
@@ -54,15 +73,11 @@ struct WindowContent: View {
         }
     }
 
-    // MARK: - WebView Frame
-
     var webViewFrame: some View {
         webView
             .frame(maxWidth:.infinity, maxHeight: .infinity)
             .opacity(tabViewModel.showWebView ? 1 : 0)
     }
-
-    // MARK: - Bottom Bar
 
     var bottomBar: some View {
         HStack {
@@ -96,13 +111,9 @@ struct WindowContent: View {
         }
     }
 
-    // MARK: - Tab Manager View
-
     var tabManagerView: some View {
         TabManagerView(tabManager: tabManager, isPresented: $isShowingTabManager)
     }
-
-    // MARK: - Alerts
 
     var menuAlert: some View {
         Menu(
@@ -123,3 +134,4 @@ struct WindowContent: View {
         )
     }
 }
+

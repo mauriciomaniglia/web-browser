@@ -40,10 +40,10 @@ final class WindowComposer {
         )
     }
 
-    func createNewWindow() -> Window {
+    func createNewWindow() -> WindowView {
         tabManager.createNewTab()
 
-        return Window(
+        return WindowView(
             historyViewModel: historyComposer.viewModel,
             bookmarkViewModel: bookmarkComposer.viewModel,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
