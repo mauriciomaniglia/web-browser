@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct MenuCommands: Commands {
-    let tabManager: TabManager
+    let tabBarManager: TabBarManager
 
     var body: some Commands {
         CommandMenu("Bookmarks") {
             Button("Add Bookmark...") {
-                tabManager.selectedTab?.tabViewModel.didTapAddBookmark()
+                tabBarManager.selectedTab?.tabViewModel.didTapAddBookmark()
             }
             .keyboardShortcut("d", modifiers: [.command])
         }

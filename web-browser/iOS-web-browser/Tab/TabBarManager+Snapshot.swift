@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension TabManager {
+extension TabBarManager {
     func captureSnapshots(completion: @escaping () -> Void) {
         let group = DispatchGroup()
 

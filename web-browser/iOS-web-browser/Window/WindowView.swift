@@ -4,17 +4,17 @@ struct WindowView: View {
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
-    @ObservedObject var tabManager: TabManager
+    @ObservedObject var tabBarManager: TabBarManager
 
     var body: some View {
         Group {
-            if let selectedTab = tabManager.selectedTab {
+            if let selectedTab = tabBarManager.selectedTab {
                 WindowContent(
                     tabViewModel: selectedTab.tabViewModel,
                     historyViewModel: historyViewModel,
                     bookmarkViewModel: bookmarkViewModel,
                     searchSuggestionViewModel: searchSuggestionViewModel,
-                    tabManager: tabManager,
+                    tabBarManager: tabBarManager,
                     webView: WebView(content: selectedTab.webKitWrapper.webView)
                 )
                 .id(selectedTab.id)
@@ -30,7 +30,7 @@ struct WindowContent: View {
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
-    @ObservedObject var tabManager: TabManager
+    @ObservedObject var tabBarManager: TabBarManager
 
     @State var isShowingSheet = false
     @State private var isShowingTabManager = false
@@ -97,7 +97,7 @@ struct WindowContent: View {
     var addNewTabButton: some View {
         Button(action: {
             isShowingTabManager = true
-            tabManager.captureSnapshots {
+            tabBarManager.captureSnapshots {
                 isShowingTabManager = true
             }
         }) {
@@ -112,7 +112,7 @@ struct WindowContent: View {
     }
 
     var tabManagerView: some View {
-        TabManagerView(tabManager: tabManager, isPresented: $isShowingTabManager)
+        TabManagerView(tabBarManager: tabBarManager, isPresented: $isShowingTabManager)
     }
 
     var menuAlert: some View {

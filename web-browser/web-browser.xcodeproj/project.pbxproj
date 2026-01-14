@@ -115,9 +115,9 @@
 		F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */; };
 		F9E55D322C45EFD5008B7C64 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
 		F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55FD72C02AEE20098995F /* WebViewSpy.swift */; };
-		F9E5D1142EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
-		F9E5D1152EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
-		F9E5D1162EF5C7D9009BA82C /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabManager.swift */; };
+		F9E5D1142EF5C7D9009BA82C /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
+		F9E5D1152EF5C7D9009BA82C /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
+		F9E5D1162EF5C7D9009BA82C /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,7 +188,7 @@
 		F9CDFD8D2B71282E0024E0AD /* TabComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabComposer.swift; sourceTree = "<group>"; };
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
-		F9E5D1132EF5C7D9009BA82C /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
+		F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -455,7 +455,7 @@
 			children = (
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
-				F9E5D1132EF5C7D9009BA82C /* TabManager.swift */,
+				F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -742,7 +742,7 @@
 				F94A60F12C758C52001384CB /* MenuView.swift in Sources */,
 				F91201272F056317005D9325 /* MenuCommands.swift in Sources */,
 				F9654DEB2C149F4D000559FF /* CustomGestureButton.swift in Sources */,
-				F9E5D1162EF5C7D9009BA82C /* TabManager.swift in Sources */,
+				F9E5D1162EF5C7D9009BA82C /* TabBarManager.swift in Sources */,
 				F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */,
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
@@ -785,7 +785,7 @@
 				F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */,
 				F96998B52EEDF21200C3286D /* HistoryComposer.swift in Sources */,
 				F96998B72EEDF21200C3286D /* WebViewWrapper.swift in Sources */,
-				F9E5D1152EF5C7D9009BA82C /* TabManager.swift in Sources */,
+				F9E5D1152EF5C7D9009BA82C /* TabBarManager.swift in Sources */,
 				F96998B82EEDF21200C3286D /* HistoryViewModel.swift in Sources */,
 				F96998B92EEDF21200C3286D /* WebKitEngineWrapper.swift in Sources */,
 				F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */,
@@ -819,7 +819,7 @@
 				F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */,
 				F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */,
 				F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */,
-				F9E5D1142EF5C7D9009BA82C /* TabManager.swift in Sources */,
+				F9E5D1142EF5C7D9009BA82C /* TabBarManager.swift in Sources */,
 				F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

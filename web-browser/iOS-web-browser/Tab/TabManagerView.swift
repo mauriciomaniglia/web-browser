@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabManagerView: View {
-    var tabManager: TabManager
+    var tabBarManager: TabBarManager
     @Binding var isPresented: Bool
 
     let columns = [
@@ -13,9 +13,9 @@ struct TabManagerView: View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(tabManager.tabs.indices, id: \.self) { index in
-                        TabCardView(isPresented: $isPresented, tab: tabManager.tabs[index], index: index)
-                            .environmentObject(tabManager)
+                    ForEach(tabBarManager.tabs.indices, id: \.self) { index in
+                        TabCardView(isPresented: $isPresented, tab: tabBarManager.tabs[index], index: index)
+                            .environmentObject(tabBarManager)
                     }
                 }
                 .padding(.horizontal, 10)
@@ -25,7 +25,7 @@ struct TabManagerView: View {
             .background(Color(.systemGroupedBackground))
 
             ToolbarView(isPresented: $isPresented)
-                .environmentObject(tabManager)
+                .environmentObject(tabBarManager)
 
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -33,7 +33,7 @@ struct TabManagerView: View {
 }
 
 struct TabCardView: View {
-    @EnvironmentObject var tabManager: TabManager
+    @EnvironmentObject var tabBarManager: TabBarManager
     @Binding var isPresented: Bool
     @ObservedObject var tab: TabComposer
 
@@ -49,7 +49,7 @@ struct TabCardView: View {
 
     var body: some View {
         Button {
-            tabManager.didSelectTab(at: index)
+            tabBarManager.didSelectTab(at: index)
             isPresented = false
         } label: {
             VStack {
@@ -71,7 +71,7 @@ struct TabCardView: View {
         HStack {
             Spacer()
             Button {
-                tabManager.closeTab(at: index)
+                tabBarManager.closeTab(at: index)
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .font(.title3)
@@ -110,7 +110,7 @@ struct TabCardView: View {
 }
 
 struct ToolbarView: View {
-    @EnvironmentObject var tabManager: TabManager
+    @EnvironmentObject var tabBarManager: TabBarManager
     @Binding var isPresented: Bool
 
     var body: some View {
@@ -128,7 +128,7 @@ struct ToolbarView: View {
 
     var newTabButton: some View {
         Button {
-            tabManager.createNewTab()
+            tabBarManager.createNewTab()
         } label: {
             HStack {
                 Image(systemName: "plus")

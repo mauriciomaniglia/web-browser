@@ -2,7 +2,7 @@ import SwiftData
 import SwiftUI
 import Services
 
-final class TabManager: ObservableObject {
+final class TabBarManager: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?
 
@@ -59,19 +59,19 @@ final class TabManager: ObservableObject {
     }
 }
 
-extension TabManager: HistoryUserActionDelegate {
+extension TabBarManager: HistoryUserActionDelegate {
     func didSelectPage(_ pageURL: URL) {
         selectedTab?.webKitWrapper.load(pageURL)
     }
 }
 
-extension TabManager: SearchSuggestionUserActionDelegate {
+extension TabBarManager: SearchSuggestionUserActionDelegate {
     func didSelectPageFromSearchSuggestion(_ pageURL: URL) {
         selectedTab?.webKitWrapper.load(pageURL)
     }
 }
 
-extension TabManager: BookmarkUserActionDelegate {
+extension TabBarManager: BookmarkUserActionDelegate {
     func didSelectPageFromBookmark(_ pageURL: URL) {
         selectedTab?.webKitWrapper.load(pageURL)
     }

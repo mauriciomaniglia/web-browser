@@ -12,7 +12,7 @@ final class WindowComposer {
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
 
-    let tabManager: TabManager
+    let tabBarManager: TabBarManager
 
     init() {
         do {
@@ -30,7 +30,7 @@ final class WindowComposer {
         self.bookmarkComposer = BookmarkComposer(bookmarkStore: bookmarkStore)
         self.searchSuggestionComposer = SearchSuggestionComposer(historyStore: historyStore, bookmarkStore: bookmarkStore)
 
-        self.tabManager = TabManager(
+        self.tabBarManager = TabBarManager(
             safelistStore: safelistStore,
             historyStore: historyStore,
             bookmarkStore: bookmarkStore,
@@ -41,13 +41,13 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> WindowView {
-        tabManager.createNewTab()
+        tabBarManager.createNewTab()
 
         let menu = MenuView(
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel
         )
-        let tabBar = TabBarView(tabManager: tabManager)
+        let tabBar = TabBarView(tabBarManager: tabBarManager)
 
         return WindowView(menu: menu, tabBar: tabBar)
     }

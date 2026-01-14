@@ -1,25 +1,25 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @ObservedObject var tabManager: TabManager
+    @ObservedObject var tabBarManager: TabBarManager
 
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
-                        ForEach(tabManager.tabs.indices, id: \.self) { index in
+                        ForEach(tabBarManager.tabs.indices, id: \.self) { index in
                             TabButton(
-                                viewModel: tabManager.tabs[index].tabViewModel,
-                                isSelected: tabManager.tabs[index].id == tabManager.selectedTab!.id,
-                                onSelect: { tabManager.didSelectTab(at: index) },
-                                onClose: { tabManager.closeTab(at: index) }
+                                viewModel: tabBarManager.tabs[index].tabViewModel,
+                                isSelected: tabBarManager.tabs[index].id == tabBarManager.selectedTab!.id,
+                                onSelect: { tabBarManager.didSelectTab(at: index) },
+                                onClose: { tabBarManager.closeTab(at: index) }
                             )
                         }
                     }
                     .padding(.horizontal)
                 }
-                Button(action: tabManager.createNewTab) {
+                Button(action: tabBarManager.createNewTab) {
                     Image(systemName: "plus")
                         .padding(8)
                         .background(Color.clear)
@@ -32,7 +32,7 @@ struct TabBarView: View {
             .background(Color.mint)
             .shadow(radius: 1)
 
-            if let selectedTab = tabManager.selectedTab {
+            if let selectedTab = tabBarManager.selectedTab {
                 VStack {
                     Spacer()
                     selectedTab.view
