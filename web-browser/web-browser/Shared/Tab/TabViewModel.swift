@@ -34,7 +34,7 @@ class TabViewModel: ObservableObject {
     var didLongPressForwardButton: (() -> Void)?
     var didSelectBackListPage: ((Int) -> Void)?
     var didSelectForwardListPage: ((Int) -> Void)?
-    var didDismissBackForwardPageList: (() -> Void)?
+    var didDismissNavigationPageList: (() -> Void)?
     var didReload: (() -> Void)?
     var didStopLoading: (() -> Void)?
     var didStartSearch: ((String) -> Void)?

@@ -21,7 +21,7 @@ struct NavigationBar: View {
         })
         .onChange(of: viewModel.showBackList) { _, isPresented in
             if !isPresented {
-                viewModel.didDismissBackForwardPageList?()
+                viewModel.didDismissNavigationPageList?()
             }
         }
     }
@@ -37,7 +37,7 @@ struct NavigationBar: View {
         })
         .onChange(of: viewModel.showForwardList) { _, isPresented in
             if !isPresented {
-                viewModel.didDismissBackForwardPageList?()
+                viewModel.didDismissNavigationPageList?()
             }
         }
     }

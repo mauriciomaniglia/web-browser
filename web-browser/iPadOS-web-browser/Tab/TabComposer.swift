@@ -40,7 +40,7 @@ final class TabComposer {
         tabViewModel.didLongPressForwardButton = tabManager.didLoadForwardList
         tabViewModel.didSelectBackListPage = tabManager.didSelectBackListPage(at:)
         tabViewModel.didSelectForwardListPage = tabManager.didSelectForwardListPage(at:)
-        tabViewModel.didDismissBackForwardPageList = tabManager.didDismissBackForwardList
+        tabViewModel.didDismissNavigationPageList = tabManager.didDismissNavigationList
 
         view = TabContentView(
             tabViewModel: tabViewModel,

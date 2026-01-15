@@ -267,7 +267,7 @@ public class TabManager {
             forwardList: model.forwardList))
     }
 
-    private func didDismissNavigationList() {
+    public func didDismissNavigationList() {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
