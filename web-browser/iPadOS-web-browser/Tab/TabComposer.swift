@@ -22,6 +22,7 @@ final class TabComposer {
             safelistStore: safelistStore,
             historyStore: historyStore
         )
+        let tabAdapter = TabAdapter(tabViewModel: tabViewModel, tabManager: tabManager)
         let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         contentBlocking.setupStrictProtection()
 
@@ -31,16 +32,16 @@ final class TabComposer {
         tabViewModel.didStopLoading = webKitWrapper.stopLoading
         tabViewModel.didStartSearch = tabManager.didRequestSearch
         tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
-        tabViewModel.didChangeFocus = tabManager.didChangeFocus
-        tabViewModel.didStartTyping = { [weak tabManager] oldText, newText in
+        tabViewModel.didChangeFocus = tabAdapter.didChangeFocus
+        tabViewModel.didStartTyping = { [weak tabAdapter] oldText, newText in
             searchSuggestionViewModel.delegate?.didStartTyping(newText)
-            tabManager?.didStartTyping(oldText: oldText, newText: newText)
+            tabAdapter?.didStartTyping(oldText: oldText, newText: newText)
         }
-        tabViewModel.didLongPressBackButton = tabManager.didLoadBackList
-        tabViewModel.didLongPressForwardButton = tabManager.didLoadForwardList
-        tabViewModel.didSelectBackListPage = tabManager.didSelectBackListPage(at:)
-        tabViewModel.didSelectForwardListPage = tabManager.didSelectForwardListPage(at:)
-        tabViewModel.didDismissNavigationPageList = tabManager.didDismissNavigationList
+        tabViewModel.didLongPressBackButton = tabAdapter.didLoadBackList
+        tabViewModel.didLongPressForwardButton = tabAdapter.didLoadForwardList
+        tabViewModel.didSelectBackListPage = tabAdapter.didSelectBackListPage(at:)
+        tabViewModel.didSelectForwardListPage = tabAdapter.didSelectForwardListPage(at:)
+        tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList
 
         view = TabContentView(
             tabViewModel: tabViewModel,
@@ -50,30 +51,6 @@ final class TabComposer {
             webView: WebView(content: webKitWrapper.webView)
         )
 
-        webKitWrapper.delegate = tabManager
-        tabManager.delegate = self
-    }
-}
-
-extension TabComposer: TabManagerDelegate {
-    func didUpdatePresentableModel(_ model: TabManager.Model) {
-        tabViewModel.isBackButtonDisabled = !model.canGoBack
-        tabViewModel.isForwardButtonDisabled = !model.canGoForward
-        tabViewModel.showCancelButton = model.showCancelButton
-        tabViewModel.showStopButton = model.showStopButton
-        tabViewModel.showReloadButton = model.showReloadButton
-        tabViewModel.showClearButton = model.showClearButton
-        tabViewModel.progressBarValue = model.progressBarValue
-        tabViewModel.title = model.title ?? ""
-        tabViewModel.urlHost = model.urlHost ?? ""
-        tabViewModel.fullURL = model.fullURL ?? ""
-        tabViewModel.isWebsiteProtected = model.isWebsiteProtected
-        tabViewModel.showSiteProtection = model.showSiteProtection
-        tabViewModel.showWebView = model.showWebView
-        tabViewModel.showSearchSuggestions = model.showSearchSuggestions
-        tabViewModel.backList = model.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
-        tabViewModel.showBackList = model.backList != nil
-        tabViewModel.forwardList = model.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
-        tabViewModel.showForwardList = model.forwardList != nil
+        webKitWrapper.delegate = tabAdapter
     }
 }

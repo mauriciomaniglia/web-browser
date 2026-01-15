@@ -1,18 +1,12 @@
 import Foundation
 
-public protocol TabManagerDelegate: AnyObject {
-    func didUpdatePresentableModel(_ model: TabManager.Model)
-}
-
 public class TabManager {
 
     public struct Model {
-
         public struct Page {
             public let title: String
             public let url: String
         }
-
         public let title: String?
         public let urlHost: String?
         public let fullURL: String?
@@ -30,8 +24,6 @@ public class TabManager {
         public let backList: [Page]?
         public let forwardList: [Page]?
     }
-
-    public weak var delegate: TabManagerDelegate?
 
     private let webView: WebEngineContract
     private let safelistStore: SafelistStoreAPI
@@ -66,14 +58,19 @@ public class TabManager {
         webView.load(url)
     }
 
-    public func didSelectBackListPage(at index: Int) {
-        didDismissNavigationList()
-        webView.navigateToBackListPage(at: index)
+    public func didLoad(page: WebPage) -> TabManager.Model {
+        historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
+        return didLoadPage(title: page.title, url: page.url)
     }
 
-    public func didSelectForwardListPage(at index: Int) {
-        didDismissNavigationList()
+    public func didSelectBackListPage(at index: Int) -> TabManager.Model {
+        webView.navigateToBackListPage(at: index)
+        return didDismissNavigationList()
+    }
+
+    public func didSelectForwardListPage(at index: Int) -> TabManager.Model {
         webView.navigateToForwardListPage(at: index)
+        return didDismissNavigationList()
     }
 
     public func updateSafelist(url: String, isEnabled: Bool) {
@@ -84,8 +81,8 @@ public class TabManager {
         }
     }
 
-    public func didStartNewWindow() {
-        delegate?.didUpdatePresentableModel(.init(
+    public func didStartNewWindow() -> TabManager.Model {
+        return Model(
             title: "Start Page",
             urlHost: nil,
             fullURL: nil,
@@ -100,11 +97,11 @@ public class TabManager {
             canGoBack: false,
             canGoForward: false,
             backList: nil,
-            forwardList: nil))
+            forwardList: nil)
     }
 
-    public func didChangeFocus(isFocused: Bool) {
-        let newModel = Model(
+    public func didChangeFocus(isFocused: Bool) -> TabManager.Model {
+        model = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -121,14 +118,14 @@ public class TabManager {
             backList: nil,
             forwardList: nil)
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
-    public func didStartTyping(oldText: String, newText: String) {
-        guard oldText != newText && newText != model.fullURL else { return }
+    public func didStartTyping(oldText: String, newText: String) -> TabManager.Model? {
+        guard !newText.isEmpty else { return nil }
+        guard  oldText != newText && newText != model.fullURL else { return nil }
 
-        let newModel = Model(
+        model = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: newText,
@@ -145,12 +142,11 @@ public class TabManager {
             backList: nil,
             forwardList: nil)
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
-    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) {
-        let newModel = Model(
+    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) -> TabManager.Model {
+        model = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -167,16 +163,15 @@ public class TabManager {
             backList: model.backList,
             forwardList: model.forwardList)
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
-    public func didLoadPage(title: String?, url: URL) {
+    public func didLoadPage(title: String?, url: URL) -> TabManager.Model {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let title = title ?? urlHost
 
-        let newModel = Model(
+        model = Model(
             title: title,
             urlHost: urlHost,
             fullURL: fullURL,
@@ -193,14 +188,13 @@ public class TabManager {
             backList: model.backList,
             forwardList: model.forwardList)
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
-    public func didLoadBackList() {
+    public func didLoadBackList() -> TabManager.Model {
         let webPages = webView.retrieveBackList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
 
-        let newModel = Model(
+        model = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -217,14 +211,13 @@ public class TabManager {
             backList: webPages.map(mapWebPage).reversed(),
             forwardList: nil)
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
-    public func didLoadForwardList() {
+    public func didLoadForwardList() -> TabManager.Model {
         let webPages = webView.retrieveForwardList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
 
-        let newModel = Model(
+        model = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -241,14 +234,13 @@ public class TabManager {
             backList: nil,
             forwardList: webPages.map(mapWebPage))
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
-    public func didUpdateProgressBar(_ value: Double) {
+    public func didUpdateProgressBar(_ value: Double) -> TabManager.Model {
         let progressValue = value >= 1 ? nil : value
 
-        delegate?.didUpdatePresentableModel(.init(
+        return Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -264,11 +256,11 @@ public class TabManager {
             canGoForward: model.canGoForward,
             progressBarValue: progressValue,
             backList: model.backList,
-            forwardList: model.forwardList))
+            forwardList: model.forwardList)
     }
 
-    public func didDismissNavigationList() {
-        let newModel = Model(
+    public func didDismissNavigationList() -> TabManager.Model {
+        model = Model(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -285,27 +277,11 @@ public class TabManager {
             backList: nil,
             forwardList: nil)
 
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
+        return model
     }
 
     private func mapWebPage(_ webPage: WebPage) -> Model.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
-    }
-}
-
-extension TabManager: WebEngineDelegate {
-    public func didLoad(page: WebPage) {
-        historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
-        didLoadPage(title: page.title, url: page.url)
-    }
-
-    public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
-        didUpdateNavigationButton(canGoBack: canGoBack, canGoForward: canGoForward)
-    }
-
-    public func didUpdateLoadingProgress(_ progress: Double) {
-        didUpdateProgressBar(progress)
     }
 }

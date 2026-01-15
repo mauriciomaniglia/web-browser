@@ -118,6 +118,9 @@
 		F9E5D1142EF5C7D9009BA82C /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
 		F9E5D1152EF5C7D9009BA82C /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
 		F9E5D1162EF5C7D9009BA82C /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
+		F9EFF0672F19335300DB1766 /* TabAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFF0662F19335300DB1766 /* TabAdapter.swift */; };
+		F9EFF0682F1935B900DB1766 /* TabAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFF0662F19335300DB1766 /* TabAdapter.swift */; };
+		F9EFF0692F1935B900DB1766 /* TabAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFF0662F19335300DB1766 /* TabAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +192,7 @@
 		F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F9E55FD72C02AEE20098995F /* WebViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewSpy.swift; sourceTree = "<group>"; };
 		F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarManager.swift; sourceTree = "<group>"; };
+		F9EFF0662F19335300DB1766 /* TabAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -456,6 +460,7 @@
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
 				F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */,
+				F9EFF0662F19335300DB1766 /* TabAdapter.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -723,6 +728,7 @@
 			files = (
 				F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */,
 				F92921F22B70FA0C00173702 /* NavigationBar.swift in Sources */,
+				F9EFF0672F19335300DB1766 /* TabAdapter.swift in Sources */,
 				F92E5C242CD980150019A9AE /* AddBookmarkView.swift in Sources */,
 				F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */,
 				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
@@ -780,6 +786,7 @@
 				F96998AF2EEDF21200C3286D /* BookmarkComposer.swift in Sources */,
 				F96998B02EEDF21200C3286D /* BookmarkViewModel.swift in Sources */,
 				F96998B12EEDF21200C3286D /* SearchSuggestionView.swift in Sources */,
+				F9EFF0682F1935B900DB1766 /* TabAdapter.swift in Sources */,
 				F96998B22EEDF21200C3286D /* NavigationList.swift in Sources */,
 				F96998B32EEDF21200C3286D /* CustomGestureButton.swift in Sources */,
 				F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */,
@@ -804,6 +811,7 @@
 			files = (
 				F96999372EEEEAAC00C3286D /* SearchSuggestionComposer.swift in Sources */,
 				F96999392EEEEAAC00C3286D /* HistoryComposer.swift in Sources */,
+				F9EFF0692F1935B900DB1766 /* TabAdapter.swift in Sources */,
 				F969993B2EEEEAAC00C3286D /* SearchSuggestionViewModel.swift in Sources */,
 				F969993C2EEEEAAC00C3286D /* WebViewWrapper.swift in Sources */,
 				F969993D2EEEEAAC00C3286D /* JsonLoader.swift in Sources */,
