@@ -17,33 +17,30 @@ final class TabComposer {
         self.webKitWrapper = webKitWrapper
         self.tabViewModel = TabViewModel()
 
-        let presenter = TabPresenter(isOnSafelist: safelistStore.isRegisteredDomain(_:))
-        let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
-        let mediator = TabMediator(
+        let tabManager = TabManager(
             webView: webKitWrapper,
-            presenter: presenter,
             safelistStore: safelistStore,
             historyStore: historyStore
         )
-
+        let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
         contentBlocking.setupStrictProtection()
 
         tabViewModel.didTapBackButton = webKitWrapper.didTapBackButton
         tabViewModel.didTapForwardButton = webKitWrapper.didTapForwardButton
         tabViewModel.didReload = webKitWrapper.reload
         tabViewModel.didStopLoading = webKitWrapper.stopLoading
-        tabViewModel.didStartSearch = mediator.didRequestSearch
-        tabViewModel.didUpdateSafelist = mediator.updateSafelist(url:isEnabled:)
-        tabViewModel.didChangeFocus = presenter.didChangeFocus
-        tabViewModel.didStartTyping = { [weak presenter] oldText, newText in
+        tabViewModel.didStartSearch = tabManager.didRequestSearch
+        tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
+        tabViewModel.didChangeFocus = tabManager.didChangeFocus
+        tabViewModel.didStartTyping = { [weak tabManager] oldText, newText in
             searchSuggestionViewModel.delegate?.didStartTyping(newText)
-            presenter?.didStartTyping(oldText: oldText, newText: newText)
+            tabManager?.didStartTyping(oldText: oldText, newText: newText)
         }
-        tabViewModel.didLongPressBackButton = mediator.didLongPressBackButton
-        tabViewModel.didLongPressForwardButton = mediator.didLongPressForwardButton
-        tabViewModel.didSelectBackListPage = mediator.didSelectBackListPage(at:)
-        tabViewModel.didSelectForwardListPage = mediator.didSelectForwardListPage(at:)
-        tabViewModel.didDismissBackForwardPageList = presenter.didDismissBackForwardList
+        tabViewModel.didLongPressBackButton = tabManager.didLoadBackList
+        tabViewModel.didLongPressForwardButton = tabManager.didLoadForwardList
+        tabViewModel.didSelectBackListPage = tabManager.didSelectBackListPage(at:)
+        tabViewModel.didSelectForwardListPage = tabManager.didSelectForwardListPage(at:)
+        tabViewModel.didDismissBackForwardPageList = tabManager.didDismissBackForwardList
 
         view = TabContentView(
             tabViewModel: tabViewModel,
@@ -53,13 +50,13 @@ final class TabComposer {
             webView: WebView(content: webKitWrapper.webView)
         )
 
-        webKitWrapper.delegate = mediator
-        presenter.delegate = self
+        webKitWrapper.delegate = tabManager
+        tabManager.delegate = self
     }
 }
 
-extension TabComposer: TabPresenterDelegate {
-    func didUpdatePresentableModel(_ model: Services.TabPresenter.Model) {
+extension TabComposer: TabManagerDelegate {
+    func didUpdatePresentableModel(_ model: TabManager.Model) {
         tabViewModel.isBackButtonDisabled = !model.canGoBack
         tabViewModel.isForwardButtonDisabled = !model.canGoForward
         tabViewModel.showCancelButton = model.showCancelButton

@@ -1,10 +1,45 @@
 import XCTest
 @testable import Services
 
-class TabPresenterTests: XCTestCase {
+class TabManagerTests: XCTestCase {
+
+    func test_didRequestSearch_shouldLoadWebViewCorrectly() {
+        let (sut, safelist, webView, historyStore, delegate) = makeSUT()
+
+        sut.didRequestSearch("www.apple.com")
+
+        XCTAssertEqual(webView.receivedMessages, [.load(url: URL(string: "http://www.apple.com")!)])
+        XCTAssertEqual(safelist.receivedMessages, [])
+        XCTAssertEqual(historyStore.receivedMessages, [])
+        XCTAssertEqual(delegate.receivedMessages, [])
+    }
+
+    func test_updateSafelist_withURLEnabled_addURLToSafelist() {
+        let (sut, safelist, webView, historyStore, delegate) = makeSUT()
+        let url = "http://some-url.com"
+
+        sut.updateSafelist(url: url, isEnabled: true)
+
+        XCTAssertEqual(safelist.receivedMessages, [.saveDomain("http://some-url.com")])
+        XCTAssertEqual(webView.receivedMessages, [])
+        XCTAssertEqual(historyStore.receivedMessages, [])
+        XCTAssertEqual(delegate.receivedMessages, [])
+    }
+
+    func test_updateSafelist_withURLDisabled_removesURLFromSafelist() {
+        let (sut, safelist, webView, historyStore, delegate) = makeSUT()
+        let url = "http://some-url.com"
+
+        sut.updateSafelist(url: url, isEnabled: false)
+
+        XCTAssertEqual(safelist.receivedMessages, [.removeDomain("http://some-url.com")])
+        XCTAssertEqual(webView.receivedMessages, [])
+        XCTAssertEqual(historyStore.receivedMessages, [])
+        XCTAssertEqual(delegate.receivedMessages, [])
+    }
 
     func test_didStartNewWindow_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didStartNewWindow()
 
@@ -27,7 +62,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didStartNewWindow_whenCallFromAnyPreviousState_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didStartNewWindow()
@@ -52,7 +87,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didChangeFocus_whenIsFocused_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didChangeFocus(isFocused: true)
 
@@ -76,7 +111,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didChangeFocus_whenIsFocusedWithPageLoaded_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didChangeFocus(isFocused: true)
@@ -101,7 +136,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didStartTyping_whenInputChanged_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didStartTyping(oldText: "lin", newText: "linux")
 
@@ -125,7 +160,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didStartTyping_whenInputDidNotChanged_doesNothing() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didStartTyping(oldText: "linux", newText: "linux")
 
@@ -134,7 +169,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didStartTyping_whenInputIsEmpty_shouldNotShowSearchSuggestions() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didStartTyping(oldText: "linux", newText: "")
 
@@ -143,7 +178,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didStartTyping_whenInputAndModelHasSameURL_shouldNotCallSearchSuggestionsAgain() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didStartTyping(oldText: "", newText: "www.linux.com")
         sut.didStartTyping(oldText: "", newText: "www.linux.com")
@@ -153,7 +188,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didChangeFocus_whenIsNotFocused_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didChangeFocus(isFocused: false)
 
@@ -177,7 +212,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didChangeFocus_whenIsNotFocusedWithPageALoaded_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
         sut.didChangeFocus(isFocused: false)
@@ -202,7 +237,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didUpdateNavigationButtons_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didUpdateNavigationButtons(canGoBack: true, canGoForward: true)
 
@@ -226,7 +261,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didLoadPage_deliversCorrectWindowState() {
-        let (sut, safelist, delegate) = makeSUT()
+        let (sut, safelist, _, _, delegate) = makeSUT()
         safelist.isOnSafelist = true
 
         sut.didLoadPage(title: nil, url: URL(string:"http://some-url.com/some-random-path/123")!)
@@ -251,13 +286,14 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didLoadBackList_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, webView, _, delegate) = makeSUT()
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        webView.mockBackList = [page1, page2, page3]
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
-        sut.didLoadBackList([page1, page2, page3])
+        sut.didLoadBackList()
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel, .didUpdatePresentableModel])
         XCTAssertEqual(delegate.presentableModel!.title, "Some title")
@@ -284,13 +320,14 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didLoadForwardList_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, webView, _, delegate) = makeSUT()
         let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
         let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
         let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        webView.mockFowardList = [page1, page2, page3]
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
-        sut.didLoadForwardList([page1, page2, page3])
+        sut.didLoadForwardList()
 
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel, .didUpdatePresentableModel])
         XCTAssertEqual(delegate.presentableModel!.title, "Some title")
@@ -316,15 +353,44 @@ class TabPresenterTests: XCTestCase {
         XCTAssertNil(delegate.presentableModel!.backList)
     }
 
-    func test_didDismissBackForwardList_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+    func test_didSelectBackListPage_deliversCorrectWindowState() {
+        let (sut, _, webView, _, delegate) = makeSUT()
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
-        sut.didLoadForwardList([page1, page2])
+        sut.didLoadForwardList()
 
-        sut.didDismissBackForwardList()
+        sut.didSelectBackListPage(at: 1)
 
+        XCTAssertEqual(webView.receivedMessages, [
+            .retrieveForwardList,
+            .navigateToBackListPage
+        ])
+        XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel, .didUpdatePresentableModel, .didUpdatePresentableModel])
+        XCTAssertEqual(delegate.presentableModel!.title, "Some title")
+        XCTAssertEqual(delegate.presentableModel!.urlHost, "some-url.com")
+        XCTAssertEqual(delegate.presentableModel!.fullURL, "http://some-url.com/some-random-path/123")
+        XCTAssertFalse(delegate.presentableModel!.showCancelButton)
+        XCTAssertFalse(delegate.presentableModel!.showClearButton)
+        XCTAssertFalse(delegate.presentableModel!.showStopButton)
+        XCTAssertTrue(delegate.presentableModel!.showReloadButton)
+        XCTAssertTrue(delegate.presentableModel!.showSiteProtection)
+        XCTAssertTrue(delegate.presentableModel!.isWebsiteProtected)
+        XCTAssertTrue(delegate.presentableModel!.showWebView)
+        XCTAssertFalse(delegate.presentableModel!.showSearchSuggestions)
+        XCTAssertFalse(delegate.presentableModel!.canGoBack)
+        XCTAssertFalse(delegate.presentableModel!.canGoForward)
+        XCTAssertNil(delegate.presentableModel!.progressBarValue)
+        XCTAssertNil(delegate.presentableModel!.forwardList)
+        XCTAssertNil(delegate.presentableModel!.backList)
+    }
+
+    func test_didSelectForwardListPage_deliversCorrectWindowState() {
+        let (sut, _, webView, _, delegate) = makeSUT()
+        sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
+        sut.didLoadBackList()
+
+        sut.didSelectForwardListPage(at: 1)
+
+        XCTAssertEqual(webView.receivedMessages, [.retrieveBackList, .navigateToForwardListPage])
         XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel, .didUpdatePresentableModel, .didUpdatePresentableModel])
         XCTAssertEqual(delegate.presentableModel!.title, "Some title")
         XCTAssertEqual(delegate.presentableModel!.urlHost, "some-url.com")
@@ -345,7 +411,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didUpdateProgressBar(0.45)
 
@@ -369,7 +435,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_whenValueIsOne_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didUpdateProgressBar(1)
 
@@ -393,7 +459,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_whenValueGreaterThanOne_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didUpdateProgressBar(1.5)
 
@@ -417,7 +483,7 @@ class TabPresenterTests: XCTestCase {
     }
 
     func test_didUpdateProgressBar_whenNavigationUpdates_deliversCorrectWindowState() {
-        let (sut, _, delegate) = makeSUT()
+        let (sut, _, _, _, delegate) = makeSUT()
 
         sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         sut.didUpdateProgressBar(0.45)
@@ -443,25 +509,35 @@ class TabPresenterTests: XCTestCase {
 
     // MARK: -- Helpers
 
-    private func makeSUT() -> (sut: TabPresenter, safelist: SafelistStoreSpy, delegate: TabPresenterDelegateMock) {
-        let safelistSpy = SafelistStoreSpy()
-        let sut = TabPresenter(isOnSafelist: safelistSpy.isRegisteredDomain(_:))
-        let delegate = TabPresenterDelegateMock()
+    private func makeSUT() -> (sut: TabManager,
+                               safelist: SafelistStoreSpy,
+                               webView: WebViewSpy,
+                               historyStore: HistoryStoreMock,
+                               delegate: TabManagerDelegateMock)
+    {
+        let webView = WebViewSpy()
+        let safelist = SafelistStoreSpy()
+        let historyStore = HistoryStoreMock()
+        let sut = TabManager(
+            webView: webView,
+            safelistStore: safelist,
+            historyStore: historyStore)
+        let delegate = TabManagerDelegateMock()
         sut.delegate = delegate
 
-        return (sut, safelistSpy, delegate)
+        return (sut, safelist, webView, historyStore, delegate)
     }
 }
 
-private class TabPresenterDelegateMock: TabPresenterDelegate {
+private class TabManagerDelegateMock: TabManagerDelegate {
     enum Message {
         case didUpdatePresentableModel
     }
 
     var receivedMessages = [Message]()
-    var presentableModel: TabPresenter.Model?
+    var presentableModel: TabManager.Model?
 
-    func didUpdatePresentableModel(_ model: TabPresenter.Model) {
+    func didUpdatePresentableModel(_ model: TabManager.Model) {
         receivedMessages.append(.didUpdatePresentableModel)
         presentableModel = model
     }

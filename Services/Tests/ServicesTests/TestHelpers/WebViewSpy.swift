@@ -20,6 +20,9 @@ class WebViewSpy: WebEngineContract {
 
     var receivedMessages = [Message]()
 
+    var mockBackList = [WebPage]()
+    var mockFowardList = [WebPage]()
+
     func getCurrentPage() -> WebPage? {
         receivedMessages.append(.getCurrentPage)
         return nil
@@ -55,12 +58,12 @@ class WebViewSpy: WebEngineContract {
 
     func retrieveBackList() -> [WebPage] {
         receivedMessages.append(.retrieveBackList)
-        return []
+        return mockBackList
     }
 
     func retrieveForwardList() -> [WebPage] {
         receivedMessages.append(.retrieveForwardList)
-        return []
+        return mockFowardList
     }
 
     func navigateToBackListPage(at index: Int) {

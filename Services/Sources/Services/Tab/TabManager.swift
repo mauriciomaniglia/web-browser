@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol TabPresenterDelegate: AnyObject {
-    func didUpdatePresentableModel(_ model: TabPresenter.Model)
+public protocol TabManagerDelegate: AnyObject {
+    func didUpdatePresentableModel(_ model: TabManager.Model)
 }
 
-public class TabPresenter {
+public class TabManager {
 
     public struct Model {
 
@@ -31,12 +31,19 @@ public class TabPresenter {
         public let forwardList: [Page]?
     }
 
-    public weak var delegate: TabPresenterDelegate?
+    public weak var delegate: TabManagerDelegate?
+
+    private let webView: WebEngineContract
+    private let safelistStore: SafelistStoreAPI
+    private let historyStore: HistoryStoreAPI
     private var model: Model
-    private let isOnSafelist: (String) -> Bool
-    
-    public init(isOnSafelist: @escaping (String) -> Bool) {
-        model = Model(
+
+    public init(webView: WebEngineContract, safelistStore: SafelistStoreAPI, historyStore: HistoryStoreAPI) {
+        self.webView = webView
+        self.safelistStore = safelistStore
+        self.historyStore = historyStore
+
+        self.model = Model(
             title: "Start Page",
             urlHost: nil,
             fullURL: nil,
@@ -52,9 +59,31 @@ public class TabPresenter {
             canGoForward: false, 
             backList: nil,
             forwardList: nil)
-        self.isOnSafelist = isOnSafelist
     }
-    
+
+    public func didRequestSearch(_ text: String) {
+        let url = URLBuilderAPI.makeURL(from: text)
+        webView.load(url)
+    }
+
+    public func didSelectBackListPage(at index: Int) {
+        didDismissNavigationList()
+        webView.navigateToBackListPage(at: index)
+    }
+
+    public func didSelectForwardListPage(at index: Int) {
+        didDismissNavigationList()
+        webView.navigateToForwardListPage(at: index)
+    }
+
+    public func updateSafelist(url: String, isEnabled: Bool) {
+        if isEnabled {
+            safelistStore.saveDomain(url)
+        } else {
+            safelistStore.removeDomain(url)
+        }
+    }
+
     public func didStartNewWindow() {
         delegate?.didUpdatePresentableModel(.init(
             title: "Start Page",
@@ -120,7 +149,7 @@ public class TabPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
+    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) {
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -156,7 +185,7 @@ public class TabPresenter {
             showStopButton: false,
             showReloadButton: true,
             showSiteProtection: true,
-            isWebsiteProtected: !isOnSafelist(urlHost),
+            isWebsiteProtected: !safelistStore.isRegisteredDomain(urlHost),
             showWebView: true,
             showSearchSuggestions: false,
             canGoBack: model.canGoBack,
@@ -168,7 +197,9 @@ public class TabPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didLoadBackList(_ webPages: [WebPage]) {
+    public func didLoadBackList() {
+        let webPages = webView.retrieveBackList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -190,7 +221,9 @@ public class TabPresenter {
         delegate?.didUpdatePresentableModel(newModel)
     }
 
-    public func didLoadForwardList(_ webPages: [WebPage]) {
+    public func didLoadForwardList() {
+        let webPages = webView.retrieveForwardList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+
         let newModel = Model(
             title: model.title,
             urlHost: model.urlHost,
@@ -207,28 +240,6 @@ public class TabPresenter {
             canGoForward: model.canGoForward,
             backList: nil,
             forwardList: webPages.map(mapWebPage))
-
-        model = newModel
-        delegate?.didUpdatePresentableModel(newModel)
-    }
-
-    public func didDismissBackForwardList() {
-        let newModel = Model(
-            title: model.title,
-            urlHost: model.urlHost,
-            fullURL: model.fullURL,
-            showCancelButton: model.showCancelButton,
-            showClearButton: model.showClearButton,
-            showStopButton: model.showStopButton,
-            showReloadButton: model.showReloadButton,
-            showSiteProtection: model.showSiteProtection,
-            isWebsiteProtected: model.isWebsiteProtected,
-            showWebView: true,
-            showSearchSuggestions: false,
-            canGoBack: model.canGoBack,
-            canGoForward: model.canGoForward,
-            backList: nil,
-            forwardList: nil)
 
         model = newModel
         delegate?.didUpdatePresentableModel(newModel)
@@ -256,8 +267,45 @@ public class TabPresenter {
             forwardList: model.forwardList))
     }
 
+    private func didDismissNavigationList() {
+        let newModel = Model(
+            title: model.title,
+            urlHost: model.urlHost,
+            fullURL: model.fullURL,
+            showCancelButton: model.showCancelButton,
+            showClearButton: model.showClearButton,
+            showStopButton: model.showStopButton,
+            showReloadButton: model.showReloadButton,
+            showSiteProtection: model.showSiteProtection,
+            isWebsiteProtected: model.isWebsiteProtected,
+            showWebView: true,
+            showSearchSuggestions: false,
+            canGoBack: model.canGoBack,
+            canGoForward: model.canGoForward,
+            backList: nil,
+            forwardList: nil)
+
+        model = newModel
+        delegate?.didUpdatePresentableModel(newModel)
+    }
+
     private func mapWebPage(_ webPage: WebPage) -> Model.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
+    }
+}
+
+extension TabManager: WebEngineDelegate {
+    public func didLoad(page: WebPage) {
+        historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
+        didLoadPage(title: page.title, url: page.url)
+    }
+
+    public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {
+        didUpdateNavigationButton(canGoBack: canGoBack, canGoForward: canGoForward)
+    }
+
+    public func didUpdateLoadingProgress(_ progress: Double) {
+        didUpdateProgressBar(progress)
     }
 }
