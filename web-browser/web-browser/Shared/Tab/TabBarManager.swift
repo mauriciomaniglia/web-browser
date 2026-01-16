@@ -6,16 +6,16 @@ final class TabBarManager: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?
 
-    let safelistStore: SafelistStoreAPI
-    let historyStore: HistoryStoreAPI
+    let safelistStore: SafelistStore
+    let historyStore: HistorySwiftDataStore
     let bookmarkStore: BookmarkStoreAPI
 
     let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
 
-    init(safelistStore: SafelistStoreAPI,
-         historyStore: HistoryStoreAPI,
+    init(safelistStore: SafelistStore,
+         historyStore: HistorySwiftDataStore,
          bookmarkStore: BookmarkStoreAPI,
          historyComposer: HistoryComposer,
          bookmarkComposer: BookmarkComposer,

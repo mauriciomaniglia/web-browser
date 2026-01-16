@@ -2,9 +2,9 @@ import Services
 
 class TabAdapter {
     let tabViewModel: TabViewModel
-    let tabManager: TabManager
+    let tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>
 
-    init(tabViewModel: TabViewModel, tabManager: TabManager) {
+    init(tabViewModel: TabViewModel, tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>) {
         self.tabViewModel = tabViewModel
         self.tabManager = tabManager
     }

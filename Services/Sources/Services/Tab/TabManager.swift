@@ -1,13 +1,13 @@
 import Foundation
 
-public class TabManager {
+public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistoryStoreAPI> {
 
-    private let webView: WebEngineContract
-    private let safelistStore: SafelistStoreAPI
-    private let historyStore: HistoryStoreAPI
+    private let webView: W
+    private let safelistStore: S
+    private let historyStore: H
     private var model: PresentableTab
 
-    public init(webView: WebEngineContract, safelistStore: SafelistStoreAPI, historyStore: HistoryStoreAPI) {
+    public init(webView: W, safelistStore: S, historyStore: H) {
         self.webView = webView
         self.safelistStore = safelistStore
         self.historyStore = historyStore

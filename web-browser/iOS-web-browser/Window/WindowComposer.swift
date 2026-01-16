@@ -4,8 +4,8 @@ import Services
 
 final class WindowComposer {
     let container: ModelContainer
-    let safelistStore: SafelistStoreAPI
-    let historyStore: HistoryStoreAPI
+    let safelistStore: SafelistStore
+    let historyStore: HistorySwiftDataStore
     let bookmarkStore: BookmarkStoreAPI
 
     let historyComposer: HistoryComposer

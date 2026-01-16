@@ -11,13 +11,13 @@ final class TabComposer {
          bookmarkViewModel: BookmarkViewModel,
          historyViewModel: HistoryViewModel,
          searchSuggestionViewModel: SearchSuggestionViewModel,
-         safelistStore: SafelistStoreAPI,
-         historyStore: HistoryStoreAPI
+         safelistStore: SafelistStore,
+         historyStore: HistorySwiftDataStore
     ) {
         self.webKitWrapper = webKitWrapper
         self.tabViewModel = TabViewModel()
 
-        let tabManager = TabManager(
+        let tabManager = TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>(
             webView: webKitWrapper,
             safelistStore: safelistStore,
             historyStore: historyStore
