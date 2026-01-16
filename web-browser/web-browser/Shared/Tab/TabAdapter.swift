@@ -45,7 +45,7 @@ class TabAdapter {
         didUpdatePresentableModel(updatedModel)
     }
 
-    func didUpdatePresentableModel(_ model: TabManager.Model) {
+    func didUpdatePresentableModel(_ model: PresentableTab) {
         tabViewModel.isBackButtonDisabled = !model.canGoBack
         tabViewModel.isForwardButtonDisabled = !model.canGoForward
         tabViewModel.showCancelButton = model.showCancelButton

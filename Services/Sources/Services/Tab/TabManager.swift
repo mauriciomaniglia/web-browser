@@ -2,40 +2,17 @@ import Foundation
 
 public class TabManager {
 
-    public struct Model {
-        public struct Page {
-            public let title: String
-            public let url: String
-        }
-        public let title: String?
-        public let urlHost: String?
-        public let fullURL: String?
-        public let showCancelButton: Bool
-        public let showClearButton: Bool
-        public let showStopButton: Bool
-        public let showReloadButton: Bool
-        public let showSiteProtection: Bool
-        public let isWebsiteProtected: Bool
-        public let showWebView: Bool
-        public let showSearchSuggestions: Bool
-        public let canGoBack: Bool
-        public let canGoForward: Bool
-        public var progressBarValue: Double?
-        public let backList: [Page]?
-        public let forwardList: [Page]?
-    }
-
     private let webView: WebEngineContract
     private let safelistStore: SafelistStoreAPI
     private let historyStore: HistoryStoreAPI
-    private var model: Model
+    private var model: PresentableTab
 
     public init(webView: WebEngineContract, safelistStore: SafelistStoreAPI, historyStore: HistoryStoreAPI) {
         self.webView = webView
         self.safelistStore = safelistStore
         self.historyStore = historyStore
 
-        self.model = Model(
+        self.model = PresentableTab(
             title: "Start Page",
             urlHost: nil,
             fullURL: nil,
@@ -58,17 +35,17 @@ public class TabManager {
         webView.load(url)
     }
 
-    public func didLoad(page: WebPage) -> TabManager.Model {
+    public func didLoad(page: WebPage) -> PresentableTab {
         historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
         return didLoadPage(title: page.title, url: page.url)
     }
 
-    public func didSelectBackListPage(at index: Int) -> TabManager.Model {
+    public func didSelectBackListPage(at index: Int) -> PresentableTab {
         webView.navigateToBackListPage(at: index)
         return didDismissNavigationList()
     }
 
-    public func didSelectForwardListPage(at index: Int) -> TabManager.Model {
+    public func didSelectForwardListPage(at index: Int) -> PresentableTab {
         webView.navigateToForwardListPage(at: index)
         return didDismissNavigationList()
     }
@@ -81,8 +58,8 @@ public class TabManager {
         }
     }
 
-    public func didStartNewWindow() -> TabManager.Model {
-        return Model(
+    public func didStartNewWindow() -> PresentableTab {
+        return PresentableTab(
             title: "Start Page",
             urlHost: nil,
             fullURL: nil,
@@ -100,8 +77,8 @@ public class TabManager {
             forwardList: nil)
     }
 
-    public func didChangeFocus(isFocused: Bool) -> TabManager.Model {
-        model = Model(
+    public func didChangeFocus(isFocused: Bool) -> PresentableTab {
+        model = PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -121,11 +98,11 @@ public class TabManager {
         return model
     }
 
-    public func didStartTyping(oldText: String, newText: String) -> TabManager.Model? {
+    public func didStartTyping(oldText: String, newText: String) -> PresentableTab? {
         guard !newText.isEmpty else { return nil }
         guard  oldText != newText && newText != model.fullURL else { return nil }
 
-        model = Model(
+        model = PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: newText,
@@ -145,8 +122,8 @@ public class TabManager {
         return model
     }
 
-    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) -> TabManager.Model {
-        model = Model(
+    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) -> PresentableTab {
+        model = PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -166,12 +143,12 @@ public class TabManager {
         return model
     }
 
-    public func didLoadPage(title: String?, url: URL) -> TabManager.Model {
+    public func didLoadPage(title: String?, url: URL) -> PresentableTab {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let title = title ?? urlHost
 
-        model = Model(
+        model = PresentableTab(
             title: title,
             urlHost: urlHost,
             fullURL: fullURL,
@@ -191,10 +168,10 @@ public class TabManager {
         return model
     }
 
-    public func didLoadBackList() -> TabManager.Model {
+    public func didLoadBackList() -> PresentableTab {
         let webPages = webView.retrieveBackList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
 
-        model = Model(
+        model = PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -214,10 +191,10 @@ public class TabManager {
         return model
     }
 
-    public func didLoadForwardList() -> TabManager.Model {
+    public func didLoadForwardList() -> PresentableTab {
         let webPages = webView.retrieveForwardList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
 
-        model = Model(
+        model = PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -237,10 +214,10 @@ public class TabManager {
         return model
     }
 
-    public func didUpdateProgressBar(_ value: Double) -> TabManager.Model {
+    public func didUpdateProgressBar(_ value: Double) -> PresentableTab {
         let progressValue = value >= 1 ? nil : value
 
-        return Model(
+        return PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -259,8 +236,8 @@ public class TabManager {
             forwardList: model.forwardList)
     }
 
-    public func didDismissNavigationList() -> TabManager.Model {
-        model = Model(
+    public func didDismissNavigationList() -> PresentableTab {
+        model = PresentableTab(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -280,8 +257,31 @@ public class TabManager {
         return model
     }
 
-    private func mapWebPage(_ webPage: WebPage) -> Model.Page {
+    private func mapWebPage(_ webPage: WebPage) -> PresentableTab.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }
+}
+
+public struct PresentableTab {
+    public struct Page {
+        public let title: String
+        public let url: String
+    }
+    public let title: String?
+    public let urlHost: String?
+    public let fullURL: String?
+    public let showCancelButton: Bool
+    public let showClearButton: Bool
+    public let showStopButton: Bool
+    public let showReloadButton: Bool
+    public let showSiteProtection: Bool
+    public let isWebsiteProtected: Bool
+    public let showWebView: Bool
+    public let showSearchSuggestions: Bool
+    public let canGoBack: Bool
+    public let canGoForward: Bool
+    public var progressBarValue: Double?
+    public let backList: [Page]?
+    public let forwardList: [Page]?
 }
