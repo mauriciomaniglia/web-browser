@@ -43,7 +43,9 @@ class TabViewModel: ObservableObject {
     var didStartTyping: ((String, String) -> Void)?
 
     func didTapAddBookmark() {
-        showAddBookmark = true
+        if !fullURL.isEmpty {
+            showAddBookmark = true
+        }
     }
 
     func dismissAddBookmark() {
