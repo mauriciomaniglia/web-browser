@@ -54,6 +54,10 @@ struct AddressBarView: View {
 
     private var SearchTextField: some View {
         TextField("Search or enter address", text: $searchText)
+            .autocorrectionDisabled()
+            #if os(iOS)
+            .textInputAutocapitalization(.never)
+            #endif
             .textFieldStyle(.plain)
             .onSubmit { viewModel.didStartSearch?(searchText) }
             .focused($isTextFieldFocused)
