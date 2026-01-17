@@ -54,8 +54,15 @@ final class TabBarManager: ObservableObject {
     }
 
     func closeTab(at index: Int) {
-        tabs.remove(at: index)
+        if index == 0 && tabs.count == 1 {
+            tabs.remove(at: 0)
+            selectedTab = nil
+            createNewTab()
+            return
+        }
+
         selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
+        tabs.remove(at: index)
     }
 }
 
