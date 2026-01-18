@@ -1,7 +1,7 @@
 import Services
 
 class TabAdapter {
-    let tabViewModel: TabViewModel
+    weak var tabViewModel: TabViewModel?
     let tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>
 
     init(tabViewModel: TabViewModel, tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>) {
@@ -46,6 +46,8 @@ class TabAdapter {
     }
 
     func didUpdatePresentableModel(_ model: PresentableTab) {
+        guard let tabViewModel else { return }
+
         tabViewModel.isBackButtonDisabled = !model.canGoBack
         tabViewModel.isForwardButtonDisabled = !model.canGoForward
         tabViewModel.showCancelButton = model.showCancelButton
