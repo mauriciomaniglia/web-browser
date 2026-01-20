@@ -102,6 +102,7 @@ struct TabCardView: View {
 
     var cardTitle: some View {
         Text(tab.tabViewModel.title)
+            .foregroundStyle(Color(.darkGray))        
             .font(.subheadline)
             .lineLimit(1)
             .padding(.vertical, 10)
@@ -121,6 +122,7 @@ struct ToolbarView: View {
         }
         .frame(height: 50)
         .padding(.bottom, 20)
+        .buttonStyle(PlainButtonStyle())
         .background(
             blurBackground
         )

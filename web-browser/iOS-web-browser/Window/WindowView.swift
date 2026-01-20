@@ -92,6 +92,7 @@ struct WindowContent: View {
 
     var navigationButton: some View {
         NavigationBar(viewModel: tabViewModel)
+            .buttonStyle(PlainButtonStyle())
     }
 
     var addNewTabButton: some View {
@@ -103,12 +104,14 @@ struct WindowContent: View {
         }) {
             Image(systemName: "plus.square")
         }
+        .buttonStyle(PlainButtonStyle())
     }
 
     var menuButton: some View {
         Button(action: { isShowingSheet.toggle() }) {
             Image(systemName: "line.3.horizontal")
         }
+        .buttonStyle(PlainButtonStyle())
     }
 
     var tabManagerView: some View {

@@ -25,6 +25,7 @@ struct MenuView: View {
                     }
                 }
             }
+            .foregroundStyle(Color(.darkGray))
         }
     }
 
