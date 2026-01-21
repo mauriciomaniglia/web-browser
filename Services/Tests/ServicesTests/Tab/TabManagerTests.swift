@@ -483,7 +483,7 @@ class TabManagerTests: XCTestCase {
 
     // MARK: -- Helpers
 
-    private func makeSUT() -> (sut: TabManager,
+    private func makeSUT() -> (sut: TabManager<WebViewSpy, SafelistStoreSpy, HistoryStoreMock>,
                                safelist: SafelistStoreSpy,
                                webView: WebViewSpy,
                                historyStore: HistoryStoreMock)
