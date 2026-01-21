@@ -113,19 +113,43 @@ struct TabCardView: View {
 struct ToolbarView: View {
     @EnvironmentObject var tabBarManager: TabBarManager
     @Binding var isPresented: Bool
+    @State var isConfirmationCloseAllTabs = false
 
     var body: some View {
         HStack {
+            closeAllButton
+            Spacer()
             newTabButton
             Spacer()
             closeButton
         }
         .frame(height: 50)
+        .padding()
         .padding(.bottom, 20)
         .buttonStyle(PlainButtonStyle())
         .background(
             blurBackground
         )
+    }
+
+    var closeAllButton: some View {
+        Button {
+            isConfirmationCloseAllTabs = true
+        } label: {
+            Image(systemName: "trash")
+        }
+        .font(.headline)
+        .padding(.leading, 15)
+        .confirmationDialog(
+            "Close all tabs",
+            isPresented: $isConfirmationCloseAllTabs) {
+                Button(
+                    "Close Tabs(\(tabBarManager.tabs.count))",
+                    role: .destructive,
+                    action: tabBarManager.closeAllTabs
+                )
+                Button("Cancel", role: .cancel, action: {})
+            }
     }
 
     var newTabButton: some View {

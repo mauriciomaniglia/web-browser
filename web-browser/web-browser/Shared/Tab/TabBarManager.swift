@@ -64,6 +64,12 @@ final class TabBarManager: ObservableObject {
         selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
         tabs.remove(at: index)
     }
+
+    func closeAllTabs() {
+        tabs.removeAll()
+        selectedTab = nil
+        createNewTab()
+    }
 }
 
 extension TabBarManager: HistoryUserActionDelegate {
