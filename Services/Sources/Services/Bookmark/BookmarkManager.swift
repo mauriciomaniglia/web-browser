@@ -1,6 +1,6 @@
 import Foundation
 
-public class BookmarkMediator {
+public class BookmarkManager {
     private let bookmarkStore: BookmarkStoreAPI
 
     public init(bookmarkStore: BookmarkStoreAPI)

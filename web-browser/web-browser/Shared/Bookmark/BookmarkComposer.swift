@@ -8,7 +8,7 @@ protocol BookmarkUserActionDelegate {
 class BookmarkComposer {
     let bookmarkStore: BookmarkStoreAPI
     let viewModel: BookmarkViewModel
-    let mediator: BookmarkMediator
+    let manager: BookmarkManager
     let adapter: BookmarkAdapter
 
     var userActionDelegate: BookmarkUserActionDelegate?
@@ -16,8 +16,8 @@ class BookmarkComposer {
     init(bookmarkStore: BookmarkStoreAPI) {
         self.bookmarkStore = bookmarkStore
         self.viewModel = BookmarkViewModel()
-        self.mediator = BookmarkMediator(bookmarkStore: bookmarkStore)
-        self.adapter = BookmarkAdapter(viewModel: viewModel, mediator: mediator)
+        self.manager = BookmarkManager(bookmarkStore: bookmarkStore)
+        self.adapter = BookmarkAdapter(viewModel: viewModel, manager: manager)
 
         viewModel.delegate = self
     }
@@ -47,20 +47,20 @@ extension BookmarkComposer: BookmarkViewModelDelegate {
 
 class BookmarkAdapter {
     weak var viewModel: BookmarkViewModel?
-    let mediator: BookmarkMediator
+    let manager: BookmarkManager
 
-    init(viewModel: BookmarkViewModel, mediator: BookmarkMediator) {
+    init(viewModel: BookmarkViewModel, manager: BookmarkManager) {
         self.viewModel = viewModel
-        self.mediator = mediator
+        self.manager = manager
     }
 
     func didOpenBookmarkView() {
-        let presentableModels = mediator.didOpenBookmarkView()
+        let presentableModels = manager.didOpenBookmarkView()
         didUpdatePresentableModels(presentableModels)
     }
 
     func didSearchTerm(_ query: String) {
-        let presentableModels = mediator.didSearchTerm(query)
+        let presentableModels = manager.didSearchTerm(query)
         didUpdatePresentableModels(presentableModels)
     }
 
