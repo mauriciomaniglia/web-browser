@@ -109,6 +109,9 @@
 		F987B3CE2CFDDC7800474A1E /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
 		F987B3CF2CFDDC7800474A1E /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
 		F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
+		F987F72B2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987F72A2F239DA600E4AF9E /* BookmarkAdapter.swift */; };
+		F987F72C2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987F72A2F239DA600E4AF9E /* BookmarkAdapter.swift */; };
+		F987F72D2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987F72A2F239DA600E4AF9E /* BookmarkAdapter.swift */; };
 		F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
 		F9C070422ECA6C4A001C7E04 /* TabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C070412ECA6C4A001C7E04 /* TabContentView.swift */; };
 		F9CDFD792B711A7C0024E0AD /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
@@ -185,6 +188,7 @@
 		F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FingerprintingRules.json; sourceTree = "<group>"; };
 		F987B3C52CFDDC7800474A1E /* SocialRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SocialRules.json; sourceTree = "<group>"; };
 		F987B3D02CFDDD4800474A1E /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
+		F987F72A2F239DA600E4AF9E /* BookmarkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapter.swift; sourceTree = "<group>"; };
 		F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionViewModel.swift; sourceTree = "<group>"; };
 		F9C070412ECA6C4A001C7E04 /* TabContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContentView.swift; sourceTree = "<group>"; };
 		F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapper.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */,
 				F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */,
 				F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */,
+				F987F72A2F239DA600E4AF9E /* BookmarkAdapter.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -733,6 +738,7 @@
 				F989C4AD2E04527A0021132F /* SearchSuggestionViewModel.swift in Sources */,
 				F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */,
 				F92921F02B70F9F900173702 /* AddressBarView.swift in Sources */,
+				F987F72D2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */,
 				F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */,
 				F9C070422ECA6C4A001C7E04 /* TabContentView.swift in Sources */,
 				F9632D952C186D7800A4F7F9 /* NavigationList.swift in Sources */,
@@ -795,6 +801,7 @@
 				F9E5D1152EF5C7D9009BA82C /* TabBarManager.swift in Sources */,
 				F96998B82EEDF21200C3286D /* HistoryViewModel.swift in Sources */,
 				F96998B92EEDF21200C3286D /* WebKitEngineWrapper.swift in Sources */,
+				F987F72C2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */,
 				F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */,
 				F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */,
 				F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */,
@@ -825,6 +832,7 @@
 				F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */,
 				F96999462EEEEAAC00C3286D /* BookmarkSwiftDataStore.swift in Sources */,
 				F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */,
+				F987F72B2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */,
 				F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */,
 				F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */,
 				F9E5D1142EF5C7D9009BA82C /* TabBarManager.swift in Sources */,
