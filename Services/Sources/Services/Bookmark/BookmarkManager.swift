@@ -1,9 +1,9 @@
 import Foundation
 
-public class BookmarkManager {
-    private let bookmarkStore: BookmarkStoreAPI
+public class BookmarkManager<T: BookmarkStoreAPI> {
+    private let bookmarkStore: T
 
-    public init(bookmarkStore: BookmarkStoreAPI)
+    public init(bookmarkStore: T)
     {
         self.bookmarkStore = bookmarkStore
     }

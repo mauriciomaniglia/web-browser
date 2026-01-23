@@ -6,7 +6,7 @@ final class WindowComposer {
     let container: ModelContainer
     let safelistStore: SafelistStore
     let historyStore: HistorySwiftDataStore
-    let bookmarkStore: BookmarkStoreAPI
+    let bookmarkStore: BookmarkSwiftDataStore
 
     let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer

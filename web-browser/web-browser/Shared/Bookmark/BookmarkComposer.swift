@@ -8,12 +8,12 @@ protocol BookmarkUserActionDelegate {
 class BookmarkComposer {
     let bookmarkStore: BookmarkStoreAPI
     let viewModel: BookmarkViewModel
-    let manager: BookmarkManager
+    let manager: BookmarkManager<BookmarkSwiftDataStore>
     let adapter: BookmarkAdapter
 
     var userActionDelegate: BookmarkUserActionDelegate?
 
-    init(bookmarkStore: BookmarkStoreAPI) {
+    init(bookmarkStore: BookmarkSwiftDataStore) {
         self.bookmarkStore = bookmarkStore
         self.viewModel = BookmarkViewModel()
         self.manager = BookmarkManager(bookmarkStore: bookmarkStore)

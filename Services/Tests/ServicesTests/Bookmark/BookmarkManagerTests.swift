@@ -42,7 +42,7 @@ class BookmarkManagerTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: BookmarkManager, bookmarkStore: BookmarkStoreMock) {
+    private func makeSUT() -> (sut: BookmarkManager<BookmarkStoreMock>, bookmarkStore: BookmarkStoreMock) {
         let bookmarkStore = BookmarkStoreMock()
         let sut = BookmarkManager(bookmarkStore: bookmarkStore)
 

@@ -2,9 +2,9 @@ import Services
 
 class BookmarkAdapter {
     weak var viewModel: BookmarkViewModel?
-    let manager: BookmarkManager
+    let manager: BookmarkManager<BookmarkSwiftDataStore>
 
-    init(viewModel: BookmarkViewModel, manager: BookmarkManager) {
+    init(viewModel: BookmarkViewModel, manager: BookmarkManager<BookmarkSwiftDataStore>) {
         self.viewModel = viewModel
         self.manager = manager
     }
