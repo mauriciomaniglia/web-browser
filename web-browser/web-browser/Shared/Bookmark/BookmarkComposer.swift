@@ -8,18 +8,17 @@ protocol BookmarkUserActionDelegate {
 class BookmarkComposer {
     let bookmarkStore: BookmarkStoreAPI
     let viewModel: BookmarkViewModel
-    let presenter: BookmarkPresenter
     let mediator: BookmarkMediator
+    let adapter: BookmarkAdapter
 
     var userActionDelegate: BookmarkUserActionDelegate?
 
     init(bookmarkStore: BookmarkStoreAPI) {
         self.bookmarkStore = bookmarkStore
         self.viewModel = BookmarkViewModel()
-        self.presenter = BookmarkPresenter()
-        self.mediator = BookmarkMediator(presenter: presenter, bookmarkStore: bookmarkStore)
+        self.mediator = BookmarkMediator(bookmarkStore: bookmarkStore)
+        self.adapter = BookmarkAdapter(viewModel: viewModel, mediator: mediator)
 
-        presenter.delegate = self
         viewModel.delegate = self
     }
 }
@@ -30,11 +29,11 @@ extension BookmarkComposer: BookmarkViewModelDelegate {
     }
     
     func didOpenBookmarkView() {
-        mediator.didOpenBookmarkView()
+        adapter.didOpenBookmarkView()
     }
     
     func didSearchTerm(_ query: String) {
-        mediator.didSearchTerm(query)
+        adapter.didSearchTerm(query)
     }
     
     func didSelectPage(_ pageURL: URL) {
@@ -46,9 +45,27 @@ extension BookmarkComposer: BookmarkViewModelDelegate {
     }
 }
 
-extension BookmarkComposer: BookmarkPresenterDelegate {
-    func didUpdatePresentableModels(_ models: [Services.BookmarkPresenter.Model]) {
+class BookmarkAdapter {
+    weak var viewModel: BookmarkViewModel?
+    let mediator: BookmarkMediator
+
+    init(viewModel: BookmarkViewModel, mediator: BookmarkMediator) {
+        self.viewModel = viewModel
+        self.mediator = mediator
+    }
+
+    func didOpenBookmarkView() {
+        let presentableModels = mediator.didOpenBookmarkView()
+        didUpdatePresentableModels(presentableModels)
+    }
+
+    func didSearchTerm(_ query: String) {
+        let presentableModels = mediator.didSearchTerm(query)
+        didUpdatePresentableModels(presentableModels)
+    }
+
+    func didUpdatePresentableModels(_ models: [PresentableBookmark]) {
         let bookmarks = models.map { BookmarkViewModel.Bookmark(id: $0.id, title: $0.title, url: $0.url) }
-        viewModel.bookmarkList = bookmarks
+        viewModel?.bookmarkList = bookmarks
     }
 }
