@@ -2,18 +2,21 @@ import SwiftUI
 import Services
 
 final class TabComposer {
+    let id: UUID
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
     let view: TabContentView
-    let id = UUID()
 
-    init(webKitWrapper: WebKitEngineWrapper,
-         bookmarkViewModel: BookmarkViewModel,
-         historyViewModel: HistoryViewModel,
-         searchSuggestionViewModel: SearchSuggestionViewModel,
-         safelistStore: SafelistStore,
-         historyStore: HistorySwiftDataStore
+    init(
+        id: UUID? = nil,
+        webKitWrapper: WebKitEngineWrapper,
+        bookmarkViewModel: BookmarkViewModel,
+        historyViewModel: HistoryViewModel,
+        searchSuggestionViewModel: SearchSuggestionViewModel,
+        safelistStore: SafelistStore,
+        historyStore: HistorySwiftDataStore
     ) {
+        self.id = id ?? UUID()
         self.webKitWrapper = webKitWrapper
         self.tabViewModel = TabViewModel()
 

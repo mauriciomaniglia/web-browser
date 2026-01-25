@@ -14,6 +14,8 @@ final class TabBarManager: ObservableObject {
     let bookmarkComposer: BookmarkComposer
     let searchSuggestionComposer: SearchSuggestionComposer
 
+    let tabSessionStore = TabSessionStore()
+
     init(safelistStore: SafelistStore,
          historyStore: HistorySwiftDataStore,
          bookmarkStore: BookmarkStoreAPI,
@@ -33,6 +35,36 @@ final class TabBarManager: ObservableObject {
         searchSuggestionComposer.userActionDelegate = self
     }
 
+    func fetchTabs() {
+        Task { @MainActor in
+            guard let tabSessions = await tabSessionStore.getTabSessions(), !tabSessions.keys.isEmpty else { return }
+
+            tabs.removeAll()
+            selectedTab = nil
+
+            for tabID in tabSessions.keys {
+                let webKitWrapper = WebKitEngineWrapper()
+
+                if let interactionState = tabSessions[tabID] {
+                    webKitWrapper.webView.interactionState = interactionState
+                }
+
+                let composer = TabComposer(
+                    id: UUID(uuidString: tabID),
+                    webKitWrapper: webKitWrapper,
+                    bookmarkViewModel: bookmarkComposer.viewModel,
+                    historyViewModel: historyComposer.viewModel,
+                    searchSuggestionViewModel: searchSuggestionComposer.viewModel,
+                    safelistStore: safelistStore,
+                    historyStore: historyStore
+                )
+
+                tabs.append(composer)
+                selectedTab = composer
+            }
+        }
+    }
+
     func createNewTab() {
         let webKitWrapper = WebKitEngineWrapper()
 
@@ -47,13 +79,28 @@ final class TabBarManager: ObservableObject {
 
         tabs.append(composer)
         selectedTab = composer
+
+        if  let sessionData = composer.webKitWrapper.webView.interactionState as? Data,
+                composer.tabViewModel.showWebView == true {
+            Task {
+                await tabSessionStore.saveTabSession(tabID: composer.id, sessionData: sessionData)
+            }
+        }
     }
 
     func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
+
+        if let tab = selectedTab, let sessionData = tab.webKitWrapper.webView.interactionState as? Data {
+            Task {
+                await tabSessionStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
+            }
+        }
     }
 
     func closeTab(at index: Int) {
+        let tabID = tabs[index].id
+
         if index == 0 && tabs.count == 1 {
             tabs.remove(at: 0)
             selectedTab = nil
@@ -63,6 +110,10 @@ final class TabBarManager: ObservableObject {
 
         selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
         tabs.remove(at: index)
+
+        Task {
+            await tabSessionStore.deleteTabSession(tabID: tabID)
+        }
     }
 
     func closeAllTabs() {

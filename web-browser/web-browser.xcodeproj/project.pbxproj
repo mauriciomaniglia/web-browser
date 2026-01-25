@@ -29,6 +29,9 @@
 		F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
 		F94A60F12C758C52001384CB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A60F02C758C52001384CB /* MenuView.swift */; };
 		F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
+		F94FD0072F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD0062F26D6D000D7ABA2 /* TabSessionStore.swift */; };
+		F94FD0082F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD0062F26D6D000D7ABA2 /* TabSessionStore.swift */; };
+		F94FD0092F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD0062F26D6D000D7ABA2 /* TabSessionStore.swift */; };
 		F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */; };
 		F95DBA8D2B863A2C0048A987 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
 		F9632D952C186D7800A4F7F9 /* NavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationList.swift */; };
@@ -163,6 +166,7 @@
 		F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionComposer.swift; sourceTree = "<group>"; };
 		F94A60F02C758C52001384CB /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteProtectionButton.swift; sourceTree = "<group>"; };
+		F94FD0062F26D6D000D7ABA2 /* TabSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSessionStore.swift; sourceTree = "<group>"; };
 		F958C74E2CA9FA6B0011D544 /* HistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelTests.swift; sourceTree = "<group>"; };
 		F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		F9632D942C186D7800A4F7F9 /* NavigationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationList.swift; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
 				F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */,
 				F9EFF0662F19335300DB1766 /* TabAdapter.swift */,
+				F94FD0062F26D6D000D7ABA2 /* TabSessionStore.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -761,6 +766,7 @@
 				F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowView.swift in Sources */,
+				F94FD0092F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */,
 				F95DBA8D2B863A2C0048A987 /* TabViewModel.swift in Sources */,
 				F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */,
 			);
@@ -802,6 +808,7 @@
 				F96998B82EEDF21200C3286D /* HistoryViewModel.swift in Sources */,
 				F96998B92EEDF21200C3286D /* WebKitEngineWrapper.swift in Sources */,
 				F987F72C2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */,
+				F94FD0082F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */,
 				F96998BA2EEDF21200C3286D /* BookmarkSwiftDataStore.swift in Sources */,
 				F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */,
 				F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */,
@@ -830,6 +837,7 @@
 				F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */,
 				F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */,
 				F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */,
+				F94FD0072F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */,
 				F96999462EEEEAAC00C3286D /* BookmarkSwiftDataStore.swift in Sources */,
 				F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */,
 				F987F72B2F239DA600E4AF9E /* BookmarkAdapter.swift in Sources */,
@@ -999,6 +1007,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.web-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
@@ -1037,6 +1046,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.web-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
@@ -1094,6 +1104,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iPadOS-web-browser/iPadOS-web-browser.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -1125,6 +1136,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iPadOS-web-browser/iPadOS-web-browser.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -1157,6 +1169,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iOS-web-browser/iOS-web-browser.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -1188,6 +1201,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iOS-web-browser/iOS-web-browser.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;

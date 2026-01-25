@@ -4,16 +4,19 @@ import Services
 final class TabComposer: ObservableObject, Identifiable {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
-    let id = UUID()
+    let id: UUID
     @Published var snapshot: UIImage?
 
-    init(webKitWrapper: WebKitEngineWrapper,
-         bookmarkViewModel: BookmarkViewModel,
-         historyViewModel: HistoryViewModel,
-         searchSuggestionViewModel: SearchSuggestionViewModel,
-         safelistStore: SafelistStore,
-         historyStore: HistorySwiftDataStore
+    init(
+        id: UUID? = nil,
+        webKitWrapper: WebKitEngineWrapper,
+        bookmarkViewModel: BookmarkViewModel,
+        historyViewModel: HistoryViewModel,
+        searchSuggestionViewModel: SearchSuggestionViewModel,
+        safelistStore: SafelistStore,
+        historyStore: HistorySwiftDataStore
     ) {
+        self.id = id ?? UUID()
         self.webKitWrapper = webKitWrapper
         self.tabViewModel = TabViewModel()
 
