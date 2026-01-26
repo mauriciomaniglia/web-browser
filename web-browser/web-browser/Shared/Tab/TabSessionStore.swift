@@ -2,55 +2,26 @@ import Foundation
 
 actor TabSessionStore {
     let fileManager = FileManager.default
+    let tabPrefix = "tab-"
 
     func saveTabSession(tabID: UUID, sessionData: Data) async {
-        let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.web-browser")
+        guard let directory = tabDirectory() else { return }
 
-        guard let directory = containerURL?.appendingPathComponent("tab-session-data") else { return }
+        let path = directory.appendingPathComponent(tabPrefix + tabID.uuidString)
 
-        if !fileManager.fileExists(atPath: directory.path){
-            do {
-                try fileManager.createDirectory(at: directory, withIntermediateDirectories: true)
-            } catch {
-                print("Ops")
-            }
-        }
-
-        let path = directory.appendingPathComponent("tab-" + tabID.uuidString)
-
-        do {
-            try sessionData.write(to: path, options: .atomicWrite)
-        } catch {
-            print("Opss")
-        }
+        try? sessionData.write(to: path, options: .atomicWrite)
     }
 
     func deleteTabSession(tabID: UUID) async {
-        let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.web-browser")
+        guard let directory = tabDirectory() else { return }
 
-        guard let directory = containerURL?.appendingPathComponent("tab-session-data") else { return }
+        let path = directory.appendingPathComponent(tabPrefix + tabID.uuidString)
 
-        if !fileManager.fileExists(atPath: directory.path){
-            do {
-                try fileManager.createDirectory(at: directory, withIntermediateDirectories: true)
-            } catch {
-                print("Ops")
-            }
-        }
-
-        let path = directory.appendingPathComponent("tab-" + tabID.uuidString)
-
-        do {
-            try fileManager.removeItem(at: path)
-        } catch {
-            print("Opss")
-        }
+        try? fileManager.removeItem(at: path)
     }
 
     func getTabSessions() async -> [String: Data]? {
-        let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.web-browser")
-
-        guard let directory = containerURL?.appendingPathComponent("tab-session-data") else { return nil }
+        guard let directory = tabDirectory() else { return nil }
 
         let contentsOfDirectory = try? fileManager.contentsOfDirectory(atPath: directory.path)
         let tabs = contentsOfDirectory ?? []
@@ -58,12 +29,28 @@ actor TabSessionStore {
         var tabSessions: [String: Data] = [:]
 
         for tab in tabs {
-            let id = tab.trimmingPrefix("tab-")
+            let id = tab.trimmingPrefix(tabPrefix)
             if let data = try? Data(contentsOf: directory.appendingPathComponent(tab)) {
                 tabSessions[String(id)] = data
             }
         }
 
         return tabSessions
+    }
+
+    private func tabDirectory() -> URL? {
+        let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.web-browser")
+
+        guard let directory = containerURL?.appendingPathComponent("tab-session-data") else { return nil }
+
+        if !fileManager.fileExists(atPath: directory.path){
+            do {
+                try fileManager.createDirectory(at: directory, withIntermediateDirectories: true)
+            } catch {
+                return nil
+            }
+        }
+
+        return directory
     }
 }
