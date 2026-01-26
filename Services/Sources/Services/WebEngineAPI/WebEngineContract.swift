@@ -1,6 +1,8 @@
 import Foundation
 
 public protocol WebEngineContract {
+    var sessionData: Data? { get set }
+
     func getCurrentPage() -> WebPage?
     func registerRule(name: String, content: String, safelist: [String])
     func removeAllRules()

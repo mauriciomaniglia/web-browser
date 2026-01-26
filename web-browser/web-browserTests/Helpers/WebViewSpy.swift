@@ -21,6 +21,8 @@ class WebViewSpy: WebEngineContract {
 
     var receivedMessages = [Message]()
 
+    var sessionData: Data?
+
     func getCurrentPage() -> WebPage? {
         receivedMessages.append(.getCurrentPage)
         return nil

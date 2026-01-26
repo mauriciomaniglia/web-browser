@@ -45,8 +45,8 @@ final class TabBarManager: ObservableObject {
             for tabID in tabSessions.keys {
                 let webKitWrapper = WebKitEngineWrapper()
 
-                if let interactionState = tabSessions[tabID] {
-                    webKitWrapper.webView.interactionState = interactionState
+                if let sessionData = tabSessions[tabID] {
+                    webKitWrapper.sessionData = sessionData
                 }
 
                 let composer = TabComposer(
@@ -80,8 +80,7 @@ final class TabBarManager: ObservableObject {
         tabs.append(composer)
         selectedTab = composer
 
-        if  let sessionData = composer.webKitWrapper.webView.interactionState as? Data,
-                composer.tabViewModel.showWebView == true {
+        if  let sessionData = composer.webKitWrapper.sessionData, composer.tabViewModel.showWebView == true {
             Task {
                 await tabSessionStore.saveTabSession(tabID: composer.id, sessionData: sessionData)
             }
@@ -91,7 +90,7 @@ final class TabBarManager: ObservableObject {
     func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
 
-        if let tab = selectedTab, let sessionData = tab.webKitWrapper.webView.interactionState as? Data {
+        if let tab = selectedTab, let sessionData = tab.webKitWrapper.sessionData {
             Task {
                 await tabSessionStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
             }

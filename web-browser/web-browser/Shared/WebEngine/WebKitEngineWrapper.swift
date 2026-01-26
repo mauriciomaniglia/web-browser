@@ -6,6 +6,16 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
     public let webView: WKWebView
     let ruleStore: WKContentRuleListStore
 
+    public var sessionData: Data? {
+        get {
+            webView.interactionState as? Data
+        }
+
+        set {
+            webView.interactionState = newValue
+        }
+    }
+
     public init(webView: WKWebView = WKWebView(), ruleStore: WKContentRuleListStore = WKContentRuleListStore.default()) {
         self.webView = webView
         self.ruleStore = ruleStore

@@ -23,6 +23,8 @@ class WebViewSpy: WebEngineContract {
     var mockBackList = [WebPage]()
     var mockFowardList = [WebPage]()
 
+    var sessionData: Data?
+
     func getCurrentPage() -> WebPage? {
         receivedMessages.append(.getCurrentPage)
         return nil
