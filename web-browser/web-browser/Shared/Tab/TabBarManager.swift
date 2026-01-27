@@ -50,7 +50,8 @@ final class TabBarManager: ObservableObject {
                 }
 
                 let composer = TabComposer(
-                    id: UUID(uuidString: tabID),
+                    tabID: UUID(uuidString: tabID),
+                    userActionDelegate: self,
                     webKitWrapper: webKitWrapper,
                     bookmarkViewModel: bookmarkComposer.viewModel,
                     historyViewModel: historyComposer.viewModel,
@@ -69,6 +70,7 @@ final class TabBarManager: ObservableObject {
         let webKitWrapper = WebKitEngineWrapper()
 
         let composer = TabComposer(
+            userActionDelegate: self,
             webKitWrapper: webKitWrapper,
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel,
@@ -83,6 +85,16 @@ final class TabBarManager: ObservableObject {
         if  let sessionData = composer.webKitWrapper.sessionData, composer.tabViewModel.showWebView == true {
             Task {
                 await tabSessionStore.saveTabSession(tabID: composer.id, sessionData: sessionData)
+            }
+        }
+    }
+
+    func saveTabSessionData(tabID: UUID) {
+        let tab = tabs.first(where: { $0.id == tabID })
+
+        if let tab, let sessionData = tab.webKitWrapper.sessionData {
+            Task {
+                await tabSessionStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
             }
         }
     }
@@ -119,6 +131,12 @@ final class TabBarManager: ObservableObject {
         tabs.removeAll()
         selectedTab = nil
         createNewTab()
+    }
+}
+
+extension TabBarManager: TabUserActionDelegate {
+    func didLoadPage(tabID: UUID) {
+        saveTabSessionData(tabID: tabID)
     }
 }
 

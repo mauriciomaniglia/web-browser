@@ -1,12 +1,22 @@
+import Foundation
 import Services
 
 class TabAdapter {
+    let tabID: UUID
     weak var tabViewModel: TabViewModel?
     let tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>
+    let userActionDelegate: TabUserActionDelegate?
 
-    init(tabViewModel: TabViewModel, tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>) {
+    init(
+        tabID: UUID,
+        tabViewModel: TabViewModel,
+        tabManager: TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>,
+        userActionDelegate: TabUserActionDelegate?
+    ) {
+        self.tabID = tabID
         self.tabViewModel = tabViewModel
         self.tabManager = tabManager
+        self.userActionDelegate = userActionDelegate
     }
 
     func didChangeFocus(isFocused: Bool) {
@@ -73,6 +83,8 @@ extension TabAdapter: WebEngineDelegate {
     public func didLoad(page: WebPage) {
         let updatedModel = tabManager.didLoad(page: page)
         didUpdatePresentableModel(updatedModel)
+
+        userActionDelegate?.didLoadPage(tabID: tabID)
     }
 
     public func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool) {

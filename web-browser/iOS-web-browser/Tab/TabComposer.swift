@@ -1,14 +1,21 @@
 import SwiftUI
 import Services
 
+protocol TabUserActionDelegate: AnyObject {
+    func didLoadPage(tabID: UUID)
+}
+
 final class TabComposer: ObservableObject, Identifiable {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
     let id: UUID
     @Published var snapshot: UIImage?
 
+    weak var userActionDelegate: TabUserActionDelegate?
+
     init(
-        id: UUID? = nil,
+        tabID: UUID? = nil,
+        userActionDelegate: TabUserActionDelegate,
         webKitWrapper: WebKitEngineWrapper,
         bookmarkViewModel: BookmarkViewModel,
         historyViewModel: HistoryViewModel,
@@ -16,7 +23,8 @@ final class TabComposer: ObservableObject, Identifiable {
         safelistStore: SafelistStore,
         historyStore: HistorySwiftDataStore
     ) {
-        self.id = id ?? UUID()
+        self.id = tabID ?? UUID()
+        self.userActionDelegate = userActionDelegate
         self.webKitWrapper = webKitWrapper
         self.tabViewModel = TabViewModel()
 
@@ -25,8 +33,16 @@ final class TabComposer: ObservableObject, Identifiable {
             safelistStore: safelistStore,
             historyStore: historyStore
         )
-        let tabAdapter = TabAdapter(tabViewModel: tabViewModel, tabManager: tabManager)
-        let contentBlocking = ContentBlocking(webView: webKitWrapper, jsonLoader: JsonLoader.loadJsonContent(filename:))
+        let tabAdapter = TabAdapter(
+            tabID: id,
+            tabViewModel: tabViewModel,
+            tabManager: tabManager,
+            userActionDelegate: userActionDelegate
+        )
+        let contentBlocking = ContentBlocking(
+            webView: webKitWrapper,
+            jsonLoader: JsonLoader.loadJsonContent(filename:)
+        )
 
         contentBlocking.setupStrictProtection()
 
