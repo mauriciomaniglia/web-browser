@@ -138,6 +138,10 @@ extension TabBarManager: TabUserActionDelegate {
     func didLoadPage(tabID: UUID) {
         saveTabSessionData(tabID: tabID)
     }
+
+    func didTapNewTab() {
+        createNewTab()
+    }
 }
 
 extension TabBarManager: HistoryUserActionDelegate {

@@ -3,6 +3,7 @@ import Services
 
 protocol TabUserActionDelegate: AnyObject {
     func didLoadPage(tabID: UUID)
+    func didTapNewTab()
 }
 
 final class TabComposer {
@@ -61,6 +62,7 @@ final class TabComposer {
         tabViewModel.didSelectBackListPage = tabAdapter.didSelectBackListPage(at:)
         tabViewModel.didSelectForwardListPage = tabAdapter.didSelectForwardListPage(at:)
         tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList
+        tabViewModel.didTapNewTab = userActionDelegate.didTapNewTab
 
         view = TabContentView(
             tabViewModel: tabViewModel,

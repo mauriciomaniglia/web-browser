@@ -41,6 +41,7 @@ class TabViewModel: ObservableObject {
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didChangeFocus: ((Bool) -> Void)?
     var didStartTyping: ((String, String) -> Void)?
+    var didTapNewTab: (() -> Void)?
 
     func didTapAddBookmark() {
         if !fullURL.isEmpty {

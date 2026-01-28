@@ -10,6 +10,7 @@ struct MenuView: View {
     var body: some View {
         VStack {
             List {
+                newTabButton
                 if tabViewModel.showWebView {
                     addBookmarkButton
                 }
@@ -18,6 +19,14 @@ struct MenuView: View {
             }
         }
         .frame(width: 500, height: 500)
+    }
+
+    var newTabButton: some View {
+        Button {
+            tabViewModel.didTapNewTab?()
+        } label: {
+            Label("New Tab", systemImage: "plus")
+        }
     }
 
     var addBookmarkButton: some View {
