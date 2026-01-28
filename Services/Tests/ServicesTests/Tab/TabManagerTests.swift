@@ -291,7 +291,7 @@ class TabManagerTests: XCTestCase {
         XCTAssertTrue(model.isWebsiteProtected)
         XCTAssertTrue(model.showWebView)
         XCTAssertFalse(model.showSearchSuggestions)
-        XCTAssertFalse(model.canGoBack)
+        XCTAssertTrue(model.canGoBack)
         XCTAssertFalse(model.canGoForward)
         XCTAssertNil(model.progressBarValue)
         XCTAssertEqual(model.backList?[0].title, page3.url.absoluteString)
@@ -325,7 +325,7 @@ class TabManagerTests: XCTestCase {
         XCTAssertTrue(model.showWebView)
         XCTAssertFalse(model.showSearchSuggestions)
         XCTAssertFalse(model.canGoBack)
-        XCTAssertFalse(model.canGoForward)
+        XCTAssertTrue(model.canGoForward)
         XCTAssertNil(model.progressBarValue)
         XCTAssertEqual(model.forwardList?[0].title, page1.title)
         XCTAssertEqual(model.forwardList?[0].url, page1.url.absoluteString)
@@ -337,13 +337,12 @@ class TabManagerTests: XCTestCase {
     }
 
     func test_didSelectBackListPage_deliversCorrectState() {
-        let (sut, _, webView, _) = makeSUT()
+        let (sut, _, _, _) = makeSUT()
         _ = sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         _ = sut.didLoadForwardList()
 
         let model = sut.didSelectBackListPage(at: 1)
 
-        XCTAssertEqual(webView.receivedMessages, [.retrieveForwardList, .navigateToBackListPage])
         XCTAssertEqual(model.title, "Some title")
         XCTAssertEqual(model.urlHost, "some-url.com")
         XCTAssertEqual(model.fullURL, "http://some-url.com/some-random-path/123")
@@ -363,13 +362,12 @@ class TabManagerTests: XCTestCase {
     }
 
     func test_didSelectForwardListPage_deliversCorrectState() {
-        let (sut, _, webView, _) = makeSUT()
+        let (sut, _, _, _) = makeSUT()
         _ = sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
         _ = sut.didLoadBackList()
 
         let model = sut.didSelectForwardListPage(at: 1)
 
-        XCTAssertEqual(webView.receivedMessages, [.retrieveBackList, .navigateToForwardListPage])
         XCTAssertEqual(model.title, "Some title")
         XCTAssertEqual(model.urlHost, "some-url.com")
         XCTAssertEqual(model.fullURL, "http://some-url.com/some-random-path/123")

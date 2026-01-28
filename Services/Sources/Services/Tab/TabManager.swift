@@ -160,8 +160,8 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
             isWebsiteProtected: !safelistStore.isRegisteredDomain(urlHost),
             showWebView: true,
             showSearchSuggestions: false,
-            canGoBack: model.canGoBack,
-            canGoForward: model.canGoForward,
+            canGoBack: !webView.retrieveBackList().isEmpty,
+            canGoForward: !webView.retrieveForwardList().isEmpty,
             backList: model.backList,
             forwardList: model.forwardList)
 
