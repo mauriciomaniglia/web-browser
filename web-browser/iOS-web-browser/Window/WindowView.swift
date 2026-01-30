@@ -96,15 +96,12 @@ struct WindowContent: View {
     }
 
     var addNewTabButton: some View {
-        Button(action: {
+        TabCountButton(count: tabBarManager.tabs.count) {
             isShowingTabManager = true
             tabBarManager.captureSnapshots {
                 isShowingTabManager = true
             }
-        }) {
-            Image(systemName: "plus.square")
         }
-        .buttonStyle(PlainButtonStyle())
     }
 
     var menuButton: some View {
