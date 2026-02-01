@@ -8,7 +8,6 @@ final class TabBarManager: ObservableObject {
 
     let safelistStore: SafelistStore
     let historyStore: HistorySwiftDataStore
-    let bookmarkStore: BookmarkStoreAPI
 
     let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer
@@ -18,14 +17,12 @@ final class TabBarManager: ObservableObject {
 
     init(safelistStore: SafelistStore,
          historyStore: HistorySwiftDataStore,
-         bookmarkStore: BookmarkStoreAPI,
          historyComposer: HistoryComposer,
          bookmarkComposer: BookmarkComposer,
          searchSuggestionComposer: SearchSuggestionComposer
     ) {
         self.safelistStore = safelistStore
         self.historyStore = historyStore
-        self.bookmarkStore = bookmarkStore
         self.historyComposer = historyComposer
         self.bookmarkComposer = bookmarkComposer
         self.searchSuggestionComposer = searchSuggestionComposer

@@ -33,7 +33,6 @@ final class WindowComposer {
         self.tabBarManager = TabBarManager(
             safelistStore: safelistStore,
             historyStore: historyStore,
-            bookmarkStore: bookmarkStore,
             historyComposer: historyComposer,
             bookmarkComposer: bookmarkComposer,
             searchSuggestionComposer: searchSuggestionComposer
