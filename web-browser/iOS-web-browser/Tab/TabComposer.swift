@@ -17,11 +17,7 @@ final class TabComposer: ObservableObject, Identifiable {
         tabID: UUID? = nil,
         userActionDelegate: TabUserActionDelegate,
         webKitWrapper: WebKitEngineWrapper,
-        bookmarkViewModel: BookmarkViewModel,
-        historyViewModel: HistoryViewModel,
-        searchSuggestionViewModel: SearchSuggestionViewModel,
-        safelistStore: SafelistStore,
-        historyStore: HistorySwiftDataStore
+        windowViewModel: WindowViewModel
     ) {
         self.id = tabID ?? UUID()
         self.userActionDelegate = userActionDelegate
@@ -30,8 +26,8 @@ final class TabComposer: ObservableObject, Identifiable {
 
         let tabManager = TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>(
             webView: webKitWrapper,
-            safelistStore: safelistStore,
-            historyStore: historyStore
+            safelistStore: windowViewModel.safelistStore,
+            historyStore: windowViewModel.historyStore
         )
         let tabAdapter = TabAdapter(
             tabID: id,
@@ -54,7 +50,7 @@ final class TabComposer: ObservableObject, Identifiable {
         tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
         tabViewModel.didChangeFocus = tabAdapter.didChangeFocus
         tabViewModel.didStartTyping = { oldText, newText in
-            searchSuggestionViewModel.delegate?.didStartTyping(newText)
+            windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
             tabAdapter.didStartTyping(oldText: oldText, newText: newText)
         }
         tabViewModel.didLongPressBackButton = tabAdapter.didLoadBackList

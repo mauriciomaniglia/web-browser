@@ -36,11 +36,7 @@ final class TabBarManager: ObservableObject {
                     tabID: UUID(uuidString: tabID),
                     userActionDelegate: self,
                     webKitWrapper: webKitWrapper,
-                    bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
-                    historyViewModel: windowViewModel.historyComposer.viewModel,
-                    searchSuggestionViewModel: windowViewModel.searchSuggestionComposer.viewModel,
-                    safelistStore: windowViewModel.safelistStore,
-                    historyStore: windowViewModel.historyStore
+                    windowViewModel: windowViewModel
                 )
 
                 tabs.append(composer)
@@ -55,11 +51,7 @@ final class TabBarManager: ObservableObject {
         let composer = TabComposer(
             userActionDelegate: self,
             webKitWrapper: webKitWrapper,
-            bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
-            historyViewModel: windowViewModel.historyComposer.viewModel,
-            searchSuggestionViewModel: windowViewModel.searchSuggestionComposer.viewModel,
-            safelistStore: windowViewModel.safelistStore,
-            historyStore: windowViewModel.historyStore
+            windowViewModel: windowViewModel
         )
 
         tabs.append(composer)

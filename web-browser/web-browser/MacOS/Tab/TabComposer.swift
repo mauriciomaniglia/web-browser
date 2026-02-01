@@ -17,11 +17,7 @@ final class TabComposer {
         tabID: UUID? = nil,
         userActionDelegate: TabUserActionDelegate,
         webKitWrapper: WebKitEngineWrapper,
-        bookmarkViewModel: BookmarkViewModel,
-        historyViewModel: HistoryViewModel,
-        searchSuggestionViewModel: SearchSuggestionViewModel,
-        safelistStore: SafelistStore,
-        historyStore: HistorySwiftDataStore
+        windowViewModel: WindowViewModel
     ) {
         self.id = tabID ?? UUID()
         self.userActionDelegate = userActionDelegate
@@ -30,8 +26,8 @@ final class TabComposer {
 
         let tabManager = TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>(
             webView: webKitWrapper,
-            safelistStore: safelistStore,
-            historyStore: historyStore
+            safelistStore: windowViewModel.safelistStore,
+            historyStore: windowViewModel.historyStore
         )
         let tabAdapter = TabAdapter(
             tabID: id,
@@ -53,7 +49,7 @@ final class TabComposer {
         tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
         tabViewModel.didChangeFocus = tabAdapter.didChangeFocus
         tabViewModel.didStartTyping = { [weak tabAdapter] oldText, newText in
-            searchSuggestionViewModel.delegate?.didStartTyping(newText)
+            windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
             tabAdapter?.didStartTyping(oldText: oldText, newText: newText)
         }
         tabViewModel.didLongPressBackButton = tabAdapter.didLoadBackList
@@ -64,8 +60,8 @@ final class TabComposer {
 
         view = TabContentView(
             tabViewModel: tabViewModel,
-            searchSuggestionViewModel: searchSuggestionViewModel,
-            bookmarkViewModel: bookmarkViewModel,
+            searchSuggestionViewModel: windowViewModel.searchSuggestionComposer.viewModel,
+            bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
             webView: WebView(content: webKitWrapper.webView)
         )
 
