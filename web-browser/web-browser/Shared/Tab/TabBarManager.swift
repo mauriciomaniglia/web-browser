@@ -6,30 +6,16 @@ final class TabBarManager: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?
 
-    let safelistStore: SafelistStore
-    let historyStore: HistorySwiftDataStore
-
-    let historyComposer: HistoryComposer
-    let bookmarkComposer: BookmarkComposer
-    let searchSuggestionComposer: SearchSuggestionComposer
+    let windowViewModel: WindowViewModel
 
     let tabSessionStore = TabSessionStore()
 
-    init(safelistStore: SafelistStore,
-         historyStore: HistorySwiftDataStore,
-         historyComposer: HistoryComposer,
-         bookmarkComposer: BookmarkComposer,
-         searchSuggestionComposer: SearchSuggestionComposer
-    ) {
-        self.safelistStore = safelistStore
-        self.historyStore = historyStore
-        self.historyComposer = historyComposer
-        self.bookmarkComposer = bookmarkComposer
-        self.searchSuggestionComposer = searchSuggestionComposer
+    init(windowViewModel: WindowViewModel) {
+        self.windowViewModel = windowViewModel
 
-        historyComposer.userActionDelegate = self
-        bookmarkComposer.userActionDelegate = self
-        searchSuggestionComposer.userActionDelegate = self
+        windowViewModel.historyComposer.userActionDelegate = self
+        windowViewModel.bookmarkComposer.userActionDelegate = self
+        windowViewModel.searchSuggestionComposer.userActionDelegate = self
     }
 
     func fetchTabs() {
@@ -50,11 +36,11 @@ final class TabBarManager: ObservableObject {
                     tabID: UUID(uuidString: tabID),
                     userActionDelegate: self,
                     webKitWrapper: webKitWrapper,
-                    bookmarkViewModel: bookmarkComposer.viewModel,
-                    historyViewModel: historyComposer.viewModel,
-                    searchSuggestionViewModel: searchSuggestionComposer.viewModel,
-                    safelistStore: safelistStore,
-                    historyStore: historyStore
+                    bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
+                    historyViewModel: windowViewModel.historyComposer.viewModel,
+                    searchSuggestionViewModel: windowViewModel.searchSuggestionComposer.viewModel,
+                    safelistStore: windowViewModel.safelistStore,
+                    historyStore: windowViewModel.historyStore
                 )
 
                 tabs.append(composer)
@@ -69,11 +55,11 @@ final class TabBarManager: ObservableObject {
         let composer = TabComposer(
             userActionDelegate: self,
             webKitWrapper: webKitWrapper,
-            bookmarkViewModel: bookmarkComposer.viewModel,
-            historyViewModel: historyComposer.viewModel,
-            searchSuggestionViewModel: searchSuggestionComposer.viewModel,
-            safelistStore: safelistStore,
-            historyStore: historyStore
+            bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
+            historyViewModel: windowViewModel.historyComposer.viewModel,
+            searchSuggestionViewModel: windowViewModel.searchSuggestionComposer.viewModel,
+            safelistStore: windowViewModel.safelistStore,
+            historyStore: windowViewModel.historyStore
         )
 
         tabs.append(composer)

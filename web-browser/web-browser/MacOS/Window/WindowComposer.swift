@@ -39,13 +39,7 @@ final class WindowComposer {
             safelistStore: safelistStore
         )
 
-        self.tabBarManager = TabBarManager(
-            safelistStore: safelistStore,
-            historyStore: historyStore,
-            historyComposer: historyComposer,
-            bookmarkComposer: bookmarkComposer,
-            searchSuggestionComposer: searchSuggestionComposer
-        )
+        self.tabBarManager = TabBarManager(windowViewModel: windowViewModel)
     }
 
     func createNewWindow() -> WindowView {
