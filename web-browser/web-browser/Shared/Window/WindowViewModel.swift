@@ -1,6 +1,7 @@
 import Services
+import Combine
 
-class WindowViewModel {
+class WindowViewModel: ObservableObject {
     let historyStore: HistorySwiftDataStore
     let historyComposer: HistoryComposer
     let bookmarkComposer: BookmarkComposer
