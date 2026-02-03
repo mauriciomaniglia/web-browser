@@ -14,7 +14,7 @@ class SearchSuggestionPresenterTests: XCTestCase {
 
         sut.didLoad(
             searchSuggestions: ["apple watch", "apple tv"],
-            historyModels: [.init(title: "apple", url: URL(string: "https://www.apple.com")!, date: Date())],
+            historyPages: [.init(title: "apple", url: URL(string: "https://www.apple.com")!, date: Date())],
             bookmarkModels: [.init(title: "apple magazine", url: URL(string: "https://www.apple-mag.com")!)]
         )
 
@@ -35,7 +35,7 @@ class SearchSuggestionPresenterTests: XCTestCase {
 
         sut.didLoad(
             searchSuggestions: searchSuggestions,
-            historyModels: historyPageModels,
+            historyPages: historyPageModels,
             bookmarkModels: bookmarkModels
         )
 
@@ -52,7 +52,7 @@ class SearchSuggestionPresenterTests: XCTestCase {
         return (sut, delegate)
     }
 
-    private func makeHistoryModel(title: String) -> HistoryPageModel {
+    private func makeHistoryModel(title: String) -> WebPage {
         .init(title: title, url: URL(string: "https://www.any-url.com")!, date: Date())
     }
 

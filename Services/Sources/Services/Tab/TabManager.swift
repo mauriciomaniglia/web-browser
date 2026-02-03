@@ -36,7 +36,7 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
     }
 
     public func didLoad(page: WebPage) -> PresentableTab {
-        historyStore.save(HistoryPageModel(title: page.title, url: page.url, date: page.date))
+        historyStore.save(WebPage(title: page.title, url: page.url, date: page.date))
         return didLoadPage(title: page.title, url: page.url)
     }
 

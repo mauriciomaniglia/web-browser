@@ -24,7 +24,7 @@ public protocol WebEngineDelegate: AnyObject {
     func didUpdateLoadingProgress(_ progress: Double)
 }
 
-public struct WebPage {
+public struct WebPage: Equatable {
     public let id: UUID
     public let title: String?
     public let url: URL

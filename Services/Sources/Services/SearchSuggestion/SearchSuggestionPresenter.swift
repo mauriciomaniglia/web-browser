@@ -34,7 +34,7 @@ public class SearchSuggestionPresenter {
 
     public func didLoad(
         searchSuggestions: [String],
-        historyModels: [HistoryPageModel],
+        historyPages: [WebPage],
         bookmarkModels: [BookmarkModel])
     {
         let searchSuggestionModels = searchSuggestions.map { suggestion in
@@ -46,7 +46,7 @@ public class SearchSuggestionPresenter {
         .prefix(10)
         .map { $0 }
 
-        let historySuggestions = historyModels.compactMap { model in
+        let historySuggestions = historyPages.compactMap { model in
             model.title.map { Model.HistoryPage(title: $0, url: model.url) }
         }
         .prefix(10)

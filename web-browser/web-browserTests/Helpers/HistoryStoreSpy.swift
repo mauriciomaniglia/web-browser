@@ -12,16 +12,16 @@ class HistoryStoreSpy: HistoryStoreAPI {
 
     var receivedMessages = [Message]()
 
-    func save(_ page: HistoryPageModel) {
+    func save(_ page: WebPage) {
         receivedMessages.append(.save(page.url))
     }
 
-    func getPages() -> [HistoryPageModel] {
+    func getPages() -> [WebPage] {
         receivedMessages.append(.getPages)
         return []
     }
 
-    func getPages(by searchTerm: String) -> [HistoryPageModel] {
+    func getPages(by searchTerm: String) -> [WebPage] {
         return []
     }
 
