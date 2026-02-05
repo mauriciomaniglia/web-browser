@@ -96,6 +96,9 @@
 		F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
 		F96999492EEEEAAC00C3286D /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
 		F969994B2EEEEAAC00C3286D /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
+		F971D8532F34D9A400D13A26 /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F971D8522F34D9A400D13A26 /* HistoryAdapter.swift */; };
+		F971D8542F34D9A400D13A26 /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F971D8522F34D9A400D13A26 /* HistoryAdapter.swift */; };
+		F971D8552F34D9A400D13A26 /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F971D8522F34D9A400D13A26 /* HistoryAdapter.swift */; };
 		F97A2E752CEEACAC007E6D85 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F97A2E742CEEACAC007E6D85 /* Services */; };
 		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
@@ -181,6 +184,7 @@
 		F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPadOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969990C2EEEE9BC00C3286D /* iOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96C74B72CBD267A002AAF4F /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Services; path = ../Services; sourceTree = SOURCE_ROOT; };
+		F971D8522F34D9A400D13A26 /* HistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAdapter.swift; sourceTree = "<group>"; };
 		F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitEngineWrapper.swift; sourceTree = "<group>"; };
@@ -515,6 +519,7 @@
 			children = (
 				F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */,
 				F9462B172C4890B000451759 /* HistoryComposer.swift */,
+				F971D8522F34D9A400D13A26 /* HistoryAdapter.swift */,
 				F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */,
 			);
 			path = History;
@@ -776,6 +781,7 @@
 				F94D65F52BF83D4F00E34EF0 /* WebsiteProtectionButton.swift in Sources */,
 				F949B54A2DFA2F86006CC1F4 /* SearchSuggestionComposer.swift in Sources */,
 				F9CDFD8E2B71282E0024E0AD /* TabComposer.swift in Sources */,
+				F971D8532F34D9A400D13A26 /* HistoryAdapter.swift in Sources */,
 				F987B3D12CFDDD4800474A1E /* JsonLoader.swift in Sources */,
 				F92921EB2B70F99400173702 /* WindowView.swift in Sources */,
 				F94FD0092F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */,
@@ -812,6 +818,7 @@
 				F9F01C212F2D1FBF00CE958A /* TabCountButton.swift in Sources */,
 				F96998B12EEDF21200C3286D /* SearchSuggestionView.swift in Sources */,
 				F9EFF0682F1935B900DB1766 /* TabAdapter.swift in Sources */,
+				F971D8542F34D9A400D13A26 /* HistoryAdapter.swift in Sources */,
 				F96998B22EEDF21200C3286D /* NavigationList.swift in Sources */,
 				F96998B32EEDF21200C3286D /* CustomGestureButton.swift in Sources */,
 				F96998B42EEDF21200C3286D /* SearchSuggestionViewModel.swift in Sources */,
@@ -850,6 +857,7 @@
 				F956B9802F2FE30F00FDE65A /* WindowViewModel.swift in Sources */,
 				F96999412EEEEAAC00C3286D /* BookmarkComposer.swift in Sources */,
 				F96999422EEEEAAC00C3286D /* NavigationList.swift in Sources */,
+				F971D8552F34D9A400D13A26 /* HistoryAdapter.swift in Sources */,
 				F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */,
 				F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */,
 				F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */,
