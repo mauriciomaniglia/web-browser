@@ -1,9 +1,9 @@
 import Foundation
 
-public class HistoryManager {    
-    private let historyStore: HistoryStoreAPI
+public class HistoryManager<T: HistoryStoreAPI> {
+    private let historyStore: T
 
-    public init(historyStore: HistoryStoreAPI) {
+    public init(historyStore: T) {
         self.historyStore = historyStore
     }
 

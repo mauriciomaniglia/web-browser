@@ -6,14 +6,14 @@ protocol HistoryUserActionDelegate {
 }
 
 class HistoryComposer {
-    let historyStore: HistoryStoreAPI
+    let historyStore: HistorySwiftDataStore
     let viewModel: HistoryViewModel
-    let manager: HistoryManager
+    let manager: HistoryManager<HistorySwiftDataStore>
     let adapter: HistoryAdapter
 
     var userActionDelegate: HistoryUserActionDelegate?
 
-    init(historyStore: HistoryStoreAPI) {
+    init(historyStore: HistorySwiftDataStore) {
         self.viewModel = HistoryViewModel()
         self.historyStore = historyStore
         self.manager = HistoryManager(historyStore: historyStore)

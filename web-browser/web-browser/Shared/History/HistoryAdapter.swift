@@ -2,9 +2,9 @@ import Services
 
 class HistoryAdapter {
     let viewModel: HistoryViewModel
-    let manager: HistoryManager
+    let manager: HistoryManager<HistorySwiftDataStore>
 
-    init(viewModel: HistoryViewModel, manager: HistoryManager) {
+    init(viewModel: HistoryViewModel, manager: HistoryManager<HistorySwiftDataStore>) {
         self.viewModel = viewModel
         self.manager = manager
     }
