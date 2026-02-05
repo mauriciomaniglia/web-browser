@@ -8,29 +8,28 @@ protocol HistoryUserActionDelegate {
 class HistoryComposer {
     let historyStore: HistoryStoreAPI
     let viewModel: HistoryViewModel
-    let presenter: HistoryPresenter
-    let mediator: HistoryMediator
+    let manager: HistoryManager
+    let adapter: HistoryAdapter
 
     var userActionDelegate: HistoryUserActionDelegate?
 
     init(historyStore: HistoryStoreAPI) {
         self.viewModel = HistoryViewModel()
-        self.presenter = HistoryPresenter()
         self.historyStore = historyStore
-        self.mediator = HistoryMediator(presenter: presenter, historyStore: historyStore)
+        self.manager = HistoryManager(historyStore: historyStore)
+        self.adapter = HistoryAdapter(viewModel: viewModel, manager: manager)
 
         viewModel.delegate = self
-        presenter.delegate = self
     }
 }
 
 extension HistoryComposer: HistoryViewModelDelegate {
     func didOpenHistoryView() {
-        mediator.didOpenHistoryView()
+        adapter.didOpenHistoryView()
     }
 
     func didSearchTerm(_ query: String) {
-        mediator.didSearchTerm(query)
+        adapter.didSearchTerm(query)
     }
 
     func didSelectPage(_ pageURL: URL) {
@@ -46,8 +45,26 @@ extension HistoryComposer: HistoryViewModelDelegate {
     }
 }
 
-extension HistoryComposer: HistoryPresenterDelegate {
-    func didUpdatePresentableModel(_ model: HistoryPresenter.Model) {
+class HistoryAdapter {
+    let viewModel: HistoryViewModel
+    let manager: HistoryManager
+
+    init(viewModel: HistoryViewModel, manager: HistoryManager) {
+        self.viewModel = viewModel
+        self.manager = manager
+    }
+
+    func didOpenHistoryView() {
+        let model = manager.didOpenHistoryView()
+        mapPresentableModel(model)
+    }
+
+    func didSearchTerm(_ query: String) {
+        let model = manager.didSearchTerm(query)
+        mapPresentableModel(model)
+    }
+
+    func mapPresentableModel(_ model: PresentableHistory) {
         let history = model.list?.compactMap {
             let pages = $0.pages.map {
                 HistoryViewModel.Page(id: $0.id, title: $0.title, url: $0.url)
