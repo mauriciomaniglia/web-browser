@@ -23,9 +23,9 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         registerObserversForWebView()
     }
 
-    public func getCurrentPage() -> WebPage? {
+    public func getCurrentPage() -> WebPageModel? {
         guard let url = webView.url else { return nil }
-        return WebPage(title: webView.title, url: url, date: Date())
+        return WebPageModel(title: webView.title, url: url, date: Date())
     }
 
     public func registerRule(name: String, content: String, safelist: [String] = []) {
@@ -76,15 +76,15 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         webView.canGoForward
     }
 
-    public func retrieveBackList() -> [WebPage] {
+    public func retrieveBackList() -> [WebPageModel] {
         webView.backForwardList.backList.map {
-            WebPage(title: $0.title, url: $0.url, date: Date())
+            WebPageModel(title: $0.title, url: $0.url, date: Date())
         }
     }
 
-    public func retrieveForwardList() -> [WebPage] {
+    public func retrieveForwardList() -> [WebPageModel] {
         webView.backForwardList.forwardList.map {
-            WebPage(title: $0.title, url: $0.url, date: Date())
+            WebPageModel(title: $0.title, url: $0.url, date: Date())
         }
     }
 
@@ -112,7 +112,7 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
             delegate?.didUpdateLoadingProgress(webView.estimatedProgress)
         case #keyPath(WKWebView.title):
             if let url = webView.url, let title = webView.title, !title.isEmpty {
-                let webPage = WebPage(title: webView.title, url: url, date: Date())
+                let webPage = WebPageModel(title: webView.title, url: url, date: Date())
                 delegate?.didLoad(page: webPage)
             }
         default:

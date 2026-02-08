@@ -9,7 +9,7 @@ class WebViewProxyDelegateSpy: WebEngineDelegate {
 
     var receivedMessages = [Message]()
 
-    func didLoad(page: WebPage) {
+    func didLoad(page: WebPageModel) {
         receivedMessages.append(.didLoadPage)
     }
 

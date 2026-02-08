@@ -3,7 +3,7 @@ import Foundation
 public protocol WebEngineContract {
     var sessionData: Data? { get set }
 
-    func getCurrentPage() -> WebPage?
+    func getCurrentPage() -> WebPageModel?
     func registerRule(name: String, content: String, safelist: [String])
     func removeAllRules()
     func load(_ url: URL)
@@ -11,20 +11,20 @@ public protocol WebEngineContract {
     func stopLoading()
     func didTapBackButton()
     func didTapForwardButton()
-    func retrieveBackList() -> [WebPage]
-    func retrieveForwardList() -> [WebPage]
+    func retrieveBackList() -> [WebPageModel]
+    func retrieveForwardList() -> [WebPageModel]
     func navigateToBackListPage(at index: Int)
     func navigateToForwardListPage(at index: Int)
     func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void)
 }
 
 public protocol WebEngineDelegate: AnyObject {
-    func didLoad(page: WebPage)
+    func didLoad(page: WebPageModel)
     func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool)
     func didUpdateLoadingProgress(_ progress: Double)
 }
 
-public struct WebPage: Equatable {
+public struct WebPageModel: Equatable {
     public let id: UUID
     public let title: String?
     public let url: URL

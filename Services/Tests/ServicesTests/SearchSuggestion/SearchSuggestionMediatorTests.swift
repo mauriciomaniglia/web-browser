@@ -7,7 +7,7 @@ class SearchSuggestionMediatorTests: XCTestCase {
     func test_didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() {
         let (sut, service, bookmarkStore, historyStore, presenter) = makeSUT()
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
-        let page = WebPage(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
+        let page = WebPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
         bookmarkStore.mockBookmarks = [bookmark]
         historyStore.mockWebPages = [page]
 
@@ -24,7 +24,7 @@ class SearchSuggestionMediatorTests: XCTestCase {
     func test_didStartTyping_whenThereIsSuggestion_deliversInputQueryAndSuggestions() {
         let (sut, service, bookmarkStore, historyStore, presenter) = makeSUT()
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
-        let page = WebPage(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
+        let page = WebPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
         bookmarkStore.mockBookmarks = [bookmark]
         historyStore.mockWebPages = [page]
 
@@ -77,14 +77,14 @@ private class SearchSuggestionPresenterMock: SearchSuggestionPresenter {
     enum Message: Equatable {
         case didLoad(
             searchSuggestions: [String],
-            historyPages: [WebPage],
+            historyPages: [WebPageModel],
             bookmarkModels: [BookmarkModel]
         )
     }
 
     var receivedMessages: [Message] = []
 
-    override func didLoad(searchSuggestions: [String], historyPages: [WebPage], bookmarkModels: [BookmarkModel]) {
+    override func didLoad(searchSuggestions: [String], historyPages: [WebPageModel], bookmarkModels: [BookmarkModel]) {
         receivedMessages.append(.didLoad(
             searchSuggestions: searchSuggestions,
             historyPages: historyPages,

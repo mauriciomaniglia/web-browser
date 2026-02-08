@@ -52,7 +52,7 @@ class SearchSuggestionPresenterTests: XCTestCase {
         return (sut, delegate)
     }
 
-    private func makeHistoryModel(title: String) -> WebPage {
+    private func makeHistoryModel(title: String) -> WebPageModel {
         .init(title: title, url: URL(string: "https://www.any-url.com")!, date: Date())
     }
 

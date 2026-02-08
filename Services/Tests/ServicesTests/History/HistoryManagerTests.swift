@@ -10,9 +10,9 @@ class HistoryManagerTests: XCTestCase {
         let earlyToday = calendar.date(bySettingHour: time.hour!-5, minute: time.minute!, second: time.second!, of: Date())!
         let today = calendar.date(bySettingHour: time.hour!, minute: time.minute!, second: time.second!, of: Date())!
         let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
-        let page1 = WebPage(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
-        let page2 = WebPage(title: "title 2", url: URL(string: "http://page2.com")!, date: today)
-        let page3 = WebPage(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
+        let page1 = WebPageModel(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
+        let page2 = WebPageModel(title: "title 2", url: URL(string: "http://page2.com")!, date: today)
+        let page3 = WebPageModel(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
         history.mockWebPages = [page1, page2, page3]
 
         let presentableModel = sut.didOpenHistoryView()
@@ -31,7 +31,7 @@ class HistoryManagerTests: XCTestCase {
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
         let earlyToday = calendar.date(bySettingHour: time.hour!-5, minute: time.minute!, second: time.second!, of: Date())!
-        let page = WebPage(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
+        let page = WebPageModel(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
         history.mockWebPages = [page]
 
         let presentableModel = sut.didSearchTerm("test")

@@ -35,8 +35,8 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         webView.load(url)
     }
 
-    public func didLoad(page: WebPage) -> PresentableTab {
-        historyStore.save(WebPage(title: page.title, url: page.url, date: page.date))
+    public func didLoad(page: WebPageModel) -> PresentableTab {
+        historyStore.save(WebPageModel(title: page.title, url: page.url, date: page.date))
         return didLoadPage(title: page.title, url: page.url)
     }
 
@@ -169,7 +169,7 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
     }
 
     public func didLoadBackList() -> PresentableTab {
-        let webPages = webView.retrieveBackList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+        let webPages = webView.retrieveBackList().map { WebPageModel(title: $0.title, url: $0.url, date: $0.date) }
 
         model = PresentableTab(
             title: model.title,
@@ -192,7 +192,7 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
     }
 
     public func didLoadForwardList() -> PresentableTab {
-        let webPages = webView.retrieveForwardList().map { WebPage(title: $0.title, url: $0.url, date: $0.date) }
+        let webPages = webView.retrieveForwardList().map { WebPageModel(title: $0.title, url: $0.url, date: $0.date) }
 
         model = PresentableTab(
             title: model.title,
@@ -257,7 +257,7 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    private func mapWebPage(_ webPage: WebPage) -> PresentableTab.Page {
+    private func mapWebPage(_ webPage: WebPageModel) -> PresentableTab.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }

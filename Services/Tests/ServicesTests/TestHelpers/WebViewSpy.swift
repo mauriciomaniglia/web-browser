@@ -20,12 +20,12 @@ class WebViewSpy: WebEngineContract {
 
     var receivedMessages = [Message]()
 
-    var mockBackList = [WebPage]()
-    var mockFowardList = [WebPage]()
+    var mockBackList = [WebPageModel]()
+    var mockFowardList = [WebPageModel]()
 
     var sessionData: Data?
 
-    func getCurrentPage() -> WebPage? {
+    func getCurrentPage() -> WebPageModel? {
         receivedMessages.append(.getCurrentPage)
         return nil
     }
@@ -58,12 +58,12 @@ class WebViewSpy: WebEngineContract {
         receivedMessages.append(.didTapForwardButton)
     }
 
-    func retrieveBackList() -> [WebPage] {
+    func retrieveBackList() -> [WebPageModel] {
         receivedMessages.append(.retrieveBackList)
         return mockBackList
     }
 
-    func retrieveForwardList() -> [WebPage] {
+    func retrieveForwardList() -> [WebPageModel] {
         receivedMessages.append(.retrieveForwardList)
         return mockFowardList
     }

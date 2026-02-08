@@ -80,7 +80,7 @@ class TabAdapter {
 }
 
 extension TabAdapter: WebEngineDelegate {
-    public func didLoad(page: WebPage) {
+    public func didLoad(page: WebPageModel) {
         let updatedModel = tabManager.didLoad(page: page)
         didUpdatePresentableModel(updatedModel)
 

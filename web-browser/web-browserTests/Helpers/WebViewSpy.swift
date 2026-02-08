@@ -23,7 +23,7 @@ class WebViewSpy: WebEngineContract {
 
     var sessionData: Data?
 
-    func getCurrentPage() -> WebPage? {
+    func getCurrentPage() -> WebPageModel? {
         receivedMessages.append(.getCurrentPage)
         return nil
     }
@@ -56,12 +56,12 @@ class WebViewSpy: WebEngineContract {
         receivedMessages.append(.didTapForwardButton)
     }
 
-    func retrieveBackList() -> [WebPage] {
+    func retrieveBackList() -> [WebPageModel] {
         receivedMessages.append(.retrieveBackList)
         return []
     }
 
-    func retrieveForwardList() -> [WebPage] {
+    func retrieveForwardList() -> [WebPageModel] {
         receivedMessages.append(.retrieveForwardList)
         return []
     }

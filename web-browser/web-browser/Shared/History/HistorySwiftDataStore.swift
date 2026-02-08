@@ -27,7 +27,7 @@ public class HistorySwiftDataStore: HistoryStoreAPI {
         self.container = container
     }
 
-    public func save(_ page: WebPage) {
+    public func save(_ page: WebPageModel) {
         let title = page.title ?? ""
         let historyTitle = title.isEmpty ? page.url.absoluteString : title
 
@@ -43,18 +43,18 @@ public class HistorySwiftDataStore: HistoryStoreAPI {
         try? backgroundContext.save()
     }
 
-    public func getPages() -> [WebPage] {
+    public func getPages() -> [WebPageModel] {
         let allPages = FetchDescriptor<HistoryPage>(sortBy: [.init(\.date)])
 
         do {
             let results = try backgroundContext.fetch(allPages)
-            return results.map { WebPage(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
+            return results.map { WebPageModel(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }
     }
 
-    public func getPages(by searchTerm: String) -> [WebPage] {
+    public func getPages(by searchTerm: String) -> [WebPageModel] {
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||
             page.urlString.contains(searchTerm)
@@ -67,7 +67,7 @@ public class HistorySwiftDataStore: HistoryStoreAPI {
 
         do {
             let results = try backgroundContext.fetch(filteredPages)
-            return results.map { WebPage(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
+            return results.map { WebPageModel(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
         } catch {
             return []
         }

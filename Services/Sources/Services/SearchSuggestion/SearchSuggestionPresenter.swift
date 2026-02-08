@@ -34,7 +34,7 @@ public class SearchSuggestionPresenter {
 
     public func didLoad(
         searchSuggestions: [String],
-        historyPages: [WebPage],
+        historyPages: [WebPageModel],
         bookmarkModels: [BookmarkModel])
     {
         let searchSuggestionModels = searchSuggestions.map { suggestion in

@@ -17,12 +17,12 @@ public class HistoryManager<T: HistoryStoreAPI> {
         return convertToPresentableModel(pages)
     }
 
-    private func convertToPresentableModel(_ pages: [WebPage]) -> PresentableHistory {
+    private func convertToPresentableModel(_ pages: [WebPageModel]) -> PresentableHistory {
         let groupedPages = Dictionary(grouping: pages, by: { Calendar.current.startOfDay(for: $0.date) })
         let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
             lhs.key.compare(rhs.key) == .orderedDescending
         })
-        let groupPagesSorted: [[WebPage]] = sortedGroups.map { _, pages in
+        let groupPagesSorted: [[WebPageModel]] = sortedGroups.map { _, pages in
             pages.sorted(by: { $0.date > $1.date })
         }
 
@@ -31,14 +31,14 @@ public class HistoryManager<T: HistoryStoreAPI> {
         return model
     }
 
-    private func mapSections(_ pages: [[WebPage]]) -> [PresentableHistory.Section] {
+    private func mapSections(_ pages: [[WebPageModel]]) -> [PresentableHistory.Section] {
         pages.map {
             let title = $0.first?.date.relativeTimeString() ?? ""
             return PresentableHistory.Section(title: title, pages: mapPages($0))
         }
     }
 
-    private func mapPages(_ pages: [WebPage]) -> [PresentableHistory.Page] {
+    private func mapPages(_ pages: [WebPageModel]) -> [PresentableHistory.Page] {
         pages.map {
             let title = $0.title ?? ""
             let dateAndTitle = $0.date.formattedTime() + " - " + title

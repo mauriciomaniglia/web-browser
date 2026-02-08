@@ -272,9 +272,9 @@ class TabManagerTests: XCTestCase {
 
     func test_didLoadBackList_deliversCorrectState() {
         let (sut, _, webView, _) = makeSUT()
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = WebPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WebPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
         webView.mockBackList = [page1, page2, page3]
         _ = sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
@@ -305,9 +305,9 @@ class TabManagerTests: XCTestCase {
 
     func test_didLoadForwardList_deliversCorrectState() {
         let (sut, _, webView, _) = makeSUT()
-        let page1 = WebPage(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
-        let page2 = WebPage(title: nil, url: URL(string: "www.page2.com")!, date: Date())
-        let page3 = WebPage(title: "", url: URL(string: "www.page3.com")!, date: Date())
+        let page1 = WebPageModel(title: "page1 title", url: URL(string: "www.page1.com")!, date: Date())
+        let page2 = WebPageModel(title: nil, url: URL(string: "www.page2.com")!, date: Date())
+        let page3 = WebPageModel(title: "", url: URL(string: "www.page3.com")!, date: Date())
         webView.mockFowardList = [page1, page2, page3]
         _ = sut.didLoadPage(title: "Some title", url: URL(string:"http://some-url.com/some-random-path/123")!)
 
