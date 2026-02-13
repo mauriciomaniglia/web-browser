@@ -18,14 +18,21 @@ final class TabBarManager: ObservableObject {
         windowViewModel.searchSuggestionComposer.userActionDelegate = self
     }
 
-    func fetchTabs() {
+    func start() {
+        let orderedIDs = UserDefaults.standard.stringArray(forKey: "ordered_tab_ids") ?? []
+
+        if orderedIDs.count == 0 {
+            createNewTab()
+        } else {
+            fetchTabs(orderedIDs: orderedIDs)
+        }
+    }
+
+    func fetchTabs(orderedIDs: [String]) {
         Task { @MainActor in
-            guard let tabSessions = await tabSessionStore.getTabSessions(), !tabSessions.keys.isEmpty else { return }
+            guard let tabSessions = await tabSessionStore.getTabSessions() else { return }
 
-            tabs.removeAll()
-            selectedTab = nil
-
-            for tabID in tabSessions.keys {
+            for tabID in orderedIDs {
                 let webKitWrapper = WebKitEngineWrapper()
 
                 if let sessionData = tabSessions[tabID] {
@@ -96,6 +103,7 @@ final class TabBarManager: ObservableObject {
 
         selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
         tabs.remove(at: index)
+        persistTabOrder()
 
         Task {
             await tabSessionStore.deleteTabSession(tabID: tabID)
@@ -107,11 +115,17 @@ final class TabBarManager: ObservableObject {
         selectedTab = nil
         createNewTab()
     }
+
+    private func persistTabOrder() {
+        let idStrings = tabs.map { $0.id.uuidString }
+        UserDefaults.standard.set(idStrings, forKey: "ordered_tab_ids")
+    }
 }
 
 extension TabBarManager: TabUserActionDelegate {
     func didLoadPage(tabID: UUID) {
         saveTabSessionData(tabID: tabID)
+        persistTabOrder()
     }
 
     func didTapNewTab() {

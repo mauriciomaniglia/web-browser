@@ -43,8 +43,7 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> WindowView {
-        tabBarManager.createNewTab()
-        tabBarManager.fetchTabs()
+        tabBarManager.start()
 
         return WindowView(
             historyViewModel: historyComposer.viewModel,

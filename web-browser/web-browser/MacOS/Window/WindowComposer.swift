@@ -42,9 +42,8 @@ final class WindowComposer {
         self.tabBarManager = TabBarManager(windowViewModel: windowViewModel)
     }
 
-    func createNewWindow() -> WindowView {
-        tabBarManager.createNewTab()
-        tabBarManager.fetchTabs()
+    func createNewWindow() -> WindowView {        
+        tabBarManager.start()
 
         let menu = MenuView(
             bookmarkViewModel: bookmarkComposer.viewModel,
