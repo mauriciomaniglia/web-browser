@@ -2,16 +2,23 @@ import SwiftData
 import SwiftUI
 import Services
 
+protocol TabBarStore {
+    func getTabSessions() async -> [String: Data]?
+    func saveTabSession(tabID: UUID, sessionData: Data) async
+    func deleteTabSession(tabID: UUID) async
+}
+
 final class TabBarManager: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?
 
     let windowViewModel: WindowViewModel
 
-    let tabSessionStore = TabSessionStore()
+    let tabBarStore: TabBarStore
 
-    init(windowViewModel: WindowViewModel) {
+    init(windowViewModel: WindowViewModel, tabBarStore: TabBarStore) {
         self.windowViewModel = windowViewModel
+        self.tabBarStore = tabBarStore
 
         windowViewModel.historyComposer.userActionDelegate = self
         windowViewModel.bookmarkComposer.userActionDelegate = self
@@ -30,7 +37,7 @@ final class TabBarManager: ObservableObject {
 
     func fetchTabs(orderedIDs: [String]) {
         Task { @MainActor in
-            guard let tabSessions = await tabSessionStore.getTabSessions() else { return }
+            guard let tabSessions = await tabBarStore.getTabSessions() else { return }
 
             for tabID in orderedIDs {
                 let webKitWrapper = WebKitEngineWrapper()
@@ -66,7 +73,7 @@ final class TabBarManager: ObservableObject {
 
         if  let sessionData = composer.webKitWrapper.sessionData, composer.tabViewModel.showWebView == true {
             Task {
-                await tabSessionStore.saveTabSession(tabID: composer.id, sessionData: sessionData)
+                await tabBarStore.saveTabSession(tabID: composer.id, sessionData: sessionData)
             }
         }
     }
@@ -76,7 +83,7 @@ final class TabBarManager: ObservableObject {
 
         if let tab, let sessionData = tab.webKitWrapper.sessionData {
             Task {
-                await tabSessionStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
+                await tabBarStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
             }
         }
     }
@@ -86,7 +93,7 @@ final class TabBarManager: ObservableObject {
 
         if let tab = selectedTab, let sessionData = tab.webKitWrapper.sessionData {
             Task {
-                await tabSessionStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
+                await tabBarStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
             }
         }
     }
@@ -106,7 +113,7 @@ final class TabBarManager: ObservableObject {
         persistTabOrder()
 
         Task {
-            await tabSessionStore.deleteTabSession(tabID: tabID)
+            await tabBarStore.deleteTabSession(tabID: tabID)
         }
     }
 

@@ -1,6 +1,6 @@
 import Foundation
 
-actor TabSessionStore {
+actor TabSessionStore: TabBarStore {
     let fileManager = FileManager.default
     let tabPrefix = "tab-"
 
