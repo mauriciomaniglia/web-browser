@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @ObservedObject var tabBarManager: TabBarManager
+    @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
         VStack(spacing: 0) {

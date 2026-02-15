@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TabManagerView: View {
-    var tabBarManager: TabBarManager
+    var tabBarManager: TabBarManager<TabSessionStore>
     @Binding var isPresented: Bool
 
     let columns = [
@@ -33,7 +33,7 @@ struct TabManagerView: View {
 }
 
 struct TabCardView: View {
-    @EnvironmentObject var tabBarManager: TabBarManager
+    @EnvironmentObject var tabBarManager: TabBarManager<TabSessionStore>
     @Binding var isPresented: Bool
     @ObservedObject var tab: TabComposer
 
@@ -111,7 +111,7 @@ struct TabCardView: View {
 }
 
 struct ToolbarView: View {
-    @EnvironmentObject var tabBarManager: TabBarManager
+    @EnvironmentObject var tabBarManager: TabBarManager<TabSessionStore>
     @Binding var isPresented: Bool
     @State var isConfirmationCloseAllTabs = false
 

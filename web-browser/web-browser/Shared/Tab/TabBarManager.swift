@@ -8,15 +8,15 @@ protocol TabBarStore {
     func deleteTabSession(tabID: UUID) async
 }
 
-final class TabBarManager: ObservableObject {
+final class TabBarManager<T: TabBarStore>: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?
 
     let windowViewModel: WindowViewModel
 
-    let tabBarStore: TabBarStore
+    let tabBarStore: T
 
-    init(windowViewModel: WindowViewModel, tabBarStore: TabBarStore) {
+    init(windowViewModel: WindowViewModel, tabBarStore: T) {
         self.windowViewModel = windowViewModel
         self.tabBarStore = tabBarStore
 

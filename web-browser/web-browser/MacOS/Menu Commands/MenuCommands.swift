@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MenuCommands: Commands {
-    let tabBarManager: TabBarManager
+    let tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some Commands {
         CommandGroup(after: .newItem) {

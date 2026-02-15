@@ -13,7 +13,7 @@ final class WindowComposer {
     let searchSuggestionComposer: SearchSuggestionComposer
 
     let tabSessionStore: TabSessionStore
-    let tabBarManager: TabBarManager
+    let tabBarManager: TabBarManager<TabSessionStore>
     let windowViewModel: WindowViewModel
 
     init() {

@@ -4,7 +4,7 @@ struct WindowView: View {
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
-    @ObservedObject var tabBarManager: TabBarManager
+    @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
         Group {
@@ -30,7 +30,7 @@ struct WindowContent: View {
     @ObservedObject var historyViewModel: HistoryViewModel
     @ObservedObject var bookmarkViewModel: BookmarkViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
-    @ObservedObject var tabBarManager: TabBarManager
+    @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     @State var isShowingSheet = false
     @State private var isShowingTabManager = false
