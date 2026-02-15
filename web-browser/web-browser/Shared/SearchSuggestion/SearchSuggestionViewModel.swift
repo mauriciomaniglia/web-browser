@@ -1,11 +1,13 @@
 import Foundation
 import Combine
 
+@MainActor
 protocol SearchSuggestionViewModelDelegate: AnyObject {
     func didStartTyping(_ text: String)
     func didSelectPage(_ pageURL: URL)
 }
 
+@MainActor
 class SearchSuggestionViewModel: ObservableObject {
 
     struct Item: Identifiable {

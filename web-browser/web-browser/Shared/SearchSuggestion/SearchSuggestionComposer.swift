@@ -5,6 +5,7 @@ protocol SearchSuggestionUserActionDelegate {
     func didSelectPageFromSearchSuggestion(_ pageURL: URL)
 }
 
+@MainActor
 class SearchSuggestionComposer {
     let viewModel: SearchSuggestionViewModel
     let mediator: SearchSuggestionMediator
@@ -31,7 +32,9 @@ class SearchSuggestionComposer {
 
 extension SearchSuggestionComposer: SearchSuggestionViewModelDelegate {
     func didStartTyping(_ text: String) {
-        mediator.didStartTyping(query: text)
+        Task {
+            await mediator.didStartTyping(query: text)
+        }
     }
 
     func didSelectPage(_ pageURL: URL) {

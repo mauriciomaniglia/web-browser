@@ -6,6 +6,7 @@ protocol TabUserActionDelegate: AnyObject {
     func didTapNewTab()
 }
 
+@MainActor
 final class TabComposer {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel

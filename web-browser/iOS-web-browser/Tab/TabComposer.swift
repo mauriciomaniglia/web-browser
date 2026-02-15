@@ -5,6 +5,7 @@ protocol TabUserActionDelegate: AnyObject {
     func didLoadPage(tabID: UUID)
 }
 
+@MainActor
 final class TabComposer: ObservableObject, Identifiable {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel

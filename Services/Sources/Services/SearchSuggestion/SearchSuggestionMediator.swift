@@ -18,26 +18,24 @@ public final class SearchSuggestionMediator {
         self.presenter = presenter
     }
 
-    public func didStartTyping(query: String) {
+    public func didStartTyping(query: String) async {
         let queryURL = SearchEngineURLBuilder.buildAutocompleteURL(query: query)
         let bookmarkModels = bookmarkStore.getPages(by: query)
         let historyPages = historyStore.getPages(by: query)
 
-        searchSuggestionService.query(queryURL) { [weak self] suggestions in
-            if var suggestions {
-                suggestions.insert(query, at: 0)
-                self?.presenter.didLoad(
-                    searchSuggestions: suggestions,
-                    historyPages: historyPages,
-                    bookmarkModels: bookmarkModels
-                )
-            } else {
-                self?.presenter.didLoad(
-                    searchSuggestions: [query],
-                    historyPages: historyPages,
-                    bookmarkModels: bookmarkModels
-                )
-            }
+        if var suggestions = try? await searchSuggestionService.query(queryURL) {
+            suggestions.insert(query, at: 0)
+            presenter.didLoad(
+                searchSuggestions: suggestions,
+                historyPages: historyPages,
+                bookmarkModels: bookmarkModels
+            )
+        } else {
+            presenter.didLoad(
+                searchSuggestions: [query],
+                historyPages: historyPages,
+                bookmarkModels: bookmarkModels
+            )
         }
     }
 }

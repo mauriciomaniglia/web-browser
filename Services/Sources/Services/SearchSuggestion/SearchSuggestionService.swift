@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol SearchSuggestionServiceContract {
-    func query(_ url: URL, callback: @escaping SearchSuggestionService.SearchSuggestionResponse)
+    func query(_ url: URL) async throws -> [String]?
 }
 
 public final class SearchSuggestionService: SearchSuggestionServiceContract {
@@ -12,34 +12,31 @@ public final class SearchSuggestionService: SearchSuggestionServiceContract {
 
     public init() {}
 
-    public func query(_ url: URL, callback: @escaping SearchSuggestionResponse) {
-        task = urlSession.dataTask(with: url) { [weak self] data, response, error in
-            self?.handleResponse(data: data, response: response, callback)
-        }
-        task?.resume()
+    public func query(_ url: URL) async throws -> [String]? {
+        let request = URLRequest(url: url)
+        let (data, response) = try await urlSession.data(for: request)
+
+        return handleResponse(data: data, response: response)
     }
 
-    func handleResponse(data: Data?, response: URLResponse?, _ callback: @escaping SearchSuggestionResponse) {
+    func handleResponse(data: Data?, response: URLResponse?) -> [String]? {
         guard let data = data,
               let httpResponse = response as? HTTPURLResponse,
               (200..<300).contains(httpResponse.statusCode)
         else {
-            callback(nil)
-            return
+            return nil
         }
 
         let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
 
         guard let array = json as? [Any], array.count >= 2 else {
-            callback(nil)
-            return
+            return nil
         }
 
         guard let suggestions = array[1] as? [String] else {
-            callback(nil)
-            return
+            return nil
         }
 
-        callback(suggestions)
+        return suggestions
     }
 }

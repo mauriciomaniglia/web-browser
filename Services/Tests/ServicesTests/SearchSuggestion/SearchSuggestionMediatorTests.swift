@@ -4,15 +4,15 @@ import XCTest
 
 class SearchSuggestionMediatorTests: XCTestCase {
 
-    func test_didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() {
+    func test_didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() async {
         let (sut, service, bookmarkStore, historyStore, presenter) = makeSUT()
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
         let page = WebPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
         bookmarkStore.mockBookmarks = [bookmark]
         historyStore.mockWebPages = [page]
 
-        sut.didStartTyping(query: "apple")
-        service.simulateResponseWithNoSuggestions()
+        await sut.didStartTyping(query: "apple")
+        service.mockSuggestions = []
 
         XCTAssertEqual(presenter.receivedMessages, [.didLoad(
             searchSuggestions: ["apple"],
@@ -21,15 +21,15 @@ class SearchSuggestionMediatorTests: XCTestCase {
         )])
     }
 
-    func test_didStartTyping_whenThereIsSuggestion_deliversInputQueryAndSuggestions() {
+    func test_didStartTyping_whenThereIsSuggestion_deliversInputQueryAndSuggestions() async {
         let (sut, service, bookmarkStore, historyStore, presenter) = makeSUT()
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
         let page = WebPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
         bookmarkStore.mockBookmarks = [bookmark]
         historyStore.mockWebPages = [page]
+        service.mockSuggestions = ["apple watch", "apple tv", "apple music"]
 
-        sut.didStartTyping(query: "apple")
-        service.simulateResponseWithSuggestions(["apple watch", "apple tv", "apple music"])
+        await sut.didStartTyping(query: "apple")
 
         XCTAssertEqual(presenter.receivedMessages, [.didLoad(
             searchSuggestions: ["apple", "apple watch", "apple tv", "apple music"],
@@ -58,18 +58,10 @@ class SearchSuggestionMediatorTests: XCTestCase {
 }
 
 private class MockSearchSuggestionService: SearchSuggestionServiceContract {
-    var receivedCallback: SearchSuggestionService.SearchSuggestionResponse?
+    var mockSuggestions = [String]()
 
-    func query(_ url: URL, callback: @escaping SearchSuggestionService.SearchSuggestionResponse) {
-        receivedCallback = callback
-    }
-
-    func simulateResponseWithNoSuggestions() {
-        receivedCallback?(nil)
-    }
-
-    func simulateResponseWithSuggestions(_ suggestions: [String]) {
-        receivedCallback?(suggestions)
+    func query(_ url: URL) async throws -> [String]? {
+        mockSuggestions
     }
 }
 

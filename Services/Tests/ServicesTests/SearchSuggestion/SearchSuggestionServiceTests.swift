@@ -4,87 +4,59 @@ import XCTest
 class SearchSuggestionServiceTests: XCTestCase {
     func test_handleResponse_whenDataIsEmpty_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
 
-        sut.handleResponse(data: nil, response: HTTPURLResponse(), callback)
+        let suggestions = sut.handleResponse(data: nil, response: HTTPURLResponse())
 
-        XCTAssertNil(receivedSuggestions)
+        XCTAssertNil(suggestions)
     }
 
     func test_handleResponse_whenDataIsInvalidJSON_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
         let invalidJSONData = "".data(using: .utf8)!
 
-        sut.handleResponse(data: invalidJSONData, response: HTTPURLResponse(), callback)
+        let suggestions = sut.handleResponse(data: invalidJSONData, response: HTTPURLResponse())
 
-        XCTAssertNil(receivedSuggestions)
+        XCTAssertNil(suggestions)
     }
 
     func test_handleResponse_whenJSONHasMissingQueryData_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
 
-        sut.handleResponse(data: invalidSearchResponseMissingQueryData(), response: HTTPURLResponse(), callback)
+        let suggestions = sut.handleResponse(data: invalidSearchResponseMissingQueryData(), response: HTTPURLResponse())
 
-        XCTAssertNil(receivedSuggestions)
+        XCTAssertNil(suggestions)
     }
 
     func test_handleResponse_whenJSONHasInvalidSearchSuggestionTypeData_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
 
-        sut.handleResponse(data: invalidSearchSuggestionsTypeData(), response: HTTPURLResponse(), callback)
+        let suggestions = sut.handleResponse(data: invalidSearchSuggestionsTypeData(), response: HTTPURLResponse())
 
-        XCTAssertNil(receivedSuggestions)
+        XCTAssertNil(suggestions)
     }
 
     func test_handleResponse_whenIsNonHTTPResponse_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
 
-        sut.handleResponse(data: validData(), response: URLResponse(), callback)
+        let suggestions = sut.handleResponse(data: validData(), response: URLResponse())
 
-        XCTAssertNil(receivedSuggestions)
+        XCTAssertNil(suggestions)
     }
 
     func test_handleResponse_whenHTTPResponseIsNot2xx_returnsNil() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
 
-        sut.handleResponse(data: validData(), response: httpResponseWith500StatusCode(), callback)
+        let suggestions = sut.handleResponse(data: validData(), response: httpResponseWith500StatusCode())
 
-        XCTAssertNil(receivedSuggestions)
+        XCTAssertNil(suggestions)
     }
 
     func test_handleResponse_whenResponseHasCorrectData_returnSuggestions() {
         let sut = SearchSuggestionService()
-        var receivedSuggestions: [String]?
-        let callback: SearchSuggestionService.SearchSuggestionResponse = { suggestions in
-            receivedSuggestions = suggestions
-        }
 
-        sut.handleResponse(data: validData(), response: HTTPURLResponse(), callback)
+        let suggestions = sut.handleResponse(data: validData(), response: HTTPURLResponse())
 
-        XCTAssertEqual(receivedSuggestions, ["suggestion1", "suggestion2", "suggestion3"])
+        XCTAssertEqual(suggestions, ["suggestion1", "suggestion2", "suggestion3"])
     }
 
     // MARK: - Helpers
