@@ -1,6 +1,7 @@
 import XCTest
 @testable import web_browser
 
+@MainActor
 class HistoryViewModelTests: XCTestCase {
 
     func test_selectedPages_when_initialized_is_empty() {
