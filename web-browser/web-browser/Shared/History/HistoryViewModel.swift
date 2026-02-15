@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+@MainActor
 protocol HistoryViewModelDelegate: AnyObject {
     func didOpenHistoryView()
     func didSearchTerm(_ query: String)
@@ -9,6 +10,7 @@ protocol HistoryViewModelDelegate: AnyObject {
     func didTapDeleteAllPages()
 }
 
+@MainActor
 class HistoryViewModel: ObservableObject {
 
     struct Section: Equatable {

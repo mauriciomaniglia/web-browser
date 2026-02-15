@@ -1,5 +1,6 @@
 import Services
 
+@MainActor
 class HistoryAdapter {
     let viewModel: HistoryViewModel
     let manager: HistoryManager<HistorySwiftDataStore>
@@ -15,8 +16,10 @@ class HistoryAdapter {
     }
 
     func didSearchTerm(_ query: String) {
-        let model = manager.didSearchTerm(query)
-        mapPresentableModel(model)
+        Task { 
+            let model = await manager.didSearchTerm(query)
+            mapPresentableModel(model)
+        }
     }
 
     func mapPresentableModel(_ model: PresentableHistory) {

@@ -26,7 +26,7 @@ class HistoryManagerTests: XCTestCase {
         XCTAssertEqual(presentableModel.list?.last?.pages[0].url, URL(string:"http://page3.com")!)
     }
 
-    func test_didSearchTerm_deliversCorrectResult() {
+    func test_didSearchTerm_deliversCorrectResult() async {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -34,17 +34,17 @@ class HistoryManagerTests: XCTestCase {
         let page = WebPageModel(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
         history.mockWebPages = [page]
 
-        let presentableModel = sut.didSearchTerm("test")
+        let presentableModel = await sut.didSearchTerm("test")
 
         XCTAssertEqual(history.receivedMessages, [.getPagesByTerm("test")])
         XCTAssertEqual(presentableModel.list?.first?.pages[0].title, "07:00 - title 1")
         XCTAssertEqual(presentableModel.list?.first?.pages[0].url, URL(string:"http://page1.com")!)
     }
 
-    func test_didSearchTerm_withEmptyTerm_sendsCorrectMessage() {
+    func test_didSearchTerm_withEmptyTerm_sendsCorrectMessage() async {
         let (sut, history) = makeSUT()
 
-        let presentableModel = sut.didSearchTerm("")
+        let presentableModel = await sut.didSearchTerm("")
 
         XCTAssertEqual(presentableModel.list, [])
         XCTAssertEqual(history.receivedMessages, [.getPages])

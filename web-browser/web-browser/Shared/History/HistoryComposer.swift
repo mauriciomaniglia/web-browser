@@ -5,6 +5,7 @@ protocol HistoryUserActionDelegate {
     func didSelectPage(_ pageURL: URL)
 }
 
+@MainActor
 class HistoryComposer {
     let historyStore: HistorySwiftDataStore
     let viewModel: HistoryViewModel

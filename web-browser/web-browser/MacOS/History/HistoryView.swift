@@ -41,9 +41,10 @@ struct HistoryView: View {
 
     var searchTextField: some View {
         TextField("Search History", text: $searchText)
-            .onChange(of: searchText, { _, newValue in
-                viewModel.delegate?.didSearchTerm(newValue)
-            })
+            .task(id: searchText) {
+                try? await Task.sleep(for: .milliseconds(300))
+                viewModel.delegate?.didSearchTerm(searchText)
+            }
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
     }

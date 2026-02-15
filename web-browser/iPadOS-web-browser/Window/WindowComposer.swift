@@ -2,6 +2,7 @@ import SwiftData
 import SwiftUI
 import Services
 
+@MainActor
 final class WindowComposer {
     let container: ModelContainer
     let safelistStore: SafelistStore

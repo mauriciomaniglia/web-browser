@@ -8,6 +8,7 @@ protocol TabBarStore {
     func deleteTabSession(tabID: UUID) async
 }
 
+@MainActor
 final class TabBarManager<T: TabBarStore>: ObservableObject {
     @Published var tabs: [TabComposer] = []
     @Published var selectedTab: TabComposer?

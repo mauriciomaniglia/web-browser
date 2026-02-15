@@ -12,7 +12,7 @@ public class HistoryManager<T: HistoryStoreAPI> {
         return convertToPresentableModel(pages)
     }
 
-    public func didSearchTerm(_ term: String) -> PresentableHistory {
+    public func didSearchTerm(_ term: String) async -> PresentableHistory {
         let pages = term.isEmpty ? historyStore.getPages() : historyStore.getPages(by: term)
         return convertToPresentableModel(pages)
     }
