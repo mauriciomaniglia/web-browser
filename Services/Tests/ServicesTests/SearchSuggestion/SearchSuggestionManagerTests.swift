@@ -2,7 +2,7 @@ import Foundation
 import XCTest
 @testable import Services
 
-class SearchSuggestionMediatorTests: XCTestCase {
+class SearchSuggestionManagerTests: XCTestCase {
 
     func test_didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() async {
         let (sut, service, bookmarkStore, historyStore) = makeSUT()
@@ -41,17 +41,15 @@ class SearchSuggestionMediatorTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (SearchSuggestionMediator, MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock) {
+    private func makeSUT() -> (SearchSuggestionManager, MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock) {
         let searchSuggestionService = MockSearchSuggestionService()
         let bookmarkStore = BookmarkStoreMock()
         let historyStore = HistoryStoreMock()
-        let presenter = SearchSuggestionPresenter()
 
-        let sut = SearchSuggestionMediator(
+        let sut = SearchSuggestionManager(
             searchSuggestionService: searchSuggestionService,
             bookmarkStore: bookmarkStore,
-            historyStore: historyStore,
-            presenter: presenter
+            historyStore: historyStore
         )
 
         return (sut, searchSuggestionService, bookmarkStore, historyStore)

@@ -1,10 +1,42 @@
 import Foundation
 
-public class SearchSuggestionPresenter {
+public final class SearchSuggestionManager {
+    let searchSuggestionService: SearchSuggestionServiceContract
+    let bookmarkStore: BookmarkStoreAPI
+    let historyStore: HistoryStoreAPI
 
-    public init() {}
+    public init(
+        searchSuggestionService: SearchSuggestionServiceContract,
+        bookmarkStore: BookmarkStoreAPI,
+        historyStore: HistoryStoreAPI,
+    ) {
+        self.searchSuggestionService = searchSuggestionService
+        self.bookmarkStore = bookmarkStore
+        self.historyStore = historyStore
+    }
 
-    public func didLoad(
+    public func didStartTyping(query: String) async -> PresentableSearchSuggestion {
+        let queryURL = SearchEngineURLBuilder.buildAutocompleteURL(query: query)
+        let bookmarkModels = bookmarkStore.getPages(by: query)
+        let historyPages = historyStore.getPages(by: query)
+
+        if var suggestions = try? await searchSuggestionService.query(queryURL) {
+            suggestions.insert(query, at: 0)
+            return mapToPresentableModel(
+                searchSuggestions: suggestions,
+                historyPages: historyPages,
+                bookmarkModels: bookmarkModels
+            )
+        } else {
+            return mapToPresentableModel(
+                searchSuggestions: [query],
+                historyPages: historyPages,
+                bookmarkModels: bookmarkModels
+            )
+        }
+    }
+
+    private func mapToPresentableModel(
         searchSuggestions: [String],
         historyPages: [WebPageModel],
         bookmarkModels: [BookmarkModel]) -> PresentableSearchSuggestion
@@ -41,7 +73,6 @@ public class SearchSuggestionPresenter {
 }
 
 public struct PresentableSearchSuggestion: Equatable {
-
     public struct Bookmark: Equatable {
         public let title: String
         public let url: URL
