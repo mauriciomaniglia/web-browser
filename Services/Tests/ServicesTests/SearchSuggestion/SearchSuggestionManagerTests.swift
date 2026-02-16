@@ -56,7 +56,7 @@ class SearchSuggestionManagerTests: XCTestCase {
         return (sut, searchSuggestionService, bookmarkStore, historyStore)
     }
 
-    private class MockSearchSuggestionService: SearchSuggestionServiceContract {
+    private class MockSearchSuggestionService: SearchSuggestionServiceAPI {
         var mockSuggestions = [String]()
 
         func query(_ url: URL) async throws -> [String]? {

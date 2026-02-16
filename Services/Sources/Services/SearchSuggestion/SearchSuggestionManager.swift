@@ -1,6 +1,6 @@
 import Foundation
 
-public final class SearchSuggestionManager<S: SearchSuggestionServiceContract, B: BookmarkStoreAPI, H: HistoryStoreAPI> {
+public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: BookmarkStoreAPI, H: HistoryStoreAPI> {
     let searchSuggestionService: S
     let bookmarkStore: B
     let historyStore: H

@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol SearchSuggestionServiceContract {
+public protocol SearchSuggestionServiceAPI{
     func query(_ url: URL) async throws -> [String]?
 }
 
-public final class SearchSuggestionService: SearchSuggestionServiceContract {
+public final class SearchSuggestionService: SearchSuggestionServiceAPI {
     public typealias SearchSuggestionResponse = (_ suggestions: [String]?) -> Void
 
     private let urlSession = URLSession(configuration: .ephemeral)
