@@ -1,14 +1,14 @@
 import Foundation
 
-public final class SearchSuggestionManager {
-    let searchSuggestionService: SearchSuggestionServiceContract
-    let bookmarkStore: BookmarkStoreAPI
-    let historyStore: HistoryStoreAPI
+public final class SearchSuggestionManager<S: SearchSuggestionServiceContract, B: BookmarkStoreAPI, H: HistoryStoreAPI> {
+    let searchSuggestionService: S
+    let bookmarkStore: B
+    let historyStore: H
 
     public init(
-        searchSuggestionService: SearchSuggestionServiceContract,
-        bookmarkStore: BookmarkStoreAPI,
-        historyStore: HistoryStoreAPI,
+        searchSuggestionService: S,
+        bookmarkStore: B,
+        historyStore: H,
     ) {
         self.searchSuggestionService = searchSuggestionService
         self.bookmarkStore = bookmarkStore

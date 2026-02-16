@@ -3,6 +3,7 @@ import XCTest
 @testable import Services
 
 class SearchSuggestionManagerTests: XCTestCase {
+    private typealias SearchSuggestionManagerType = SearchSuggestionManager<MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock>
 
     func test_didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() async {
         let (sut, service, bookmarkStore, historyStore) = makeSUT()
@@ -41,7 +42,7 @@ class SearchSuggestionManagerTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (SearchSuggestionManager, MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock) {
+    private func makeSUT() -> (SearchSuggestionManagerType, MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock) {
         let searchSuggestionService = MockSearchSuggestionService()
         let bookmarkStore = BookmarkStoreMock()
         let historyStore = HistoryStoreMock()

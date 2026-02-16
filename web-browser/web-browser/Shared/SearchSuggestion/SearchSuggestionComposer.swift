@@ -7,15 +7,17 @@ protocol SearchSuggestionUserActionDelegate {
 
 @MainActor
 class SearchSuggestionComposer {
+    typealias SearchSuggestionManagerType = SearchSuggestionManager<SearchSuggestionService, BookmarkSwiftDataStore, HistorySwiftDataStore>
+
     let viewModel: SearchSuggestionViewModel
-    let manager: SearchSuggestionManager
+    let manager: SearchSuggestionManagerType
 
     var userActionDelegate: SearchSuggestionUserActionDelegate?
 
-    init(historyStore: HistoryStoreAPI, bookmarkStore: BookmarkStoreAPI) {
+    init(historyStore: HistorySwiftDataStore, bookmarkStore: BookmarkSwiftDataStore) {
         self.viewModel = SearchSuggestionViewModel()
         let searchSuggestionService = SearchSuggestionService()
-        self.manager = SearchSuggestionManager(
+        self.manager = SearchSuggestionManagerType(
             searchSuggestionService: searchSuggestionService,
             bookmarkStore: bookmarkStore,
             historyStore: historyStore,
