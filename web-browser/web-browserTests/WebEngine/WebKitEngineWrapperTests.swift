@@ -2,6 +2,7 @@ import XCTest
 import WebKit
 import web_browser
 
+@MainActor
 class WebKitEngineWrapperTests: XCTestCase {
     let navigation = WKNavigation()
 

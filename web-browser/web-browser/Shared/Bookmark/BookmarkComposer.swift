@@ -1,10 +1,12 @@
 import Foundation
 import Services
 
+@MainActor
 protocol BookmarkUserActionDelegate {
     func didSelectPageFromBookmark(_ pageURL: URL)
 }
 
+@MainActor
 class BookmarkComposer {
     let bookmarkStore: BookmarkStoreAPI
     let viewModel: BookmarkViewModel

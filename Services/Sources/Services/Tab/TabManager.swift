@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistoryStoreAPI> {
 
     private let webView: W

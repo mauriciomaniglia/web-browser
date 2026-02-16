@@ -1,6 +1,7 @@
 import Foundation
 import Services
 
+@MainActor
 protocol SearchSuggestionUserActionDelegate {
     func didSelectPageFromSearchSuggestion(_ pageURL: URL)
 }

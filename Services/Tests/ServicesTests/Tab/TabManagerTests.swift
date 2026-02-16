@@ -1,6 +1,7 @@
 import XCTest
 @testable import Services
 
+@MainActor
 class TabManagerTests: XCTestCase {
 
     func test_didRequestSearch_shouldLoadWebViewCorrectly() {

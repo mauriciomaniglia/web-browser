@@ -1,6 +1,7 @@
 import WebKit
 import Services
 
+@MainActor
 public final class WebKitEngineWrapper: NSObject, WebEngineContract {
     public weak var delegate: WebEngineDelegate?
     public let webView: WKWebView
@@ -16,9 +17,16 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         }
     }
 
-    public init(webView: WKWebView = WKWebView(), ruleStore: WKContentRuleListStore = WKContentRuleListStore.default()) {
+    public init(webView: WKWebView, ruleStore: WKContentRuleListStore) {
         self.webView = webView
         self.ruleStore = ruleStore
+        super.init()
+        registerObserversForWebView()
+    }
+
+    public override init() {
+        self.webView = WKWebView()
+        self.ruleStore = WKContentRuleListStore.default()
         super.init()
         registerObserversForWebView()
     }

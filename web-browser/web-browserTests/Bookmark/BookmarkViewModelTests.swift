@@ -1,6 +1,7 @@
 import XCTest
 @testable import web_browser
 
+@MainActor
 class BookmarkViewModelTests: XCTestCase {
 
     func test_setSelectedBookmark_shouldSetSelectedBookmark() {

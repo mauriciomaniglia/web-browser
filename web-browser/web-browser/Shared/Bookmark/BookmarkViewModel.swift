@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+@MainActor
 protocol BookmarkViewModelDelegate: AnyObject {
     func didTapAddBookmark(name: String, urlString: String)
     func didOpenBookmarkView()
@@ -9,6 +10,7 @@ protocol BookmarkViewModelDelegate: AnyObject {
     func didTapDeletePages(_ pagesID: [UUID])
 }
 
+@MainActor
 class BookmarkViewModel: ObservableObject {
 
     struct Bookmark: Identifiable, Equatable {

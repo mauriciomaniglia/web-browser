@@ -1,4 +1,5 @@
 import SwiftData
+import WebKit
 import SwiftUI
 import Services
 

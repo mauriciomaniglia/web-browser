@@ -1,6 +1,7 @@
 import XCTest
 import Services
 
+@MainActor
 class ContentBlockingTests: XCTestCase {
 
     func test_init_doesNotSendAnyMessages() {

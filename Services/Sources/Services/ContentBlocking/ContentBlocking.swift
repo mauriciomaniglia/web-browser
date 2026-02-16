@@ -1,3 +1,4 @@
+@MainActor
 final public class ContentBlocking {
     private let webView: WebEngineContract
     private let jsonLoader: (String) -> String?

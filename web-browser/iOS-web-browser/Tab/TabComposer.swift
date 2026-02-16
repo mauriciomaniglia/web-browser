@@ -1,6 +1,7 @@
 import SwiftUI
 import Services
 
+@MainActor
 protocol TabUserActionDelegate: AnyObject {
     func didLoadPage(tabID: UUID)
 }

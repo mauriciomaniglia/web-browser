@@ -1,6 +1,7 @@
 import Services
 import Combine
 
+@MainActor
 class WindowViewModel: ObservableObject {
     let historyStore: HistorySwiftDataStore
     let historyComposer: HistoryComposer

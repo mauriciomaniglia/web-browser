@@ -1,6 +1,7 @@
 import Foundation
 import Services
 
+@MainActor
 protocol HistoryUserActionDelegate {
     func didSelectPage(_ pageURL: URL)
 }

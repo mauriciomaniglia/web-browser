@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 public protocol WebEngineContract {
     var sessionData: Data? { get set }
 
@@ -18,6 +19,7 @@ public protocol WebEngineContract {
     func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void)
 }
 
+@MainActor
 public protocol WebEngineDelegate: AnyObject {
     func didLoad(page: WebPageModel)
     func didUpdateNavigationButtons(canGoBack: Bool, canGoForward: Bool)

@@ -1,6 +1,7 @@
 import Foundation
 import Services
 
+@MainActor
 class TabAdapter {
     let tabID: UUID
     weak var tabViewModel: TabViewModel?

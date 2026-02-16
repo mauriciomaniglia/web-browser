@@ -1,5 +1,6 @@
 import Services
 
+@MainActor
 class BookmarkAdapter {
     weak var viewModel: BookmarkViewModel?
     let manager: BookmarkManager<BookmarkSwiftDataStore>
