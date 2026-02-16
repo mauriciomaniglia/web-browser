@@ -40,7 +40,9 @@ struct TabCardView: View {
     var index: Int
 
     struct Constants {
-        static let screenWidth = UIScreen.main.bounds.width
+        @MainActor static var screenWidth: CGFloat {
+            UIScreen.main.bounds.width
+        }        
         static let spacing: CGFloat = 10
         static let columns: CGFloat = 2
     }
