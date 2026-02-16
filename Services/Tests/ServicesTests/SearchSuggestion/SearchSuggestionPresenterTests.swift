@@ -4,53 +4,45 @@ import XCTest
 class SearchSuggestionPresenterTests: XCTestCase {
 
     func test_didLoad_deliversCorrectState() {
-        let (sut, delegate) = makeSUT()
-        let expectedModel = SearchSuggestionPresenter.Model(
+        let sut = SearchSuggestionPresenter()
+        let expectedModel = PresentableSearchSuggestion(
             bookmarkSuggestions: [.init(title: "apple magazine", url: URL(string: "https://www.apple-mag.com")!)],
             historyPageSuggestions: [.init(title: "apple", url: URL(string: "https://www.apple.com")!)],
             searchSuggestions: [.init(title: "apple watch", url: makeSearchURL(from: "apple watch")),
                                 .init(title: "apple tv", url: makeSearchURL(from: "apple tv"))]
         )
 
-        sut.didLoad(
+        let presentableModel = sut.didLoad(
             searchSuggestions: ["apple watch", "apple tv"],
             historyPages: [.init(title: "apple", url: URL(string: "https://www.apple.com")!, date: Date())],
             bookmarkModels: [.init(title: "apple magazine", url: URL(string: "https://www.apple-mag.com")!)]
         )
 
-        XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel(expectedModel)])
+        XCTAssertEqual(presentableModel, expectedModel)
 
     }
 
     func test_didLoad_shouldDeliverOnlyTheTenFirstResults() {
-        let (sut, delegate) = makeSUT()
+        let sut = SearchSuggestionPresenter()
         let searchSuggestions = (1...15).map { "Search \($0)" }
         let historyPageModels = (1...15).map { makeHistoryModel(title: "History title \($0)") }
         let bookmarkModels = (1...15).map { makeBookmarkModel(title: "Bookmark title \($0)") }
-        let expectedModel = SearchSuggestionPresenter.Model(
+        let expectedModel = PresentableSearchSuggestion(
             bookmarkSuggestions: Array(bookmarkModels.prefix(10).map { .init(title: $0.title ?? "", url: $0.url)}),
             historyPageSuggestions: Array(historyPageModels.prefix(10).map { .init(title: $0.title ?? "", url: $0.url)}),
             searchSuggestions: Array(searchSuggestions.prefix(10).map { .init(title: $0, url: makeSearchURL(from: $0))})
         )
 
-        sut.didLoad(
+        let presentableModel = sut.didLoad(
             searchSuggestions: searchSuggestions,
             historyPages: historyPageModels,
             bookmarkModels: bookmarkModels
         )
 
-        XCTAssertEqual(delegate.receivedMessages, [.didUpdatePresentableModel(expectedModel)])
+        XCTAssertEqual(presentableModel, expectedModel)
     }
 
     // MARK: - Helpers
-
-    private func makeSUT() -> (sut: SearchSuggestionPresenter, delegate: SearchSuggestionPresenterDelegateMock) {
-        let delegate = SearchSuggestionPresenterDelegateMock()
-        let sut = SearchSuggestionPresenter()
-        sut.delegate = delegate
-
-        return (sut, delegate)
-    }
 
     private func makeHistoryModel(title: String) -> WebPageModel {
         .init(title: title, url: URL(string: "https://www.any-url.com")!, date: Date())
@@ -62,17 +54,5 @@ class SearchSuggestionPresenterTests: XCTestCase {
 
     private func makeSearchURL(from text: String) -> URL {
         URL(string: "https://www.google.com/search?q=\(text)&ie=utf-8&oe=utf-8")!
-    }
-}
-
-private class SearchSuggestionPresenterDelegateMock: SearchSuggestionPresenterDelegate {
-    enum Message: Equatable {
-        case didUpdatePresentableModel(_ model: SearchSuggestionPresenter.Model)
-    }
-
-    var receivedMessages = [Message]()
-
-    func didUpdatePresentableModel(_ model: SearchSuggestionPresenter.Model) {
-        receivedMessages.append(.didUpdatePresentableModel(model))
     }
 }

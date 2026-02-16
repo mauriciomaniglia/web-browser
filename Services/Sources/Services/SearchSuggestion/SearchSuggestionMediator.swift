@@ -18,20 +18,20 @@ public final class SearchSuggestionMediator {
         self.presenter = presenter
     }
 
-    public func didStartTyping(query: String) async {
+    public func didStartTyping(query: String) async -> PresentableSearchSuggestion {
         let queryURL = SearchEngineURLBuilder.buildAutocompleteURL(query: query)
         let bookmarkModels = bookmarkStore.getPages(by: query)
         let historyPages = historyStore.getPages(by: query)
 
         if var suggestions = try? await searchSuggestionService.query(queryURL) {
             suggestions.insert(query, at: 0)
-            presenter.didLoad(
+            return presenter.didLoad(
                 searchSuggestions: suggestions,
                 historyPages: historyPages,
                 bookmarkModels: bookmarkModels
             )
         } else {
-            presenter.didLoad(
+            return presenter.didLoad(
                 searchSuggestions: [query],
                 historyPages: historyPages,
                 bookmarkModels: bookmarkModels

@@ -25,7 +25,6 @@ class SearchSuggestionComposer {
             presenter: presenter
         )
 
-        presenter.delegate = self
         viewModel.delegate = self
     }
 }
@@ -33,21 +32,14 @@ class SearchSuggestionComposer {
 extension SearchSuggestionComposer: SearchSuggestionViewModelDelegate {
     func didStartTyping(_ text: String) {
         Task {
-            await mediator.didStartTyping(query: text)
+            let presentableModel = await mediator.didStartTyping(query: text)
+            viewModel.bookmarkSuggestions = presentableModel.bookmarkSuggestions.map { .init(title: $0.title, url: $0.url)}
+            viewModel.historyPageSuggestions = presentableModel.historyPageSuggestions.map { .init(title: $0.title, url: $0.url)}
+            viewModel.searchSuggestions = presentableModel.searchSuggestions.map { .init(title: $0.title, url: $0.url) }
         }
     }
 
     func didSelectPage(_ pageURL: URL) {
         userActionDelegate?.didSelectPageFromSearchSuggestion(pageURL)
-    }
-}
-
-extension SearchSuggestionComposer: SearchSuggestionPresenterDelegate {
-    func didUpdatePresentableModel(_ model: Services.SearchSuggestionPresenter.Model) {
-        DispatchQueue.main.async { [weak self] in
-            self?.viewModel.bookmarkSuggestions = model.bookmarkSuggestions.map { .init(title: $0.title, url: $0.url)}
-            self?.viewModel.historyPageSuggestions = model.historyPageSuggestions.map { .init(title: $0.title, url: $0.url)}
-            self?.viewModel.searchSuggestions = model.searchSuggestions.map { .init(title: $0.title, url: $0.url) }
-        }
     }
 }

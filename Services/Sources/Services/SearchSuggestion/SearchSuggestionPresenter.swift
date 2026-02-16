@@ -1,44 +1,16 @@
 import Foundation
 
-public protocol SearchSuggestionPresenterDelegate: AnyObject {
-    func didUpdatePresentableModel(_ model: SearchSuggestionPresenter.Model)
-}
-
 public class SearchSuggestionPresenter {
-
-    public struct Model: Equatable {
-
-        public struct Bookmark: Equatable {
-            public let title: String
-            public let url: URL
-        }
-
-        public struct HistoryPage: Equatable {
-            public let title: String
-            public let url: URL
-        }
-
-        public struct SearchSuggestion: Equatable {
-            public let title: String
-            public let url: URL
-        }
-
-        public let bookmarkSuggestions: [Bookmark]
-        public let historyPageSuggestions: [HistoryPage]
-        public let searchSuggestions: [SearchSuggestion]
-    }
-
-    public weak var delegate: SearchSuggestionPresenterDelegate?
 
     public init() {}
 
     public func didLoad(
         searchSuggestions: [String],
         historyPages: [WebPageModel],
-        bookmarkModels: [BookmarkModel])
+        bookmarkModels: [BookmarkModel]) -> PresentableSearchSuggestion
     {
         let searchSuggestionModels = searchSuggestions.map { suggestion in
-            Model.SearchSuggestion(
+            PresentableSearchSuggestion.SearchSuggestion(
                 title: suggestion,
                 url: URLBuilderAPI.makeURL(from: suggestion)
             )
@@ -47,23 +19,45 @@ public class SearchSuggestionPresenter {
         .map { $0 }
 
         let historySuggestions = historyPages.compactMap { model in
-            model.title.map { Model.HistoryPage(title: $0, url: model.url) }
+            model.title.map { PresentableSearchSuggestion.HistoryPage(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
         let bookmarkSuggestions = bookmarkModels.compactMap { model in
-            model.title.map { Model.Bookmark(title: $0, url: model.url) }
+            model.title.map { PresentableSearchSuggestion.Bookmark(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
-        let model = Model(
+        let model = PresentableSearchSuggestion(
             bookmarkSuggestions: bookmarkSuggestions,
             historyPageSuggestions: historySuggestions,
             searchSuggestions: searchSuggestionModels
         )
 
-        delegate?.didUpdatePresentableModel(model)
+        return model
     }
+}
+
+public struct PresentableSearchSuggestion: Equatable {
+
+    public struct Bookmark: Equatable {
+        public let title: String
+        public let url: URL
+    }
+
+    public struct HistoryPage: Equatable {
+        public let title: String
+        public let url: URL
+    }
+
+    public struct SearchSuggestion: Equatable {
+        public let title: String
+        public let url: URL
+    }
+
+    public let bookmarkSuggestions: [Bookmark]
+    public let historyPageSuggestions: [HistoryPage]
+    public let searchSuggestions: [SearchSuggestion]
 }
