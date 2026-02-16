@@ -3,6 +3,8 @@ import Services
 
 @MainActor
 public final class WebKitEngineWrapper: NSObject, WebEngineContract {
+    private var observations: [NSKeyValueObservation] = []
+
     public weak var delegate: WebEngineDelegate?
     public let webView: WKWebView
     let ruleStore: WKContentRuleListStore
@@ -110,24 +112,6 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         webView.go(to: items[index])
     }
 
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath else { return }
-
-        switch keyPath {
-        case #keyPath(WKWebView.url), #keyPath(WKWebView.canGoBack), #keyPath(WKWebView.canGoForward):
-            delegate?.didUpdateNavigationButtons(canGoBack: webView.canGoBack, canGoForward: webView.canGoForward)
-        case #keyPath(WKWebView.estimatedProgress):
-            delegate?.didUpdateLoadingProgress(webView.estimatedProgress)
-        case #keyPath(WKWebView.title):
-            if let url = webView.url, let title = webView.title, !title.isEmpty {
-                let webPage = WebPageModel(title: webView.title, url: url, date: Date())
-                delegate?.didLoad(page: webPage)
-            }
-        default:
-            break
-        }
-    }
-
     public func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void) {
         let config = WKSnapshotConfiguration()
         webView.takeSnapshot(with: config) { image, error in
@@ -137,20 +121,52 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
 
     // MARK: Private methods
 
+    private func registerObserversForWebView() {
+        observations.append(webView.observe(\.url, options: [.new]) { [weak self] _, _ in
+            Task { @MainActor in
+                self?.updateNavigationButtons()
+            }
+        })
+
+        observations.append(webView.observe(\.canGoBack, options: [.new]) { [weak self] _, _ in
+            Task { @MainActor in self?.updateNavigationButtons() }
+        })
+
+        observations.append(webView.observe(\.canGoForward, options: [.new]) { [weak self] _, _ in
+            Task { @MainActor in self?.updateNavigationButtons() }
+        })
+
+        observations.append(webView.observe(\.estimatedProgress, options: [.new]) { [weak self] webView, _ in
+            Task { @MainActor in
+                self?.delegate?.didUpdateLoadingProgress(webView.estimatedProgress)
+            }
+        })
+
+        observations.append(webView.observe(\.title, options: [.new]) { [weak self] webView, _ in
+            Task { @MainActor in
+                guard let self = self,
+                      let url = webView.url,
+                      let title = webView.title, !title.isEmpty else { return }
+
+                let webPage = WebPageModel(title: title, url: url, date: Date())
+                self.delegate?.didLoad(page: webPage)
+            }
+        })
+    }
+
+    private func updateNavigationButtons() {
+        delegate?.didUpdateNavigationButtons(
+            canGoBack: webView.canGoBack,
+            canGoForward: webView.canGoForward
+        )
+    }
+
     private func applyRule(name: String) {
         ruleStore.lookUpContentRuleList(forIdentifier: name, completionHandler: { [webView] ruleList, _ in
             guard let ruleList = ruleList else { return }
 
             webView.configuration.userContentController.add(ruleList)
         })
-    }
-
-    private func registerObserversForWebView() {
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.url), context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoBack), context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoForward), context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), context: nil)
     }
 
     private static func safelistAsJSON(_ safelist: [String]) -> String {

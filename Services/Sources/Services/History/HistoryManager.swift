@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 public class HistoryManager<T: HistoryStoreAPI> {
     private let historyStore: T
 

@@ -3,7 +3,7 @@ import WebKit
 import SwiftUI
 import Services
 
-protocol TabBarStore {
+protocol TabBarStore: Sendable {
     func getTabSessions() async -> [String: Data]?
     func saveTabSession(tabID: UUID, sessionData: Data) async
     func deleteTabSession(tabID: UUID) async

@@ -1,6 +1,7 @@
 import XCTest
 import Services
 
+@MainActor
 class HistoryManagerTests: XCTestCase {
 
     func test_didOpenHistoryView_deliversCorrectResult() {

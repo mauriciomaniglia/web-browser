@@ -2,6 +2,7 @@ import Foundation
 import XCTest
 @testable import Services
 
+@MainActor
 class SearchSuggestionManagerTests: XCTestCase {
     private typealias SearchSuggestionManagerType = SearchSuggestionManager<MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock>
 
