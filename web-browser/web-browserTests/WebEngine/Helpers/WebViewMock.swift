@@ -50,8 +50,4 @@ class WebViewMock: WKWebView {
     override var canGoForward: Bool {
         return canGoForwardMock
     }
-
-    override func addObserver(_ observer: NSObject, forKeyPath keyPath: String, options: NSKeyValueObservingOptions = [], context: UnsafeMutableRawPointer?) {
-        registeredObservers.append(keyPath)
-    }
 }
