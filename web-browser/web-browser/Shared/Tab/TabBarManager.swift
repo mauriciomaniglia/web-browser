@@ -1,6 +1,6 @@
 import SwiftData
 import WebKit
-import SwiftUI
+import Combine
 import Services
 
 protocol TabBarStore: Sendable {
