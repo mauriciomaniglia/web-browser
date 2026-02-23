@@ -79,7 +79,7 @@ class ContentBlockingTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT(content: String? = nil) -> (sut: ContentBlocking, webView: WebViewSpy) {
+    private func makeSUT(content: String? = nil) -> (sut: ContentBlocking<WebViewSpy>, webView: WebViewSpy) {
         let webView = WebViewSpy()
         let sut = ContentBlocking(webView: webView, jsonLoader: { _ in "json content"})
         return (sut, webView)

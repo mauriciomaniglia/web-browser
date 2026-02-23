@@ -1,9 +1,9 @@
 @MainActor
-final public class ContentBlocking {
-    private let webView: WebEngineContract
+final public class ContentBlocking<T: WebEngineContract> {
+    private let webView: T
     private let jsonLoader: (String) -> String?
 
-    public init(webView: WebEngineContract, jsonLoader: @escaping (String) -> String?) {
+    public init(webView: T, jsonLoader: @escaping (String) -> String?) {
         self.webView = webView
         self.jsonLoader = jsonLoader
     }
