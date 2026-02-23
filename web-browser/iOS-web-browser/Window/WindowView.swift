@@ -98,7 +98,8 @@ struct WindowContent: View {
     var addNewTabButton: some View {
         TabCountButton(count: tabBarManager.tabs.count) {
             isShowingTabManager = true
-            tabBarManager.captureSnapshots {
+            Task {
+                await tabBarManager.captureSnapshots()
                 isShowingTabManager = true
             }
         }

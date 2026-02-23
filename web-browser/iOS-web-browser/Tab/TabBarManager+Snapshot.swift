@@ -1,24 +1,18 @@
 import SwiftUI
 
 extension TabBarManager {
-    func captureSnapshots(completion: @escaping () -> Void) {
-        let group = DispatchGroup()
+    @MainActor
+    func captureSnapshots() async {
+        await withTaskGroup(of: Void.self) { group in
+            for tab in tabs {
+                group.addTask {
+                    let image: UIImage? = await tab.webKitWrapper.takeSnapshot()
 
-        for tab in tabs {
-            let webView = tab.webKitWrapper
-
-            group.enter()
-
-            webView.takeSnapshot() { image in
-                DispatchQueue.main.async {
-                    tab.snapshot = image
-                    group.leave()
+                    await MainActor.run {
+                        tab.snapshot = image
+                    }
                 }
             }
-        }
-
-        group.notify(queue: .main) {
-            completion()
         }
     }
 }

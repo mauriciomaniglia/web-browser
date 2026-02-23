@@ -76,7 +76,8 @@ class WebViewSpy: WebEngineContract {
         receivedMessages.append(.navigateToForwardListPage)
     }
 
-    func takeSnapshot<T>(completionHandler: @escaping (T?) -> Void) {
+    func takeSnapshot<T>() async -> T? {
         receivedMessages.append(.takeSnapshot)
+        return nil
     }
 }
