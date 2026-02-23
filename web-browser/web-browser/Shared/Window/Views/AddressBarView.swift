@@ -45,11 +45,6 @@ struct AddressBarView: View {
 
             ProgressBar
         }
-        .onAppear {
-            DispatchQueue.main.async {
-                isTextFieldFocused = false
-            }
-        }
     }
 
     private var SearchTextField: some View {
