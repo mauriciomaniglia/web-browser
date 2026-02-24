@@ -101,11 +101,6 @@
 		F987B3AA2CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
 		F987B3AD2CFDDA5500474A1E /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
 		F987B3B02CFDDAD100474A1E /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
-		F987B3B32CFDDB3500474A1E /* WebKitEngineWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B22CFDDB3500474A1E /* WebKitEngineWrapperTests.swift */; };
-		F987B3B92CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */; };
-		F987B3BA2CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */; };
-		F987B3BB2CFDDB3D00474A1E /* WKUserContentControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */; };
-		F987B3BC2CFDDB3D00474A1E /* WebViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */; };
 		F987B3C72CFDDC7800474A1E /* SocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C52CFDDC7800474A1E /* SocialRules.json */; };
 		F987B3C82CFDDC7800474A1E /* CookiesAdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */; };
 		F987B3C92CFDDC7800474A1E /* CryptominingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C32CFDDC7800474A1E /* CryptominingRules.json */; };
@@ -183,11 +178,6 @@
 		F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySwiftDataStore.swift; sourceTree = "<group>"; };
 		F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitEngineWrapper.swift; sourceTree = "<group>"; };
-		F987B3B22CFDDB3500474A1E /* WebKitEngineWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitEngineWrapperTests.swift; sourceTree = "<group>"; };
-		F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewMock.swift; sourceTree = "<group>"; };
-		F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewProxyDelegateSpy.swift; sourceTree = "<group>"; };
-		F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKContentRuleListStoreSpy.swift; sourceTree = "<group>"; };
-		F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKUserContentControllerSpy.swift; sourceTree = "<group>"; };
 		F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AdvertisingRules.json; sourceTree = "<group>"; };
 		F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AnalyticsRules.json; sourceTree = "<group>"; };
 		F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CookiesAdvertisingRules.json; sourceTree = "<group>"; };
@@ -305,7 +295,6 @@
 		F92921CE2B70F5B500173702 /* web-browserTests */ = {
 			isa = PBXGroup;
 			children = (
-				F987B3B12CFDDB2800474A1E /* WebEngine */,
 				F932F2012CE23A6A00B12B45 /* Bookmark */,
 				F9E55FD62C02AE900098995F /* Helpers */,
 				F9E55D382C45F452008B7C64 /* History */,
@@ -384,26 +373,6 @@
 				F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */,
 			);
 			path = WebEngine;
-			sourceTree = "<group>";
-		};
-		F987B3B12CFDDB2800474A1E /* WebEngine */ = {
-			isa = PBXGroup;
-			children = (
-				F987B3B82CFDDB3D00474A1E /* Helpers */,
-				F987B3B22CFDDB3500474A1E /* WebKitEngineWrapperTests.swift */,
-			);
-			path = WebEngine;
-			sourceTree = "<group>";
-		};
-		F987B3B82CFDDB3D00474A1E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F987B3B42CFDDB3D00474A1E /* WebViewMock.swift */,
-				F987B3B52CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift */,
-				F987B3B62CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift */,
-				F987B3B72CFDDB3D00474A1E /* WKUserContentControllerSpy.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F987B3C62CFDDC7800474A1E /* JsonRules */ = {
@@ -788,11 +757,6 @@
 			files = (
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */,
-				F987B3B32CFDDB3500474A1E /* WebKitEngineWrapperTests.swift in Sources */,
-				F987B3B92CFDDB3D00474A1E /* WKContentRuleListStoreSpy.swift in Sources */,
-				F987B3BA2CFDDB3D00474A1E /* WebViewProxyDelegateSpy.swift in Sources */,
-				F987B3BB2CFDDB3D00474A1E /* WKUserContentControllerSpy.swift in Sources */,
-				F987B3BC2CFDDB3D00474A1E /* WebViewMock.swift in Sources */,
 				F932F2032CE23A6A00B12B45 /* BookmarkViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
