@@ -160,7 +160,6 @@
 		F92921EF2B70F9F900173702 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		F92921F12B70FA0C00173702 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		F92E5C1E2CD980150019A9AE /* AddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkView.swift; sourceTree = "<group>"; };
-		F932F1FF2CE23A6A00B12B45 /* BookmarkAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAdapterTests.swift; sourceTree = "<group>"; };
 		F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTests.swift; sourceTree = "<group>"; };
 		F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkComposer.swift; sourceTree = "<group>"; };
 		F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
@@ -344,7 +343,6 @@
 		F932F2012CE23A6A00B12B45 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
-				F932F1FF2CE23A6A00B12B45 /* BookmarkAdapterTests.swift */,
 				F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */,
 			);
 			path = Bookmark;
