@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
+		F90AA4752F4F9A0800B3B9A7 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */; };
 		F91201272F056317005D9325 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91201262F056317005D9325 /* MenuCommands.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
@@ -144,6 +145,8 @@
 /* Begin PBXFileReference section */
 		F901D9882E93240900F3B3D9 /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F90877042E1028E000023426 /* SearchSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionView.swift; sourceTree = "<group>"; };
+		F90AA4702F4F9A0800B3B9A7 /* visionOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visionOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F90AA4732F4F9A0800B3B9A7 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		F91201262F056317005D9325 /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
@@ -200,12 +203,31 @@
 		F9F01C1F2F2D1FBF00CE958A /* TabCountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCountButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F90AA47F2F4F9A0900B3B9A7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F90AA46F2F4F9A0800B3B9A7 /* visionOS-web-browser */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F90AA4712F4F9A0800B3B9A7 /* visionOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F90AA47F2F4F9A0900B3B9A7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "visionOS-web-browser"; sourceTree = "<group>"; };
 		F96998A32EEDF0D400C3286D /* iPadOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "iPadOS-web-browser"; sourceTree = "<group>"; };
 		F969990D2EEEE9BC00C3286D /* iOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "iOS-web-browser"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F90AA46D2F4F9A0800B3B9A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F90AA4752F4F9A0800B3B9A7 /* RealityKitContent in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F92921B72B70F5B300173702 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +262,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F90AA4722F4F9A0800B3B9A7 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				F90AA4732F4F9A0800B3B9A7 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		F91201252F0562FE005D9325 /* Menu Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +286,8 @@
 				F92921CE2B70F5B500173702 /* web-browserTests */,
 				F96998A32EEDF0D400C3286D /* iPadOS-web-browser */,
 				F969990D2EEEE9BC00C3286D /* iOS-web-browser */,
+				F90AA4712F4F9A0800B3B9A7 /* visionOS-web-browser */,
+				F90AA4722F4F9A0800B3B9A7 /* Packages */,
 				F92921BB2B70F5B300173702 /* Products */,
 				F9CDFD902B7130610024E0AD /* Frameworks */,
 			);
@@ -268,6 +300,7 @@
 				F92921CB2B70F5B500173702 /* web-browserTests.xctest */,
 				F96998A22EEDF0D400C3286D /* iPadOS-web-browser.app */,
 				F969990C2EEEE9BC00C3286D /* iOS-web-browser.app */,
+				F90AA4702F4F9A0800B3B9A7 /* visionOS-web-browser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -515,6 +548,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F90AA46F2F4F9A0800B3B9A7 /* visionOS-web-browser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F90AA4802F4F9A0900B3B9A7 /* Build configuration list for PBXNativeTarget "visionOS-web-browser" */;
+			buildPhases = (
+				F90AA46C2F4F9A0800B3B9A7 /* Sources */,
+				F90AA46D2F4F9A0800B3B9A7 /* Frameworks */,
+				F90AA46E2F4F9A0800B3B9A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F90AA4712F4F9A0800B3B9A7 /* visionOS-web-browser */,
+			);
+			name = "visionOS-web-browser";
+			packageProductDependencies = (
+				F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */,
+			);
+			productName = "visionOS-web-browser";
+			productReference = F90AA4702F4F9A0800B3B9A7 /* visionOS-web-browser.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F92921B92B70F5B300173702 /* web-browser */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F92921DF2B70F5B500173702 /* Build configuration list for PBXNativeTarget "web-browser" */;
@@ -606,9 +662,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					F90AA46F2F4F9A0800B3B9A7 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					F92921B92B70F5B300173702 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -643,11 +702,19 @@
 				F92921CA2B70F5B500173702 /* web-browserTests */,
 				F96998A12EEDF0D400C3286D /* iPadOS-web-browser */,
 				F969990B2EEEE9BC00C3286D /* iOS-web-browser */,
+				F90AA46F2F4F9A0800B3B9A7 /* visionOS-web-browser */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F90AA46E2F4F9A0800B3B9A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F92921B82B70F5B300173702 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,6 +775,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F90AA46C2F4F9A0800B3B9A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F92921B62B70F5B300173702 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -837,6 +911,67 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F90AA47D2F4F9A0900B3B9A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.visionOS-web-browser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		F90AA47E2F4F9A0900B3B9A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mauricio-maniglia.visionOS-web-browser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 		F92921DD2B70F5B500173702 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1228,6 +1363,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F90AA4802F4F9A0900B3B9A7 /* Build configuration list for PBXNativeTarget "visionOS-web-browser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F90AA47D2F4F9A0900B3B9A7 /* Debug */,
+				F90AA47E2F4F9A0900B3B9A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F92921B52B70F5B300173702 /* Build configuration list for PBXProject "web-browser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1276,6 +1420,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
 		F96998E92EEDF3FF00C3286D /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
