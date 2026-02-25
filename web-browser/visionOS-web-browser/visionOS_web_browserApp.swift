@@ -1,17 +1,12 @@
-//
-//  visionOS_web_browserApp.swift
-//  visionOS-web-browser
-//
-//  Created by Mauricio Cesar on 25/02/26.
-//
-
 import SwiftUI
 
 @main
 struct visionOS_web_browserApp: App {
+    let windowComposer = WindowComposer()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            windowComposer.createNewWindow()
         }
     }
 }
