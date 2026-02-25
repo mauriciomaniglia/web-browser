@@ -10,6 +10,42 @@
 		F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
 		F90AA4752F4F9A0800B3B9A7 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */; };
+		F90AA4812F4F9B4E00B3B9A7 /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
+		F90AA4822F4F9B5B00B3B9A7 /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
+		F90AA4832F4F9B6100B3B9A7 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
+		F90AA4842F4F9B7600B3B9A7 /* WebKitEngineWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AF2CFDDAD100474A1E /* WebKitEngineWrapper.swift */; };
+		F90AA4852F4F9B7F00B3B9A7 /* CookiesAdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BF2CFDDC7800474A1E /* CookiesAdvertisingRules.json */; };
+		F90AA4862F4F9B7F00B3B9A7 /* CookiesSocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C22CFDDC7800474A1E /* CookiesSocialRules.json */; };
+		F90AA4872F4F9B7F00B3B9A7 /* FingerprintingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C42CFDDC7800474A1E /* FingerprintingRules.json */; };
+		F90AA4882F4F9B7F00B3B9A7 /* CookiesAnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C02CFDDC7800474A1E /* CookiesAnalyticsRules.json */; };
+		F90AA4892F4F9B7F00B3B9A7 /* CryptominingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C32CFDDC7800474A1E /* CryptominingRules.json */; };
+		F90AA48A2F4F9B7F00B3B9A7 /* AnalyticsRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BE2CFDDC7800474A1E /* AnalyticsRules.json */; };
+		F90AA48B2F4F9B7F00B3B9A7 /* SocialRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C52CFDDC7800474A1E /* SocialRules.json */; };
+		F90AA48C2F4F9B7F00B3B9A7 /* CookiesContentRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3C12CFDDC7800474A1E /* CookiesContentRules.json */; };
+		F90AA48D2F4F9B7F00B3B9A7 /* AdvertisingRules.json in Resources */ = {isa = PBXBuildFile; fileRef = F987B3BD2CFDDC7800474A1E /* AdvertisingRules.json */; };
+		F90AA48E2F4F9B8C00B3B9A7 /* BookmarkSwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3A92CFDD9DF00474A1E /* BookmarkSwiftDataStore.swift */; };
+		F90AA48F2F4F9B9800B3B9A7 /* BookmarkComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2052CE23A7800B12B45 /* BookmarkComposer.swift */; };
+		F90AA4902F4F9B9800B3B9A7 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F932F2072CE23A7800B12B45 /* BookmarkViewModel.swift */; };
+		F90AA4912F4F9B9800B3B9A7 /* BookmarkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987F72A2F239DA600E4AF9E /* BookmarkAdapter.swift */; };
+		F90AA4922F4F9BB400B3B9A7 /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDFD782B711A7C0024E0AD /* WebViewWrapper.swift */; };
+		F90AA4932F4F9BB400B3B9A7 /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3D02CFDDD4800474A1E /* JsonLoader.swift */; };
+		F90AA4942F4F9BC000B3B9A7 /* HistorySwiftDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987B3AC2CFDDA5500474A1E /* HistorySwiftDataStore.swift */; };
+		F90AA4952F4F9BC000B3B9A7 /* HistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F971D8522F34D9A400D13A26 /* HistoryAdapter.swift */; };
+		F90AA4962F4F9BC000B3B9A7 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E55D312C45EFD5008B7C64 /* HistoryViewModel.swift */; };
+		F90AA4972F4F9BC000B3B9A7 /* HistoryComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9462B172C4890B000451759 /* HistoryComposer.swift */; };
+		F90AA4982F4F9BCC00B3B9A7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941ED382EAA4BE7007FCB44 /* TabBarView.swift */; };
+		F90AA49A2F4F9BD800B3B9A7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */; };
+		F90AA49B2F4F9BD800B3B9A7 /* TabSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94FD0062F26D6D000D7ABA2 /* TabSessionStore.swift */; };
+		F90AA49D2F4F9BE800B3B9A7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921F12B70FA0C00173702 /* NavigationBar.swift */; };
+		F90AA49E2F4F9BE800B3B9A7 /* CustomGestureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9654DEA2C149F4D000559FF /* CustomGestureButton.swift */; };
+		F90AA49F2F4F9BE800B3B9A7 /* NavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9632D942C186D7800A4F7F9 /* NavigationList.swift */; };
+		F90AA4A02F4F9BE800B3B9A7 /* WebsiteProtectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94D65F42BF83D4F00E34EF0 /* WebsiteProtectionButton.swift */; };
+		F90AA4A12F4F9BE800B3B9A7 /* WindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956B97D2F2FE30F00FDE65A /* WindowViewModel.swift */; };
+		F90AA4A22F4F9BE800B3B9A7 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921EF2B70F9F900173702 /* AddressBarView.swift */; };
+		F90AA4A32F4F9BE800B3B9A7 /* TabCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F01C1F2F2D1FBF00CE958A /* TabCountButton.swift */; };
+		F90AA4A52F4F9C1300B3B9A7 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F90AA4A42F4F9C1300B3B9A7 /* Services */; };
+		F90AA4A62F4F9C6C00B3B9A7 /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
+		F90AA4A72F4F9C7D00B3B9A7 /* TabAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFF0662F19335300DB1766 /* TabAdapter.swift */; };
 		F91201272F056317005D9325 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91201262F056317005D9325 /* MenuCommands.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
@@ -224,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90AA4A52F4F9C1300B3B9A7 /* Services in Frameworks */,
 				F90AA4752F4F9A0800B3B9A7 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +603,7 @@
 			name = "visionOS-web-browser";
 			packageProductDependencies = (
 				F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */,
+				F90AA4A42F4F9C1300B3B9A7 /* Services */,
 			);
 			productName = "visionOS-web-browser";
 			productReference = F90AA4702F4F9A0800B3B9A7 /* visionOS-web-browser.app */;
@@ -712,6 +750,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90AA4852F4F9B7F00B3B9A7 /* CookiesAdvertisingRules.json in Resources */,
+				F90AA4862F4F9B7F00B3B9A7 /* CookiesSocialRules.json in Resources */,
+				F90AA4872F4F9B7F00B3B9A7 /* FingerprintingRules.json in Resources */,
+				F90AA4882F4F9B7F00B3B9A7 /* CookiesAnalyticsRules.json in Resources */,
+				F90AA4892F4F9B7F00B3B9A7 /* CryptominingRules.json in Resources */,
+				F90AA48A2F4F9B7F00B3B9A7 /* AnalyticsRules.json in Resources */,
+				F90AA48B2F4F9B7F00B3B9A7 /* SocialRules.json in Resources */,
+				F90AA48C2F4F9B7F00B3B9A7 /* CookiesContentRules.json in Resources */,
+				F90AA48D2F4F9B7F00B3B9A7 /* AdvertisingRules.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +826,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90AA4982F4F9BCC00B3B9A7 /* TabBarView.swift in Sources */,
+				F90AA4822F4F9B5B00B3B9A7 /* SearchSuggestionViewModel.swift in Sources */,
+				F90AA48E2F4F9B8C00B3B9A7 /* BookmarkSwiftDataStore.swift in Sources */,
+				F90AA4942F4F9BC000B3B9A7 /* HistorySwiftDataStore.swift in Sources */,
+				F90AA49A2F4F9BD800B3B9A7 /* TabViewModel.swift in Sources */,
+				F90AA49B2F4F9BD800B3B9A7 /* TabSessionStore.swift in Sources */,
+				F90AA4952F4F9BC000B3B9A7 /* HistoryAdapter.swift in Sources */,
+				F90AA4962F4F9BC000B3B9A7 /* HistoryViewModel.swift in Sources */,
+				F90AA4972F4F9BC000B3B9A7 /* HistoryComposer.swift in Sources */,
+				F90AA48F2F4F9B9800B3B9A7 /* BookmarkComposer.swift in Sources */,
+				F90AA4902F4F9B9800B3B9A7 /* BookmarkViewModel.swift in Sources */,
+				F90AA4922F4F9BB400B3B9A7 /* WebViewWrapper.swift in Sources */,
+				F90AA4932F4F9BB400B3B9A7 /* JsonLoader.swift in Sources */,
+				F90AA4912F4F9B9800B3B9A7 /* BookmarkAdapter.swift in Sources */,
+				F90AA4A62F4F9C6C00B3B9A7 /* TabBarManager.swift in Sources */,
+				F90AA4832F4F9B6100B3B9A7 /* SearchSuggestionView.swift in Sources */,
+				F90AA49D2F4F9BE800B3B9A7 /* NavigationBar.swift in Sources */,
+				F90AA49E2F4F9BE800B3B9A7 /* CustomGestureButton.swift in Sources */,
+				F90AA49F2F4F9BE800B3B9A7 /* NavigationList.swift in Sources */,
+				F90AA4A02F4F9BE800B3B9A7 /* WebsiteProtectionButton.swift in Sources */,
+				F90AA4A12F4F9BE800B3B9A7 /* WindowViewModel.swift in Sources */,
+				F90AA4A22F4F9BE800B3B9A7 /* AddressBarView.swift in Sources */,
+				F90AA4A32F4F9BE800B3B9A7 /* TabCountButton.swift in Sources */,
+				F90AA4812F4F9B4E00B3B9A7 /* SearchSuggestionComposer.swift in Sources */,
+				F90AA4842F4F9B7600B3B9A7 /* WebKitEngineWrapper.swift in Sources */,
+				F90AA4A72F4F9C7D00B3B9A7 /* TabAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1423,6 +1496,10 @@
 		F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
+		};
+		F90AA4A42F4F9C1300B3B9A7 /* Services */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Services;
 		};
 		F96998E92EEDF3FF00C3286D /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
