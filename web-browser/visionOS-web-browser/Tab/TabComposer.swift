@@ -62,7 +62,6 @@ final class TabComposer {
 
         view = TabContentView(
             tabViewModel: tabViewModel,
-            searchSuggestionViewModel: windowViewModel.searchSuggestionComposer.viewModel,
             bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
             webView: WebView(content: webKitWrapper.webView)
         )

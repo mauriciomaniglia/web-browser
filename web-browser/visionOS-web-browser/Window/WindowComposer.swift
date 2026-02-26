@@ -46,6 +46,7 @@ final class WindowComposer {
     }
 
     func createNewWindow() -> WindowView {
+        tabBarManager.createNewTab() // TODO: Make TabBarManager selectedBar non-optinal
         tabBarManager.start()
 
         let menu = MenuView(
@@ -54,6 +55,10 @@ final class WindowComposer {
         )
         let tabBar = TabBarView(tabBarManager: tabBarManager)
 
-        return WindowView(menu: menu, tabBar: tabBar)
+        return WindowView(
+            tabViewModel: tabBarManager.selectedTab!.tabViewModel,
+            searchSuggestionViewModel: searchSuggestionComposer.viewModel,
+            menu: menu,
+            tabBar: tabBar)
     }
 }
