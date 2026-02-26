@@ -13,14 +13,12 @@ struct TabContentView: View {
                 addBookmarkDialog
             }
         }
-        .padding()
     }
 
     var webViewFrame: some View {
         webView
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .opacity(tabViewModel.showWebView ? 1 : 0)
-            .offset(y: 60)
             .zIndex(1)
     }
 
