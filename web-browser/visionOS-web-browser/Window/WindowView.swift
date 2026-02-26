@@ -4,12 +4,14 @@ struct WindowView: View {
     @ObservedObject var tabViewModel: TabViewModel
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+
     let menu: MenuView
     let tabBar: TabBarView
 
     var body: some View {
         ZStack {
-            NavigationSplitView {
+            NavigationSplitView(columnVisibility: $columnVisibility) {
                 menu
             } detail: {
                 ZStack(alignment: .top) {
@@ -38,6 +40,7 @@ struct WindowView: View {
 
     var mainToolbar: some View {
         HStack {
+            toggleMenuButton
             navigationButtons
             Spacer()
             addressBar
@@ -45,6 +48,20 @@ struct WindowView: View {
             if let url = URL(string: tabViewModel.fullURL) {
                 shareLink(url)
             }
+        }
+    }
+
+    var toggleMenuButton: some View {
+        Button(action: {
+            withAnimation {
+                if columnVisibility == .detailOnly {
+                    columnVisibility = .all
+                } else {
+                    columnVisibility = .detailOnly
+                }
+            }
+        }) {
+            Image(systemName: "sidebar.left")
         }
     }
 
