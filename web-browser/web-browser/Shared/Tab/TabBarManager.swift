@@ -38,7 +38,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
     }
 
     func fetchTabs(orderedIDs: [String]) {
-        Task { @MainActor in
+        Task {
             guard let tabSessions = await tabBarStore.getTabSessions() else { return }
 
             for tabID in orderedIDs {
