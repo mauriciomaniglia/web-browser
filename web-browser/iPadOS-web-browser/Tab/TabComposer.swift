@@ -18,7 +18,7 @@ final class TabComposer {
 
     init(
         tabID: UUID? = nil,
-        userActionDelegate: TabUserActionDelegate,
+        userActionDelegate: TabUserActionDelegate?,
         webKitWrapper: WebKitEngineWrapper,
         windowViewModel: WindowViewModel
     ) {
@@ -60,7 +60,7 @@ final class TabComposer {
         tabViewModel.didSelectBackListPage = tabAdapter.didSelectBackListPage(at:)
         tabViewModel.didSelectForwardListPage = tabAdapter.didSelectForwardListPage(at:)
         tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList
-        tabViewModel.didTapNewTab = userActionDelegate.didTapNewTab
+        tabViewModel.didTapNewTab = userActionDelegate?.didTapNewTab
 
         view = TabContentView(
             tabViewModel: tabViewModel,

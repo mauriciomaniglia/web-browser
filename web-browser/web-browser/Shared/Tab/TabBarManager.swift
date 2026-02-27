@@ -12,7 +12,7 @@ protocol TabBarStore: Sendable {
 @MainActor
 final class TabBarManager<T: TabBarStore>: ObservableObject {
     @Published var tabs: [TabComposer] = []
-    @Published var selectedTab: TabComposer?
+    @Published var selectedTab: TabComposer
 
     let windowViewModel: WindowViewModel
 
@@ -21,6 +21,13 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
     init(windowViewModel: WindowViewModel, tabBarStore: T) {
         self.windowViewModel = windowViewModel
         self.tabBarStore = tabBarStore
+
+        let webKitWrapper = WebKitEngineWrapper()
+        self.selectedTab = TabComposer(
+            userActionDelegate: nil,
+            webKitWrapper: webKitWrapper,
+            windowViewModel: windowViewModel
+        )
 
         windowViewModel.historyComposer.userActionDelegate = self
         windowViewModel.bookmarkComposer.userActionDelegate = self
@@ -93,9 +100,9 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
     func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
 
-        if let tab = selectedTab, let sessionData = tab.webKitWrapper.sessionData {
+        if let sessionData = selectedTab.webKitWrapper.sessionData {
             Task {
-                await tabBarStore.saveTabSession(tabID: tab.id, sessionData: sessionData)
+                await tabBarStore.saveTabSession(tabID: selectedTab.id, sessionData: sessionData)
             }
         }
     }
@@ -105,7 +112,6 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
         if index == 0 && tabs.count == 1 {
             tabs.remove(at: 0)
-            selectedTab = nil
             createNewTab()
             return
         }
@@ -121,7 +127,6 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
     func closeAllTabs() {
         tabs.removeAll()
-        selectedTab = nil
         createNewTab()
     }
 
@@ -144,18 +149,18 @@ extension TabBarManager: TabUserActionDelegate {
 
 extension TabBarManager: HistoryUserActionDelegate {
     func didSelectPage(_ pageURL: URL) {
-        selectedTab?.webKitWrapper.load(pageURL)
+        selectedTab.webKitWrapper.load(pageURL)
     }
 }
 
 extension TabBarManager: SearchSuggestionUserActionDelegate {
     func didSelectPageFromSearchSuggestion(_ pageURL: URL) {
-        selectedTab?.webKitWrapper.load(pageURL)
+        selectedTab.webKitWrapper.load(pageURL)
     }
 }
 
 extension TabBarManager: BookmarkUserActionDelegate {
     func didSelectPageFromBookmark(_ pageURL: URL) {
-        selectedTab?.webKitWrapper.load(pageURL)
+        selectedTab.webKitWrapper.load(pageURL)
     }
 }

@@ -17,7 +17,7 @@ final class TabComposer: ObservableObject, Identifiable {
 
     init(
         tabID: UUID? = nil,
-        userActionDelegate: TabUserActionDelegate,
+        userActionDelegate: TabUserActionDelegate?,
         webKitWrapper: WebKitEngineWrapper,
         windowViewModel: WindowViewModel
     ) {

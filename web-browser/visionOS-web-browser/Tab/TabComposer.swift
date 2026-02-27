@@ -17,7 +17,7 @@ final class TabComposer {
 
     init(
         tabID: UUID? = nil,
-        userActionDelegate: TabUserActionDelegate,
+        userActionDelegate: TabUserActionDelegate?,
         webKitWrapper: WebKitEngineWrapper,
         windowViewModel: WindowViewModel
     ) {

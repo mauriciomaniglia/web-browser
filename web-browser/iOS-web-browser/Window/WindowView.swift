@@ -7,21 +7,15 @@ struct WindowView: View {
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
-        Group {
-            if let selectedTab = tabBarManager.selectedTab {
-                WindowContent(
-                    tabViewModel: selectedTab.tabViewModel,
-                    historyViewModel: historyViewModel,
-                    bookmarkViewModel: bookmarkViewModel,
-                    searchSuggestionViewModel: searchSuggestionViewModel,
-                    tabBarManager: tabBarManager,
-                    webView: WebView(content: selectedTab.webKitWrapper.webView)
-                )
-                .id(selectedTab.id)
-            } else {
-                Text("No Tabs Open")
-            }
-        }
+        WindowContent(
+            tabViewModel: tabBarManager.selectedTab.tabViewModel,
+            historyViewModel: historyViewModel,
+            bookmarkViewModel: bookmarkViewModel,
+            searchSuggestionViewModel: searchSuggestionViewModel,
+            tabBarManager: tabBarManager,
+            webView: WebView(content: tabBarManager.selectedTab.webKitWrapper.webView)
+        )
+        .id(tabBarManager.selectedTab.id)
     }
 }
 

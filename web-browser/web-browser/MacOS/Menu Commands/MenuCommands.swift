@@ -13,7 +13,7 @@ struct MenuCommands: Commands {
 
         CommandMenu("Bookmarks") {
             Button("Add Bookmark...") {
-                tabBarManager.selectedTab?.tabViewModel.didTapAddBookmark()
+                tabBarManager.selectedTab.tabViewModel.didTapAddBookmark()
             }
             .keyboardShortcut("d", modifiers: [.command])
         }
