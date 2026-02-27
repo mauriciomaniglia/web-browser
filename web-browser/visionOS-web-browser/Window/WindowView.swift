@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WindowView: View {
-    @ObservedObject var tabViewModel: TabViewModel
+    @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
     @ObservedObject var searchSuggestionViewModel: SearchSuggestionViewModel
 
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
@@ -29,7 +29,7 @@ struct WindowView: View {
         )
         {
             HStack {
-                mainToolbar
+                MainToolbar(tabViewModel: tabBarManager.selectedTab.tabViewModel, columnVisibility: $columnVisibility)
             }
             .frame(width: 1000)
             .padding()
@@ -38,7 +38,22 @@ struct WindowView: View {
         }
     }
 
-    var mainToolbar: some View {
+    var shouldShowSearchSuggestions: Bool {
+        tabBarManager.selectedTab.tabViewModel.showSearchSuggestions
+    }
+
+    var searchSuggestions: some View {
+        SearchSuggestionView(viewModel: searchSuggestionViewModel)
+            .frame(width: 550)
+            .zIndex(2)
+    }
+}
+
+struct MainToolbar: View {
+    @ObservedObject var tabViewModel: TabViewModel
+    @Binding var columnVisibility: NavigationSplitViewVisibility
+
+    var body: some View {
         HStack {
             toggleMenuButton
             navigationButtons
@@ -80,15 +95,5 @@ struct WindowView: View {
                 .font(.system(size: 17))
         }
         .buttonStyle(.borderless)
-    }
-
-    var shouldShowSearchSuggestions: Bool {
-        tabViewModel.showSearchSuggestions
-    }
-
-    var searchSuggestions: some View {
-        SearchSuggestionView(viewModel: searchSuggestionViewModel)
-            .frame(width: 550)
-            .zIndex(2)
     }
 }

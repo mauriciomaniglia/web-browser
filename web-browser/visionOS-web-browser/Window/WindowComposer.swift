@@ -55,7 +55,7 @@ final class WindowComposer {
         let tabBar = TabBarView(tabBarManager: tabBarManager)
 
         return WindowView(
-            tabViewModel: tabBarManager.selectedTab.tabViewModel,
+            tabBarManager: tabBarManager,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
             menu: menu,
             tabBar: tabBar)
