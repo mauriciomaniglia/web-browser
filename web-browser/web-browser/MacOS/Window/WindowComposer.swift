@@ -52,7 +52,17 @@ final class WindowComposer {
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel
         )
-        let tabBar = TabBarView(tabBarManager: tabBarManager)
+        let tabBar = TabBarView(
+            tabBarManager: tabBarManager,
+            layout: .init(
+                padding: 8,
+                innerPadding: 8,
+                cornerRadius: 8,
+                color: .purple,
+                selectedColor: .blue,
+                unselectedColor: .clear
+            )
+        )
 
         return WindowView(menu: menu, tabBar: tabBar)
     }

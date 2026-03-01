@@ -48,6 +48,18 @@ final class WindowComposer {
     func createNewWindow() -> WindowView {
         tabBarManager.start()
 
-        return WindowView(tabBar: TabBarView(tabBarManager: tabBarManager))
+        return WindowView(
+            tabBar: TabBarView(
+                tabBarManager: tabBarManager,
+                layout: .init(
+                    padding: 8,
+                    innerPadding: 8,
+                    cornerRadius: 8,
+                    color: .indigo,
+                    selectedColor: .white,
+                    unselectedColor: .clear
+                )
+            )
+        )
     }
 }

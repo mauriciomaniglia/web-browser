@@ -3,6 +3,8 @@ import SwiftUI
 struct TabBarView: View {
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
+    let layout: TabBarLayout
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -11,6 +13,7 @@ struct TabBarView: View {
                         ForEach(tabBarManager.tabs.indices, id: \.self) { index in
                             TabButton(
                                 viewModel: tabBarManager.tabs[index].tabViewModel,
+                                layout: layout,
                                 isSelected: tabBarManager.tabs[index].id == tabBarManager.selectedTab.id,
                                 onSelect: { tabBarManager.didSelectTab(at: index) },
                                 onClose: { tabBarManager.closeTab(at: index) }
@@ -29,7 +32,7 @@ struct TabBarView: View {
                 .padding(.trailing)
             }
             .padding(.vertical, 8)
-            .background(Color.mint)
+            .background(layout.color)
             .shadow(radius: 1)
 
             VStack {
@@ -44,6 +47,7 @@ struct TabBarView: View {
 struct TabButton: View {
     @ObservedObject var viewModel: TabViewModel
 
+    let layout: TabBarLayout
     let isSelected: Bool
     let onSelect: () -> Void
     let onClose: () -> Void
@@ -64,16 +68,24 @@ struct TabButton: View {
             .clipShape(Circle())
         }
         .frame(width: 150)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
+        .padding(layout.innerPadding)
         .background(isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.1))
-        .cornerRadius(8)
+        .cornerRadius(layout.cornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 1)
+            RoundedRectangle(cornerRadius: layout.cornerRadius)
+                .stroke(isSelected ? layout.selectedColor : layout.unselectedColor, lineWidth: 1)
         )
         .onTapGesture {
             onSelect()
         }
     }
+}
+
+struct TabBarLayout {
+    let padding: CGFloat
+    let innerPadding: CGFloat
+    let cornerRadius: CGFloat
+    let color: Color
+    let selectedColor: Color
+    let unselectedColor: Color
 }
