@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
-		F90AA4752F4F9A0800B3B9A7 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */; };
 		F90AA4812F4F9B4E00B3B9A7 /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
 		F90AA4822F4F9B5B00B3B9A7 /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
 		F90AA4832F4F9B6100B3B9A7 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
@@ -261,7 +260,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F90AA4A52F4F9C1300B3B9A7 /* Services in Frameworks */,
-				F90AA4752F4F9A0800B3B9A7 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,7 +600,6 @@
 			);
 			name = "visionOS-web-browser";
 			packageProductDependencies = (
-				F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */,
 				F90AA4A42F4F9C1300B3B9A7 /* Services */,
 			);
 			productName = "visionOS-web-browser";
@@ -1495,10 +1492,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F90AA4742F4F9A0800B3B9A7 /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
 		F90AA4A42F4F9C1300B3B9A7 /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
