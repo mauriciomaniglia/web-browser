@@ -11,7 +11,7 @@ struct TabBarView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         ForEach(tabBarManager.tabs.indices, id: \.self) { index in
-                            TabButton(
+                            TabView(
                                 viewModel: tabBarManager.tabs[index].tabViewModel,
                                 layout: layout,
                                 isSelected: tabBarManager.tabs[index].id == tabBarManager.selectedTab.id,
@@ -43,7 +43,7 @@ struct TabBarView: View {
     }
 }
 
-struct TabButton: View {
+struct TabView: View {
     @ObservedObject var viewModel: TabViewModel
 
     let layout: TabBarLayout
