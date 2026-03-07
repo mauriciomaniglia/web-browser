@@ -36,7 +36,6 @@ struct TabBarView: View {
             .shadow(radius: 1)
 
             VStack {
-                Spacer()
                 tabBarManager.selectedTab.view
                     .id(tabBarManager.selectedTab.id)
             }
