@@ -11,10 +11,24 @@ struct WindowView: View {
                 menu
             } detail: {
                 VStack {
-                    tabBar
+                    HStack {
+                        tabBar
+                        newTabButton
+                    }
+                    .background(Color.purple)
                     tabBarManager.selectedTab.view.id(tabBarManager.selectedTab.id)
                 }
             }
+        }
+    }
+
+    var newTabButton: some View {
+        Button(action: tabBarManager.createNewTab) {
+            Image(systemName: "plus")
+                .padding(8)
+                .background(Color.clear)
+                .foregroundColor(.white)
+                .clipShape(Circle())
         }
     }
 }

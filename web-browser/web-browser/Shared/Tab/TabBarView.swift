@@ -22,14 +22,6 @@ struct TabBarView: View {
                     }
                     .padding(.horizontal)
                 }
-                Button(action: tabBarManager.createNewTab) {
-                    Image(systemName: "plus")
-                        .padding(8)
-                        .background(Color.clear)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }
-                .padding(.trailing)
             }
             .padding(.vertical, 8)
             .background(layout.color)

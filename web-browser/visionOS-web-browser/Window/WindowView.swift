@@ -32,7 +32,11 @@ struct WindowView: View {
         )
         {
             HStack {
-                MainToolbar(tabViewModel: tabBarManager.selectedTab.tabViewModel, columnVisibility: $columnVisibility)
+                MainToolbar(
+                    tabBarManager: tabBarManager,
+                    tabViewModel: tabBarManager.selectedTab.tabViewModel,
+                    columnVisibility: $columnVisibility
+                )
             }
             .frame(width: 1000)
             .padding()
@@ -53,6 +57,7 @@ struct WindowView: View {
 }
 
 struct MainToolbar: View {
+    @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
     @ObservedObject var tabViewModel: TabViewModel
     @Binding var columnVisibility: NavigationSplitViewVisibility
 
@@ -66,6 +71,7 @@ struct MainToolbar: View {
             if let url = URL(string: tabViewModel.fullURL) {
                 shareLink(url)
             }
+            newTabButton
         }
     }
 
@@ -98,5 +104,16 @@ struct MainToolbar: View {
                 .font(.system(size: 17))
         }
         .buttonStyle(.borderless)
+    }
+
+    var newTabButton: some View {
+        Button(action: tabBarManager.createNewTab) {
+            Image(systemName: "plus")
+                .padding(8)
+                .background(Color.clear)
+                .foregroundColor(.white)
+                .clipShape(Circle())
+        }
+        .padding(.trailing)
     }
 }
