@@ -64,6 +64,6 @@ final class WindowComposer {
             )
         )
 
-        return WindowView(menu: menu, tabBar: tabBar)
+        return WindowView(menu: menu, tabBar: tabBar, tabBarManager: tabBarManager)
     }
 }

@@ -15,7 +15,10 @@ struct WindowView: View {
                 menu
             } detail: {
                 ZStack(alignment: .top) {
-                    tabBar
+                    VStack(spacing: 0) {
+                        tabBar
+                        tabBarManager.selectedTab.view.id(tabBarManager.selectedTab.id)
+                    }
                     if shouldShowSearchSuggestions {
                         searchSuggestions
                     }

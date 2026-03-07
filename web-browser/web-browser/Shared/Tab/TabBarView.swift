@@ -33,12 +33,7 @@ struct TabBarView: View {
             }
             .padding(.vertical, 8)
             .background(layout.color)
-            .shadow(radius: 1)
-
-            VStack {
-                tabBarManager.selectedTab.view
-                    .id(tabBarManager.selectedTab.id)
-            }
+            .shadow(radius: 1)            
         }
     }
 }

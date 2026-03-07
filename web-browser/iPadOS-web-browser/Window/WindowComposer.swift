@@ -59,7 +59,8 @@ final class WindowComposer {
                     selectedColor: .white,
                     unselectedColor: .clear
                 )
-            )
+            ),
+            tabBarManager: tabBarManager
         )
     }
 }
