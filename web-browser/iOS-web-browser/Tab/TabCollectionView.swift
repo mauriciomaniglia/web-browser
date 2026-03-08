@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TabManagerView: View {
+struct TabCollectionView: View {
     var tabBarManager: TabBarManager<TabSessionStore>
     @Binding var isPresented: Bool
 

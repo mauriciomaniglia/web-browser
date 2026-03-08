@@ -43,7 +43,7 @@ struct WindowContent: View {
         }
         .background(Color(.systemGray6))
         .fullScreenCover(isPresented: $isShowingTabManager) {
-            tabManagerView
+            tabCollectionView
         }
         .popover(isPresented: $isShowingSheet, arrowEdge: .trailing, content: {
             menuAlert
@@ -106,8 +106,8 @@ struct WindowContent: View {
         .buttonStyle(PlainButtonStyle())
     }
 
-    var tabManagerView: some View {
-        TabManagerView(tabBarManager: tabBarManager, isPresented: $isShowingTabManager)
+    var tabCollectionView: some View {
+        TabCollectionView(tabBarManager: tabBarManager, isPresented: $isShowingTabManager)
     }
 
     var menuAlert: some View {
