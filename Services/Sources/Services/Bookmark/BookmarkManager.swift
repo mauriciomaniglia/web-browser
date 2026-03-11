@@ -1,39 +1,38 @@
 import Foundation
 
 public protocol BookmarkManagerAPI {
-    func didOpenBookmarkView() -> [PresentableBookmark]
-    func didSearchTerm(_ term: String) -> [PresentableBookmark]
+    func didOpenBookmarkView() -> [BookmarkViewData]
+    func didSearchTerm(_ term: String) -> [BookmarkViewData]
 }
 
 public class BookmarkManager<T: BookmarkStoreAPI>: BookmarkManagerAPI {
     private let bookmarkStore: T
 
-    public init(bookmarkStore: T)
-    {
+    public init(bookmarkStore: T) {
         self.bookmarkStore = bookmarkStore
     }
 
-    public func didOpenBookmarkView() -> [PresentableBookmark] {
+    public func didOpenBookmarkView() -> [BookmarkViewData] {
         let webPages = bookmarkStore.getPages()
         return mapBookmarks(from: webPages)
     }
 
-    public func didSearchTerm(_ term: String) -> [PresentableBookmark] {
+    public func didSearchTerm(_ term: String) -> [BookmarkViewData] {
         let webPages = term.isEmpty ? bookmarkStore.getPages() : bookmarkStore.getPages(by: term)
         return mapBookmarks(from: webPages)
     }
 
-    private func mapBookmarks(from models: [BookmarkModel]) -> [PresentableBookmark] {
-        let presentableModels = models.map {
+    private func mapBookmarks(from models: [BookmarkModel]) -> [BookmarkViewData] {
+        let viewDatas = models.map {
             let title = $0.title ?? $0.url.absoluteString
-            return PresentableBookmark(id: $0.id, title: title, url: $0.url)
+            return BookmarkViewData(id: $0.id, title: title, url: $0.url)
         }
 
-        return presentableModels
+        return viewDatas
     }
 }
 
-public struct PresentableBookmark: Equatable, Identifiable {
+public struct BookmarkViewData: Equatable, Identifiable {
     public let id: UUID
     public let title: String
     public let url: URL

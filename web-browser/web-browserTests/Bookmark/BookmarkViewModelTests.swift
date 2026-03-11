@@ -8,7 +8,7 @@ class BookmarkViewModelTests: XCTestCase {
     func test_setSelectedBookmark_shouldSetSelectedBookmark() {
         let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
-        let bookmark = PresentableBookmark(id: UUID(), title: "Some Title", url: url)
+        let bookmark = BookmarkViewData(id: UUID(), title: "Some Title", url: url)
 
         sut.setSelectedBookmark(bookmark)
 
@@ -18,7 +18,7 @@ class BookmarkViewModelTests: XCTestCase {
     func test_undoCurrentSelection_shouldRemoveSelectedBookmark() {
         let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
-        let bookmark = PresentableBookmark(id: UUID(), title: "Some Title", url: url)
+        let bookmark = BookmarkViewData(id: UUID(), title: "Some Title", url: url)
 
         sut.setSelectedBookmark(bookmark)
         sut.undoCurrentSelection()
@@ -29,9 +29,9 @@ class BookmarkViewModelTests: XCTestCase {
     func test_removeSelectedBookmark_shouldRemoveSelectedBookmarkFromTheList() {
         let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
-        let bookmark1 = PresentableBookmark(id: UUID(), title: "Title 1", url: url)
-        let bookmark2 = PresentableBookmark(id: UUID(), title: "Title 2", url: url)
-        let bookmark3 = PresentableBookmark(id: UUID(), title: "Title 3", url: url)
+        let bookmark1 = BookmarkViewData(id: UUID(), title: "Title 1", url: url)
+        let bookmark2 = BookmarkViewData(id: UUID(), title: "Title 2", url: url)
+        let bookmark3 = BookmarkViewData(id: UUID(), title: "Title 3", url: url)
         sut.bookmarkList = [bookmark1, bookmark2, bookmark3]
 
         sut.setSelectedBookmark(bookmark1)

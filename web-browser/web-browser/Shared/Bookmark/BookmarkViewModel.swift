@@ -4,7 +4,7 @@ import Services
 
 @MainActor
 class BookmarkViewModel: ObservableObject {    
-    @Published var bookmarkList: [PresentableBookmark] = []
+    @Published var bookmarkList: [BookmarkViewData] = []
 
     @Published var searchText: String = "" {
         didSet {
@@ -12,7 +12,7 @@ class BookmarkViewModel: ObservableObject {
         }
     }
 
-    var selectedBookmark: PresentableBookmark?
+    var selectedBookmark: BookmarkViewData?
     var userActionDelegate: BookmarkUserActionDelegate?
 
     let store: BookmarkStoreAPI
@@ -23,7 +23,7 @@ class BookmarkViewModel: ObservableObject {
         self.manager = manager
     }
 
-    func setSelectedBookmark(_ bookmark: PresentableBookmark) {
+    func setSelectedBookmark(_ bookmark: BookmarkViewData) {
         selectedBookmark = bookmark
     }
 

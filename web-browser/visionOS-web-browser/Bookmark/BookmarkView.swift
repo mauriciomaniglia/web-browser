@@ -1,4 +1,5 @@
 import SwiftUI
+import Services
 
 struct BookmarkView: View {
     @ObservedObject var viewModel: BookmarkViewModel
@@ -69,7 +70,7 @@ struct BookmarkRow: View {
     @ObservedObject var viewModel: BookmarkViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var isShowingDeleteBookmarkAlert: Bool
-    let bookmark: BookmarkViewModel.Bookmark
+    let bookmark: BookmarkViewData
 
     var body: some View {
         HStack {
