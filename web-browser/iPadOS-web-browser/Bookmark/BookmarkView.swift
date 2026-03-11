@@ -17,7 +17,7 @@ struct BookmarkView: View {
         }
         .padding()
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
+        .onAppear(perform: viewModel.didOpenBookmarkView)
         .frame(maxWidth: 500, maxHeight: 500)
         .background(Color(UIColor.systemGroupedBackground))
     }
@@ -55,7 +55,7 @@ struct BookmarkView: View {
                 HStack {
                     Text(bookmark.title)
                         .onTapGesture {
-                            viewModel.delegate?.didSelectPage(bookmark.url)
+                            viewModel.didSelectPage(bookmark.url)
                             isShowingBookmarks.toggle()
                         }
                     Spacer()

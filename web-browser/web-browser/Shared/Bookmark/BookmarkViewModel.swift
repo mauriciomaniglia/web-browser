@@ -1,14 +1,6 @@
 import Foundation
 import Combine
-
-@MainActor
-protocol BookmarkViewModelDelegate: AnyObject {
-    func didTapAddBookmark(name: String, urlString: String)
-    func didOpenBookmarkView()
-    func didSearchTerm(_ query: String)
-    func didSelectPage(_ pageURL: URL)
-    func didTapDeletePages(_ pagesID: [UUID])
-}
+import Services
 
 @MainActor
 class BookmarkViewModel: ObservableObject {
@@ -20,15 +12,23 @@ class BookmarkViewModel: ObservableObject {
     }
 
     @Published var bookmarkList: [Bookmark] = []
-    var selectedBookmark: Bookmark?
 
     @Published var searchText: String = "" {
         didSet {
-            delegate?.didSearchTerm(searchText)
+            searchTerm(searchText)
         }
     }
 
-    weak var delegate: BookmarkViewModelDelegate?
+    var selectedBookmark: Bookmark?
+    var userActionDelegate: BookmarkUserActionDelegate?
+
+    let store: BookmarkStoreAPI
+    let manager: BookmarkManagerAPI
+
+    init(store: BookmarkStoreAPI, manager: BookmarkManagerAPI) {
+        self.store = store
+        self.manager = manager
+    }
 
     func setSelectedBookmark(_ bookmark: Bookmark) {
         selectedBookmark = bookmark
@@ -37,7 +37,7 @@ class BookmarkViewModel: ObservableObject {
     func removeSelectedBookmark() {
         if let selectedBookmark {
             bookmarkList.removeAll(where: { $0.id == selectedBookmark.id})
-            delegate?.didTapDeletePages([selectedBookmark.id])
+            store.deletePages(withIDs: [selectedBookmark.id])
         }
     }
 
@@ -45,11 +45,30 @@ class BookmarkViewModel: ObservableObject {
         selectedBookmark = nil
     }
 
+    func didTapAddBookmark(name: String, urlString: String) {
+        store.save(title: name, url: urlString)
+    }
+
+    func didOpenBookmarkView() {
+        let presentableModels = manager.didOpenBookmarkView()
+        bookmarkList = presentableModels.map { Bookmark(id: $0.id, title: $0.title, url: $0.url) }
+    }
+
+    func didSelectPage(_ pageURL: URL) {
+        userActionDelegate?.didSelectPageFromBookmark(pageURL)
+    }
+
     func deleteBookmarks(at offsets: IndexSet) {
         let pagesToDelete = offsets.compactMap { index in
             bookmarkList[index]
         }
+        let pagesToDeleteIDs = pagesToDelete.map { $0.id }
 
-        delegate?.didTapDeletePages(pagesToDelete.map { $0.id })
+        store.deletePages(withIDs: pagesToDeleteIDs)
+    }
+
+    private func searchTerm(_ query: String) {
+        let presentableModels = manager.didSearchTerm(query)
+        bookmarkList = presentableModels.map { Bookmark(id: $0.id, title: $0.title, url: $0.url) }
     }
 }

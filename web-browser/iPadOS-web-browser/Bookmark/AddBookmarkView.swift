@@ -46,7 +46,7 @@ struct AddBookmarkView: View {
                 name: bookmarkName,
                 url: bookmarkURL
             )
-            bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
+            bookmarkViewModel.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
         }) {
             Text("Save")
         }

@@ -15,7 +15,7 @@ struct BookmarkView: View {
         }
         .navigationTitle("Bookmark")
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
+        .onAppear(perform: viewModel.didOpenBookmarkView)
     }
 
     private var BookmarkList: some View {
@@ -23,7 +23,7 @@ struct BookmarkView: View {
             ForEach(viewModel.bookmarkList) { bookmark in
                 Text(bookmark.title)
                     .onTapGesture {
-                        viewModel.delegate?.didSelectPage(bookmark.url)
+                        viewModel.didSelectPage(bookmark.url)
                         isPresented = false
                     }
             }

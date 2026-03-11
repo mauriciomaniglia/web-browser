@@ -55,7 +55,7 @@ struct AddBookmarkView: View {
     var doneButton: some View {
         Button("Done") {
             tabViewModel.saveAndDismissAddBookmark(name: bookmarkName, url: bookmarkURL)
-            bookmarkViewModel.delegate?.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
+            bookmarkViewModel.didTapAddBookmark(name: bookmarkName, urlString: bookmarkURL)
         }
         .buttonStyle(.borderedProminent)
     }

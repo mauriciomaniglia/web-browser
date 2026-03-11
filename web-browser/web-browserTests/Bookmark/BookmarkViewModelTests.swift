@@ -1,4 +1,5 @@
 import XCTest
+import Services
 @testable import web_browser
 
 @MainActor
@@ -39,59 +40,43 @@ class BookmarkViewModelTests: XCTestCase {
         XCTAssertFalse(sut.bookmarkList.contains(bookmark1))
     }
 
-    func test_removeSelectedBookmark_shouldInformBookmarksToDelete() {
-        let (sut, delegate) = makeSUT()
-        let url = URL(string: "http://some.url.com")!
-        let bookmark1 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 1", url: url)
-        let bookmark2 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 2", url: url)
-        sut.bookmarkList = [bookmark1, bookmark2]
-
-        sut.setSelectedBookmark(bookmark1)
-        sut.removeSelectedBookmark()
-
-        XCTAssertEqual(delegate.receivedMessages, [.didTapDeletePages([bookmark1.id])])
-    }
-
-    func test_deleteBookmarksAt_shouldRemoveBookmarksAtIndexesFromTheList() {
-        let (sut, delegate) = makeSUT()
-        let url = URL(string: "http://some.url.com")!
-        let bookmark1 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 1", url: url)
-        let bookmark2 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 2", url: url)
-        let bookmark3 = BookmarkViewModel.Bookmark(id: UUID(), title: "Title 3", url: url)
-        sut.bookmarkList = [bookmark1, bookmark2, bookmark3]
-
-        sut.deleteBookmarks(at: [0, 1])
-
-        XCTAssertEqual(delegate.receivedMessages, [.didTapDeletePages([bookmark1.id, bookmark2.id])])
-    }
-
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: BookmarkViewModel, delegate: BookmarkViewModelDelegateMock) {
-        let sut = BookmarkViewModel()
-        let delegate = BookmarkViewModelDelegateMock()
-        sut.delegate = delegate
+    private func makeSUT() -> (sut: BookmarkViewModel, store: BookmarkStoreMock) {
+        let store = BookmarkStoreMock()
+        let manager = BookmarkManager(bookmarkStore: store)
+        let sut = BookmarkViewModel(store: store, manager: manager)
 
-        return (sut, delegate)
+        return (sut, store)
     }
 }
 
-private class BookmarkViewModelDelegateMock: BookmarkViewModelDelegate {
+private class BookmarkStoreMock: BookmarkStoreAPI {
     enum Message: Equatable {
-        case didTapDeletePages(_ pages: [UUID])
+        case save(String)
+        case getPages
+        case getPagesByTerm(String)
+        case deletePages([UUID])
     }
 
     var receivedMessages = [Message]()
+    var mockBookmarks = [BookmarkModel]()
 
-    func didTapAddBookmark(name: String, urlString: String) {}
+    func save(title: String, url: String) {
+        receivedMessages.append(.save(url))
+    }
 
-    func didOpenBookmarkView() {}
+    func getPages() -> [BookmarkModel] {
+        receivedMessages.append(.getPages)
+        return mockBookmarks
+    }
 
-    func didSearchTerm(_ query: String) {}
+    func getPages(by searchTerm: String) -> [BookmarkModel] {
+        receivedMessages.append(.getPagesByTerm(searchTerm))
+        return mockBookmarks
+    }
 
-    func didSelectPage(_ pageURL: URL) {}
-
-    func didTapDeletePages(_ pagesID: [UUID]) {
-        receivedMessages.append(.didTapDeletePages(pagesID))
+    func deletePages(withIDs ids: [UUID]) {
+        receivedMessages.append(.deletePages(ids))
     }
 }

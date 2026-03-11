@@ -18,7 +18,7 @@ struct BookmarkView: View {
         }
         .navigationTitle("Bookmark")
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear(perform: viewModel.delegate?.didOpenBookmarkView)
+        .onAppear(perform: viewModel.didOpenBookmarkView)
     }
 
     var backButton: some View {
@@ -75,7 +75,7 @@ struct BookmarkRow: View {
         HStack {
             Text(bookmark.title)
                 .onTapGesture {
-                    viewModel.delegate?.didSelectPage(bookmark.url)
+                    viewModel.didSelectPage(bookmark.url)
                     dismiss()
                 }
 

@@ -1,6 +1,11 @@
 import Foundation
 
-public class BookmarkManager<T: BookmarkStoreAPI> {
+public protocol BookmarkManagerAPI {
+    func didOpenBookmarkView() -> [PresentableBookmark]
+    func didSearchTerm(_ term: String) -> [PresentableBookmark]
+}
+
+public class BookmarkManager<T: BookmarkStoreAPI>: BookmarkManagerAPI {
     private let bookmarkStore: T
 
     public init(bookmarkStore: T)

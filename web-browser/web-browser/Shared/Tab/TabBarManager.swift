@@ -30,7 +30,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
         )
 
         windowViewModel.historyComposer.userActionDelegate = self
-        windowViewModel.bookmarkComposer.userActionDelegate = self
+        windowViewModel.bookmarkComposer.viewModel.userActionDelegate = self
         windowViewModel.searchSuggestionComposer.userActionDelegate = self
     }
 
