@@ -44,6 +44,7 @@
 		F90AA4A52F4F9C1300B3B9A7 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = F90AA4A42F4F9C1300B3B9A7 /* Services */; };
 		F90AA4A62F4F9C6C00B3B9A7 /* TabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */; };
 		F90AA4A72F4F9C7D00B3B9A7 /* TabAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EFF0662F19335300DB1766 /* TabAdapter.swift */; };
+		F910EE092F6195C60024EAE8 /* BookmarkStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F910EE082F6195C60024EAE8 /* BookmarkStoreMock.swift */; };
 		F91201272F056317005D9325 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91201262F056317005D9325 /* MenuCommands.swift */; };
 		F92921BE2B70F5B300173702 /* WebBrowserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92921BD2B70F5B300173702 /* WebBrowserApp.swift */; };
 		F92921C22B70F5B500173702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92921C12B70F5B500173702 /* Assets.xcassets */; };
@@ -177,6 +178,7 @@
 		F901D9882E93240900F3B3D9 /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
 		F90877042E1028E000023426 /* SearchSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionView.swift; sourceTree = "<group>"; };
 		F90AA4702F4F9A0800B3B9A7 /* visionOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visionOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F910EE082F6195C60024EAE8 /* BookmarkStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkStoreMock.swift; sourceTree = "<group>"; };
 		F91201262F056317005D9325 /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
 		F92921BA2B70F5B300173702 /* web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92921BD2B70F5B300173702 /* WebBrowserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserApp.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				F932F2002CE23A6A00B12B45 /* BookmarkViewModelTests.swift */,
+				F910EE082F6195C60024EAE8 /* BookmarkStoreMock.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				F9E55FD82C02AEE20098995F /* WebViewSpy.swift in Sources */,
 				F958C74F2CA9FA6B0011D544 /* HistoryViewModelTests.swift in Sources */,
 				F932F2032CE23A6A00B12B45 /* BookmarkViewModelTests.swift in Sources */,
+				F910EE092F6195C60024EAE8 /* BookmarkStoreMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
