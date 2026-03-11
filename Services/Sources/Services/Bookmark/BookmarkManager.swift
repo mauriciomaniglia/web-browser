@@ -33,8 +33,14 @@ public class BookmarkManager<T: BookmarkStoreAPI>: BookmarkManagerAPI {
     }
 }
 
-public struct PresentableBookmark: Equatable {
+public struct PresentableBookmark: Equatable, Identifiable {
     public let id: UUID
     public let title: String
     public let url: URL
+
+    public init(id: UUID, title: String, url: URL) {
+        self.id = id
+        self.title = title
+        self.url = url
+    }
 }

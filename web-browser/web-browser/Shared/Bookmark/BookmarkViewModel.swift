@@ -3,15 +3,8 @@ import Combine
 import Services
 
 @MainActor
-class BookmarkViewModel: ObservableObject {
-
-    struct Bookmark: Identifiable, Equatable {
-        let id: UUID
-        let title: String
-        let url: URL
-    }
-
-    @Published var bookmarkList: [Bookmark] = []
+class BookmarkViewModel: ObservableObject {    
+    @Published var bookmarkList: [PresentableBookmark] = []
 
     @Published var searchText: String = "" {
         didSet {
@@ -19,7 +12,7 @@ class BookmarkViewModel: ObservableObject {
         }
     }
 
-    var selectedBookmark: Bookmark?
+    var selectedBookmark: PresentableBookmark?
     var userActionDelegate: BookmarkUserActionDelegate?
 
     let store: BookmarkStoreAPI
@@ -30,7 +23,7 @@ class BookmarkViewModel: ObservableObject {
         self.manager = manager
     }
 
-    func setSelectedBookmark(_ bookmark: Bookmark) {
+    func setSelectedBookmark(_ bookmark: PresentableBookmark) {
         selectedBookmark = bookmark
     }
 
@@ -50,8 +43,7 @@ class BookmarkViewModel: ObservableObject {
     }
 
     func didOpenBookmarkView() {
-        let presentableModels = manager.didOpenBookmarkView()
-        bookmarkList = presentableModels.map { Bookmark(id: $0.id, title: $0.title, url: $0.url) }
+        bookmarkList = manager.didOpenBookmarkView()
     }
 
     func didSelectPage(_ pageURL: URL) {
@@ -68,7 +60,6 @@ class BookmarkViewModel: ObservableObject {
     }
 
     private func searchTerm(_ query: String) {
-        let presentableModels = manager.didSearchTerm(query)
-        bookmarkList = presentableModels.map { Bookmark(id: $0.id, title: $0.title, url: $0.url) }
+        bookmarkList = manager.didSearchTerm(query)        
     }
 }
