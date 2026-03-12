@@ -16,7 +16,7 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
         self.historyStore = historyStore
     }
 
-    public func didStartTyping(query: String) async -> PresentableSearchSuggestion {
+    public func didStartTyping(query: String) async -> SearchSuggestionViewData {
         let queryURL = SearchEngineURLBuilder.buildAutocompleteURL(query: query)
         let bookmarkModels = bookmarkStore.getPages(by: query)
         let historyPages = historyStore.getPages(by: query)
@@ -40,10 +40,10 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
     private func mapToPresentableModel(
         searchSuggestions: [String],
         historyPages: [WebPageModel],
-        bookmarkModels: [BookmarkModel]) -> PresentableSearchSuggestion
+        bookmarkModels: [BookmarkModel]) -> SearchSuggestionViewData
     {
         let searchSuggestionModels = searchSuggestions.map { suggestion in
-            PresentableSearchSuggestion.SearchSuggestion(
+            SearchSuggestionViewData.SearchSuggestion(
                 title: suggestion,
                 url: URLBuilderAPI.makeURL(from: suggestion)
             )
@@ -52,18 +52,18 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
         .map { $0 }
 
         let historySuggestions = historyPages.compactMap { model in
-            model.title.map { PresentableSearchSuggestion.HistoryPage(title: $0, url: model.url) }
+            model.title.map { SearchSuggestionViewData.HistoryPage(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
         let bookmarkSuggestions = bookmarkModels.compactMap { model in
-            model.title.map { PresentableSearchSuggestion.Bookmark(title: $0, url: model.url) }
+            model.title.map { SearchSuggestionViewData.Bookmark(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
-        let model = PresentableSearchSuggestion(
+        let model = SearchSuggestionViewData(
             bookmarkSuggestions: bookmarkSuggestions,
             historyPageSuggestions: historySuggestions,
             searchSuggestions: searchSuggestionModels
@@ -73,7 +73,7 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
     }
 }
 
-public struct PresentableSearchSuggestion: Equatable {
+public struct SearchSuggestionViewData: Equatable {
     public struct Bookmark: Equatable {
         public let title: String
         public let url: URL
