@@ -8,17 +8,17 @@ public class HistoryManager<T: HistoryStoreAPI> {
         self.historyStore = historyStore
     }
 
-    public func didOpenHistoryView() -> PresentableHistory {
+    public func didOpenHistoryView() -> HistoryViewData {
         let pages = historyStore.getPages()
         return convertToPresentableModel(pages)
     }
 
-    public func didSearchTerm(_ term: String) async -> PresentableHistory {
+    public func didSearchTerm(_ term: String) async -> HistoryViewData {
         let pages = term.isEmpty ? historyStore.getPages() : historyStore.getPages(by: term)
         return convertToPresentableModel(pages)
     }
 
-    private func convertToPresentableModel(_ pages: [WebPageModel]) -> PresentableHistory {
+    private func convertToPresentableModel(_ pages: [WebPageModel]) -> HistoryViewData {
         let groupedPages = Dictionary(grouping: pages, by: { Calendar.current.startOfDay(for: $0.date) })
         let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
             lhs.key.compare(rhs.key) == .orderedDescending
@@ -27,30 +27,30 @@ public class HistoryManager<T: HistoryStoreAPI> {
             pages.sorted(by: { $0.date > $1.date })
         }
 
-        let model = PresentableHistory(list: mapSections(groupPagesSorted))
+        let model = HistoryViewData(list: mapSections(groupPagesSorted))
 
         return model
     }
 
-    private func mapSections(_ pages: [[WebPageModel]]) -> [PresentableHistory.Section] {
+    private func mapSections(_ pages: [[WebPageModel]]) -> [HistoryViewData.Section] {
         pages.map {
             let title = $0.first?.date.relativeTimeString() ?? ""
-            return PresentableHistory.Section(title: title, pages: mapPages($0))
+            return HistoryViewData.Section(title: title, pages: mapPages($0))
         }
     }
 
-    private func mapPages(_ pages: [WebPageModel]) -> [PresentableHistory.Page] {
+    private func mapPages(_ pages: [WebPageModel]) -> [HistoryViewData.Page] {
         pages.map {
             let title = $0.title ?? ""
             let dateAndTitle = $0.date.formattedTime() + " - " + title
             let dateAndURL = $0.date.formattedTime() + " - " + $0.url.absoluteString
 
-            return PresentableHistory.Page(id: $0.id, title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
+            return HistoryViewData.Page(id: $0.id, title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
         }
     }
 }
 
-public struct PresentableHistory {
+public struct HistoryViewData {
     public struct Section: Equatable {
         public let title: String
         public let pages: [Page]
