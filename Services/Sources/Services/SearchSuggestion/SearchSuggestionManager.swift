@@ -43,7 +43,7 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
         bookmarkModels: [BookmarkModel]) -> SearchSuggestionViewData
     {
         let searchSuggestionModels = searchSuggestions.map { suggestion in
-            SearchSuggestionViewData.SearchSuggestion(
+            SearchSuggestionViewData.Page(
                 title: suggestion,
                 url: URLBuilderAPI.makeURL(from: suggestion)
             )
@@ -52,13 +52,13 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
         .map { $0 }
 
         let historySuggestions = historyPages.compactMap { model in
-            model.title.map { SearchSuggestionViewData.HistoryPage(title: $0, url: model.url) }
+            model.title.map { SearchSuggestionViewData.Page(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
 
         let bookmarkSuggestions = bookmarkModels.compactMap { model in
-            model.title.map { SearchSuggestionViewData.Bookmark(title: $0, url: model.url) }
+            model.title.map { SearchSuggestionViewData.Page(title: $0, url: model.url) }
         }
         .prefix(10)
         .map { $0 }
@@ -74,22 +74,12 @@ public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: Boo
 }
 
 public struct SearchSuggestionViewData: Equatable {
-    public struct Bookmark: Equatable {
+    public struct Page: Equatable {
         public let title: String
         public let url: URL
     }
 
-    public struct HistoryPage: Equatable {
-        public let title: String
-        public let url: URL
-    }
-
-    public struct SearchSuggestion: Equatable {
-        public let title: String
-        public let url: URL
-    }
-
-    public let bookmarkSuggestions: [Bookmark]
-    public let historyPageSuggestions: [HistoryPage]
-    public let searchSuggestions: [SearchSuggestion]
+    public let bookmarkSuggestions: [Page]
+    public let historyPageSuggestions: [Page]
+    public let searchSuggestions: [Page]
 }
