@@ -56,7 +56,7 @@ class TabAdapter {
         didUpdatePresentableModel(updatedModel)
     }
 
-    func didUpdatePresentableModel(_ model: PresentableTab) {
+    func didUpdatePresentableModel(_ model: TabViewData) {
         guard let tabViewModel else { return }
 
         tabViewModel.isBackButtonDisabled = !model.canGoBack

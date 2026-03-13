@@ -6,14 +6,14 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
     private let webView: W
     private let safelistStore: S
     private let historyStore: H
-    private var model: PresentableTab
+    private var model: TabViewData
 
     public init(webView: W, safelistStore: S, historyStore: H) {
         self.webView = webView
         self.safelistStore = safelistStore
         self.historyStore = historyStore
 
-        self.model = PresentableTab(
+        self.model = TabViewData(
             title: "Start Page",
             urlHost: nil,
             fullURL: nil,
@@ -36,17 +36,17 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         webView.load(url)
     }
 
-    public func didLoad(page: WebPageModel) -> PresentableTab {
+    public func didLoad(page: WebPageModel) -> TabViewData {
         historyStore.save(WebPageModel(title: page.title, url: page.url, date: page.date))
         return didLoadPage(title: page.title, url: page.url)
     }
 
-    public func didSelectBackListPage(at index: Int) -> PresentableTab {
+    public func didSelectBackListPage(at index: Int) -> TabViewData {
         webView.navigateToBackListPage(at: index)
         return didDismissNavigationList()
     }
 
-    public func didSelectForwardListPage(at index: Int) -> PresentableTab {
+    public func didSelectForwardListPage(at index: Int) -> TabViewData {
         webView.navigateToForwardListPage(at: index)
         return didDismissNavigationList()
     }
@@ -59,8 +59,8 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         }
     }
 
-    public func didStartNewWindow() -> PresentableTab {
-        return PresentableTab(
+    public func didStartNewWindow() -> TabViewData {
+        return TabViewData(
             title: "Start Page",
             urlHost: nil,
             fullURL: nil,
@@ -78,8 +78,8 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
             forwardList: nil)
     }
 
-    public func didChangeFocus(isFocused: Bool) -> PresentableTab {
-        model = PresentableTab(
+    public func didChangeFocus(isFocused: Bool) -> TabViewData {
+        model = TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -99,11 +99,11 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    public func didStartTyping(oldText: String, newText: String) -> PresentableTab? {
+    public func didStartTyping(oldText: String, newText: String) -> TabViewData? {
         guard !newText.isEmpty else { return nil }
         guard  oldText != newText && newText != model.fullURL else { return nil }
 
-        model = PresentableTab(
+        model = TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: newText,
@@ -123,8 +123,8 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) -> PresentableTab {
-        model = PresentableTab(
+    public func didUpdateNavigationButton(canGoBack: Bool, canGoForward: Bool) -> TabViewData {
+        model = TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -144,12 +144,12 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    public func didLoadPage(title: String?, url: URL) -> PresentableTab {
+    public func didLoadPage(title: String?, url: URL) -> TabViewData {
         let fullURL = url.absoluteString
         let urlHost = url.host ?? fullURL
         let title = title ?? urlHost
 
-        model = PresentableTab(
+        model = TabViewData(
             title: title,
             urlHost: urlHost,
             fullURL: fullURL,
@@ -169,10 +169,10 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    public func didLoadBackList() -> PresentableTab {
+    public func didLoadBackList() -> TabViewData {
         let webPages = webView.retrieveBackList().map { WebPageModel(title: $0.title, url: $0.url, date: $0.date) }
 
-        model = PresentableTab(
+        model = TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -192,10 +192,10 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    public func didLoadForwardList() -> PresentableTab {
+    public func didLoadForwardList() -> TabViewData {
         let webPages = webView.retrieveForwardList().map { WebPageModel(title: $0.title, url: $0.url, date: $0.date) }
 
-        model = PresentableTab(
+        model = TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -215,10 +215,10 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    public func didUpdateProgressBar(_ value: Double) -> PresentableTab {
+    public func didUpdateProgressBar(_ value: Double) -> TabViewData {
         let progressValue = value >= 1 ? nil : value
 
-        return PresentableTab(
+        return TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -237,8 +237,8 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
             forwardList: model.forwardList)
     }
 
-    public func didDismissNavigationList() -> PresentableTab {
-        model = PresentableTab(
+    public func didDismissNavigationList() -> TabViewData {
+        model = TabViewData(
             title: model.title,
             urlHost: model.urlHost,
             fullURL: model.fullURL,
@@ -258,13 +258,13 @@ public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistorySto
         return model
     }
 
-    private func mapWebPage(_ webPage: WebPageModel) -> PresentableTab.Page {
+    private func mapWebPage(_ webPage: WebPageModel) -> TabViewData.Page {
         let title = webPage.title ?? ""
         return .init(title: title.isEmpty ? webPage.url.absoluteString : title, url: webPage.url.absoluteString)
     }
 }
 
-public struct PresentableTab {
+public struct TabViewData {
     public struct Page {
         public let title: String
         public let url: String
