@@ -1,6 +1,7 @@
 import SwiftData
 import SwiftUI
 import Services
+import StorageServices
 
 @MainActor
 final class WindowComposer {

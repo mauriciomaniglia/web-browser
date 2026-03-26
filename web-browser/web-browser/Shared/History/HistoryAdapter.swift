@@ -1,4 +1,5 @@
 import Services
+import StorageServices
 
 @MainActor
 class HistoryAdapter {
