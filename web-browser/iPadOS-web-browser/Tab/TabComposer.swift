@@ -26,7 +26,7 @@ final class TabComposer {
         self.id = tabID ?? UUID()
         self.userActionDelegate = userActionDelegate
         self.webKitWrapper = webKitWrapper
-        self.tabViewModel = TabViewModel()
+        self.tabViewModel = TabViewModel(webBrowser: webKitWrapper)
 
         let tabManager = TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>(
             webView: webKitWrapper,
@@ -45,8 +45,6 @@ final class TabComposer {
         )
         contentBlocking.setupStrictProtection()
 
-        tabViewModel.didTapBackButton = webKitWrapper.didTapBackButton
-        tabViewModel.didTapForwardButton = webKitWrapper.didTapForwardButton
         tabViewModel.didReload = webKitWrapper.reload
         tabViewModel.didStopLoading = webKitWrapper.stopLoading
         tabViewModel.didStartSearch = tabManager.didRequestSearch

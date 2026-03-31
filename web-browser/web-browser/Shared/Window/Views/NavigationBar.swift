@@ -12,7 +12,7 @@ struct NavigationBar: View {
 
     var backButton: some View {
         CustomGestureButton(imageName: "arrow.left",
-                            action: { viewModel.didTapBackButton?() },
+                            action: { viewModel.didTapBackButton() },
                             longPressAction: { viewModel.didLongPressBackButton?() },
                             isDisabled: viewModel.isBackButtonDisabled)
         .popover(isPresented: $viewModel.showBackList, content: {
@@ -28,7 +28,7 @@ struct NavigationBar: View {
 
     var forwardButton: some View {
         CustomGestureButton(imageName: "arrow.right",
-                            action: { viewModel.didTapForwardButton?() },
+                            action: { viewModel.didTapForwardButton() },
                             longPressAction: { viewModel.didLongPressForwardButton?() },
                             isDisabled: viewModel.isForwardButtonDisabled)
         .popover(isPresented: $viewModel.showForwardList, content: {

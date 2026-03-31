@@ -1,5 +1,6 @@
-import Foundation
 import Combine
+import Foundation
+import Services
 
 @MainActor
 class TabViewModel: ObservableObject {
@@ -7,6 +8,12 @@ class TabViewModel: ObservableObject {
     struct WebPage {
         let title: String
         let url: String
+    }
+
+    private let webBrowser: WebEngineContract
+
+    init(webBrowser: WebEngineContract) {
+        self.webBrowser = webBrowser
     }
 
     @Published var isBackButtonDisabled: Bool = true
@@ -29,8 +36,14 @@ class TabViewModel: ObservableObject {
     @Published var forwardList: [WebPage] = []
     @Published var showForwardList: Bool = false
 
-    var didTapBackButton: (() -> Void)?
-    var didTapForwardButton: (() -> Void)?
+    func didTapBackButton() {
+        webBrowser.didTapBackButton()
+    }
+
+    func didTapForwardButton() {
+        webBrowser.didTapForwardButton()
+    }
+
     var didLongPressBackButton: (() -> Void)?
     var didLongPressForwardButton: (() -> Void)?
     var didSelectBackListPage: ((Int) -> Void)?
