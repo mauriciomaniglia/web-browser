@@ -44,8 +44,6 @@ final class TabComposer {
         )
         contentBlocking.setupStrictProtection()
         
-        tabViewModel.didReload = webKitWrapper.reload
-        tabViewModel.didStopLoading = webKitWrapper.stopLoading
         tabViewModel.didStartSearch = tabManager.didRequestSearch
         tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
         tabViewModel.didChangeFocus = tabAdapter.didChangeFocus

@@ -65,14 +65,14 @@ struct AddressBarView: View {
     }
 
     private var StopButton: some View {
-        Button(action: { viewModel.didStopLoading?() }) {
+        Button(action: viewModel.didStopLoading) {
             Image(systemName: "xmark")
         }
         .buttonStyle(PlainButtonStyle())
     }
 
     private var ReloadButton: some View {
-        Button(action: { viewModel.didReload?() }) {
+        Button(action: viewModel.didReload) {
             Image(systemName: "goforward")
         }
         .buttonStyle(PlainButtonStyle())

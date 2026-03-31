@@ -44,13 +44,19 @@ class TabViewModel: ObservableObject {
         webBrowser.didTapForwardButton()
     }
 
+    func didReload() {
+        webBrowser.reload()
+    }
+
+    func didStopLoading() {
+        webBrowser.stopLoading()
+    }
+
     var didLongPressBackButton: (() -> Void)?
     var didLongPressForwardButton: (() -> Void)?
     var didSelectBackListPage: ((Int) -> Void)?
     var didSelectForwardListPage: ((Int) -> Void)?
     var didDismissNavigationPageList: (() -> Void)?
-    var didReload: (() -> Void)?
-    var didStopLoading: (() -> Void)?
     var didStartSearch: ((String) -> Void)?
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didChangeFocus: ((Bool) -> Void)?
