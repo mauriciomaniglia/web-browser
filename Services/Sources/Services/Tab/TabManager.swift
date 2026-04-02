@@ -1,8 +1,22 @@
 import Foundation
 
 @MainActor
-public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistoryStoreAPI> {
+public protocol TabManagerAPI {
+    func didLoad(page: WebPageModel) -> TabViewData
+    func didRequestSearch(_ text: String)
+    func didChangeFocus(isFocused: Bool) -> TabViewData
+    func didStartTyping(oldText: String, newText: String) -> TabViewData?
+    func didLoadBackList() -> TabViewData
+    func didLoadForwardList() -> TabViewData
+    func didSelectBackListPage(at index: Int) -> TabViewData
+    func didSelectForwardListPage(at index: Int) -> TabViewData
+    func didDismissNavigationList() -> TabViewData
+    func didUpdateProgressBar(_ value: Double) -> TabViewData
+    func updateSafelist(url: String, isEnabled: Bool)
+}
 
+@MainActor
+public class TabManager<W: WebEngineContract, S: SafelistStoreAPI, H: HistoryStoreAPI>: TabManagerAPI {
     private let webView: W
     private let safelistStore: S
     private let historyStore: H
