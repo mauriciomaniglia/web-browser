@@ -58,8 +58,16 @@ class TabViewModel: ObservableObject {
         manager.didRequestSearch(query)
     }
 
-    var didLongPressBackButton: (() -> Void)?
-    var didLongPressForwardButton: (() -> Void)?
+    func didLongPressBackButton() {
+        let viewData = manager.didLoadBackList()
+        mapViewData(viewData)
+    }
+
+    func didLongPressForwardButton() {
+        let viewData = manager.didLoadForwardList()
+        mapViewData(viewData)
+    }
+
     var didSelectBackListPage: ((Int) -> Void)?
     var didSelectForwardListPage: ((Int) -> Void)?
     var didDismissNavigationPageList: (() -> Void)?
@@ -80,5 +88,26 @@ class TabViewModel: ObservableObject {
 
     func saveAndDismissAddBookmark(name: String, url: String) {
         showAddBookmark = false
+    }
+
+    private func mapViewData(_ viewData: TabViewData) {
+        isBackButtonDisabled = !viewData.canGoBack
+        isForwardButtonDisabled = !viewData.canGoForward
+        showCancelButton = viewData.showCancelButton
+        showStopButton = viewData.showStopButton
+        showReloadButton = viewData.showReloadButton
+        showClearButton = viewData.showClearButton
+        progressBarValue = viewData.progressBarValue
+        title = viewData.title ?? ""
+        urlHost = viewData.urlHost ?? ""
+        fullURL = viewData.fullURL ?? ""
+        isWebsiteProtected = viewData.isWebsiteProtected
+        showSiteProtection = viewData.showSiteProtection
+        showWebView = viewData.showWebView
+        showSearchSuggestions = viewData.showSearchSuggestions
+        backList = viewData.backList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        showBackList = viewData.backList != nil
+        forwardList = viewData.forwardList?.compactMap { .init(title: $0.title, url: $0.url) } ?? []
+        showForwardList = viewData.forwardList != nil
     }
 }

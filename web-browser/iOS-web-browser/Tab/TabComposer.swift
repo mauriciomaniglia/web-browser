@@ -53,8 +53,6 @@ final class TabComposer: ObservableObject, Identifiable {
             windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
             tabAdapter.didStartTyping(oldText: oldText, newText: newText)
         }
-        tabViewModel.didLongPressBackButton = tabAdapter.didLoadBackList
-        tabViewModel.didLongPressForwardButton = tabAdapter.didLoadForwardList
         tabViewModel.didSelectBackListPage = tabAdapter.didSelectBackListPage(at:)
         tabViewModel.didSelectForwardListPage = tabAdapter.didSelectForwardListPage(at:)
         tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList

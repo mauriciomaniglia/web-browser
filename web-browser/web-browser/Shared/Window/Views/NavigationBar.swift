@@ -13,7 +13,7 @@ struct NavigationBar: View {
     var backButton: some View {
         CustomGestureButton(imageName: "arrow.left",
                             action: { viewModel.didTapBackButton() },
-                            longPressAction: { viewModel.didLongPressBackButton?() },
+                            longPressAction: { viewModel.didLongPressBackButton() },
                             isDisabled: viewModel.isBackButtonDisabled)
         .popover(isPresented: $viewModel.showBackList, content: {
             NavigationList(didSelectPage: viewModel.didSelectBackListPage, pageList: viewModel.backList)
@@ -29,7 +29,7 @@ struct NavigationBar: View {
     var forwardButton: some View {
         CustomGestureButton(imageName: "arrow.right",
                             action: { viewModel.didTapForwardButton() },
-                            longPressAction: { viewModel.didLongPressForwardButton?() },
+                            longPressAction: { viewModel.didLongPressForwardButton() },
                             isDisabled: viewModel.isForwardButtonDisabled)
         .popover(isPresented: $viewModel.showForwardList, content: {
             NavigationList(didSelectPage: viewModel.didSelectForwardListPage, pageList: viewModel.forwardList)
