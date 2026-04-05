@@ -11,9 +11,11 @@ class TabViewModel: ObservableObject {
     }
 
     private let webBrowser: WebEngineContract
+    private let manager: TabManagerAPI
 
-    init(webBrowser: WebEngineContract) {
+    init(webBrowser: WebEngineContract, manager: TabManagerAPI) {
         self.webBrowser = webBrowser
+        self.manager = manager
     }
 
     @Published var isBackButtonDisabled: Bool = true
@@ -52,12 +54,15 @@ class TabViewModel: ObservableObject {
         webBrowser.stopLoading()
     }
 
+    func didStartSearch(_ query: String) {
+        manager.didRequestSearch(query)
+    }
+
     var didLongPressBackButton: (() -> Void)?
     var didLongPressForwardButton: (() -> Void)?
     var didSelectBackListPage: ((Int) -> Void)?
     var didSelectForwardListPage: ((Int) -> Void)?
     var didDismissNavigationPageList: (() -> Void)?
-    var didStartSearch: ((String) -> Void)?
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didChangeFocus: ((Bool) -> Void)?
     var didStartTyping: ((String, String) -> Void)?

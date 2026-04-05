@@ -25,13 +25,15 @@ final class TabComposer {
         self.id = tabID ?? UUID()
         self.userActionDelegate = userActionDelegate
         self.webKitWrapper = webKitWrapper
-        self.tabViewModel = TabViewModel(webBrowser: webKitWrapper)
 
         let tabManager = TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>(
             webView: webKitWrapper,
             safelistStore: windowViewModel.safelistStore,
             historyStore: windowViewModel.historyStore
         )
+
+        self.tabViewModel = TabViewModel(webBrowser: webKitWrapper, manager: tabManager)
+
         let tabAdapter = TabAdapter(
             tabID: id,
             tabViewModel: tabViewModel,
@@ -44,7 +46,6 @@ final class TabComposer {
         )
         contentBlocking.setupStrictProtection()
         
-        tabViewModel.didStartSearch = tabManager.didRequestSearch
         tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
         tabViewModel.didChangeFocus = tabAdapter.didChangeFocus
         tabViewModel.didStartTyping = { [weak tabAdapter] oldText, newText in

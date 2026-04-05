@@ -54,7 +54,7 @@ struct AddressBarView: View {
             .textInputAutocapitalization(.never)
             #endif
             .textFieldStyle(.plain)
-            .onSubmit { viewModel.didStartSearch?(searchText) }
+            .onSubmit { viewModel.didStartSearch(searchText) }
             .focused($isTextFieldFocused)
             .onChange(of: isTextFieldFocused) { _, isFocused in
                 viewModel.didChangeFocus?(isFocused)
