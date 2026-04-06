@@ -52,9 +52,7 @@ final class TabComposer {
         tabViewModel.didStartTyping = { [weak tabAdapter] oldText, newText in
             windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
             tabAdapter?.didStartTyping(oldText: oldText, newText: newText)
-        }
-        tabViewModel.didSelectBackListPage = tabAdapter.didSelectBackListPage(at:)
-        tabViewModel.didSelectForwardListPage = tabAdapter.didSelectForwardListPage(at:)
+        }        
         tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList
         tabViewModel.didTapNewTab = userActionDelegate?.didTapNewTab
 

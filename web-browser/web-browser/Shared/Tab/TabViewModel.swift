@@ -68,8 +68,16 @@ class TabViewModel: ObservableObject {
         mapViewData(viewData)
     }
 
-    var didSelectBackListPage: ((Int) -> Void)?
-    var didSelectForwardListPage: ((Int) -> Void)?
+    func didSelectBackListPage(_ index: Int) {
+        let viewData = manager.didSelectBackListPage(at: index)
+        mapViewData(viewData)
+    }
+
+    func didSelectForwardListPage(_ index: Int) {
+        let viewData = manager.didSelectForwardListPage(at: index)
+        mapViewData(viewData)
+    }
+
     var didDismissNavigationPageList: (() -> Void)?
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didChangeFocus: ((Bool) -> Void)?
