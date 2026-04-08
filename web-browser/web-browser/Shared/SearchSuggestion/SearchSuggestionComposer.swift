@@ -9,7 +9,7 @@ protocol SearchSuggestionUserActionDelegate {
 
 @MainActor
 class SearchSuggestionComposer {
-    typealias SearchSuggestionManagerType = SearchSuggestionManager<SearchSuggestionService, BookmarkSwiftDataStore, HistorySwiftDataStore>
+    typealias SearchSuggestionManagerType = SearchSuggestionManager<BookmarkSwiftDataStore, HistorySwiftDataStore>
 
     let viewModel: SearchSuggestionViewModel
     let manager: SearchSuggestionManagerType

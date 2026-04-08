@@ -4,7 +4,7 @@ public protocol SearchSuggestionServiceAPI{
     func query(_ url: URL) async throws -> [String]?
 }
 
-public final class SearchSuggestionService: SearchSuggestionServiceAPI {
+public final actor SearchSuggestionService: SearchSuggestionServiceAPI {
     public typealias SearchSuggestionResponse = (_ suggestions: [String]?) -> Void
 
     private let urlSession = URLSession(configuration: .ephemeral)
