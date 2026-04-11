@@ -112,7 +112,7 @@ public final class WebKitEngineWrapper: NSObject, WebEngineContract {
         webView.go(to: items[index])
     }
 
-    public func takeSnapshot<T>() async -> T? {
+    public func takeSnapshot<T: Sendable>() async -> T? {
         await withCheckedContinuation { (continuation: CheckedContinuation<T?, Never>) in
             webView.takeSnapshot(with: nil) { image, _ in
                 continuation.resume(returning: image as? T)
