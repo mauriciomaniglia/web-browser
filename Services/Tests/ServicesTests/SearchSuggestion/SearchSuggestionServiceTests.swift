@@ -1,6 +1,7 @@
 import XCTest
 @testable import Services
 
+@MainActor
 class SearchSuggestionServiceTests: XCTestCase {
     func test_handleResponse_whenDataIsEmpty_returnsNil() {
         let sut = SearchSuggestionService()

@@ -1,13 +1,13 @@
 import Foundation
 
 @MainActor
-public final class SearchSuggestionManager<B: BookmarkStoreAPI, H: HistoryStoreAPI> {
-    let searchSuggestionService: SearchSuggestionService
+public final class SearchSuggestionManager<S: SearchSuggestionServiceAPI, B: BookmarkStoreAPI, H: HistoryStoreAPI> {
+    let searchSuggestionService: S
     let bookmarkStore: B
     let historyStore: H
 
     public init(
-        searchSuggestionService: SearchSuggestionService,
+        searchSuggestionService: S,
         bookmarkStore: B,
         historyStore: H,
     ) {

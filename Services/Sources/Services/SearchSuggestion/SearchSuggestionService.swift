@@ -1,14 +1,13 @@
 import Foundation
 
-public protocol SearchSuggestionServiceAPI{
+public protocol SearchSuggestionServiceAPI: Sendable {
     func query(_ url: URL) async throws -> [String]?
 }
 
-public actor SearchSuggestionService: SearchSuggestionServiceAPI {
+public final class SearchSuggestionService: SearchSuggestionServiceAPI {
     public typealias SearchSuggestionResponse = (_ suggestions: [String]?) -> Void
 
     private let urlSession = URLSession(configuration: .ephemeral)
-    private var task: URLSessionTask?
 
     public init() {}
 
@@ -19,7 +18,6 @@ public actor SearchSuggestionService: SearchSuggestionServiceAPI {
         return handleResponse(data: data, response: response)
     }
 
-    nonisolated
     func handleResponse(data: Data?, response: URLResponse?) -> [String]? {
         guard let data = data,
               let httpResponse = response as? HTTPURLResponse,
