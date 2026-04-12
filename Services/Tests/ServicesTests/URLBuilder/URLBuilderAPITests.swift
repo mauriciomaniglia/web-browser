@@ -2,6 +2,7 @@ import Foundation
 import XCTest
 @testable import Services
 
+@MainActor
 class URLBuilderAPITests: XCTestCase {
     func test_makeURL_withCorrectURLText_deliversURL() {
         let url = URLBuilderAPI.makeURL(from: "https://apple.com")

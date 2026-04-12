@@ -1,6 +1,7 @@
 import XCTest
 @testable import Services
 
+@MainActor
 class BookmarkManagerTests: XCTestCase {
 
     func test_didOpenBookmarkView_sendsCorrectMessage() {

@@ -1,6 +1,7 @@
 import XCTest
 import Services
 
+@MainActor
 class SearchEngineURLBuilderTests: XCTestCase {
     func test_buildSearchURL_deliversCorrectURL() {
         let url1 = SearchEngineURLBuilder.buildSearchURL(query: "computer")
@@ -18,4 +19,3 @@ class SearchEngineURLBuilderTests: XCTestCase {
         XCTAssertEqual(url2.absoluteString, "https://www.google.com/complete/search?client=firefox&q=computer%20science")
     }
 }
-

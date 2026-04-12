@@ -1,6 +1,7 @@
 import XCTest
 import Services
 
+@MainActor
 class URIFixupTests: XCTestCase {
     func test_getURL_forValidURLs_deliversCorrectResult() {
         checkValidURL("http://www.mozilla.org", afterFixup: "http://www.mozilla.org")
