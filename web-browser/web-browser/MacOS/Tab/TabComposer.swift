@@ -52,7 +52,6 @@ final class TabComposer {
             windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
             tabAdapter?.didStartTyping(oldText: oldText, newText: newText)
         }        
-        tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList
 
         view = TabContentView(
             tabViewModel: tabViewModel,

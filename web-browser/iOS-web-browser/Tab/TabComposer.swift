@@ -52,8 +52,7 @@ final class TabComposer: ObservableObject, Identifiable {
         tabViewModel.didStartTyping = { oldText, newText in
             windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
             tabAdapter.didStartTyping(oldText: oldText, newText: newText)
-        }        
-        tabViewModel.didDismissNavigationPageList = tabAdapter.didDismissNavigationList
+        }
 
         webKitWrapper.delegate = tabAdapter
     }

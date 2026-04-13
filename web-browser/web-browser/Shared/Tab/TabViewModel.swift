@@ -78,7 +78,11 @@ class TabViewModel: ObservableObject {
         mapViewData(viewData)
     }
 
-    var didDismissNavigationPageList: (() -> Void)?
+    func didDismissNavigationPageList() {
+        let viewData = manager.didDismissNavigationList()
+        mapViewData(viewData)
+    }
+
     var didUpdateSafelist: ((String, Bool) -> Void)?
     var didChangeFocus: ((Bool) -> Void)?
     var didStartTyping: ((String, String) -> Void)?
