@@ -4,10 +4,9 @@ import XCTest
 @MainActor
 class SafelistStoreTests: XCTestCase {
 
-    override func tearDown() async throws {
-        try await super.tearDown()
-
-        clearSafelist()
+    override func tearDown() {
+        super.tearDown()
+        UserDefaults.standard.set([], forKey: "Safelist")
     }
 
     func test_isRegisteredDomain_whenListIsEmptyReturnsFalse() {
@@ -69,11 +68,5 @@ class SafelistStoreTests: XCTestCase {
         XCTAssertFalse(SafelistStore().isRegisteredDomain("www.apple.com"))
         XCTAssertTrue(SafelistStore().isRegisteredDomain("www.google.com"))
         XCTAssertTrue(SafelistStore().isRegisteredDomain("www.youtube.com"))
-    }
-
-    // MARK: - Helpers
-
-    private func clearSafelist() {
-        UserDefaults.standard.set([], forKey: "Safelist")
     }
 }
