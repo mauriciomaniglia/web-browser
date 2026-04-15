@@ -87,7 +87,11 @@ class TabViewModel: ObservableObject {
         manager.updateSafelist(url: urlHost, isEnabled: isEnabled)
     }
 
-    var didChangeFocus: ((Bool) -> Void)?
+    func didChangeFocus(_ isFocused: Bool) {
+        let viewData = manager.didChangeFocus(isFocused: isFocused)
+        mapViewData(viewData)
+    }
+
     var didStartTyping: ((String, String) -> Void)?
     var didTapNewTab: (() -> Void)?
 
