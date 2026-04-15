@@ -46,7 +46,6 @@ final class TabComposer {
         )
         contentBlocking.setupStrictProtection()
         
-        tabViewModel.didUpdateSafelist = tabManager.updateSafelist(url:isEnabled:)
         tabViewModel.didChangeFocus = tabAdapter.didChangeFocus
         tabViewModel.didStartTyping = { [weak tabAdapter] oldText, newText in
             windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
