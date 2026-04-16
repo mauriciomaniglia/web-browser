@@ -33,7 +33,12 @@ final class TabComposer {
             historyStore: windowViewModel.historyStore
         )
 
-        self.tabViewModel = TabViewModel(webBrowser: webKitWrapper, manager: tabManager)
+        tabViewModel = TabViewModel(
+            webBrowser: webKitWrapper,
+            manager: tabManager,
+            windowViewModel: windowViewModel
+        )
+        tabViewModel.didTapNewTab = userActionDelegate?.didTapNewTab
 
         let tabAdapter = TabAdapter(
             tabID: id,
@@ -46,12 +51,6 @@ final class TabComposer {
             jsonLoader: JsonLoader.loadJsonContent(filename:)
         )
         contentBlocking.setupStrictProtection()
-        
-        tabViewModel.didStartTyping = { [weak tabAdapter] oldText, newText in
-            windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
-            tabAdapter?.didStartTyping(oldText: oldText, newText: newText)
-        }        
-        tabViewModel.didTapNewTab = userActionDelegate?.didTapNewTab
 
         view = TabContentView(
             tabViewModel: tabViewModel,

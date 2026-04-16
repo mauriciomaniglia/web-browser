@@ -12,10 +12,14 @@ class TabViewModel: ObservableObject {
 
     private let webBrowser: WebEngineContract
     private let manager: TabManagerAPI
+    private let windowViewModel: WindowViewModel
 
-    init(webBrowser: WebEngineContract, manager: TabManagerAPI) {
+    var didTapNewTab: (() -> Void)?
+
+    init(webBrowser: WebEngineContract, manager: TabManagerAPI, windowViewModel: WindowViewModel) {
         self.webBrowser = webBrowser
         self.manager = manager
+        self.windowViewModel = windowViewModel
     }
 
     @Published var isBackButtonDisabled: Bool = true
@@ -92,8 +96,12 @@ class TabViewModel: ObservableObject {
         mapViewData(viewData)
     }
 
-    var didStartTyping: ((String, String) -> Void)?
-    var didTapNewTab: (() -> Void)?
+    func didStartTyping(oldText: String, newText: String) {
+        windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
+        if let viewData = manager.didStartTyping(oldText: oldText, newText: newText) {
+            mapViewData(viewData)
+        }
+    }
 
     func didTapAddBookmark() {
         if !fullURL.isEmpty {

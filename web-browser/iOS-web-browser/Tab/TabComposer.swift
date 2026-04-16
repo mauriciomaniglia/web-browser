@@ -32,7 +32,11 @@ final class TabComposer: ObservableObject, Identifiable {
             historyStore: windowViewModel.historyStore
         )
 
-        self.tabViewModel = TabViewModel(webBrowser: webKitWrapper, manager: tabManager)
+        tabViewModel = TabViewModel(
+            webBrowser: webKitWrapper,
+            manager: tabManager,
+            windowViewModel: windowViewModel
+        )
 
         let tabAdapter = TabAdapter(
             tabID: id,
@@ -46,11 +50,6 @@ final class TabComposer: ObservableObject, Identifiable {
         )
 
         contentBlocking.setupStrictProtection()
-
-        tabViewModel.didStartTyping = { oldText, newText in
-            windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
-            tabAdapter.didStartTyping(oldText: oldText, newText: newText)
-        }
 
         webKitWrapper.delegate = tabAdapter
     }
