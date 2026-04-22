@@ -48,8 +48,9 @@ final class TabComposer: ObservableObject, Identifiable {
             webView: webKitWrapper,
             jsonLoader: JsonLoader.loadJsonContent(filename:)
         )
-
         contentBlocking.setupStrictProtection()
+
+        tabViewModel.didChangeFocus = tabAdapter.didChangeFocus(isFocused:)
 
         webKitWrapper.delegate = tabAdapter
     }

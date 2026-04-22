@@ -32,7 +32,7 @@ final class TabComposer {
             historyStore: windowViewModel.historyStore
         )
 
-        self.tabViewModel = TabViewModel(
+        tabViewModel = TabViewModel(
             webBrowser: webKitWrapper,
             manager: tabManager,
             windowViewModel: windowViewModel
@@ -49,6 +49,8 @@ final class TabComposer {
             jsonLoader: JsonLoader.loadJsonContent(filename:)
         )
         contentBlocking.setupStrictProtection()
+
+        tabViewModel.didChangeFocus = tabAdapter.didChangeFocus(isFocused:)
 
         view = TabContentView(
             tabViewModel: tabViewModel,

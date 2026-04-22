@@ -91,10 +91,7 @@ class TabViewModel: ObservableObject {
         manager.updateSafelist(url: urlHost, isEnabled: isEnabled)
     }
 
-    func didChangeFocus(_ isFocused: Bool) {
-        let viewData = manager.didChangeFocus(isFocused: isFocused)
-        mapViewData(viewData)
-    }
+    var didChangeFocus: ((Bool) -> Void)?
 
     func didStartTyping(oldText: String, newText: String) {
         windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)

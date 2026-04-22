@@ -57,7 +57,7 @@ struct AddressBarView: View {
             .onSubmit { viewModel.didStartSearch(searchText) }
             .focused($isTextFieldFocused)
             .onChange(of: isTextFieldFocused) { _, isFocused in
-                viewModel.didChangeFocus(isFocused)
+                viewModel.didChangeFocus?(isFocused)
             }
             .onChange(of: searchText) { oldText, newText in
                 viewModel.didStartTyping(oldText: oldText, newText: newText)
@@ -100,6 +100,6 @@ struct AddressBarView: View {
 
     private func didTapCancelButton() {
         isTextFieldFocused = false
-        viewModel.didChangeFocus(isTextFieldFocused)
+        viewModel.didChangeFocus?(isTextFieldFocused)
     }
 }

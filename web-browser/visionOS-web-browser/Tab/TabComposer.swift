@@ -50,6 +50,8 @@ final class TabComposer {
         )
         contentBlocking.setupStrictProtection()
 
+        tabViewModel.didChangeFocus = tabAdapter.didChangeFocus(isFocused:)
+
         view = TabContentView(
             tabViewModel: tabViewModel,
             bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
