@@ -3,7 +3,7 @@ import Testing
 @testable import Services
 
 @MainActor
-@Suite("HistoryManager")
+@Suite
 struct HistoryManagerTests {
 
     @Test("Opening history groups pages by day and sorts today by time")

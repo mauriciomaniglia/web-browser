@@ -2,7 +2,7 @@ import Testing
 import Services
 
 @MainActor
-@Suite("ContentBlocking")
+@Suite
 struct ContentBlockingTests {
 
     @Test("Initialization does not send any messages to the web view")

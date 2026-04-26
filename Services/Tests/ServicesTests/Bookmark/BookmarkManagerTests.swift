@@ -3,7 +3,7 @@ import Testing
 @testable import Services
 
 @MainActor
-@Suite("BookmarkManager")
+@Suite
 struct BookmarkManagerTests {
 
     @Test("Opening the bookmark view requests all pages and maps them to presentable models")

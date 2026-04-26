@@ -3,7 +3,7 @@ import Testing
 @testable import Services
 
 @MainActor
-@Suite("SafelistStore")
+@Suite
 struct SafelistStoreTests {
 
     @Test("isRegisteredDomain returns false when the list is empty")

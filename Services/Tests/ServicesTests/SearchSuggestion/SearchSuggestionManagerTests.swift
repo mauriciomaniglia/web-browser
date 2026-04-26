@@ -3,7 +3,7 @@ import Testing
 @testable import Services
 
 @MainActor
-@Suite("SearchSuggestionManager")
+@Suite
 struct SearchSuggestionManagerTests {
     private typealias SearchSuggestionManagerType = SearchSuggestionManager<MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock>
 
