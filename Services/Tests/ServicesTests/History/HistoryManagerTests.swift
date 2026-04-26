@@ -1,10 +1,13 @@
-import XCTest
-import Services
+import Foundation
+import Testing
+@testable import Services
 
 @MainActor
-class HistoryManagerTests: XCTestCase {
+@Suite("HistoryManager")
+struct HistoryManagerTests {
 
-    func test_didOpenHistoryView_deliversCorrectResult() {
+    @Test("Opening history groups pages by day and sorts today by time")
+    func didOpenHistoryView_deliversCorrectResult() {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -18,16 +21,17 @@ class HistoryManagerTests: XCTestCase {
 
         let presentableModel = sut.didOpenHistoryView()
 
-        XCTAssertEqual(history.receivedMessages, [.getPages])
-        XCTAssertEqual(presentableModel.list?.first?.pages[0].title, "12:00 - title 2")
-        XCTAssertEqual(presentableModel.list?.first?.pages[0].url, URL(string:"http://page2.com")!)
-        XCTAssertEqual(presentableModel.list?.first?.pages[1].title, "07:00 - title 1")
-        XCTAssertEqual(presentableModel.list?.first?.pages[1].url, URL(string:"http://page1.com")!)
-        XCTAssertEqual(presentableModel.list?.last?.pages[0].title, "12:00 - http://page3.com")
-        XCTAssertEqual(presentableModel.list?.last?.pages[0].url, URL(string:"http://page3.com")!)
+        #expect(history.receivedMessages == [.getPages])
+        #expect(presentableModel.list?.first?.pages[0].title == "12:00 - title 2")
+        #expect(presentableModel.list?.first?.pages[0].url == URL(string:"http://page2.com")!)
+        #expect(presentableModel.list?.first?.pages[1].title == "07:00 - title 1")
+        #expect(presentableModel.list?.first?.pages[1].url == URL(string:"http://page1.com")!)
+        #expect(presentableModel.list?.last?.pages[0].title == "12:00 - http://page3.com")
+        #expect(presentableModel.list?.last?.pages[0].url == URL(string:"http://page3.com")!)
     }
 
-    func test_didSearchTerm_deliversCorrectResult() async {
+    @Test("Searching with a term queries the store and returns formatted results")
+    func didSearchTerm_deliversCorrectResult() async {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -37,18 +41,19 @@ class HistoryManagerTests: XCTestCase {
 
         let presentableModel = await sut.didSearchTerm("test")
 
-        XCTAssertEqual(history.receivedMessages, [.getPagesByTerm("test")])
-        XCTAssertEqual(presentableModel.list?.first?.pages[0].title, "07:00 - title 1")
-        XCTAssertEqual(presentableModel.list?.first?.pages[0].url, URL(string:"http://page1.com")!)
+        #expect(history.receivedMessages == [.getPagesByTerm("test")])
+        #expect(presentableModel.list?.first?.pages[0].title == "07:00 - title 1")
+        #expect(presentableModel.list?.first?.pages[0].url == URL(string:"http://page1.com")!)
     }
 
-    func test_didSearchTerm_withEmptyTerm_sendsCorrectMessage() async {
+    @Test("Searching with an empty term returns no results and fetches all pages")
+    func didSearchTerm_withEmptyTerm_sendsCorrectMessage() async {
         let (sut, history) = makeSUT()
 
         let presentableModel = await sut.didSearchTerm("")
 
-        XCTAssertEqual(presentableModel.list, [])
-        XCTAssertEqual(history.receivedMessages, [.getPages])
+        #expect(presentableModel.list == [])
+        #expect(history.receivedMessages == [.getPages])
     }
 
     // MARK: - Helpers
