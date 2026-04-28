@@ -1,18 +1,21 @@
 import Foundation
-import XCTest
+import Testing
 @testable import Services
 
 @MainActor
-class URLBuilderAPITests: XCTestCase {
-    func test_makeURL_withCorrectURLText_deliversURL() {
+@Suite
+struct URLBuilderAPITests {
+    @Test("Returns the same URL when input is a valid URL")
+    func makeURL_withValidURLText_returnsURL() {
         let url = URLBuilderAPI.makeURL(from: "https://apple.com")
 
-        XCTAssertEqual(url.absoluteString, "https://apple.com")
+        #expect(url.absoluteString == "https://apple.com")
     }
     
-    func test_makeURL_withoutURLText_deliversSearchEngineURL() {
+    @Test("Builds a Google search URL when input is plain text")
+    func makeURL_withPlainText_returnsSearchEngineURL() {
         let url = URLBuilderAPI.makeURL(from: "apple")
 
-        XCTAssertEqual(url.absoluteString, "https://www.google.com/search?q=apple&ie=utf-8&oe=utf-8")
+        #expect(url.absoluteString == "https://www.google.com/search?q=apple&ie=utf-8&oe=utf-8")
     }
 }
