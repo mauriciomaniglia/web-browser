@@ -1,21 +1,24 @@
-import XCTest
+import Testing
 import Services
 
 @MainActor
-class SearchEngineURLBuilderTests: XCTestCase {
-    func test_buildSearchURL_deliversCorrectURL() {
+@Suite
+struct SearchEngineURLBuilderTests {
+    @Test("Builds correct Google search URLs with and without spaces")
+    func buildSearchURL_returnsExpectedURLs() {
         let url1 = SearchEngineURLBuilder.buildSearchURL(query: "computer")
         let url2 = SearchEngineURLBuilder.buildSearchURL(query: "computer science")
 
-        XCTAssertEqual(url1.absoluteString, "https://www.google.com/search?q=computer&ie=utf-8&oe=utf-8")
-        XCTAssertEqual(url2.absoluteString, "https://www.google.com/search?q=computer%20science&ie=utf-8&oe=utf-8")
+        #expect(url1.absoluteString == "https://www.google.com/search?q=computer&ie=utf-8&oe=utf-8")
+        #expect(url2.absoluteString == "https://www.google.com/search?q=computer%20science&ie=utf-8&oe=utf-8")
     }
 
-    func test_buildAutocompleteURL_deliversCorrectURL() {
+    @Test("Builds correct Google autocomplete URLs with and without spaces")
+    func buildAutocompleteURL_returnsExpectedURLs() {
         let url1 = SearchEngineURLBuilder.buildAutocompleteURL(query: "computer")
         let url2 = SearchEngineURLBuilder.buildAutocompleteURL(query: "computer science")
 
-        XCTAssertEqual(url1.absoluteString, "https://www.google.com/complete/search?client=firefox&q=computer")
-        XCTAssertEqual(url2.absoluteString, "https://www.google.com/complete/search?client=firefox&q=computer%20science")
+        #expect(url1.absoluteString == "https://www.google.com/complete/search?client=firefox&q=computer")
+        #expect(url2.absoluteString == "https://www.google.com/complete/search?client=firefox&q=computer%20science")
     }
 }
