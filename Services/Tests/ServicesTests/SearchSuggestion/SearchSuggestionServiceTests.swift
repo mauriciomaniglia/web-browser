@@ -1,63 +1,72 @@
-import XCTest
+import Foundation
+import Testing
 @testable import Services
 
 @MainActor
-class SearchSuggestionServiceTests: XCTestCase {
-    func test_handleResponse_whenDataIsEmpty_returnsNil() {
+@Suite
+struct SearchSuggestionServiceTests {
+    @Test("Returns nil when data is nil")
+    func returnsNilWhenDataIsNil() {
         let sut = SearchSuggestionService()
 
         let suggestions = sut.handleResponse(data: nil, response: HTTPURLResponse())
 
-        XCTAssertNil(suggestions)
+        #expect(suggestions == nil)
     }
 
-    func test_handleResponse_whenDataIsInvalidJSON_returnsNil() {
+    @Test("Returns nil for invalid JSON data")
+    func returnsNilForInvalidJSONData() {
         let sut = SearchSuggestionService()
         let invalidJSONData = "".data(using: .utf8)!
 
         let suggestions = sut.handleResponse(data: invalidJSONData, response: HTTPURLResponse())
 
-        XCTAssertNil(suggestions)
+        #expect(suggestions == nil)
     }
 
-    func test_handleResponse_whenJSONHasMissingQueryData_returnsNil() {
+    @Test("Returns nil when query data is missing in JSON")
+    func returnsNilWhenQueryDataIsMissingInJSON() {
         let sut = SearchSuggestionService()
 
         let suggestions = sut.handleResponse(data: invalidSearchResponseMissingQueryData(), response: HTTPURLResponse())
 
-        XCTAssertNil(suggestions)
+        #expect(suggestions == nil)
     }
 
-    func test_handleResponse_whenJSONHasInvalidSearchSuggestionTypeData_returnsNil() {
+    @Test("Returns nil when suggestions are not strings")
+    func returnsNilWhenSuggestionsAreNotStrings() {
         let sut = SearchSuggestionService()
 
         let suggestions = sut.handleResponse(data: invalidSearchSuggestionsTypeData(), response: HTTPURLResponse())
 
-        XCTAssertNil(suggestions)
+        #expect(suggestions == nil)
     }
 
-    func test_handleResponse_whenIsNonHTTPResponse_returnsNil() {
+    @Test("Returns nil for non-HTTPURLResponse")
+    func returnsNilForNonHTTPURLResponse() {
         let sut = SearchSuggestionService()
 
         let suggestions = sut.handleResponse(data: validData(), response: URLResponse())
 
-        XCTAssertNil(suggestions)
+        #expect(suggestions == nil)
     }
 
-    func test_handleResponse_whenHTTPResponseIsNot2xx_returnsNil() {
+    @Test("Returns nil for non-2xx HTTP status codes")
+    func returnsNilForNon2xxHTTPStatusCodes() {
         let sut = SearchSuggestionService()
 
         let suggestions = sut.handleResponse(data: validData(), response: httpResponseWith500StatusCode())
 
-        XCTAssertNil(suggestions)
+        #expect(suggestions == nil)
     }
 
-    func test_handleResponse_whenResponseHasCorrectData_returnSuggestions() {
+    @Test("Parses and returns suggestions from valid response")
+    func parsesAndReturnsSuggestionsFromValidResponse() {
         let sut = SearchSuggestionService()
 
         let suggestions = sut.handleResponse(data: validData(), response: HTTPURLResponse())
 
-        XCTAssertEqual(suggestions, ["suggestion1", "suggestion2", "suggestion3"])
+        #expect(suggestions == ["suggestion1", "suggestion2", "suggestion3"])
     }
 
     // MARK: - Helpers
@@ -90,4 +99,3 @@ class SearchSuggestionServiceTests: XCTestCase {
         return jsonString.data(using: .utf8)!
     }
 }
-
