@@ -1,9 +1,11 @@
-import XCTest
+import Testing
 import Services
 
 @MainActor
-class URIFixupTests: XCTestCase {
-    func test_getURL_forValidURLs_deliversCorrectResult() {
+@Suite
+struct URIFixupTests {
+    @Test("Normalizes and preserves valid URLs")
+    func getURL_returnsNormalizedURL_forValidInputs() {
         checkValidURL("http://www.mozilla.org", afterFixup: "http://www.mozilla.org")
         checkValidURL("about:", afterFixup: "about:")
         checkValidURL("about:config", afterFixup: "about:config")
@@ -34,7 +36,8 @@ class URIFixupTests: XCTestCase {
         checkValidURL("http://1.1:80", afterFixup: "http://1.1:80")
     }
     
-    func test_getURL_forInvalidURLs_deliversCorrectResult() {
+    @Test("Returns nil for invalid URLs and search-like inputs")
+    func getURL_returnsNil_forInvalidInputs() {
         // Check invalid URLs. These are passed along to the default search engine.
         checkInvalidURL("foobar")
         checkInvalidURL("foo bar")
@@ -68,14 +71,14 @@ class URIFixupTests: XCTestCase {
         checkInvalidURL("http://::192.9.5.5")
         checkInvalidURL("http://::192.9.5.5:8080")
     }
-    
+
     // MARK: - Helpers
 
     private func checkValidURL(_ beforeFixup: String, afterFixup: String) {
-        XCTAssertEqual(URIFixup.getURL(beforeFixup)!.absoluteString, afterFixup)
+        #expect(URIFixup.getURL(beforeFixup)?.absoluteString == afterFixup)
     }
 
     private func checkInvalidURL(_ beforeFixup: String) {
-        XCTAssertNil(URIFixup.getURL(beforeFixup))
+        #expect(URIFixup.getURL(beforeFixup) == nil)
     }
 }
