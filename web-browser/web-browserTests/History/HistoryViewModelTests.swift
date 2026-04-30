@@ -1,25 +1,30 @@
-import XCTest
+import Foundation
+import Testing
 @testable import web_browser
 
 @MainActor
-class HistoryViewModelTests: XCTestCase {
+@Suite
+struct HistoryViewModelTests {
 
-    func test_selectedPages_when_initialized_is_empty() {
+    @Test("selectedPages is empty on initialization")
+    func selectedPagesWhenInitialized() {
         let sut = HistoryViewModel()
-        XCTAssertEqual(sut.selectedPages, [])
+        #expect(sut.selectedPages == [])
     }
 
-    func test_selectedPages_makesCorrectSelection() {
+    @Test("Selecting a page adds it to selectedPages")
+    func selectedPagesMakesCorrectSelection() {
         let anySection = anySection()
         let sut = HistoryViewModel()
         sut.historyList = [anySection]
 
         sut.historyList[0].pages[0].select()
 
-        XCTAssertEqual(sut.selectedPages, [sut.historyList[0].pages[0]])
+        #expect(sut.selectedPages == [sut.historyList[0].pages[0]])
     }
 
-    func test_selectedPages_whenSelectingTwice_removesSelection() {
+    @Test("Selecting the same page twice toggles selection off")
+    func selectingPageTwiceRemovesSelection() {
         let anySection = anySection()
         let sut = HistoryViewModel()
         sut.historyList = [anySection]
@@ -27,10 +32,11 @@ class HistoryViewModelTests: XCTestCase {
         sut.historyList[0].pages[0].select()
         sut.historyList[0].pages[0].select()
 
-        XCTAssertEqual(sut.selectedPages, [])
+        #expect(sut.selectedPages == [])
     }
 
-    func test_deselectAllPages_removesSelectedPages() {
+    @Test("deselectAllPages clears selection and preserves list")
+    func deselectAllPagesRemovesSelectedPages() {
         let section1 = anySection()
         let section2 = anySection()
         let section3 = anySection()
@@ -40,18 +46,19 @@ class HistoryViewModelTests: XCTestCase {
         sut.historyList[0].pages[0].select()
         sut.historyList[1].pages[0].select()
 
-        XCTAssertEqual(sut.selectedPages, [
+        #expect(sut.selectedPages == [
             sut.historyList[0].pages[0],
             sut.historyList[1].pages[0]
         ])
 
         sut.deselectAllPages()
 
-        XCTAssertEqual(sut.selectedPages, [])
-        XCTAssertEqual(sut.historyList, [section1, section2, section3])
+        #expect(sut.selectedPages == [])
+        #expect(sut.historyList == [section1, section2, section3])
     }
 
-    func test_deleteSelectedPages_removesSelectedPages() {
+    @Test("deleteSelectedPages removes selected and prunes empty sections")
+    func deleteSelectedPages() {
         let section1 = anySection()
         let section2 = anySection()
         let section3 = anySection()
@@ -63,11 +70,12 @@ class HistoryViewModelTests: XCTestCase {
 
         sut.deleteSelectedPages()
 
-        XCTAssertEqual(sut.selectedPages, [])
-        XCTAssertEqual(sut.historyList, [section3])
+        #expect(sut.selectedPages == [])
+        #expect(sut.historyList == [section3])
     }
 
-    func test_deleteAllPages_removesAllPages() {
+    @Test("deleteAllPages clears history list")
+    func deleteAllPages() {
         let section1 = anySection()
         let section2 = anySection()
         let section3 = anySection()
@@ -76,7 +84,7 @@ class HistoryViewModelTests: XCTestCase {
         
         sut.deleteAllPages()
         
-        XCTAssertEqual(sut.historyList, [])
+        #expect(sut.historyList == [])
     }
 
     // MARK: - Helpers
