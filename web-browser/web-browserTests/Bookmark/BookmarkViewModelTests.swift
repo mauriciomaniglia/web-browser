@@ -1,21 +1,25 @@
-import XCTest
+import Foundation
+import Testing
 import Services
 @testable import web_browser
 
 @MainActor
-class BookmarkViewModelTests: XCTestCase {
+@Suite
+struct BookmarkViewModelTests {
 
-    func test_setSelectedBookmark_shouldSetSelectedBookmark() {
+    @Test("Sets selected bookmark")
+    func setSelectedBookmark() {
         let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark = BookmarkViewData(id: UUID(), title: "Some Title", url: url)
 
         sut.setSelectedBookmark(bookmark)
 
-        XCTAssertEqual(sut.selectedBookmark, bookmark)
+        #expect(sut.selectedBookmark == bookmark)
     }
 
-    func test_undoCurrentSelection_shouldRemoveSelectedBookmark() {
+    @Test("Clears the current selection")
+    func undoCurrentSelection() {
         let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark = BookmarkViewData(id: UUID(), title: "Some Title", url: url)
@@ -23,10 +27,11 @@ class BookmarkViewModelTests: XCTestCase {
         sut.setSelectedBookmark(bookmark)
         sut.undoCurrentSelection()
 
-        XCTAssertNil(sut.selectedBookmark)
+        #expect(sut.selectedBookmark == nil)
     }
 
-    func test_removeSelectedBookmark_shouldRemoveSelectedBookmarkFromTheList() {
+    @Test("Removes the selected bookmark from the list")
+    func removeSelectedBookmark() {
         let (sut, _) = makeSUT()
         let url = URL(string: "http://some.url.com")!
         let bookmark1 = BookmarkViewData(id: UUID(), title: "Title 1", url: url)
@@ -37,7 +42,7 @@ class BookmarkViewModelTests: XCTestCase {
         sut.setSelectedBookmark(bookmark1)
         sut.removeSelectedBookmark()
 
-        XCTAssertFalse(sut.bookmarkList.contains(bookmark1))
+        #expect(!sut.bookmarkList.contains(bookmark1))
     }
 
     // MARK: - Helpers

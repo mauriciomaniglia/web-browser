@@ -1,12 +1,14 @@
 import Foundation
-import XCTest
+import Testing
 @testable import Services
 
 @MainActor
-class SearchSuggestionManagerTests: XCTestCase {
+@Suite
+struct SearchSuggestionManagerTests {
     private typealias SearchSuggestionManagerType = SearchSuggestionManager<MockSearchSuggestionService, BookmarkStoreMock, HistoryStoreMock>
 
-    func test_didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() async {
+    @Test("Typing with no remote suggestions returns query + local suggestions")
+    func didStartTyping_whenThereIsNoSuggestion_deliversInputQuery() async {
         let (sut, bookmarkStore, historyStore) = makeSUT()
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
         let page = WebPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
@@ -15,12 +17,13 @@ class SearchSuggestionManagerTests: XCTestCase {
 
         let presentableModel = await sut.didStartTyping(query: "apple")
 
-        XCTAssertEqual(presentableModel.searchSuggestions, [.init(title: "apple", url: URL(string: "https://www.google.com/search?q=apple&ie=utf-8&oe=utf-8")!)])
-        XCTAssertEqual(presentableModel.bookmarkSuggestions, [.init(title: "Apple Store", url: URL(string: "https://www.apple.com")!)])
-        XCTAssertEqual(presentableModel.historyPageSuggestions, [.init(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!)])
+        #expect(presentableModel.searchSuggestions == [.init(title: "apple", url: URL(string: "https://www.google.com/search?q=apple&ie=utf-8&oe=utf-8")!)])
+        #expect(presentableModel.bookmarkSuggestions == [.init(title: "Apple Store", url: URL(string: "https://www.apple.com")!)])
+        #expect(presentableModel.historyPageSuggestions == [.init(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!)])
     }
 
-    func test_didStartTyping_whenThereIsSuggestion_deliversInputQueryAndSuggestions() async {
+    @Test("Typing with remote suggestions returns query + remote + local suggestions")
+    func didStartTyping_whenThereIsSuggestion_deliversInputQueryAndSuggestions() async {
         let (sut, bookmarkStore, historyStore) = makeSUT(searchSuggestion: ["apple watch", "apple tv", "apple music"])
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
         let page = WebPageModel(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!, date: Date())
@@ -29,14 +32,14 @@ class SearchSuggestionManagerTests: XCTestCase {
 
         let presentableModel = await sut.didStartTyping(query: "apple")
 
-        XCTAssertEqual(presentableModel.searchSuggestions, [
+        #expect(presentableModel.searchSuggestions == [
             .init(title: "apple", url: URL(string: "https://www.google.com/search?q=apple&ie=utf-8&oe=utf-8")!),
             .init(title: "apple watch", url: URL(string: "https://www.google.com/search?q=apple%20watch&ie=utf-8&oe=utf-8")!),
             .init(title: "apple tv", url: URL(string: "https://www.google.com/search?q=apple%20tv&ie=utf-8&oe=utf-8")!),
             .init(title: "apple music", url: URL(string: "https://www.google.com/search?q=apple%20music&ie=utf-8&oe=utf-8")!)
         ])
-        XCTAssertEqual(presentableModel.bookmarkSuggestions, [.init(title: "Apple Store", url: URL(string: "https://www.apple.com")!)])
-        XCTAssertEqual(presentableModel.historyPageSuggestions, [.init(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!)])
+        #expect(presentableModel.bookmarkSuggestions == [.init(title: "Apple Store", url: URL(string: "https://www.apple.com")!)])
+        #expect(presentableModel.historyPageSuggestions == [.init(title: "Apple Music", url: URL(string: "https://www.apple-music.com")!)])
      }
 
     // MARK: - Helpers

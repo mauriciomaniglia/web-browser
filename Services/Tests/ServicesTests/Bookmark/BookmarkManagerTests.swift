@@ -1,52 +1,56 @@
-import XCTest
+import Foundation
+import Testing
 @testable import Services
 
 @MainActor
-class BookmarkManagerTests: XCTestCase {
+@Suite
+struct BookmarkManagerTests {
 
-    func test_didOpenBookmarkView_sendsCorrectMessage() {
-        let (sut, bookmarkStore) = makeSUT()
+    @Test("Opening the bookmark view requests all pages and maps them to presentable models")
+    func didOpenBookmarkView_sendsCorrectMessage() {
+        let (sut, bookmarkStore) = Self.makeSUT()
         let bookmark = BookmarkModel(title: "Apple Store", url: URL(string: "https://www.apple.com")!)
         bookmarkStore.mockBookmarks = [bookmark]
 
         let presentableModels = sut.didOpenBookmarkView()
 
-        XCTAssertEqual(bookmarkStore.receivedMessages, [.getPages])
-        XCTAssertEqual(presentableModels.count, 1)
-        XCTAssertEqual(presentableModels.first?.title, "Apple Store")
-        XCTAssertEqual(presentableModels.first?.url, URL(string: "https://www.apple.com"))
+        #expect(bookmarkStore.receivedMessages == [.getPages], "Should request all pages when the view opens")
+        #expect(presentableModels.count == 1, "Should produce one presentable model for the single bookmark")
+        #expect(presentableModels.first?.title == "Apple Store", "Should preserve the bookmark title in the presentable model")
+        #expect(presentableModels.first?.url == URL(string: "https://www.apple.com"), "Should preserve the bookmark URL in the presentable model")
     }
 
-    func test_didSearchTerm_sendsCorrectMessage() {
-        let (sut, bookmarkStore) = makeSUT()
+    @Test("Searching with a non-empty term filters pages and returns mapped results")
+    func didSearchTerm_sendsCorrectMessage() {
+        let (sut, bookmarkStore) = Self.makeSUT()
         let bookmark1 = BookmarkModel(title: "Apple Watch", url: URL(string: "https://www.apple.com/watch")!)
         let bookmark2 = BookmarkModel(title: "Apple Music", url: URL(string: "https://www.apple.com/music")!)
         bookmarkStore.mockBookmarks = [bookmark1, bookmark2]
 
         let presentableModels = sut.didSearchTerm("apple")
 
-        XCTAssertEqual(bookmarkStore.receivedMessages, [.getPagesByTerm("apple")])
-        XCTAssertEqual(presentableModels.count, 2)
-        XCTAssertEqual(presentableModels.first?.title, "Apple Watch")
-        XCTAssertEqual(presentableModels.first?.url, URL(string: "https://www.apple.com/watch"))
-        XCTAssertEqual(presentableModels.last?.title, "Apple Music")
-        XCTAssertEqual(presentableModels.last?.url, URL(string: "https://www.apple.com/music"))
+        #expect(bookmarkStore.receivedMessages == [.getPagesByTerm("apple")], "Should query the store with the provided search term")
+        #expect(presentableModels.count == 2, "Should return two presentable models matching the mocked bookmarks")
+        #expect(presentableModels.first?.title == "Apple Watch", "First result title should match the first mocked bookmark")
+        #expect(presentableModels.first?.url == URL(string: "https://www.apple.com/watch"), "First result URL should match the first mocked bookmark")
+        #expect(presentableModels.last?.title == "Apple Music", "Last result title should match the second mocked bookmark")
+        #expect(presentableModels.last?.url == URL(string: "https://www.apple.com/music"), "Last result URL should match the second mocked bookmark")
     }
 
-    func test_didSearchTerm_withEmptyTerm_sendsCorrectMessage() {
-        let (sut, bookmarkStore) = makeSUT()
+    @Test("Searching with an empty term falls back to fetching all pages")
+    func didSearchTerm_withEmptyTerm_sendsCorrectMessage() {
+        let (sut, bookmarkStore) = Self.makeSUT()
 
         _ = sut.didSearchTerm("")
 
-        XCTAssertEqual(bookmarkStore.receivedMessages, [.getPages])
+        #expect(bookmarkStore.receivedMessages == [.getPages], "Should request all pages when the search term is empty")
     }
 
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: BookmarkManager<BookmarkStoreMock>, bookmarkStore: BookmarkStoreMock) {
+    private static func makeSUT() -> (sut: BookmarkManager<BookmarkStoreMock>, bookmarkStore: BookmarkStoreMock) {
         let bookmarkStore = BookmarkStoreMock()
         let sut = BookmarkManager(bookmarkStore: bookmarkStore)
-
         return (sut, bookmarkStore)
     }
 }

@@ -1,85 +1,91 @@
-import XCTest
+import Testing
 import Services
 
 @MainActor
-class ContentBlockingTests: XCTestCase {
+@Suite
+struct ContentBlockingTests {
 
-    func test_init_doesNotSendAnyMessages() {
-        let (_, webView) = makeSUT()
+    @Test("Initialization does not send any messages to the web view")
+    func init_doesNotSendAnyMessages() {
+        let (_, webView) = Self.makeSUT()
 
-        XCTAssertEqual(webView.receivedMessages, [])
+        #expect(webView.receivedMessages.isEmpty, "No messages should be sent on init")
     }
 
-    func test_setupBasicProtection_applyCorrectRules() {
-        let (sut, delegate) = makeSUT(content: "json content")
+    @Test("Basic protection registers the expected cookie, crypto, and fingerprinting rules")
+    func setupBasicProtection_applyCorrectRules() {
+        let (sut, delegate) = Self.makeSUT(content: "json content")
 
         sut.setupBasicProtection()
 
-        XCTAssertEqual(delegate.receivedMessages, [
+        #expect(delegate.receivedMessages == [
             .registerRule("CookiesAdvertisingRules", "json content", []),
             .registerRule("CookiesAnalyticsRules", "json content", []),
             .registerRule("CookiesSocialRules", "json content", []),
             .registerRule("CryptominingRules", "json content", []),
             .registerRule("FingerprintingRules", "json content", [])
-        ])
+        ], "Should register the expected basic protection rules with empty safelist")
     }
 
-    func test_setupBasicProtection_whenSafelistAreAvailableApplyCorrectRules() {
-        let (sut, delegate) = makeSUT(content: "json content")
+    @Test("Basic protection with a safelist applies the same rules constrained by the safelist")
+    func setupBasicProtection_whenSafelistAreAvailableApplyCorrectRules() {
+        let (sut, delegate) = Self.makeSUT(content: "json content")
         let safelist = ["www.apple.com", "www.google.com"]
 
         sut.setupBasicProtection(safelist: safelist)
 
-        XCTAssertEqual(delegate.receivedMessages, [
+        #expect(delegate.receivedMessages == [
             .registerRule("CookiesAdvertisingRules", "json content", safelist),
             .registerRule("CookiesAnalyticsRules", "json content", safelist),
             .registerRule("CookiesSocialRules", "json content", safelist),
             .registerRule("CryptominingRules", "json content", safelist),
             .registerRule("FingerprintingRules", "json content", safelist)
-        ])
+        ], "Should register basic protection rules constrained by the provided safelist")
     }
 
-    func test_setupStrictProtection_applyCorrectRules() {
-        let (sut, delegate) = makeSUT(content: "json content")
+    @Test("Strict protection registers the full set of blocking rules")
+    func setupStrictProtection_applyCorrectRules() {
+        let (sut, delegate) = Self.makeSUT(content: "json content")
 
         sut.setupStrictProtection()
 
-        XCTAssertEqual(delegate.receivedMessages, [
+        #expect(delegate.receivedMessages == [
             .registerRule("AdvertisingRules", "json content", []),
             .registerRule("AnalyticsRules", "json content", []),
             .registerRule("SocialRules", "json content", []),
             .registerRule("CryptominingRules", "json content", []),
             .registerRule("FingerprintingRules", "json content", [])
-        ])
+        ], "Should register strict protection rules with empty safelist")
     }
 
-    func test_setupStrictProtection_whenSafelistAreAvailableApplyCorrectRules() {
-        let (sut, delegate) = makeSUT(content: "json content")
+    @Test("Strict protection with a safelist applies the rules constrained by the safelist")
+    func setupStrictProtection_whenSafelistAreAvailableApplyCorrectRules() {
+        let (sut, delegate) = Self.makeSUT(content: "json content")
         let safelist = ["www.apple.com", "www.google.com"]
 
         sut.setupStrictProtection(safelist: safelist)
 
-        XCTAssertEqual(delegate.receivedMessages, [
+        #expect(delegate.receivedMessages == [
             .registerRule("AdvertisingRules", "json content", safelist),
             .registerRule("AnalyticsRules", "json content", safelist),
             .registerRule("SocialRules", "json content", safelist),
             .registerRule("CryptominingRules", "json content", safelist),
             .registerRule("FingerprintingRules", "json content", safelist)
-        ])
+        ], "Should register strict protection rules constrained by the provided safelist")
     }
 
-    func test_removeProtection_removeAllRules() {
-        let (sut, delegate) = makeSUT()
+    @Test("Removing protection clears all registered rules")
+    func removeProtection_removeAllRules() {
+        let (sut, delegate) = Self.makeSUT()
 
         sut.removeProtection()
 
-        XCTAssertEqual(delegate.receivedMessages, [.removeAllRules])
+        #expect(delegate.receivedMessages == [.removeAllRules], "Should remove all rules from the web view delegate")
     }
-
 
     // MARK: - Helpers
 
-    private func makeSUT(content: String? = nil) -> (sut: ContentBlocking<WebViewSpy>, webView: WebViewSpy) {
+    private static func makeSUT(content: String? = nil) -> (sut: ContentBlocking<WebViewSpy>, webView: WebViewSpy) {
         let webView = WebViewSpy()
         let sut = ContentBlocking(webView: webView, jsonLoader: { _ in "json content"})
         return (sut, webView)
