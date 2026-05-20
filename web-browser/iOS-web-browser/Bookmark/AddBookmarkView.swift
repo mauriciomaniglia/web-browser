@@ -10,7 +10,7 @@ struct AddBookmarkView: View {
     @FocusState private var isNameFieldFocused: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
                 form
                 Spacer()
