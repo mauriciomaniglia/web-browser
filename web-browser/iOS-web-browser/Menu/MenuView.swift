@@ -7,7 +7,7 @@ struct MenuView: View {
     @Binding var isPresented: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if tabViewModel.showWebView {
                     AddBookmarkButton
