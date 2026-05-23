@@ -3,6 +3,7 @@ import SwiftUI
 struct WindowView: View {
     let menu: MenuView
     let tabsCollectionBarView: TabsCollectionBarView
+
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
@@ -12,9 +13,13 @@ struct WindowView: View {
             } detail: {
                 VStack {
                     tabsCollectionBarView
-                    tabBarManager.selectedTab.view.id(tabBarManager.selectedTab.id)
+                    selectedTabView
                 }
             }
         }
+    }
+
+    var selectedTabView: some View {
+        tabBarManager.selectedTab.view.id(tabBarManager.selectedTab.id)
     }
 }
