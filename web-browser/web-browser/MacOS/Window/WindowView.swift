@@ -2,7 +2,7 @@ import SwiftUI
 
 struct WindowView: View {
     let menu: MenuView
-    let tabBar: TabBarView
+    let tabsCollectionView: TabsCollectionView
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
@@ -12,7 +12,7 @@ struct WindowView: View {
             } detail: {
                 VStack {
                     HStack {
-                        tabBar
+                        tabsCollectionView
                         newTabButton
                     }
                     .background(Color.purple)

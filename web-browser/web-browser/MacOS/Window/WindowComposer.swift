@@ -53,7 +53,7 @@ final class WindowComposer {
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel
         )
-        let tabBar = TabBarView(
+        let tabsCollectionView = TabsCollectionView(
             tabBarManager: tabBarManager,
             layout: .init(
                 padding: 8,
@@ -65,6 +65,6 @@ final class WindowComposer {
             )
         )
 
-        return WindowView(menu: menu, tabBar: tabBar, tabBarManager: tabBarManager)
+        return WindowView(menu: menu, tabsCollectionView: tabsCollectionView, tabBarManager: tabBarManager)
     }
 }

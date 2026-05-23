@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TabBarView: View {
+struct TabsCollectionView: View {
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     let layout: TabBarLayout

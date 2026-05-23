@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct WindowView: View {
-    let tabBar: TabBarView
+    let tabsCollectionView: TabsCollectionView
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
         VStack {
             HStack {
-                tabBar
+                tabsCollectionView
                 newTabButton
             }
             .background(Color.indigo)

@@ -7,7 +7,7 @@ struct WindowView: View {
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     let menu: MenuView
-    let tabBar: TabBarView
+    let tabsCollectionView: TabsCollectionView
 
     var body: some View {
         ZStack {
@@ -16,7 +16,7 @@ struct WindowView: View {
             } detail: {
                 ZStack(alignment: .top) {
                     VStack(spacing: 0) {
-                        tabBar
+                        tabsCollectionView
                         tabBarManager.selectedTab.view.id(tabBarManager.selectedTab.id)
                     }
                     if shouldShowSearchSuggestions {

@@ -40,7 +40,7 @@ final class WindowComposer {
             bookmarkComposer: bookmarkComposer,
             searchSuggestionComposer: searchSuggestionComposer,
             safelistStore: safelistStore
-        )
+        )tabsCollectionView
 
         self.tabSessionStore = TabSessionStore()
         self.tabBarManager = TabBarManager(windowViewModel: windowViewModel, tabBarStore: tabSessionStore)
@@ -53,7 +53,7 @@ final class WindowComposer {
             bookmarkViewModel: bookmarkComposer.viewModel,
             historyViewModel: historyComposer.viewModel
         )
-        let tabBar = TabBarView(
+        let tabsCollectionView = TabsCollectionView(
             tabBarManager: tabBarManager,
             layout: .init(
                 padding: 16,
@@ -69,6 +69,6 @@ final class WindowComposer {
             tabBarManager: tabBarManager,
             searchSuggestionViewModel: searchSuggestionComposer.viewModel,
             menu: menu,
-            tabBar: tabBar)
+            tabsCollectionView: tabsCollectionView)
     }
 }

@@ -50,7 +50,7 @@ final class WindowComposer {
         tabBarManager.start()
 
         return WindowView(
-            tabBar: TabBarView(
+            tabsCollectionView: TabsCollectionView(
                 tabBarManager: tabBarManager,
                 layout: .init(
                     padding: 8,
