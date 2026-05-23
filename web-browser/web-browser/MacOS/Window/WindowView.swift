@@ -2,7 +2,7 @@ import SwiftUI
 
 struct WindowView: View {
     let menu: MenuView
-    let tabsCollectionView: TabsCollectionView
+    let tabsCollectionBarView: TabsCollectionBarView
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
 
     var body: some View {
@@ -11,24 +11,10 @@ struct WindowView: View {
                 menu
             } detail: {
                 VStack {
-                    HStack {
-                        tabsCollectionView
-                        newTabButton
-                    }
-                    .background(Color.purple)
+                    tabsCollectionBarView
                     tabBarManager.selectedTab.view.id(tabBarManager.selectedTab.id)
                 }
             }
-        }
-    }
-
-    var newTabButton: some View {
-        Button(action: tabBarManager.createNewTab) {
-            Image(systemName: "plus")
-                .padding(8)
-                .background(Color.clear)
-                .foregroundColor(.white)
-                .clipShape(Circle())
         }
     }
 }

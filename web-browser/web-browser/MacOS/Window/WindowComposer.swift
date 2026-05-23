@@ -64,7 +64,11 @@ final class WindowComposer {
                 unselectedColor: .clear
             )
         )
+        let tabsCollectionBarView = TabsCollectionBarView(
+            tabBarManager: tabBarManager,
+            tabsCollectionView: tabsCollectionView
+        )
 
-        return WindowView(menu: menu, tabsCollectionView: tabsCollectionView, tabBarManager: tabBarManager)
+        return WindowView(menu: menu, tabsCollectionBarView: tabsCollectionBarView, tabBarManager: tabBarManager)
     }
 }
