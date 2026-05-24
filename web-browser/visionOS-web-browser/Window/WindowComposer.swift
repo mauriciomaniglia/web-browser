@@ -40,7 +40,7 @@ final class WindowComposer {
             bookmarkComposer: bookmarkComposer,
             searchSuggestionComposer: searchSuggestionComposer,
             safelistStore: safelistStore
-        )tabsCollectionView
+        )
 
         self.tabSessionStore = TabSessionStore()
         self.tabBarManager = TabBarManager(windowViewModel: windowViewModel, tabBarStore: tabSessionStore)
