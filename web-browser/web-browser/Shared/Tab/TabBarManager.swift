@@ -35,12 +35,13 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
     }
 
     func start() {
-        let orderedIDs = UserDefaults.standard.stringArray(forKey: "ordered_tab_ids") ?? []
-
-        if orderedIDs.count == 0 {
-            createNewTab()
-        } else {
-            fetchTabs(orderedIDs: orderedIDs)
+        Task {
+            let orderedIDs = UserDefaults.standard.stringArray(forKey: "ordered_tab_ids") ?? []
+            if orderedIDs.isEmpty {
+                createNewTab()
+            } else {
+                fetchTabs(orderedIDs: orderedIDs)
+            }
         }
     }
 
