@@ -8,11 +8,9 @@ struct HistoryView: View {
 
     var body: some View {
         searchBar
-
         if hasPagesSelected {
             selectedPagesBar
         }
-
         if isHistoryEmpty {
             emptyList
         } else {
@@ -70,6 +68,10 @@ struct HistoryView: View {
         viewModel.selectedPages.count > 0
     }
 
+    var selectedPagesTotal: Int {
+        viewModel.selectedPages.count
+    }
+
     var selectedPagesBar: some View {
         HStack {
             Button {
@@ -77,7 +79,7 @@ struct HistoryView: View {
             } label: {
                 Image(systemName: "xmark")
             }
-            Text("\(viewModel.selectedPages.count) selected")
+            Text("\(selectedPagesTotal) selected")
             Spacer()
             Button {
                 viewModel.deleteSelectedPages()
@@ -94,32 +96,37 @@ struct HistoryView: View {
 
     var historyList: some View {
         List {
-            ForEach(viewModel.historyList.indices, id: \.self) { sectionIndex in
-                let item = viewModel.historyList[sectionIndex]
-                let header = Text(item.title)
+            ForEach(viewModel.historyList) { section in
+                let header = Text(section.title)
                 Section(header: header) {
-                    ForEach(item.pages.indices, id: \.self) { pageIndex in
-                        let page = item.pages[pageIndex]
-                        Toggle(isOn: $viewModel.historyList[sectionIndex].pages[pageIndex].isSelected) {
-                            Text(page.title)
-                                .onTapGesture {
-                                    viewModel.delegate?.didSelectPage(page.url)
-                                    dismiss()
-                                }
-                                .onHover { hovering in
-                                    if hovering {
-                                        NSCursor.pointingHand.push()
-                                    } else {
-                                        NSCursor.pop()
-                                    }
-                                }
-                        }
-                        .toggleStyle(CheckboxToggleStyle())
-                        .padding()
+                    ForEach(section.pages) { page in
+                        historyRow(page: page)
                     }
                 }
             }
         }
+    }
+
+    func historyRow(page: HistoryViewModel.Page) -> some View {
+        Toggle(isOn: Binding<Bool>(
+            get: { page.isSelected },
+            set: { _ in viewModel.toggleSelection(for: page.id) }
+        )) {
+            Text(page.title)
+                .onTapGesture {
+                    viewModel.delegate?.didSelectPage(page.url)
+                    dismiss()
+                }
+                .onHover { hovering in
+                    if hovering {
+                        NSCursor.pointingHand.push()
+                    } else {
+                        NSCursor.pop()
+                    }
+                }
+        }
+        .toggleStyle(CheckboxToggleStyle())
+        .padding()
     }
 
     var emptyList: some View {

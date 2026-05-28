@@ -13,7 +13,8 @@ protocol HistoryViewModelDelegate: AnyObject {
 @MainActor
 class HistoryViewModel: ObservableObject {
 
-    struct Section: Equatable {
+    struct Section: Equatable, Identifiable {
+        let id = UUID()
         let title: String
         var pages: [Page]
     }
@@ -37,6 +38,17 @@ class HistoryViewModel: ObservableObject {
         return historyList
             .flatMap { $0.pages }
             .filter { $0.isSelected }
+    }
+
+    func toggleSelection(for pageID: UUID) {
+        for sectionIndex in historyList.indices {
+            for pageIndex in historyList[sectionIndex].pages.indices {
+                if historyList[sectionIndex].pages[pageIndex].id == pageID {
+                    historyList[sectionIndex].pages[pageIndex].isSelected.toggle()
+                    return
+                }
+            }
+        }
     }
 
     func deselectAllPages() {
