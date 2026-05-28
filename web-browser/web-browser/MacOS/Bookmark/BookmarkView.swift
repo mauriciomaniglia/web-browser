@@ -10,7 +10,6 @@ struct BookmarkView: View {
     var body: some View {
         VStack {
             backButton
-
             if isBookmarkEmpty {
                 emptyList
             } else {
@@ -37,11 +36,7 @@ struct BookmarkView: View {
     var bookmarkList: some View {
         List {
             ForEach(viewModel.bookmarkList) { bookmark in
-                BookmarkRow(
-                    viewModel: viewModel,
-                    isShowingDeleteBookmarkAlert: $isShowingDeleteAlert,
-                    bookmark: bookmark
-                )
+                bookmarkRow(bookmark)
             }
         }
         .alert(isPresented: $isShowingDeleteAlert) { removeItemAlert }
@@ -64,28 +59,18 @@ struct BookmarkView: View {
             secondaryButton: .cancel() { viewModel.undoCurrentSelection() }
         )
     }
-}
 
-struct BookmarkRow: View {
-    @ObservedObject var viewModel: BookmarkViewModel
-    @Environment(\.dismiss) private var dismiss
-    @Binding var isShowingDeleteBookmarkAlert: Bool
-
-    let bookmark: BookmarkViewData
-
-    var body: some View {
+    func bookmarkRow(_ bookmark: BookmarkViewData) -> some View {
         HStack {
             Text(bookmark.title)
                 .onTapGesture {
                     viewModel.didSelectPage(bookmark.url)
                     dismiss()
                 }
-
             Spacer()
-
             Button {
                 viewModel.setSelectedBookmark(bookmark)
-                isShowingDeleteBookmarkAlert = true
+                isShowingDeleteAlert = true
             } label: {
                 Image(systemName: "ellipsis")
             }
