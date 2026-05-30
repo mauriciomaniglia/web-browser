@@ -9,7 +9,6 @@ struct BookmarkView: View {
 
     var body: some View {
         VStack {
-            backButton
             if isBookmarkEmpty {
                 emptyList
             } else {
@@ -19,14 +18,6 @@ struct BookmarkView: View {
         .navigationTitle("Bookmark")
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
         .onAppear(perform: viewModel.didOpenBookmarkView)
-    }
-
-    var backButton: some View {
-        HStack {
-            Button { dismiss() } label: { Image(systemName: "arrow.left") }
-            Spacer()
-        }
-        .padding()
     }
 
     var isBookmarkEmpty: Bool {
