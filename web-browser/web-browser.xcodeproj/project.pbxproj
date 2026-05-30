@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F901D9892E93240900F3B3D9 /* WindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901D9882E93240900F3B3D9 /* WindowComposer.swift */; };
+		F902A6A42FCBAE0A009CCF54 /* TabBarManager+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F902A6A32FCBAE0A009CCF54 /* TabBarManager+Snapshot.swift */; };
+		F902A6A52FCBB0AB009CCF54 /* TabBarManager+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F902A6A32FCBAE0A009CCF54 /* TabBarManager+Snapshot.swift */; };
 		F90877052E1028E000023426 /* SearchSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90877042E1028E000023426 /* SearchSuggestionView.swift */; };
 		F90AA4812F4F9B4E00B3B9A7 /* SearchSuggestionComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F949B5492DFA2F86006CC1F4 /* SearchSuggestionComposer.swift */; };
 		F90AA4822F4F9B5B00B3B9A7 /* SearchSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989C4AC2E04527A0021132F /* SearchSuggestionViewModel.swift */; };
@@ -174,6 +176,7 @@
 
 /* Begin PBXFileReference section */
 		F901D9882E93240900F3B3D9 /* WindowComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowComposer.swift; sourceTree = "<group>"; };
+		F902A6A32FCBAE0A009CCF54 /* TabBarManager+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarManager+Snapshot.swift"; sourceTree = "<group>"; };
 		F90877042E1028E000023426 /* SearchSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionView.swift; sourceTree = "<group>"; };
 		F90AA4702F4F9A0800B3B9A7 /* visionOS-web-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visionOS-web-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F910EE082F6195C60024EAE8 /* BookmarkStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkStoreMock.swift; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 		F9CA92DF2ED0EBC10092842D /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				F902A6A32FCBAE0A009CCF54 /* TabBarManager+Snapshot.swift */,
 				F941ED382EAA4BE7007FCB44 /* TabBarView.swift */,
 				F95DBA8C2B863A2C0048A987 /* TabViewModel.swift */,
 				F9E5D1132EF5C7D9009BA82C /* TabBarManager.swift */,
@@ -929,6 +933,7 @@
 				F96998BB2EEDF21200C3286D /* JsonLoader.swift in Sources */,
 				F96998BC2EEDF21200C3286D /* AddressBarView.swift in Sources */,
 				F96998BD2EEDF21200C3286D /* NavigationBar.swift in Sources */,
+				F902A6A42FCBAE0A009CCF54 /* TabBarManager+Snapshot.swift in Sources */,
 				F96998BE2EEDF21200C3286D /* SearchSuggestionComposer.swift in Sources */,
 				F96998C02EEDF21200C3286D /* TabBarView.swift in Sources */,
 			);
@@ -954,6 +959,7 @@
 				F96999432EEEEAAC00C3286D /* WebsiteProtectionButton.swift in Sources */,
 				F96999442EEEEAAC00C3286D /* HistoryViewModel.swift in Sources */,
 				F96999452EEEEAAC00C3286D /* BookmarkViewModel.swift in Sources */,
+				F902A6A52FCBB0AB009CCF54 /* TabBarManager+Snapshot.swift in Sources */,
 				F94FD0072F26D6D000D7ABA2 /* TabSessionStore.swift in Sources */,
 				F96999472EEEEAAC00C3286D /* SearchSuggestionView.swift in Sources */,
 				F96999482EEEEAAC00C3286D /* TabViewModel.swift in Sources */,
