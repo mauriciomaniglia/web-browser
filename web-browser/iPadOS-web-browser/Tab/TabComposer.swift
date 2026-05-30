@@ -9,11 +9,12 @@ protocol TabUserActionDelegate: AnyObject {
 }
 
 @MainActor
-final class TabComposer {
+final class TabComposer: ObservableObject {
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
     let view: TabContentView
     let id: UUID
+    @Published var snapshot: UIImage?
 
     weak var userActionDelegate: TabUserActionDelegate?
 

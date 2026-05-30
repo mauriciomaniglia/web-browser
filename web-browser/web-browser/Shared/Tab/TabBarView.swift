@@ -6,7 +6,7 @@ struct TabsCollectionView: View {
     let layout: TabBarLayout
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack {
             HStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {

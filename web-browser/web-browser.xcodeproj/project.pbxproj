@@ -234,6 +234,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F902A6A22FCBACA6009CCF54 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tab/TabCollectionView.swift,
+			);
+			target = F96998A12EEDF0D400C3286D /* iPadOS-web-browser */;
+		};
 		F90AA47F2F4F9A0900B3B9A7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -246,7 +253,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F90AA4712F4F9A0800B3B9A7 /* visionOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F90AA47F2F4F9A0900B3B9A7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "visionOS-web-browser"; sourceTree = "<group>"; };
 		F96998A32EEDF0D400C3286D /* iPadOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "iPadOS-web-browser"; sourceTree = "<group>"; };
-		F969990D2EEEE9BC00C3286D /* iOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "iOS-web-browser"; sourceTree = "<group>"; };
+		F969990D2EEEE9BC00C3286D /* iOS-web-browser */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F902A6A22FCBACA6009CCF54 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "iOS-web-browser"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
