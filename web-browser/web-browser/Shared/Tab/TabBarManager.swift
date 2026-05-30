@@ -18,6 +18,8 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
     let tabBarStore: T
 
+    private let lastSelectedTabIDKey = "last_selected_tab_id"
+
     init(windowViewModel: WindowViewModel, tabBarStore: T) {
         self.windowViewModel = windowViewModel
         self.tabBarStore = tabBarStore
@@ -66,6 +68,8 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
                 tabs.append(composer)
                 selectedTab = composer
             }
+
+            restoreLastSelectedTab()
         }
     }
 
@@ -80,6 +84,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
         tabs.append(composer)
         selectedTab = composer
+        saveAsLastSelectedTab()
 
         if  let sessionData = composer.webKitWrapper.sessionData, composer.tabViewModel.showWebView == true {
             Task {
@@ -100,6 +105,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
     func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
+        saveAsLastSelectedTab()
 
         if let sessionData = selectedTab.webKitWrapper.sessionData {
             Task {
@@ -118,6 +124,8 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
         }
 
         selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
+
+        saveAsLastSelectedTab()
         tabs.remove(at: index)
         persistTabOrder()
 
@@ -134,6 +142,18 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
     private func persistTabOrder() {
         let idStrings = tabs.map { $0.id.uuidString }
         UserDefaults.standard.set(idStrings, forKey: "ordered_tab_ids")
+    }
+
+    private func restoreLastSelectedTab() {
+        if let lastIDString = UserDefaults.standard.string(forKey: lastSelectedTabIDKey),
+           let lastID = UUID(uuidString: lastIDString),
+           let foundTab = tabs.first(where: { $0.id == lastID }) {
+            selectedTab = foundTab
+        }
+    }
+
+    private func saveAsLastSelectedTab() {
+        UserDefaults.standard.set(selectedTab.id.uuidString, forKey: lastSelectedTabIDKey)
     }
 }
 
