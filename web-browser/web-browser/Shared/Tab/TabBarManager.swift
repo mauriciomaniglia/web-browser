@@ -11,8 +11,8 @@ protocol TabBarStore: Sendable {
 
 @MainActor
 final class TabBarManager<T: TabBarStore>: ObservableObject {
-    @Published var tabs: [TabComposer] = []
-    @Published var selectedTab: TabComposer
+    @Published private(set) var tabs: [TabComposer] = []
+    @Published private(set) var selectedTab: TabComposer
 
     let windowViewModel: WindowViewModel
 
@@ -66,7 +66,6 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
                 )
 
                 tabs.append(composer)
-                selectedTab = composer
             }
 
             restoreLastSelectedTab()
@@ -84,7 +83,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
         tabs.append(composer)
         selectedTab = composer
-        saveAsLastSelectedTab()
+        saveLastSelectedTab(selectedTab.id.uuidString)
 
         if  let sessionData = composer.webKitWrapper.sessionData, composer.tabViewModel.showWebView == true {
             Task {
@@ -105,7 +104,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
     func didSelectTab(at index: Int) {
         selectedTab = tabs[index]
-        saveAsLastSelectedTab()
+        saveLastSelectedTab(selectedTab.id.uuidString)
 
         if let sessionData = selectedTab.webKitWrapper.sessionData {
             Task {
@@ -125,7 +124,7 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
 
         selectedTab = (index > 0) ? tabs[index - 1] : tabs[index + 1]
 
-        saveAsLastSelectedTab()
+        saveLastSelectedTab(selectedTab.id.uuidString)
         tabs.remove(at: index)
         persistTabOrder()
 
@@ -149,11 +148,12 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
            let lastID = UUID(uuidString: lastIDString),
            let foundTab = tabs.first(where: { $0.id == lastID }) {
             selectedTab = foundTab
+            print(lastIDString)
         }
     }
 
-    private func saveAsLastSelectedTab() {
-        UserDefaults.standard.set(selectedTab.id.uuidString, forKey: lastSelectedTabIDKey)
+    private func saveLastSelectedTab(_ id: String) {
+        UserDefaults.standard.set(id, forKey: lastSelectedTabIDKey)
     }
 }
 
