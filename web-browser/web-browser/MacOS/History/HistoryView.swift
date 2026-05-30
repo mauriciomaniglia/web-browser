@@ -7,34 +7,27 @@ struct HistoryView: View {
     @State private var isShowingDeleteAllHistoryAlert = false
 
     var body: some View {
-        searchBar
-        if hasPagesSelected {
-            selectedPagesBar
-        }
-        if isHistoryEmpty {
-            emptyList
-        } else {
-            historyList
+        VStack {
+            searchBar
+            if hasPagesSelected {
+                selectedPagesBar
+            }
+            if isHistoryEmpty {
+                emptyList
+            } else {
+                historyList
+            }
         }
     }
 
     var searchBar: some View {
         HStack {
-            backButton
             searchTextField
             deleteAllButton
         }
         .padding()
         .navigationTitle("History")
         .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
-    }
-
-    var backButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
-        }
     }
 
     var searchTextField: some View {
