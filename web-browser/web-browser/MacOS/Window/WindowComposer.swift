@@ -49,10 +49,10 @@ final class WindowComposer {
     func createNewWindow() -> WindowView {        
         tabBarManager.start()
 
-        let menu = MenuView(
-            bookmarkViewModel: bookmarkComposer.viewModel,
-            historyViewModel: historyComposer.viewModel
-        )
+//        let menu = MenuView(
+//            bookmarkViewModel: bookmarkComposer.viewModel,
+//            historyViewModel: historyComposer.viewModel
+//        )
         let tabsCollectionView = TabsCollectionView(
             tabBarManager: tabBarManager,
             layout: .init(
@@ -69,6 +69,11 @@ final class WindowComposer {
             tabsCollectionView: tabsCollectionView
         )
 
-        return WindowView(menu: menu, tabsCollectionBarView: tabsCollectionBarView, tabBarManager: tabBarManager)
+        return WindowView(
+            tabsCollectionBarView: tabsCollectionBarView,
+            tabBarManager: tabBarManager,
+            bookmarkViewModel: bookmarkComposer.viewModel,
+            historyViewModel: historyComposer.viewModel
+        )
     }
 }

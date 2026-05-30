@@ -1,19 +1,31 @@
 import SwiftUI
 
 struct WindowView: View {
-    let menu: MenuView
     let tabsCollectionBarView: TabsCollectionBarView
 
     @ObservedObject var tabBarManager: TabBarManager<TabSessionStore>
+    @ObservedObject var bookmarkViewModel: BookmarkViewModel
+    @ObservedObject var historyViewModel: HistoryViewModel  
+    @ObservedObject var menuViewModel = MenuViewModel()
 
     var body: some View {
         ZStack {
             NavigationSplitView {
-                menu
+                MenuView(menuViewModel: menuViewModel)
             } detail: {
-                VStack {
-                    tabsCollectionBarView
-                    selectedTabView
+                NavigationStack(path: $menuViewModel.path) {
+                    VStack {
+                        tabsCollectionBarView
+                        selectedTabView
+                    }
+                    .navigationDestination(for: MenuOption.self) { menuOption in
+                        switch menuOption {
+                        case .bookmarks:
+                            BookmarkView(viewModel: bookmarkViewModel)
+                        case .history:
+                            HistoryView(viewModel: historyViewModel)
+                        }
+                    }
                 }
             }
         }

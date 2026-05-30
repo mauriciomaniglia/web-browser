@@ -1,18 +1,18 @@
 import SwiftUI
 
 struct MenuView: View {
-    @ObservedObject var bookmarkViewModel: BookmarkViewModel
-    @ObservedObject var historyViewModel: HistoryViewModel
+    @ObservedObject var menuViewModel: MenuViewModel
 
     var body: some View {
         List {
-            NavigationLink(destination: BookmarkView(viewModel: bookmarkViewModel)) {
+            Button(action: menuViewModel.navigateToBookmarks) {
                 Label("Bookmarks", systemImage: "bookmark")
             }
-            NavigationLink(destination: HistoryView(viewModel: historyViewModel)) {
+            Button(action: menuViewModel.navigateToHistory) {
                 Label("History", systemImage: "clock.arrow.circlepath")
             }
         }
+        .buttonStyle(.borderless)
         .navigationSplitViewColumnWidth(min: 200, ideal: 200)
     }
 }
