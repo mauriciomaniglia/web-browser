@@ -54,6 +54,31 @@ public class HistorySwiftDataStore: HistoryStoreAPI {
         }
     }
 
+    public func getPages(after date: Date?, limit: Int) -> [WebPageModel] {
+        let predicate: Predicate<HistoryPage>?
+        if let cursorDate = date {
+            predicate = #Predicate<HistoryPage> { page in
+                page.date < cursorDate
+            }
+        } else {
+            predicate = nil
+        }
+        var fetchDescriptor = FetchDescriptor<HistoryPage>(
+            predicate: predicate,
+            sortBy: [
+                .init(\HistoryPage.date, order: .reverse)
+            ]
+        )
+        fetchDescriptor.fetchLimit = limit
+
+        do {
+            let results = try backgroundContext.fetch(fetchDescriptor)
+            return results.map { WebPageModel(id: $0.id, title: $0.title, url: $0.url, date: $0.date) }
+        } catch {
+            return []
+        }
+    }
+
     public func getPages(by searchTerm: String) -> [WebPageModel] {
         let predicate = #Predicate<HistoryPage> { page in
             page.title.contains(searchTerm) ||

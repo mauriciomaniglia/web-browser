@@ -21,6 +21,11 @@ class HistoryStoreMock: HistoryStoreAPI {
         return mockWebPages
     }
 
+    func getPages(after date: Date?, limit: Int) -> [Services.WebPageModel] {
+        receivedMessages.append(.getPages)
+        return mockWebPages
+    }
+
     func getPages(by searchTerm: String) -> [WebPageModel] {
         receivedMessages.append(.getPagesByTerm(searchTerm))
         return mockWebPages
