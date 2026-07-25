@@ -18,6 +18,10 @@ struct HistoryView: View {
                 historyList
             }
         }
+        .navigationTitle("History")
+        .task {
+            viewModel.delegate?.didOpenHistoryView()
+        }
     }
 
     var searchBar: some View {
@@ -26,8 +30,6 @@ struct HistoryView: View {
             deleteAllButton
         }
         .padding()
-        .navigationTitle("History")
-        .onAppear(perform: viewModel.delegate?.didOpenHistoryView)
     }
 
     var searchTextField: some View {

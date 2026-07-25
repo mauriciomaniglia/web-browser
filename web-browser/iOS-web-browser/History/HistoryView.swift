@@ -16,9 +16,6 @@ struct HistoryView: View {
                 historyList
             }
         }
-        .onAppear {
-            viewModel.delegate?.didOpenHistoryView()
-        }
         .navigationTitle("History")
         .toolbar {
             ToolbarItem {
@@ -27,6 +24,9 @@ struct HistoryView: View {
         }
         .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
             clearAllAlert
+        }
+        .task {
+            viewModel.delegate?.didOpenHistoryView()
         }
     }
 

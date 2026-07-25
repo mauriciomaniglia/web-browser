@@ -19,6 +19,9 @@ struct HistoryView: View {
         .padding()
         .frame(maxWidth: 500, maxHeight: 500)
         .background(Color(UIColor.systemGroupedBackground))
+        .task {
+            viewModel.delegate?.didOpenHistoryView()
+        }
     }
 
     var header: some View {
@@ -51,7 +54,6 @@ struct HistoryView: View {
         }
         .padding()
         .navigationTitle("History")
-        .onAppear(perform: viewModel.delegate?.didOpenHistoryView)        
         .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
             clearAllHistoryAlert
         }
