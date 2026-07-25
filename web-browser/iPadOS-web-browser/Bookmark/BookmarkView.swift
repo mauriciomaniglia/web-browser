@@ -17,9 +17,11 @@ struct BookmarkView: View {
         }
         .padding()
         .searchable(text: $viewModel.searchText, prompt: "Search Bookmark")
-        .onAppear(perform: viewModel.didOpenBookmarkView)
         .frame(maxWidth: 500, maxHeight: 500)
         .background(Color(UIColor.systemGroupedBackground))
+        .task {
+            viewModel.didOpenBookmarkView()
+        }
     }
 
     var header: some View {
