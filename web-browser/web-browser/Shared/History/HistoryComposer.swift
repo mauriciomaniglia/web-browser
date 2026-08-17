@@ -9,17 +9,17 @@ protocol HistoryUserActionDelegate {
 
 @MainActor
 class HistoryComposer {
-    let historyStore: HistorySwiftDataStore
+    let store: HistorySwiftDataStore
     let viewModel: HistoryViewModel
     let manager: HistoryManager<HistorySwiftDataStore>
     let adapter: HistoryAdapter
 
     var userActionDelegate: HistoryUserActionDelegate?
 
-    init(historyStore: HistorySwiftDataStore) {
+    init(store: HistorySwiftDataStore) {
         self.viewModel = HistoryViewModel()
-        self.historyStore = historyStore
-        self.manager = HistoryManager(store: historyStore)
+        self.store = store
+        self.manager = HistoryManager(store: store)
         self.adapter = HistoryAdapter(viewModel: viewModel, manager: manager)
 
         viewModel.delegate = self
@@ -40,10 +40,10 @@ extension HistoryComposer: HistoryViewModelDelegate {
     }
 
     func didTapDeletePages(_ pages: [UUID]) {
-        historyStore.deletePages(withIDs: pages)
+        store.deletePages(withIDs: pages)
     }
 
     func didTapDeleteAllPages() {
-        historyStore.deleteAllPages()
+        store.deleteAllPages()
     }
 }

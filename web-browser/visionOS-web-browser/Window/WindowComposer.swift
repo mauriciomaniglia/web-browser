@@ -30,7 +30,7 @@ final class WindowComposer {
         self.historyStore = HistorySwiftDataStore(container: container)
         self.bookmarkStore = BookmarkSwiftDataStore(container: container)
 
-        self.historyComposer = HistoryComposer(historyStore: historyStore)
+        self.historyComposer = HistoryComposer(store: historyStore)
         self.bookmarkComposer = BookmarkComposer(bookmarkStore: bookmarkStore)
         self.searchSuggestionComposer = SearchSuggestionComposer(historyStore: historyStore, bookmarkStore: bookmarkStore)
 
