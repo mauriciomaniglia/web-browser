@@ -2,19 +2,19 @@ import Foundation
 
 @MainActor
 public class HistoryManager<T: HistoryStoreAPI> {
-    private let historyStore: T
+    private let store: T
 
-    public init(historyStore: T) {
-        self.historyStore = historyStore
+    public init(store: T) {
+        self.store = store
     }
 
     public func didOpenHistoryView() -> HistoryViewData {
-        let pages = historyStore.getPages()
+        let pages = store.getPages()
         return convertToPresentableModel(pages)
     }
 
     public func didSearchTerm(_ term: String) async -> HistoryViewData {
-        let pages = term.isEmpty ? historyStore.getPages() : historyStore.getPages(by: term)
+        let pages = term.isEmpty ? store.getPages() : store.getPages(by: term)
         return convertToPresentableModel(pages)
     }
 

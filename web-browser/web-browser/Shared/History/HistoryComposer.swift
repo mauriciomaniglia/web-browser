@@ -19,7 +19,7 @@ class HistoryComposer {
     init(historyStore: HistorySwiftDataStore) {
         self.viewModel = HistoryViewModel()
         self.historyStore = historyStore
-        self.manager = HistoryManager(historyStore: historyStore)
+        self.manager = HistoryManager(store: historyStore)
         self.adapter = HistoryAdapter(viewModel: viewModel, manager: manager)
 
         viewModel.delegate = self
