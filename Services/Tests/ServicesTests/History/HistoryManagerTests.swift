@@ -60,7 +60,7 @@ struct HistoryManagerTests {
 
     private func makeSUT() -> (sut: HistoryManager<HistoryStoreMock>, historyStore: HistoryStoreMock) {
         let historyStore = HistoryStoreMock()
-        let sut = HistoryManager(historyStore: historyStore)
+        let sut = HistoryManager(store: historyStore)
 
         return (sut, historyStore)
     }
