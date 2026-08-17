@@ -18,8 +18,8 @@ class HistoryAdapter {
 
     func didSearchTerm(_ query: String) {
         Task { 
-            let model = await manager.didSearchTerm(query)
-            mapViewData(model)
+            let viewData = await manager.loadViewData(from: query)
+            mapViewData(viewData)
         }
     }
 

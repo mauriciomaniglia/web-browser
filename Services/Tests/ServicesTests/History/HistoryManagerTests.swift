@@ -31,7 +31,7 @@ struct HistoryManagerTests {
     }
 
     @Test("Searching with a term queries the store and returns formatted results")
-    func didSearchTerm_deliversCorrectResult() async {
+    func loadViewDataFrom_deliversCorrectResult() async {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -39,20 +39,20 @@ struct HistoryManagerTests {
         let page = WebPageModel(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
         history.mockWebPages = [page]
 
-        let presentableModel = await sut.didSearchTerm("test")
+        let viewData = await sut.loadViewData(from: "test")
 
         #expect(history.receivedMessages == [.getPagesByTerm("test")])
-        #expect(presentableModel.list?.first?.pages[0].title == "07:00 - title 1")
-        #expect(presentableModel.list?.first?.pages[0].url == URL(string:"http://page1.com")!)
+        #expect(viewData.list?.first?.pages[0].title == "07:00 - title 1")
+        #expect(viewData.list?.first?.pages[0].url == URL(string:"http://page1.com")!)
     }
 
     @Test("Searching with an empty term returns no results and fetches all pages")
-    func didSearchTerm_withEmptyTerm_sendsCorrectMessage() async {
+    func loadViewDataFrom_withEmptyTerm_sendsCorrectMessage() async {
         let (sut, history) = makeSUT()
 
-        let presentableModel = await sut.didSearchTerm("")
+        let viewData = await sut.loadViewData(from: "")
 
-        #expect(presentableModel.list == [])
+        #expect(viewData.list == [])
         #expect(history.receivedMessages == [.getPages])
     }
 
