@@ -12,8 +12,8 @@ class HistoryAdapter {
     }
 
     func didOpenHistoryView() {
-        let model = manager.didOpenHistoryView()
-        mapViewData(model)
+        let viewData = manager.loadViewData()
+        mapViewData(viewData)
     }
 
     func didSearchTerm(_ query: String) {

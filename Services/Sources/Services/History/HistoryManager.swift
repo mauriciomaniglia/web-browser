@@ -8,7 +8,7 @@ public class HistoryManager<T: HistoryStoreAPI> {
         self.store = store
     }
 
-    public func didOpenHistoryView() -> HistoryViewData {
+    public func loadViewData() -> HistoryViewData {
         let pages = store.getPages()
         return convertToPresentableModel(pages)
     }

@@ -7,7 +7,7 @@ import Testing
 struct HistoryManagerTests {
 
     @Test("Opening history groups pages by day and sorts today by time")
-    func didOpenHistoryView_deliversCorrectResult() {
+    func loadViewData_deliversCorrectResult() {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -19,15 +19,15 @@ struct HistoryManagerTests {
         let page3 = WebPageModel(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
         history.mockWebPages = [page1, page2, page3]
 
-        let presentableModel = sut.didOpenHistoryView()
+        let viewData = sut.loadViewData()
 
         #expect(history.receivedMessages == [.getPages])
-        #expect(presentableModel.list?.first?.pages[0].title == "12:00 - title 2")
-        #expect(presentableModel.list?.first?.pages[0].url == URL(string:"http://page2.com")!)
-        #expect(presentableModel.list?.first?.pages[1].title == "07:00 - title 1")
-        #expect(presentableModel.list?.first?.pages[1].url == URL(string:"http://page1.com")!)
-        #expect(presentableModel.list?.last?.pages[0].title == "12:00 - http://page3.com")
-        #expect(presentableModel.list?.last?.pages[0].url == URL(string:"http://page3.com")!)
+        #expect(viewData.list?.first?.pages[0].title == "12:00 - title 2")
+        #expect(viewData.list?.first?.pages[0].url == URL(string:"http://page2.com")!)
+        #expect(viewData.list?.first?.pages[1].title == "07:00 - title 1")
+        #expect(viewData.list?.first?.pages[1].url == URL(string:"http://page1.com")!)
+        #expect(viewData.list?.last?.pages[0].title == "12:00 - http://page3.com")
+        #expect(viewData.list?.last?.pages[0].url == URL(string:"http://page3.com")!)
     }
 
     @Test("Searching with a term queries the store and returns formatted results")
