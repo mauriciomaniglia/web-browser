@@ -10,15 +10,15 @@ public class HistoryManager<T: HistoryStoreAPI> {
 
     public func loadViewData() -> HistoryViewData {
         let pages = store.getPages()
-        return convertToPresentableModel(pages)
+        return getViewData(from: pages)
     }
 
     public func loadViewData(from term: String) async -> HistoryViewData {
         let pages = term.isEmpty ? store.getPages() : store.getPages(by: term)
-        return convertToPresentableModel(pages)
+        return getViewData(from: pages)
     }
 
-    private func convertToPresentableModel(_ pages: [WebPageModel]) -> HistoryViewData {
+    private func getViewData(from pages: [WebPageModel]) -> HistoryViewData {
         let groupedPages = Dictionary(grouping: pages, by: { Calendar.current.startOfDay(for: $0.date) })
         let sortedGroups = groupedPages.sorted(by: { lhs, rhs in
             lhs.key.compare(rhs.key) == .orderedDescending
@@ -27,19 +27,20 @@ public class HistoryManager<T: HistoryStoreAPI> {
             pages.sorted(by: { $0.date > $1.date })
         }
 
-        let model = HistoryViewData(list: mapSections(groupPagesSorted))
+        let model = HistoryViewData(list: getViewDataSections(from: groupPagesSorted))
 
         return model
     }
 
-    private func mapSections(_ pages: [[WebPageModel]]) -> [HistoryViewData.Section] {
+    private func getViewDataSections(from pages: [[WebPageModel]]) -> [HistoryViewData.Section] {
         pages.map {
             let title = $0.first?.date.relativeTimeString() ?? ""
-            return HistoryViewData.Section(title: title, pages: mapPages($0))
+            let pages = getViewDataPages($0)
+            return HistoryViewData.Section(title: title, pages: pages)
         }
     }
 
-    private func mapPages(_ pages: [WebPageModel]) -> [HistoryViewData.Page] {
+    private func getViewDataPages(_ pages: [WebPageModel]) -> [HistoryViewData.Page] {
         pages.map {
             let title = $0.title ?? ""
             let dateAndTitle = $0.date.formattedTime() + " - " + title
