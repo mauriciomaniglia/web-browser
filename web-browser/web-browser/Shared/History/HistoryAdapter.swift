@@ -18,7 +18,7 @@ class HistoryAdapter {
 
     func didSearchTerm(_ query: String) {
         Task { 
-            let viewData = await manager.loadViewData(from: query)
+            let viewData = manager.loadViewData(from: query)
             mapViewData(viewData)
         }
     }

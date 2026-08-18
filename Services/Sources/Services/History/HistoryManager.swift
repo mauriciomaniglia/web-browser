@@ -13,7 +13,7 @@ public class HistoryManager<T: HistoryStoreAPI> {
         return getViewData(from: pages)
     }
 
-    public func loadViewData(from term: String) async -> HistoryViewData {
+    public func loadViewData(from term: String) -> HistoryViewData {
         let pages = term.isEmpty ? store.getPages() : store.getPages(by: term)
         return getViewData(from: pages)
     }
