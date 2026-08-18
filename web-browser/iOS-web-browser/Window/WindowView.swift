@@ -117,7 +117,6 @@ struct WindowContent: View {
             historyViewModel: historyViewModel,
             isPresented: $isShowingSheet
         )
-        .presentationDetents([.fraction(0.3), .large])
     }
 
     var addBookmarkAlert: some View {
