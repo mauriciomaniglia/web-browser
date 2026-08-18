@@ -26,10 +26,7 @@ public class HistoryManager<T: HistoryStoreAPI> {
         let groupPagesSorted: [[WebPageModel]] = sortedGroups.map { _, pages in
             pages.sorted(by: { $0.date > $1.date })
         }
-
-        let model = HistoryViewData(list: getViewDataSections(from: groupPagesSorted))
-
-        return model
+        return HistoryViewData(list: getViewDataSections(from: groupPagesSorted))
     }
 
     private func getViewDataSections(from pages: [[WebPageModel]]) -> [HistoryViewData.Section] {
@@ -45,7 +42,6 @@ public class HistoryManager<T: HistoryStoreAPI> {
             let title = $0.title ?? ""
             let dateAndTitle = $0.date.formattedTime() + " - " + title
             let dateAndURL = $0.date.formattedTime() + " - " + $0.url.absoluteString
-
             return HistoryViewData.Page(id: $0.id, title: title.isEmpty ? dateAndURL : dateAndTitle, url: $0.url)
         }
     }
