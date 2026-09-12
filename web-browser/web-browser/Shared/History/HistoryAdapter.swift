@@ -11,11 +11,6 @@ class HistoryAdapter {
         self.manager = manager
     }
 
-    func didOpenHistoryView() {
-        let viewData = manager.loadViewData()
-        mapViewData(viewData)
-    }
-
     func didSearchTerm(_ query: String) {
         Task { 
             let viewData = manager.loadViewData(from: query)

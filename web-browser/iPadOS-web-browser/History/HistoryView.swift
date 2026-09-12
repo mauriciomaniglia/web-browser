@@ -19,9 +19,6 @@ struct HistoryView: View {
         .padding()
         .frame(maxWidth: 500, maxHeight: 500)
         .background(Color(UIColor.systemGroupedBackground))
-        .task {
-            viewModel.delegate?.didOpenHistoryView()
-        }
     }
 
     var header: some View {

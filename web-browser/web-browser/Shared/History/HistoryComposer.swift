@@ -27,9 +27,6 @@ class HistoryComposer {
 }
 
 extension HistoryComposer: HistoryViewModelDelegate {
-    func didOpenHistoryView() {
-        adapter.didOpenHistoryView()
-    }
 
     func didSearchTerm(_ query: String) {
         adapter.didSearchTerm(query)

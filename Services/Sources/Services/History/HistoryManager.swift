@@ -2,18 +2,24 @@ import Foundation
 
 public class HistoryManager<T: HistoryStoreAPI> {
     private let store: T
+    private var pages: [WebPageModel] = []
+    private var lastQuery: String = ""
 
     public init(store: T) {
         self.store = store
     }
 
-    public func loadViewData() -> HistoryViewData {
-        let pages = store.getPages()
-        return getViewData(from: pages)
-    }
-
     public func loadViewData(from term: String) -> HistoryViewData {
-        let pages = term.isEmpty ? store.getPages() : store.getPages(by: term)
+        if term.isEmpty && pages.isEmpty {
+            pages = store.getPages(after: nil, limit: 100, query: nil)
+        } else if term.isEmpty && pages.isEmpty == false {
+            pages += store.getPages(after: pages.last?.date, limit: 100, query: nil)
+        } else if term == lastQuery && pages.isEmpty == false {
+            pages = store.getPages(after: pages.last?.date, limit: 100, query: term)
+        } else {
+            lastQuery = term
+            pages = store.getPages(after: nil, limit: 100, query: term)
+        }
         return getViewData(from: pages)
     }
 

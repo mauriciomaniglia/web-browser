@@ -19,9 +19,9 @@ struct HistoryManagerTests {
         let page3 = WebPageModel(title: "", url: URL(string: "http://page3.com")!, date: yesterday)
         history.mockWebPages = [page1, page2, page3]
 
-        let viewData = sut.loadViewData()
+        let viewData = sut.loadViewData(from: "test")
 
-        #expect(history.receivedMessages == [.getPages])
+        #expect(history.receivedMessages == [.getPagesByTerm("test")])
         #expect(viewData.list?.first?.pages[0].title == "12:00 - title 2")
         #expect(viewData.list?.first?.pages[0].url == URL(string:"http://page2.com")!)
         #expect(viewData.list?.first?.pages[1].title == "07:00 - title 1")
@@ -31,7 +31,7 @@ struct HistoryManagerTests {
     }
 
     @Test("Searching with a term queries the store and returns formatted results")
-    func loadViewDataFrom_deliversCorrectResult() async {
+    func loadViewDataFrom_deliversCorrectResult() {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -39,7 +39,7 @@ struct HistoryManagerTests {
         let page = WebPageModel(title: "title 1", url: URL(string: "http://page1.com")!, date: earlyToday)
         history.mockWebPages = [page]
 
-        let viewData = await sut.loadViewData(from: "test")
+        let viewData = sut.loadViewData(from: "test")
 
         #expect(history.receivedMessages == [.getPagesByTerm("test")])
         #expect(viewData.list?.first?.pages[0].title == "07:00 - title 1")
@@ -47,13 +47,13 @@ struct HistoryManagerTests {
     }
 
     @Test("Searching with an empty term returns no results and fetches all pages")
-    func loadViewDataFrom_withEmptyTerm_sendsCorrectMessage() async {
+    func loadViewDataFrom_withEmptyTerm_sendsCorrectMessage() {
         let (sut, history) = makeSUT()
 
-        let viewData = await sut.loadViewData(from: "")
+        let viewData = sut.loadViewData(from: "")
 
         #expect(viewData.list == [])
-        #expect(history.receivedMessages == [.getPages])
+        #expect(history.receivedMessages == [.getPagesByTerm(nil)])
     }
 
     // MARK: - Helpers

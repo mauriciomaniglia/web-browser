@@ -54,15 +54,33 @@ public class HistorySwiftDataStore: HistoryStoreAPI {
         }
     }
 
-    public func getPages(after date: Date?, limit: Int) -> [WebPageModel] {
+    public func getPages(after date: Date?, limit: Int, query: String?) -> [WebPageModel] {
         let predicate: Predicate<HistoryPage>?
-        if let cursorDate = date {
+
+        let searchQuery = query?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let hasQuery = searchQuery != nil && !searchQuery!.isEmpty
+        let search = searchQuery ?? ""
+
+        if let cursorDate = date, hasQuery {
+            predicate = #Predicate<HistoryPage> { page in
+                page.date < cursorDate && (
+                    page.title.contains(search) ||
+                    page.urlString.contains(search)
+                )
+            }
+        } else if let cursorDate = date {
             predicate = #Predicate<HistoryPage> { page in
                 page.date < cursorDate
+            }
+        } else if hasQuery {
+            predicate = #Predicate<HistoryPage> { page in
+                page.title.contains(search) ||
+                page.urlString.contains(search)
             }
         } else {
             predicate = nil
         }
+
         var fetchDescriptor = FetchDescriptor<HistoryPage>(
             predicate: predicate,
             sortBy: [

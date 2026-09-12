@@ -19,9 +19,6 @@ struct HistoryView: View {
             }
         }
         .navigationTitle("History")
-        .task {
-            viewModel.delegate?.didOpenHistoryView()
-        }
     }
 
     var searchBar: some View {

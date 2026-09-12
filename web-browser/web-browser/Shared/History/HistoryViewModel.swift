@@ -3,7 +3,6 @@ import Combine
 
 @MainActor
 protocol HistoryViewModelDelegate: AnyObject {
-    func didOpenHistoryView()
     func didSearchTerm(_ query: String)
     func didSelectPage(_ pageURL: URL)
     func didTapDeletePages(_ pages: [UUID])
