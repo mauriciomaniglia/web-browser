@@ -107,6 +107,9 @@ struct HistoryView: View {
                                     viewModel.delegate?.didSelectPage(page.url)
                                     dismiss()
                                 }
+                                .onAppear {
+                                    viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                                }
                         }
                         .toggleStyle(.automatic)
                         .padding()

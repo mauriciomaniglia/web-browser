@@ -116,6 +116,9 @@ struct HistoryView: View {
                         NSCursor.pop()
                     }
                 }
+                .onAppear {
+                    viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                }
         }
         .toggleStyle(CheckboxToggleStyle())
         .padding()

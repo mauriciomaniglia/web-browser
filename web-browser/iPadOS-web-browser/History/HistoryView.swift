@@ -100,6 +100,9 @@ struct HistoryView: View {
                                 viewModel.delegate?.didSelectPage(page.url)
                                 isShowingHistory.toggle()
                             }
+                            .onAppear {
+                                viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                            }
                     }
                     .onDelete { offsets in
                         viewModel.deletePages(at: offsets, inSection: index)
