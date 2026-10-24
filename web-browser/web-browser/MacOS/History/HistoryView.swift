@@ -19,6 +19,12 @@ struct HistoryView: View {
             }
         }
         .navigationTitle("History")
+        .task {
+            viewModel.delegate?.didSearchTerm(searchText)
+        }
+        .onDisappear {
+            viewModel.delegate?.didCloseHistory()
+        }
     }
 
     var searchBar: some View {

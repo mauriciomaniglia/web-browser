@@ -7,6 +7,7 @@ protocol HistoryViewModelDelegate: AnyObject {
     func didSelectPage(_ pageURL: URL)
     func didTapDeletePages(_ pages: [UUID])
     func didTapDeleteAllPages()
+    func didCloseHistory()
 }
 
 @MainActor

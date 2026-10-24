@@ -56,6 +56,19 @@ struct HistoryManagerTests {
         #expect(history.receivedMessages == [.getPagesByTerm(nil)])
     }
 
+    @Test("Cleaning the history removes previous search data")
+    func clearHistory_removesPreviousSearchData() {
+        let (sut, history) = makeSUT()
+        let page = WebPageModel(title: "any title", url: URL(string: "http://example.com")!, date: .now)
+        history.mockWebPages = [page]
+
+        _ = sut.loadViewData(from: "some query")
+        sut.clearHistory()
+
+        #expect(sut.pages.isEmpty)
+        #expect(sut.lastQuery.isEmpty)
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: HistoryManager<HistoryStoreMock>, historyStore: HistoryStoreMock) {

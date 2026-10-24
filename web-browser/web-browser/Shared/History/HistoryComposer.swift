@@ -43,4 +43,8 @@ extension HistoryComposer: HistoryViewModelDelegate {
     func didTapDeleteAllPages() {
         store.deleteAllPages()
     }
+
+    func didCloseHistory() {
+        manager.clearHistory()
+    }
 }

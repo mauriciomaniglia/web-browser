@@ -2,8 +2,8 @@ import Foundation
 
 public class HistoryManager<T: HistoryStoreAPI> {
     private let store: T
-    private var pages: [WebPageModel] = []
-    private var lastQuery: String = ""
+    private(set) var pages: [WebPageModel] = []
+    private(set) var lastQuery: String = ""
 
     public init(store: T) {
         self.store = store
@@ -21,6 +21,11 @@ public class HistoryManager<T: HistoryStoreAPI> {
             pages = store.getPages(after: nil, limit: 100, query: term)
         }
         return getViewData(from: pages)
+    }
+
+    public func clearHistory() {
+        pages = []
+        lastQuery = ""
     }
 
     private func getViewData(from pages: [WebPageModel]) -> HistoryViewData {

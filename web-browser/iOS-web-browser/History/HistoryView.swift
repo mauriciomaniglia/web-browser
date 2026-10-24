@@ -25,6 +25,12 @@ struct HistoryView: View {
         .alert(isPresented: $isShowingDeleteAllHistoryAlert) {
             clearAllAlert
         }
+        .task {
+            viewModel.delegate?.didSearchTerm(searchText)
+        }
+        .onDisappear {
+            viewModel.delegate?.didCloseHistory()
+        }
     }
 
     var searchBar: some View {
