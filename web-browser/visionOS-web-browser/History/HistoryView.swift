@@ -52,6 +52,8 @@ struct HistoryView: View {
                 try? await Task.sleep(for: .milliseconds(300))
                 viewModel.delegate?.didSearchTerm(searchText)
             }
+            .autocorrectionDisabled(true)
+            .textInputAutocapitalization(.never)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
     }
