@@ -63,7 +63,7 @@ struct HistoryView: View {
                                 isPresented = false
                             }
                             .onAppear {
-                                viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                                viewModel.verifyMoreItemsToFetch(lastVisibleItem: page, query: searchText)
                             }
                     }
                     .onDelete { offsets in

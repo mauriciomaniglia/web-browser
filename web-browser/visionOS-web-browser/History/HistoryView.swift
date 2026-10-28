@@ -114,7 +114,7 @@ struct HistoryView: View {
                                     dismiss()
                                 }
                                 .onAppear {
-                                    viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                                    viewModel.verifyMoreItemsToFetch(lastVisibleItem: page, query: searchText)
                                 }
                         }
                         .toggleStyle(.automatic)

@@ -81,8 +81,12 @@ class HistoryViewModel: ObservableObject {
         historyList.removeAll()
     }
 
-    func verifyMoreItemsToFetch(lastVisibleItem: Page) {
-        print("Check more items")
+    func verifyMoreItemsToFetch(lastVisibleItem: Page, query: String) {
+        let lastItem = historyList.last?.pages.last
+
+        if lastVisibleItem == lastItem {
+            delegate?.didSearchTerm(query)
+        }
     }
 
     private func removeSectionsThatHaveNoPagesLeft() {

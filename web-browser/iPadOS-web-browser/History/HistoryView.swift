@@ -107,7 +107,7 @@ struct HistoryView: View {
                                 isShowingHistory.toggle()
                             }
                             .onAppear {
-                                viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                                viewModel.verifyMoreItemsToFetch(lastVisibleItem: page, query: searchText)
                             }
                     }
                     .onDelete { offsets in

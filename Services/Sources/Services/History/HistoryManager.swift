@@ -15,7 +15,7 @@ public class HistoryManager<T: HistoryStoreAPI> {
         } else if term.isEmpty && pages.isEmpty == false {
             pages += store.getPages(after: pages.last?.date, limit: 100, query: nil)
         } else if term == lastQuery && pages.isEmpty == false {
-            pages = store.getPages(after: pages.last?.date, limit: 100, query: term)
+            pages += store.getPages(after: pages.last?.date, limit: 100, query: term)
         } else {
             lastQuery = term
             pages = store.getPages(after: nil, limit: 100, query: term)

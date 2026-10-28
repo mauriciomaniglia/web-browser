@@ -123,7 +123,7 @@ struct HistoryView: View {
                     }
                 }
                 .onAppear {
-                    viewModel.verifyMoreItemsToFetch(lastVisibleItem: page)
+                    viewModel.verifyMoreItemsToFetch(lastVisibleItem: page, query: searchText)
                 }
         }
         .toggleStyle(CheckboxToggleStyle())
