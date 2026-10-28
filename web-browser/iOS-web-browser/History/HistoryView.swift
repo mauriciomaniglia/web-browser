@@ -39,6 +39,8 @@ struct HistoryView: View {
                 .onChange(of: searchText, { _, newValue in
                     viewModel.delegate?.didSearchTerm(newValue)
                 })
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
         }
