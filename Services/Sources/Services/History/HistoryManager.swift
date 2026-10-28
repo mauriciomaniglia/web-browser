@@ -10,7 +10,7 @@ public class HistoryManager<T: HistoryStoreAPI> {
     }
 
     public func loadViewData(from term: String) -> HistoryViewData {
-        if term.isEmpty && pages.isEmpty {
+        if (term.isEmpty && pages.isEmpty) || (term.isEmpty && lastQuery != "") {
             pages = store.getPages(after: nil, limit: 100, query: nil)
         } else if term.isEmpty && pages.isEmpty == false {
             pages += store.getPages(after: pages.last?.date, limit: 100, query: nil)
