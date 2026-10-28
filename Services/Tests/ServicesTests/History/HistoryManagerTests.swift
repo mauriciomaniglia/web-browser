@@ -31,7 +31,7 @@ struct HistoryManagerTests {
     }
 
     @Test("Searching with a term queries the store and returns formatted results")
-    func loadViewDataFrom_deliversCorrectResult() {
+    func loadViewData_withNonEmptyQuery_deliversCorrectResult() {
         let (sut, history) = makeSUT()
         let calendar = Calendar.current
         let time = DateComponents(hour: 12, minute: 0, second: 0)
@@ -47,7 +47,7 @@ struct HistoryManagerTests {
     }
 
     @Test("Searching with an empty term returns no results and fetches all pages")
-    func loadViewDataFrom_withEmptyTerm_sendsCorrectMessage() {
+    func loadViewData_withEmptyTerm_sendsCorrectMessage() {
         let (sut, history) = makeSUT()
 
         let viewData = sut.loadViewData(from: "")
