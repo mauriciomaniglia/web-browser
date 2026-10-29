@@ -3,6 +3,7 @@ import Services
 
 class HistoryStoreMock: HistoryStoreAPI {
     enum Message: Equatable {
+        case getPages(date: Date?, query: String?)
         case getPagesByTerm(String?)
         case deletePages([UUID])
         case deleteAllPages
@@ -16,7 +17,7 @@ class HistoryStoreMock: HistoryStoreAPI {
     }
 
     func getPages(after date: Date?, limit: Int, query: String?) -> [WebPageModel] {
-        receivedMessages.append(.getPagesByTerm(query))
+        receivedMessages.append(.getPages(date: date, query: query))
         return mockWebPages
     }
 

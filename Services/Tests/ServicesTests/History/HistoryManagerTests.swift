@@ -21,7 +21,7 @@ struct HistoryManagerTests {
 
         let viewData = sut.loadViewData(from: "test")
 
-        #expect(history.receivedMessages == [.getPagesByTerm("test")])
+        #expect(history.receivedMessages == [.getPages(date: nil, query: "test")])
         #expect(viewData.list?.first?.pages[0].title == "12:00 - title 2")
         #expect(viewData.list?.first?.pages[0].url == URL(string:"http://page2.com")!)
         #expect(viewData.list?.first?.pages[1].title == "07:00 - title 1")
@@ -41,7 +41,7 @@ struct HistoryManagerTests {
 
         let viewData = sut.loadViewData(from: "test")
 
-        #expect(history.receivedMessages == [.getPagesByTerm("test")])
+        #expect(history.receivedMessages == [.getPages(date: nil, query: "test")])
         #expect(viewData.list?.first?.pages[0].title == "07:00 - title 1")
         #expect(viewData.list?.first?.pages[0].url == URL(string:"http://page1.com")!)
     }
@@ -53,7 +53,7 @@ struct HistoryManagerTests {
         let viewData = sut.loadViewData(from: "")
 
         #expect(viewData.list == [])
-        #expect(history.receivedMessages == [.getPagesByTerm(nil)])
+        #expect(history.receivedMessages == [.getPages(date: nil, query: nil)])
     }
 
     @Test("Cleaning the history removes previous search data")
