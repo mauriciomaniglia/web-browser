@@ -12,14 +12,17 @@ class TabViewModel: ObservableObject {
 
     private let webBrowser: WebEngineContract
     private let manager: TabManagerAPI
-    private let windowViewModel: WindowViewModel
+    private let searchSuggestionComposer: SearchSuggestionComposer
 
     var didTapNewTab: (() -> Void)?
 
-    init(webBrowser: WebEngineContract, manager: TabManagerAPI, windowViewModel: WindowViewModel) {
+    init(webBrowser: WebEngineContract,
+         manager: TabManagerAPI,
+         searchSuggestionComposer: SearchSuggestionComposer)
+    {
         self.webBrowser = webBrowser
         self.manager = manager
-        self.windowViewModel = windowViewModel
+        self.searchSuggestionComposer = searchSuggestionComposer
     }
 
     @Published var isBackButtonDisabled: Bool = true
@@ -94,7 +97,7 @@ class TabViewModel: ObservableObject {
     var didChangeFocus: ((Bool) -> Void)?
 
     func didStartTyping(oldText: String, newText: String) {
-        windowViewModel.searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
+        searchSuggestionComposer.viewModel.delegate?.didStartTyping(newText)
         if let viewData = manager.didStartTyping(oldText: oldText, newText: newText) {
             mapViewData(viewData)
         }

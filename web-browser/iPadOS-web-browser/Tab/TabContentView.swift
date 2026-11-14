@@ -2,7 +2,10 @@ import SwiftUI
 
 struct TabContentView: View {
     @ObservedObject var tabViewModel: TabViewModel
-    @ObservedObject var windowViewModel: WindowViewModel
+
+    let searchSuggestionComposer: SearchSuggestionComposer
+    let bookmarkComposer: BookmarkComposer
+    let historyComposer: HistoryComposer
 
     @State var isShowingMenu: Bool = false
     @State var isShowingBookmarks: Bool = false
@@ -35,7 +38,7 @@ struct TabContentView: View {
     }
 
     var searchSuggestions: some View {
-        SearchSuggestionView(viewModel: windowViewModel.searchSuggestionComposer.viewModel)
+        SearchSuggestionView(viewModel: searchSuggestionComposer.viewModel)
             .frame(width: 550)
             .offset(y: 55)
             .zIndex(2)
@@ -80,7 +83,7 @@ struct TabContentView: View {
         Group {
             AddBookmarkView(
                 tabViewModel: tabViewModel,
-                bookmarkViewModel: windowViewModel.bookmarkComposer.viewModel,
+                bookmarkViewModel: bookmarkComposer.viewModel,
                 bookmarkName: tabViewModel.title,
                 bookmarkURL: tabViewModel.fullURL
             )
@@ -91,7 +94,7 @@ struct TabContentView: View {
 
     var bookmarkAlert: some View {
         Group {
-            BookmarkView(viewModel: windowViewModel.bookmarkComposer.viewModel, isShowingBookmarks: $isShowingBookmarks)
+            BookmarkView(viewModel: bookmarkComposer.viewModel, isShowingBookmarks: $isShowingBookmarks)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black.opacity(0.3))
@@ -99,7 +102,7 @@ struct TabContentView: View {
 
     var historyAlert: some View {
         Group {
-            HistoryView(viewModel: windowViewModel.historyComposer.viewModel, isShowingHistory: $isShowingHistory)
+            HistoryView(viewModel: historyComposer.viewModel, isShowingHistory: $isShowingHistory)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black.opacity(0.3))

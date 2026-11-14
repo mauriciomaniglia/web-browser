@@ -16,7 +16,6 @@ final class WindowComposer {
 
     let tabSessionStore: TabSessionStore
     let tabBarManager: TabBarManager<TabSessionStore>
-    let windowViewModel: WindowViewModel
 
     init() {
         do {
@@ -34,16 +33,13 @@ final class WindowComposer {
         self.bookmarkComposer = BookmarkComposer(bookmarkStore: bookmarkStore)
         self.searchSuggestionComposer = SearchSuggestionComposer(historyStore: historyStore, bookmarkStore: bookmarkStore)
 
-        self.windowViewModel = WindowViewModel(
-            historyStore: historyStore,
-            historyComposer: historyComposer,
-            bookmarkComposer: bookmarkComposer,
-            searchSuggestionComposer: searchSuggestionComposer,
-            safelistStore: safelistStore
-        )
-
         self.tabSessionStore = TabSessionStore()
-        self.tabBarManager = TabBarManager(windowViewModel: windowViewModel, tabBarStore: tabSessionStore)
+        self.tabBarManager = TabBarManager(historyStore: historyStore,
+                                           historyComposer: historyComposer,
+                                           bookmarkComposer: bookmarkComposer,
+                                           searchSuggestionComposer: searchSuggestionComposer,
+                                           safelistStore: safelistStore,
+                                           tabBarStore: tabSessionStore)
     }
 
     func createNewWindow() -> WindowView {        

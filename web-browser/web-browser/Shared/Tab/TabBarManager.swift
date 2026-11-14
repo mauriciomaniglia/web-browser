@@ -2,6 +2,7 @@ import SwiftData
 import WebKit
 import Combine
 import Services
+import StorageServices
 
 protocol TabBarStore: Sendable {
     func getTabSessions() async -> [String: Data]?
@@ -14,26 +15,43 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
     @Published private(set) var tabs: [TabComposer] = []
     @Published private(set) var selectedTab: TabComposer
 
-    let windowViewModel: WindowViewModel
-
+    let historyStore: HistorySwiftDataStore
+    let historyComposer: HistoryComposer
+    let bookmarkComposer: BookmarkComposer
+    let searchSuggestionComposer: SearchSuggestionComposer
+    let safelistStore: SafelistStore
     let tabBarStore: T
 
     private let lastSelectedTabIDKey = "last_selected_tab_id"
 
-    init(windowViewModel: WindowViewModel, tabBarStore: T) {
-        self.windowViewModel = windowViewModel
+    init(historyStore: HistorySwiftDataStore,
+         historyComposer: HistoryComposer,
+         bookmarkComposer: BookmarkComposer,
+         searchSuggestionComposer: SearchSuggestionComposer,
+         safelistStore: SafelistStore,
+         tabBarStore: T)
+    {
+        self.historyStore = historyStore
+        self.historyComposer = historyComposer
+        self.bookmarkComposer = bookmarkComposer
+        self.searchSuggestionComposer = searchSuggestionComposer
+        self.safelistStore = safelistStore
         self.tabBarStore = tabBarStore
 
         let webKitWrapper = WebKitEngineWrapper()
         self.selectedTab = TabComposer(
             userActionDelegate: nil,
             webKitWrapper: webKitWrapper,
-            windowViewModel: windowViewModel
+            historyStore: historyStore,
+            historyComposer: historyComposer,
+            bookmarkComposer: bookmarkComposer,
+            searchSuggestionComposer: searchSuggestionComposer,
+            safelistStore: safelistStore
         )
 
-        windowViewModel.historyComposer.userActionDelegate = self
-        windowViewModel.bookmarkComposer.viewModel.userActionDelegate = self
-        windowViewModel.searchSuggestionComposer.userActionDelegate = self
+        historyComposer.userActionDelegate = self
+        bookmarkComposer.viewModel.userActionDelegate = self
+        searchSuggestionComposer.userActionDelegate = self
     }
 
     func start() {
@@ -62,7 +80,11 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
                     tabID: UUID(uuidString: tabID),
                     userActionDelegate: self,
                     webKitWrapper: webKitWrapper,
-                    windowViewModel: windowViewModel
+                    historyStore: historyStore,
+                    historyComposer: historyComposer,
+                    bookmarkComposer: bookmarkComposer,
+                    searchSuggestionComposer: searchSuggestionComposer,
+                    safelistStore: safelistStore
                 )
 
                 tabs.append(composer)
@@ -78,7 +100,11 @@ final class TabBarManager<T: TabBarStore>: ObservableObject {
         let composer = TabComposer(
             userActionDelegate: self,
             webKitWrapper: webKitWrapper,
-            windowViewModel: windowViewModel
+            historyStore: historyStore,
+            historyComposer: historyComposer,
+            bookmarkComposer: bookmarkComposer,
+            searchSuggestionComposer: searchSuggestionComposer,
+            safelistStore: safelistStore
         )
 
         tabs.append(composer)

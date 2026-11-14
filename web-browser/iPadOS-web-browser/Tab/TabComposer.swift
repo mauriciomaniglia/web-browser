@@ -10,11 +10,17 @@ protocol TabUserActionDelegate: AnyObject {
 
 @MainActor
 final class TabComposer: ObservableObject {
+    let id: UUID
     let webKitWrapper: WebKitEngineWrapper
     let tabViewModel: TabViewModel
     let view: TabContentView
-    let id: UUID
     @Published var snapshot: UIImage?
+
+    let historyStore: HistorySwiftDataStore
+    let historyComposer: HistoryComposer
+    let bookmarkComposer: BookmarkComposer
+    let searchSuggestionComposer: SearchSuggestionComposer
+    let safelistStore: SafelistStore
 
     weak var userActionDelegate: TabUserActionDelegate?
 
@@ -22,22 +28,32 @@ final class TabComposer: ObservableObject {
         tabID: UUID? = nil,
         userActionDelegate: TabUserActionDelegate?,
         webKitWrapper: WebKitEngineWrapper,
-        windowViewModel: WindowViewModel
+        historyStore: HistorySwiftDataStore,
+        historyComposer: HistoryComposer,
+        bookmarkComposer: BookmarkComposer,
+        searchSuggestionComposer: SearchSuggestionComposer,
+        safelistStore: SafelistStore
     ) {
         self.id = tabID ?? UUID()
         self.userActionDelegate = userActionDelegate
         self.webKitWrapper = webKitWrapper
 
+        self.historyStore = historyStore
+        self.historyComposer = historyComposer
+        self.bookmarkComposer = bookmarkComposer
+        self.searchSuggestionComposer = searchSuggestionComposer
+        self.safelistStore = safelistStore
+
         let tabManager = TabManager<WebKitEngineWrapper, SafelistStore, HistorySwiftDataStore>(
             webView: webKitWrapper,
-            safelistStore: windowViewModel.safelistStore,
-            historyStore: windowViewModel.historyStore
+            safelistStore: safelistStore,
+            historyStore: historyStore
         )
 
         tabViewModel = TabViewModel(
             webBrowser: webKitWrapper,
             manager: tabManager,
-            windowViewModel: windowViewModel
+            searchSuggestionComposer: searchSuggestionComposer
         )
         tabViewModel.didTapNewTab = userActionDelegate?.didTapNewTab
 
@@ -57,7 +73,9 @@ final class TabComposer: ObservableObject {
 
         view = TabContentView(
             tabViewModel: tabViewModel,
-            windowViewModel: windowViewModel,
+            searchSuggestionComposer: searchSuggestionComposer,
+            bookmarkComposer: bookmarkComposer,
+            historyComposer: historyComposer,
             webView: WebView(content: webKitWrapper.webView)
         )
 
